@@ -1,0 +1,3454 @@
+{
+  "uuid": "c4d0dfd1-4d1b-47c7-97d9-e8c17e828c91",
+  "lastMigration": 24,
+  "name": "Amazon Elastic File System",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7b3b44e9-0722-4479-9760-65897d9d4166",
+      "documentation": "<p>Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in its own directory and below. To learn more, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html\">Mounting a file system using EFS access points</a>.</p> <p>This operation requires permissions for the <code>elasticfilesystem:CreateAccessPoint</code> action.</p>",
+      "method": "post",
+      "endpoint": "2015-02-01/access-points",
+      "responses": [
+        {
+          "uuid": "2cfcf97d-2b67-4398-8cc8-4d22255bc4e4",
+          "body": "{\n  \"ClientToken\": \"\",\n  \"Name\": \"\",\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ],\n  \"AccessPointId\": \"\",\n  \"AccessPointArn\": \"\",\n  \"FileSystemId\": \"\",\n  \"PosixUser\": {\n    \"Uid\": {{faker 'datatype.number'}},\n    \"Gid\": {{faker 'datatype.number'}},\n    \"SecondaryGids\": [\n      {{faker 'datatype.number'}}\n    ]\n  },\n  \"RootDirectory\": {\n    \"Path\": \"\",\n    \"CreationInfo\": {\n      \"OwnerUid\": {{faker 'datatype.number'}},\n      \"OwnerGid\": {{faker 'datatype.number'}},\n      \"Permissions\": \"\"\n    }\n  },\n  \"OwnerId\": \"\",\n  \"LifeCycleState\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "feecc276-4a48-4405-a188-6353a3d748f8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cc014dc2-c229-4a32-a7f2-3ca57288d8e8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "AccessPointAlreadyExists",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c762e4b3-3f77-4175-a995-101c17bb0f64",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d4e57bf2-b9de-44ea-85bb-7a44660dd089",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "72c51b6b-ed13-4671-865f-41baa2cc8cb7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b4622407-84e6-4aca-89c9-ca038a6e7950",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "AccessPointLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe8fa32a-37ee-4320-974a-5305d4615a2d",
+      "documentation": "<p>Returns the description of a specific Amazon EFS access point if the <code>AccessPointId</code> is provided. If you provide an EFS <code>FileSystemId</code>, it returns descriptions of all access points for that file system. You can provide either an <code>AccessPointId</code> or a <code>FileSystemId</code> in the request, but not both. </p> <p>This operation requires permissions for the <code>elasticfilesystem:DescribeAccessPoints</code> action.</p>",
+      "method": "get",
+      "endpoint": "2015-02-01/access-points",
+      "responses": [
+        {
+          "uuid": "7a582606-294c-4f61-b9d1-edd2f5cc4ddb",
+          "body": "{\n  \"AccessPoints\": [\n    {\n      \"ClientToken\": \"\",\n      \"Name\": \"\",\n      \"Tags\": [\n        {\n          \"Key\": \"\",\n          \"Value\": \"\"\n        }\n      ],\n      \"AccessPointId\": \"\",\n      \"AccessPointArn\": \"\",\n      \"FileSystemId\": \"\",\n      \"PosixUser\": {\n        \"Uid\": {{faker 'datatype.number'}},\n        \"Gid\": {{faker 'datatype.number'}},\n        \"SecondaryGids\": [\n          {{faker 'datatype.number'}}\n        ]\n      },\n      \"RootDirectory\": {\n        \"Path\": \"\",\n        \"CreationInfo\": {\n          \"OwnerUid\": {{faker 'datatype.number'}},\n          \"OwnerGid\": {{faker 'datatype.number'}},\n          \"Permissions\": \"\"\n        }\n      },\n      \"OwnerId\": \"\",\n      \"LifeCycleState\": \"\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2f1692a5-f9d3-4ae7-9a55-2d488b1ae960",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bed0ba7e-80a2-4537-a561-4cca5f10877d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e31de5ae-9f91-4ecb-ac2f-bac8b35aac88",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "45cf5255-c91a-4c76-a33f-f79c5ebe775c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b92ca78-8ee5-4a94-9e90-67462057d9c6",
+      "documentation": "<p>Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation (calling the operation with same creation token has no effect). If a file system does not currently exist that is owned by the caller's Amazon Web Services account with the specified creation token, this operation does the following:</p> <ul> <li> <p>Creates a new, empty file system. The file system will have an Amazon EFS assigned ID, and an initial lifecycle state <code>creating</code>.</p> </li> <li> <p>Returns with the description of the created file system.</p> </li> </ul> <p>Otherwise, this operation returns a <code>FileSystemAlreadyExists</code> error with the ID of the existing file system.</p> <note> <p>For basic use cases, you can use a randomly generated UUID for the creation token.</p> </note> <p> The idempotent operation allows you to retry a <code>CreateFileSystem</code> call without risk of creating an extra file system. This can happen when an initial call fails in a way that leaves it uncertain whether or not a file system was actually created. An example might be that a transport level timeout occurred or your connection was reset. As long as you use the same creation token, if the initial call had succeeded in creating a file system, the client can learn of its existence from the <code>FileSystemAlreadyExists</code> error.</p> <p>For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#creating-using-create-fs-part1\">Creating a file system</a> in the <i>Amazon EFS User Guide</i>.</p> <note> <p>The <code>CreateFileSystem</code> call returns while the file system's lifecycle state is still <code>creating</code>. You can check the file system creation status by calling the <a>DescribeFileSystems</a> operation, which among other things returns the file system state.</p> </note> <p>This operation accepts an optional <code>PerformanceMode</code> parameter that you choose for your file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html\">Amazon EFS performance modes</a>.</p> <p>You can set the throughput mode for the file system using the <code>ThroughputMode</code> parameter.</p> <p>After the file system is fully created, Amazon EFS sets its lifecycle state to <code>available</code>, at which point you can create one or more mount targets for the file system in your VPC. For more information, see <a>CreateMountTarget</a>. You mount your Amazon EFS file system on an EC2 instances in your VPC by using the mount target. For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html\">Amazon EFS: How it Works</a>. </p> <p> This operation requires permissions for the <code>elasticfilesystem:CreateFileSystem</code> action. </p>",
+      "method": "post",
+      "endpoint": "2015-02-01/file-systems",
+      "responses": [
+        {
+          "uuid": "c27ca22f-2e34-4297-a674-c9d06cae1785",
+          "body": "{\n  \"CreationTime\": \"1481841524.0\",\n  \"CreationToken\": \"tokenstring\",\n  \"Encrypted\": true,\n  \"FileSystemId\": \"fs-01234567\",\n  \"LifeCycleState\": \"creating\",\n  \"NumberOfMountTargets\": 0,\n  \"OwnerId\": 12345678912,\n  \"PerformanceMode\": \"generalPurpose\",\n  \"SizeInBytes\": {\n    \"Value\": 0\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"Name\",\n      \"Value\": \"MyFileSystem\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b27977dd-54f7-4679-b8bd-fee9d8a7a29e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fec7e487-8a1a-429d-80e3-cd6f89648d06",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "95748b68-547e-4817-86da-e0129c52719a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemAlreadyExists",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "10794dc4-1bb0-4690-b35e-175092f59961",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "FileSystemLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9c245110-9711-4f75-99d3-eb0f6a3caab3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InsufficientThroughputCapacity",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e9cf021d-7441-4a96-8d4d-7d4a80942737",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ThroughputLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "55849d62-2157-45e6-8960-102002634e5d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "UnsupportedAvailabilityZone",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0f3922f-7524-4bf1-872e-5422df64ffc2",
+      "documentation": "<p>Returns the description of a specific Amazon EFS file system if either the file system <code>CreationToken</code> or the <code>FileSystemId</code> is provided. Otherwise, it returns descriptions of all file systems owned by the caller's Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.</p> <p>When retrieving all file system descriptions, you can optionally specify the <code>MaxItems</code> parameter to limit the number of descriptions in a response. Currently, this number is automatically set to 10. If more file system descriptions remain, Amazon EFS returns a <code>NextMarker</code>, an opaque token, in the response. In this case, you should send a subsequent request with the <code>Marker</code> request parameter set to the value of <code>NextMarker</code>. </p> <p>To retrieve a list of your file system descriptions, this operation is used in an iterative process, where <code>DescribeFileSystems</code> is called first without the <code>Marker</code> and then the operation continues to call it with the <code>Marker</code> parameter set to the value of the <code>NextMarker</code> from the previous response until the response has no <code>NextMarker</code>. </p> <p> The order of file systems returned in the response of one <code>DescribeFileSystems</code> call and the order of file systems returned across the responses of a multi-call iteration is unspecified. </p> <p> This operation requires permissions for the <code>elasticfilesystem:DescribeFileSystems</code> action. </p>",
+      "method": "get",
+      "endpoint": "2015-02-01/file-systems",
+      "responses": [
+        {
+          "uuid": "c3825066-d424-4223-922c-4b983c491d05",
+          "body": "{\n  \"FileSystems\": [\n    {\n      \"CreationTime\": \"1481841524.0\",\n      \"CreationToken\": \"tokenstring\",\n      \"FileSystemId\": \"fs-01234567\",\n      \"LifeCycleState\": \"available\",\n      \"Name\": \"MyFileSystem\",\n      \"NumberOfMountTargets\": 1,\n      \"OwnerId\": 12345678912,\n      \"PerformanceMode\": \"generalPurpose\",\n      \"SizeInBytes\": {\n        \"Value\": 6144\n      },\n      \"Tags\": [\n        {\n          \"Key\": \"Name\",\n          \"Value\": \"MyFileSystem\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "48a1b95d-db47-41a5-9e69-04a7d4165769",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cf806fa3-767f-4ed0-b1eb-ba66b21e1204",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "88331552-afc7-427c-8e95-be63ae09e2a6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0d76cb83-7e1b-4951-8ea0-206131dca673",
+      "documentation": "<p>Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.</p> <p>You can create one mount target in each Availability Zone in your VPC. All EC2 instances in a VPC within a given Availability Zone share a single mount target for a given file system. If you have multiple subnets in an Availability Zone, you create a mount target in one of the subnets. EC2 instances do not need to be in the same subnet as the mount target in order to access their file system.</p> <p>You can create only one mount target for an EFS file system using One Zone storage classes. You must create that mount target in the same Availability Zone in which the file system is located. Use the <code>AvailabilityZoneName</code> and <code>AvailabiltyZoneId</code> properties in the <a>DescribeFileSystems</a> response object to get this information. Use the <code>subnetId</code> associated with the file system's Availability Zone when creating the mount target.</p> <p>For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html\">Amazon EFS: How it Works</a>. </p> <p>To create a mount target for a file system, the file system's lifecycle state must be <code>available</code>. For more information, see <a>DescribeFileSystems</a>.</p> <p>In the request, provide the following:</p> <ul> <li> <p>The file system ID for which you are creating the mount target.</p> </li> <li> <p>A subnet ID, which determines the following:</p> <ul> <li> <p>The VPC in which Amazon EFS creates the mount target</p> </li> <li> <p>The Availability Zone in which Amazon EFS creates the mount target</p> </li> <li> <p>The IP address range from which Amazon EFS selects the IP address of the mount target (if you don't specify an IP address in the request)</p> </li> </ul> </li> </ul> <p>After creating the mount target, Amazon EFS returns a response that includes, a <code>MountTargetId</code> and an <code>IpAddress</code>. You use this IP address when mounting the file system in an EC2 instance. You can also use the mount target's DNS name when mounting the file system. The EC2 instance on which you mount the file system by using the mount target can resolve the mount target's DNS name to its IP address. For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation\">How it Works: Implementation Overview</a>. </p> <p>Note that you can create mount targets for a file system in only one VPC, and there can be only one mount target per Availability Zone. That is, if the file system already has one or more mount targets created for it, the subnet specified in the request to add another mount target must meet the following requirements:</p> <ul> <li> <p>Must belong to the same VPC as the subnets of the existing mount targets</p> </li> <li> <p>Must not be in the same Availability Zone as any of the subnets of the existing mount targets</p> </li> </ul> <p>If the request satisfies the requirements, Amazon EFS does the following:</p> <ul> <li> <p>Creates a new mount target in the specified subnet.</p> </li> <li> <p>Also creates a new network interface in the subnet as follows:</p> <ul> <li> <p>If the request provides an <code>IpAddress</code>, Amazon EFS assigns that IP address to the network interface. Otherwise, Amazon EFS assigns a free address in the subnet (in the same way that the Amazon EC2 <code>CreateNetworkInterface</code> call does when a request does not specify a primary private IP address).</p> </li> <li> <p>If the request provides <code>SecurityGroups</code>, this network interface is associated with those security groups. Otherwise, it belongs to the default security group for the subnet's VPC.</p> </li> <li> <p>Assigns the description <code>Mount target <i>fsmt-id</i> for file system <i>fs-id</i> </code> where <code> <i>fsmt-id</i> </code> is the mount target ID, and <code> <i>fs-id</i> </code> is the <code>FileSystemId</code>.</p> </li> <li> <p>Sets the <code>requesterManaged</code> property of the network interface to <code>true</code>, and the <code>requesterId</code> value to <code>EFS</code>.</p> </li> </ul> <p>Each Amazon EFS mount target has one corresponding requester-managed EC2 network interface. After the network interface is created, Amazon EFS sets the <code>NetworkInterfaceId</code> field in the mount target's description to the network interface ID, and the <code>IpAddress</code> field to its address. If network interface creation fails, the entire <code>CreateMountTarget</code> operation fails.</p> </li> </ul> <note> <p>The <code>CreateMountTarget</code> call returns only after creating the network interface, but while the mount target state is still <code>creating</code>, you can check the mount target creation status by calling the <a>DescribeMountTargets</a> operation, which among other things returns the mount target state.</p> </note> <p>We recommend that you create a mount target in each of the Availability Zones. There are cost considerations for using a file system in an Availability Zone through a mount target created in another Availability Zone. For more information, see <a href=\"http://aws.amazon.com/efs/\">Amazon EFS</a>. In addition, by always using a mount target local to the instance's Availability Zone, you eliminate a partial failure scenario. If the Availability Zone in which your mount target is created goes down, then you can't access your file system through that mount target. </p> <p>This operation requires permissions for the following action on the file system:</p> <ul> <li> <p> <code>elasticfilesystem:CreateMountTarget</code> </p> </li> </ul> <p>This operation also requires permissions for the following Amazon EC2 actions:</p> <ul> <li> <p> <code>ec2:DescribeSubnets</code> </p> </li> <li> <p> <code>ec2:DescribeNetworkInterfaces</code> </p> </li> <li> <p> <code>ec2:CreateNetworkInterface</code> </p> </li> </ul>",
+      "method": "post",
+      "endpoint": "2015-02-01/mount-targets",
+      "responses": [
+        {
+          "uuid": "f522c249-6290-4e22-9b66-a8213af291d1",
+          "body": "{\n  \"FileSystemId\": \"fs-01234567\",\n  \"IpAddress\": \"192.0.0.2\",\n  \"LifeCycleState\": \"creating\",\n  \"MountTargetId\": \"fsmt-12340abc\",\n  \"NetworkInterfaceId\": \"eni-cedf6789\",\n  \"OwnerId\": 12345678912,\n  \"SubnetId\": \"subnet-1234abcd\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "537bac7a-7352-4316-adaa-48f72fc8fcc0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "73fec9a7-ad37-4938-b8af-1c030d41f9cb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "679d4b1d-d967-49e2-bda6-ace0fd03d245",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13c4f804-b296-43e9-aeeb-b748770a32d3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "87b6c5c1-85a1-4a03-857c-43aa23c21d31",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "MountTargetConflict",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d5405b9b-217f-4f28-8c54-999c2d74d08e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "SubnetNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6e005f82-21f0-43b4-af5a-e5b03b6e1fca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "NoFreeAddressesInSubnet",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1d73301c-e3eb-480e-8639-b19225e3c80a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 487,
+          "label": "IpAddressInUse",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "be6d3736-de3f-4d29-96c1-72d9658bf398",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 488,
+          "label": "NetworkInterfaceLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "03e48ec8-41c2-4e1f-bce8-ad3a5ef53ad6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 489,
+          "label": "SecurityGroupLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9fa292e0-3c7f-41c0-a5f5-154783b899bd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 490,
+          "label": "SecurityGroupNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5af81a70-0078-480d-97c2-6729dceccc7a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 491,
+          "label": "UnsupportedAvailabilityZone",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5789c313-f7a7-4d02-9ece-b70d93dff670",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 492,
+          "label": "AvailabilityZonesMismatch",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9fbcebd6-6a1e-492f-aa8e-824faf32cad1",
+      "documentation": "<p>Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DescribeMountTargets</code> action, on either the file system ID that you specify in <code>FileSystemId</code>, or on the file system of the mount target that you specify in <code>MountTargetId</code>.</p>",
+      "method": "get",
+      "endpoint": "2015-02-01/mount-targets",
+      "responses": [
+        {
+          "uuid": "029ac720-86d0-4879-87cd-0dc0372a4423",
+          "body": "{\n  \"MountTargets\": [\n    {\n      \"FileSystemId\": \"fs-01234567\",\n      \"IpAddress\": \"192.0.0.2\",\n      \"LifeCycleState\": \"available\",\n      \"MountTargetId\": \"fsmt-12340abc\",\n      \"NetworkInterfaceId\": \"eni-cedf6789\",\n      \"OwnerId\": 12345678912,\n      \"SubnetId\": \"subnet-1234abcd\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f9710371-5481-45e0-ac16-bd98a7834815",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bbd1147a-f866-4c83-ad04-1d95622a600e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9b0a3fd3-8f22-4ce5-9895-0cefce855f15",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36bb5006-c18b-453d-8512-c34fe3babac2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "MountTargetNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "47d265cf-563e-403e-8761-185c55f82e04",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dc43817e-4ea3-4ecd-9f9f-04f7ca914b4e",
+      "documentation": "<note> <p>DEPRECATED - CreateTags is deprecated and not maintained. Please use the API action to create tags for EFS resources.</p> </note> <p>Creates or overwrites tags associated with a file system. Each tag is a key-value pair. If a tag key specified in the request already exists on the file system, this operation overwrites its value with the value provided in the request. If you add the <code>Name</code> tag to your file system, Amazon EFS returns it in the response to the <a>DescribeFileSystems</a> operation. </p> <p>This operation requires permission for the <code>elasticfilesystem:CreateTags</code> action.</p>",
+      "method": "post",
+      "endpoint": "2015-02-01/create-tags/:FileSystemId",
+      "responses": [
+        {
+          "uuid": "c1e11aab-6800-465a-be4b-a6d1c2acb4e8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2d9c19db-ac06-4075-a171-4893e9e3c4be",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "08641c6e-deca-40ba-99a4-19fb9a4e3225",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "58ff8a1f-ad6b-482d-bc86-a5cf1ec41e27",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ece1630d-573d-498f-b15a-3af02f335df5",
+      "documentation": "<p>Deletes the specified access point. After deletion is complete, new clients can no longer connect to the access points. Clients connected to the access point at the time of deletion will continue to function until they terminate their connection.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DeleteAccessPoint</code> action.</p>",
+      "method": "delete",
+      "endpoint": "2015-02-01/access-points/:AccessPointId",
+      "responses": [
+        {
+          "uuid": "b78059d1-1701-4164-a143-5b17e6a396d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "789786db-5038-470b-9115-47e77b211ccb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7f97c696-ed2e-4049-9ce9-221c29497476",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f7c67145-9b0a-4d47-afc3-7c55e9aca9b3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b7f1f18a-2444-43ea-b66b-2defeee74a07",
+      "documentation": "<p>Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.</p> <p> You can't delete a file system that is in use. That is, if the file system has any mount targets, you must first delete them. For more information, see <a>DescribeMountTargets</a> and <a>DeleteMountTarget</a>. </p> <note> <p>The <code>DeleteFileSystem</code> call returns while the file system state is still <code>deleting</code>. You can check the file system deletion status by calling the <a>DescribeFileSystems</a> operation, which returns a list of file systems in your account. If you pass file system ID or creation token for the deleted file system, the <a>DescribeFileSystems</a> returns a <code>404 FileSystemNotFound</code> error.</p> </note> <p>This operation requires permissions for the <code>elasticfilesystem:DeleteFileSystem</code> action.</p>",
+      "method": "delete",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId",
+      "responses": [
+        {
+          "uuid": "fb2c4a2f-9cbf-4d3a-853f-ed8df5d3244a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0eabf1e2-ab96-4098-8422-c80c5accd43c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "76fe2197-12bb-44c2-8e3e-77e5b4ea2371",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "67f99d68-204f-459a-9ac8-dacbc4ba7773",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "489467bf-c336-46cc-8422-aa931ddcb66d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "FileSystemInUse",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d4ab497-084e-472d-b341-4dfba71b594d",
+      "documentation": "Updates the throughput mode or the amount of provisioned throughput of an existing file system.",
+      "method": "put",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId",
+      "responses": [
+        {
+          "uuid": "051a4640-f5a4-4d59-ae13-5c5e4dc61e9e",
+          "body": "{\n  \"CreationTime\": \"1481841524.0\",\n  \"CreationToken\": \"tokenstring\",\n  \"Encrypted\": true,\n  \"FileSystemId\": \"fs-01234567\",\n  \"LifeCycleState\": \"creating\",\n  \"NumberOfMountTargets\": 0,\n  \"OwnerId\": 12345678912,\n  \"PerformanceMode\": \"generalPurpose\",\n  \"SizeInBytes\": {\n    \"Value\": 0\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"Name\",\n      \"Value\": \"MyFileSystem\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ea6e55fe-393a-432f-8391-bf350a282256",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38c3bcbf-a46e-4be2-84dc-b5be0ce99a9e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e9125a12-0dfe-46b1-94b0-7f8e337820ba",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "432cd1e2-b27a-4ad0-bb80-eba96c1632e3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InsufficientThroughputCapacity",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "39a1f4dc-6510-4a5a-a090-3c7d2ad1aba5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1630f63d-3e0f-4836-a7fb-820af7377974",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ThroughputLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5a1c756e-e6cc-4766-b6c9-64e4387b2dae",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "TooManyRequests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "755efcdf-fb56-4e8f-b8d6-b26ba6626e94",
+      "documentation": "<p>Deletes the <code>FileSystemPolicy</code> for the specified file system. The default <code>FileSystemPolicy</code> goes into effect once the existing policy is deleted. For more information about the default file system policy, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html\">Using Resource-based Policies with EFS</a>.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DeleteFileSystemPolicy</code> action.</p>",
+      "method": "delete",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/policy",
+      "responses": [
+        {
+          "uuid": "fa19d65b-6f4a-4962-9d52-2805e309e7f0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f958a2d2-9719-4e05-861b-669c5fde06c8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "547a9de5-bdf6-4d91-bf41-7110388604fa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36449657-ef44-46e2-8668-5ef29a3f52ef",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "318bf4ba-c426-41b0-b68d-d95c90eb075e",
+      "documentation": "<p>Returns the <code>FileSystemPolicy</code> for the specified EFS file system.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DescribeFileSystemPolicy</code> action.</p>",
+      "method": "get",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/policy",
+      "responses": [
+        {
+          "uuid": "9a3a3577-f38a-46e0-a7bd-ebba92ef95c1",
+          "body": "{\n  \"FileSystemId\": \"\",\n  \"Policy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d6f7a685-14a9-4e90-9d54-22b4fa0e8370",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "359e49ee-7a11-400b-9d8c-fcc85ba8a9dc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f0918ff5-1f7c-447b-9dd4-03c00ab0bdab",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "604f782b-9b72-47c3-b5b3-ba54c8460a7f",
+      "documentation": "<p>Applies an Amazon EFS <code>FileSystemPolicy</code> to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy\">Default EFS File System Policy</a>. </p> <p>EFS file system policies have a 20,000 character limit.</p> <p>This operation requires permissions for the <code>elasticfilesystem:PutFileSystemPolicy</code> action.</p>",
+      "method": "put",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/policy",
+      "responses": [
+        {
+          "uuid": "dd924561-7a42-4314-8a64-65547d305ad5",
+          "body": "{\n  \"FileSystemId\": \"\",\n  \"Policy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2fd27a39-b733-4399-89d3-cc038e3908b0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0f0f8b62-421e-4333-bd7b-cc9eb505e945",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8d55905e-5df2-4510-8f10-4a23bcd45c69",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidPolicyException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "daa85fa3-e832-4223-a562-9dd7f203b3c2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c362057-2d9c-46a3-b47f-fa307b1ced02",
+      "documentation": "<p>Deletes the specified mount target.</p> <p>This operation forcibly breaks any mounts of the file system by using the mount target that is being deleted, which might disrupt instances or applications using those mounts. To avoid applications getting cut off abruptly, you might consider unmounting any mounts of the mount target, if feasible. The operation also deletes the associated network interface. Uncommitted writes might be lost, but breaking a mount target using this operation does not corrupt the file system itself. The file system you created remains. You can mount an EC2 instance in your VPC by using another mount target.</p> <p>This operation requires permissions for the following action on the file system:</p> <ul> <li> <p> <code>elasticfilesystem:DeleteMountTarget</code> </p> </li> </ul> <note> <p>The <code>DeleteMountTarget</code> call returns while the mount target state is still <code>deleting</code>. You can check the mount target deletion by calling the <a>DescribeMountTargets</a> operation, which returns a list of mount target descriptions for the given file system. </p> </note> <p>The operation also requires permissions for the following Amazon EC2 action on the mount target's network interface:</p> <ul> <li> <p> <code>ec2:DeleteNetworkInterface</code> </p> </li> </ul>",
+      "method": "delete",
+      "endpoint": "2015-02-01/mount-targets/:MountTargetId",
+      "responses": [
+        {
+          "uuid": "9c478ed4-8fa5-44f4-af4a-971e08fe4dd6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "14ebb868-a372-4f42-b5c1-2d7052b09345",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38244031-9c64-4d93-b194-753a94474501",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "968e38bb-339d-4878-8884-d3aa328c3c9c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "DependencyTimeout",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ef8635fc-277a-4de4-b140-f07d84eba841",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "MountTargetNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b0f65f3e-e089-4739-b50d-a516d6de21a3",
+      "documentation": "<note> <p>DEPRECATED - DeleteTags is deprecated and not maintained. Please use the API action to remove tags from EFS resources.</p> </note> <p>Deletes the specified tags from a file system. If the <code>DeleteTags</code> request includes a tag key that doesn't exist, Amazon EFS ignores it and doesn't cause an error. For more information about tags and related restrictions, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html\">Tag restrictions</a> in the <i>Billing and Cost Management User Guide</i>.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DeleteTags</code> action.</p>",
+      "method": "post",
+      "endpoint": "2015-02-01/delete-tags/:FileSystemId",
+      "responses": [
+        {
+          "uuid": "eec6a5b4-93c4-45a7-b741-b65147c34760",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "39b6105b-2f56-4667-a348-d787bf8a42f7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e6491cae-1eaa-41fa-a66d-41f38a9c7b5f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6144fd36-66b8-44bd-aa7a-06358f583d79",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44a73428-bf30-4e51-8653-5ed9a9dc067a",
+      "documentation": "Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region. For more information, see <a href=\"efs/latest/ug/manage-efs-resource-ids.html\">Managing Amazon EFS resource IDs</a>.",
+      "method": "get",
+      "endpoint": "2015-02-01/account-preferences",
+      "responses": [
+        {
+          "uuid": "97af2b2e-d421-4422-b9ec-aa0759aac9e9",
+          "body": "{\n  \"ResourceIdPreference\": {\n    \"ResourceIdType\": \"\",\n    \"Resources\": [\n      \"{{oneOf (array 'FILE_SYSTEM' 'MOUNT_TARGET')}}\"\n    ]\n  },\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "89a70ef4-3e72-4e4a-ac4c-e5fa46261bce",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9a3d282-0fb6-4a15-96fc-94e92e132c6a",
+      "documentation": "Use this operation to set the account preference in the current Amazon Web Services Region to use either long 17 character (63 bit) or short 8 character (32 bit) IDs for new EFS file systems and mount targets created. All existing resource IDs are not affected by any changes you make. You can set the ID preference during the opt-in period as EFS transitions to long resource IDs. For more information, see <a href=\"efs/latest/ug/manage-efs-resource-ids.html\">Managing Amazon EFS resource IDs</a>.",
+      "method": "put",
+      "endpoint": "2015-02-01/account-preferences",
+      "responses": [
+        {
+          "uuid": "c1cdd5d6-63de-4631-a6cb-8d8282318f30",
+          "body": "{\n  \"ResourceIdPreference\": {\n    \"ResourceIdType\": \"\",\n    \"Resources\": [\n      \"{{oneOf (array 'FILE_SYSTEM' 'MOUNT_TARGET')}}\"\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1aa32690-1c1a-4a81-9f6c-2cc651c0078b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d414412-f9ee-4921-8009-77766bde0e5e",
+      "documentation": "Returns the backup policy for the specified EFS file system.",
+      "method": "get",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/backup-policy",
+      "responses": [
+        {
+          "uuid": "1bb6eb8d-db45-41e6-8fd8-d04bb3ce7b9f",
+          "body": "{\n  \"BackupPolicy\": {\n    \"Status\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "49de56ba-a41b-4ced-8ef7-944096628084",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "be510077-46b5-470f-9622-23cccdf2f33d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2722497a-12c0-4ce2-8ac7-83f6ba5f8c9c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8830c832-82e6-440e-a8e7-738d791d9080",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "PolicyNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "91072656-d358-45d8-8eb1-3b4424c109f7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ab6d7da5-3083-4136-9b21-8763b6fec726",
+      "documentation": "Updates the file system's backup policy. Use this action to start or stop automatic backups of the file system. ",
+      "method": "put",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/backup-policy",
+      "responses": [
+        {
+          "uuid": "b0fe9900-9de4-4229-a8d0-1b67a81c14b4",
+          "body": "{\n  \"BackupPolicy\": {\n    \"Status\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "70f0ac29-6e5c-408b-840a-d193d8b0835f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a2ceadab-223e-49e0-a130-c49c0ed86ffb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "728ff34a-c2a7-4376-bd3f-95dca4064dca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b033bb02-83f6-45af-a055-81b3d70175f3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ab7535cc-d086-4abd-9352-f375cb9ac666",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f7547a7-e5f7-4428-a030-bd458c6639be",
+      "documentation": "<p>Returns the current <code>LifecycleConfiguration</code> object for the specified Amazon EFS file system. EFS lifecycle management uses the <code>LifecycleConfiguration</code> object to identify which files to move to the EFS Infrequent Access (IA) storage class. For a file system without a <code>LifecycleConfiguration</code> object, the call returns an empty array in the response.</p> <p>When EFS Intelligent Tiering is enabled, <code>TransitionToPrimaryStorageClass</code> has a value of <code>AFTER_1_ACCESS</code>.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DescribeLifecycleConfiguration</code> operation.</p>",
+      "method": "get",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/lifecycle-configuration",
+      "responses": [
+        {
+          "uuid": "6a678932-6822-4efb-9d73-4528966e4d2f",
+          "body": "{\n  \"LifecyclePolicies\": [\n    {\n      \"TransitionToIA\": \"AFTER_30_DAYS\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e02eb9a4-fce6-4e05-973c-2b594095d9eb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "393aa608-ac37-4bf0-93d8-2385ba295988",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "70eb6bdb-c707-4a05-9149-9c8cfbc7ceba",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6175f520-ea13-413b-8e6f-5f0a60f83c3f",
+      "documentation": "<p>Enables lifecycle management by creating a new <code>LifecycleConfiguration</code> object. A <code>LifecycleConfiguration</code> object defines when files in an Amazon EFS file system are automatically transitioned to the lower-cost EFS Infrequent Access (IA) storage class. To enable EFS Intelligent Tiering, set the value of <code>TransitionToPrimaryStorageClass</code> to <code>AFTER_1_ACCESS</code>. For more information, see <a href=\"https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html\">EFS Lifecycle Management</a>.</p> <p>A <code>LifecycleConfiguration</code> applies to all files in a file system.</p> <p>Each Amazon EFS file system supports one lifecycle configuration, which applies to all files in the file system. If a <code>LifecycleConfiguration</code> object already exists for the specified file system, a <code>PutLifecycleConfiguration</code> call modifies the existing configuration. A <code>PutLifecycleConfiguration</code> call with an empty <code>LifecyclePolicies</code> array in the request body deletes any existing <code>LifecycleConfiguration</code> and disables lifecycle management.</p> <p>In the request, specify the following: </p> <ul> <li> <p>The ID for the file system for which you are enabling, disabling, or modifying lifecycle management.</p> </li> <li> <p>A <code>LifecyclePolicies</code> array of <code>LifecyclePolicy</code> objects that define when files are moved to the IA storage class. The array can contain only one <code>LifecyclePolicy</code> item.</p> </li> </ul> <p>This operation requires permissions for the <code>elasticfilesystem:PutLifecycleConfiguration</code> operation.</p> <p>To apply a <code>LifecycleConfiguration</code> object to an encrypted file system, you need the same Key Management Service permissions as when you created the encrypted file system. </p>",
+      "method": "put",
+      "endpoint": "2015-02-01/file-systems/:FileSystemId/lifecycle-configuration",
+      "responses": [
+        {
+          "uuid": "7c62abb6-8009-44e2-a584-33260e707d7a",
+          "body": "{\n  \"LifecyclePolicies\": [\n    {\n      \"TransitionToIA\": \"AFTER_30_DAYS\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cde3dfaa-4e25-49de-8226-d8a7f55f2009",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f25e60e-8ca6-4262-9425-1d469779ace2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0bafff6f-49e4-4f23-ac6c-2bea87c97571",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6b0118ab-3eb0-4444-8568-a4bf84041bc3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "IncorrectFileSystemLifeCycleState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ad8f0401-eeb7-4e37-959f-015ec9b99529",
+      "documentation": "<p>Returns the security groups currently in effect for a mount target. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not <code>deleted</code>.</p> <p>This operation requires permissions for the following actions:</p> <ul> <li> <p> <code>elasticfilesystem:DescribeMountTargetSecurityGroups</code> action on the mount target's file system. </p> </li> <li> <p> <code>ec2:DescribeNetworkInterfaceAttribute</code> action on the mount target's network interface. </p> </li> </ul>",
+      "method": "get",
+      "endpoint": "2015-02-01/mount-targets/:MountTargetId/security-groups",
+      "responses": [
+        {
+          "uuid": "e3f1491a-7304-4dde-abf1-7d4162428c52",
+          "body": "{\n  \"SecurityGroups\": [\n    \"sg-4567abcd\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ec3c7ee1-6410-4e73-a6c0-5930c5b5013f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "831420c6-ffdf-4eb0-bb1b-ec4eccc3ce89",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "95013ba8-685a-4072-98e4-e55c66b69641",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "MountTargetNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "adc7dc9b-4880-4d29-8f54-bf0be7209745",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "IncorrectMountTargetState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0437040c-e269-44b5-8432-2ce1fe70fff4",
+      "documentation": "<p>Modifies the set of security groups in effect for a mount target.</p> <p>When you create a mount target, Amazon EFS also creates a new network interface. For more information, see <a>CreateMountTarget</a>. This operation replaces the security groups in effect for the network interface associated with a mount target, with the <code>SecurityGroups</code> provided in the request. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not <code>deleted</code>. </p> <p>The operation requires permissions for the following actions:</p> <ul> <li> <p> <code>elasticfilesystem:ModifyMountTargetSecurityGroups</code> action on the mount target's file system. </p> </li> <li> <p> <code>ec2:ModifyNetworkInterfaceAttribute</code> action on the mount target's network interface. </p> </li> </ul>",
+      "method": "put",
+      "endpoint": "2015-02-01/mount-targets/:MountTargetId/security-groups",
+      "responses": [
+        {
+          "uuid": "7d71f561-3519-4623-8092-d35582d3246e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ef2669dd-4162-482e-96d9-0a6e47d8bd5f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e7845ad0-bee0-41a6-902c-0c01873eba7f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8cdd19dd-8036-4b46-a561-95708e320625",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "MountTargetNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa290a2a-8064-4327-9c74-3142022d1a2e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "IncorrectMountTargetState",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a8f68b35-61a3-4c9f-8c4d-5534623d7382",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "SecurityGroupLimitExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7bf90961-2cf7-4b01-9ed0-86b16593fa8c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "SecurityGroupNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0843dc1-868a-47d1-9196-c24592bad893",
+      "documentation": "<note> <p>DEPRECATED - The DeleteTags action is deprecated and not maintained. Please use the API action to remove tags from EFS resources.</p> </note> <p>Returns the tags associated with a file system. The order of tags returned in the response of one <code>DescribeTags</code> call and the order of tags returned across the responses of a multiple-call iteration (when using pagination) is unspecified. </p> <p> This operation requires permissions for the <code>elasticfilesystem:DescribeTags</code> action. </p>",
+      "method": "get",
+      "endpoint": "2015-02-01/tags/:FileSystemId/",
+      "responses": [
+        {
+          "uuid": "2b1a8fd9-b89e-41eb-9fd5-e1284fb731fa",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"Name\",\n      \"Value\": \"MyFileSystem\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2ecdbca8-0eba-480f-b49d-0f7d2879edfe",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "69cdbef6-a7d5-4305-8110-9665b4e26a2e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a9cffbe4-2c94-48e5-bf51-2c07a926369d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "420752d6-d670-488b-9f12-a0cbfec08162",
+      "documentation": "<p>Lists all tags for a top-level EFS resource. You must provide the ID of the resource that you want to retrieve the tags for.</p> <p>This operation requires permissions for the <code>elasticfilesystem:DescribeAccessPoints</code> action.</p>",
+      "method": "get",
+      "endpoint": "2015-02-01/resource-tags/:ResourceId",
+      "responses": [
+        {
+          "uuid": "7b733c28-53d5-46b5-a5db-fc9146b13966",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "da7e87f0-ba20-405e-a676-f3715e228ad2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77e81404-7a0e-4322-80ba-067b84ceba42",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bf72699a-fc03-437d-9e8b-f7ab997a5523",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e143eb9a-4b39-4b18-a4ef-acb870669c9e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c07006a0-bf66-4e4e-918b-a401d9efe2f1",
+      "documentation": "<p>Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using this API operation.</p> <p>This operation requires permissions for the <code>elasticfilesystem:TagResource</code> action.</p>",
+      "method": "post",
+      "endpoint": "2015-02-01/resource-tags/:ResourceId",
+      "responses": [
+        {
+          "uuid": "5b9edf59-0aca-4e47-8f95-d0b39e91cce0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d55e2f63-00a7-453e-aa74-9cf04d0dfff6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c499a34f-0354-49fa-a80a-e91bfd061162",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aecff407-89a5-40a9-a35e-21c7e72dac1b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1c0507e8-3e93-47ca-a023-c37895c41708",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd5d3da3-a947-42d1-8b29-4bf46ab23c1d",
+      "documentation": "<p>Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using this API operation.</p> <p>This operation requires permissions for the <code>elasticfilesystem:UntagResource</code> action.</p>",
+      "method": "delete",
+      "endpoint": "2015-02-01/resource-tags/:ResourceId#tagKeys",
+      "responses": [
+        {
+          "uuid": "a25950b3-e92b-45b1-a09a-4796a4bedefc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3419775c-d8c3-4059-90e8-be9e87c1362b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "BadRequest",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "83b395cf-96cb-4158-800d-e58dff9a3876",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "677aa635-5238-49e9-a69d-e24f37ab240a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "FileSystemNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9188da00-34c2-46a7-bbba-e3a02bdbaec5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessPointNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

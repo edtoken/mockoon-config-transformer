@@ -1,0 +1,362 @@
+{
+  "uuid": "1793a455-991a-4ad0-af6b-5ff1fbfc259b",
+  "lastMigration": 24,
+  "name": "CRM cards",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "28d86d9c-af19-459d-8533-e71fba02fe8e",
+      "documentation": "Get sample card detail response",
+      "method": "get",
+      "endpoint": "crm/v3/extensions/cards/sample-response",
+      "responses": [
+        {
+          "uuid": "7073afaa-f84a-4af3-a668-f89105b68f15",
+          "body": "{\n  \"allItemsLinkUrl\": \"\",\n  \"cardLabel\": \"\",\n  \"responseVersion\": \"{{oneOf (array 'v1' 'v3')}}\",\n  \"sections\": [\n    {\n      \"actions\": [\n        {\n          \"confirmation\": {\n            \"cancelButtonLabel\": \"\",\n            \"confirmButtonLabel\": \"\",\n            \"prompt\": \"\"\n          },\n          \"httpMethod\": \"{{oneOf (array 'CONNECT' 'DELETE' 'GET' 'HEAD' 'OPTIONS' 'PATCH' 'POST' 'PUT' 'TRACE')}}\",\n          \"label\": \"\",\n          \"propertyNamesIncluded\": [\n            \"\"\n          ],\n          \"type\": \"{{oneOf (array 'ACTION_HOOK')}}\",\n          \"url\": \"\"\n        }\n      ],\n      \"id\": \"\",\n      \"linkUrl\": \"\",\n      \"title\": \"\",\n      \"tokens\": [\n        {\n          \"dataType\": \"{{oneOf (array 'BOOLEAN' 'CURRENCY' 'DATE' 'DATETIME' 'EMAIL' 'LINK' 'NUMERIC' 'STRING' 'STATUS')}}\",\n          \"label\": \"\",\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ]\n    }\n  ],\n  \"topLevelActions\": {\n    \"primary\": {\n      \"confirmation\": {\n        \"cancelButtonLabel\": \"\",\n        \"confirmButtonLabel\": \"\",\n        \"prompt\": \"\"\n      },\n      \"httpMethod\": \"{{oneOf (array 'CONNECT' 'DELETE' 'GET' 'HEAD' 'OPTIONS' 'PATCH' 'POST' 'PUT' 'TRACE')}}\",\n      \"label\": \"\",\n      \"propertyNamesIncluded\": [\n        \"\"\n      ],\n      \"type\": \"{{oneOf (array 'ACTION_HOOK')}}\",\n      \"url\": \"\"\n    },\n    \"secondary\": [\n      {\n        \"confirmation\": {\n          \"cancelButtonLabel\": \"\",\n          \"confirmButtonLabel\": \"\",\n          \"prompt\": \"\"\n        },\n        \"httpMethod\": \"{{oneOf (array 'CONNECT' 'DELETE' 'GET' 'HEAD' 'OPTIONS' 'PATCH' 'POST' 'PUT' 'TRACE')}}\",\n        \"label\": \"\",\n        \"propertyNamesIncluded\": [\n          \"\"\n        ],\n        \"type\": \"{{oneOf (array 'ACTION_HOOK')}}\",\n        \"url\": \"\"\n      }\n    ],\n    \"settings\": {\n      \"height\": {{faker 'datatype.number'}},\n      \"label\": \"\",\n      \"propertyNamesIncluded\": [\n        \"\"\n      ],\n      \"type\": \"{{oneOf (array 'IFRAME')}}\",\n      \"url\": \"\",\n      \"width\": {{faker 'datatype.number'}}\n    }\n  },\n  \"totalCount\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "95fd84dd-384d-4b54-a1e9-9364f5dc06b2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8e008f48-edba-42ed-a4a7-3b23db624a7f",
+      "documentation": "Get all cards",
+      "method": "get",
+      "endpoint": "crm/v3/extensions/cards/:appId",
+      "responses": [
+        {
+          "uuid": "91cfc6d0-b4c8-4fae-9691-796cdd4b129d",
+          "body": "{\n  \"results\": [\n    {\n      \"actions\": {\n        \"baseUrls\": [\n          \"https://www.example.com/hubspot\"\n        ]\n      },\n      \"createdAt\": \"{{faker 'date.recent' 365}}\",\n      \"display\": {\n        \"properties\": [\n          {\n            \"dataType\": \"{{oneOf (array 'BOOLEAN' 'CURRENCY' 'DATE' 'DATETIME' 'EMAIL' 'LINK' 'NUMERIC' 'STRING' 'STATUS')}}\",\n            \"label\": \"\",\n            \"name\": \"\",\n            \"options\": [\n              {\n                \"label\": \"\",\n                \"name\": \"\",\n                \"type\": \"{{oneOf (array 'DEFAULT' 'SUCCESS' 'WARNING' 'DANGER' 'INFO')}}\"\n              }\n            ]\n          }\n        ]\n      },\n      \"fetch\": {\n        \"objectTypes\": [\n          {\n            \"name\": \"{{oneOf (array 'contacts' 'deals' 'companies' 'tickets')}}\",\n            \"propertiesToSend\": [\n              \"\"\n            ]\n          }\n        ],\n        \"targetUrl\": \"\"\n      },\n      \"id\": \"\",\n      \"title\": \"\",\n      \"updatedAt\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c00e46f5-50cd-4d78-8d9f-43b1b94d392f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c57c9ae1-545a-4228-a684-08e279b35ee8",
+      "documentation": "Create a new card",
+      "method": "post",
+      "endpoint": "crm/v3/extensions/cards/:appId",
+      "responses": [
+        {
+          "uuid": "edb452c5-43d1-4695-9645-0cd246a4152f",
+          "body": "{\n  \"actions\": {\n    \"baseUrls\": [\n      \"https://www.example.com/hubspot\"\n    ]\n  },\n  \"createdAt\": \"{{faker 'date.recent' 365}}\",\n  \"display\": {\n    \"properties\": [\n      {\n        \"dataType\": \"{{oneOf (array 'BOOLEAN' 'CURRENCY' 'DATE' 'DATETIME' 'EMAIL' 'LINK' 'NUMERIC' 'STRING' 'STATUS')}}\",\n        \"label\": \"\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"label\": \"\",\n            \"name\": \"\",\n            \"type\": \"{{oneOf (array 'DEFAULT' 'SUCCESS' 'WARNING' 'DANGER' 'INFO')}}\"\n          }\n        ]\n      }\n    ]\n  },\n  \"fetch\": {\n    \"objectTypes\": [\n      {\n        \"name\": \"{{oneOf (array 'contacts' 'deals' 'companies' 'tickets')}}\",\n        \"propertiesToSend\": [\n          \"\"\n        ]\n      }\n    ],\n    \"targetUrl\": \"\"\n  },\n  \"id\": \"\",\n  \"title\": \"\",\n  \"updatedAt\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6d320d77-f4fa-47af-8e93-bc448d772e08",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fa8e2353-3086-43b4-a2fa-00bc6e2afb3b",
+      "documentation": "Delete a card",
+      "method": "delete",
+      "endpoint": "crm/v3/extensions/cards/:appId/:cardId",
+      "responses": [
+        {
+          "uuid": "7e726039-f67c-4f0e-a3ac-bd34cb5ec6a1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b9ad47da-e21e-460d-aa4b-4d17f3669515",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8f96e5f-544d-4db2-bb0e-e95a60479762",
+      "documentation": "Get a card.",
+      "method": "get",
+      "endpoint": "crm/v3/extensions/cards/:appId/:cardId",
+      "responses": [
+        {
+          "uuid": "bc606a87-6e1e-4b8a-8389-ad44cabd6013",
+          "body": "{\n  \"actions\": {\n    \"baseUrls\": [\n      \"https://www.example.com/hubspot\"\n    ]\n  },\n  \"createdAt\": \"{{faker 'date.recent' 365}}\",\n  \"display\": {\n    \"properties\": [\n      {\n        \"dataType\": \"{{oneOf (array 'BOOLEAN' 'CURRENCY' 'DATE' 'DATETIME' 'EMAIL' 'LINK' 'NUMERIC' 'STRING' 'STATUS')}}\",\n        \"label\": \"\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"label\": \"\",\n            \"name\": \"\",\n            \"type\": \"{{oneOf (array 'DEFAULT' 'SUCCESS' 'WARNING' 'DANGER' 'INFO')}}\"\n          }\n        ]\n      }\n    ]\n  },\n  \"fetch\": {\n    \"objectTypes\": [\n      {\n        \"name\": \"{{oneOf (array 'contacts' 'deals' 'companies' 'tickets')}}\",\n        \"propertiesToSend\": [\n          \"\"\n        ]\n      }\n    ],\n    \"targetUrl\": \"\"\n  },\n  \"id\": \"\",\n  \"title\": \"\",\n  \"updatedAt\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c313e46d-a8fc-4555-8276-accfc67d3ba7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3052edbe-6664-4b75-860d-b43a397b116f",
+      "documentation": "Update a card",
+      "method": "patch",
+      "endpoint": "crm/v3/extensions/cards/:appId/:cardId",
+      "responses": [
+        {
+          "uuid": "9ca9769a-c6ba-43d7-8689-338ef75fe5a7",
+          "body": "{\n  \"actions\": {\n    \"baseUrls\": [\n      \"https://www.example.com/hubspot\"\n    ]\n  },\n  \"createdAt\": \"{{faker 'date.recent' 365}}\",\n  \"display\": {\n    \"properties\": [\n      {\n        \"dataType\": \"{{oneOf (array 'BOOLEAN' 'CURRENCY' 'DATE' 'DATETIME' 'EMAIL' 'LINK' 'NUMERIC' 'STRING' 'STATUS')}}\",\n        \"label\": \"\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"label\": \"\",\n            \"name\": \"\",\n            \"type\": \"{{oneOf (array 'DEFAULT' 'SUCCESS' 'WARNING' 'DANGER' 'INFO')}}\"\n          }\n        ]\n      }\n    ]\n  },\n  \"fetch\": {\n    \"objectTypes\": [\n      {\n        \"name\": \"{{oneOf (array 'contacts' 'deals' 'companies' 'tickets')}}\",\n        \"propertiesToSend\": [\n          \"\"\n        ]\n      }\n    ],\n    \"targetUrl\": \"\"\n  },\n  \"id\": \"\",\n  \"title\": \"\",\n  \"updatedAt\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9f336547-50af-4268-bab3-d871bec8d4cf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,934 @@
+{
+  "uuid": "f5b37864-f30d-4d89-9210-09d72d34b8ff",
+  "lastMigration": 24,
+  "name": "Lumminary API",
+  "endpointPrefix": "v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "76a1c28e-f1b0-4db0-bd49-1b79a841385c",
+      "documentation": "General-purpose authentication",
+      "method": "post",
+      "endpoint": "auth/jwt",
+      "responses": [
+        {
+          "uuid": "af7da760-a24b-4e03-b8dc-5451c8bfa082",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d96cdb93-40fb-4ee8-ae10-fccf729dad57",
+      "documentation": "Get gene by symbol",
+      "method": "get",
+      "endpoint": "clients/:clientId/datasets/:datasetId/genes/:geneSymbol",
+      "responses": [
+        {
+          "uuid": "618d74a2-9aa8-4821-9290-4e6ea1c52f07",
+          "body": "{\n  \"molecular_location\": {\n    \"chromosome_accession\": \"\",\n    \"start\": {{faker 'datatype.number'}},\n    \"stop\": {{faker 'datatype.number'}}\n  },\n  \"snps\": [\n    {\n      \"chromosome_accession\": \"\",\n      \"genotyped_alleles\": [\n        \"\"\n      ],\n      \"location\": {{faker 'datatype.number'}},\n      \"phased\": {{faker 'datatype.boolean'}},\n      \"reference_genome\": \"\",\n      \"snp_id\": \"\"\n    }\n  ],\n  \"symbol\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f483d211-bf5d-445e-b241-519a1ad00d1b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e931dffb-e6d1-47e6-9b75-79000c2976c4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "clients/:clientId/datasets/:datasetId/snps/",
+      "responses": [
+        {
+          "uuid": "35267318-c57e-484f-823c-034747295f4d",
+          "body": "[\n  {\n    \"chromosome_accession\": \"\",\n    \"genotyped_alleles\": [\n      \"\"\n    ],\n    \"location\": {{faker 'datatype.number'}},\n    \"phased\": {{faker 'datatype.boolean'}},\n    \"reference_genome\": \"\",\n    \"snp_id\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bc647b0d-44bc-4334-ac5d-8000f9dbab09",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "45e6b20f-37bd-4f03-983c-bedb27d4e361",
+      "documentation": "Get a large group of SNPs",
+      "method": "post",
+      "endpoint": "clients/:clientId/datasets/:datasetId/snps/",
+      "responses": [
+        {
+          "uuid": "9aa25b05-ec87-486c-9823-ae7d1a45c890",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca8c700c-ace3-4dba-b847-59304f674df1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6d8957f0-18d4-417c-a835-fabfbfb87aba",
+      "documentation": "Get SNP information",
+      "method": "get",
+      "endpoint": "clients/:clientId/datasets/:datasetId/snps/:snpId",
+      "responses": [
+        {
+          "uuid": "6256263e-2732-4af4-9035-84ee61dc797c",
+          "body": "{\n  \"chromosome_accession\": \"\",\n  \"genotyped_alleles\": [\n    \"\"\n  ],\n  \"location\": {{faker 'datatype.number'}},\n  \"phased\": {{faker 'datatype.boolean'}},\n  \"reference_genome\": \"\",\n  \"snp_id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56d787b6-7d65-4331-8aa9-616322110415",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f6acf583-4d4b-4b3c-9c2e-c576242a882f",
+      "documentation": "Get product details",
+      "method": "get",
+      "endpoint": "products/:productId",
+      "responses": [
+        {
+          "uuid": "e8037132-97be-42e2-a9b3-d2e8145eea4f",
+          "body": "{\n  \"authorized_scopes\": [\n    \"\"\n  ],\n  \"email\": \"\",\n  \"product_uuid\": \"\",\n  \"redirect_uri\": \"\",\n  \"snps_authorized\": [\n    \"\"\n  ],\n  \"snps_authorized_any\": {{faker 'datatype.boolean'}},\n  \"snps_min_required\": {\n    \"min_pct\": {{faker 'datatype.number'}},\n    \"snps\": [\n      \"\"\n    ]\n  },\n  \"snps_min_required_any\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2cd0ba82-d0ed-4e59-b692-23ad471486e8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Product not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5f466a9-deb1-4b0c-9bb4-128e2f44b49d",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products/:productId/authorizations",
+      "responses": [
+        {
+          "uuid": "6129edf9-5af2-4f3d-8672-70a1735f8f6d",
+          "body": "[\n  {\n    \"authorization_uuid\": \"\",\n    \"client_uuid\": \"\",\n    \"create_timestamp\": {{faker 'datatype.number'}},\n    \"is_active\": {{faker 'datatype.boolean'}},\n    \"order\": \"\",\n    \"product_uuid\": \"\",\n    \"report_credentials\": [\n      {\n        \"authorization_uuid\": \"\",\n        \"client_password\": \"\",\n        \"client_username\": \"\",\n        \"create_timestamp\": {{faker 'datatype.number'}},\n        \"report_credentials_uuid\": \"\",\n        \"report_url\": \"\"\n      }\n    ],\n    \"report_files\": [\n      {\n        \"authorization_uuid\": \"\",\n        \"create_timestamp\": {{faker 'datatype.number'}},\n        \"file_location\": {\n          \"filename_original\": \"\",\n          \"host\": \"\",\n          \"path\": \"\"\n        },\n        \"report_file_uuid\": \"\"\n      }\n    ],\n    \"scopes\": {\n      \"address\": {\n        \"address1\": \"\",\n        \"address2\": \"\",\n        \"city\": \"\",\n        \"country\": \"\",\n        \"phone\": \"\",\n        \"state\": \"\",\n        \"zipcode\": \"\"\n      },\n      \"dataset\": \"\",\n      \"email\": \"\",\n      \"login\": \"\",\n      \"name\": {\n        \"first_name\": \"\",\n        \"last_name\": \"\"\n      },\n      \"sex\": \"\"\n    },\n    \"sequence_number\": {{faker 'datatype.number'}},\n    \"state\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "36499252-05f8-4b80-b8a8-1a6099475673",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Product not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "225a9f80-cd66-4664-842f-bbafdb98b9e6",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products/:productId/authorizations/:authorizationId",
+      "responses": [
+        {
+          "uuid": "9c8ce5ba-1dbf-466d-8b47-1587e597b242",
+          "body": "{\n  \"authorization_uuid\": \"\",\n  \"client_uuid\": \"\",\n  \"create_timestamp\": {{faker 'datatype.number'}},\n  \"is_active\": {{faker 'datatype.boolean'}},\n  \"order\": \"\",\n  \"product_uuid\": \"\",\n  \"report_credentials\": [\n    {\n      \"authorization_uuid\": \"\",\n      \"client_password\": \"\",\n      \"client_username\": \"\",\n      \"create_timestamp\": {{faker 'datatype.number'}},\n      \"report_credentials_uuid\": \"\",\n      \"report_url\": \"\"\n    }\n  ],\n  \"report_files\": [\n    {\n      \"authorization_uuid\": \"\",\n      \"create_timestamp\": {{faker 'datatype.number'}},\n      \"file_location\": {\n        \"filename_original\": \"\",\n        \"host\": \"\",\n        \"path\": \"\"\n      },\n      \"report_file_uuid\": \"\"\n    }\n  ],\n  \"scopes\": {\n    \"address\": {\n      \"address1\": \"\",\n      \"address2\": \"\",\n      \"city\": \"\",\n      \"country\": \"\",\n      \"phone\": \"\",\n      \"state\": \"\",\n      \"zipcode\": \"\"\n    },\n    \"dataset\": \"\",\n    \"email\": \"\",\n    \"login\": \"\",\n    \"name\": {\n      \"first_name\": \"\",\n      \"last_name\": \"\"\n    },\n    \"sex\": \"\"\n  },\n  \"sequence_number\": {{faker 'datatype.number'}},\n  \"state\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5689b33a-9b9b-4c6d-8d01-0d178433de30",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8a6d0e66-717c-41a0-80fe-b324458459c3",
+      "documentation": "Signal that processing is complete, without uploading any result",
+      "method": "post",
+      "endpoint": "products/:productId/authorizations/:authorizationId",
+      "responses": [
+        {
+          "uuid": "c5ade653-0d64-413a-9b27-12f10e6fe557",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Result saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d7f2e98b-03f4-4038-ba0d-c0a93fb5ea37",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "931af421-eff9-4995-9c73-910fd5702549",
+      "documentation": "Provide a result for the authorization",
+      "method": "post",
+      "endpoint": "products/:productId/authorizations/:authorizationId/credentials",
+      "responses": [
+        {
+          "uuid": "38045ccb-27de-4ce2-994c-9e3662a2f815",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "25ce6f4c-b882-45c2-b46b-770fb25893a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Result saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7755d9ec-c112-4c15-8ec9-24f00dfa4138",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81c6c266-a566-425d-be1e-10bef6ddf921",
+      "documentation": "Provide a file result to the authorization, e",
+      "method": "post",
+      "endpoint": "products/:productId/authorizations/:authorizationId/file",
+      "responses": [
+        {
+          "uuid": "8ca56f6e-f8e8-4457-b579-c68ce87a983d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "multipart/form-data"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d162b80d-4891-4958-8910-786e99caa7b6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Result saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "multipart/form-data"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13768b03-415e-49be-886d-4b519bab1469",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "multipart/form-data"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41d9f83c-4a83-477c-a610-83822ea7aacd",
+      "documentation": "Catch-all Authorization state, for authorizations that passed all verifications and should reach the partner Product, but cannot be fulfilled for various reasons",
+      "method": "post",
+      "endpoint": "products/:productId/authorizations/:authorizationId/unfulfillable",
+      "responses": [
+        {
+          "uuid": "9bf9fb3b-f17b-4137-9789-c092ea7fb416",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a6a69737-f89b-4d30-860a-3b72f5d2da06",
+      "documentation": "Generic gene information",
+      "method": "get",
+      "endpoint": "reference/genes/databases/:databaseName/accessions/:accession",
+      "responses": [
+        {
+          "uuid": "87ad7db1-1175-4dcd-ba07-60fcceb6be71",
+          "body": "{\n  \"chromosome\": \"\",\n  \"molecular_end_position\": {{faker 'datatype.number'}},\n  \"molecular_start_position\": {{faker 'datatype.number'}},\n  \"parent_accession\": \"\",\n  \"snp_ids\": [\n    \"\"\n  ],\n  \"symbol\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1b157e7b-6f75-49a6-819a-c2395375a166",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a5f1f16a-918d-442c-a961-73ec43421b50",
+      "documentation": "Reference genome builds",
+      "method": "get",
+      "endpoint": "reference/genomes/",
+      "responses": [
+        {
+          "uuid": "83e9ab3c-e3ab-4ce4-af87-b2da3aee575a",
+          "body": "[\n  {\n    \"reference_accession\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b73b3925-1e19-42ed-92f7-d8b08bf2f227",
+      "documentation": "Reference genome metadata",
+      "method": "get",
+      "endpoint": "reference/genomes/:genomeBuildAccession/chromosomes",
+      "responses": [
+        {
+          "uuid": "56958077-9ad6-49f3-a6bd-dc01a5f54e82",
+          "body": "[\n  {\n    \"reference_accession\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "86816944-d270-4d9d-a0ea-c79f0f686bdd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d4cc894e-4651-4135-b32c-a439e03cb293",
+      "documentation": "Sequence for a region of the reference genome",
+      "method": "get",
+      "endpoint": "reference/genomes/:genomeBuildAccession/chromosomes/:chromosomeAccession",
+      "responses": [
+        {
+          "uuid": "0728208c-63f3-467d-880f-4ebcbcefdf48",
+          "body": "{\n  \"sequence\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e6e18e63-6584-4fdf-bfa8-299bff381f18",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6314eb71-813d-4ec9-a4f1-92bd3e0b75b9",
+      "documentation": "Reference SNP data",
+      "method": "get",
+      "endpoint": "reference/snps/:snpAccession",
+      "responses": [
+        {
+          "uuid": "d72a9786-2cea-470d-9fa4-440f8a3cdfb2",
+          "body": "{\n  \"alternative_alleles\": [\n    \"\"\n  ],\n  \"chromosome\": \"\",\n  \"chromosome_accession\": \"\",\n  \"dbsnp_version\": {{faker 'datatype.number'}},\n  \"location\": {{faker 'datatype.number'}},\n  \"reference_allele\": \"\",\n  \"reference_genome\": \"\",\n  \"snp_id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4bdfc0d0-fcd2-4f76-a610-71c0c4b2b4d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

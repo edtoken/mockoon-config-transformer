@@ -1,0 +1,902 @@
+{
+  "uuid": "d48ef6f7-0d84-4598-89d1-6cdaa6a4bb47",
+  "lastMigration": 24,
+  "name": "Custom Workflow Actions",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "0760852c-8b65-421d-89ef-39866461c01e",
+      "documentation": "Complete a batch of callbacks",
+      "method": "post",
+      "endpoint": "automation/v4/actions/callbacks/complete",
+      "responses": [
+        {
+          "uuid": "075c9f51-3be6-48e2-84c9-9e2a2dc9f04e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "05d7bb7d-0099-4e5d-8d3f-f7242681f90a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1a221140-7524-41f7-a4a3-4fd34b28ff08",
+      "documentation": "Complete a callback",
+      "method": "post",
+      "endpoint": "automation/v4/actions/callbacks/:callbackId/complete",
+      "responses": [
+        {
+          "uuid": "27ef50ac-ebde-46b4-a25e-cc2745516720",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0e660d55-5182-4590-b1ae-a28fa1e8c1c9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c5135a81-aff4-4e96-b620-cd9c08f1f405",
+      "documentation": "Get all custom actions",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId",
+      "responses": [
+        {
+          "uuid": "e9abb11a-fb3c-4756-9fcf-c14dd7e1d484",
+          "body": "{\n  \"paging\": {\n    \"next\": {\n      \"after\": \"\",\n      \"link\": \"\"\n    }\n  },\n  \"results\": [\n    {\n      \"actionUrl\": \"\",\n      \"archivedAt\": {{faker 'datatype.number'}},\n      \"functions\": [\n        {\n          \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n          \"id\": \"\"\n        }\n      ],\n      \"id\": \"\",\n      \"inputFieldDependencies\": [\n        {\n          \"controllingFieldName\": \"\",\n          \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n          \"dependentFieldNames\": [\n            \"\"\n          ]\n        }\n      ],\n      \"inputFields\": [\n        {\n          \"isRequired\": {{faker 'datatype.boolean'}},\n          \"supportedValueTypes\": [\n            \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n          ],\n          \"typeDefinition\": {\n            \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n            \"name\": \"\",\n            \"options\": [\n              {\n                \"description\": \"\",\n                \"displayOrder\": {{faker 'datatype.number'}},\n                \"doubleData\": {{faker 'datatype.number'}},\n                \"hidden\": {{faker 'datatype.boolean'}},\n                \"label\": \"\",\n                \"readOnly\": {{faker 'datatype.boolean'}},\n                \"value\": \"\"\n              }\n            ],\n            \"optionsUrl\": \"\",\n            \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n            \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n          }\n        }\n      ],\n      \"labels\": {},\n      \"objectRequestOptions\": {\n        \"properties\": [\n          \"\"\n        ]\n      },\n      \"objectTypes\": [\n        \"\"\n      ],\n      \"published\": {{faker 'datatype.boolean'}},\n      \"revisionId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ff758de8-b319-4aaf-a03d-5a2937e7540b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6246219d-7100-4748-936d-c5a5abcd6c7b",
+      "documentation": "Create new custom action",
+      "method": "post",
+      "endpoint": "automation/v4/actions/:appId",
+      "responses": [
+        {
+          "uuid": "2ae7d727-7227-42a4-a5bb-c7fa7b21ae5e",
+          "body": "{\n  \"actionUrl\": \"\",\n  \"archivedAt\": {{faker 'datatype.number'}},\n  \"functions\": [\n    {\n      \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n      \"id\": \"\"\n    }\n  ],\n  \"id\": \"\",\n  \"inputFieldDependencies\": [\n    {\n      \"controllingFieldName\": \"\",\n      \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n      \"dependentFieldNames\": [\n        \"\"\n      ]\n    }\n  ],\n  \"inputFields\": [\n    {\n      \"isRequired\": {{faker 'datatype.boolean'}},\n      \"supportedValueTypes\": [\n        \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n      ],\n      \"typeDefinition\": {\n        \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"description\": \"\",\n            \"displayOrder\": {{faker 'datatype.number'}},\n            \"doubleData\": {{faker 'datatype.number'}},\n            \"hidden\": {{faker 'datatype.boolean'}},\n            \"label\": \"\",\n            \"readOnly\": {{faker 'datatype.boolean'}},\n            \"value\": \"\"\n          }\n        ],\n        \"optionsUrl\": \"\",\n        \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n        \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n      }\n    }\n  ],\n  \"labels\": {},\n  \"objectRequestOptions\": {\n    \"properties\": [\n      \"\"\n    ]\n  },\n  \"objectTypes\": [\n    \"\"\n  ],\n  \"published\": {{faker 'datatype.boolean'}},\n  \"revisionId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d08c3298-7dcf-4766-8680-b9628551336e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f80f8589-a5d6-4fa6-82e3-abb03687f305",
+      "documentation": "Archive a custom action",
+      "method": "delete",
+      "endpoint": "automation/v4/actions/:appId/:definitionId",
+      "responses": [
+        {
+          "uuid": "3f2cee95-4a34-4473-bc87-41a6a0ce1798",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "848a2c4e-d76a-49d0-b456-4ad265001198",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77879ac9-5587-4c6f-a289-18c256869e3e",
+      "documentation": "Get a custom action",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId",
+      "responses": [
+        {
+          "uuid": "73b269be-bd42-434b-a8c7-5dcf4904c34d",
+          "body": "{\n  \"actionUrl\": \"\",\n  \"archivedAt\": {{faker 'datatype.number'}},\n  \"functions\": [\n    {\n      \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n      \"id\": \"\"\n    }\n  ],\n  \"id\": \"\",\n  \"inputFieldDependencies\": [\n    {\n      \"controllingFieldName\": \"\",\n      \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n      \"dependentFieldNames\": [\n        \"\"\n      ]\n    }\n  ],\n  \"inputFields\": [\n    {\n      \"isRequired\": {{faker 'datatype.boolean'}},\n      \"supportedValueTypes\": [\n        \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n      ],\n      \"typeDefinition\": {\n        \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"description\": \"\",\n            \"displayOrder\": {{faker 'datatype.number'}},\n            \"doubleData\": {{faker 'datatype.number'}},\n            \"hidden\": {{faker 'datatype.boolean'}},\n            \"label\": \"\",\n            \"readOnly\": {{faker 'datatype.boolean'}},\n            \"value\": \"\"\n          }\n        ],\n        \"optionsUrl\": \"\",\n        \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n        \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n      }\n    }\n  ],\n  \"labels\": {},\n  \"objectRequestOptions\": {\n    \"properties\": [\n      \"\"\n    ]\n  },\n  \"objectTypes\": [\n    \"\"\n  ],\n  \"published\": {{faker 'datatype.boolean'}},\n  \"revisionId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e9b7a8be-47bb-4ec1-bac6-c169cf6e0b99",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35adcf79-cff6-4253-bfe7-ae51964a2db0",
+      "documentation": "Update a custom action",
+      "method": "patch",
+      "endpoint": "automation/v4/actions/:appId/:definitionId",
+      "responses": [
+        {
+          "uuid": "f12965bb-2cd5-49e7-878c-6f0dc787c553",
+          "body": "{\n  \"actionUrl\": \"\",\n  \"archivedAt\": {{faker 'datatype.number'}},\n  \"functions\": [\n    {\n      \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n      \"id\": \"\"\n    }\n  ],\n  \"id\": \"\",\n  \"inputFieldDependencies\": [\n    {\n      \"controllingFieldName\": \"\",\n      \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n      \"dependentFieldNames\": [\n        \"\"\n      ]\n    }\n  ],\n  \"inputFields\": [\n    {\n      \"isRequired\": {{faker 'datatype.boolean'}},\n      \"supportedValueTypes\": [\n        \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n      ],\n      \"typeDefinition\": {\n        \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"description\": \"\",\n            \"displayOrder\": {{faker 'datatype.number'}},\n            \"doubleData\": {{faker 'datatype.number'}},\n            \"hidden\": {{faker 'datatype.boolean'}},\n            \"label\": \"\",\n            \"readOnly\": {{faker 'datatype.boolean'}},\n            \"value\": \"\"\n          }\n        ],\n        \"optionsUrl\": \"\",\n        \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n        \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n      }\n    }\n  ],\n  \"labels\": {},\n  \"objectRequestOptions\": {\n    \"properties\": [\n      \"\"\n    ]\n  },\n  \"objectTypes\": [\n    \"\"\n  ],\n  \"published\": {{faker 'datatype.boolean'}},\n  \"revisionId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4737d0f9-2b1a-4485-aca5-db9ef9c12c00",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a51ccf61-5a55-4b69-8f6b-c9cd5c2d1f6a",
+      "documentation": "Get all custom action functions",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions",
+      "responses": [
+        {
+          "uuid": "ef9db98f-8ada-4b19-91e3-4291c6dbac77",
+          "body": "{\n  \"results\": [\n    {\n      \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n      \"id\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d663c352-8f72-42f4-a030-441e39a07782",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f24e102d-1f12-42bd-8a5a-dcff96a0ce3e",
+      "documentation": "Delete a custom action function",
+      "method": "delete",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType",
+      "responses": [
+        {
+          "uuid": "e48fa797-24aa-4683-b712-3ec0620a17a1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4be1977-39ce-4160-a43a-208a9d4c3186",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dfff55e9-30f6-4535-b6b1-ef725441a796",
+      "documentation": "Get a custom action function",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType",
+      "responses": [
+        {
+          "uuid": "901a917e-6095-48df-b342-0c304c35ddfe",
+          "body": "{\n  \"functionSource\": \"\",\n  \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n  \"id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "95e7e26c-fa66-4010-a9d6-3fd2bcefa7fa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1093ccb6-8e6d-47b2-94f9-ac76dce89de3",
+      "documentation": "Create or replace a custom action function",
+      "method": "put",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType",
+      "responses": [
+        {
+          "uuid": "4ba1bf59-e5ca-4361-9b5c-7abdf7ce745a",
+          "body": "{\n  \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n  \"id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b00eb57c-fcf4-4a17-af5f-7057379474b6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6327c663-2692-4d15-b4ff-d88297a3ad46",
+      "documentation": "Delete a custom action function",
+      "method": "delete",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType/:functionId",
+      "responses": [
+        {
+          "uuid": "e0b32e35-6174-4ff4-89a0-fb396c170ecd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b1b52f2c-9972-4a49-9b6c-d5ec19366556",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b8088d60-569f-4534-8ee7-df3b1f8229e5",
+      "documentation": "Get a custom action function",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType/:functionId",
+      "responses": [
+        {
+          "uuid": "3e6aa41e-6a97-4d9a-90e0-36c1b7a923fa",
+          "body": "{\n  \"functionSource\": \"\",\n  \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n  \"id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "937b539e-dbb3-4c6d-8f35-044bb7fea1a5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5e4eb624-9a5f-4382-a6c2-d3f5c45c1daf",
+      "documentation": "Create or replace a custom action function",
+      "method": "put",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/functions/:functionType/:functionId",
+      "responses": [
+        {
+          "uuid": "2e541063-40a1-4c76-aaed-319733f5ac81",
+          "body": "{\n  \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n  \"id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "17babcc6-b44a-4d74-a51b-a2932123b229",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9cf73b3f-d317-4dfb-b35f-c2b5d7826793",
+      "documentation": "Get all revisions for a custom action",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/revisions",
+      "responses": [
+        {
+          "uuid": "e24c23df-e7c8-4de6-b79f-ddb207394005",
+          "body": "{\n  \"paging\": {\n    \"next\": {\n      \"after\": \"\",\n      \"link\": \"\"\n    }\n  },\n  \"results\": [\n    {\n      \"createdAt\": \"{{faker 'date.recent' 365}}\",\n      \"definition\": {\n        \"actionUrl\": \"\",\n        \"archivedAt\": {{faker 'datatype.number'}},\n        \"functions\": [\n          {\n            \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n            \"id\": \"\"\n          }\n        ],\n        \"id\": \"\",\n        \"inputFieldDependencies\": [\n          {\n            \"controllingFieldName\": \"\",\n            \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n            \"dependentFieldNames\": [\n              \"\"\n            ]\n          }\n        ],\n        \"inputFields\": [\n          {\n            \"isRequired\": {{faker 'datatype.boolean'}},\n            \"supportedValueTypes\": [\n              \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n            ],\n            \"typeDefinition\": {\n              \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n              \"name\": \"\",\n              \"options\": [\n                {\n                  \"description\": \"\",\n                  \"displayOrder\": {{faker 'datatype.number'}},\n                  \"doubleData\": {{faker 'datatype.number'}},\n                  \"hidden\": {{faker 'datatype.boolean'}},\n                  \"label\": \"\",\n                  \"readOnly\": {{faker 'datatype.boolean'}},\n                  \"value\": \"\"\n                }\n              ],\n              \"optionsUrl\": \"\",\n              \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n              \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n            }\n          }\n        ],\n        \"labels\": {},\n        \"objectRequestOptions\": {\n          \"properties\": [\n            \"\"\n          ]\n        },\n        \"objectTypes\": [\n          \"\"\n        ],\n        \"published\": {{faker 'datatype.boolean'}},\n        \"revisionId\": \"\"\n      },\n      \"id\": \"\",\n      \"revisionId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "98b8fd6e-8842-4b17-8671-cb6d098bb8d6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e30acc01-4fe0-4478-8586-049e2e6b7e88",
+      "documentation": "Get a revision for a custom action",
+      "method": "get",
+      "endpoint": "automation/v4/actions/:appId/:definitionId/revisions/:revisionId",
+      "responses": [
+        {
+          "uuid": "89e467d8-5e9f-4241-b428-1c432f2514c2",
+          "body": "{\n  \"createdAt\": \"{{faker 'date.recent' 365}}\",\n  \"definition\": {\n    \"actionUrl\": \"\",\n    \"archivedAt\": {{faker 'datatype.number'}},\n    \"functions\": [\n      {\n        \"functionType\": \"{{oneOf (array 'PRE_ACTION_EXECUTION' 'PRE_FETCH_OPTIONS' 'POST_FETCH_OPTIONS')}}\",\n        \"id\": \"\"\n      }\n    ],\n    \"id\": \"\",\n    \"inputFieldDependencies\": [\n      {\n        \"controllingFieldName\": \"\",\n        \"dependencyType\": \"{{oneOf (array 'SINGLE_FIELD')}}\",\n        \"dependentFieldNames\": [\n          \"\"\n        ]\n      }\n    ],\n    \"inputFields\": [\n      {\n        \"isRequired\": {{faker 'datatype.boolean'}},\n        \"supportedValueTypes\": [\n          \"{{oneOf (array 'STATIC_VALUE' 'OBJECT_PROPERTY' 'FIELD_DATA')}}\"\n        ],\n        \"typeDefinition\": {\n          \"fieldType\": \"{{oneOf (array 'booleancheckbox' 'checkbox' 'date' 'file' 'number' 'phonenumber' 'radio' 'select' 'text' 'textarea' 'calculation_equation' 'calculation_rollup' 'calculation_score' 'calculation_read_time' 'unknown')}}\",\n          \"name\": \"\",\n          \"options\": [\n            {\n              \"description\": \"\",\n              \"displayOrder\": {{faker 'datatype.number'}},\n              \"doubleData\": {{faker 'datatype.number'}},\n              \"hidden\": {{faker 'datatype.boolean'}},\n              \"label\": \"\",\n              \"readOnly\": {{faker 'datatype.boolean'}},\n              \"value\": \"\"\n            }\n          ],\n          \"optionsUrl\": \"\",\n          \"referencedObjectType\": \"{{oneOf (array 'CONTACT' 'COMPANY' 'DEAL' 'ENGAGEMENT' 'TICKET' 'OWNER' 'PRODUCT' 'LINE_ITEM' 'BET_DELIVERABLE_SERVICE' 'CONTENT' 'CONVERSATION' 'BET_ALERT' 'PORTAL' 'QUOTE' 'FORM_SUBMISSION_INBOUNDDB' 'QUOTA' 'UNSUBSCRIBE' 'COMMUNICATION' 'FEEDBACK_SUBMISSION' 'ATTRIBUTION' 'SALESFORCE_SYNC_ERROR' 'RESTORABLE_CRM_OBJECT' 'HUB' 'LANDING_PAGE' 'PRODUCT_OR_FOLDER' 'TASK' 'FORM' 'MARKETING_EMAIL' 'AD_ACCOUNT' 'AD_CAMPAIGN' 'AD_GROUP' 'AD' 'KEYWORD' 'CAMPAIGN' 'SOCIAL_CHANNEL' 'SOCIAL_POST' 'SITE_PAGE' 'BLOG_POST' 'IMPORT' 'EXPORT' 'CTA' 'TASK_TEMPLATE' 'AUTOMATION_PLATFORM_FLOW' 'OBJECT_LIST' 'NOTE' 'MEETING_EVENT' 'CALL' 'EMAIL' 'PUBLISHING_TASK' 'CONVERSATION_SESSION' 'CONTACT_CREATE_ATTRIBUTION' 'INVOICE' 'MARKETING_EVENT' 'CONVERSATION_INBOX' 'CHATFLOW' 'MEDIA_BRIDGE' 'SEQUENCE' 'SEQUENCE_STEP' 'FORECAST' 'SNIPPET' 'TEMPLATE' 'UNKNOWN')}}\",\n          \"type\": \"{{oneOf (array 'string' 'number' 'bool' 'datetime' 'enumeration' 'date' 'phone_number' 'currency_number' 'json' 'object_coordinates')}}\"\n        }\n      }\n    ],\n    \"labels\": {},\n    \"objectRequestOptions\": {\n      \"properties\": [\n        \"\"\n      ]\n    },\n    \"objectTypes\": [\n      \"\"\n    ],\n    \"published\": {{faker 'datatype.boolean'}},\n    \"revisionId\": \"\"\n  },\n  \"id\": \"\",\n  \"revisionId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8b709fa6-2a93-4977-814f-a5de6cfd5dc0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An error occurred.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

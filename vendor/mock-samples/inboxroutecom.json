@@ -1,0 +1,756 @@
+{
+  "uuid": "b45b8d58-8085-48a7-8cce-b51613c785b5",
+  "lastMigration": 24,
+  "name": "Mailsquad",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8a7c5558-12dc-42fc-9184-e9165d930623",
+      "documentation": "Get a paged result of contacts from a list",
+      "method": "get",
+      "endpoint": "contacts",
+      "responses": [
+        {
+          "uuid": "42b3e088-5bca-4c36-bc29-b5b2d4b11642",
+          "body": "{\n  \"page\": [\n    {\n      \"_id\": \"\",\n      \"clientid\": \"\",\n      \"confirmed\": \"{{faker 'date.recent' 365}}\",\n      \"customfields\": \"\",\n      \"email\": \"\",\n      \"fullname\": \"\",\n      \"ip\": \"\",\n      \"lang\": \"\",\n      \"listid\": \"\",\n      \"status\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Page object",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f110ab0d-0596-4519-9ab9-18c5f4257b2c",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3e585752-5204-4bd5-b826-c68efcc44a15",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fcd41686-1b9e-40f9-bf2a-cb5859db6e3b",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "18c7b9ac-ebd8-4297-92f0-ff73c22259a1",
+      "documentation": "Get a paged result of contact lists.",
+      "method": "get",
+      "endpoint": "contacts/lists",
+      "responses": [
+        {
+          "uuid": "1153aabc-5e59-4d1b-984f-f3e767661615",
+          "body": "{\n  \"page\": [\n    {\n      \"_id\": \"\",\n      \"clientid\": \"\",\n      \"created\": \"{{faker 'date.recent' 365}}\",\n      \"customfields\": [\n        {\n          \"key\": \"\",\n          \"label\": \"\",\n          \"required\": {{faker 'datatype.boolean'}},\n          \"type\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"eventcustomizations\": [\n        {\n          \"redirecturl\": \"\",\n          \"type\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"name\": \"\"\n    }\n  ],\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Page object",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9c5a5203-cd5d-47a5-9373-7fa9d148bf90",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "57b876f0-b563-4e0b-9de3-acd9737f3b2b",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1f2bff93-9c58-47a9-a75a-38e0f85fd349",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "83fa4394-1945-4d10-af6f-b46c8f5f4512",
+      "documentation": "Add a new contact list",
+      "method": "post",
+      "endpoint": "contacts/lists",
+      "responses": [
+        {
+          "uuid": "4d0d02cf-6bea-4266-a4ee-45ebf253d49b",
+          "body": "{\n  \"_id\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Page object",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd965cf9-1cc4-41f5-b9f2-5ef06e99d4af",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3bc981c5-7ed1-40b0-bfdf-f857df992427",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7bad9d8f-3055-4ce4-b311-d200ca41a3aa",
+      "documentation": "Delete an existing contact list",
+      "method": "delete",
+      "endpoint": "contacts/lists/:listid",
+      "responses": [
+        {
+          "uuid": "58cca036-f42e-4919-9914-dae697f0dd8c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e2a34b22-acbd-4a22-87a1-bfd85cdf5db9",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa60a807-99e5-49c6-844d-baa4556b31b0",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "67bff973-564e-43d9-b1d3-f84be60572b2",
+      "documentation": "Update an existing contact list",
+      "method": "put",
+      "endpoint": "contacts/lists/:listid",
+      "responses": [
+        {
+          "uuid": "b3428d08-892d-477e-8a72-200054fa8796",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e0568fd0-1991-4b06-afdf-5e3799df6227",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "69390ed8-6209-4ffa-b642-271fe51846f5",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fc266851-6c2a-44dd-a697-d08be7c117be",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5995e93e-0a3b-4a04-9c6d-4d5fbf0e4cfc",
+      "documentation": "Delete an existing contact",
+      "method": "delete",
+      "endpoint": "contacts/:contactid",
+      "responses": [
+        {
+          "uuid": "21bfd115-7622-45f7-a8a3-2228592c8ee5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c9c763e6-c70d-4a09-99a5-7643bdf696df",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b27d65d3-6bde-4ab0-8e97-524b88a04074",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7d95e201-2e12-43ec-8848-7fc81e8ae255",
+      "documentation": "Update an existing contact",
+      "method": "put",
+      "endpoint": "contacts/:contactid",
+      "responses": [
+        {
+          "uuid": "fa7326e2-5230-499b-82a2-0cdb45bfd94b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "acfd1b92-4885-48fd-89fe-eb29b564e991",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a9612ca0-ec0f-4201-8f54-621853572dce",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7fa1bf0-aaad-4642-92c4-5889a28d1d24",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58484769-061c-4307-b3fa-3cda638ce8df",
+      "documentation": "Subscribe an email address to a list. This api call has the same behavior as\na regular subscribe form. However, single opt-in is allowed for system integration\npurposes.\n\n- If email address does not exist, a new contact will be added to the list.\n- If email address exists custom fields will be updated and status will be put\n  to unconfirmed or active depending of singleoptin value.\n- If current status if Active, this operation will only update the custom fields.\n- If singleoptin is true, no email confirmation will be sent. In that case,\n  you must provide the subscribe's origin ip and confirmation date-time.\n",
+      "method": "post",
+      "endpoint": "subscription/:listid",
+      "responses": [
+        {
+          "uuid": "dadf9177-4ffb-442c-b5b5-ba1001d3e693",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Empty response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4235d029-0cd7-4ae3-9dd6-0e2d3b91272b",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid api key or key does not have access to this ressource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cd974fa7-a97c-4731-bc0c-1968a0a928fe",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested resource was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dd2a4b9d-c282-459d-9a0c-2af669235f54",
+          "body": "[\n  {\n    \"classification\": \"\",\n    \"message\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "The request parameters were invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

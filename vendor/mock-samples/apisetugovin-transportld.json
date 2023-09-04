@@ -1,0 +1,410 @@
+{
+  "uuid": "2952f6bf-2c41-446f-b20c-5ad14958fcb0",
+  "lastMigration": 24,
+  "name": "Transport Department, Lakshadweep",
+  "endpointPrefix": "transportld/v3",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "078d5c0b-073b-4c8a-97a7-1c1342a9187e",
+      "documentation": "Driving License",
+      "method": "post",
+      "endpoint": "drvlc/certificate",
+      "responses": [
+        {
+          "uuid": "c4acd8d6-18b3-4e7f-9a12-2fbc05812dc5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The certificate data in response body in PDF, XML or JSON format as requested in format parameter.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/pdf"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5c1e2b6c-d7e3-405f-aa6b-66776727b359",
+          "body": "{\n  \"error\": \"{{oneOf (array 'missing_parameter' 'invalid_parameter' 'invalid_format' 'invalid_txnid' 'invalid_consentid')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Please provide all mandatory parameters' 'Bad request' 'The format parameter is invalid' 'The txnId parameter must be in UUID format' 'The consentId parameter must be in UUID format')}}\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1aa9e3ce-80dd-4e67-ac50-8d6eccfa731b",
+          "body": "{\n  \"error\": \"{{oneOf (array 'invalid_authentication' 'invalid_authorization')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Authentication failed' 'You are not authorized to use this API')}}\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized access",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12753686-b512-4580-b772-9d6dc2cb73ad",
+          "body": "{\n  \"error\": \"{{oneOf (array 'record_not_found' 'url_not_found')}}\",\n  \"errorDescription\": \"{{oneOf (array 'No record found' 'Your API url or path is incorrect')}}\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "No record found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d780366-1a29-41b2-a1e4-86df17951831",
+          "body": "{\n  \"error\": \"{{oneOf (array 'internal_server_error')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Internal server error')}}\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal server error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "61ea15ce-d368-4cc9-be08-8c0a3e4c6705",
+          "body": "{\n  \"error\": \"{{oneOf (array 'bad_gatewy')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service returned an invalid response')}}\"\n}",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Bad gateway",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "139710af-60f0-4461-b463-7d616d0479c2",
+          "body": "{\n  \"error\": \"{{oneOf (array 'service_unavailable')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service is temporarily unavailable')}}\"\n}",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service unavailable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "352bc395-a351-45d1-8fd8-b34e6ee43f76",
+          "body": "{\n  \"error\": \"{{oneOf (array 'gateway_timeout')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service did not respond in time')}}\"\n}",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Gateway timeout",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52993de1-3956-41d8-bbfc-7c89ea53accb",
+      "documentation": "Registration of Vehicles",
+      "method": "post",
+      "endpoint": "rvcer/certificate",
+      "responses": [
+        {
+          "uuid": "01800764-aaf0-42c4-a02a-74226c963aaf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The certificate data in response body in PDF, XML or JSON format as requested in format parameter.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/pdf"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bfb4809a-16b3-4984-8cb8-fd6f6bbc65fe",
+          "body": "{\n  \"error\": \"{{oneOf (array 'missing_parameter' 'invalid_parameter' 'invalid_format' 'invalid_txnid' 'invalid_consentid')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Please provide all mandatory parameters' 'Bad request' 'The format parameter is invalid' 'The txnId parameter must be in UUID format' 'The consentId parameter must be in UUID format')}}\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b9128e3e-30d9-4eef-9ede-b1042687c95a",
+          "body": "{\n  \"error\": \"{{oneOf (array 'invalid_authentication' 'invalid_authorization')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Authentication failed' 'You are not authorized to use this API')}}\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized access",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ff78f19d-1e43-4ba2-a212-4a5d360f00bf",
+          "body": "{\n  \"error\": \"{{oneOf (array 'record_not_found' 'url_not_found')}}\",\n  \"errorDescription\": \"{{oneOf (array 'No record found' 'Your API url or path is incorrect')}}\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "No record found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "22321eb0-1ee9-43ee-9463-add0f4951b78",
+          "body": "{\n  \"error\": \"{{oneOf (array 'internal_server_error')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Internal server error')}}\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal server error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "430dd4b3-5d38-4032-bb1d-f32889dee847",
+          "body": "{\n  \"error\": \"{{oneOf (array 'bad_gatewy')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service returned an invalid response')}}\"\n}",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Bad gateway",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "04bdf213-7b1f-498e-ad58-ca6ce7dde1fb",
+          "body": "{\n  \"error\": \"{{oneOf (array 'service_unavailable')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service is temporarily unavailable')}}\"\n}",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service unavailable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e12cb8b1-21c4-4854-b5a8-177b05dad8f4",
+          "body": "{\n  \"error\": \"{{oneOf (array 'gateway_timeout')}}\",\n  \"errorDescription\": \"{{oneOf (array 'Publisher service did not respond in time')}}\"\n}",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Gateway timeout",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,166 @@
+{
+  "uuid": "fa9165c5-ba08-41a2-a2a9-89f4ae0169cc",
+  "lastMigration": 24,
+  "name": "LetMC Api V3, reporting",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "3efb31d6-8acb-4e6d-bfaf-5ced465c450c",
+      "documentation": "Return a collection of mortgages by created date from a specific date",
+      "method": "get",
+      "endpoint": "v3/reporting/:shortName/mortgagesbycreateddate",
+      "responses": [
+        {
+          "uuid": "14e3202f-c6c3-4c48-b57b-767a014d00cf",
+          "body": "{\n  \"Count\": {{faker 'datatype.number'}},\n  \"Data\": [\n    {\n      \"Amount\": {{faker 'datatype.float'}},\n      \"BorrowersAccountName\": \"\",\n      \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"DisplayType\": \"\",\n      \"ExtraNotes\": \"\",\n      \"From\": \"{{faker 'date.recent' 365}}\",\n      \"IntrestRate\": {{faker 'datatype.float'}},\n      \"MarketValue\": {{faker 'datatype.float'}},\n      \"MonthlyPayment\": {{faker 'datatype.float'}},\n      \"MortgageAccountNumber\": \"\",\n      \"MortgageProvider\": \"\",\n      \"PropertyOwnableID\": \"\",\n      \"SalesInstructionID\": \"\",\n      \"Type\": \"{{oneOf (array 'InterestOnlyFixedRate' 'InterestOnlySVR' 'InterestOnlyDiscountMortgage' 'InterestOnlyTracker' 'InterestOnlyCapped' 'InterestOnlyOffset' 'CapitalRepaymentFixedRate' 'CapitalRepaymentSVR' 'CapitalRepaymentDiscountMortgage' 'CapitalRepaymentTracker' 'CapitalRepaymentCapped' 'CapitalRepaymentOffset')}}\",\n      \"ValuationDate\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ad6cb110-04b3-401b-9948-0e9380e33203",
+      "documentation": "Return a collection of all mortgages updated from a specific date",
+      "method": "get",
+      "endpoint": "v3/reporting/:shortName/mortgagesbyupdateddate",
+      "responses": [
+        {
+          "uuid": "883a40a2-6bd0-4538-9b2c-8be67c435634",
+          "body": "{\n  \"Count\": {{faker 'datatype.number'}},\n  \"Data\": [\n    {\n      \"Amount\": {{faker 'datatype.float'}},\n      \"BorrowersAccountName\": \"\",\n      \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"DisplayType\": \"\",\n      \"ExtraNotes\": \"\",\n      \"From\": \"{{faker 'date.recent' 365}}\",\n      \"IntrestRate\": {{faker 'datatype.float'}},\n      \"MarketValue\": {{faker 'datatype.float'}},\n      \"MonthlyPayment\": {{faker 'datatype.float'}},\n      \"MortgageAccountNumber\": \"\",\n      \"MortgageProvider\": \"\",\n      \"PropertyOwnableID\": \"\",\n      \"SalesInstructionID\": \"\",\n      \"Type\": \"{{oneOf (array 'InterestOnlyFixedRate' 'InterestOnlySVR' 'InterestOnlyDiscountMortgage' 'InterestOnlyTracker' 'InterestOnlyCapped' 'InterestOnlyOffset' 'CapitalRepaymentFixedRate' 'CapitalRepaymentSVR' 'CapitalRepaymentDiscountMortgage' 'CapitalRepaymentTracker' 'CapitalRepaymentCapped' 'CapitalRepaymentOffset')}}\",\n      \"ValuationDate\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6728a99-4ef9-4580-896f-9363e63e4d27",
+      "documentation": "Return a collection of repossessions by created date from a specific date",
+      "method": "get",
+      "endpoint": "v3/reporting/:shortName/repossesionsbycreateddate",
+      "responses": [
+        {
+          "uuid": "e949bb2b-84fb-4e1e-8528-c29c232a24fd",
+          "body": "{\n  \"Count\": {{faker 'datatype.number'}},\n  \"Data\": [\n    {\n      \"CaseDetails\": {\n        \"AppointmentDate\": \"{{faker 'date.recent' 365}}\",\n        \"ClosedDate\": \"{{faker 'date.recent' 365}}\",\n        \"ClosedReason\": \"{{oneOf (array 'PropertySold' 'HandedBackToBorrower' 'AppointmentIssues' 'LenderSeekingPossession' 'Other')}}\",\n        \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n        \"DisplayFirstReceiver\": \"\",\n        \"DisplayFreeholdBlockManager\": \"\",\n        \"DisplaySecondReceiver\": \"\",\n        \"DisplayValidatingSolicitor\": \"\",\n        \"ExtraNotes\": \"\",\n        \"FirstReceiverID\": \"\",\n        \"FreeholdBlockManagerID\": \"\",\n        \"PassedToLenderDate\": \"{{faker 'date.recent' 365}}\",\n        \"PropertyOwnableID\": \"\",\n        \"SecondReceiverID\": \"\",\n        \"Status\": \"{{oneOf (array 'Opened' 'Litigation' 'Closed')}}\",\n        \"Tenure\": \"{{oneOf (array 'Freehold' 'Leasehold' 'Commonhold' 'ShareOfFreehold' 'FlyingFreehold' 'ShareTransfer' 'Unknown')}}\",\n        \"ValidatingSolicitorID\": \"\",\n        \"ValuationDate\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"ExitStrategy\": [\n        {\n          \"Compiled\": \"{{faker 'date.recent' 365}}\",\n          \"CompiledByID\": \"\",\n          \"DisplayCompiledByID\": \"\",\n          \"ExtraNotes\": \"\",\n          \"LenderResponse\": \"{{oneOf (array 'AgreeLet' 'AgreeSell' 'AgreeDisposalRec' 'AgreeOther' 'DisagreeLet' 'DisagreeSell' 'DisagreeDisposalRec' 'DisagreeOther')}}\",\n          \"LenderResponseDate\": \"{{faker 'date.recent' 365}}\",\n          \"LockChanged\": \"{{faker 'date.recent' 365}}\",\n          \"MortgageArrears\": {{faker 'datatype.float'}},\n          \"MortgageBalance\": {{faker 'datatype.float'}},\n          \"MortgageCMI\": {{faker 'datatype.float'}},\n          \"Recommendation\": \"{{oneOf (array 'Let' 'Sell' 'DisposalRec' 'PendingExit' 'Other')}}\",\n          \"ReviewDate\": \"{{faker 'date.recent' 365}}\",\n          \"SentToLender\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"Litigation\": [\n        {\n          \"ClosedLitigationDate\": \"{{faker 'date.recent' 365}}\",\n          \"ClosedLitigationReason\": \"{{oneOf (array 'PossessionObtained' 'TenantVacated' 'LitigationCancelled' 'Other')}}\",\n          \"CompiledBySolicitorID\": \"\",\n          \"DisplayCompiledBySolicitor\": \"\",\n          \"EvictionDate\": \"{{faker 'date.recent' 365}}\",\n          \"EvictionOutcome\": \"{{oneOf (array 'EvictionComplete' 'EvictionCancelled' 'Other')}}\",\n          \"ExtraNotes\": \"\",\n          \"HearingDate\": \"{{faker 'date.recent' 365}}\",\n          \"HearingOutcome\": \"\",\n          \"LitigationType\": \"\",\n          \"NoticeExpiryDate\": \"{{faker 'date.recent' 365}}\",\n          \"NoticeServedDate\": \"{{faker 'date.recent' 365}}\",\n          \"ProceedingsIssuedDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8f478b25-d8e3-472a-8106-e89dfe9d04ae",
+      "documentation": "Return a collection of all reposessions updated from a specific date",
+      "method": "get",
+      "endpoint": "v3/reporting/:shortName/repossesionsbyupdateddate",
+      "responses": [
+        {
+          "uuid": "c1da0dc1-7853-4594-be19-d8827108c83d",
+          "body": "{\n  \"Count\": {{faker 'datatype.number'}},\n  \"Data\": [\n    {\n      \"CaseDetails\": {\n        \"AppointmentDate\": \"{{faker 'date.recent' 365}}\",\n        \"ClosedDate\": \"{{faker 'date.recent' 365}}\",\n        \"ClosedReason\": \"{{oneOf (array 'PropertySold' 'HandedBackToBorrower' 'AppointmentIssues' 'LenderSeekingPossession' 'Other')}}\",\n        \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n        \"DisplayFirstReceiver\": \"\",\n        \"DisplayFreeholdBlockManager\": \"\",\n        \"DisplaySecondReceiver\": \"\",\n        \"DisplayValidatingSolicitor\": \"\",\n        \"ExtraNotes\": \"\",\n        \"FirstReceiverID\": \"\",\n        \"FreeholdBlockManagerID\": \"\",\n        \"PassedToLenderDate\": \"{{faker 'date.recent' 365}}\",\n        \"PropertyOwnableID\": \"\",\n        \"SecondReceiverID\": \"\",\n        \"Status\": \"{{oneOf (array 'Opened' 'Litigation' 'Closed')}}\",\n        \"Tenure\": \"{{oneOf (array 'Freehold' 'Leasehold' 'Commonhold' 'ShareOfFreehold' 'FlyingFreehold' 'ShareTransfer' 'Unknown')}}\",\n        \"ValidatingSolicitorID\": \"\",\n        \"ValuationDate\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"ExitStrategy\": [\n        {\n          \"Compiled\": \"{{faker 'date.recent' 365}}\",\n          \"CompiledByID\": \"\",\n          \"DisplayCompiledByID\": \"\",\n          \"ExtraNotes\": \"\",\n          \"LenderResponse\": \"{{oneOf (array 'AgreeLet' 'AgreeSell' 'AgreeDisposalRec' 'AgreeOther' 'DisagreeLet' 'DisagreeSell' 'DisagreeDisposalRec' 'DisagreeOther')}}\",\n          \"LenderResponseDate\": \"{{faker 'date.recent' 365}}\",\n          \"LockChanged\": \"{{faker 'date.recent' 365}}\",\n          \"MortgageArrears\": {{faker 'datatype.float'}},\n          \"MortgageBalance\": {{faker 'datatype.float'}},\n          \"MortgageCMI\": {{faker 'datatype.float'}},\n          \"Recommendation\": \"{{oneOf (array 'Let' 'Sell' 'DisposalRec' 'PendingExit' 'Other')}}\",\n          \"ReviewDate\": \"{{faker 'date.recent' 365}}\",\n          \"SentToLender\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"Litigation\": [\n        {\n          \"ClosedLitigationDate\": \"{{faker 'date.recent' 365}}\",\n          \"ClosedLitigationReason\": \"{{oneOf (array 'PossessionObtained' 'TenantVacated' 'LitigationCancelled' 'Other')}}\",\n          \"CompiledBySolicitorID\": \"\",\n          \"DisplayCompiledBySolicitor\": \"\",\n          \"EvictionDate\": \"{{faker 'date.recent' 365}}\",\n          \"EvictionOutcome\": \"{{oneOf (array 'EvictionComplete' 'EvictionCancelled' 'Other')}}\",\n          \"ExtraNotes\": \"\",\n          \"HearingDate\": \"{{faker 'date.recent' 365}}\",\n          \"HearingOutcome\": \"\",\n          \"LitigationType\": \"\",\n          \"NoticeExpiryDate\": \"{{faker 'date.recent' 365}}\",\n          \"NoticeServedDate\": \"{{faker 'date.recent' 365}}\",\n          \"ProceedingsIssuedDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,464 @@
+{
+  "uuid": "8888fb20-e6c7-480e-a8d1-403fdb339710",
+  "lastMigration": 24,
+  "name": "AWS Price List Service",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "12d89599-cced-4a76-8765-4b186ffbd721",
+      "documentation": "Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as <code>AmazonEC2</code>, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are <code>volumeType</code>, <code>maxIopsVolume</code>, <code>operation</code>, <code>locationType</code>, and <code>instanceCapacity10xlarge</code>.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AWSPriceListService.DescribeServices",
+      "responses": [
+        {
+          "uuid": "79490079-0753-4190-868c-e4efd5b214b3",
+          "body": "{\n  \"FormatVersion\": \"aws_v1\",\n  \"NextToken\": \"abcdefg123\",\n  \"Services\": [\n    {\n      \"AttributeNames\": [\n        \"volumeType\",\n        \"maxIopsvolume\",\n        \"instanceCapacity10xlarge\",\n        \"locationType\",\n        \"operation\"\n      ],\n      \"ServiceCode\": \"AmazonEC2\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "78dd1c1b-dfd7-4ce0-9a7d-b751f9e48d72",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalErrorException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d8e407b6-a9b6-45d3-a664-da421036d454",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidParameterException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dc4584e0-777a-49c7-a304-f477ce141042",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "NotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "07f795d1-9121-4168-a520-05d61ac47b08",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "21303b4e-3b84-4ec0-ad96-0f23bf583b39",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ExpiredNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a91f84a-81b8-44c8-a7fe-cce5a3a8fb9e",
+      "documentation": "Returns a list of attribute values. Attibutes are similar to the details in a Price List API offer file. For a list of available attributes, see <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs\">Offer File Definitions</a> in the <a href=\"https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html\">Amazon Web Services Billing and Cost Management User Guide</a>.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AWSPriceListService.GetAttributeValues",
+      "responses": [
+        {
+          "uuid": "f5a8484e-c01c-4ef3-94e3-b2b5957240d0",
+          "body": "{\n  \"AttributeValues\": [\n    {\n      \"Value\": \"Throughput Optimized HDD\"\n    },\n    {\n      \"Value\": \"Provisioned IOPS\"\n    }\n  ],\n  \"NextToken\": \"GpgauEXAMPLEezucl5LV0w==:7GzYJ0nw0DBTJ2J66EoTIIynE6O1uXwQtTRqioJzQadBnDVgHPzI1en4BUQnPCLpzeBk9RQQAWaFieA4+DapFAGLgk+Z/9/cTw9GldnPOHN98+FdmJP7wKU3QQpQ8MQr5KOeBkIsAqvAQYdL0DkL7tHwPtE5iCEByAmg9gcC/yBU1vAOsf7R3VaNN4M5jMDv3woSWqASSIlBVB6tgW78YL22KhssoItM/jWW+aP6Jqtq4mldxp/ct6DWAl+xLFwHU/CbketimPPXyqHF3/UXDw==\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56b9f179-f14f-4d8b-a489-b1e45c1d69c2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalErrorException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a6bdf4b0-ea75-4111-a51e-2abf3ad2ffd5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidParameterException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8735c354-6d05-438b-add8-654807815c57",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "NotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2c9480c3-1926-454d-818f-db98f8f3bc88",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "10508eda-bc19-4c9b-a4b0-fd78ecdf984f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ExpiredNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ac20cc7-43ee-4b12-886b-290280098397",
+      "documentation": "Returns a list of all products that match the filter criteria.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AWSPriceListService.GetProducts",
+      "responses": [
+        {
+          "uuid": "cdc22e8e-c4f9-47c9-81fa-6c59bcd0ae8f",
+          "body": "{\n  \"FormatVersion\": \"\",\n  \"PriceList\": [\n    \"\"\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6028dc6e-b3d6-44fd-aee2-acb2d74a7e51",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalErrorException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "34d74d01-71bf-47af-a114-90cf618dd8f7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidParameterException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12b6b420-90b4-4de2-a5da-058d3b837b8e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "NotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8ccd9f21-5369-4364-a5df-42c985d2cb07",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6802572b-8543-46a7-9621-a7f8ce64b6d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ExpiredNextTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

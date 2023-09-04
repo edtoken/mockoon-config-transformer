@@ -1,0 +1,92 @@
+{
+  "uuid": "917c1432-565a-4b5f-baf1-89a5b84e9127",
+  "lastMigration": 24,
+  "name": "MonitorManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "9a39beb9-13f7-4cc1-9a80-df7659f25f31",
+      "documentation": "**Lists the metric baseline values for a resource**.",
+      "method": "get",
+      "endpoint": ":resourceUri/providers/microsoft.insights/metricBaselines",
+      "responses": [
+        {
+          "uuid": "d4c7b11d-71cd-4bd1-b8c8-02a7b713c175",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"baselines\": [\n          {\n            \"aggregation\": \"\",\n            \"data\": [\n              {\n                \"highThresholds\": [\n                  {{faker 'datatype.float'}}\n                ],\n                \"lowThresholds\": [\n                  {{faker 'datatype.float'}}\n                ],\n                \"sensitivity\": \"{{oneOf (array 'Low' 'Medium' 'High')}}\"\n              }\n            ],\n            \"dimensions\": [\n              {\n                \"name\": \"\",\n                \"value\": \"\"\n              }\n            ],\n            \"metadata\": [\n              {\n                \"name\": \"\",\n                \"value\": \"\"\n              }\n            ],\n            \"timestamps\": [\n              \"{{faker 'date.recent' 365}}\"\n            ]\n          }\n        ],\n        \"interval\": \"\",\n        \"namespace\": \"\",\n        \"timespan\": \"\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful request to get the list of metric baseline values.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4e3ee6a3-b24a-4d65-8102-0712a4ffc533",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

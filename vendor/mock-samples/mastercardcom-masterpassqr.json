@@ -1,0 +1,518 @@
+{
+  "uuid": "87bd6910-d5eb-48f8-97ad-43521e3bfdf8",
+  "lastMigration": 24,
+  "name": "Send Person to Merchant",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "d20ec469-a5eb-4820-9a80-d1f63b38367b",
+      "documentation": "Initiates a Mastercard Merchant Presented QR purchase transaction by securing funds from a consumer’s account with a Funding Transaction and pushing funds to a merchant account with a Payment Transaction.",
+      "method": "post",
+      "endpoint": "send/#env/v1/partners/:partnerId/merchant/transfer",
+      "responses": [
+        {
+          "uuid": "7d901550-9875-4c76-b166-a6bf778b977e",
+          "body": "{\n  \"merchant_transfer\": {\n    \"additional_message\": \"DEV123456\",\n    \"created\": \"2016-09-22T13:22:11-05:30\",\n    \"digital_account_reference_number\": \"pan:************1234\",\n    \"funding_source\": \"DEBIT\",\n    \"id\": \"mtrn_9abcd233jk23l6c5lw5f\",\n    \"interchange_rate_designator\": \"QR\",\n    \"mastercard_assigned_id\": \"111111\",\n    \"original_status\": \"APPROVED\",\n    \"participant\": {\n      \"card_acceptor_id\": \"CardAcceptor1\",\n      \"card_acceptor_name\": \"THE BEST BANK\"\n    },\n    \"participation_id\": \"TERMINAL34728\",\n    \"payment_origination_country\": \"USA\",\n    \"payment_type\": \"P2M\",\n    \"processor_id\": \"2147483647\",\n    \"recipient\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"OFallon\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"MO\",\n        \"line1\": \"1 Main St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"63368\"\n      },\n      \"email\": \"Jane.Smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"merchant_category_code\": \"0763\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"11234567890\"\n    },\n    \"recipient_account_uri\": \"pan:************7372\",\n    \"reconciliation_data\": {\n      \"custom_field\": [\n        {\n          \"name\": \"TransactionID\",\n          \"value\": \"456FDWBS43\"\n        }\n      ]\n    },\n    \"resource_type\": \"merchant_transfer\",\n    \"routing_transit_number\": \"965730000\",\n    \"sender\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"Chicago\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"IL\",\n        \"line1\": \"123 Elm St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"60618\"\n      },\n      \"email\": \"jane.smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"12125551234\"\n    },\n    \"sender_account_uri\": \"pan:************9012\",\n    \"status\": \"APPROVED\",\n    \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n    \"transaction_history\": {\n      \"data\": {\n        \"transaction\": [\n          {\n            \"account_uri\": \"pan:************9012\",\n            \"authorization_id\": \"801726\",\n            \"convenience_amount\": \"10\",\n            \"convenience_indicator\": \"01\",\n            \"create_timestamp\": \"2016-09-22T13:22:11-05:30\",\n            \"funds_availability\": \"IMMEDIATE\",\n            \"id\": \"txn_8h4me233jk23l6c5lw5f\",\n            \"network\": \"MoneySend\",\n            \"network_status_code\": \"0\",\n            \"network_status_description\": \"APPROVED\",\n            \"payment_account_reference\": \"5001ESVM4JQAAOP5JKSK1XGAPOPG2\",\n            \"qr_data\": \"001006XX123400201012353611110030073041233004008LYL44354005009EEB\",\n            \"resource_type\": \"transaction\",\n            \"retrieval_reference\": \"624200192616\",\n            \"status\": \"APPROVED\",\n            \"status_reason\": \"APPROVED\",\n            \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n            \"switch_serial_number\": \"564727057\",\n            \"system_trace_audit_number\": \"926162\",\n            \"transaction_amount\": {\n              \"currency\": \"USD\",\n              \"value\": \"5300\"\n            },\n            \"type\": \"PAYMENT\",\n            \"unique_reference_number\": 592087939\n          }\n        ]\n      },\n      \"item_count\": \"1\",\n      \"resource_type\": \"list\"\n    },\n    \"transaction_local_date_time\": \"2016-09-22T13:22:11-05:30\",\n    \"transfer_amount\": {\n      \"currency\": \"USD\",\n      \"value\": \"5300\"\n    },\n    \"transfer_reference\": \"TRANSFER123456\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a merchant transfer.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9329bad8-a521-4b5c-aa8a-9785867fd8d6",
+      "documentation": "Purpose of this service is to retrieve the Transfer resource associated with a specified transfer_reference value.",
+      "method": "get",
+      "endpoint": "send/#env/v1/partners/:partnerId/merchant/transfers",
+      "responses": [
+        {
+          "uuid": "d69a83a2-f5f8-4860-b728-1d268d1d57d2",
+          "body": "{\n  \"merchant_transfers\": {\n    \"data\": {\n      \"merchant_transfer\": [\n        {\n          \"channel\": \"WEB\",\n          \"created\": \"2016-09-22T13:22:11-05:30\",\n          \"device_id\": \"DEV123456\",\n          \"digital_account_reference_number\": \"************4562\",\n          \"funding_source\": \"DEBIT\",\n          \"id\": \"mtrn_9abcd233jk23l6c5lw5f\",\n          \"interchange_rate_designator\": \"QR\",\n          \"location\": \"state:MO\",\n          \"original_status\": \"APPROVED\",\n          \"participant\": {\n            \"card_acceptor_id\": \"CardAcceptor1\",\n            \"card_acceptor_name\": \"THE BEST BANK\"\n          },\n          \"payment_origination_country\": \"USA\",\n          \"payment_type\": \"P2M\",\n          \"processor_id\": \"2147483647\",\n          \"recipient\": {\n            \"additional_merchant_data\": {\n              \"payment_facilitator_id\": \"123456\",\n              \"sub_merchant_id\": \"A1234D\"\n            },\n            \"address\": {\n              \"city\": \"OFallon\",\n              \"country\": \"USA\",\n              \"country_subdivision\": \"MO\",\n              \"line1\": \"1 Main St\",\n              \"line2\": \"Apartment 9\",\n              \"postal_code\": \"63368\"\n            },\n            \"email\": \"Jane.Smith123@abcmail.com\",\n            \"first_name\": \"John\",\n            \"last_name\": \"Jones\",\n            \"merchant_category_code\": \"0763\",\n            \"middle_name\": \"Tyler\",\n            \"phone\": \"11234567890\"\n          },\n          \"recipient_account_uri\": \"pan:************7372\",\n          \"reconciliation_data\": {\n            \"custom_field\": [\n              {\n                \"name\": \"TransactionID\",\n                \"value\": \"456FDWBS43\"\n              }\n            ]\n          },\n          \"resource_type\": \"merchant_transfer\",\n          \"routing_transit_number\": \"965730000\",\n          \"sender\": {\n            \"additional_merchant_data\": {\n              \"payment_facilitator_id\": \"123456\",\n              \"sub_merchant_id\": \"A1234D\"\n            },\n            \"address\": {\n              \"city\": \"Chicago\",\n              \"country\": \"USA\",\n              \"country_subdivision\": \"IL\",\n              \"line1\": \"123 Elm St\",\n              \"line2\": \"Apartment 9\",\n              \"postal_code\": \"60618\"\n            },\n            \"date_of_birth\": \"1999-12-30\",\n            \"email\": \"jane.smith123@abcmail.com\",\n            \"first_name\": \"John\",\n            \"last_name\": \"Jones\",\n            \"middle_name\": \"Tyler\",\n            \"phone\": \"12125551234\"\n          },\n          \"sender_account_uri\": \"pan:************9012\",\n          \"status\": \"APPROVED\",\n          \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n          \"transaction_history\": {\n            \"data\": {\n              \"transaction\": [\n                {\n                  \"account_uri\": \"pan:************9012\",\n                  \"authorization_id\": \"801726\",\n                  \"convenience_amount\": \"10\",\n                  \"convenience_indicator\": \"01\",\n                  \"create_timestamp\": \"2016-09-22T13:22:11-05:30\",\n                  \"id\": \"txn_8h4me233jk23l6c5lw5f\",\n                  \"network\": \"MoneySend\",\n                  \"network_status_code\": \"54\",\n                  \"network_status_description\": \"Expired Card\",\n                  \"payment_account_reference\": \"5001ESVM4JQAAOP5JKSK1XGAPOPG2\",\n                  \"qr_data\": \"001006XX123400201012353611110030073041233004008LYL44354005009EEB\",\n                  \"resource_type\": \"transaction\",\n                  \"retrieval_reference\": \"624200192616\",\n                  \"status\": \"APPROVED\",\n                  \"status_reason\": \"APPROVED\",\n                  \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n                  \"switch_serial_number\": \"564727057\",\n                  \"system_trace_audit_number\": \"926162\",\n                  \"transaction_amount\": {\n                    \"currency\": \"USD\",\n                    \"value\": \"5300\"\n                  },\n                  \"type\": \"PAYMENT\",\n                  \"unique_reference_number\": 592087939\n                }\n              ]\n            },\n            \"item_count\": \"1\",\n            \"resource_type\": \"list\"\n          },\n          \"transaction_local_date_time\": \"2016-09-22T13:22:11-05:30\",\n          \"transfer_amount\": {\n            \"currency\": \"USD\",\n            \"value\": \"5300\"\n          },\n          \"transfer_reference\": \"DEF123456\"\n        }\n      ]\n    },\n    \"item_count\": \"2\",\n    \"resource_type\": \"list\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a merchant transfer.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1481b243-bb28-4ac8-8179-60c909603d42",
+      "documentation": "Initiates a Mastercard Merchant Presented QR purchase transaction by pushing funds to a merchant account.",
+      "method": "post",
+      "endpoint": "send/#env/v1/partners/:partnerId/merchant/transfers/payment",
+      "responses": [
+        {
+          "uuid": "7eba708c-36d2-402b-8865-c2079ee3a0ea",
+          "body": "{\n  \"merchant_transfer\": {\n    \"additional_message\": \"DEV123456\",\n    \"channel\": \"WEB\",\n    \"convenience_amount\": \"11\",\n    \"convenience_indicator\": \"02\",\n    \"created\": \"2016-09-22T13:22:11-05:30\",\n    \"device_id\": \"DEV123456\",\n    \"digital_account_reference_number\": \"pan:************1234\",\n    \"funding_source\": \"DEBIT\",\n    \"id\": \"mtrn_9abcd233jk23l6c5lw5f\",\n    \"interchange_rate_designator\": \"QR\",\n    \"location\": \"state:MO\",\n    \"original_status\": \"APPROVED\",\n    \"participant\": {\n      \"card_acceptor_id\": \"CardAcceptor1\",\n      \"card_acceptor_name\": \"THE BEST BANK\"\n    },\n    \"participation_id\": \"TERMINAL34728\",\n    \"payment_origination_country\": \"USA\",\n    \"payment_type\": \"P2M\",\n    \"processor_id\": \"2147483647\",\n    \"qr_data\": \"Q1Q2Q3\",\n    \"recipient\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"OFallon\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"MO\",\n        \"line1\": \"1 Main St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"63368\"\n      },\n      \"email\": \"Jane.Smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"merchant_category_code\": \"0763\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"11234567890\"\n    },\n    \"recipient_account_uri\": \"pan:************7372\",\n    \"reconciliation_data\": {\n      \"custom_field\": [\n        {\n          \"name\": \"TransactionID\",\n          \"value\": \"456FDWBS43\"\n        }\n      ]\n    },\n    \"resource_type\": \"merchant_transfer\",\n    \"routing_transit_number\": \"965730000\",\n    \"sender\": {\n      \"address\": {\n        \"city\": \"Chicago\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"IL\",\n        \"line1\": \"123 Elm St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"60618\"\n      },\n      \"date_of_birth\": \"1999-12-30\",\n      \"email\": \"jane.smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"12125551234\"\n    },\n    \"sender_account_uri\": \"pan:************9012\",\n    \"status\": \"APPROVED\",\n    \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n    \"transaction_history\": {\n      \"data\": {\n        \"transaction\": [\n          {\n            \"account_uri\": \"pan:************9012\",\n            \"authorization_id\": \"801726\",\n            \"create_timestamp\": \"2015-03-18T14:18:55Z\",\n            \"funds_availability\": \"IMMEDIATE\",\n            \"id\": \"trn_8h4me233jk23l6c5lw5f\",\n            \"network\": \"MasterCard\",\n            \"network_status_code\": \"54\",\n            \"network_status_description\": \"Expired Card\",\n            \"payment_account_reference\": \"5001ESVM4JQAAOP5JKSK1XGAPOPG2\",\n            \"resource_type\": \"transaction\",\n            \"retrieval_reference\": \"624200192616\",\n            \"status\": \"APPROVED\",\n            \"status_reason\": \"APPROVED\",\n            \"status_timestamp\": \"2015-03-18T14:18:56Z\",\n            \"switch_serial_number\": \"564727057\",\n            \"system_trace_audit_number\": \"926162\",\n            \"transaction_amount\": {\n              \"currency\": \"USD\",\n              \"value\": \"5300\"\n            },\n            \"type\": \"PAYMENT\",\n            \"unique_reference_number\": 592087939\n          }\n        ]\n      },\n      \"item_count\": \"1\",\n      \"resource_type\": \"list\"\n    },\n    \"transaction_local_date_time\": \"2016-09-22T13:22:11-05:30\",\n    \"transfer_amount\": {\n      \"currency\": \"USD\",\n      \"value\": \"5300\"\n    },\n    \"transfer_reference\": \"DEF123456\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a merchant transfer.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6b010fe3-f2c6-4185-8453-c7b2526555ea",
+      "documentation": "Initiates a Mastercard Merchant Presented QR Refund transaction by pushing funds from a merchant account back to the customer's account.",
+      "method": "post",
+      "endpoint": "send/#env/v1/partners/:partnerId/merchant/transfers/refund",
+      "responses": [
+        {
+          "uuid": "515f05aa-2f77-402f-bdb9-c40726e38d0d",
+          "body": "{\n  \"merchant_transfer\": {\n    \"channel\": \"WEB\",\n    \"created\": \"2016-09-22T13:22:11-05:30\",\n    \"device_id\": \"DEV123456\",\n    \"digital_account_reference_number\": \"pan:************1234\",\n    \"funding_source\": \"DEBIT\",\n    \"id\": \"mtrn_9abcd233jk23l6c5lw5f\",\n    \"interchange_rate_designator\": \"QR\",\n    \"location\": \"state:MO\",\n    \"original_status\": \"APPROVED\",\n    \"participant\": {\n      \"card_acceptor_id\": \"CardAcceptor1\",\n      \"card_acceptor_name\": \"THE BEST BANK\"\n    },\n    \"payment_origination_country\": \"USA\",\n    \"payment_type\": \"P2M\",\n    \"processor_id\": \"2147483647\",\n    \"recipient\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"OFallon\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"MO\",\n        \"line1\": \"1 Main St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"63368\"\n      },\n      \"email\": \"Jane.Smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"merchant_category_code\": \"0763\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"11234567890\"\n    },\n    \"recipient_account_uri\": \"pan:************7372\",\n    \"reconciliation_data\": {\n      \"custom_field\": [\n        {\n          \"name\": \"TransactionID\",\n          \"value\": \"456FDWBS43\"\n        }\n      ]\n    },\n    \"resource_type\": \"merchant_refund_transfer\",\n    \"routing_transit_number\": \"965730000\",\n    \"sender\": {\n      \"address\": {\n        \"city\": \"Chicago\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"IL\",\n        \"line1\": \"123 Elm St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"60618\"\n      },\n      \"date_of_birth\": \"1999-12-30\",\n      \"email\": \"jane.smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"12125551234\"\n    },\n    \"sender_account_uri\": \"pan:************9012\",\n    \"status\": \"APPROVED\",\n    \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n    \"transaction_history\": {\n      \"data\": {\n        \"transaction\": [\n          {\n            \"account_uri\": \"pan:************9012\",\n            \"authorization_id\": \"801726\",\n            \"create_timestamp\": \"2015-03-18T14:18:55Z\",\n            \"funds_availability\": \"IMMEDIATE\",\n            \"id\": \"trn_8h4me233jk23l6c5lw5f\",\n            \"network\": \"Mastercard\",\n            \"network_status_code\": \"54\",\n            \"network_status_description\": \"Expired Card\",\n            \"payment_account_reference\": \"5001ESVM4JQAAOP5JKSK1XGAPOPG2\",\n            \"resource_type\": \"transaction\",\n            \"retrieval_reference\": \"624200192616\",\n            \"status\": \"APPROVED\",\n            \"status_reason\": \"APPROVED\",\n            \"status_timestamp\": \"2015-03-18T14:18:56Z\",\n            \"switch_serial_number\": \"564727057\",\n            \"system_trace_audit_number\": \"926162\",\n            \"transaction_amount\": {\n              \"currency\": \"USD\",\n              \"value\": \"5300\"\n            },\n            \"type\": \"PAYMENT\",\n            \"unique_reference_number\": 592087939\n          }\n        ]\n      },\n      \"item_count\": \"1\",\n      \"resource_type\": \"list\"\n    },\n    \"transaction_local_date_time\": \"2016-09-22T13:22:11-05:30\",\n    \"transfer_amount\": {\n      \"currency\": \"USD\",\n      \"value\": \"5300\"\n    },\n    \"transfer_reference\": \"DEF123456\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a merchant transfer.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d26ff480-dd5f-4b44-bc81-2ec177d0a4ea",
+      "documentation": "Purpose of this service is to retrieve the Transfer resource associated with the specified transfer-id.",
+      "method": "get",
+      "endpoint": "send/#env/v1/partners/:partnerId/merchant/transfers/:transferId",
+      "responses": [
+        {
+          "uuid": "385cb039-e64b-4631-918b-6b918193783e",
+          "body": "{\n  \"merchant_transfer\": {\n    \"channel\": \"WEB\",\n    \"created\": \"2016-09-22T13:22:11-05:30\",\n    \"device_id\": \"DEV123456\",\n    \"digital_account_reference_number\": \"pan:************4562\",\n    \"funding_source\": \"DEBIT\",\n    \"id\": \"mtrn_9abcd233jk23l6c5lw5f\",\n    \"interchange_rate_designator\": \"QR\",\n    \"location\": \"state:MO\",\n    \"original_status\": \"APPROVED\",\n    \"participant\": {\n      \"card_acceptor_id\": \"CardAcceptor1\",\n      \"card_acceptor_name\": \"THE BEST BANK\"\n    },\n    \"payment_origination_country\": \"USA\",\n    \"payment_type\": \"P2M\",\n    \"processor_id\": \"2147483647\",\n    \"recipient\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"OFallon\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"MO\",\n        \"line1\": \"1 Main St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"63368\"\n      },\n      \"email\": \"Jane.Smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"merchant_category_code\": \"0763\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"11234567890\"\n    },\n    \"recipient_account_uri\": \"pan:************7372\",\n    \"reconciliation_data\": {\n      \"custom_field\": [\n        {\n          \"name\": \"TransactionID\",\n          \"value\": \"456FDWBS43\"\n        }\n      ]\n    },\n    \"resource_type\": \"merchant_transfer\",\n    \"routing_transit_number\": \"965730000\",\n    \"sender\": {\n      \"additional_merchant_data\": {\n        \"payment_facilitator_id\": \"123456\",\n        \"sub_merchant_id\": \"A1234D\"\n      },\n      \"address\": {\n        \"city\": \"Chicago\",\n        \"country\": \"USA\",\n        \"country_subdivision\": \"IL\",\n        \"line1\": \"123 Elm St\",\n        \"line2\": \"Apartment 9\",\n        \"postal_code\": \"60618\"\n      },\n      \"date_of_birth\": \"1999-12-30\",\n      \"email\": \"jane.smith123@abcmail.com\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Jones\",\n      \"middle_name\": \"Tyler\",\n      \"phone\": \"12125551234\"\n    },\n    \"sender_account_uri\": \"************9012\",\n    \"status\": \"APPROVED\",\n    \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n    \"transaction_history\": {\n      \"data\": {\n        \"transaction\": [\n          {\n            \"account_uri\": \"pan:************9012\",\n            \"authorization_id\": \"801726\",\n            \"convenience_amount\": \"10\",\n            \"convenience_indicator\": \"01\",\n            \"create_timestamp\": \"2016-09-22T13:22:11-05:30\",\n            \"id\": \"txn_8h4me233jk23l6c5lw5f\",\n            \"network\": \"MoneySend\",\n            \"network_status_code\": \"54\",\n            \"network_status_description\": \"Expired Card\",\n            \"payment_account_reference\": \"5001ESVM4JQAAOP5JKSK1XGAPOPG2\",\n            \"qr_data\": \"001006XX123400201012353611110030073041233004008LYL44354005009EEB\",\n            \"resource_type\": \"transaction\",\n            \"retrieval_reference\": \"624200192616\",\n            \"status\": \"APPROVED\",\n            \"status_reason\": \"APPROVED\",\n            \"status_timestamp\": \"2016-09-22T13:22:11-05:30\",\n            \"switch_serial_number\": \"564727057\",\n            \"system_trace_audit_number\": \"926162\",\n            \"transaction_amount\": {\n              \"currency\": \"USD\",\n              \"value\": \"5300\"\n            },\n            \"type\": \"PAYMENT\",\n            \"unique_reference_number\": 592087939\n          }\n        ]\n      },\n      \"item_count\": \"1\",\n      \"resource_type\": \"list\"\n    },\n    \"transaction_local_date_time\": \"2016-09-22T13:22:11-05:30\",\n    \"transfer_amount\": {\n      \"currency\": \"USD\",\n      \"value\": \"5300\"\n    },\n    \"transfer_reference\": \"DEF123456\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a merchant transfer.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5b6ffbc-ff4e-432f-b561-f9b6f7207366",
+      "documentation": "Funding Reversals must be submitted within 30 minutes of the funding transfer request, and should only be submitted for the following conditions:  Funding Transaction must be reversed if payment transaction cannot complete successfully, i.e. the payment transaction is rejected or declined.  Upon a successful reversal of a funding transaction, the refund must be credited to the sending consumer’s Funding Account.",
+      "method": "post",
+      "endpoint": "send/v1/partners/{partner-id}/transfers/{transfer-id}/transactions/{transaction-id}/reversals",
+      "responses": [
+        {
+          "uuid": "87c3623d-53db-430c-97ba-33941ae0d55b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "48086dfc-b384-49be-b31b-ce2c9b711f17",
+      "documentation": "Client can simulate a Mastercard Merchant Presented QR Payment notification to the registered URL endpoint. ",
+      "method": "post",
+      "endpoint": "send/v1/partners/:partnerId/events/generate/payment",
+      "responses": [
+        {
+          "uuid": "19c191b0-b7fe-4f9b-8ac0-4ffea2f0211b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Contains the details of the response message.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "N/A"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c0e18e2f-af35-49bd-b34b-0058013afbde",
+      "documentation": "Client can simulate a Mastercard Merchant Presented QR Refund notification to the registered URL endpoint. ",
+      "method": "post",
+      "endpoint": "send/v1/partners/:partnerId/events/generate/refund",
+      "responses": [
+        {
+          "uuid": "5e10b70f-744c-4509-9f78-416d5c597811",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Contains the details of the response message.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "N/A"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6509c68f-141f-43aa-a948-b07c4423042b",
+      "documentation": "This service allows Mastercard Merchant QR originating and receiving partners to register a PAN and service provider to receive notifications on an inbound Merchant Refund or Merchant Payment Transaction.",
+      "method": "post",
+      "endpoint": "send/v1/partners/:partnerId/notification-registries",
+      "responses": [
+        {
+          "uuid": "d41127f4-f5fe-4563-8d25-7d6c5fce893a",
+          "body": "{\n  \"accountregistration\": {\n    \"account_registration_reference\": \"areg_GDVUiwh1bXzA_xVdDXn4ctJEKOF\",\n    \"account_uri\": \"pan:5299926000000542\",\n    \"notification_partner_id\": \"ptnr_A37V2q91WUqSonkfEG29Q-Bf4s9\",\n    \"notification_partner_name\": \"PROVIDER XYZ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "972266ec-8524-4a8a-b3e4-779ee231e3ea",
+      "documentation": "This service allows Mastercard Merchant QR originating and receiving partners to delete a registered PAN for notifications. ",
+      "method": "delete",
+      "endpoint": "send/v1/partners/:partnerId/notification-registries/{account-reg-ref}",
+      "responses": [
+        {
+          "uuid": "4de9dc2f-f293-4d12-9591-09e87ab65937",
+          "body": "{\n  \"accountregistration\": {\n    \"account_registration_reference\": \"areg_GDVUiwh1bXzA_xVdDXn4ctJEKOF\",\n    \"account_uri\": \"pan:5299926000000542\",\n    \"notification_partner_id\": \"ptnr_A37V2q91WUqSonkfEG29Q-Bf4s9\",\n    \"notification_partner_name\": \"PROVIDER XYZ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d465291f-0f75-4af9-b27f-85d2f2f4d0c8",
+      "documentation": "This service allows Mastercard Merchant QR originating and receiving partners to retrieve the service provider's information for a registered PAN for notifications. ",
+      "method": "get",
+      "endpoint": "send/v1/partners/:partnerId/notification-registries/{account-reg-ref}",
+      "responses": [
+        {
+          "uuid": "5114faa6-f51b-4f84-9031-30f21df1b31d",
+          "body": "{\n  \"accountregistration\": {\n    \"account_registration_reference\": \"areg_GDVUiwh1bXzA_xVdDXn4ctJEKOF\",\n    \"account_uri\": \"pan:5299926000000542\",\n    \"notification_partner_id\": \"ptnr_A37V2q91WUqSonkfEG29Q-Bf4s9\",\n    \"notification_partner_name\": \"PROVIDER XYZ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9573215c-2c2f-489e-b883-475becbb5490",
+      "documentation": "This service allows Mastercard Merchant QR originating and receiving partners to update the notitification service provider for a registered PAN.",
+      "method": "put",
+      "endpoint": "send/v1/partners/:partnerId/notification-registries/{account-reg-ref}",
+      "responses": [
+        {
+          "uuid": "9cde5e29-60b9-4f96-bf81-ca8f86aa7036",
+          "body": "{\n  \"accountregistration\": {\n    \"account_registration_reference\": \"areg_GDVUiwh1bXzA_xVdDXn4ctJEKOF\",\n    \"account_uri\": \"pan:5299926000000542\",\n    \"notification_partner_id\": \"ptnr_A37V2q91WUqSonkfEG29Q-Bf4s9\",\n    \"notification_partner_name\": \"PROVIDER XYZ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "56feaa7f-0f02-414b-8175-d423b51ec2e2",
+      "documentation": "The Funding Transaction enables the 'pull' of money from the sender's card to the Transaction Originator who is providing the Person to Merchant service. The amount that is debited from the Funding Account (sending consumer's account) will be the amount 'pushed' to the recipient via a payment transfer request.  Funds can be transferred from Mastercard® or Maestro® debit card accounts. To initiate the funding transaction, users can provide the sending consumer's Primary Account Number (PAN) or a unique identifier previously mapped to the sending consumer's account.",
+      "method": "post",
+      "endpoint": "send/v1/partners/:partnerId/transfers/funding",
+      "responses": [
+        {
+          "uuid": "2d96231d-37f7-416d-8fc2-3163211b8d9d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06ff8c68-7035-4241-bd95-b8141f699473",
+      "documentation": "Used to create a digital account reference number from Incontrol ",
+      "method": "post",
+      "endpoint": "send/v1/:partnerId/digital-account",
+      "responses": [
+        {
+          "uuid": "2f8a7da5-00c9-4917-a554-57f8c39bef9a",
+          "body": "{\n  \"digital_account\": {\n    \"account_type\": \"DEBIT\",\n    \"account_uri\": \"raw:558900009012\",\n    \"digital_account_reference_number\": {\n      \"issue_timestamp\": \"2016-09-22T13:22:11-05:30\",\n      \"pan\": \"5234568000001230\"\n    },\n    \"reference\": \"ABC_231231233243242\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a create digital account reference number",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b7e5158a-8dfd-455c-b013-1f004247724b",
+      "documentation": "Used to retreive a digital account reference list from Incontrol ",
+      "method": "post",
+      "endpoint": "send/v1/:partnerId/digital-account/search",
+      "responses": [
+        {
+          "uuid": "cfcb1614-8d4f-447d-85e7-46c4420a403b",
+          "body": "{\n  \"digital_account\": {\n    \"account_type\": \"DEBIT\",\n    \"account_uri\": \"raw:558900009012\",\n    \"digital_account_reference_numbers\": {\n      \"digital_account_reference_number\": [\n        {\n          \"issue_timestamp\": \"2015-03-18T14:18:55Z\",\n          \"pan\": \"5234568000001230\"\n        }\n      ]\n    },\n    \"reference\": \"ABC_231231233243242\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response details for a retrieve digital account reference number",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

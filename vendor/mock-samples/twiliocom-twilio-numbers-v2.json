@@ -1,0 +1,1030 @@
+{
+  "uuid": "de6b8a44-b3d0-4548-9455-ff1a1f97c32e",
+  "lastMigration": 24,
+  "name": "Twilio - Numbers",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "ba4970f9-8d9c-4d86-89a2-e3c9046d6b11",
+      "documentation": "Retrieve a list of all Bundles for an account.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles",
+      "responses": [
+        {
+          "uuid": "013b42d8-b686-4bfc-8e19-0d09bee00d85",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"email\": \"\",\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"regulation_sid\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n      \"status_callback\": \"\",\n      \"url\": \"\",\n      \"valid_until\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ae179839-554a-49c8-b814-8a7fd98548a8",
+      "documentation": "Create a new Bundle.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles",
+      "responses": [
+        {
+          "uuid": "cb643ace-53e3-4357-9891-5e10abeef1dc",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"email\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"regulation_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n  \"status_callback\": \"\",\n  \"url\": \"\",\n  \"valid_until\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8934f582-08bd-4347-bff8-0911df829986",
+      "documentation": "Retrieve a list of all Bundles Copies for a Bundle.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/Copies",
+      "responses": [
+        {
+          "uuid": "1ae792a8-a217-456d-a039-cd87dcd810c0",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"email\": \"\",\n      \"friendly_name\": \"\",\n      \"regulation_sid\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n      \"status_callback\": \"\",\n      \"valid_until\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "50f8c22a-29bc-471b-8d55-91cda631521e",
+      "documentation": "Creates a new copy of a Bundle. It will internally create copies of all the bundle items (identities and documents) of the original bundle",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/Copies",
+      "responses": [
+        {
+          "uuid": "60c189d8-f733-4bb2-9bd9-343641085e64",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"email\": \"\",\n  \"friendly_name\": \"\",\n  \"regulation_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n  \"status_callback\": \"\",\n  \"valid_until\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "82f7ea91-29c9-4a09-af06-ec234e4d8c38",
+      "documentation": "Retrieve a list of Evaluations associated to the Bundle resource.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/Evaluations",
+      "responses": [
+        {
+          "uuid": "b17e9ee1-c1b3-4e30-83ec-c4ce8c40b6bc",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"bundle_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"regulation_sid\": \"\",\n      \"results\": [\n        \"\"\n      ],\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'compliant' 'noncompliant')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e8e9a4ba-7445-4656-a1df-9f98f787a488",
+      "documentation": "Creates an evaluation for a bundle",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/Evaluations",
+      "responses": [
+        {
+          "uuid": "0434bfc4-1c2a-46a7-8eba-e8c2f3d0599f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"bundle_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"regulation_sid\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'compliant' 'noncompliant')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74d4e39a-f808-4a66-8a1f-67ab613b0296",
+      "documentation": "Fetch specific Evaluation Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/Evaluations/:Sid",
+      "responses": [
+        {
+          "uuid": "71abaa2d-4f55-4d65-bb94-6a1aa29dd2b6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"bundle_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"regulation_sid\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'compliant' 'noncompliant')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "421df8b1-7164-4463-bb70-c717a172db3a",
+      "documentation": "Retrieve a list of all Assigned Items for an account.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/ItemAssignments",
+      "responses": [
+        {
+          "uuid": "67f984c6-671d-40e9-9f8d-3a0d8b52e66f",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"bundle_sid\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"object_sid\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f049dcd9-553c-4c9c-a434-5dcd87f6c2f3",
+      "documentation": "Create a new Assigned Item.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/ItemAssignments",
+      "responses": [
+        {
+          "uuid": "7fd31ad7-24ad-4af2-8bee-8323559c0370",
+          "body": "{\n  \"account_sid\": \"\",\n  \"bundle_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"object_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47168963-1da1-4f9b-89cf-6ea9d9cb1207",
+      "documentation": "Remove an Assignment Item Instance.",
+      "method": "delete",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/ItemAssignments/:Sid",
+      "responses": [
+        {
+          "uuid": "4b5a09be-fbe1-4ff4-b05f-6ca591459c39",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5051bffd-a44d-4446-886c-dca4c4b353a5",
+      "documentation": "Fetch specific Assigned Item Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/ItemAssignments/:Sid",
+      "responses": [
+        {
+          "uuid": "4307793d-9f60-4192-a133-3bf5953160c3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"bundle_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"object_sid\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "889dc90e-74df-4ea4-a3a1-2a82491d33f6",
+      "documentation": "Replaces all bundle items in the target bundle (specified in the path) with all the bundle items of the source bundle (specified by the from_bundle_sid body param)",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:BundleSid/ReplaceItems",
+      "responses": [
+        {
+          "uuid": "d828a0d2-8c81-433a-9a8b-f58f6e1fcafe",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"email\": \"\",\n  \"friendly_name\": \"\",\n  \"regulation_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n  \"status_callback\": \"\",\n  \"valid_until\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f386057c-a72e-46ac-8d0f-d0bf2890533b",
+      "documentation": "Delete a specific Bundle.",
+      "method": "delete",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:Sid",
+      "responses": [
+        {
+          "uuid": "c74b4084-509b-4a38-86eb-c677e2ab159b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6b656648-23de-4cbf-b56d-fab32a7b5cd2",
+      "documentation": "Fetch a specific Bundle instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:Sid",
+      "responses": [
+        {
+          "uuid": "2402fd6b-f0ba-40c1-9478-5017f7048b1d",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"email\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"regulation_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n  \"status_callback\": \"\",\n  \"url\": \"\",\n  \"valid_until\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "57f16628-885a-43b6-b56f-d310db3cb898",
+      "documentation": "Updates a Bundle in an account.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/Bundles/:Sid",
+      "responses": [
+        {
+          "uuid": "b343f48c-7300-436a-bf4a-8cc26c6eb5ee",
+          "body": "{\n  \"account_sid\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"email\": \"\",\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"regulation_sid\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'in-review' 'twilio-rejected' 'twilio-approved' 'provisionally-approved')}}\",\n  \"status_callback\": \"\",\n  \"url\": \"\",\n  \"valid_until\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bb9e3894-f007-4079-8a12-b50709a4cb9b",
+      "documentation": "Retrieve a list of all End-User Types.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/EndUserTypes",
+      "responses": [
+        {
+          "uuid": "e18f72e2-cfba-42ed-bb97-189b9ee8b277",
+          "body": "{\n  \"end_user_types\": [\n    {\n      \"fields\": [\n        \"\"\n      ],\n      \"friendly_name\": \"\",\n      \"machine_name\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f010b68d-11d0-4bbd-a406-4aada54fbc0e",
+      "documentation": "Fetch a specific End-User Type Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/EndUserTypes/:Sid",
+      "responses": [
+        {
+          "uuid": "ca5dec02-34c8-4e92-bb95-dd9c2e992f93",
+          "body": "{\n  \"fields\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"machine_name\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "20543198-f7db-4052-ac3e-4dd26364d9d7",
+      "documentation": "Retrieve a list of all End User for an account.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/EndUsers",
+      "responses": [
+        {
+          "uuid": "5ea6046e-c4a4-47d1-ba6a-3ece4018c5d5",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"friendly_name\": \"\",\n      \"sid\": \"\",\n      \"type\": \"{{oneOf (array 'individual' 'business')}}\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd90b1e3-e7df-4f91-9ab3-dbf9486426c1",
+      "documentation": "Create a new End User.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/EndUsers",
+      "responses": [
+        {
+          "uuid": "f19e1939-b9b6-4234-a92b-2cbf2e9166ea",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'individual' 'business')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c4d85566-78bf-405a-b776-75a5f7124c47",
+      "documentation": "Delete a specific End User.",
+      "method": "delete",
+      "endpoint": "v2/RegulatoryCompliance/EndUsers/:Sid",
+      "responses": [
+        {
+          "uuid": "a7ae7b13-3515-4253-af41-fd9ffd9e37be",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ec158f6b-5d80-4eb3-a6d3-76e13de020a9",
+      "documentation": "Fetch specific End User Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/EndUsers/:Sid",
+      "responses": [
+        {
+          "uuid": "da7a7ede-ba84-4d25-ba23-555d94dd70d7",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'individual' 'business')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b780b94b-e4bd-4f81-af01-d796a7a12b95",
+      "documentation": "Update an existing End User.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/EndUsers/:Sid",
+      "responses": [
+        {
+          "uuid": "69085be4-fd80-4a05-abfd-593dc36650e6",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"friendly_name\": \"\",\n  \"sid\": \"\",\n  \"type\": \"{{oneOf (array 'individual' 'business')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd52c2e5-bcee-4faa-9005-16258211b043",
+      "documentation": "Retrieve a list of all Regulations.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Regulations",
+      "responses": [
+        {
+          "uuid": "43f45046-26b1-4445-95ed-124ab09bd094",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"end_user_type\": \"{{oneOf (array 'individual' 'business')}}\",\n      \"friendly_name\": \"\",\n      \"iso_country\": \"\",\n      \"number_type\": \"\",\n      \"requirements\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "87026daa-82df-4742-b430-fbeb335ab119",
+      "documentation": "Fetch specific Regulation Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/Regulations/:Sid",
+      "responses": [
+        {
+          "uuid": "ad276cb2-caea-42d5-a90b-9327aa6c3f46",
+          "body": "{\n  \"end_user_type\": \"{{oneOf (array 'individual' 'business')}}\",\n  \"friendly_name\": \"\",\n  \"iso_country\": \"\",\n  \"number_type\": \"\",\n  \"requirements\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7e194f4d-1582-415e-9348-58d258e4dc2c",
+      "documentation": "Retrieve a list of all Supporting Document Types.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocumentTypes",
+      "responses": [
+        {
+          "uuid": "d40c8b72-9214-4872-a3b6-82c69bf3b916",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"supporting_document_types\": [\n    {\n      \"fields\": [\n        \"\"\n      ],\n      \"friendly_name\": \"\",\n      \"machine_name\": \"\",\n      \"sid\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b865cd64-74ef-4e08-bbe6-dbc0d87ada91",
+      "documentation": "Fetch a specific Supporting Document Type Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocumentTypes/:Sid",
+      "responses": [
+        {
+          "uuid": "c8c12b24-f06d-44a4-b1eb-eeddda5d2b88",
+          "body": "{\n  \"fields\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"machine_name\": \"\",\n  \"sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06d27c31-1906-4347-8308-19aa86789818",
+      "documentation": "Retrieve a list of all Supporting Document for an account.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocuments",
+      "responses": [
+        {
+          "uuid": "768711da-a40f-460f-9fb8-76dac485db68",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"results\": [\n    {\n      \"account_sid\": \"\",\n      \"attributes\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"failure_reason\": \"\",\n      \"friendly_name\": \"\",\n      \"mime_type\": \"\",\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'pending-review' 'rejected' 'approved' 'expired' 'provisionally-approved')}}\",\n      \"type\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf28799e-0fd0-4543-9dc5-08250a07e7e9",
+      "documentation": "Create a new Supporting Document.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocuments",
+      "responses": [
+        {
+          "uuid": "f7548be7-166c-4606-b246-90daeffb2b70",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"failure_reason\": \"\",\n  \"friendly_name\": \"\",\n  \"mime_type\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'rejected' 'approved' 'expired' 'provisionally-approved')}}\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6e4fedf8-13e6-4f3c-9002-fd4187fc9bce",
+      "documentation": "Delete a specific Supporting Document.",
+      "method": "delete",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocuments/:Sid",
+      "responses": [
+        {
+          "uuid": "412a7525-84ed-4a1d-8b71-0a15b0d272e8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "971e9cad-729a-4a5a-9a5c-428fda998e5f",
+      "documentation": "Fetch specific Supporting Document Instance.",
+      "method": "get",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocuments/:Sid",
+      "responses": [
+        {
+          "uuid": "526379ef-ce4f-4f6e-8162-898f36448ea3",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"failure_reason\": \"\",\n  \"friendly_name\": \"\",\n  \"mime_type\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'rejected' 'approved' 'expired' 'provisionally-approved')}}\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47d566e8-73fb-4620-9014-e3658b5fbf16",
+      "documentation": "Update an existing Supporting Document.",
+      "method": "post",
+      "endpoint": "v2/RegulatoryCompliance/SupportingDocuments/:Sid",
+      "responses": [
+        {
+          "uuid": "46dc5324-6a1f-4753-9289-eae0d36f5893",
+          "body": "{\n  \"account_sid\": \"\",\n  \"attributes\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"failure_reason\": \"\",\n  \"friendly_name\": \"\",\n  \"mime_type\": \"\",\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'pending-review' 'rejected' 'approved' 'expired' 'provisionally-approved')}}\",\n  \"type\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,1442 @@
+{
+  "uuid": "d8221175-22a1-4467-a245-6af34b91a33a",
+  "lastMigration": 24,
+  "name": "Botify API",
+  "endpointPrefix": "v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "1ea96d41-23e1-492b-96ff-f64f5f5f936f",
+      "documentation": "List all analyses for a project",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug",
+      "responses": [
+        {
+          "uuid": "ee299e71-ada9-4cb6-a2c8-088603933057",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"config\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_finished\": \"{{faker 'date.recent' 365}}\",\n      \"date_last_modified\": \"{{faker 'date.recent' 365}}\",\n      \"date_launched\": \"{{faker 'date.recent' 365}}\",\n      \"features\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"slug\": \"\",\n      \"status\": \"\",\n      \"url\": \"\",\n      \"urls_done\": \"\",\n      \"urls_in_queue\": \"\",\n      \"user\": {\n        \"company_name\": \"\",\n        \"date_joined\": \"{{faker 'date.recent' 365}}\",\n        \"email\": \"\",\n        \"first_name\": \"\",\n        \"is_organization\": \"\",\n        \"last_name\": \"\",\n        \"login\": \"\",\n        \"status\": \"\",\n        \"url\": \"\"\n      }\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "00ad493d-1d2c-430f-bbb9-c55e1d37144f",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "017b1125-6984-4ac6-a8be-1caa3b96b509",
+      "documentation": "Get an Analysis detail",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug",
+      "responses": [
+        {
+          "uuid": "b15922b7-7043-4dbe-89cc-49532a394b77",
+          "body": "{\n  \"config\": \"\",\n  \"date_finished\": \"{{faker 'date.recent' 365}}\",\n  \"date_last_modified\": \"{{faker 'date.recent' 365}}\",\n  \"date_launched\": \"{{faker 'date.recent' 365}}\",\n  \"failures\": \"\",\n  \"features\": \"\",\n  \"id\": {{faker 'datatype.number'}},\n  \"name\": \"\",\n  \"red_button_domain\": \"\",\n  \"slug\": \"\",\n  \"url\": \"\",\n  \"urls_done\": \"\",\n  \"urls_in_queue\": \"\",\n  \"user\": {\n    \"company_name\": \"\",\n    \"date_joined\": \"{{faker 'date.recent' 365}}\",\n    \"email\": \"\",\n    \"first_name\": \"\",\n    \"is_organization\": \"\",\n    \"last_name\": \"\",\n    \"login\": \"\",\n    \"status\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d456ba03-3016-4dee-b06e-025e65ae60d5",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c47ef9a4-9633-4f80-b94c-f6ae7334d7e8",
+      "documentation": "Return global statistics for an analysis",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/crawl_statistics",
+      "responses": [
+        {
+          "uuid": "fdbdef9c-2e98-4c69-816e-ef13acf63667",
+          "body": "{\n  \"depth_current\": {{faker 'datatype.number'}},\n  \"last_upd_dt\": \"{{faker 'date.recent' 365}}\",\n  \"pages_dones\": {{faker 'datatype.number'}},\n  \"pages_dones_2xx\": {{faker 'datatype.number'}},\n  \"pages_dones_3xx\": {{faker 'datatype.number'}},\n  \"pages_dones_4xx\": {{faker 'datatype.number'}},\n  \"pages_dones_5xx\": {{faker 'datatype.number'}},\n  \"pages_dones_networkerror\": {{faker 'datatype.number'}},\n  \"pages_dones_xxx\": {{faker 'datatype.number'}},\n  \"pages_known\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7aeb31cf-0b0f-4fb1-9bae-dfc75208caed",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41e58736-f0cb-44b5-8088-ded528afaf45",
+      "documentation": "Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min)",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/crawl_statistics/time",
+      "responses": [
+        {
+          "uuid": "47b42f2b-3efb-4bd9-b64c-3c3eaf68776c",
+          "body": "{\n  \"avg_delay\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"avg_size\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"frequency\": \"\",\n  \"http_code_2xx\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"http_code_3xx\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"http_code_4xx\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"http_code_5xx\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"http_code_xxx\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"last_update_date\": \"{{faker 'date.recent' 365}}\",\n  \"new_urls\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"datetime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c551b3bd-358c-483d-94c9-6e81037f8e64",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9e7d735a-fbf4-4a91-a2de-2e348f4b431d",
+      "documentation": "Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/crawl_statistics/urls/:list_type",
+      "responses": [
+        {
+          "uuid": "8c6a1886-3805-46ca-8b70-909ac39905ec",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f803509a-561a-46e2-a74c-4f50dde83270",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2c26a909-2501-47c1-a191-dffe7001ea1b",
+      "documentation": "List of Orphan URLs",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/ganalytics/orphan_urls/:medium/:source",
+      "responses": [
+        {
+          "uuid": "b6b24b47-d9d9-4208-977f-7f3746144106",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"url\": \"\",\n      \"visits\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2e78ed4c-90b3-4196-9848-f2d9d9498449",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2037ebd-3d55-4bbc-b57e-9d9459fdccf9",
+      "documentation": "Get inlinks percentiles",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/links/percentiles",
+      "responses": [
+        {
+          "uuid": "422e6f34-79fd-420c-8750-1eb90c8f3bce",
+          "body": "{\n  \"domain\": \"\",\n  \"percentiles\": [\n    {\n      \"avg\": {{faker 'datatype.number'}},\n      \"id\": {{faker 'datatype.number'}},\n      \"max\": {{faker 'datatype.number'}},\n      \"metric_total\": {{faker 'datatype.number'}},\n      \"min\": {{faker 'datatype.number'}},\n      \"url_total\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b0fa28ca-63c4-4025-9fd0-f777cd5d4fc5",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "623d1451-dded-4024-ad3f-ee3d3592302b",
+      "documentation": "Lost pagerank",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/pagerank/lost",
+      "responses": [
+        {
+          "uuid": "4baaca97-5da3-4ddc-ab15-d7bc528c389a",
+          "body": "{\n  \"external\": {{faker 'datatype.float'}},\n  \"non_crawled\": {{faker 'datatype.float'}},\n  \"robots_txt\": {{faker 'datatype.float'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e3fffa91-7882-4dc5-877f-02883dd24cad",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8eff568-0c44-45a6-aa76-a8107978d389",
+      "documentation": "Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/sitemaps/report",
+      "responses": [
+        {
+          "uuid": "88315762-ddca-4f86-9d00-60602261f712",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"errors\": [\n    {\n      \"error\": {\n        \"message\": \"\",\n        \"type\": \"\"\n      },\n      \"file_type\": \"\",\n      \"invalid_urls\": {{faker 'datatype.number'}},\n      \"sitemap_indexes\": [\n        \"\"\n      ],\n      \"url\": \"\",\n      \"valid_urls\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"sitemap_indexes\": [\n    {\n      \"error\": {\n        \"message\": \"\",\n        \"type\": \"\"\n      },\n      \"file_type\": \"\",\n      \"invalid_urls\": {{faker 'datatype.number'}},\n      \"sitemap_indexes\": [\n        \"\"\n      ],\n      \"url\": \"\",\n      \"valid_urls\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"sitemap_only\": {\n    \"in_configuration\": {{faker 'datatype.number'}},\n    \"out_of_configuration\": {{faker 'datatype.number'}}\n  },\n  \"sitemaps\": [\n    {\n      \"error\": {\n        \"message\": \"\",\n        \"type\": \"\"\n      },\n      \"file_type\": \"\",\n      \"invalid_urls\": {{faker 'datatype.number'}},\n      \"sitemap_indexes\": [\n        \"\"\n      ],\n      \"url\": \"\",\n      \"valid_urls\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a772eb99-7dfe-403a-9d4e-c3d14921104d",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a929598c-d759-4121-83b0-b7f56ce7bfdd",
+      "documentation": "Sample list of URLs which were found in your sitemaps but outside of the",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/sitemaps/samples/out_of_config",
+      "responses": [
+        {
+          "uuid": "9ee4b60d-2d23-4f35-a146-dcb0abb341f3",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9f942bd1-98d4-45f1-aa32-cd751d21a9d1",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43fea5cc-319c-4ee6-b9f6-269987eaed77",
+      "documentation": "Sample list of URLs which were found in your sitemaps, within the project",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/sitemaps/samples/sitemap_only",
+      "responses": [
+        {
+          "uuid": "e6d8febd-a621-4955-b5f7-ade0238461e4",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8eeb02fb-6da8-4f32-8bea-3ba1307f5067",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "445f4d52-5cb3-4329-8e83-c1bc37f21cc4",
+      "documentation": "Top domains",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/top_domains/domains",
+      "responses": [
+        {
+          "uuid": "9e5e24f3-1cb5-4cd3-9fd2-c9d51609ed8f",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"domain\": \"\",\n      \"follow_links\": {{faker 'datatype.number'}},\n      \"follow_samples\": [\n        {\n          \"sources\": [\n            \"\"\n          ],\n          \"unique_links\": {{faker 'datatype.number'}},\n          \"url\": \"\"\n        }\n      ],\n      \"nofollow_links\": {{faker 'datatype.number'}},\n      \"nofollow_samples\": [\n        {\n          \"sources\": [\n            \"\"\n          ],\n          \"unique_links\": {{faker 'datatype.number'}},\n          \"url\": \"\"\n        }\n      ],\n      \"unique_follow_links\": {{faker 'datatype.number'}},\n      \"unique_nofollow_links\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "21802545-eccf-4b27-b566-7dbc810474d1",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ccabc498-55b1-4e91-8240-d8acb3388b72",
+      "documentation": "Top subddomains",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/features/top_domains/subdomains",
+      "responses": [
+        {
+          "uuid": "85837799-1468-42ad-a7c7-0a29c6da545e",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"domain\": \"\",\n      \"follow_links\": {{faker 'datatype.number'}},\n      \"follow_samples\": [\n        {\n          \"sources\": [\n            \"\"\n          ],\n          \"unique_links\": {{faker 'datatype.number'}},\n          \"url\": \"\"\n        }\n      ],\n      \"nofollow_links\": {{faker 'datatype.number'}},\n      \"nofollow_samples\": [\n        {\n          \"sources\": [\n            \"\"\n          ],\n          \"unique_links\": {{faker 'datatype.number'}},\n          \"url\": \"\"\n        }\n      ],\n      \"unique_follow_links\": {{faker 'datatype.number'}},\n      \"unique_nofollow_links\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c71e45a7-2a28-462e-a468-a27ae93568c3",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f59b3e7e-c8b5-4fdf-942f-7cb4c69c8f09",
+      "documentation": "Executes a query and returns a paginated response",
+      "method": "post",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls",
+      "responses": [
+        {
+          "uuid": "5665b123-07cf-4e26-bb1c-0efe2d48ce29",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {}\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "97819fa9-906b-41fe-8721-062fd59cd499",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d1acfd15-13c7-4775-90fe-21bcb196ef40",
+      "documentation": "Query aggregator",
+      "method": "post",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/aggs",
+      "responses": [
+        {
+          "uuid": "5da12e95-c6f0-4904-87e2-e4c65ffbdc77",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e543d00f-936d-4e05-8435-b12ead9a7da5",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "754a6d9a-abcd-45b0-a79e-295c6f435745",
+      "documentation": "Gets an Analysis datamodel",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/datamodel",
+      "responses": [
+        {
+          "uuid": "5826acf6-733d-48c7-a47a-e87d4424e672",
+          "body": "{\n  \"fields\": [\n    {\n      \"group\": \"\",\n      \"id\": \"\",\n      \"multiple\": {{faker 'datatype.boolean'}},\n      \"name\": \"\",\n      \"permissions\": [\n        \"\"\n      ],\n      \"subtype\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a743ea35-c98f-43e9-96e7-f2ebce69ef13",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1d12bd6e-cdab-4d6b-8190-3c4eefb33e0d",
+      "documentation": "A list of the CSV Exports requests and their current status",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/export",
+      "responses": [
+        {
+          "uuid": "744243f1-3e81-4056-96da-6b1d024153c7",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"area\": \"current\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"job_id\": \"\",\n      \"job_status\": \"\",\n      \"job_url\": \"\",\n      \"nb_results\": {{faker 'datatype.number'}},\n      \"query\": {\n        \"fields\": [\n          \"\"\n        ],\n        \"filters\": {},\n        \"sort\": [\n          {}\n        ]\n      },\n      \"results\": \"\"\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b136ccdd-cbbe-4a81-b45b-39492c76fd8c",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "15ed780a-bb99-4083-a747-c3c9632df6a9",
+      "documentation": "Creates a new UrlExport object and starts a task that will export the results into a csv",
+      "method": "post",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/export",
+      "responses": [
+        {
+          "uuid": "4c5fb583-f325-489d-9775-ab217d0759c1",
+          "body": "{\n  \"area\": \"current\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"job_id\": \"\",\n  \"job_status\": \"\",\n  \"job_url\": \"\",\n  \"nb_results\": {{faker 'datatype.number'}},\n  \"query\": {\n    \"fields\": [\n      \"\"\n    ],\n    \"filters\": {},\n    \"sort\": [\n      {}\n    ]\n  },\n  \"results\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd64f077-13c2-463c-8448-2ff76596e117",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c40493d7-e30e-4cad-85a4-b352eaba40f6",
+      "documentation": "Checks the status of an CSVUrlExportJob object",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/export/:url_export_id",
+      "responses": [
+        {
+          "uuid": "b884edd9-06a8-4992-b612-43a82db3fc07",
+          "body": "{\n  \"area\": \"current\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"job_id\": \"\",\n  \"job_status\": \"\",\n  \"job_url\": \"\",\n  \"nb_results\": {{faker 'datatype.number'}},\n  \"query\": {\n    \"fields\": [\n      \"\"\n    ],\n    \"filters\": {},\n    \"sort\": [\n      {}\n    ]\n  },\n  \"results\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "706ef11f-1d70-43f3-9124-70e2e55a5ed2",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fba95733-2712-41c2-a6cc-2b099d65c61f",
+      "documentation": "Return most frequent segments (= suggested patterns in the previous version)",
+      "method": "post",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/suggested_filters",
+      "responses": [
+        {
+          "uuid": "a12116c2-b5e9-4bea-9ce2-8541862196da",
+          "body": "{\n  \"aggs\": [\n    {}\n  ],\n  \"filters\": {}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "21656723-1d60-4fa3-8cb7-10383f5ba80f",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69298a38-be3c-4fe6-a631-0d5180a9b43b",
+      "documentation": "Gets the detail of an URL for an analysis",
+      "method": "get",
+      "endpoint": "analyses/:username/:project_slug/:analysis_slug/urls/:url",
+      "responses": [
+        {
+          "uuid": "2c679b21-684b-4d50-8a96-7dfe77c8769a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "264ba1f8-9923-43bc-991c-be3484d35ab8",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81b5001f-ce7d-4195-b3f2-3c46d0460e01",
+      "documentation": "List all active projects for the user",
+      "method": "get",
+      "endpoint": "projects/:username",
+      "responses": [
+        {
+          "uuid": "6626b75f-923f-4445-8a6d-6b16d5d47dfe",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"active\": {{faker 'datatype.boolean'}},\n      \"current_settings\": {\n        \"allowed_domains\": [\n          \"\"\n        ],\n        \"blacklisted_domains\": [\n          \"\"\n        ],\n        \"compare_crawl\": {{faker 'datatype.boolean'}},\n        \"crawl_gzip\": {{faker 'datatype.boolean'}},\n        \"extra_headers\": \"\",\n        \"google_analytics_account_email\": \"\",\n        \"google_analytics_nb_days\": {{faker 'datatype.number'}},\n        \"google_analytics_site_id\": {{faker 'datatype.number'}},\n        \"google_social_auth_id\": {{faker 'datatype.number'}},\n        \"has_robots_txt\": \"\",\n        \"header_settings\": [\n          \"\"\n        ],\n        \"max_depth\": {{faker 'datatype.number'}},\n        \"max_nb_pages\": {{faker 'datatype.number'}},\n        \"max_pages_per_sec\": {{faker 'datatype.number'}},\n        \"respect_nofollow\": {{faker 'datatype.boolean'}},\n        \"sitemaps\": [\n          \"\"\n        ],\n        \"start_urls\": [\n          \"\"\n        ],\n        \"user_agent\": \"\"\n      },\n      \"date_created\": \"\",\n      \"name\": \"\",\n      \"slug\": \"\",\n      \"user\": {\n        \"company_name\": \"\",\n        \"date_joined\": \"{{faker 'date.recent' 365}}\",\n        \"email\": \"\",\n        \"first_name\": \"\",\n        \"is_organization\": \"\",\n        \"last_name\": \"\",\n        \"login\": \"\",\n        \"status\": \"\",\n        \"url\": \"\"\n      }\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b132c9c-f838-4c16-b851-38d3bdfc4c44",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "63b0b934-2e50-4b28-b456-c1737aa741c7",
+      "documentation": "Match and replace parts of a URL based on rules passed in POST data",
+      "method": "post",
+      "endpoint": "projects/:username/:project_slug/features/url_rewriting/rules_validator",
+      "responses": [
+        {
+          "uuid": "188dd4b0-50ba-4a1e-8b32-ec18d3633f87",
+          "body": "{\n  \"rules\": [\n    {\n      \"ignore_case\": {{faker 'datatype.boolean'}},\n      \"regex\": \"\",\n      \"replace\": \"\"\n    }\n  ],\n  \"urls\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ce7027d4-a1f8-4282-8a5f-c770ae3df65a",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "738d8a28-bd8d-48fc-bf7b-3137713f3740",
+      "documentation": "List all the project's saved filters (each filter's name, ID and filter value)",
+      "method": "get",
+      "endpoint": "projects/:username/:project_slug/filters",
+      "responses": [
+        {
+          "uuid": "2cfa157d-d7db-4015-a708-cd7520219829",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"page\": {{faker 'datatype.number'}},\n  \"previous\": \"\",\n  \"results\": [\n    {\n      \"filters\": {},\n      \"identifier\": \"\",\n      \"name\": \"\"\n    }\n  ],\n  \"size\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d2a1b5f1-a911-401b-8b39-371ad02fefbc",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8f9976f0-4451-47da-8b9d-fe1ff1b00f52",
+      "documentation": "Retrieves a specific saved filter's name, ID and filter value",
+      "method": "get",
+      "endpoint": "projects/:username/:project_slug/filters/:identifier",
+      "responses": [
+        {
+          "uuid": "c54935d9-75c9-4180-9311-d9eaa5f30794",
+          "body": "{\n  \"filters\": {},\n  \"identifier\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "919f2ed3-873a-4e63-953c-e2e9d2b0bf44",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a7a8ef63-5f25-463b-9bc0-8b68982e1ff4",
+      "documentation": "Project Query aggregator",
+      "method": "post",
+      "endpoint": "projects/:username/:project_slug/urls/aggs",
+      "responses": [
+        {
+          "uuid": "05cdd566-a066-4db6-9111-73a6658ea3f3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b59c8068-8b3b-481c-b5cc-717d862dad1b",
+          "body": "{\n  \"error\": {\n    \"error_code\": \"\",\n    \"error_detail\": {},\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "error payload",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

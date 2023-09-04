@@ -1,0 +1,4732 @@
+{
+  "uuid": "4467fd38-d3c6-45d7-bc13-e2fa3c87877b",
+  "lastMigration": 24,
+  "name": "IBM Containers API",
+  "endpointPrefix": "v3",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "0339632a-d21f-44df-b4b2-a7b7e0f858cf",
+      "documentation": "Build a Docker image from a Dockerfile",
+      "method": "post",
+      "endpoint": "build",
+      "responses": [
+        {
+          "uuid": "305b556f-c4d2-4464-9d0d-eeacdf7dfb45",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The container image was built successfully and pushed to your private Bluemix repository. The build output stream is returned in JSON format.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1a5d6d40-5189-47dc-97b3-da5090b28185",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. Your could not be processed. Be sure to include the `t` query parameter to tag your image and that your Dockerfile has been tar archived with gzip.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "800b192d-3a44-46fc-be39-5dc4134bd205",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e1451d0f-0945-43df-9a5a-67f434611617",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe1b9d98-ef85-4a7a-8fbf-a8a4d424fe72",
+      "documentation": "Create and start a single container",
+      "method": "post",
+      "endpoint": "containers/create",
+      "responses": [
+        {
+          "uuid": "af462260-7cf7-481f-81df-85a1de53b274",
+          "body": "{\n  \"Id\": \"\",\n  \"flavor_id\": {{faker 'datatype.number'}},\n  \"mem\": {{faker 'datatype.number'}},\n  \"vcpu\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "OK. The creation of a single container with the specified attributes has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dafdcf6b-14b6-432c-bd4e-4549e484e06d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The data that you entered in the request body are either incomplete or in the wrong format. Be sure to include at least the Docker image that you want to use in JSON format and re-run the API request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d2bc95ba-eefe-4be1-ae12-aa0c2719a020",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ed504bac-2e1b-4093-ac3d-8b0f114fae3b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": " Conflict. A container with the same name already exists. Choose another name for your container and re-run the API request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6d9927dc-9d9d-4abf-bfb1-4b2de52ad8d1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "82e810f7-ab61-484e-91bc-a24a3e78cc4c",
+      "documentation": "List available public IP addresses in a space",
+      "method": "get",
+      "endpoint": "containers/floating-ips",
+      "responses": [
+        {
+          "uuid": "9cc382f2-71e6-48af-856e-0abd38c71d87",
+          "body": "[\n  {\n    \"Bindings\": {\n      \"ContainerId\": \"\"\n    },\n    \"IpAddress\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of public IP addresses that are allocated to the space is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6b95cd04-805d-474a-bf57-be310d5db3ab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f96ea66-626c-4163-9685-28f7c062130f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ffcb8865-a75c-4452-94a1-f732d6d136a8",
+      "documentation": "Request a public IP address for a space",
+      "method": "post",
+      "endpoint": "containers/floating-ips/request",
+      "responses": [
+        {
+          "uuid": "fc48fa4f-a645-45dd-8da8-fe8714219850",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A new public IP address is allocated to your space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bc310cbb-0a6d-4745-bdb1-ce26c33986c1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2ee2d280-b364-4c86-8db4-3e3c1542b299",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Payment required. This request exceeds the quota that is allocated to the space. You can either contact your organization manager to increase the quota, or unbind an existing IP address from a container by running `cf ic ip unbind <ip_adress> <container>`, or calling the `POST /container/{name_or_id}/floating-ips/{ip}/unbind` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b0fd369f-7137-4de0-98f5-68be123b4969",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. This request exceeds the quota that is allocated to the space. You can either contact your organization manager to increase the quota, or unbind an existing IP address from a container by running `cf ic ip unbind <ip_adress> <container>`, or calling the `POST /container/{name_or_id}/floating-ips/{ip}/unbind` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8eb45d41-9e0b-4731-bcd9-28ddaebf72e7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "803f8092-e07a-4ed4-a581-187c445b34d0",
+      "documentation": "Release public IP address",
+      "method": "post",
+      "endpoint": "containers/floating-ips/:ip/release",
+      "responses": [
+        {
+          "uuid": "2be604de-f938-4ea0-803b-eaffa74826d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The public IP address has been released from your space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4bcee609-87c8-4e30-acb0-a2c716e1a93a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fada5f86-d124-48ef-b8ce-de9fc7afce27",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The public IP address that you entered, could not be found. Run `cf ic ip list`, or call the `GET /containers/floating-ips?all=true` endpoint to review your public IP addresses. Re-run the API call with the updated public IP address information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c9f548da-1e94-4667-afe8-013154f7bb5b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "863c9fee-0175-438e-b52e-d2d71d010a09",
+      "documentation": "List all container groups in a space",
+      "method": "get",
+      "endpoint": "containers/groups",
+      "responses": [
+        {
+          "uuid": "06809fe5-34f9-4ab4-b48f-e6208f02b2ab",
+          "body": "[\n  {\n    \"Creation_time\": \"\",\n    \"Id\": \"\",\n    \"Name\": \"\",\n    \"Port\": {{faker 'datatype.number'}},\n    \"Routes\": [\n      \"\"\n    ],\n    \"Status\": \"\",\n    \"Updated_time\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of container groups is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b361baba-8e00-46ac-85ce-163c152b9de1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1130fb34-58a9-4220-bc61-111e9cf63368",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2af7d1a2-0884-4d2c-9950-0dfa9c6a3ef0",
+      "documentation": "Create and start a container group.",
+      "method": "post",
+      "endpoint": "containers/groups",
+      "responses": [
+        {
+          "uuid": "b68b4b08-c19a-4356-9c1a-9953b2d00bb6",
+          "body": "{\n  \"Id\": \"\",\n  \"Warnings\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. Your container group was successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ea00e550-c0d4-4437-a5c0-a4a4adcc7e71",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The information that you entered in the request body are either incomplete or in the wrong format to process your request. Be sure, to specify at least the name and container image for your container group in JSON format and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d775cb9-bc4a-47e9-8250-1e312bb09f91",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c3d39895-616d-4c96-8855-8c9e197dcc5f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. A container group with the same name already exists. Choose a new name for your container group and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f5ca1f80-87e4-4145-969a-48063200ac61",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a2cb4f32-43fe-4de9-877a-ca4bd1c5cdab",
+      "documentation": "Stop and delete all container instances in a container group.",
+      "method": "delete",
+      "endpoint": "containers/groups/:name_or_id",
+      "responses": [
+        {
+          "uuid": "34a45a65-4a68-4c16-a9c4-820f179b8f6f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "OK. No content. The deletion of the container group was successfully processed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8d06c53c-a181-4159-b466-d12000da563b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ee9292a2-bb04-47e7-8e7d-bad23ada2dfd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The container group cannot be deleted due to running or failed container instances. Set the force query parameter to `force=true`, `force=True`, or `force=1` and re-run the REST call to force the deletion of your container group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "adabd4c5-252d-45e3-9cf8-7dc7e6a71263",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The name or ID of the container group that you want to delete could not be found. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space. Enter the correct name or ID and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f0bd3efd-14cb-4ad6-b7c9-b2e1a2e81a2e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09565954-4026-4902-a151-ca4f59cd6907",
+      "documentation": "Inspect a container group.",
+      "method": "get",
+      "endpoint": "containers/groups/:name_or_id",
+      "responses": [
+        {
+          "uuid": "642c6ec9-9433-4942-b575-208b7e63bb86",
+          "body": "{\n  \"Anti-affinity\": \"\",\n  \"Autorecovery\": \"\",\n  \"AvailabilityZone\": \"\",\n  \"Cmd\": [\n    \"\"\n  ],\n  \"Creation_time\": \"\",\n  \"Env\": [\n    \"\"\n  ],\n  \"Id\": \"\",\n  \"Image\": \"\",\n  \"ImageName\": \"\",\n  \"Memory\": {{faker 'datatype.number'}},\n  \"Name\": \"\",\n  \"NumberInstances\": {\n    \"CurrentSize\": {{faker 'datatype.number'}},\n    \"Desired\": {{faker 'datatype.number'}},\n    \"Max\": {{faker 'datatype.number'}},\n    \"Min\": {{faker 'datatype.number'}}\n  },\n  \"Port\": {{faker 'datatype.number'}},\n  \"Route_Status\": {\n    \"in_progress\": {{faker 'datatype.boolean'}},\n    \"message\": \"\",\n    \"successful\": {{faker 'datatype.boolean'}}\n  },\n  \"Routes\": [\n    \"\"\n  ],\n  \"Status\": \"\",\n  \"UpdatedTime\": \"\",\n  \"Volumes\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A detailed list of information about a container group is retrieved.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2a478fc1-f34a-43b0-a07e-726193cc206e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1e0bec41-c04e-43b7-a6dc-1670760e3bdf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The specified name or ID of the container group that you want to update could not be found. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space. Enter the correct name or ID and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f6c9f81-a5ed-4d38-b0a6-806cc5a876d0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6fcf10d6-7461-45c7-b735-4e63333b20a0",
+      "documentation": "Update a container group.",
+      "method": "patch",
+      "endpoint": "containers/groups/:name_or_id",
+      "responses": [
+        {
+          "uuid": "de08340f-57b8-4b86-a09d-cff93964860d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. The update has successfully been processed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "525a2fe8-5f85-4a1b-bce1-ec17d1eb630e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The information that you entered in the body of your request are either incomplete or in the wrong format. Be sure, to enter the information that you want to update in JSON format and review the description for each parameter to assure your desired update is valid and can be processed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "75941a0d-ad5d-48a6-83c4-ac8499502c5f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e0ca6f12-9a06-4e7b-9845-737e88637777",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The name or ID of the container group that you want to update could not be found. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space. Enter the correct name or ID and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e808c27-390c-45a8-a5aa-5edc24009867",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf366ee7-3e04-4b9f-b53b-34c613d8dd7c",
+      "documentation": "Map a public route to a container group.",
+      "method": "post",
+      "endpoint": "containers/groups/:name_or_id/maproute",
+      "responses": [
+        {
+          "uuid": "b1f79c48-5c70-4224-913d-eb6aa41b50dc",
+          "body": "{\n  \"Id\": \"\",\n  \"Warnings\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "OK. The route that you specified was successfully mapped to the container group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a60f6108-c5cc-4b2c-9dbd-4279d388ff48",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The information that you entered in the body request is either incomplete or in the wrong format. To map a route enter the domain and host name in JSON format. Be sure, that you have exposed a public port when you created the container group, otherwise you cannot map a public route to it.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a77146bc-8eec-43f8-9cce-f6a809720fa5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fe9c2ba9-3b42-4fb6-917d-082bd42d470c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The name or ID of the container group to which you want to map a public route could not be found. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space. Enter the correct name or ID and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c46b39eb-0baf-413a-a117-28dd407f9196",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6fc67e1-08d3-4b0a-b0bd-a6f7a1a25219",
+      "documentation": "Unmap a public route from a container group",
+      "method": "post",
+      "endpoint": "containers/groups/:name_or_id/unmaproute",
+      "responses": [
+        {
+          "uuid": "665ba359-050a-4f5b-89a1-ea2da8c96b1c",
+          "body": "{\n  \"Id\": \"\",\n  \"Warnings\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "OK. The route that you specified was successfully unmapped from the container group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d7bc37ab-4a53-4b7a-a384-dc39863b0456",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The information that you entered in the body of your request is either incomplete or in the wrong format. To unmap a route, enter the domain and host name in JSON format and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d6a4da8e-4d05-4000-98c8-5849ca532716",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f1a4caac-ba1b-4e3c-a407-dfe0705ba7bc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The name or ID of the container group from which you want to unmap a public route could not be found. Enter the correct name or ID and re-run the REST call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3b267ceb-3b79-4cdc-84d5-b56e3e1c76d3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3966360f-d819-43df-abef-3fdfe52478a6",
+      "documentation": "List single containers in a space.",
+      "method": "get",
+      "endpoint": "containers/json",
+      "responses": [
+        {
+          "uuid": "af889d4c-179b-468e-86b4-84437d66d5d3",
+          "body": "[\n  {\n    \"Command\": \"\",\n    \"ContainerState\": \"\",\n    \"Created\": {{faker 'datatype.float'}},\n    \"Env\": [\n      \"\"\n    ],\n    \"Group\": {\n      \"Id\": \"\",\n      \"Name\": \"\"\n    },\n    \"Id\": \"\",\n    \"Image\": \"\",\n    \"ImageId\": \"\",\n    \"Labels\": {},\n    \"Memory\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Names\": [\n      \"\"\n    ],\n    \"NetworkSettings\": {\n      \"Bridge\": \"\",\n      \"Gateway\": \"\",\n      \"IpAddress\": \"\",\n      \"IpPrefixLen\": {{faker 'datatype.number'}},\n      \"MacAddress\": \"\",\n      \"Network\": {\n        \"Aliases\": \"\",\n        \"EndpointID\": \"\",\n        \"Gateway\": \"\",\n        \"GlobalIPv6Address\": \"\",\n        \"GlobalIPv6PrefixLen\": {{faker 'datatype.number'}},\n        \"IPAMConfig\": \"\",\n        \"IPPrefixLen\": \"\",\n        \"IPv6Gateway\": \"\",\n        \"Links\": \"\",\n        \"MacAddress\": \"\",\n        \"NetworkID\": \"\"\n      },\n      \"PortMapping\": \"\",\n      \"Ports\": [\n        \"\"\n      ],\n      \"PublicIpAddress\": \"\"\n    },\n    \"Ports\": {\n      \"IP\": \"\",\n      \"PrivatePort\": \"\",\n      \"PublicPort\": \"\",\n      \"Type\": \"\"\n    },\n    \"SizeRootFs\": {{faker 'datatype.number'}},\n    \"SizeRw\": {{faker 'datatype.number'}},\n    \"Started\": {{faker 'datatype.float'}},\n    \"Status\": \"\",\n    \"VCPU\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of single containers that match the search criteria is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "54db4bf4-da8d-4fed-94cb-6258c559abff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16fde2f7-b4c8-4797-8545-302a76202109",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe0e742a-04a7-4ecc-af87-5159cc698183",
+      "documentation": "List messages for the user",
+      "method": "get",
+      "endpoint": "containers/messages",
+      "responses": [
+        {
+          "uuid": "7c62bdf0-7911-43ef-8e61-70f84c8a6214",
+          "body": "{\n  \"created_date\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of messages is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f54fc41-9ebe-4d5b-bea6-b6ff50ede845",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ee30f88e-1b67-4438-bc06-6f490f031cf8",
+      "documentation": "Retrieve organization and space specific quota",
+      "method": "get",
+      "endpoint": "containers/quota",
+      "responses": [
+        {
+          "uuid": "f8741c03-4a91-41ce-9e3f-fa28b825a451",
+          "body": "{\n  \"account_type\": \"\",\n  \"country_code\": \"\",\n  \"org_quota\": {\n    \"floating_ips_max\": \"\",\n    \"floating_ips_space_default\": \"\",\n    \"floating_ips_usage\": {{faker 'datatype.number'}},\n    \"ram_max\": {{faker 'datatype.number'}},\n    \"ram_space_default\": {{faker 'datatype.number'}},\n    \"ram_usage\": {{faker 'datatype.number'}},\n    \"subnet_usage\": {{faker 'datatype.number'}},\n    \"subnets_default\": {{faker 'datatype.number'}},\n    \"subnets_max\": {{faker 'datatype.number'}}\n  },\n  \"space_quota\": {\n    \"floating_ips_max\": \"\",\n    \"ram_max\": {{faker 'datatype.number'}},\n    \"subnets_max\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The current quota that is assigned to the organization and space is returned. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "37577f3a-26b7-423e-b1d4-baef4fb27873",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8e41708d-76fc-44e6-80c1-8d13ee7e156e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a6d92fdc-a151-4d22-b7d1-2b7c46114ded",
+      "documentation": "Update space quota",
+      "method": "put",
+      "endpoint": "containers/quota",
+      "responses": [
+        {
+          "uuid": "02ce9776-83f0-407a-9690-0565e1e58d3e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. The request to update the organization and/ or space quota has been processed. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cd97e003-c76b-4c42-bc2e-82694523836c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fbad6a1e-e6a0-4db8-af89-6d522ae90087",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b54cb04a-b6ab-4830-801a-15654247e85b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8d9d9072-1232-4509-918c-82db2b0c64f6",
+      "documentation": "List container sizes and quota limits",
+      "method": "get",
+      "endpoint": "containers/usage",
+      "responses": [
+        {
+          "uuid": "94a0e606-fe2f-40cc-bd62-a9b953ecad9e",
+          "body": "{\n  \"AvailableSizes\": [\n    {\n      \"disk\": {{faker 'datatype.number'}},\n      \"id\": \"\",\n      \"memory_MB\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"vcpus\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"Environment\": \"\",\n  \"Limits\": {\n    \"containers\": {{faker 'datatype.number'}},\n    \"floating_ips\": {{faker 'datatype.number'}},\n    \"memory_MB\": {{faker 'datatype.number'}},\n    \"vcpu\": {{faker 'datatype.number'}}\n  },\n  \"Usage\": {\n    \"containers\": {{faker 'datatype.number'}},\n    \"floating_ips\": {{faker 'datatype.number'}},\n    \"floating_ips_bound\": {{faker 'datatype.number'}},\n    \"images\": {{faker 'datatype.number'}},\n    \"memory_MB\": {{faker 'datatype.number'}},\n    \"running\": {{faker 'datatype.number'}},\n    \"vcpu\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of available container sizes as well as the quota limit and usage for a space is returned. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8fbcaaa6-cc97-4c92-9f3a-285ad59082a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "17fb08a6-ba87-4895-af39-8293d2f5ee38",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b143d35-1896-4812-b3d9-a834816ccca2",
+      "documentation": "List latest API version",
+      "method": "get",
+      "endpoint": "containers/version",
+      "responses": [
+        {
+          "uuid": "f669b72c-104a-4db7-a2a0-204f79df0083",
+          "body": "{\n  \"ApiVersion\": \"\",\n  \"Arch\": \"\",\n  \"BuildDetail\": {\n    \"api\": \"\",\n    \"automount\": \"\",\n    \"grupdater\": \"\",\n    \"harmony\": \"\",\n    \"health-monitor\": \"\",\n    \"hijack\": \"\",\n    \"ldap\": \"\",\n    \"logmet\": \"\",\n    \"lumberjack\": \"\",\n    \"redis-cluster\": \"\",\n    \"sgwatcher\": \"\",\n    \"volmgr\": \"\"\n  },\n  \"BuildID\": \"\",\n  \"BuildNumber\": \"\",\n  \"BuildTime\": \"\",\n  \"GitCommit\": \"\",\n  \"GoVersion\": \"\",\n  \"KernelVersion\": \"\",\n  \"Os\": \"\",\n  \"Version\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of the current API and microservices versions is returend.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "10b1d877-2686-4512-a8a2-e5c9dc3fd5ec",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74025b7e-7d6f-41f9-816e-b5686f901982",
+      "documentation": "List the current state of a container.",
+      "method": "get",
+      "endpoint": "containers/:id/status",
+      "responses": [
+        {
+          "uuid": "fdce3fba-efc0-4269-9ab4-ec0992f8151a",
+          "body": "{\n  \"NameOrId\": \"\",\n  \"Status\": \"\",\n  \"Transient\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "OK. The current status of a container is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a81b1164-5ffa-4062-b033-997d1cb7000a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "26f3f09b-dfa4-4e53-830e-eac6c1847057",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container could not be found. Run `cf ic ps` or call the `GET /containers/json` endpoint to review the ID of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "640accdc-ab1d-4e5b-afde-322a130ed9d4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "02cfd336-2c66-463f-9218-ad43ec4c69a7",
+      "documentation": "Remove a single container",
+      "method": "delete",
+      "endpoint": "containers/:name_or_id",
+      "responses": [
+        {
+          "uuid": "66ff67b0-af76-4ebc-8494-9081c9ff2288",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The deletion of your container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ad067a38-42da-4ab3-bee0-02b883be9fb6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "424b059a-807f-4af9-baf4-3df0be9d0b45",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "af0283ce-7a3d-455e-914d-b28988614b82",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e5e9cbe6-b71a-4253-ba10-7098703f15b2",
+      "documentation": "Bind a public IP address to a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/floating-ips/:ip/bind",
+      "responses": [
+        {
+          "uuid": "88e9a1a6-ed58-40ea-974a-ae6588ff3c93",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. Your request to bind a public IP address to a container has successfully been processed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c3354ed2-aac0-4b36-8eee-cad566a11a92",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not modified. The container is already bound to a public IP address. To view the details of your container, run `cf ic inspect <container>` or call the `GET /containers/{name_or_id}/json endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2c2b6d62-9881-4d8c-9130-7c16e0c3b29e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The IP address that you entered does not exist. Run `cf ic ip list` or call the `GET /containers/floating-ips` endpoint to retrieve a list of available public IP addresses in your space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1e9cb3c8-64a9-4c1c-b400-80c01e1bc9dc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9c0ca6a1-5068-4c9a-9b94-d67ff8dd28d3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7f241833-c645-47df-9769-9ccf00bf54d4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a9e558d9-24ea-4ba7-b76d-b38876e37c32",
+      "documentation": "Unbind a public IP address from a container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/floating-ips/:ip/unbind",
+      "responses": [
+        {
+          "uuid": "de4911e9-ca46-4eac-a131-491c8d1bc49f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. Your request to unbind a public IP address from a container has successfully been processed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd363310-2c42-4fb7-aef4-4142a9245f2f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The IP address that you entered does not exist. Run `cf ic ip list` or call the `GET /containers/floating-ips` endpoint to retrieve a list of available public IP addresses in your space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c84d6867-92cf-471f-803d-903cbc2d1270",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0df2b8ac-5d5d-4092-b0ac-1c8567f04c1c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4e57775a-1782-4fa5-bde6-1c3148a5004c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b702e89f-b5d0-48e5-96bb-397c13e737c2",
+      "documentation": "Inspect a single container",
+      "method": "get",
+      "endpoint": "containers/:name_or_id/json",
+      "responses": [
+        {
+          "uuid": "fb1253d5-8f31-4ff6-bda9-30b51a7aa051",
+          "body": "{\n  \"BluemixApp\": \"\",\n  \"BluemixServices\": \"\",\n  \"Config\": {\n    \"ArgsEscaped\": {{faker 'datatype.boolean'}},\n    \"AttachStderr\": \"\",\n    \"AttachStdin\": \"\",\n    \"AttachStdout\": \"\",\n    \"Cmd\": [\n      \"\"\n    ],\n    \"Domainname\": \"\",\n    \"Env\": [\n      \"\"\n    ],\n    \"ExposedPorts\": [\n      \"\"\n    ],\n    \"Hostname\": \"\",\n    \"Image\": \"\",\n    \"ImageArchitecture\": \"\",\n    \"Labels\": [\n      \"\"\n    ],\n    \"Memory\": {{faker 'datatype.number'}},\n    \"MemorySwap\": \"\",\n    \"OpenStdin\": \"\",\n    \"PortSpecs\": \"\",\n    \"StdinOnce\": \"\",\n    \"Tty\": \"\",\n    \"User\": \"\",\n    \"VCPU\": {{faker 'datatype.number'}},\n    \"VolumesFrom\": \"\",\n    \"WorkingDir\": \"\"\n  },\n  \"ContainerState\": \"\",\n  \"Created\": \"{{faker 'date.recent' 365}}\",\n  \"Group\": {\n    \"Id\": \"\",\n    \"Name\": \"\"\n  },\n  \"HostConfig\": {\n    \"Binds\": [\n      \"\"\n    ],\n    \"ExtraHosts\": [\n      \"\"\n    ],\n    \"Links\": [\n      \"\"\n    ],\n    \"PortBindings\": [\n      \"\"\n    ]\n  },\n  \"HostId\": \"\",\n  \"Human_Id\": \"\",\n  \"Id\": \"\",\n  \"Image\": \"\",\n  \"Mounts\": [\n    \"\"\n  ],\n  \"Name\": \"\",\n  \"NetworkSettings\": {\n    \"Bridge\": \"\",\n    \"Gateway\": \"\",\n    \"IpAddress\": \"\",\n    \"IpPrefixLen\": {{faker 'datatype.number'}},\n    \"MacAddress\": \"\",\n    \"Network\": {\n      \"Aliases\": \"\",\n      \"EndpointID\": \"\",\n      \"Gateway\": \"\",\n      \"GlobalIPv6Address\": \"\",\n      \"GlobalIPv6PrefixLen\": {{faker 'datatype.number'}},\n      \"IPAMConfig\": \"\",\n      \"IPPrefixLen\": \"\",\n      \"IPv6Gateway\": \"\",\n      \"Links\": \"\",\n      \"MacAddress\": \"\",\n      \"NetworkID\": \"\"\n    },\n    \"PortMapping\": \"\",\n    \"Ports\": [\n      \"\"\n    ],\n    \"PublicIpAddress\": \"\"\n  },\n  \"Path\": \"\",\n  \"ResolveConfPath\": \"\",\n  \"State\": {\n    \"ExitCode\": \"\",\n    \"FinishedAt\": \"\",\n    \"Ghost\": \"\",\n    \"Pid\": {{faker 'datatype.number'}},\n    \"Running\": {{faker 'datatype.boolean'}},\n    \"StartedAt\": \"\",\n    \"Status\": \"\"\n  },\n  \"Volumes\": {\n    \"fsID\": \"\",\n    \"hostPath\": \"\",\n    \"otherSpaceVisibility\": [\n      \"\"\n    ],\n    \"spaceGuid\": \"\",\n    \"volName\": \"\"\n  },\n  \"VolumesRW\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list with detailed information about the container is returned. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "93bb8f74-0003-4d19-86fb-325b72232fdb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "425cc812-db95-49b7-ace1-dc729651fed2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container name or ID that you entered, could not be found. Run the `cf ic ps` command or call the `GET /containers/json` to review the name or ID of the container that you want to inspect.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4913bec1-89d8-4863-9451-612fdb954693",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a692ef4-9889-424a-83e9-c45637ac0fe1",
+      "documentation": "Pause a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/pause",
+      "responses": [
+        {
+          "uuid": "c45608d8-3376-41ac-a390-d26f5ffd3217",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The pausing of all processes inside the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9d4a16a0-3236-47f5-b250-a77e532b740f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "17496023-8da4-4211-9977-9e555605f630",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps` or call the `GET /containers/json` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f2d6ec87-e17d-4dc7-b195-295121853f73",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf572df8-d3ce-4c0b-8836-5d54a73b83b5",
+      "documentation": "Rename a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/rename",
+      "responses": [
+        {
+          "uuid": "7b46e964-a8ba-44dc-971e-86d1434b765b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The request to rename the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "03200c0a-a5f1-421f-8911-7ddb3259c561",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b0a58016-33bc-4426-918d-7cb836888784",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f9e84306-738e-4fdc-9a54-e8b2a7fb51aa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. A container with the same name already exists. Choose another name for your container and re-run the API call. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e2ba7a8d-cd4b-47d1-bccc-612c92267cca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "210450b7-a15e-47bb-ac8a-a62e9ba3a234",
+      "documentation": "Restart a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/restart",
+      "responses": [
+        {
+          "uuid": "71b9392b-b4e0-428f-9e61-0e6e4f10c216",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The restart of the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d32f6f13-6313-419a-bb80-4a0074e6e7d0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not Modified. A request to restart the container with the specified name or ID has already been initiated. To review the current state of your container, run `cf ic ps` or call the `GET /containers/json` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "772df961-cae1-4b66-921e-da7ced26a218",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "45ab36cd-1faa-4044-bc9c-5ff0726a1d31",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps` or call the `GET /containers/json` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e242fe6d-9f6a-4970-879b-baf129d8dc3a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "21804334-5f98-44f6-86d3-81348b1bdc47",
+      "documentation": "Start a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/start",
+      "responses": [
+        {
+          "uuid": "76ccf450-dcf8-4cf4-86f7-9c578a94dcc3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The start of the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e5822284-eb2e-4443-91fe-1d10fbf10337",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not Modified. A request to start the container with the specified name or ID has already been initiated. To review the current state of your container, run `cf ic ps` or call the `GET /containers/json` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0a759532-c258-4753-9ca1-fcfdf5d78d56",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c58ee88f-bf1b-4b03-bb49-98974d0f7b16",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4fa61dbc-53f3-445f-a1f6-dc969737836d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "368d21ac-037c-436a-b198-ab7d7cc6a6f1",
+      "documentation": "Stop a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/stop",
+      "responses": [
+        {
+          "uuid": "ccbc7314-1873-431a-bb99-0575a6b1ed45",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The stop of the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a551bd48-525d-48b1-985d-0ed53be586ca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not Modified. A request to stop the container with the specified name or ID has already been initiated. To review the current state of your container, run `cf ic ps` or call the `GET /containers/json` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b47e2d62-395d-4737-9c73-8c6817a16053",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "65f18a1d-e9d5-4e62-8295-e1068ccc24e8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps` or call the `GET /containers/json` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "340e4865-bd57-4009-9e21-3afe52766c9b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16832d84-ca4a-4577-a540-3d3cf97abf6d",
+      "documentation": "Unpause a single container",
+      "method": "post",
+      "endpoint": "containers/:name_or_id/unpause",
+      "responses": [
+        {
+          "uuid": "13586951-c8a4-4d18-8766-fbf369570c3b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The unpausing of all processes inside the container has been initiated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9c01de98-a50f-41f7-8d4b-b1680c5ec503",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f9bb92f-ab2d-49d8-8430-1dc52a305930",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The container with the specified name or ID could not be found. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the ID and name of your container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "984a1eef-cfac-49bb-bf41-0b31cda50776",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cc03af1b-24f8-435b-9c80-257685a59713",
+      "documentation": "List all Docker images that are available in your private Bluemix registry.",
+      "method": "get",
+      "endpoint": "images/json",
+      "responses": [
+        {
+          "uuid": "012b7bdb-cc52-41f7-bb12-c54305e1497d",
+          "body": "{\n  \"Created\": {{faker 'datatype.float'}},\n  \"Id\": \"\",\n  \"Image\": \"\",\n  \"RepoTags\": [\n    \"\"\n  ],\n  \"Size\": {{faker 'datatype.number'}},\n  \"VirtualSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of all available Docker images in the private Bluemix registry is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d5a640dd-fe04-4e52-a5c0-351dddc1d600",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c63f30f-0779-4fd6-aaca-edf2853d3731",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9cfeb6e-633a-4e89-87f8-ac1233e5265d",
+      "documentation": "Remove a Docker image.",
+      "method": "delete",
+      "endpoint": "images/:id",
+      "responses": [
+        {
+          "uuid": "d00ab85c-8681-438a-a275-f4e52b9a982b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The image was successfully removed from your private Bluemix registry.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c723e7f0-7437-4842-994d-4d6067ee8a38",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8a369b33-c5ec-4951-bf8a-f9f16fbc3826",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The specified Docker image ID could not be found. Run `cf ic images` or call the `GET /images/json` endpoint to list all images in your private Bluemix registry. Note the ID of the image that you want to delete.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5654809b-b221-43f7-987c-449d19b3be6d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "942c0ca4-99fa-4787-9224-e8fcb2d1611c",
+      "documentation": "Inspect a Docker image in private Bluemix registry",
+      "method": "get",
+      "endpoint": "images/:name_or_id/json",
+      "responses": [
+        {
+          "uuid": "d04f2440-836d-4b43-8327-29062893105b",
+          "body": "{\n  \"Architecture\": \"\",\n  \"Config\": {\n    \"ArgsEscaped\": {{faker 'datatype.boolean'}},\n    \"AttachStderr\": {{faker 'datatype.boolean'}},\n    \"AttachStdin\": {{faker 'datatype.boolean'}},\n    \"AttachStdout\": {{faker 'datatype.boolean'}},\n    \"Cmd\": [\n      \"\"\n    ],\n    \"Domainmame\": \"\",\n    \"Entrypoint\": \"\",\n    \"Env\": [\n      \"\"\n    ],\n    \"ExposedPorts\": [\n      \"\"\n    ],\n    \"Hostname\": \"\",\n    \"Image\": \"\",\n    \"Labels\": [\n      \"\"\n    ],\n    \"OnBuild\": [\n      \"\"\n    ],\n    \"OpenStdin\": {{faker 'datatype.boolean'}},\n    \"StdinOnce\": {{faker 'datatype.boolean'}},\n    \"Tty\": {{faker 'datatype.boolean'}},\n    \"User\": \"\",\n    \"Volumes\": \"\",\n    \"WorkingDir\": \"\"\n  },\n  \"Container\": \"\",\n  \"ContainerConfig\": {\n    \"ArgsEscaped\": {{faker 'datatype.boolean'}},\n    \"AttachStderr\": \"\",\n    \"AttachStdin\": \"\",\n    \"AttachStdout\": \"\",\n    \"Cmd\": [\n      \"\"\n    ],\n    \"Domainname\": \"\",\n    \"Env\": [\n      \"\"\n    ],\n    \"ExposedPorts\": [\n      \"\"\n    ],\n    \"Hostname\": \"\",\n    \"Image\": \"\",\n    \"ImageArchitecture\": \"\",\n    \"Labels\": [\n      \"\"\n    ],\n    \"Memory\": {{faker 'datatype.number'}},\n    \"MemorySwap\": \"\",\n    \"OpenStdin\": \"\",\n    \"PortSpecs\": \"\",\n    \"StdinOnce\": \"\",\n    \"Tty\": \"\",\n    \"User\": \"\",\n    \"VCPU\": {{faker 'datatype.number'}},\n    \"VolumesFrom\": \"\",\n    \"WorkingDir\": \"\"\n  },\n  \"Created\": \"\",\n  \"DockerVersion\": \"\",\n  \"Id\": \"\",\n  \"Os\": \"\",\n  \"Parent\": \"\",\n  \"Size\": {{faker 'datatype.number'}},\n  \"Tag\": \"\",\n  \"Throwaway\": \"\",\n  \"VirtualSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of details about the container image is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3d274b64-26fa-4621-9108-dc43682a7473",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3bf658d-d7c1-4fd0-a1a0-67b8b0f6b0e0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified image name or ID could not be found. Run `cf ic images` or call the `GET /images/json` endpoint to retrieve the name or ID of your image.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "98c034ec-bf01-48e5-b67c-b8410375cf9f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "078e8c01-eda4-49cd-b4d0-8b1b23522847",
+      "documentation": "Retrieve the namespace of an organization.",
+      "method": "get",
+      "endpoint": "registry/namespaces",
+      "responses": [
+        {
+          "uuid": "cfed3047-5d78-437f-ba00-6583ab351c80",
+          "body": "{\n  \"namespace\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The namespace of the organization is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a18d50b1-8aae-4485-9c97-a1dfecd7415b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c3c77fa8-3708-4bad-b900-f9aced7f73e5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. A namespace could not be found for the organization. Set a namespace by running `cf ic namespace set <namespace>`, or calling the `PUT /registry/namespaces/<namespace>` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c8b69fc-f1d5-46bb-94cb-00b313b0a515",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4418b55c-3663-44f9-bfce-9aa837691dbf",
+      "documentation": "Check the availability of a namespace",
+      "method": "get",
+      "endpoint": "registry/namespaces/:namespace",
+      "responses": [
+        {
+          "uuid": "3f3fa6bf-2345-4bbd-8af6-49ffdf909aca",
+          "body": "{\n  \"namespace\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The namespace that you chose is already used in Bluemix. Choose another namespace and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fa680eff-3097-4452-926e-435303df94ed",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3c344c0-293a-426b-ba1a-4cca5eee1ab1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The namespace that you chose does not exist. You can use it to set it for your organization by running `cf ic namespace set <namespace>`, or calling the `PUT /registry/namespaces/<namespace>` endpoint.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8aefe332-af37-4122-8dcc-8e4681782e02",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "588817f4-6534-47c0-b166-83b42d20c078",
+      "documentation": "Set a namespace for your private Bluemix registry.",
+      "method": "put",
+      "endpoint": "registry/namespaces/:namespace",
+      "responses": [
+        {
+          "uuid": "09aba2dc-d258-4a0d-a428-89a7011d5528",
+          "body": "{\n  \"namespace\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "OK. The namespace is successfully set for your organization.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8ff79b61-62f1-4c4c-88b4-67227fb2a92f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The specified namespace does not meet the Bluemix namespace requirements. The namespace can be 4-30 characters long, must start with at least one letter or number, and can only contain lowercase letters, numbers or underscores (_). Verify your namespace and re-run the API request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9759214c-c2e5-4a31-b89c-38f9f9f45a59",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "895dd2b7-d38a-408b-8587-a6358f8ce4e2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. The namespace that you chose either already exists in Bluemix, or a namespace is already been set for your organization. Run `cf ic namespace get` or call the `GET /registry/namespaces` endpoint to retrieve your namespace information. If a namespace is not yet set for your organization, choose another name. You can test the namespace by calling the `GET /registry/namespaces/<namespace>` endpoint. Re-run the API call with the updated namespace.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0f7b8bb8-df94-448c-871f-d2287e4243d6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "73cdb585-532a-42bd-a26f-3b8e7da743bb",
+      "documentation": "Retrieve the TLS Certificate",
+      "method": "get",
+      "endpoint": "tlskey",
+      "responses": [
+        {
+          "uuid": "c08d48cf-892c-482e-b5b3-d54f784b3a4a",
+          "body": "{\n  \"ca_cert\": \"\",\n  \"server_cert\": \"\",\n  \"user_cert\": \"\",\n  \"user_key\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok. A list of certificates is returned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "68bbd7db-e965-4c7c-bb5e-29365f35a1c3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "de290384-5f0e-4ed8-b228-b97667681d48",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c6de3ed-79a0-4c61-a79e-00453fe80816",
+      "documentation": "Refresh the TLS Certificate",
+      "method": "put",
+      "endpoint": "tlskey/refresh",
+      "responses": [
+        {
+          "uuid": "48d416ef-633e-4a4e-8939-2ed54491a613",
+          "body": "{\n  \"ca_cert\": \"\",\n  \"reg_host\": \"\",\n  \"server_cert\": \"\",\n  \"user_cert\": \"\",\n  \"user_key\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Ok. A list of updated certificates is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5db077eb-fee0-495b-8a68-54a5b5cfd0c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27a7ea9c-f023-4da9-b2a9-04e830c0ab56",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d24c5bf8-f28e-4e6f-a8bf-821e97ba145c",
+      "documentation": "Create a volume in a space",
+      "method": "post",
+      "endpoint": "volumes/create",
+      "responses": [
+        {
+          "uuid": "e7131040-0cfd-479a-9343-89f17f74139a",
+          "body": "{\n  \"fsID\": \"\",\n  \"hostPath\": \"\",\n  \"otherSpaceVisibility\": [\n    \"\"\n  ],\n  \"spaceGuid\": \"\",\n  \"volName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. Your volume was successfully created in your space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ce485ce6-ca2b-4a78-9aa4-c5bfc1b44711",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. Your request could not be processed due to missing parameter. Make sure to enter a name for your volume as part of your query and re-run the request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ffc00c72-9f8c-466d-b190-96e9c84f6685",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc1f2db8-7207-4195-a113-e63ce6a996f7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. A volume with the same name already exists. Choose a new name for your volume and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5f886db6-2db1-4248-940a-556abdcc6f96",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "300d6069-e426-48b1-8ce6-428823b351f5",
+      "documentation": "Create a file share in a space",
+      "method": "post",
+      "endpoint": "volumes/fs/create",
+      "responses": [
+        {
+          "uuid": "0383d516-6f05-4f4d-a292-5531b91bda8b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. A new fileshare has been created. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c1142aa0-16e9-45d2-99d5-55f129af8e0c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The input parameter in the request body are either incomplete or in the wrong format. Be sure to include the file share name, size and number of IOPS as part of your request in JSON format.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "14471193-0a9f-4fe9-a399-d2ea4d4d3ede",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID. If your access token and space ID are correct, verify that you have been granted organization manager rights. Only organization managers can create file shares in a space.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ff5b95d5-212b-4510-8372-e6c4b91a45d6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict. A file share with the same name already exists. Run `cf ic volume fs-list` or call the `GET /volumes/fs/json` API endpoint to get a list with all available file shares in this space. Choose a new name for your file share and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8adbfce5-c023-4619-aed6-bb182cdf9ddb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58545387-4f68-4a22-be1b-4081f7c1da20",
+      "documentation": "List available file share sizes",
+      "method": "get",
+      "endpoint": "volumes/fs/flavors/json",
+      "responses": [
+        {
+          "uuid": "a54586ce-9434-496a-83f1-1769ce4d0ca6",
+          "body": "[\n  {{faker 'datatype.number'}}\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of available file share sizes in gigabyte is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8ca243a3-93cc-43ed-a571-d51beef5a65e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3278d66-e8d9-41d2-8594-e1482dcc5861",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9aaeb160-7241-4093-ad7c-d124045f2c63",
+      "documentation": "List available file shares in a space",
+      "method": "get",
+      "endpoint": "volumes/fs/json",
+      "responses": [
+        {
+          "uuid": "bfb2ea0f-4bf5-43f7-86c2-f19b9664dbaf",
+          "body": "[\n  {\n    \"capacity\": {{faker 'datatype.number'}},\n    \"created_date\": \"\",\n    \"fsName\": \"\",\n    \"hostPath\": \"\",\n    \"iops\": {{faker 'datatype.float'}},\n    \"iopsTotal\": {{faker 'datatype.number'}},\n    \"orderId\": \"\",\n    \"provider\": \"\",\n    \"spaceGuid\": \"\",\n    \"state\": \"\",\n    \"updated_date\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list of available file shares is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d0be3a95-3d47-4207-a42e-be10d6b1c328",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41d4c7a9-b450-4e6e-a534-d63132495ecc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ee6b060c-1969-4e61-a1a6-607f34e19ddb",
+      "documentation": "Delete a file share",
+      "method": "delete",
+      "endpoint": "volumes/fs/:name",
+      "responses": [
+        {
+          "uuid": "21e59621-1daf-41f9-9744-2482d360e7f1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. The file share was successfully deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d7c0ae30-b320-454d-bba0-51738ee771b1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The specified file share could not be deleted as it has mounted volumes. Run `cf ic volume rm VOLNAME` or call the `DELETE /volumes/{name}` API endpoint to delete the volume. After all mounted volumes are deleted, delete the file share. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5289bd37-cb3d-4a2f-ab4f-d38dbcd13ff2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77d36c91-6055-4bae-ae07-ac2b061d7cd0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified file share name could not be found. Run `cf ic volume fs-list` or call the `GET /volumes/fs/json` endpoint to retrieve a list of available file shares in your space. Enter the name for your file share and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b7705452-6854-439a-972b-1a33b8f83fd1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6c381b88-4452-4d88-9a8d-cbe05dfaae12",
+      "documentation": "Inspect a file share",
+      "method": "get",
+      "endpoint": "volumes/fs/:name/json",
+      "responses": [
+        {
+          "uuid": "e5768970-678a-4596-984d-1b925d6f71b1",
+          "body": "[\n  {\n    \"fs\": [\n      {\n        \"capacity\": {{faker 'datatype.number'}},\n        \"created_date\": \"\",\n        \"fsName\": \"\",\n        \"hostPath\": \"\",\n        \"iops\": {{faker 'datatype.float'}},\n        \"iopsTotal\": {{faker 'datatype.number'}},\n        \"orderId\": \"\",\n        \"provider\": \"\",\n        \"spaceGuid\": \"\",\n        \"state\": \"\",\n        \"updated_date\": \"\"\n      }\n    ],\n    \"fsUsage\": [\n      {\n        \"available_space\": \"\",\n        \"total_space\": \"\",\n        \"used_space\": \"\",\n        \"used_space_percentage\": \"\"\n      }\n    ],\n    \"volnames\": [\n      \"\"\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Detailed information about a file share is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c20e179a-d955-475a-a8fb-3b4857820685",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7895c030-55ff-4a8a-9a59-42762b792725",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified file share name could not be found. Run `cf ic volume fs-list` or call the `GET /volumes/fs/json` endpoint to retrieve a list of available file shares in your space. Enter the name for your file share and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "64c2d503-3ce5-47ae-b01c-9a519d4a7346",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7de95d45-c4aa-4ef0-9a6e-ece421b5a89a",
+      "documentation": "List all volumes for a space",
+      "method": "get",
+      "endpoint": "volumes/json",
+      "responses": [
+        {
+          "uuid": "81f255d3-4faf-4da8-ba89-bc7be7b31dd5",
+          "body": "[\n  {\n    \"fsID\": \"\",\n    \"hostPath\": \"\",\n    \"otherSpaceVisibility\": [\n      \"\"\n    ],\n    \"spaceGuid\": \"\",\n    \"volName\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. A list containing all volumes of a given space is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "feb28df0-e324-4b09-8a70-575f4e500304",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "05c45abc-1f1d-4a4f-a455-46fdd302a893",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3477ab03-ad3f-4066-a257-4096281f71a3",
+      "documentation": "Delete a volume",
+      "method": "delete",
+      "endpoint": "volumes/:name",
+      "responses": [
+        {
+          "uuid": "cdee4def-a5fe-4a9a-adda-9f4687043df0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content. Your request to delete the volume has successfully been processed. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6e0d99f4-0702-4eff-8646-40ed581dadbb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2a7cbb54-0a01-4762-bd1f-2cbb755dfce7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The volume could not be found. Verify that the name is correct by running the `cf ic volume list` command or by calling the `GET /volumes/json` endpoint. Enter the correct name and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b610b70c-4479-42e8-a91b-668bf3f12efb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e868067-1614-495e-ab28-582208aa671b",
+      "documentation": "Share a volume with another space",
+      "method": "post",
+      "endpoint": "volumes/:name",
+      "responses": [
+        {
+          "uuid": "d83de7c4-7ff6-47c3-95ee-dee13670bb38",
+          "body": "{\n  \"fsID\": \"\",\n  \"hostPath\": \"\",\n  \"otherSpaceVisibility\": [\n    \"\"\n  ],\n  \"spaceGuid\": \"\",\n  \"volName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok. A list with detailed information about the volume is returned. Review the changes in the `otherSpaceVisibility` property.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "eebad4e8-1908-4d3d-92ff-c02ce32ae69c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. The data that you entered in the request body are either incomplete or in the wrong format. Be sure to include either the space ID where you want to provision your volume, or the space ID from which you want to unprovision your volume in JSON format. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc2742e4-bcb2-489e-aade-d545eab75cea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3f71b0c0-68ef-47b6-a311-f937ad6e5e6b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The specified volume could not be found. Verify that the name is correct by running the `cf ic volume list` command or by calling the `GET /volumes/json` endpoint. Enter the correct name and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b8e490f6-8d3d-4dc7-9be0-d3e07638ff09",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9d5c197-222a-4fed-8672-cf044c95281d",
+      "documentation": "Retrieve detailed information about a volume. ",
+      "method": "get",
+      "endpoint": "volumes/:name/json",
+      "responses": [
+        {
+          "uuid": "9f3b2e4a-7801-414d-8eef-48c24ef956c3",
+          "body": "{\n  \"fsID\": \"\",\n  \"hostPath\": \"\",\n  \"otherSpaceVisibility\": [\n    \"\"\n  ],\n  \"spaceGuid\": \"\",\n  \"volName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok. A list with detailed information about the volume is returned. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8861035d-7ebf-4462-8fee-f46eef631462",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failed. The Access Token is invalid, or the Space ID that you entered could not be found. Run `cf oauth-token` to retrieve your access token. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "05fdd732-1ed6-47cc-ac1a-a46f5df005a3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found. The specified volume could not be found. Verify that the name is correct by running the `cf ic volume list` command or by calling the `GET /volumes/json` endpoint. Enter the correct name and re-run the API call.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "823e1adc-ce30-4aba-a87b-a2ab0a8bbaad",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error. The IBM Containers service is currently unavailable. Your request could not be processed. Please wait a few minutes and try again. If you still encounter this problem, note the incident ID and contact the IBM Bluemix support. ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

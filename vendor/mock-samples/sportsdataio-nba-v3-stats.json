@@ -1,0 +1,966 @@
+{
+  "uuid": "fd8c3b1e-fa2c-4cc6-a058-3f9a094870f0",
+  "lastMigration": 24,
+  "name": "NBA v3 Stats",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "ae230e42-4091-4ca2-b138-9e5db30b9856",
+      "documentation": "All-Stars",
+      "method": "get",
+      "endpoint": ":format/AllStars/:season",
+      "responses": [
+        {
+          "uuid": "d2bb92cc-8bdb-4d52-985d-8263a8497084",
+          "body": "[\n  {\n    \"Name\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "93a4ae55-cb3b-453c-b7a5-8e6430d6b196",
+      "documentation": "Teams (All)",
+      "method": "get",
+      "endpoint": ":format/AllTeams",
+      "responses": [
+        {
+          "uuid": "eabf19f1-8b7a-4169-92f7-0f0374b19ed2",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"City\": \"\",\n    \"Conference\": \"\",\n    \"Division\": \"\",\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"Key\": \"\",\n    \"LeagueID\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"NbaDotComTeamID\": {{faker 'datatype.number'}},\n    \"PrimaryColor\": \"\",\n    \"QuaternaryColor\": \"\",\n    \"SecondaryColor\": \"\",\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"TertiaryColor\": \"\",\n    \"WikipediaLogoUrl\": \"\",\n    \"WikipediaWordMarkUrl\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6b38ed7-bb14-4984-a07c-bc182950dfdf",
+      "documentation": "Are Games In Progress",
+      "method": "get",
+      "endpoint": ":format/AreAnyGamesInProgress",
+      "responses": [
+        {
+          "uuid": "f9c12f50-6363-49ec-a646-743a1fb4ef53",
+          "body": "{{faker 'datatype.boolean'}}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6fa25b0a-af74-444f-b011-e50b10f9fdc7",
+      "documentation": "Box Score",
+      "method": "get",
+      "endpoint": ":format/BoxScore/:gameid",
+      "responses": [
+        {
+          "uuid": "80da847e-6d34-4a93-a1b4-62bd3c65c334",
+          "body": "{\n  \"Game\": {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayRotationNumber\": {{faker 'datatype.number'}},\n    \"AwayTeam\": \"\",\n    \"AwayTeamID\": {{faker 'datatype.number'}},\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"Channel\": \"\",\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"GameEndDateTime\": \"\",\n    \"GameID\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeRotationNumber\": {{faker 'datatype.number'}},\n    \"HomeTeam\": \"\",\n    \"HomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"LastPlay\": \"\",\n    \"NeutralVenue\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"Quarter\": \"\",\n    \"Quarters\": [\n      {\n        \"AwayScore\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"HomeScore\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"QuarterID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n    \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\"\n  },\n  \"PlayerGames\": [\n    {\n      \"Assists\": {{faker 'datatype.number'}},\n      \"AssistsPercentage\": {{faker 'datatype.number'}},\n      \"BlockedShots\": {{faker 'datatype.number'}},\n      \"BlocksPercentage\": {{faker 'datatype.number'}},\n      \"DateTime\": \"\",\n      \"Day\": \"\",\n      \"DefensiveRebounds\": {{faker 'datatype.number'}},\n      \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n      \"DoubleDoubles\": {{faker 'datatype.number'}},\n      \"DraftKingsPosition\": \"\",\n      \"DraftKingsSalary\": {{faker 'datatype.number'}},\n      \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n      \"FanDuelPosition\": \"\",\n      \"FanDuelSalary\": {{faker 'datatype.number'}},\n      \"FantasyDataSalary\": {{faker 'datatype.number'}},\n      \"FantasyDraftPosition\": \"\",\n      \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n      \"FantasyPoints\": {{faker 'datatype.number'}},\n      \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n      \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n      \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n      \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n      \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n      \"FieldGoalsMade\": {{faker 'datatype.number'}},\n      \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n      \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n      \"FreeThrowsMade\": {{faker 'datatype.number'}},\n      \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n      \"GameID\": {{faker 'datatype.number'}},\n      \"Games\": {{faker 'datatype.number'}},\n      \"GlobalGameID\": {{faker 'datatype.number'}},\n      \"GlobalOpponentID\": {{faker 'datatype.number'}},\n      \"GlobalTeamID\": {{faker 'datatype.number'}},\n      \"HomeOrAway\": \"\",\n      \"InjuryBodyPart\": \"\",\n      \"InjuryNotes\": \"\",\n      \"InjuryStartDate\": \"\",\n      \"InjuryStatus\": \"\",\n      \"IsClosed\": {{faker 'datatype.boolean'}},\n      \"IsGameOver\": {{faker 'datatype.boolean'}},\n      \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n      \"LineupStatus\": \"\",\n      \"Minutes\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"OffensiveRebounds\": {{faker 'datatype.number'}},\n      \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n      \"Opponent\": \"\",\n      \"OpponentID\": {{faker 'datatype.number'}},\n      \"OpponentPositionRank\": {{faker 'datatype.number'}},\n      \"OpponentRank\": {{faker 'datatype.number'}},\n      \"PersonalFouls\": {{faker 'datatype.number'}},\n      \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n      \"PlayerID\": {{faker 'datatype.number'}},\n      \"PlusMinus\": {{faker 'datatype.number'}},\n      \"Points\": {{faker 'datatype.number'}},\n      \"Position\": \"\",\n      \"Rebounds\": {{faker 'datatype.number'}},\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonType\": {{faker 'datatype.number'}},\n      \"Seconds\": {{faker 'datatype.number'}},\n      \"Started\": {{faker 'datatype.number'}},\n      \"StatID\": {{faker 'datatype.number'}},\n      \"Steals\": {{faker 'datatype.number'}},\n      \"StealsPercentage\": {{faker 'datatype.number'}},\n      \"Team\": \"\",\n      \"TeamID\": {{faker 'datatype.number'}},\n      \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n      \"ThreePointersMade\": {{faker 'datatype.number'}},\n      \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n      \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n      \"TripleDoubles\": {{faker 'datatype.number'}},\n      \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n      \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n      \"TurnOversPercentage\": {{faker 'datatype.number'}},\n      \"Turnovers\": {{faker 'datatype.number'}},\n      \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n      \"TwoPointersMade\": {{faker 'datatype.number'}},\n      \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"UsageRatePercentage\": {{faker 'datatype.number'}},\n      \"YahooPosition\": \"\",\n      \"YahooSalary\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"Quarters\": [\n    {\n      \"AwayScore\": {{faker 'datatype.number'}},\n      \"GameID\": {{faker 'datatype.number'}},\n      \"HomeScore\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"QuarterID\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"TeamGames\": [\n    {\n      \"Assists\": {{faker 'datatype.number'}},\n      \"AssistsPercentage\": {{faker 'datatype.number'}},\n      \"BlockedShots\": {{faker 'datatype.number'}},\n      \"BlocksPercentage\": {{faker 'datatype.number'}},\n      \"DateTime\": \"\",\n      \"Day\": \"\",\n      \"DefensiveRebounds\": {{faker 'datatype.number'}},\n      \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n      \"DoubleDoubles\": {{faker 'datatype.number'}},\n      \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n      \"FantasyPoints\": {{faker 'datatype.number'}},\n      \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n      \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n      \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n      \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n      \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n      \"FieldGoalsMade\": {{faker 'datatype.number'}},\n      \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n      \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n      \"FreeThrowsMade\": {{faker 'datatype.number'}},\n      \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n      \"GameID\": {{faker 'datatype.number'}},\n      \"Games\": {{faker 'datatype.number'}},\n      \"GlobalGameID\": {{faker 'datatype.number'}},\n      \"GlobalOpponentID\": {{faker 'datatype.number'}},\n      \"GlobalTeamID\": {{faker 'datatype.number'}},\n      \"HomeOrAway\": \"\",\n      \"IsClosed\": {{faker 'datatype.boolean'}},\n      \"IsGameOver\": {{faker 'datatype.boolean'}},\n      \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n      \"LineupStatus\": \"\",\n      \"Losses\": {{faker 'datatype.number'}},\n      \"Minutes\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"OffensiveRebounds\": {{faker 'datatype.number'}},\n      \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n      \"Opponent\": \"\",\n      \"OpponentID\": {{faker 'datatype.number'}},\n      \"PersonalFouls\": {{faker 'datatype.number'}},\n      \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n      \"PlusMinus\": {{faker 'datatype.number'}},\n      \"Points\": {{faker 'datatype.number'}},\n      \"Possessions\": {{faker 'datatype.number'}},\n      \"Rebounds\": {{faker 'datatype.number'}},\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonType\": {{faker 'datatype.number'}},\n      \"Seconds\": {{faker 'datatype.number'}},\n      \"StatID\": {{faker 'datatype.number'}},\n      \"Steals\": {{faker 'datatype.number'}},\n      \"StealsPercentage\": {{faker 'datatype.number'}},\n      \"Team\": \"\",\n      \"TeamID\": {{faker 'datatype.number'}},\n      \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n      \"ThreePointersMade\": {{faker 'datatype.number'}},\n      \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n      \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n      \"TripleDoubles\": {{faker 'datatype.number'}},\n      \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n      \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n      \"TurnOversPercentage\": {{faker 'datatype.number'}},\n      \"Turnovers\": {{faker 'datatype.number'}},\n      \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n      \"TwoPointersMade\": {{faker 'datatype.number'}},\n      \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"UsageRatePercentage\": {{faker 'datatype.number'}},\n      \"Wins\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "509da03e-fdab-4452-8ecf-86d9cf2be722",
+      "documentation": "Box Scores by Date",
+      "method": "get",
+      "endpoint": ":format/BoxScores/:date",
+      "responses": [
+        {
+          "uuid": "c2283637-919a-41a2-9ac8-7248b4ea5822",
+          "body": "[\n  {\n    \"Game\": {\n      \"Attendance\": {{faker 'datatype.number'}},\n      \"AwayRotationNumber\": {{faker 'datatype.number'}},\n      \"AwayTeam\": \"\",\n      \"AwayTeamID\": {{faker 'datatype.number'}},\n      \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"AwayTeamScore\": {{faker 'datatype.number'}},\n      \"Channel\": \"\",\n      \"DateTime\": \"\",\n      \"Day\": \"\",\n      \"GameEndDateTime\": \"\",\n      \"GameID\": {{faker 'datatype.number'}},\n      \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n      \"GlobalGameID\": {{faker 'datatype.number'}},\n      \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n      \"HomeRotationNumber\": {{faker 'datatype.number'}},\n      \"HomeTeam\": \"\",\n      \"HomeTeamID\": {{faker 'datatype.number'}},\n      \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"HomeTeamScore\": {{faker 'datatype.number'}},\n      \"IsClosed\": {{faker 'datatype.boolean'}},\n      \"LastPlay\": \"\",\n      \"NeutralVenue\": {{faker 'datatype.boolean'}},\n      \"OverPayout\": {{faker 'datatype.number'}},\n      \"OverUnder\": {{faker 'datatype.number'}},\n      \"PointSpread\": {{faker 'datatype.number'}},\n      \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"Quarter\": \"\",\n      \"Quarters\": [\n        {\n          \"AwayScore\": {{faker 'datatype.number'}},\n          \"GameID\": {{faker 'datatype.number'}},\n          \"HomeScore\": {{faker 'datatype.number'}},\n          \"Name\": \"\",\n          \"Number\": {{faker 'datatype.number'}},\n          \"QuarterID\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonType\": {{faker 'datatype.number'}},\n      \"StadiumID\": {{faker 'datatype.number'}},\n      \"Status\": \"\",\n      \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n      \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n      \"UnderPayout\": {{faker 'datatype.number'}},\n      \"Updated\": \"\"\n    },\n    \"PlayerGames\": [\n      {\n        \"Assists\": {{faker 'datatype.number'}},\n        \"AssistsPercentage\": {{faker 'datatype.number'}},\n        \"BlockedShots\": {{faker 'datatype.number'}},\n        \"BlocksPercentage\": {{faker 'datatype.number'}},\n        \"DateTime\": \"\",\n        \"Day\": \"\",\n        \"DefensiveRebounds\": {{faker 'datatype.number'}},\n        \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"DoubleDoubles\": {{faker 'datatype.number'}},\n        \"DraftKingsPosition\": \"\",\n        \"DraftKingsSalary\": {{faker 'datatype.number'}},\n        \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FanDuelPosition\": \"\",\n        \"FanDuelSalary\": {{faker 'datatype.number'}},\n        \"FantasyDataSalary\": {{faker 'datatype.number'}},\n        \"FantasyDraftPosition\": \"\",\n        \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n        \"FantasyPoints\": {{faker 'datatype.number'}},\n        \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n        \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n        \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n        \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n        \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n        \"FieldGoalsMade\": {{faker 'datatype.number'}},\n        \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n        \"FreeThrowsMade\": {{faker 'datatype.number'}},\n        \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"Games\": {{faker 'datatype.number'}},\n        \"GlobalGameID\": {{faker 'datatype.number'}},\n        \"GlobalOpponentID\": {{faker 'datatype.number'}},\n        \"GlobalTeamID\": {{faker 'datatype.number'}},\n        \"HomeOrAway\": \"\",\n        \"InjuryBodyPart\": \"\",\n        \"InjuryNotes\": \"\",\n        \"InjuryStartDate\": \"\",\n        \"InjuryStatus\": \"\",\n        \"IsClosed\": {{faker 'datatype.boolean'}},\n        \"IsGameOver\": {{faker 'datatype.boolean'}},\n        \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n        \"LineupStatus\": \"\",\n        \"Minutes\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"OffensiveRebounds\": {{faker 'datatype.number'}},\n        \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"Opponent\": \"\",\n        \"OpponentID\": {{faker 'datatype.number'}},\n        \"OpponentPositionRank\": {{faker 'datatype.number'}},\n        \"OpponentRank\": {{faker 'datatype.number'}},\n        \"PersonalFouls\": {{faker 'datatype.number'}},\n        \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n        \"PlayerID\": {{faker 'datatype.number'}},\n        \"PlusMinus\": {{faker 'datatype.number'}},\n        \"Points\": {{faker 'datatype.number'}},\n        \"Position\": \"\",\n        \"Rebounds\": {{faker 'datatype.number'}},\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonType\": {{faker 'datatype.number'}},\n        \"Seconds\": {{faker 'datatype.number'}},\n        \"Started\": {{faker 'datatype.number'}},\n        \"StatID\": {{faker 'datatype.number'}},\n        \"Steals\": {{faker 'datatype.number'}},\n        \"StealsPercentage\": {{faker 'datatype.number'}},\n        \"Team\": \"\",\n        \"TeamID\": {{faker 'datatype.number'}},\n        \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n        \"ThreePointersMade\": {{faker 'datatype.number'}},\n        \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n        \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n        \"TripleDoubles\": {{faker 'datatype.number'}},\n        \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n        \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n        \"TurnOversPercentage\": {{faker 'datatype.number'}},\n        \"Turnovers\": {{faker 'datatype.number'}},\n        \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n        \"TwoPointersMade\": {{faker 'datatype.number'}},\n        \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n        \"Updated\": \"\",\n        \"UsageRatePercentage\": {{faker 'datatype.number'}},\n        \"YahooPosition\": \"\",\n        \"YahooSalary\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Quarters\": [\n      {\n        \"AwayScore\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"HomeScore\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"QuarterID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"TeamGames\": [\n      {\n        \"Assists\": {{faker 'datatype.number'}},\n        \"AssistsPercentage\": {{faker 'datatype.number'}},\n        \"BlockedShots\": {{faker 'datatype.number'}},\n        \"BlocksPercentage\": {{faker 'datatype.number'}},\n        \"DateTime\": \"\",\n        \"Day\": \"\",\n        \"DefensiveRebounds\": {{faker 'datatype.number'}},\n        \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"DoubleDoubles\": {{faker 'datatype.number'}},\n        \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FantasyPoints\": {{faker 'datatype.number'}},\n        \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n        \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n        \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n        \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n        \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n        \"FieldGoalsMade\": {{faker 'datatype.number'}},\n        \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n        \"FreeThrowsMade\": {{faker 'datatype.number'}},\n        \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"Games\": {{faker 'datatype.number'}},\n        \"GlobalGameID\": {{faker 'datatype.number'}},\n        \"GlobalOpponentID\": {{faker 'datatype.number'}},\n        \"GlobalTeamID\": {{faker 'datatype.number'}},\n        \"HomeOrAway\": \"\",\n        \"IsClosed\": {{faker 'datatype.boolean'}},\n        \"IsGameOver\": {{faker 'datatype.boolean'}},\n        \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n        \"LineupStatus\": \"\",\n        \"Losses\": {{faker 'datatype.number'}},\n        \"Minutes\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"OffensiveRebounds\": {{faker 'datatype.number'}},\n        \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"Opponent\": \"\",\n        \"OpponentID\": {{faker 'datatype.number'}},\n        \"PersonalFouls\": {{faker 'datatype.number'}},\n        \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n        \"PlusMinus\": {{faker 'datatype.number'}},\n        \"Points\": {{faker 'datatype.number'}},\n        \"Possessions\": {{faker 'datatype.number'}},\n        \"Rebounds\": {{faker 'datatype.number'}},\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonType\": {{faker 'datatype.number'}},\n        \"Seconds\": {{faker 'datatype.number'}},\n        \"StatID\": {{faker 'datatype.number'}},\n        \"Steals\": {{faker 'datatype.number'}},\n        \"StealsPercentage\": {{faker 'datatype.number'}},\n        \"Team\": \"\",\n        \"TeamID\": {{faker 'datatype.number'}},\n        \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n        \"ThreePointersMade\": {{faker 'datatype.number'}},\n        \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n        \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n        \"TripleDoubles\": {{faker 'datatype.number'}},\n        \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n        \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n        \"TurnOversPercentage\": {{faker 'datatype.number'}},\n        \"Turnovers\": {{faker 'datatype.number'}},\n        \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n        \"TwoPointersMade\": {{faker 'datatype.number'}},\n        \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n        \"Updated\": \"\",\n        \"UsageRatePercentage\": {{faker 'datatype.number'}},\n        \"Wins\": {{faker 'datatype.number'}}\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4e027916-728b-4630-a406-e6f0582cba4b",
+      "documentation": "Box Scores by Date Delta",
+      "method": "get",
+      "endpoint": ":format/BoxScoresDelta/:date/:minutes",
+      "responses": [
+        {
+          "uuid": "ec42d7fc-61c1-47a1-af25-ab3af46b60a8",
+          "body": "[\n  {\n    \"Game\": {\n      \"Attendance\": {{faker 'datatype.number'}},\n      \"AwayRotationNumber\": {{faker 'datatype.number'}},\n      \"AwayTeam\": \"\",\n      \"AwayTeamID\": {{faker 'datatype.number'}},\n      \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"AwayTeamScore\": {{faker 'datatype.number'}},\n      \"Channel\": \"\",\n      \"DateTime\": \"\",\n      \"Day\": \"\",\n      \"GameEndDateTime\": \"\",\n      \"GameID\": {{faker 'datatype.number'}},\n      \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n      \"GlobalGameID\": {{faker 'datatype.number'}},\n      \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n      \"HomeRotationNumber\": {{faker 'datatype.number'}},\n      \"HomeTeam\": \"\",\n      \"HomeTeamID\": {{faker 'datatype.number'}},\n      \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"HomeTeamScore\": {{faker 'datatype.number'}},\n      \"IsClosed\": {{faker 'datatype.boolean'}},\n      \"LastPlay\": \"\",\n      \"NeutralVenue\": {{faker 'datatype.boolean'}},\n      \"OverPayout\": {{faker 'datatype.number'}},\n      \"OverUnder\": {{faker 'datatype.number'}},\n      \"PointSpread\": {{faker 'datatype.number'}},\n      \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"Quarter\": \"\",\n      \"Quarters\": [\n        {\n          \"AwayScore\": {{faker 'datatype.number'}},\n          \"GameID\": {{faker 'datatype.number'}},\n          \"HomeScore\": {{faker 'datatype.number'}},\n          \"Name\": \"\",\n          \"Number\": {{faker 'datatype.number'}},\n          \"QuarterID\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonType\": {{faker 'datatype.number'}},\n      \"StadiumID\": {{faker 'datatype.number'}},\n      \"Status\": \"\",\n      \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n      \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n      \"UnderPayout\": {{faker 'datatype.number'}},\n      \"Updated\": \"\"\n    },\n    \"PlayerGames\": [\n      {\n        \"Assists\": {{faker 'datatype.number'}},\n        \"AssistsPercentage\": {{faker 'datatype.number'}},\n        \"BlockedShots\": {{faker 'datatype.number'}},\n        \"BlocksPercentage\": {{faker 'datatype.number'}},\n        \"DateTime\": \"\",\n        \"Day\": \"\",\n        \"DefensiveRebounds\": {{faker 'datatype.number'}},\n        \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"DoubleDoubles\": {{faker 'datatype.number'}},\n        \"DraftKingsPosition\": \"\",\n        \"DraftKingsSalary\": {{faker 'datatype.number'}},\n        \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FanDuelPosition\": \"\",\n        \"FanDuelSalary\": {{faker 'datatype.number'}},\n        \"FantasyDataSalary\": {{faker 'datatype.number'}},\n        \"FantasyDraftPosition\": \"\",\n        \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n        \"FantasyPoints\": {{faker 'datatype.number'}},\n        \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n        \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n        \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n        \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n        \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n        \"FieldGoalsMade\": {{faker 'datatype.number'}},\n        \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n        \"FreeThrowsMade\": {{faker 'datatype.number'}},\n        \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"Games\": {{faker 'datatype.number'}},\n        \"GlobalGameID\": {{faker 'datatype.number'}},\n        \"GlobalOpponentID\": {{faker 'datatype.number'}},\n        \"GlobalTeamID\": {{faker 'datatype.number'}},\n        \"HomeOrAway\": \"\",\n        \"InjuryBodyPart\": \"\",\n        \"InjuryNotes\": \"\",\n        \"InjuryStartDate\": \"\",\n        \"InjuryStatus\": \"\",\n        \"IsClosed\": {{faker 'datatype.boolean'}},\n        \"IsGameOver\": {{faker 'datatype.boolean'}},\n        \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n        \"LineupStatus\": \"\",\n        \"Minutes\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"OffensiveRebounds\": {{faker 'datatype.number'}},\n        \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"Opponent\": \"\",\n        \"OpponentID\": {{faker 'datatype.number'}},\n        \"OpponentPositionRank\": {{faker 'datatype.number'}},\n        \"OpponentRank\": {{faker 'datatype.number'}},\n        \"PersonalFouls\": {{faker 'datatype.number'}},\n        \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n        \"PlayerID\": {{faker 'datatype.number'}},\n        \"PlusMinus\": {{faker 'datatype.number'}},\n        \"Points\": {{faker 'datatype.number'}},\n        \"Position\": \"\",\n        \"Rebounds\": {{faker 'datatype.number'}},\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonType\": {{faker 'datatype.number'}},\n        \"Seconds\": {{faker 'datatype.number'}},\n        \"Started\": {{faker 'datatype.number'}},\n        \"StatID\": {{faker 'datatype.number'}},\n        \"Steals\": {{faker 'datatype.number'}},\n        \"StealsPercentage\": {{faker 'datatype.number'}},\n        \"Team\": \"\",\n        \"TeamID\": {{faker 'datatype.number'}},\n        \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n        \"ThreePointersMade\": {{faker 'datatype.number'}},\n        \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n        \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n        \"TripleDoubles\": {{faker 'datatype.number'}},\n        \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n        \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n        \"TurnOversPercentage\": {{faker 'datatype.number'}},\n        \"Turnovers\": {{faker 'datatype.number'}},\n        \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n        \"TwoPointersMade\": {{faker 'datatype.number'}},\n        \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n        \"Updated\": \"\",\n        \"UsageRatePercentage\": {{faker 'datatype.number'}},\n        \"YahooPosition\": \"\",\n        \"YahooSalary\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Quarters\": [\n      {\n        \"AwayScore\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"HomeScore\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"QuarterID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"TeamGames\": [\n      {\n        \"Assists\": {{faker 'datatype.number'}},\n        \"AssistsPercentage\": {{faker 'datatype.number'}},\n        \"BlockedShots\": {{faker 'datatype.number'}},\n        \"BlocksPercentage\": {{faker 'datatype.number'}},\n        \"DateTime\": \"\",\n        \"Day\": \"\",\n        \"DefensiveRebounds\": {{faker 'datatype.number'}},\n        \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"DoubleDoubles\": {{faker 'datatype.number'}},\n        \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FantasyPoints\": {{faker 'datatype.number'}},\n        \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n        \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n        \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n        \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n        \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n        \"FieldGoalsMade\": {{faker 'datatype.number'}},\n        \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n        \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n        \"FreeThrowsMade\": {{faker 'datatype.number'}},\n        \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"Games\": {{faker 'datatype.number'}},\n        \"GlobalGameID\": {{faker 'datatype.number'}},\n        \"GlobalOpponentID\": {{faker 'datatype.number'}},\n        \"GlobalTeamID\": {{faker 'datatype.number'}},\n        \"HomeOrAway\": \"\",\n        \"IsClosed\": {{faker 'datatype.boolean'}},\n        \"IsGameOver\": {{faker 'datatype.boolean'}},\n        \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n        \"LineupStatus\": \"\",\n        \"Losses\": {{faker 'datatype.number'}},\n        \"Minutes\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"OffensiveRebounds\": {{faker 'datatype.number'}},\n        \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n        \"Opponent\": \"\",\n        \"OpponentID\": {{faker 'datatype.number'}},\n        \"PersonalFouls\": {{faker 'datatype.number'}},\n        \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n        \"PlusMinus\": {{faker 'datatype.number'}},\n        \"Points\": {{faker 'datatype.number'}},\n        \"Possessions\": {{faker 'datatype.number'}},\n        \"Rebounds\": {{faker 'datatype.number'}},\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonType\": {{faker 'datatype.number'}},\n        \"Seconds\": {{faker 'datatype.number'}},\n        \"StatID\": {{faker 'datatype.number'}},\n        \"Steals\": {{faker 'datatype.number'}},\n        \"StealsPercentage\": {{faker 'datatype.number'}},\n        \"Team\": \"\",\n        \"TeamID\": {{faker 'datatype.number'}},\n        \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n        \"ThreePointersMade\": {{faker 'datatype.number'}},\n        \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n        \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n        \"TripleDoubles\": {{faker 'datatype.number'}},\n        \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n        \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n        \"TurnOversPercentage\": {{faker 'datatype.number'}},\n        \"Turnovers\": {{faker 'datatype.number'}},\n        \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n        \"TwoPointersMade\": {{faker 'datatype.number'}},\n        \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n        \"Updated\": \"\",\n        \"UsageRatePercentage\": {{faker 'datatype.number'}},\n        \"Wins\": {{faker 'datatype.number'}}\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b91f4d41-7796-45ad-aa2e-d7a46e2b65f0",
+      "documentation": "Current Season",
+      "method": "get",
+      "endpoint": ":format/CurrentSeason",
+      "responses": [
+        {
+          "uuid": "1f8a6a8f-805e-4aa7-9712-6d2604ff08e2",
+          "body": "{\n  \"ApiSeason\": \"\",\n  \"Description\": \"\",\n  \"EndYear\": {{faker 'datatype.number'}},\n  \"PostSeasonStartDate\": \"\",\n  \"RegularSeasonStartDate\": \"\",\n  \"Season\": {{faker 'datatype.number'}},\n  \"SeasonType\": \"\",\n  \"StartYear\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bfda2780-3165-4fe4-bd6e-a9fdda5efaf4",
+      "documentation": "DFS Slates by Date",
+      "method": "get",
+      "endpoint": ":format/DfsSlatesByDate/:date",
+      "responses": [
+        {
+          "uuid": "89814a34-cbf5-4410-8215-473591ac7d37",
+          "body": "[\n  {\n    \"DfsSlateGames\": [\n      {\n        \"Game\": {\n          \"Attendance\": {{faker 'datatype.number'}},\n          \"AwayRotationNumber\": {{faker 'datatype.number'}},\n          \"AwayTeam\": \"\",\n          \"AwayTeamID\": {{faker 'datatype.number'}},\n          \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n          \"AwayTeamScore\": {{faker 'datatype.number'}},\n          \"Channel\": \"\",\n          \"DateTime\": \"\",\n          \"Day\": \"\",\n          \"GameEndDateTime\": \"\",\n          \"GameID\": {{faker 'datatype.number'}},\n          \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n          \"GlobalGameID\": {{faker 'datatype.number'}},\n          \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n          \"HomeRotationNumber\": {{faker 'datatype.number'}},\n          \"HomeTeam\": \"\",\n          \"HomeTeamID\": {{faker 'datatype.number'}},\n          \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n          \"HomeTeamScore\": {{faker 'datatype.number'}},\n          \"IsClosed\": {{faker 'datatype.boolean'}},\n          \"LastPlay\": \"\",\n          \"NeutralVenue\": {{faker 'datatype.boolean'}},\n          \"OverPayout\": {{faker 'datatype.number'}},\n          \"OverUnder\": {{faker 'datatype.number'}},\n          \"PointSpread\": {{faker 'datatype.number'}},\n          \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n          \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n          \"Quarter\": \"\",\n          \"Quarters\": [\n            {\n              \"AwayScore\": {{faker 'datatype.number'}},\n              \"GameID\": {{faker 'datatype.number'}},\n              \"HomeScore\": {{faker 'datatype.number'}},\n              \"Name\": \"\",\n              \"Number\": {{faker 'datatype.number'}},\n              \"QuarterID\": {{faker 'datatype.number'}}\n            }\n          ],\n          \"Season\": {{faker 'datatype.number'}},\n          \"SeasonType\": {{faker 'datatype.number'}},\n          \"StadiumID\": {{faker 'datatype.number'}},\n          \"Status\": \"\",\n          \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n          \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n          \"UnderPayout\": {{faker 'datatype.number'}},\n          \"Updated\": \"\"\n        },\n        \"GameID\": {{faker 'datatype.number'}},\n        \"OperatorGameID\": {{faker 'datatype.number'}},\n        \"RemovedByOperator\": {{faker 'datatype.boolean'}},\n        \"SlateGameID\": {{faker 'datatype.number'}},\n        \"SlateID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"DfsSlatePlayers\": [\n      {\n        \"OperatorPlayerID\": \"\",\n        \"OperatorPlayerName\": \"\",\n        \"OperatorPosition\": \"\",\n        \"OperatorRosterSlots\": [\n          \"\"\n        ],\n        \"OperatorSalary\": {{faker 'datatype.number'}},\n        \"OperatorSlatePlayerID\": \"\",\n        \"PlayerGameProjectionStatID\": {{faker 'datatype.number'}},\n        \"PlayerID\": {{faker 'datatype.number'}},\n        \"RemovedByOperator\": {{faker 'datatype.boolean'}},\n        \"SlateGameID\": {{faker 'datatype.number'}},\n        \"SlateID\": {{faker 'datatype.number'}},\n        \"SlatePlayerID\": {{faker 'datatype.number'}},\n        \"Team\": \"\",\n        \"TeamID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"IsMultiDaySlate\": {{faker 'datatype.boolean'}},\n    \"NumberOfGames\": {{faker 'datatype.number'}},\n    \"Operator\": \"\",\n    \"OperatorDay\": \"\",\n    \"OperatorGameType\": \"\",\n    \"OperatorName\": \"\",\n    \"OperatorSlateID\": {{faker 'datatype.number'}},\n    \"OperatorStartTime\": \"\",\n    \"RemovedByOperator\": {{faker 'datatype.boolean'}},\n    \"SalaryCap\": {{faker 'datatype.number'}},\n    \"SlateID\": {{faker 'datatype.number'}},\n    \"SlateRosterSlots\": [\n      \"\"\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "32fe97b6-e3cb-46ff-bf9b-5e5356659dd0",
+      "documentation": "Player Details by Free Agent",
+      "method": "get",
+      "endpoint": ":format/FreeAgents",
+      "responses": [
+        {
+          "uuid": "8529499e-9652-40c9-9a89-b55f4cc83674",
+          "body": "[\n  {\n    \"BirthCity\": \"\",\n    \"BirthCountry\": \"\",\n    \"BirthDate\": \"\",\n    \"BirthState\": \"\",\n    \"College\": \"\",\n    \"DepthChartOrder\": {{faker 'datatype.number'}},\n    \"DepthChartPosition\": \"\",\n    \"DraftKingsName\": \"\",\n    \"DraftKingsPlayerID\": {{faker 'datatype.number'}},\n    \"Experience\": {{faker 'datatype.number'}},\n    \"FanDuelName\": \"\",\n    \"FanDuelPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyAlarmPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyDraftName\": \"\",\n    \"FantasyDraftPlayerID\": {{faker 'datatype.number'}},\n    \"FirstName\": \"\",\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"Height\": {{faker 'datatype.number'}},\n    \"HighSchool\": \"\",\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"Jersey\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"NbaDotComPlayerID\": {{faker 'datatype.number'}},\n    \"PhotoUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"PositionCategory\": \"\",\n    \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n    \"RotoworldPlayerID\": {{faker 'datatype.number'}},\n    \"Salary\": {{faker 'datatype.number'}},\n    \"SportRadarPlayerID\": \"\",\n    \"SportsDataID\": \"\",\n    \"SportsDirectPlayerID\": {{faker 'datatype.number'}},\n    \"StatsPlayerID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n    \"UsaTodayHeadshotUpdated\": \"\",\n    \"UsaTodayHeadshotUrl\": \"\",\n    \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}},\n    \"XmlTeamPlayerID\": {{faker 'datatype.number'}},\n    \"YahooName\": \"\",\n    \"YahooPlayerID\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d0f305c9-eb85-4efd-92ee-f3cec4bfe3c0",
+      "documentation": "Schedules",
+      "method": "get",
+      "endpoint": ":format/Games/:season",
+      "responses": [
+        {
+          "uuid": "b456997f-efcf-40d3-824d-9600501905e4",
+          "body": "[\n  {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayRotationNumber\": {{faker 'datatype.number'}},\n    \"AwayTeam\": \"\",\n    \"AwayTeamID\": {{faker 'datatype.number'}},\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"Channel\": \"\",\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"GameEndDateTime\": \"\",\n    \"GameID\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeRotationNumber\": {{faker 'datatype.number'}},\n    \"HomeTeam\": \"\",\n    \"HomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"LastPlay\": \"\",\n    \"NeutralVenue\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"Quarter\": \"\",\n    \"Quarters\": [\n      {\n        \"AwayScore\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"HomeScore\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"QuarterID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n    \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77c66ef7-34a3-4e90-9422-5b4fb6571278",
+      "documentation": "Games by Date",
+      "method": "get",
+      "endpoint": ":format/GamesByDate/:date",
+      "responses": [
+        {
+          "uuid": "e829f3fc-c650-407c-b3ae-b33f45ee52a7",
+          "body": "[\n  {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayRotationNumber\": {{faker 'datatype.number'}},\n    \"AwayTeam\": \"\",\n    \"AwayTeamID\": {{faker 'datatype.number'}},\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"Channel\": \"\",\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"GameEndDateTime\": \"\",\n    \"GameID\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamID\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeRotationNumber\": {{faker 'datatype.number'}},\n    \"HomeTeam\": \"\",\n    \"HomeTeamID\": {{faker 'datatype.number'}},\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"LastPlay\": \"\",\n    \"NeutralVenue\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"PointSpreadAwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"PointSpreadHomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"Quarter\": \"\",\n    \"Quarters\": [\n      {\n        \"AwayScore\": {{faker 'datatype.number'}},\n        \"GameID\": {{faker 'datatype.number'}},\n        \"HomeScore\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"QuarterID\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"TimeRemainingMinutes\": {{faker 'datatype.number'}},\n    \"TimeRemainingSeconds\": {{faker 'datatype.number'}},\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3dcc8099-f68b-40c2-9b26-c12e1f75538a",
+      "documentation": "News",
+      "method": "get",
+      "endpoint": ":format/News",
+      "responses": [
+        {
+          "uuid": "17d57179-bdc2-4537-85b9-3b96aa3d66fb",
+          "body": "[\n  {\n    \"Author\": \"\",\n    \"Categories\": \"\",\n    \"Content\": \"\",\n    \"NewsID\": {{faker 'datatype.number'}},\n    \"OriginalSource\": \"\",\n    \"OriginalSourceUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlayerID2\": {{faker 'datatype.number'}},\n    \"Source\": \"\",\n    \"Team\": \"\",\n    \"Team2\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"TeamID2\": {{faker 'datatype.number'}},\n    \"TermsOfUse\": \"\",\n    \"TimeAgo\": \"\",\n    \"Title\": \"\",\n    \"Updated\": \"\",\n    \"Url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9024b0e-ca0b-43f8-913c-7ba61bf60b5d",
+      "documentation": "News by Date",
+      "method": "get",
+      "endpoint": ":format/NewsByDate/:date",
+      "responses": [
+        {
+          "uuid": "016ebf94-fbd5-4d72-a082-2148439ea472",
+          "body": "[\n  {\n    \"Author\": \"\",\n    \"Categories\": \"\",\n    \"Content\": \"\",\n    \"NewsID\": {{faker 'datatype.number'}},\n    \"OriginalSource\": \"\",\n    \"OriginalSourceUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlayerID2\": {{faker 'datatype.number'}},\n    \"Source\": \"\",\n    \"Team\": \"\",\n    \"Team2\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"TeamID2\": {{faker 'datatype.number'}},\n    \"TermsOfUse\": \"\",\n    \"TimeAgo\": \"\",\n    \"Title\": \"\",\n    \"Updated\": \"\",\n    \"Url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0499585e-b980-4388-a140-047d7b2ae05b",
+      "documentation": "News by Player",
+      "method": "get",
+      "endpoint": ":format/NewsByPlayerID/:playerid",
+      "responses": [
+        {
+          "uuid": "f57f70d5-57f6-46cb-8050-165c3e4f547d",
+          "body": "[\n  {\n    \"Author\": \"\",\n    \"Categories\": \"\",\n    \"Content\": \"\",\n    \"NewsID\": {{faker 'datatype.number'}},\n    \"OriginalSource\": \"\",\n    \"OriginalSourceUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlayerID2\": {{faker 'datatype.number'}},\n    \"Source\": \"\",\n    \"Team\": \"\",\n    \"Team2\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"TeamID2\": {{faker 'datatype.number'}},\n    \"TermsOfUse\": \"\",\n    \"TimeAgo\": \"\",\n    \"Title\": \"\",\n    \"Updated\": \"\",\n    \"Url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41a0a481-17be-47a1-9b1c-356702bdd064",
+      "documentation": "Player Details by Player",
+      "method": "get",
+      "endpoint": ":format/Player/:playerid",
+      "responses": [
+        {
+          "uuid": "60a9f082-33fd-46f2-afb2-f058238236d9",
+          "body": "{\n  \"BirthCity\": \"\",\n  \"BirthCountry\": \"\",\n  \"BirthDate\": \"\",\n  \"BirthState\": \"\",\n  \"College\": \"\",\n  \"DepthChartOrder\": {{faker 'datatype.number'}},\n  \"DepthChartPosition\": \"\",\n  \"DraftKingsName\": \"\",\n  \"DraftKingsPlayerID\": {{faker 'datatype.number'}},\n  \"Experience\": {{faker 'datatype.number'}},\n  \"FanDuelName\": \"\",\n  \"FanDuelPlayerID\": {{faker 'datatype.number'}},\n  \"FantasyAlarmPlayerID\": {{faker 'datatype.number'}},\n  \"FantasyDraftName\": \"\",\n  \"FantasyDraftPlayerID\": {{faker 'datatype.number'}},\n  \"FirstName\": \"\",\n  \"GlobalTeamID\": {{faker 'datatype.number'}},\n  \"Height\": {{faker 'datatype.number'}},\n  \"HighSchool\": \"\",\n  \"InjuryBodyPart\": \"\",\n  \"InjuryNotes\": \"\",\n  \"InjuryStartDate\": \"\",\n  \"InjuryStatus\": \"\",\n  \"Jersey\": {{faker 'datatype.number'}},\n  \"LastName\": \"\",\n  \"NbaDotComPlayerID\": {{faker 'datatype.number'}},\n  \"PhotoUrl\": \"\",\n  \"PlayerID\": {{faker 'datatype.number'}},\n  \"Position\": \"\",\n  \"PositionCategory\": \"\",\n  \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n  \"RotoworldPlayerID\": {{faker 'datatype.number'}},\n  \"Salary\": {{faker 'datatype.number'}},\n  \"SportRadarPlayerID\": \"\",\n  \"SportsDataID\": \"\",\n  \"SportsDirectPlayerID\": {{faker 'datatype.number'}},\n  \"StatsPlayerID\": {{faker 'datatype.number'}},\n  \"Status\": \"\",\n  \"Team\": \"\",\n  \"TeamID\": {{faker 'datatype.number'}},\n  \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n  \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n  \"UsaTodayHeadshotUpdated\": \"\",\n  \"UsaTodayHeadshotUrl\": \"\",\n  \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n  \"Weight\": {{faker 'datatype.number'}},\n  \"XmlTeamPlayerID\": {{faker 'datatype.number'}},\n  \"YahooName\": \"\",\n  \"YahooPlayerID\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2cfa6a42-31fe-4aa0-8a0a-5145a9f96f62",
+      "documentation": "Player Game Stats by Date",
+      "method": "get",
+      "endpoint": ":format/PlayerGameStatsByDate/:date",
+      "responses": [
+        {
+          "uuid": "a230452c-5944-4985-bdbf-6faf259e9003",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"AssistsPercentage\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"BlocksPercentage\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DefensiveRebounds\": {{faker 'datatype.number'}},\n    \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"DoubleDoubles\": {{faker 'datatype.number'}},\n    \"DraftKingsPosition\": \"\",\n    \"DraftKingsSalary\": {{faker 'datatype.number'}},\n    \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FanDuelPosition\": \"\",\n    \"FanDuelSalary\": {{faker 'datatype.number'}},\n    \"FantasyDataSalary\": {{faker 'datatype.number'}},\n    \"FantasyDraftPosition\": \"\",\n    \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n    \"FieldGoalsMade\": {{faker 'datatype.number'}},\n    \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n    \"FreeThrowsMade\": {{faker 'datatype.number'}},\n    \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n    \"GameID\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalOpponentID\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"HomeOrAway\": \"\",\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"IsGameOver\": {{faker 'datatype.boolean'}},\n    \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n    \"LineupStatus\": \"\",\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"OffensiveRebounds\": {{faker 'datatype.number'}},\n    \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"Opponent\": \"\",\n    \"OpponentID\": {{faker 'datatype.number'}},\n    \"OpponentPositionRank\": {{faker 'datatype.number'}},\n    \"OpponentRank\": {{faker 'datatype.number'}},\n    \"PersonalFouls\": {{faker 'datatype.number'}},\n    \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlusMinus\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"Rebounds\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Seconds\": {{faker 'datatype.number'}},\n    \"Started\": {{faker 'datatype.number'}},\n    \"StatID\": {{faker 'datatype.number'}},\n    \"Steals\": {{faker 'datatype.number'}},\n    \"StealsPercentage\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n    \"ThreePointersMade\": {{faker 'datatype.number'}},\n    \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n    \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n    \"TripleDoubles\": {{faker 'datatype.number'}},\n    \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n    \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n    \"TurnOversPercentage\": {{faker 'datatype.number'}},\n    \"Turnovers\": {{faker 'datatype.number'}},\n    \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n    \"TwoPointersMade\": {{faker 'datatype.number'}},\n    \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UsageRatePercentage\": {{faker 'datatype.number'}},\n    \"YahooPosition\": \"\",\n    \"YahooSalary\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7d51206d-71ae-43f6-b2b7-502b88426bb8",
+      "documentation": "Player Game Stats by Player",
+      "method": "get",
+      "endpoint": ":format/PlayerGameStatsByPlayer/:date/:playerid",
+      "responses": [
+        {
+          "uuid": "d2bab1f2-2a4b-4e98-9984-7b8ef430f904",
+          "body": "{\n  \"Assists\": {{faker 'datatype.number'}},\n  \"AssistsPercentage\": {{faker 'datatype.number'}},\n  \"BlockedShots\": {{faker 'datatype.number'}},\n  \"BlocksPercentage\": {{faker 'datatype.number'}},\n  \"DateTime\": \"\",\n  \"Day\": \"\",\n  \"DefensiveRebounds\": {{faker 'datatype.number'}},\n  \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n  \"DoubleDoubles\": {{faker 'datatype.number'}},\n  \"DraftKingsPosition\": \"\",\n  \"DraftKingsSalary\": {{faker 'datatype.number'}},\n  \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n  \"FanDuelPosition\": \"\",\n  \"FanDuelSalary\": {{faker 'datatype.number'}},\n  \"FantasyDataSalary\": {{faker 'datatype.number'}},\n  \"FantasyDraftPosition\": \"\",\n  \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n  \"FantasyPoints\": {{faker 'datatype.number'}},\n  \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n  \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n  \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n  \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n  \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n  \"FieldGoalsMade\": {{faker 'datatype.number'}},\n  \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n  \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n  \"FreeThrowsMade\": {{faker 'datatype.number'}},\n  \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n  \"GameID\": {{faker 'datatype.number'}},\n  \"Games\": {{faker 'datatype.number'}},\n  \"GlobalGameID\": {{faker 'datatype.number'}},\n  \"GlobalOpponentID\": {{faker 'datatype.number'}},\n  \"GlobalTeamID\": {{faker 'datatype.number'}},\n  \"HomeOrAway\": \"\",\n  \"InjuryBodyPart\": \"\",\n  \"InjuryNotes\": \"\",\n  \"InjuryStartDate\": \"\",\n  \"InjuryStatus\": \"\",\n  \"IsClosed\": {{faker 'datatype.boolean'}},\n  \"IsGameOver\": {{faker 'datatype.boolean'}},\n  \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n  \"LineupStatus\": \"\",\n  \"Minutes\": {{faker 'datatype.number'}},\n  \"Name\": \"\",\n  \"OffensiveRebounds\": {{faker 'datatype.number'}},\n  \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n  \"Opponent\": \"\",\n  \"OpponentID\": {{faker 'datatype.number'}},\n  \"OpponentPositionRank\": {{faker 'datatype.number'}},\n  \"OpponentRank\": {{faker 'datatype.number'}},\n  \"PersonalFouls\": {{faker 'datatype.number'}},\n  \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n  \"PlayerID\": {{faker 'datatype.number'}},\n  \"PlusMinus\": {{faker 'datatype.number'}},\n  \"Points\": {{faker 'datatype.number'}},\n  \"Position\": \"\",\n  \"Rebounds\": {{faker 'datatype.number'}},\n  \"Season\": {{faker 'datatype.number'}},\n  \"SeasonType\": {{faker 'datatype.number'}},\n  \"Seconds\": {{faker 'datatype.number'}},\n  \"Started\": {{faker 'datatype.number'}},\n  \"StatID\": {{faker 'datatype.number'}},\n  \"Steals\": {{faker 'datatype.number'}},\n  \"StealsPercentage\": {{faker 'datatype.number'}},\n  \"Team\": \"\",\n  \"TeamID\": {{faker 'datatype.number'}},\n  \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n  \"ThreePointersMade\": {{faker 'datatype.number'}},\n  \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n  \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n  \"TripleDoubles\": {{faker 'datatype.number'}},\n  \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n  \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n  \"TurnOversPercentage\": {{faker 'datatype.number'}},\n  \"Turnovers\": {{faker 'datatype.number'}},\n  \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n  \"TwoPointersMade\": {{faker 'datatype.number'}},\n  \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n  \"Updated\": \"\",\n  \"UsageRatePercentage\": {{faker 'datatype.number'}},\n  \"YahooPosition\": \"\",\n  \"YahooSalary\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "79ade1ab-e343-43c0-bde9-bd722976499a",
+      "documentation": "Player Game Logs By Season",
+      "method": "get",
+      "endpoint": ":format/PlayerGameStatsBySeason/:season/:playerid/:numberofgames",
+      "responses": [
+        {
+          "uuid": "5d0e1dd5-5932-4e39-84f8-8226c73576a7",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"AssistsPercentage\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"BlocksPercentage\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DefensiveRebounds\": {{faker 'datatype.number'}},\n    \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"DoubleDoubles\": {{faker 'datatype.number'}},\n    \"DraftKingsPosition\": \"\",\n    \"DraftKingsSalary\": {{faker 'datatype.number'}},\n    \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FanDuelPosition\": \"\",\n    \"FanDuelSalary\": {{faker 'datatype.number'}},\n    \"FantasyDataSalary\": {{faker 'datatype.number'}},\n    \"FantasyDraftPosition\": \"\",\n    \"FantasyDraftSalary\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n    \"FieldGoalsMade\": {{faker 'datatype.number'}},\n    \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n    \"FreeThrowsMade\": {{faker 'datatype.number'}},\n    \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n    \"GameID\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalOpponentID\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"HomeOrAway\": \"\",\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"IsGameOver\": {{faker 'datatype.boolean'}},\n    \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n    \"LineupStatus\": \"\",\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"OffensiveRebounds\": {{faker 'datatype.number'}},\n    \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"Opponent\": \"\",\n    \"OpponentID\": {{faker 'datatype.number'}},\n    \"OpponentPositionRank\": {{faker 'datatype.number'}},\n    \"OpponentRank\": {{faker 'datatype.number'}},\n    \"PersonalFouls\": {{faker 'datatype.number'}},\n    \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlusMinus\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"Rebounds\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Seconds\": {{faker 'datatype.number'}},\n    \"Started\": {{faker 'datatype.number'}},\n    \"StatID\": {{faker 'datatype.number'}},\n    \"Steals\": {{faker 'datatype.number'}},\n    \"StealsPercentage\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n    \"ThreePointersMade\": {{faker 'datatype.number'}},\n    \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n    \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n    \"TripleDoubles\": {{faker 'datatype.number'}},\n    \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n    \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n    \"TurnOversPercentage\": {{faker 'datatype.number'}},\n    \"Turnovers\": {{faker 'datatype.number'}},\n    \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n    \"TwoPointersMade\": {{faker 'datatype.number'}},\n    \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UsageRatePercentage\": {{faker 'datatype.number'}},\n    \"YahooPosition\": \"\",\n    \"YahooSalary\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cf805331-263f-4a3b-9958-20535b1de674",
+      "documentation": "Player Season Stats",
+      "method": "get",
+      "endpoint": ":format/PlayerSeasonStats/:season",
+      "responses": [
+        {
+          "uuid": "3e975ad7-9f4a-4448-9938-887de1f286a4",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"AssistsPercentage\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"BlocksPercentage\": {{faker 'datatype.number'}},\n    \"DefensiveRebounds\": {{faker 'datatype.number'}},\n    \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"DoubleDoubles\": {{faker 'datatype.number'}},\n    \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n    \"FieldGoalsMade\": {{faker 'datatype.number'}},\n    \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n    \"FreeThrowsMade\": {{faker 'datatype.number'}},\n    \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n    \"LineupStatus\": \"\",\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"OffensiveRebounds\": {{faker 'datatype.number'}},\n    \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"PersonalFouls\": {{faker 'datatype.number'}},\n    \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlusMinus\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"Rebounds\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Seconds\": {{faker 'datatype.number'}},\n    \"Started\": {{faker 'datatype.number'}},\n    \"StatID\": {{faker 'datatype.number'}},\n    \"Steals\": {{faker 'datatype.number'}},\n    \"StealsPercentage\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n    \"ThreePointersMade\": {{faker 'datatype.number'}},\n    \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n    \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n    \"TripleDoubles\": {{faker 'datatype.number'}},\n    \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n    \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n    \"TurnOversPercentage\": {{faker 'datatype.number'}},\n    \"Turnovers\": {{faker 'datatype.number'}},\n    \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n    \"TwoPointersMade\": {{faker 'datatype.number'}},\n    \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UsageRatePercentage\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30bc6315-493c-412e-bfda-0b7c7f76a8ec",
+      "documentation": "Player Season Stats By Player",
+      "method": "get",
+      "endpoint": ":format/PlayerSeasonStatsByPlayer/:season/:playerid",
+      "responses": [
+        {
+          "uuid": "75f0d1f4-5ef1-4da0-a66c-8d8418fa9f00",
+          "body": "{\n  \"Assists\": {{faker 'datatype.number'}},\n  \"AssistsPercentage\": {{faker 'datatype.number'}},\n  \"BlockedShots\": {{faker 'datatype.number'}},\n  \"BlocksPercentage\": {{faker 'datatype.number'}},\n  \"DefensiveRebounds\": {{faker 'datatype.number'}},\n  \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n  \"DoubleDoubles\": {{faker 'datatype.number'}},\n  \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n  \"FantasyPoints\": {{faker 'datatype.number'}},\n  \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n  \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n  \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n  \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n  \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n  \"FieldGoalsMade\": {{faker 'datatype.number'}},\n  \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n  \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n  \"FreeThrowsMade\": {{faker 'datatype.number'}},\n  \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n  \"Games\": {{faker 'datatype.number'}},\n  \"GlobalTeamID\": {{faker 'datatype.number'}},\n  \"IsClosed\": {{faker 'datatype.boolean'}},\n  \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n  \"LineupStatus\": \"\",\n  \"Minutes\": {{faker 'datatype.number'}},\n  \"Name\": \"\",\n  \"OffensiveRebounds\": {{faker 'datatype.number'}},\n  \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n  \"PersonalFouls\": {{faker 'datatype.number'}},\n  \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n  \"PlayerID\": {{faker 'datatype.number'}},\n  \"PlusMinus\": {{faker 'datatype.number'}},\n  \"Points\": {{faker 'datatype.number'}},\n  \"Position\": \"\",\n  \"Rebounds\": {{faker 'datatype.number'}},\n  \"Season\": {{faker 'datatype.number'}},\n  \"SeasonType\": {{faker 'datatype.number'}},\n  \"Seconds\": {{faker 'datatype.number'}},\n  \"Started\": {{faker 'datatype.number'}},\n  \"StatID\": {{faker 'datatype.number'}},\n  \"Steals\": {{faker 'datatype.number'}},\n  \"StealsPercentage\": {{faker 'datatype.number'}},\n  \"Team\": \"\",\n  \"TeamID\": {{faker 'datatype.number'}},\n  \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n  \"ThreePointersMade\": {{faker 'datatype.number'}},\n  \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n  \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n  \"TripleDoubles\": {{faker 'datatype.number'}},\n  \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n  \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n  \"TurnOversPercentage\": {{faker 'datatype.number'}},\n  \"Turnovers\": {{faker 'datatype.number'}},\n  \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n  \"TwoPointersMade\": {{faker 'datatype.number'}},\n  \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n  \"Updated\": \"\",\n  \"UsageRatePercentage\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c71e931f-0fe9-4a43-b72a-d95c00d510b9",
+      "documentation": "Player Season Stats by Team",
+      "method": "get",
+      "endpoint": ":format/PlayerSeasonStatsByTeam/:season/:team",
+      "responses": [
+        {
+          "uuid": "636065f3-6afc-43fd-abc5-13b10b939fa2",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"AssistsPercentage\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"BlocksPercentage\": {{faker 'datatype.number'}},\n    \"DefensiveRebounds\": {{faker 'datatype.number'}},\n    \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"DoubleDoubles\": {{faker 'datatype.number'}},\n    \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n    \"FieldGoalsMade\": {{faker 'datatype.number'}},\n    \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n    \"FreeThrowsMade\": {{faker 'datatype.number'}},\n    \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n    \"LineupStatus\": \"\",\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"OffensiveRebounds\": {{faker 'datatype.number'}},\n    \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"PersonalFouls\": {{faker 'datatype.number'}},\n    \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"PlusMinus\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"Rebounds\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Seconds\": {{faker 'datatype.number'}},\n    \"Started\": {{faker 'datatype.number'}},\n    \"StatID\": {{faker 'datatype.number'}},\n    \"Steals\": {{faker 'datatype.number'}},\n    \"StealsPercentage\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n    \"ThreePointersMade\": {{faker 'datatype.number'}},\n    \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n    \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n    \"TripleDoubles\": {{faker 'datatype.number'}},\n    \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n    \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n    \"TurnOversPercentage\": {{faker 'datatype.number'}},\n    \"Turnovers\": {{faker 'datatype.number'}},\n    \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n    \"TwoPointersMade\": {{faker 'datatype.number'}},\n    \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UsageRatePercentage\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f50a730-f24d-413f-9528-1c993b5bf40f",
+      "documentation": "Player Details by Active",
+      "method": "get",
+      "endpoint": ":format/Players",
+      "responses": [
+        {
+          "uuid": "270993bc-f0be-492b-92ab-fb19aaaa870a",
+          "body": "[\n  {\n    \"BirthCity\": \"\",\n    \"BirthCountry\": \"\",\n    \"BirthDate\": \"\",\n    \"BirthState\": \"\",\n    \"College\": \"\",\n    \"DepthChartOrder\": {{faker 'datatype.number'}},\n    \"DepthChartPosition\": \"\",\n    \"DraftKingsName\": \"\",\n    \"DraftKingsPlayerID\": {{faker 'datatype.number'}},\n    \"Experience\": {{faker 'datatype.number'}},\n    \"FanDuelName\": \"\",\n    \"FanDuelPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyAlarmPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyDraftName\": \"\",\n    \"FantasyDraftPlayerID\": {{faker 'datatype.number'}},\n    \"FirstName\": \"\",\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"Height\": {{faker 'datatype.number'}},\n    \"HighSchool\": \"\",\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"Jersey\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"NbaDotComPlayerID\": {{faker 'datatype.number'}},\n    \"PhotoUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"PositionCategory\": \"\",\n    \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n    \"RotoworldPlayerID\": {{faker 'datatype.number'}},\n    \"Salary\": {{faker 'datatype.number'}},\n    \"SportRadarPlayerID\": \"\",\n    \"SportsDataID\": \"\",\n    \"SportsDirectPlayerID\": {{faker 'datatype.number'}},\n    \"StatsPlayerID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n    \"UsaTodayHeadshotUpdated\": \"\",\n    \"UsaTodayHeadshotUrl\": \"\",\n    \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}},\n    \"XmlTeamPlayerID\": {{faker 'datatype.number'}},\n    \"YahooName\": \"\",\n    \"YahooPlayerID\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "45fa16d1-6df1-4091-a9c9-940d4eb03cd2",
+      "documentation": "Players by Team",
+      "method": "get",
+      "endpoint": ":format/Players/:team",
+      "responses": [
+        {
+          "uuid": "e0071118-7c1e-4d6c-8f87-cb57cb8f3ca4",
+          "body": "[\n  {\n    \"BirthCity\": \"\",\n    \"BirthCountry\": \"\",\n    \"BirthDate\": \"\",\n    \"BirthState\": \"\",\n    \"College\": \"\",\n    \"DepthChartOrder\": {{faker 'datatype.number'}},\n    \"DepthChartPosition\": \"\",\n    \"DraftKingsName\": \"\",\n    \"DraftKingsPlayerID\": {{faker 'datatype.number'}},\n    \"Experience\": {{faker 'datatype.number'}},\n    \"FanDuelName\": \"\",\n    \"FanDuelPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyAlarmPlayerID\": {{faker 'datatype.number'}},\n    \"FantasyDraftName\": \"\",\n    \"FantasyDraftPlayerID\": {{faker 'datatype.number'}},\n    \"FirstName\": \"\",\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"Height\": {{faker 'datatype.number'}},\n    \"HighSchool\": \"\",\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"Jersey\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"NbaDotComPlayerID\": {{faker 'datatype.number'}},\n    \"PhotoUrl\": \"\",\n    \"PlayerID\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"PositionCategory\": \"\",\n    \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n    \"RotoworldPlayerID\": {{faker 'datatype.number'}},\n    \"Salary\": {{faker 'datatype.number'}},\n    \"SportRadarPlayerID\": \"\",\n    \"SportsDataID\": \"\",\n    \"SportsDirectPlayerID\": {{faker 'datatype.number'}},\n    \"StatsPlayerID\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n    \"UsaTodayHeadshotUpdated\": \"\",\n    \"UsaTodayHeadshotUrl\": \"\",\n    \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}},\n    \"XmlTeamPlayerID\": {{faker 'datatype.number'}},\n    \"YahooName\": \"\",\n    \"YahooPlayerID\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ab0b7c39-eca8-41fa-94ad-8def0e430e7d",
+      "documentation": "Stadiums",
+      "method": "get",
+      "endpoint": ":format/Stadiums",
+      "responses": [
+        {
+          "uuid": "63b7addc-ed15-4f27-8485-51b7a99ed190",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"Address\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"City\": \"\",\n    \"Country\": \"\",\n    \"GeoLat\": {{faker 'datatype.number'}},\n    \"GeoLong\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"State\": \"\",\n    \"Zip\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e421014-e749-4628-8aeb-bc40e6ad170d",
+      "documentation": "Standings",
+      "method": "get",
+      "endpoint": ":format/Standings/:season",
+      "responses": [
+        {
+          "uuid": "8511bb21-75c6-4c18-bf2f-2bdcb731231d",
+          "body": "[\n  {\n    \"AwayLosses\": {{faker 'datatype.number'}},\n    \"AwayWins\": {{faker 'datatype.number'}},\n    \"City\": \"\",\n    \"Conference\": \"\",\n    \"ConferenceLosses\": {{faker 'datatype.number'}},\n    \"ConferenceRank\": {{faker 'datatype.number'}},\n    \"ConferenceWins\": {{faker 'datatype.number'}},\n    \"Division\": \"\",\n    \"DivisionLosses\": {{faker 'datatype.number'}},\n    \"DivisionRank\": {{faker 'datatype.number'}},\n    \"DivisionWins\": {{faker 'datatype.number'}},\n    \"GamesBack\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"HomeLosses\": {{faker 'datatype.number'}},\n    \"HomeWins\": {{faker 'datatype.number'}},\n    \"Key\": \"\",\n    \"LastTenLosses\": {{faker 'datatype.number'}},\n    \"LastTenWins\": {{faker 'datatype.number'}},\n    \"Losses\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Percentage\": {{faker 'datatype.number'}},\n    \"PointsPerGameAgainst\": {{faker 'datatype.number'}},\n    \"PointsPerGameFor\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Streak\": {{faker 'datatype.number'}},\n    \"StreakDescription\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"Wins\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dc536893-05fd-4ef2-8cb5-6eb3a7922668",
+      "documentation": "Team Game Stats by Date",
+      "method": "get",
+      "endpoint": ":format/TeamGameStatsByDate/:date",
+      "responses": [
+        {
+          "uuid": "fd1c56f5-e2a8-4e76-95fd-24a12a6ccaed",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"AssistsPercentage\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"BlocksPercentage\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DefensiveRebounds\": {{faker 'datatype.number'}},\n    \"DefensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"DoubleDoubles\": {{faker 'datatype.number'}},\n    \"EffectiveFieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsFantasyDraft\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"FieldGoalsAttempted\": {{faker 'datatype.number'}},\n    \"FieldGoalsMade\": {{faker 'datatype.number'}},\n    \"FieldGoalsPercentage\": {{faker 'datatype.number'}},\n    \"FreeThrowsAttempted\": {{faker 'datatype.number'}},\n    \"FreeThrowsMade\": {{faker 'datatype.number'}},\n    \"FreeThrowsPercentage\": {{faker 'datatype.number'}},\n    \"GameID\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalGameID\": {{faker 'datatype.number'}},\n    \"GlobalOpponentID\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"HomeOrAway\": \"\",\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"IsGameOver\": {{faker 'datatype.boolean'}},\n    \"LineupConfirmed\": {{faker 'datatype.boolean'}},\n    \"LineupStatus\": \"\",\n    \"Losses\": {{faker 'datatype.number'}},\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"OffensiveRebounds\": {{faker 'datatype.number'}},\n    \"OffensiveReboundsPercentage\": {{faker 'datatype.number'}},\n    \"Opponent\": \"\",\n    \"OpponentID\": {{faker 'datatype.number'}},\n    \"PersonalFouls\": {{faker 'datatype.number'}},\n    \"PlayerEfficiencyRating\": {{faker 'datatype.number'}},\n    \"PlusMinus\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"Possessions\": {{faker 'datatype.number'}},\n    \"Rebounds\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Seconds\": {{faker 'datatype.number'}},\n    \"StatID\": {{faker 'datatype.number'}},\n    \"Steals\": {{faker 'datatype.number'}},\n    \"StealsPercentage\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"ThreePointersAttempted\": {{faker 'datatype.number'}},\n    \"ThreePointersMade\": {{faker 'datatype.number'}},\n    \"ThreePointersPercentage\": {{faker 'datatype.number'}},\n    \"TotalReboundsPercentage\": {{faker 'datatype.number'}},\n    \"TripleDoubles\": {{faker 'datatype.number'}},\n    \"TrueShootingAttempts\": {{faker 'datatype.number'}},\n    \"TrueShootingPercentage\": {{faker 'datatype.number'}},\n    \"TurnOversPercentage\": {{faker 'datatype.number'}},\n    \"Turnovers\": {{faker 'datatype.number'}},\n    \"TwoPointersAttempted\": {{faker 'datatype.number'}},\n    \"TwoPointersMade\": {{faker 'datatype.number'}},\n    \"TwoPointersPercentage\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UsageRatePercentage\": {{faker 'datatype.number'}},\n    \"Wins\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8df21a59-26f5-45b2-bf79-621feaa38a8f",
+      "documentation": "Team Season Stats",
+      "method": "get",
+      "endpoint": ":format/TeamSeasonStats/:season",
+      "responses": [
+        {
+          "uuid": "6e8d0384-bbf1-4310-ace6-359442f7d9cc",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f800f03a-4d61-45ae-a94e-82bdf7032d5f",
+      "documentation": "Team Stats Allowed by Position",
+      "method": "get",
+      "endpoint": ":format/TeamStatsAllowedByPosition/:season",
+      "responses": [
+        {
+          "uuid": "e435671e-7d47-480d-8ad0-d62d622a0169",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a5c6ae7-264b-4a8a-851b-ee64432b7850",
+      "documentation": "Teams (Active)",
+      "method": "get",
+      "endpoint": ":format/teams",
+      "responses": [
+        {
+          "uuid": "1b6db121-3db1-4717-9c64-d094be60dee3",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"City\": \"\",\n    \"Conference\": \"\",\n    \"Division\": \"\",\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"Key\": \"\",\n    \"LeagueID\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"NbaDotComTeamID\": {{faker 'datatype.number'}},\n    \"PrimaryColor\": \"\",\n    \"QuaternaryColor\": \"\",\n    \"SecondaryColor\": \"\",\n    \"StadiumID\": {{faker 'datatype.number'}},\n    \"TeamID\": {{faker 'datatype.number'}},\n    \"TertiaryColor\": \"\",\n    \"WikipediaLogoUrl\": \"\",\n    \"WikipediaWordMarkUrl\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

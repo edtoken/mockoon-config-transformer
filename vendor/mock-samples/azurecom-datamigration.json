@@ -1,0 +1,1684 @@
+{
+  "uuid": "1b5fe70b-9d10-409c-9b32-36956ebdf1f7",
+  "lastMigration": 24,
+  "name": "Azure Data Migration Service Resource Provider",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "5f02246f-79ad-437a-978b-ace1094910de",
+      "documentation": "Get available resource provider actions (operations)",
+      "method": "get",
+      "endpoint": "providers/Microsoft.DataMigration/operations",
+      "responses": [
+        {
+          "uuid": "3335db76-cc78-4bab-9b53-0a09339dbab7",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got action list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3c1669ed-44aa-4d7b-b52d-436eddc4f8f2",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96e55705-66a0-4b15-9225-f17703caca78",
+      "documentation": "Check name validity and availability",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataMigration/locations/:location/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "cc869412-a0f3-443e-bf16-e53a06e44297",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"{{oneOf (array 'AlreadyExists' 'Invalid')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Name checked",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f53e01e7-6ead-4eaa-a423-771247982c23",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8cc38883-e921-4064-a6f5-f6c45d1d3fee",
+      "documentation": "Get resource quotas and usage information",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataMigration/locations/:location/usages",
+      "responses": [
+        {
+          "uuid": "76484110-1baf-47a6-88f1-3931dae062ce",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.float'}},\n      \"id\": \"\",\n      \"limit\": {{faker 'datatype.float'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"unit\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Quotas returned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "22ae8860-bd03-4f26-b1f4-66fc92b86319",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "42739c12-81bb-4343-b072-b748e582a697",
+      "documentation": "Get services in subscription",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataMigration/services",
+      "responses": [
+        {
+          "uuid": "ace97d40-f0af-428e-931a-5d2d41bb3ea5",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"location\": \"\",\n      \"tags\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got services",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cc53f859-2440-4b21-ad9e-ad2c22999147",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "12605417-4a7c-42c6-935d-2909e23220f4",
+      "documentation": "Get supported SKUs",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataMigration/skus",
+      "responses": [
+        {
+          "uuid": "06b39c1c-d775-4e70-a646-54d95b721ec3",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"apiVersions\": [\n        \"\"\n      ],\n      \"capabilities\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"capacity\": {\n        \"default\": {{faker 'datatype.number'}},\n        \"maximum\": {{faker 'datatype.number'}},\n        \"minimum\": {{faker 'datatype.number'}},\n        \"scaleType\": \"{{oneOf (array 'Automatic' 'Manual' 'None')}}\"\n      },\n      \"costs\": [\n        {\n          \"extendedUnit\": \"\",\n          \"meterID\": \"\",\n          \"quantity\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"family\": \"\",\n      \"kind\": \"\",\n      \"locations\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"resourceType\": \"\",\n      \"restrictions\": [\n        {\n          \"reasonCode\": \"{{oneOf (array 'QuotaId' 'NotAvailableForSubscription')}}\",\n          \"type\": \"{{oneOf (array 'location')}}\",\n          \"values\": [\n            \"\"\n          ]\n        }\n      ],\n      \"size\": \"\",\n      \"tier\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got SKUs",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "447c039f-1add-4ff0-a843-e1f454a51bd7",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cc7cb410-28a4-4082-9e40-3aa69165f2d4",
+      "documentation": "Get services in resource group",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services",
+      "responses": [
+        {
+          "uuid": "1ade88db-2ba9-4cb6-ad6b-6603698d778c",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"location\": \"\",\n      \"tags\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got services",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dc92c50d-4a12-4c02-90b9-41949b5f983d",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c20fa29-a839-4a47-8084-0a73a549cbfb",
+      "documentation": "Delete DMS Service Instance",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName",
+      "responses": [
+        {
+          "uuid": "16f2459a-74ad-451e-b07e-73a8d0b4f1ca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Service resource deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a5b54428-834f-4556-8d49-3eb85316a409",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Deletion accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7660963c-e0a8-4243-aa2e-0376a5099386",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Service not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bb3fc4c4-cd00-44d5-8a8e-a0bdb9ae0ef6",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47fd5ccc-5090-49df-b2f3-4dab90b5c62a",
+      "documentation": "Get DMS Service Instance",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName",
+      "responses": [
+        {
+          "uuid": "de639a1a-1c6a-4ee4-b911-fa795a34dcd8",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A service instance resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1bc87a7e-29b3-4d05-8054-e2b9aa77a5bf",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "734560e7-3850-417b-86f8-caf167937ad6",
+      "documentation": "Create or update DMS Service Instance",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName",
+      "responses": [
+        {
+          "uuid": "d1bdb883-9b1f-46ee-a87a-6e5e9af9ef93",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Service resource updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5cfaa946-6238-48f8-a87d-3a0e3be5838b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Update accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ee830947-bafc-44b7-b9cd-e6eba3c47485",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5f79f2fc-210a-4476-a3d0-2d499cbb977d",
+      "documentation": "Create or update DMS Instance",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName",
+      "responses": [
+        {
+          "uuid": "c42eaa1c-b01f-4200-a771-b6bbfc9ed7df",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Service updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ffeacc68-8998-4b88-b826-7aea17c69d99",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Service created (use provisioningState)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4ab7668f-2213-415d-ab40-eaf834bbc113",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Update accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b3059679-d749-4c38-905a-180c1de79d88",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f6e9013d-caba-4f63-af0f-02da9c5af3cb",
+      "documentation": "Check nested resource name validity and availability",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "560b4429-a8ce-49d0-a6b7-bf5b554a6306",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"{{oneOf (array 'AlreadyExists' 'Invalid')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Name checked",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1b051ddb-01e6-4c1d-909a-ab9fa16e11ba",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b085269c-25c2-4eba-9526-76b687c0baf3",
+      "documentation": "Check service health status",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/checkStatus",
+      "responses": [
+        {
+          "uuid": "dc8adf10-b0f9-4142-93b2-cac9239f9d79",
+          "body": "{\n  \"agentVersion\": \"\",\n  \"status\": \"\",\n  \"supportedTaskTypes\": [\n    \"\"\n  ],\n  \"vmSize\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Health checked",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5339c9e-69b2-4c16-bcd2-05c8881f1186",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "548881bd-69fd-4e88-a68f-1e153231fc9f",
+      "documentation": "Get projects in a service",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects",
+      "responses": [
+        {
+          "uuid": "4bba0409-3afa-4d84-ab4d-d36460386fbc",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"location\": \"\",\n      \"tags\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of projects",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ae76e153-feab-4703-b45e-5cce61847033",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6ae70d2-6a83-468b-a700-77809722c821",
+      "documentation": "Delete project",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName",
+      "responses": [
+        {
+          "uuid": "6f21e0db-3b6b-4317-8ede-1be50917cf9e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Project resource deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "62bf9483-6c56-4cb3-8181-fd8c75e7ea0e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d86cbbd8-4bd0-457e-8136-a4ebf23022c6",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c37914ed-482d-4b61-aacc-9006640f2b10",
+      "documentation": "Get project information",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName",
+      "responses": [
+        {
+          "uuid": "00b9215e-e66a-4f8f-85e1-a3f01e162954",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A project resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d9662df5-010c-4cc5-a679-c38f62017f4f",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "689ed847-9c59-4475-af3e-37960425dded",
+      "documentation": "Update project",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName",
+      "responses": [
+        {
+          "uuid": "267fd6d0-dcc9-4273-b2b1-a634de129902",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Project resource updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "50121d31-3b3d-4cc8-b519-48086575d45e",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fcda7799-a5cc-4de1-b2f9-9a85353e2180",
+      "documentation": "Create or update project",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName",
+      "responses": [
+        {
+          "uuid": "5b681517-22fb-4df6-abee-492190cfc5f5",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Project updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3b580ea6-47e7-41ef-9168-826bad5c7a28",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Project created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a56ed794-f88b-4cba-bd27-aa69d9b6b739",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1fa47de0-a44f-4cc3-965e-df32e38a511a",
+      "documentation": "Get tasks in a service",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks",
+      "responses": [
+        {
+          "uuid": "8e92dde8-6d0b-462f-803d-d0cb93eb84ed",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got tasks",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e356a187-4c24-4679-a484-5365ba13384a",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe41b9f4-b11f-40a8-98d8-e6bd3e72add4",
+      "documentation": "Delete task",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks/:taskName",
+      "responses": [
+        {
+          "uuid": "c87e18c9-9584-47ab-98c3-d14fe40c156f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Task resource deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7d7b0880-fd8e-418d-bfdb-d00f53b8aa6c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "302c04a7-9f2d-42ba-a97e-0e54bd6e6d70",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5597ec78-9f8a-4064-a010-510423f944dd",
+      "documentation": "Get task information",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks/:taskName",
+      "responses": [
+        {
+          "uuid": "f517c1e3-6a5f-4b16-86d8-0a46981c69f4",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A task resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ee3047be-7d1e-4a67-ab72-79d58d696045",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c295d38f-91a4-445c-99e0-bbbe05f16abb",
+      "documentation": "Create or update task",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks/:taskName",
+      "responses": [
+        {
+          "uuid": "512db870-14ef-46de-b192-4bccdcc44382",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Task resource updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "31ea3fa6-0557-4d67-b869-4c903bb89e00",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2bea680e-9019-410e-9aa5-b66782ed746e",
+      "documentation": "Create or update task",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks/:taskName",
+      "responses": [
+        {
+          "uuid": "4bb542ef-0a07-40db-9329-23521ad3ca14",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Task updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3f984d75-b470-476f-a6e4-a9f45e712224",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Task created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4eac75fc-8054-45dd-a583-2b33d38e65fc",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ca4c5fe-6175-40e5-a886-0a30fe7c3a95",
+      "documentation": "Cancel a task",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/projects/:projectName/tasks/:taskName/cancel",
+      "responses": [
+        {
+          "uuid": "62ff66aa-6e71-434f-8cdc-aa15ed389313",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Task canceled",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "742d0260-ce34-4b79-9022-88b1a150ecc0",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d341cb06-798b-4063-b3d7-350550c035fc",
+      "documentation": "Get compatible SKUs",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/skus",
+      "responses": [
+        {
+          "uuid": "0ea5fbea-ee26-47e5-8296-8d0d33526c36",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"capacity\": {\n        \"default\": {{faker 'datatype.number'}},\n        \"maximum\": {{faker 'datatype.number'}},\n        \"minimum\": {{faker 'datatype.number'}},\n        \"scaleType\": \"{{oneOf (array 'none' 'manual' 'automatic')}}\"\n      },\n      \"resourceType\": \"\",\n      \"sku\": {\n        \"family\": \"\",\n        \"name\": \"\",\n        \"size\": \"\",\n        \"tier\": \"\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Got SKUs",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f8163777-1985-4c96-b65a-ce5a6d67d991",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b3831e7-3e12-42fd-854f-d1a552dda974",
+      "documentation": "Start service",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/start",
+      "responses": [
+        {
+          "uuid": "192026e1-c811-4d99-bf34-0da06e1564f7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The service has already been started.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3a3d342d-f4bd-46c0-b8c2-0642953e97bc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The request to start service is accepted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3ccbdcda-f063-4800-8e12-fc4db0c73e12",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "45649d6a-becf-4495-a45b-6477283a8ea6",
+      "documentation": "Stop service",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:groupName/providers/Microsoft.DataMigration/services/:serviceName/stop",
+      "responses": [
+        {
+          "uuid": "ed9ecf88-e2ac-403f-afd2-1fb3c3198d9f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The service has already been stopped.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "532d084b-fae6-48d3-b67d-dfb9a9d3491e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The request to stop service is accepted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7bc2bdb2-85e6-4072-8358-83cca6675539",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": [\n      \"\"\n    ],\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

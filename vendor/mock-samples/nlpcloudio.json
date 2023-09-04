@@ -1,0 +1,264 @@
+{
+  "uuid": "89db2efb-ac9c-4b5d-aeaf-84818237d4de",
+  "lastMigration": 24,
+  "name": "NLPCloud",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b82aff87-5403-4131-b2fa-67f54e24c171",
+      "documentation": "Read Root",
+      "method": "get",
+      "endpoint": "v1/en_core_web_sm/",
+      "responses": [
+        {
+          "uuid": "660003a1-c789-4460-9b33-a61f818d0cd0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f2402991-0f9e-4778-b967-2d15ec628e7d",
+      "documentation": "Read Dependencies",
+      "method": "post",
+      "endpoint": "v1/en_core_web_sm/dependencies",
+      "responses": [
+        {
+          "uuid": "bb1bec6a-4943-4fb7-ad1c-6f6f08fdfe47",
+          "body": "{\n  \"arcs\": [\n    {\n      \"dir\": \"\",\n      \"end\": {{faker 'datatype.number'}},\n      \"label\": \"\",\n      \"start\": {{faker 'datatype.number'}},\n      \"text\": \"\"\n    }\n  ],\n  \"words\": [\n    {\n      \"tag\": \"\",\n      \"text\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ae96c4b9-efb2-41a2-94fa-7870d13eeeb0",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d519ee63-da43-4205-8e67-94e94d460ebc",
+      "documentation": "Read Entities",
+      "method": "post",
+      "endpoint": "v1/en_core_web_sm/entities",
+      "responses": [
+        {
+          "uuid": "bfea5310-590f-4c4e-91b2-b85ff54b054a",
+          "body": "{\n  \"entities\": [\n    {\n      \"end\": {{faker 'datatype.number'}},\n      \"start\": {{faker 'datatype.number'}},\n      \"text\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "43f698fe-7e07-489e-ba5f-d2c3bb14e50c",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2adcc38c-959b-4e25-bc36-237f2534b632",
+      "documentation": "Read Sentence Dependencies",
+      "method": "post",
+      "endpoint": "v1/en_core_web_sm/sentence-dependencies",
+      "responses": [
+        {
+          "uuid": "ffc0bc8e-915e-483f-98c3-fda32e1089d3",
+          "body": "{\n  \"sentence_dependencies\": [\n    {\n      \"dependencies\": {\n        \"arcs\": [\n          {\n            \"dir\": \"\",\n            \"end\": {{faker 'datatype.number'}},\n            \"label\": \"\",\n            \"start\": {{faker 'datatype.number'}},\n            \"text\": \"\"\n          }\n        ],\n        \"words\": [\n          {\n            \"tag\": \"\",\n            \"text\": \"\"\n          }\n        ]\n      },\n      \"sentence\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "21f12321-76aa-47ed-8f95-c2c240792724",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1b8396fd-c5e1-4e91-8a71-6f3b0634e1cd",
+      "documentation": "Read Version",
+      "method": "get",
+      "endpoint": "v1/en_core_web_sm/version",
+      "responses": [
+        {
+          "uuid": "54b50ef2-5dba-457a-b300-9de57428922b",
+          "body": "{\n  \"spacy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

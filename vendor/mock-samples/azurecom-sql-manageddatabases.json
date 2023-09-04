@@ -1,0 +1,548 @@
+{
+  "uuid": "4b6d66ab-818b-46f8-a30b-e2032dec4970",
+  "lastMigration": 24,
+  "name": "SqlManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "dd28785c-b93a-4f41-b7b7-3425e0e2f4eb",
+      "documentation": "Gets a list of managed databases.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases",
+      "responses": [
+        {
+          "uuid": "b6d3ce99-cb8c-4223-9ca3-73af6c1aeca3",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"location\": \"\",\n      \"tags\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of databases.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6ce9d080-271e-4084-b96e-b80dc02afb14",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "07afeacf-6081-44da-badd-07816c288e1c",
+      "documentation": "Deletes a managed database.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases/:databaseName",
+      "responses": [
+        {
+          "uuid": "9d1064e8-b399-4513-989e-237538d3e7d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the managed database.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c83f120a-1978-45f3-b006-38e390719df2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Deleting the managed database is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "54214bf2-14f5-48c0-8b17-d7c27524b10a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified managed database does not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b6ff26a6-86ce-4d24-a391-cd14dc7bc631",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 CannotUseReservedDatabaseName - Cannot use reserved database name in this operation.\n\n * 400 CannotMoveOrDropJobAccountDatabase - Cannot drop database associated with job account.\n\n * 400 CannotMoveOrDropSyncMetadataDatabase - Cannot drop database used as sync metadata database.\n\n * 400 GeoReplicationDatabaseNotPrimary - The operation cannot be performed since the database '{0}' is a replication target.\n\n * 400 GeoReplicationDatabaseNotSecondary - The operation expects the database to be a replication target.\n\n * 400 ManagedInstanceUpdateSloInProgress - \"The operation could not be completed because a service tier change is in progress for managed instance '{0}.' Please wait for the operation in progress to complete and try again.\"\n\n * 400 DropDisallowedDuringFailover - Can not drop database because a failover operation is in progress on the failover group.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 404 ServerNotInSubscription - Specified server does not exist on the specified subscription.\n\n * 409 OperationCancelled - The operation has been cancelled by user.\n\n * 409 OperationInterrupted - The operation on the resource could not be completed because it was interrupted by another operation on the same resource.\n\n * 409 ServerDisabled - Server is disabled.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 OperationTimedOut - The operation timed out and automatically rolled back. Please retry the operation.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 504 RequestTimeout - Service request exceeded the allowed timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ac290be6-84c2-4f07-951e-6cf1a719ee7e",
+      "documentation": "Gets a managed database.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases/:databaseName",
+      "responses": [
+        {
+          "uuid": "8345cbe8-058f-4b99-99c4-f10aa83d56b4",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified managed database.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a5760403-1303-4ab4-8197-e753e97dd10c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 404 ResourceNotFound - The requested resource was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6f59b0c4-25e0-4fd6-bd8d-05738d2fdb0f",
+      "documentation": "Updates an existing database.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases/:databaseName",
+      "responses": [
+        {
+          "uuid": "83a625b0-7994-4c45-a464-3306586200e7",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the database.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5174ed03-f051-4147-aecf-6f3bb53c4d06",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Updating the managed database is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cdd06719-82e2-4549-8c5f-e1d42651bce1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 PitrPointInTimeInvalid - The point in time {0} is not valid. Valid point in time range from {1} days early to now and not before source server creation time.\n\n * 400 CannotUseTrailingWhitespacesInDatabaseName - The database name validation failed.\n\n * 400 InvalidBackupRetentionPeriod - The retention days of {0} is not a valid configuration. Valid backup retention in days must be between {1} and {2}\n\n * 400 ManagedDatabaseNameInUse - Database '{0}' already exists. Choose a different database name.\n\n * 400 NoMoreSpaceInManagedInstance - The managed instance has reached its storage limit. The storage usage for the managed instance cannot exceed (%d) MBs.\n\n * 400 ManagedInstanceUpdateSloInProgress - \"The operation could not be completed because a service tier change is in progress for managed instance '{0}.' Please wait for the operation in progress to complete and try again.\"\n\n * 400 SourceDatabaseNotFound - The source database does not exist.\n\n * 400 RegionDoesNotSupportVersion - A user attempted to create a server of a specified version in a location where that server version isn't supported.\n\n * 400 PasswordNotComplex - The provided password is not complex enough.\n\n * 400 CannotUseReservedDatabaseName - Cannot use reserved database name in this operation.\n\n * 400 SubscriptionNotFound - The requested subscription was not found.\n\n * 400 InvalidServerName - Invalid server name specified.\n\n * 400 SourceServerNotFound - The server part of a source database id provided in a CreateDatabaseAsCopy API call doesn't map to an existing server.\n\n * 400 TokenTooLong - The provided token is too long.\n\n * 400 CurrentDatabaseSizeExceedsMaxSize - User attempted to reduce the max size for a database to a size smaller than the current usage.\n\n * 400 InvalidCollation - Collation is not recognized by the server.\n\n * 400 ServerNotFound - The requested server was not found.\n\n * 400 UnsupportedServiceName - The specified name is an invalid name because it contains one or more unsupported unicode characters.\n\n * 400 CurrentDatabaseLogSizeExceedsMaxSize - User attempted to change the database to a sku with lower max log size than the current usage.\n\n * 400 DatabaseNumberLimitReached - Maximum number of databases for SQL Database Managed Instance reached.\n\n * 400 InvalidDatabaseCreateOrUpdateRequest - The request body for the create or update database operation is invalid.\n\n * 400 InvalidResourceId - Invalid resource identifier.\n\n * 400 InvalidSourceDatabaseId - Invalid source database identifier.\n\n * 400 InvalidRestorableDroppedDatabaseId - Invalid restorable dropped database identifier\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 MissingCollation - Collation is required.\n\n * 400 MissingSourceDatabaseId - Missing source database identifier.\n\n * 400 MissingRestorePointInTime - Missing restore point in time\n\n * 400 MissingStorageContainerSasToken - Missing storage container SAS token\n\n * 400 MissingStorageContainerUri - Missing storage container URI\n\n * 400 RestorableDroppedDatabaseIdGivenForRestoreWithSourceDatabaseId - Cannot specify restorableDroppedDatabaseId when sourceDatabaseId is already given in restore create mode\n\n * 400 CannotUseReservedDatabaseName - Cannot use reserved database name in this operation.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 CannotFindServerCertificateWithThumbprint - Cannot find server certificate with thumbprint '{0}'. Please use PowerShell Cmdlet 'Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate' to create the certificate.\n\n * 404 CannotFindObject - Cannot find the object because it does not exist or you do not have permissions\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 ServerNotInSubscription - Specified server does not exist on the specified subscription.\n\n * 404 RestoreSourceDatabaseNotFound - Could not find database '{0}' at time '{1}' that can be restored.\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 409 RemoteDatabaseExists - The destination database name already exists on the destination server.\n\n * 409 ConflictingDatabaseOperation - There is already some operation on the database and the current operation should wait till it is done.\n\n * 409 SubscriptionDisabled - Subscription is disabled.\n\n * 409 ManagementServiceDatabaseBusy - Database '{0}' is busy with another operation. Please try your operation later.\n\n * 409 ConflictingSystemOperationInProgress - A system maintenance operation is in progress on the database and further operations need to wait until it is completed.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 ActivateOrDeactivateWorkflowThrottling - Activation or deactivation workflow failed because there are too many concurrent workflows\n\n * 503 DatabaseUnavailable - The operation failed because the database is unavailable.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 504 RequestTimeout - Service request exceeded the allowed timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2123eb7b-da40-4512-9814-ba9731d15b07",
+      "documentation": "Creates a new database or updates an existing database.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases/:databaseName",
+      "responses": [
+        {
+          "uuid": "85c5c0f2-d0be-4b09-89da-7415585505e8",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the database.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7b56ed38-c8de-4ffa-b11f-0a7f542cde68",
+          "body": "{\n  \"location\": \"\",\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully created the database.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "74bd0525-2be7-4edf-bbb2-d357f189c91c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5709b212-5c15-41c1-a1a7-b3142de73d5d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 PitrPointInTimeInvalid - The point in time {0} is not valid. Valid point in time range from {1} days early to now and not before source server creation time.\n\n * 400 CannotUseTrailingWhitespacesInDatabaseName - The database name validation failed.\n\n * 400 InvalidBackupRetentionPeriod - The retention days of {0} is not a valid configuration. Valid backup retention in days must be between {1} and {2}\n\n * 400 ManagedDatabaseNameInUse - Database '{0}' already exists. Choose a different database name.\n\n * 400 NoMoreSpaceInManagedInstance - The managed instance has reached its storage limit. The storage usage for the managed instance cannot exceed (%d) MBs.\n\n * 400 ManagedInstanceUpdateSloInProgress - \"The operation could not be completed because a service tier change is in progress for managed instance '{0}.' Please wait for the operation in progress to complete and try again.\"\n\n * 400 SourceDatabaseNotFound - The source database does not exist.\n\n * 400 RegionDoesNotSupportVersion - A user attempted to create a server of a specified version in a location where that server version isn't supported.\n\n * 400 PasswordNotComplex - The provided password is not complex enough.\n\n * 400 CannotUseReservedDatabaseName - Cannot use reserved database name in this operation.\n\n * 400 SubscriptionNotFound - The requested subscription was not found.\n\n * 400 InvalidServerName - Invalid server name specified.\n\n * 400 SourceServerNotFound - The server part of a source database id provided in a CreateDatabaseAsCopy API call doesn't map to an existing server.\n\n * 400 TokenTooLong - The provided token is too long.\n\n * 400 CurrentDatabaseSizeExceedsMaxSize - User attempted to reduce the max size for a database to a size smaller than the current usage.\n\n * 400 InvalidCollation - Collation is not recognized by the server.\n\n * 400 ServerNotFound - The requested server was not found.\n\n * 400 UnsupportedServiceName - The specified name is an invalid name because it contains one or more unsupported unicode characters.\n\n * 400 CurrentDatabaseLogSizeExceedsMaxSize - User attempted to change the database to a sku with lower max log size than the current usage.\n\n * 400 DatabaseNumberLimitReached - Maximum number of databases for SQL Database Managed Instance reached.\n\n * 400 InvalidDatabaseCreateOrUpdateRequest - The request body for the create or update database operation is invalid.\n\n * 400 InvalidResourceId - Invalid resource identifier.\n\n * 400 InvalidSourceDatabaseId - Invalid source database identifier.\n\n * 400 InvalidRestorableDroppedDatabaseId - Invalid restorable dropped database identifier\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 MissingCollation - Collation is required.\n\n * 400 MissingSourceDatabaseId - Missing source database identifier.\n\n * 400 MissingRestorePointInTime - Missing restore point in time\n\n * 400 MissingStorageContainerSasToken - Missing storage container SAS token\n\n * 400 MissingStorageContainerUri - Missing storage container URI\n\n * 400 RestorableDroppedDatabaseIdGivenForRestoreWithSourceDatabaseId - Cannot specify restorableDroppedDatabaseId when sourceDatabaseId is already given in restore create mode\n\n * 400 CannotUseReservedDatabaseName - Cannot use reserved database name in this operation.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 CannotFindServerCertificateWithThumbprint - Cannot find server certificate with thumbprint '{0}'. Please use PowerShell Cmdlet 'Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate' to create the certificate.\n\n * 404 CannotFindObject - Cannot find the object because it does not exist or you do not have permissions\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 ServerNotInSubscription - Specified server does not exist on the specified subscription.\n\n * 404 RestoreSourceDatabaseNotFound - Could not find database '{0}' at time '{1}' that can be restored.\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.\n\n * 409 RemoteDatabaseExists - The destination database name already exists on the destination server.\n\n * 409 ConflictingDatabaseOperation - There is already some operation on the database and the current operation should wait till it is done.\n\n * 409 SubscriptionDisabled - Subscription is disabled.\n\n * 409 ManagementServiceDatabaseBusy - Database '{0}' is busy with another operation. Please try your operation later.\n\n * 409 ConflictingSystemOperationInProgress - A system maintenance operation is in progress on the database and further operations need to wait until it is completed.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 ActivateOrDeactivateWorkflowThrottling - Activation or deactivation workflow failed because there are too many concurrent workflows\n\n * 503 DatabaseUnavailable - The operation failed because the database is unavailable.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 504 RequestTimeout - Service request exceeded the allowed timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e6214e37-ed8e-4885-af92-ef39368b8da7",
+      "documentation": "Completes the restore operation on a managed database.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/databases/:databaseName/completeRestore",
+      "responses": [
+        {
+          "uuid": "62ca3bec-5645-44f2-9799-c6ebd33c002c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully completed restore request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dcdb91b4-5e42-4161-b037-8c2e3310e5d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Completing restore request is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "893fbfe8-8716-4f18-a86a-10d4cc7057bb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidDatabaseCompleteRestoreRequest - The complete database restore request is invalid\n\n * 400 InvalidDatabaseCompleteRestoreRequestLastBackupName - The last backup name is invalid\n\n * 400 InvalidIdentifier - The identifier contains NULL or an invalid unicode character.\n\n * 400 SourceDatabaseNotFound - The source database does not exist.\n\n * 400 TokenTooLong - The provided token is too long.\n\n * 400 UnsupportedServiceName - The specified name is an invalid name because it contains one or more unsupported unicode characters.\n\n * 400 MissingThumbprint - Can not find server certificate.\n\n * 400 PartiallyContainedDatabaseUnsupported - \"Backup for a partially contained database is not supported.\"\n\n * 400 RequiredBackupIsNotLastRestored - Migration cannot be completed because provided backup file name is not the name of the last backup file that is restored.\n\n * 400 IncompatiblePhysicalLayoutTooFewDataFiles - Database backup contains incompatible physical layout. No data files are found in the backup.\n\n * 400 IncompatiblePhysicalLayoutNonOnlineDataFilesExist - Database backup contains incompatible physical layout. Non-online data files exist.\n\n * 400 IncompatiblePhysicalLayoutWrongNumberOfLogFiles - Database backup contains incompatible physical layout. Multiple log files are not supported.\n\n * 400 IncompatiblePhysicalLayoutNonOnlineLogFilesExist - Database backup contains incompatible physical layout. Non-online log files exist.\n\n * 400 IncompatiblePhysicalLayoutTooManyNonDataLogFiles - Database backup contains incompatible physical layout. Too many non-data/log files.\n\n * 400 BackupSetNotFound - \"No backups were found to restore the database. Please contact support to restore the database.\n\n * 400 ExternalBackupAlreadySignaledToComplete - The restore request has already been signaled to complete.\n\n * 400 FullBackupNotFound - Full backup can not be found.\n\n * 400 ExternalBackupRestoreHasNotBeenStarted - The restore request can only be completed once the restore has started.\n\n * 400 ExternalBackupUpgradeInProgress - The restore request cannot be completed, since upgrade is in progress.\n\n * 400 RestoreFromStripedBackupsNotEnabled - Restoring from striped backups is not supported.\n\n * 400 BrokenRestorePlanNoFullBackup - The restore plan is broken because there is no full backup.\n\n * 400 IncompatiblePhysicalLayoutTooManyXTPFiles - Database backup contains incompatible physical layout. Multiple files found in the filegroup that contains MEMORY_OPTIMIZED_DATA.\n\n * 400 BrokenRestorePlanWrongLogBackupLSN - The restore plan is broken because firstLsn of current log backup is not <= lastLsn of next log backup.\n\n * 400 BrokenRestorePlanWrongDiffBackupLSN - The restore plan is broken because firstLsn of diff backup is not >= firstLsn of full backup.\n\n * 400 BrokenRestorePlanGapInLogBackups - The restore plan is broken because firstLsn of current log backup is not equal to lastLsn of prev log backup.\n\n * 400 XtpInitializedDuringRestore - Memory-optimized filegroup must be empty in order to be restored on General Purpose tier of SQL Database Managed Instance.\n\n * 400 FullBackupMissingChecksum - Provided full backup is missing checksum.\n\n * 400 FullBackupDamaged - Provided full backup is damaged.\n\n * 400 ManagedInstanceStorageLimitHit - The managed instance has reached its storage limit.\n\n * 404 ResourceDoesNotExist - Resource with the name '{0}' does not exist. To continue, specify a valid resource name.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f3be44b-b539-4b46-b67a-00af3085d937",
+      "documentation": "Gets a list of inaccessible managed databases in a managed instance",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/managedInstances/:managedInstanceName/inaccessibleManagedDatabases",
+      "responses": [
+        {
+          "uuid": "2e5f2d77-2a3b-40b5-9030-4b90f8dd233e",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"location\": \"\",\n      \"tags\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of inaccessible managed databases in a managed instance.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3401cc1b-b756-45be-93e0-37b0c92850a8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 ServerNotInSubscriptionResourceGroup - Specified server does not exist in the specified resource group and subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

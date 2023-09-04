@@ -1,0 +1,594 @@
+{
+  "uuid": "51dca38a-3eda-4c13-9354-a0184fade69f",
+  "lastMigration": 24,
+  "name": "Form Recognizer Client",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "06ebde62-c453-4d85-920a-02cf73f2576e",
+      "documentation": "List Custom Models",
+      "method": "get",
+      "endpoint": "custom/models",
+      "responses": [
+        {
+          "uuid": "3253a893-0ca2-4fa0-9d38-ffba6c29d5c8",
+          "body": "{\n  \"modelList\": [\n    {\n      \"createdDateTime\": \"{{faker 'date.recent' 365}}\",\n      \"lastUpdatedDateTime\": \"{{faker 'date.recent' 365}}\",\n      \"modelId\": \"{{faker 'datatype.uuid'}}\",\n      \"status\": \"{{oneOf (array 'creating' 'ready' 'invalid')}}\"\n    }\n  ],\n  \"nextLink\": \"\",\n  \"summary\": {\n    \"count\": {{faker 'datatype.number'}},\n    \"lastUpdatedDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"limit\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6df75be9-4694-494f-8b44-2a1012f55b49",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7e8c55b3-66f9-44fc-8267-cf5545c34c8b",
+      "documentation": "Train Custom Model",
+      "method": "post",
+      "endpoint": "custom/models",
+      "responses": [
+        {
+          "uuid": "492183cf-3626-4957-8901-8590f291577d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Request is queued successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e06386ff-c5e5-4e61-9847-61e2914e4e40",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5ddfeae-6955-4dae-97e8-9670fc771b89",
+      "documentation": "Delete Custom Model",
+      "method": "delete",
+      "endpoint": "custom/models/:modelId",
+      "responses": [
+        {
+          "uuid": "81da8633-ad50-4597-a7f0-79bf0a74d2a0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Successfully marked model for deletion. Model artifacts will be removed within a predefined time period.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04a9f146-35d6-4f0b-a97b-57e819eba37e",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1d6a74c7-ed60-408f-8ace-6873b5a3bae7",
+      "documentation": "Get Custom Model",
+      "method": "get",
+      "endpoint": "custom/models/:modelId",
+      "responses": [
+        {
+          "uuid": "f1387543-dc86-405b-8f2d-1c7d04df7d5d",
+          "body": "{\n  \"keys\": {\n    \"clusters\": {}\n  },\n  \"modelInfo\": {\n    \"createdDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdatedDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"modelId\": \"{{faker 'datatype.uuid'}}\",\n    \"status\": \"{{oneOf (array 'creating' 'ready' 'invalid')}}\"\n  },\n  \"trainResult\": {\n    \"averageModelAccuracy\": {{faker 'datatype.number'}},\n    \"errors\": [\n      {\n        \"code\": \"\",\n        \"message\": \"\"\n      }\n    ],\n    \"fields\": [\n      {\n        \"accuracy\": {{faker 'datatype.number'}},\n        \"fieldName\": \"\"\n      }\n    ],\n    \"trainingDocuments\": [\n      {\n        \"documentName\": \"\",\n        \"errors\": [\n          {\n            \"code\": \"\",\n            \"message\": \"\"\n          }\n        ],\n        \"pages\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'succeeded' 'partiallySucceeded' 'failed')}}\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "33c58342-19aa-4cf2-bd50-c37ac8792599",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9309121e-ae7d-4892-879a-3b28ca6b3caf",
+      "documentation": "Analyze Form",
+      "method": "post",
+      "endpoint": "custom/models/:modelId/analyze",
+      "responses": [
+        {
+          "uuid": "fa175d3c-0d46-4f3d-a8c4-ac8717c2ab28",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Request is queued successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Operation-Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e5734734-6a01-4176-82bf-df8ff8c89b8a",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a4f44b69-c0ea-4102-9cbf-c2308ef01edf",
+      "documentation": "Get Analyze Form Result",
+      "method": "get",
+      "endpoint": "custom/models/:modelId/analyzeResults/:resultId",
+      "responses": [
+        {
+          "uuid": "5d6fe87f-4494-41f2-a945-3d43f3f34628",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dcdd01aa-576f-4444-8711-42bc4a9f1ce9",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0bb02c49-c2a0-433d-8acb-480c4dfd7e23",
+      "documentation": "Analyze Layout",
+      "method": "post",
+      "endpoint": "layout/analyze",
+      "responses": [
+        {
+          "uuid": "8486aacb-9d7d-4276-964f-7111bc5967de",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Request is queued successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Operation-Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "344a64eb-a8b4-412b-bf5a-b17c58dc209f",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ed9436f8-babc-4116-a0a2-27828cb7b40b",
+      "documentation": "Get Analyze Layout Result",
+      "method": "get",
+      "endpoint": "layout/analyzeResults/:resultId",
+      "responses": [
+        {
+          "uuid": "68f2c407-a1e8-49e8-b9a3-7b9978029e50",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4c934fc7-02bc-409c-a717-56149542ecf2",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c8086ed9-bdd2-4d9c-9cf4-0e57ce447dd7",
+      "documentation": "Analyze Receipt",
+      "method": "post",
+      "endpoint": "prebuilt/receipt/analyze",
+      "responses": [
+        {
+          "uuid": "b324d98d-9cd1-4194-a51a-dbb6938abef2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Request is queued successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Operation-Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "66abfce8-ef87-48ff-b469-4382a8aede58",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6e22c924-cb0c-4027-a497-96aa03b065f8",
+      "documentation": "Get Analyze Receipt Result",
+      "method": "get",
+      "endpoint": "prebuilt/receipt/analyzeResults/:resultId",
+      "responses": [
+        {
+          "uuid": "5859cfc8-9f50-4165-9598-642adb3f4d55",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "06787b08-a9cc-48be-88b7-ffd21937f8cb",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Response entity accompanying non-successful responses containing additional details about the error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

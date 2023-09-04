@@ -1,0 +1,198 @@
+{
+  "uuid": "b17e021e-46ea-4af2-ad97-91ec81b34b53",
+  "lastMigration": 24,
+  "name": "Genomics API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "586d02d7-e27b-498c-95c0-ad0700554837",
+      "documentation": "Runs a pipeline. The returned Operation's metadata field will contain a google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution. The [response] field will contain a google.genomics.v2alpha1.RunPipelineResponse object if the pipeline completes successfully. **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and re-enable the API to grant the Genomics Service Agent the required permissions. Authorization requires the following [Google IAM](https://cloud.google.com/iam/) permission: * `genomics.operations.create` [1]: /genomics/gsa",
+      "method": "post",
+      "endpoint": "v2alpha1/pipelines:run",
+      "responses": [
+        {
+          "uuid": "7286f171-fd3b-47df-887a-c798083d7814",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "721a2383-8383-4e9d-ac70-00d9445807ed",
+      "documentation": "The worker uses this method to retrieve the assigned operation and provide periodic status updates.",
+      "method": "post",
+      "endpoint": "v2alpha1/workers/:id:checkIn",
+      "responses": [
+        {
+          "uuid": "c3a667a9-621f-4dc1-bf75-47a8acf268de",
+          "body": "{\n  \"deadline\": \"\",\n  \"features\": {},\n  \"metadata\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8d9687b9-fb45-4e96-84e4-69dbc7ddda80",
+      "documentation": "The worker uses this method to retrieve the assigned operation and provide periodic status updates.",
+      "method": "post",
+      "endpoint": "v2alpha1/:id:checkIn",
+      "responses": [
+        {
+          "uuid": "9aa0c496-53ac-4876-94c9-89bf82b9e317",
+          "body": "{\n  \"deadline\": \"\",\n  \"features\": {},\n  \"metadata\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d9979240-983d-407a-bf11-0163362bc357",
+      "documentation": "Lists operations that match the specified filter in the request. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.list`",
+      "method": "get",
+      "endpoint": "v2alpha1/:name",
+      "responses": [
+        {
+          "uuid": "bdce6b84-aeab-49b5-ba1f-d8fa1e0fa2bf",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"operations\": [\n    {\n      \"done\": {{faker 'datatype.boolean'}},\n      \"error\": {\n        \"code\": {{faker 'datatype.number'}},\n        \"details\": [\n          {}\n        ],\n        \"message\": \"\"\n      },\n      \"metadata\": {},\n      \"name\": \"\",\n      \"response\": {}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6810a0d-bc06-4c58-b6eb-ac142ee7ffd2",
+      "documentation": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: * `genomics.operations.cancel`",
+      "method": "post",
+      "endpoint": "v2alpha1/:name:cancel",
+      "responses": [
+        {
+          "uuid": "3156e568-2344-4d5a-8d2b-8757e602a94f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

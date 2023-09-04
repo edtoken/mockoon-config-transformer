@@ -1,0 +1,286 @@
+{
+  "uuid": "a8e65848-36bd-4ff1-8b29-9a7751b35d7a",
+  "lastMigration": 24,
+  "name": "StorageManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "532edc94-62a9-4132-ba0f-e5aba1d8b212",
+      "documentation": "Returns the status of a container migration job.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Storage.Admin/farms/:farmId/shares/operationresults/:operationId",
+      "responses": [
+        {
+          "uuid": "1916093a-657f-49f7-9cc9-79653493b0c5",
+          "body": "{\n  \"containerName\": \"\",\n  \"destinationShareName\": \"\",\n  \"failureReason\": \"\",\n  \"jobId\": \"\",\n  \"migrationStatus\": \"{{oneOf (array 'Active' 'Paused' 'Deleted' 'Rollback' 'Complete' 'Canceled' 'Failed' 'All')}}\",\n  \"sourceShareName\": \"\",\n  \"storageAccountName\": \"\",\n  \"subEntitiesCompleted\": {{faker 'datatype.number'}},\n  \"subEntitiesFailed\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Operation has been accepted and processed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9393241b-a660-48b8-9175-bb4ffbfbe58b",
+      "documentation": "Cancel a container migration job.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Storage.Admin/farms/:farmId/shares/operationresults/:operationId",
+      "responses": [
+        {
+          "uuid": "cc75077e-93ed-4f01-9862-96d59edb9f5f",
+          "body": "{\n  \"containerName\": \"\",\n  \"destinationShareName\": \"\",\n  \"failureReason\": \"\",\n  \"jobId\": \"\",\n  \"migrationStatus\": \"{{oneOf (array 'Active' 'Paused' 'Deleted' 'Rollback' 'Complete' 'Canceled' 'Failed' 'All')}}\",\n  \"sourceShareName\": \"\",\n  \"storageAccountName\": \"\",\n  \"subEntitiesCompleted\": {{faker 'datatype.number'}},\n  \"subEntitiesFailed\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Operation has been accepted and processed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "28d26a07-e0aa-4d0c-b6ce-3a645fcc7cc0",
+          "body": "{\n  \"containerName\": \"\",\n  \"destinationShareName\": \"\",\n  \"failureReason\": \"\",\n  \"jobId\": \"\",\n  \"migrationStatus\": \"{{oneOf (array 'Active' 'Paused' 'Deleted' 'Rollback' 'Complete' 'Canceled' 'Failed' 'All')}}\",\n  \"sourceShareName\": \"\",\n  \"storageAccountName\": \"\",\n  \"subEntitiesCompleted\": {{faker 'datatype.number'}},\n  \"subEntitiesFailed\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "ACCEPTED - Operation has been accepted will be processed asynchronously",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e395669-ea12-49d7-bfe5-1e93ed7f14fd",
+      "documentation": "Returns the list of containers which can be migrated in the specified share.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Storage.Admin/farms/:farmId/shares/:shareName/containers",
+      "responses": [
+        {
+          "uuid": "adb23f28-fb6f-466d-8400-b2f8191094db",
+          "body": "[\n  {\n    \"accountid\": \"\",\n    \"accountname\": \"\",\n    \"containerState\": \"\",\n    \"containerid\": {{faker 'datatype.number'}},\n    \"containername\": \"\",\n    \"sharename\": \"\",\n    \"usedBytesInPrimaryVolume\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- The list of containers has been returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5fcb6a84-d54f-43c5-9714-547a6d5cc79a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "NOT FOUND -- The specified farm or share was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3cb8a811-756e-40f1-b67f-7c71ef272113",
+      "documentation": "Returns a list of destination shares that the system considers as best candidates for migration.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Storage.Admin/farms/:farmId/shares/:shareName/destinationshares",
+      "responses": [
+        {
+          "uuid": "c0e22163-8861-4f7f-8e71-bcd7f3161911",
+          "body": "[\n  {\n    \"id\": \"\",\n    \"location\": \"\",\n    \"name\": \"\",\n    \"tags\": {},\n    \"type\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- The list of shares has been returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9268cc7b-1f66-451b-b6e1-0ba108451ba0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "NOT FOUND -- The specified farm or share was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34d54456-f138-4b6a-978a-73f2282e4df1",
+      "documentation": "Starts a container migration job to migrate containers to the specified destination share.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Storage.Admin/farms/:farmId/shares/:shareName/migrate",
+      "responses": [
+        {
+          "uuid": "7d87e82e-2941-4d14-90de-2bb3598a0f8d",
+          "body": "{\n  \"containerName\": \"\",\n  \"destinationShareName\": \"\",\n  \"failureReason\": \"\",\n  \"jobId\": \"\",\n  \"migrationStatus\": \"{{oneOf (array 'Active' 'Paused' 'Deleted' 'Rollback' 'Complete' 'Canceled' 'Failed' 'All')}}\",\n  \"sourceShareName\": \"\",\n  \"storageAccountName\": \"\",\n  \"subEntitiesCompleted\": {{faker 'datatype.number'}},\n  \"subEntitiesFailed\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Container has been migrated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "01ad4d82-70a0-470f-a6e0-d2e5d384f7c3",
+          "body": "{\n  \"containerName\": \"\",\n  \"destinationShareName\": \"\",\n  \"failureReason\": \"\",\n  \"jobId\": \"\",\n  \"migrationStatus\": \"{{oneOf (array 'Active' 'Paused' 'Deleted' 'Rollback' 'Complete' 'Canceled' 'Failed' 'All')}}\",\n  \"sourceShareName\": \"\",\n  \"storageAccountName\": \"\",\n  \"subEntitiesCompleted\": {{faker 'datatype.number'}},\n  \"subEntitiesFailed\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "ACCEPTED -- Operation accepted and will be performed asynchronously",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

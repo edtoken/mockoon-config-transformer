@@ -1,0 +1,482 @@
+{
+  "uuid": "0f219b02-4ffc-4739-9023-e57bdd321c67",
+  "lastMigration": 24,
+  "name": "M-Bus HTTPD API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "39cd2df4-9908-4b0e-b728-8a9f6f561dc7",
+      "documentation": "Returns this API specification",
+      "method": "get",
+      "endpoint": "mbus/api",
+      "responses": [
+        {
+          "uuid": "1e3816c2-62a7-4ab4-9a64-8146c01b721b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/x-yaml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "70f69440-f189-4bc5-ac4d-e83cedadf033",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a61058e1-9996-48d7-b740-7932d10fb684",
+      "documentation": "Gets data from the slave identified by {address}",
+      "method": "post",
+      "endpoint": "mbus/get/:device/:baudrate/:address",
+      "responses": [
+        {
+          "uuid": "9b4d7aaa-727f-4201-af54-b527f08a96c8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ff7cb1b2-9520-4de1-89c0-2d65bcba5245",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b1d1a2d8-65c1-4219-92d2-abc912083479",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found (or M-Bus HTTPD is unauthorized to access it, or to change baud rate to that specified, etc)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "04c1d739-091f-4401-a952-02f163bdfb1a",
+      "documentation": "Gets data from the slave identified by {address}, and supports multiple responses from the slave",
+      "method": "post",
+      "endpoint": "mbus/getMulti/:device/:baudrate/:address/:maxframes",
+      "responses": [
+        {
+          "uuid": "4939daaf-4bd1-489f-9938-afeeadcc34e5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f567c1be-90f4-4a73-83c1-585f4c3be79e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2a5564d7-6536-4e06-8720-a06410f316ca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found (or M-Bus HTTPD is unauthorized to access it, or to change baud rate to that specified, etc)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e7804dde-1892-4de9-905d-82d3aa30dab7",
+      "documentation": "Gets Raspberry Pi Hat information",
+      "method": "get",
+      "endpoint": "mbus/hat",
+      "responses": [
+        {
+          "uuid": "34ba0c7a-3eed-4351-bddd-192dd66b7544",
+          "body": "{\n  \"addr\": 30,\n  \"enabled\": true,\n  \"index\": 1\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9c24d62e-9c55-460a-8f32-dfeb7a884fbd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "95436ea9-347f-4fc3-a7a7-bc55fedfaeee",
+      "documentation": "Turns off power to the M-Bus",
+      "method": "post",
+      "endpoint": "mbus/hat/off",
+      "responses": [
+        {
+          "uuid": "2b337785-6ea4-49d9-b0f6-4c242803016c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a717c25c-3be6-4d6e-95f9-0b18d798f8ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "265bf8bd-112f-4952-9b21-1cc24b0bbf38",
+      "documentation": "Turns on power to the M-Bus",
+      "method": "post",
+      "endpoint": "mbus/hat/on",
+      "responses": [
+        {
+          "uuid": "1eb04912-300f-48b2-b8a1-fac99d02c2a3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "061bb8a9-14e7-4ffa-aa63-a437854f9e01",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "622595fb-7965-4497-b4ec-24c136f47939",
+      "documentation": "Scan the specified device for slaves",
+      "method": "post",
+      "endpoint": "mbus/scan/:device/:baudrate",
+      "responses": [
+        {
+          "uuid": "ce01c8fd-4f83-45d7-a1e0-655b068378f7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4e3d890a-7515-4600-9707-5afef5ea0795",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0bfdc617-b471-497f-9faa-b88c337f87d2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found (e.g. device not found, or M-Bus HTTPD is unauthorized to access it, or to change baud rate to that specified, device not responding etc)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

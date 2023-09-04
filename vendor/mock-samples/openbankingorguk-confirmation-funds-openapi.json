@@ -1,0 +1,978 @@
+{
+  "uuid": "08c8fe22-e6be-4666-b7fd-22f2510ca46b",
+  "lastMigration": 24,
+  "name": "Confirmation of Funds API Specification",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b504a1dc-6f94-4015-bd9d-4e825e05b901",
+      "documentation": "Create Funds Confirmation Consent",
+      "method": "post",
+      "endpoint": "funds-confirmation-consents",
+      "responses": [
+        {
+          "uuid": "2e12149a-78c4-4a2b-b8fc-d2b064ae2b02",
+          "body": "{\n  \"Data\": {\n    \"ConsentId\": \"\",\n    \"CreationDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"DebtorAccount\": {\n      \"Identification\": \"\",\n      \"Name\": \"\",\n      \"SchemeName\": \"\",\n      \"SecondaryIdentification\": \"\"\n    },\n    \"ExpirationDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"Status\": \"{{oneOf (array 'Authorised' 'AwaitingAuthorisation' 'Rejected' 'Revoked')}}\",\n    \"StatusUpdateDateTime\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"Links\": {\n    \"First\": \"\",\n    \"Last\": \"\",\n    \"Next\": \"\",\n    \"Prev\": \"\",\n    \"Self\": \"\"\n  },\n  \"Meta\": {\n    \"FirstAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"LastAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"TotalPages\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Funds Confirmation Consent Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3b88a99d-9be1-46c9-9fed-910549785101",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "33548139-3bcf-41f7-a81a-41029bc4b835",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bdb3df76-e185-414d-a1ea-f962d53283a7",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7a1574fb-bf72-46e5-9b36-95861b915faf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30dd9ddd-49aa-4fff-9f44-27bf3d1a097c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Not Acceptable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "038de593-9e0f-4570-8306-e204d78a1cfc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "Unsupported Media Type",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ac868f28-0bd9-4cd0-b506-6faa8fc6ea3f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Too Many Requests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": ""
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "09d9e6a9-7237-4f06-9a7b-322195e5f6a6",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "964b96d5-bec6-4b01-a6c4-1311d0071900",
+      "documentation": "Delete Funds Confirmation Consent",
+      "method": "delete",
+      "endpoint": "funds-confirmation-consents/:ConsentId",
+      "responses": [
+        {
+          "uuid": "dda2da5a-4b43-4e42-a88d-a3af20bc728f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Funds Confirmation Consent Deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "addd84ed-cf68-4680-ac3f-97218f271cf1",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aa39915a-d33b-4446-9050-2db6ff220fa7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "92c3e998-3019-4f4a-9ded-37e66389eba0",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6440a27d-7893-47b4-9a41-9e9d0ddda955",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1bbc4411-7e1a-4dcd-8d30-417ce163b3ff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Not Acceptable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1184923a-6249-4ee9-9027-772778e60b15",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Too Many Requests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": ""
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "474b5bc4-6a10-4ca3-a44f-c3e3769adc56",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f1617583-32d6-4007-9794-797704de7946",
+      "documentation": "Get Funds Confirmation Consent",
+      "method": "get",
+      "endpoint": "funds-confirmation-consents/:ConsentId",
+      "responses": [
+        {
+          "uuid": "5dcf3fa7-745e-4ce6-a4b3-3128547f9dd8",
+          "body": "{\n  \"Data\": {\n    \"ConsentId\": \"\",\n    \"CreationDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"DebtorAccount\": {\n      \"Identification\": \"\",\n      \"Name\": \"\",\n      \"SchemeName\": \"\",\n      \"SecondaryIdentification\": \"\"\n    },\n    \"ExpirationDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"Status\": \"{{oneOf (array 'Authorised' 'AwaitingAuthorisation' 'Rejected' 'Revoked')}}\",\n    \"StatusUpdateDateTime\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"Links\": {\n    \"First\": \"\",\n    \"Last\": \"\",\n    \"Next\": \"\",\n    \"Prev\": \"\",\n    \"Self\": \"\"\n  },\n  \"Meta\": {\n    \"FirstAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"LastAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"TotalPages\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Funds Confirmation Consent Read",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "97d25741-d577-49d9-a4c7-cea78130a89b",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "06af2c39-3088-48d1-8747-d8d9a8fd2d08",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "61b8213c-54e9-4b5d-8bf9-b44ed8ea2e6f",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0ad8e105-982e-4001-9f5b-e42e74bab762",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b09bf532-381b-40de-b122-ab9d10e0c25c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Not Acceptable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c5f5d4ec-3a90-489e-b5df-84d71d46ce91",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Too Many Requests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": ""
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "58855e23-a5d8-40c6-88f4-c7afcb961d2f",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "89f5e376-a0c0-401e-85b6-79c3fbf44fd4",
+      "documentation": "Create Funds Confirmation",
+      "method": "post",
+      "endpoint": "funds-confirmations",
+      "responses": [
+        {
+          "uuid": "bb884c8e-c370-4e94-8e22-0e3e9e82f1ad",
+          "body": "{\n  \"Data\": {\n    \"ConsentId\": \"\",\n    \"CreationDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"FundsAvailable\": {{faker 'datatype.boolean'}},\n    \"FundsConfirmationId\": \"\",\n    \"InstructedAmount\": {\n      \"Amount\": \"\",\n      \"Currency\": \"\"\n    },\n    \"Reference\": \"\"\n  },\n  \"Links\": {\n    \"First\": \"\",\n    \"Last\": \"\",\n    \"Next\": \"\",\n    \"Prev\": \"\",\n    \"Self\": \"\"\n  },\n  \"Meta\": {\n    \"FirstAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"LastAvailableDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"TotalPages\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Funds Confirmation Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1ba9df26-6b45-4136-9813-803bd6734b6c",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1822d413-35e3-403c-bcab-e548b41813b1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "24999cbb-c3c6-4b62-87df-5e7e412b6242",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "235b67d8-3587-43d9-8d6c-39333271f9dd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fd92925c-a964-4a94-8930-4a9a00a1ae58",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Not Acceptable",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "833bee93-a3ef-47e8-a830-44f07ca5011a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "Unsupported Media Type",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bfb52de4-27f4-44bd-8088-c452c8e935b7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Too Many Requests",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": ""
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bf79ceef-f83f-431c-8f8b-599968f02634",
+          "body": "{\n  \"Code\": \"\",\n  \"Errors\": [\n    {\n      \"ErrorCode\": \"\",\n      \"Message\": \"\",\n      \"Path\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"Id\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "x-fapi-interaction-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

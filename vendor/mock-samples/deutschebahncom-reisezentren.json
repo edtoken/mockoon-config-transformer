@@ -1,0 +1,232 @@
+{
+  "uuid": "54f3a3c4-a0d2-4c81-a37f-78f493b05f98",
+  "lastMigration": 24,
+  "name": "Reisezentren-API",
+  "endpointPrefix": "reisezentren/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "1fd65316-f3e8-459c-af41-25c64e8ade56",
+      "documentation": "Get all station infos",
+      "method": "get",
+      "endpoint": "reisezentren",
+      "responses": [
+        {
+          "uuid": "958f2248-918a-4ecc-9714-03a0c5621610",
+          "body": "[\n  {\n    \"address\": \"\",\n    \"city\": \"\",\n    \"id\": {{faker 'datatype.number'}},\n    \"lat\": {{faker 'datatype.number'}},\n    \"lon\": {{faker 'datatype.number'}},\n    \"name\": \"\",\n    \"openingTimes\": {\n      \"fri\": [\n        \"\"\n      ],\n      \"mon\": [\n        \"\"\n      ],\n      \"sat\": [\n        \"\"\n      ],\n      \"sun\": [\n        \"\"\n      ],\n      \"thu\": [\n        \"\"\n      ],\n      \"tue\": [\n        \"\"\n      ],\n      \"wed\": [\n        \"\"\n      ]\n    },\n    \"postCode\": \"\",\n    \"type\": \"{{oneOf (array 'Reisezentrum' 'Mobility Center')}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List has been created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fa9abaac-5a7e-43a2-8e4c-f79ed53a0467",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "No travel centers could be found matching the given name",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e76b2491-286e-4876-abb4-8699438faafb",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 416,
+          "label": "Filtering required - specify a name fragment of at least 3 characters",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e56767cb-9659-4a6b-a47d-3fad6b3269d9",
+      "documentation": "Get information about a station near a location",
+      "method": "get",
+      "endpoint": "reisezentren/loc/:lat/:lon",
+      "responses": [
+        {
+          "uuid": "bd94556d-e048-4e50-97d3-abf624f649b2",
+          "body": "{\n  \"address\": \"\",\n  \"city\": \"\",\n  \"id\": {{faker 'datatype.number'}},\n  \"lat\": {{faker 'datatype.number'}},\n  \"lon\": {{faker 'datatype.number'}},\n  \"name\": \"\",\n  \"openingTimes\": {\n    \"fri\": [\n      \"\"\n    ],\n    \"mon\": [\n      \"\"\n    ],\n    \"sat\": [\n      \"\"\n    ],\n    \"sun\": [\n      \"\"\n    ],\n    \"thu\": [\n      \"\"\n    ],\n    \"tue\": [\n      \"\"\n    ],\n    \"wed\": [\n      \"\"\n    ]\n  },\n  \"postCode\": \"\",\n  \"type\": \"{{oneOf (array 'Reisezentrum' 'Mobility Center')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A station was found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fff6bd14-64e3-4819-9d61-10e98a2171c8",
+      "documentation": "Get stations in a given radius",
+      "method": "get",
+      "endpoint": "reisezentren/loc/:lat/:lon/:dist",
+      "responses": [
+        {
+          "uuid": "13bb7009-1aac-4f06-b5ce-239784152841",
+          "body": "{\n  \"address\": \"\",\n  \"city\": \"\",\n  \"id\": {{faker 'datatype.number'}},\n  \"lat\": {{faker 'datatype.number'}},\n  \"lon\": {{faker 'datatype.number'}},\n  \"name\": \"\",\n  \"openingTimes\": {\n    \"fri\": [\n      \"\"\n    ],\n    \"mon\": [\n      \"\"\n    ],\n    \"sat\": [\n      \"\"\n    ],\n    \"sun\": [\n      \"\"\n    ],\n    \"thu\": [\n      \"\"\n    ],\n    \"tue\": [\n      \"\"\n    ],\n    \"wed\": [\n      \"\"\n    ]\n  },\n  \"postCode\": \"\",\n  \"type\": \"{{oneOf (array 'Reisezentrum' 'Mobility Center')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A station was found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "89b59b4d-5cb9-4891-b100-9dcd21886fa6",
+      "documentation": "Get information about a specific station",
+      "method": "get",
+      "endpoint": "reisezentren/:id",
+      "responses": [
+        {
+          "uuid": "c9486176-af99-44fd-bbc2-e003d197a049",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The travel center was found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "17913b18-7a50-45e4-a2ab-012b32fb1d5d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "No travel center found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

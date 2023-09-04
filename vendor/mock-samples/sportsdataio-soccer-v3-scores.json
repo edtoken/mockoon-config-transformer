@@ -1,0 +1,806 @@
+{
+  "uuid": "e3168bef-3a6d-4bd2-b6db-6926b51ef07f",
+  "lastMigration": 24,
+  "name": "Soccer v3 Scores",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "3b14fdee-59ad-40dd-92c9-c1b945825994",
+      "documentation": "Memberships (Active)",
+      "method": "get",
+      "endpoint": ":format/ActiveMemberships",
+      "responses": [
+        {
+          "uuid": "c258703d-91b4-491c-b35a-73e85e63c5d5",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1069eb34-f792-4c4d-925e-cb49c3aeb45b",
+      "documentation": "Areas (Countries)",
+      "method": "get",
+      "endpoint": ":format/Areas",
+      "responses": [
+        {
+          "uuid": "cfb803b4-4fd3-4bfd-9e61-cc8ff17c6717",
+          "body": "[\n  {\n    \"AreaId\": {{faker 'datatype.number'}},\n    \"Competitions\": [\n      {\n        \"AreaId\": {{faker 'datatype.number'}},\n        \"AreaName\": \"\",\n        \"CompetitionId\": {{faker 'datatype.number'}},\n        \"Format\": \"\",\n        \"Gender\": \"\",\n        \"Key\": \"\",\n        \"Name\": \"\",\n        \"Seasons\": [\n          {\n            \"CompetitionId\": {{faker 'datatype.number'}},\n            \"CompetitionName\": \"\",\n            \"CurrentSeason\": {{faker 'datatype.boolean'}},\n            \"EndDate\": \"\",\n            \"Name\": \"\",\n            \"Rounds\": [\n              {\n                \"CurrentRound\": {{faker 'datatype.boolean'}},\n                \"CurrentWeek\": {{faker 'datatype.number'}},\n                \"EndDate\": \"\",\n                \"Name\": \"\",\n                \"RoundId\": {{faker 'datatype.number'}},\n                \"Season\": {{faker 'datatype.number'}},\n                \"SeasonId\": {{faker 'datatype.number'}},\n                \"SeasonType\": {{faker 'datatype.number'}},\n                \"StartDate\": \"\",\n                \"Type\": \"\"\n              }\n            ],\n            \"Season\": {{faker 'datatype.number'}},\n            \"SeasonId\": {{faker 'datatype.number'}},\n            \"StartDate\": \"\"\n          }\n        ],\n        \"Type\": \"\"\n      }\n    ],\n    \"CountryCode\": \"\",\n    \"Name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "54f78434-0b57-42b0-85c9-9661caa1dd07",
+      "documentation": "Canceled Memberships",
+      "method": "get",
+      "endpoint": ":format/CanceledMemberships",
+      "responses": [
+        {
+          "uuid": "9715b146-fd34-4d25-b824-b9c414cb86a8",
+          "body": "{\n  \"CanceledMembershipId\": {{faker 'datatype.number'}},\n  \"Created\": \"\",\n  \"MembershipId\": {{faker 'datatype.number'}},\n  \"PlayerID\": {{faker 'datatype.number'}},\n  \"TeamId\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00da8d5e-bdc6-4a6b-9f8b-f3f0f7824ddc",
+      "documentation": "Competition Fixtures (League Details)",
+      "method": "get",
+      "endpoint": ":format/CompetitionDetails/:competition",
+      "responses": [
+        {
+          "uuid": "d8146ea0-a33c-4363-8ec9-c0fa27fe62b3",
+          "body": "{\n  \"AreaId\": {{faker 'datatype.number'}},\n  \"AreaName\": \"\",\n  \"CompetitionId\": {{faker 'datatype.number'}},\n  \"CurrentSeason\": {\n    \"CompetitionId\": {{faker 'datatype.number'}},\n    \"CompetitionName\": \"\",\n    \"CurrentSeason\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"Name\": \"\",\n    \"Rounds\": [\n      {\n        \"CurrentRound\": {{faker 'datatype.boolean'}},\n        \"CurrentWeek\": {{faker 'datatype.number'}},\n        \"EndDate\": \"\",\n        \"Name\": \"\",\n        \"RoundId\": {{faker 'datatype.number'}},\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonId\": {{faker 'datatype.number'}},\n        \"SeasonType\": {{faker 'datatype.number'}},\n        \"StartDate\": \"\",\n        \"Type\": \"\"\n      }\n    ],\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonId\": {{faker 'datatype.number'}},\n    \"StartDate\": \"\"\n  },\n  \"Format\": \"\",\n  \"Games\": [\n    {\n      \"Attendance\": {{faker 'datatype.number'}},\n      \"AwayTeamCountryCode\": \"\",\n      \"AwayTeamFormation\": \"\",\n      \"AwayTeamId\": {{faker 'datatype.number'}},\n      \"AwayTeamKey\": \"\",\n      \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"AwayTeamName\": \"\",\n      \"AwayTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n      \"AwayTeamScore\": {{faker 'datatype.number'}},\n      \"AwayTeamScoreExtraTime\": {{faker 'datatype.number'}},\n      \"AwayTeamScorePenalty\": {{faker 'datatype.number'}},\n      \"AwayTeamScorePeriod1\": {{faker 'datatype.number'}},\n      \"AwayTeamScorePeriod2\": {{faker 'datatype.number'}},\n      \"Clock\": {{faker 'datatype.number'}},\n      \"ClockDisplay\": \"\",\n      \"ClockExtra\": {{faker 'datatype.number'}},\n      \"DateTime\": \"\",\n      \"Day\": \"\",\n      \"DrawMoneyLine\": {{faker 'datatype.number'}},\n      \"GameId\": {{faker 'datatype.number'}},\n      \"GlobalAwayTeamId\": {{faker 'datatype.number'}},\n      \"GlobalGameId\": {{faker 'datatype.number'}},\n      \"GlobalHomeTeamId\": {{faker 'datatype.number'}},\n      \"Group\": \"\",\n      \"HomeTeamCountryCode\": \"\",\n      \"HomeTeamFormation\": \"\",\n      \"HomeTeamId\": {{faker 'datatype.number'}},\n      \"HomeTeamKey\": \"\",\n      \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n      \"HomeTeamName\": \"\",\n      \"HomeTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n      \"HomeTeamScore\": {{faker 'datatype.number'}},\n      \"HomeTeamScoreExtraTime\": {{faker 'datatype.number'}},\n      \"HomeTeamScorePenalty\": {{faker 'datatype.number'}},\n      \"HomeTeamScorePeriod1\": {{faker 'datatype.number'}},\n      \"HomeTeamScorePeriod2\": {{faker 'datatype.number'}},\n      \"IsClosed\": {{faker 'datatype.boolean'}},\n      \"OverPayout\": {{faker 'datatype.number'}},\n      \"OverUnder\": {{faker 'datatype.number'}},\n      \"Period\": \"\",\n      \"PlayoffAggregateScore\": {\n        \"Created\": \"\",\n        \"TeamA_AggregateScore\": {{faker 'datatype.number'}},\n        \"TeamA_Id\": {{faker 'datatype.number'}},\n        \"TeamB_AggregateScore\": {{faker 'datatype.number'}},\n        \"TeamB_Id\": {{faker 'datatype.number'}},\n        \"Updated\": \"\",\n        \"WinningTeamId\": {{faker 'datatype.number'}}\n      },\n      \"PointSpread\": {{faker 'datatype.number'}},\n      \"RoundId\": {{faker 'datatype.number'}},\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonType\": {{faker 'datatype.number'}},\n      \"Status\": \"\",\n      \"UnderPayout\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"UpdatedUtc\": \"\",\n      \"VenueId\": {{faker 'datatype.number'}},\n      \"VenueType\": \"\",\n      \"Week\": {{faker 'datatype.number'}},\n      \"Winner\": \"\"\n    }\n  ],\n  \"Gender\": \"\",\n  \"Key\": \"\",\n  \"Name\": \"\",\n  \"Seasons\": [\n    {\n      \"CompetitionId\": {{faker 'datatype.number'}},\n      \"CompetitionName\": \"\",\n      \"CurrentSeason\": {{faker 'datatype.boolean'}},\n      \"EndDate\": \"\",\n      \"Name\": \"\",\n      \"Rounds\": [\n        {\n          \"CurrentRound\": {{faker 'datatype.boolean'}},\n          \"CurrentWeek\": {{faker 'datatype.number'}},\n          \"EndDate\": \"\",\n          \"Name\": \"\",\n          \"RoundId\": {{faker 'datatype.number'}},\n          \"Season\": {{faker 'datatype.number'}},\n          \"SeasonId\": {{faker 'datatype.number'}},\n          \"SeasonType\": {{faker 'datatype.number'}},\n          \"StartDate\": \"\",\n          \"Type\": \"\"\n        }\n      ],\n      \"Season\": {{faker 'datatype.number'}},\n      \"SeasonId\": {{faker 'datatype.number'}},\n      \"StartDate\": \"\"\n    }\n  ],\n  \"Teams\": [\n    {\n      \"Active\": {{faker 'datatype.boolean'}},\n      \"Address\": \"\",\n      \"AreaId\": {{faker 'datatype.number'}},\n      \"AreaName\": \"\",\n      \"City\": \"\",\n      \"ClubColor1\": \"\",\n      \"ClubColor2\": \"\",\n      \"ClubColor3\": \"\",\n      \"Email\": \"\",\n      \"Fax\": \"\",\n      \"Founded\": {{faker 'datatype.number'}},\n      \"FullName\": \"\",\n      \"Gender\": \"\",\n      \"GlobalTeamId\": {{faker 'datatype.number'}},\n      \"Key\": \"\",\n      \"Name\": \"\",\n      \"Nickname1\": \"\",\n      \"Nickname2\": \"\",\n      \"Nickname3\": \"\",\n      \"Phone\": \"\",\n      \"Players\": [\n        {\n          \"BirthCity\": \"\",\n          \"BirthCountry\": \"\",\n          \"BirthDate\": \"\",\n          \"CommonName\": \"\",\n          \"DraftKingsPosition\": \"\",\n          \"FirstName\": \"\",\n          \"Foot\": \"\",\n          \"Gender\": \"\",\n          \"Height\": {{faker 'datatype.number'}},\n          \"InjuryBodyPart\": \"\",\n          \"InjuryNotes\": \"\",\n          \"InjuryStartDate\": \"\",\n          \"InjuryStatus\": \"\",\n          \"Jersey\": {{faker 'datatype.number'}},\n          \"LastName\": \"\",\n          \"Nationality\": \"\",\n          \"PhotoUrl\": \"\",\n          \"PlayerId\": {{faker 'datatype.number'}},\n          \"Position\": \"\",\n          \"PositionCategory\": \"\",\n          \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n          \"ShortName\": \"\",\n          \"Updated\": \"\",\n          \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n          \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n          \"UsaTodayHeadshotUpdated\": \"\",\n          \"UsaTodayHeadshotUrl\": \"\",\n          \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n          \"Weight\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"TeamId\": {{faker 'datatype.number'}},\n      \"Type\": \"\",\n      \"VenueId\": {{faker 'datatype.number'}},\n      \"VenueName\": \"\",\n      \"Website\": \"\",\n      \"WikipediaLogoUrl\": \"\",\n      \"WikipediaWordMarkUrl\": \"\",\n      \"Zip\": \"\"\n    }\n  ],\n  \"Type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bab03e77-b900-414f-bb54-e79abfe8e1f2",
+      "documentation": "Competition Hierarchy (League Hierarchy)",
+      "method": "get",
+      "endpoint": ":format/CompetitionHierarchy",
+      "responses": [
+        {
+          "uuid": "75f49045-3665-4ffe-8286-cb96cdc31700",
+          "body": "[\n  {\n    \"AreaId\": {{faker 'datatype.number'}},\n    \"Competitions\": [\n      {\n        \"AreaId\": {{faker 'datatype.number'}},\n        \"AreaName\": \"\",\n        \"CompetitionId\": {{faker 'datatype.number'}},\n        \"Format\": \"\",\n        \"Gender\": \"\",\n        \"Key\": \"\",\n        \"Name\": \"\",\n        \"Seasons\": [\n          {\n            \"CompetitionId\": {{faker 'datatype.number'}},\n            \"CompetitionName\": \"\",\n            \"CurrentSeason\": {{faker 'datatype.boolean'}},\n            \"EndDate\": \"\",\n            \"Name\": \"\",\n            \"Rounds\": [\n              {\n                \"CurrentRound\": {{faker 'datatype.boolean'}},\n                \"CurrentWeek\": {{faker 'datatype.number'}},\n                \"EndDate\": \"\",\n                \"Name\": \"\",\n                \"RoundId\": {{faker 'datatype.number'}},\n                \"Season\": {{faker 'datatype.number'}},\n                \"SeasonId\": {{faker 'datatype.number'}},\n                \"SeasonType\": {{faker 'datatype.number'}},\n                \"StartDate\": \"\",\n                \"Type\": \"\"\n              }\n            ],\n            \"Season\": {{faker 'datatype.number'}},\n            \"SeasonId\": {{faker 'datatype.number'}},\n            \"StartDate\": \"\"\n          }\n        ],\n        \"Type\": \"\"\n      }\n    ],\n    \"CountryCode\": \"\",\n    \"Name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a7dc670-8d1b-4bca-90dd-bdf137876ecd",
+      "documentation": "Competitions (Leagues)",
+      "method": "get",
+      "endpoint": ":format/Competitions",
+      "responses": [
+        {
+          "uuid": "7c82b184-e842-4b9d-857c-f5970cdc4521",
+          "body": "[\n  {\n    \"AreaId\": {{faker 'datatype.number'}},\n    \"AreaName\": \"\",\n    \"CompetitionId\": {{faker 'datatype.number'}},\n    \"Format\": \"\",\n    \"Gender\": \"\",\n    \"Key\": \"\",\n    \"Name\": \"\",\n    \"Seasons\": [\n      {\n        \"CompetitionId\": {{faker 'datatype.number'}},\n        \"CompetitionName\": \"\",\n        \"CurrentSeason\": {{faker 'datatype.boolean'}},\n        \"EndDate\": \"\",\n        \"Name\": \"\",\n        \"Rounds\": [\n          {\n            \"CurrentRound\": {{faker 'datatype.boolean'}},\n            \"CurrentWeek\": {{faker 'datatype.number'}},\n            \"EndDate\": \"\",\n            \"Name\": \"\",\n            \"RoundId\": {{faker 'datatype.number'}},\n            \"Season\": {{faker 'datatype.number'}},\n            \"SeasonId\": {{faker 'datatype.number'}},\n            \"SeasonType\": {{faker 'datatype.number'}},\n            \"StartDate\": \"\",\n            \"Type\": \"\"\n          }\n        ],\n        \"Season\": {{faker 'datatype.number'}},\n        \"SeasonId\": {{faker 'datatype.number'}},\n        \"StartDate\": \"\"\n      }\n    ],\n    \"Type\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ec290abc-9cc8-4437-801d-657bab247e5f",
+      "documentation": "Games by Date",
+      "method": "get",
+      "endpoint": ":format/GamesByDate/:date",
+      "responses": [
+        {
+          "uuid": "572f21d7-bf74-46b3-be4f-787c301df4b4",
+          "body": "[\n  {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayTeamCountryCode\": \"\",\n    \"AwayTeamFormation\": \"\",\n    \"AwayTeamId\": {{faker 'datatype.number'}},\n    \"AwayTeamKey\": \"\",\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamName\": \"\",\n    \"AwayTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"AwayTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"Clock\": {{faker 'datatype.number'}},\n    \"ClockDisplay\": \"\",\n    \"ClockExtra\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DrawMoneyLine\": {{faker 'datatype.number'}},\n    \"GameId\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamId\": {{faker 'datatype.number'}},\n    \"GlobalGameId\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamId\": {{faker 'datatype.number'}},\n    \"Group\": \"\",\n    \"HomeTeamCountryCode\": \"\",\n    \"HomeTeamFormation\": \"\",\n    \"HomeTeamId\": {{faker 'datatype.number'}},\n    \"HomeTeamKey\": \"\",\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamName\": \"\",\n    \"HomeTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"HomeTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"Period\": \"\",\n    \"PlayoffAggregateScore\": {\n      \"Created\": \"\",\n      \"TeamA_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamA_Id\": {{faker 'datatype.number'}},\n      \"TeamB_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamB_Id\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"WinningTeamId\": {{faker 'datatype.number'}}\n    },\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UpdatedUtc\": \"\",\n    \"VenueId\": {{faker 'datatype.number'}},\n    \"VenueType\": \"\",\n    \"Week\": {{faker 'datatype.number'}},\n    \"Winner\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b0be0d0-dfce-451f-bd36-b502323a92a8",
+      "documentation": "Memberships (Historical)",
+      "method": "get",
+      "endpoint": ":format/HistoricalMemberships",
+      "responses": [
+        {
+          "uuid": "3a521bef-89de-48b3-8951-53d4a7a85ea9",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d02df9fd-93ad-47f2-b39a-3e470a1b29fb",
+      "documentation": "Memberships by Competition (Historical)",
+      "method": "get",
+      "endpoint": ":format/HistoricalMembershipsByCompetition/:competition",
+      "responses": [
+        {
+          "uuid": "02a774a0-ad3e-41f8-b19e-e18bd6608be7",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5259036a-d9f1-46a8-bef6-fc872bfd01e4",
+      "documentation": "Memberships by Team (Historical)",
+      "method": "get",
+      "endpoint": ":format/HistoricalMembershipsByTeam/:teamid",
+      "responses": [
+        {
+          "uuid": "d298dc58-5fc9-486e-b316-0a3f84377340",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6b5cc57-097b-4e0a-926b-64716ab84443",
+      "documentation": "Memberships by Competition (Active)",
+      "method": "get",
+      "endpoint": ":format/MembershipsByCompetition/:competition",
+      "responses": [
+        {
+          "uuid": "157fa1f7-f064-4c5b-aae6-18c3aaef9aae",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7eb7047a-622e-47ee-8f39-af120d87c36b",
+      "documentation": "Memberships by Team (Active)",
+      "method": "get",
+      "endpoint": ":format/MembershipsByTeam/:teamid",
+      "responses": [
+        {
+          "uuid": "fd763381-13e8-4cbf-91d9-19288d41e43e",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a82353a3-3452-426d-b0ea-cb95d23f3362",
+      "documentation": "Player",
+      "method": "get",
+      "endpoint": ":format/Player/:playerid",
+      "responses": [
+        {
+          "uuid": "9b9cd6fa-efb2-4c94-8ab5-0777b03330b2",
+          "body": "{\n  \"BirthCity\": \"\",\n  \"BirthCountry\": \"\",\n  \"BirthDate\": \"\",\n  \"CommonName\": \"\",\n  \"DraftKingsPosition\": \"\",\n  \"FirstName\": \"\",\n  \"Foot\": \"\",\n  \"Gender\": \"\",\n  \"Height\": {{faker 'datatype.number'}},\n  \"InjuryBodyPart\": \"\",\n  \"InjuryNotes\": \"\",\n  \"InjuryStartDate\": \"\",\n  \"InjuryStatus\": \"\",\n  \"Jersey\": {{faker 'datatype.number'}},\n  \"LastName\": \"\",\n  \"Nationality\": \"\",\n  \"PhotoUrl\": \"\",\n  \"PlayerId\": {{faker 'datatype.number'}},\n  \"Position\": \"\",\n  \"PositionCategory\": \"\",\n  \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n  \"ShortName\": \"\",\n  \"Updated\": \"\",\n  \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n  \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n  \"UsaTodayHeadshotUpdated\": \"\",\n  \"UsaTodayHeadshotUrl\": \"\",\n  \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n  \"Weight\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd79fca4-6a99-4943-8749-38867b71d660",
+      "documentation": "Players",
+      "method": "get",
+      "endpoint": ":format/Players",
+      "responses": [
+        {
+          "uuid": "fc47d6b6-913f-4db8-a9db-45eb3b3ee44f",
+          "body": "[\n  {\n    \"BirthCity\": \"\",\n    \"BirthCountry\": \"\",\n    \"BirthDate\": \"\",\n    \"CommonName\": \"\",\n    \"DraftKingsPosition\": \"\",\n    \"FirstName\": \"\",\n    \"Foot\": \"\",\n    \"Gender\": \"\",\n    \"Height\": {{faker 'datatype.number'}},\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"Jersey\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Nationality\": \"\",\n    \"PhotoUrl\": \"\",\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"PositionCategory\": \"\",\n    \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n    \"ShortName\": \"\",\n    \"Updated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n    \"UsaTodayHeadshotUpdated\": \"\",\n    \"UsaTodayHeadshotUrl\": \"\",\n    \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9444988c-1076-4de8-a4c2-8ee7b6f1db59",
+      "documentation": "Players by Team",
+      "method": "get",
+      "endpoint": ":format/PlayersByTeam/:teamid",
+      "responses": [
+        {
+          "uuid": "26e2ceaa-a070-478a-bae0-f0fc89eae83e",
+          "body": "[\n  {\n    \"BirthCity\": \"\",\n    \"BirthCountry\": \"\",\n    \"BirthDate\": \"\",\n    \"CommonName\": \"\",\n    \"DraftKingsPosition\": \"\",\n    \"FirstName\": \"\",\n    \"Foot\": \"\",\n    \"Gender\": \"\",\n    \"Height\": {{faker 'datatype.number'}},\n    \"InjuryBodyPart\": \"\",\n    \"InjuryNotes\": \"\",\n    \"InjuryStartDate\": \"\",\n    \"InjuryStatus\": \"\",\n    \"Jersey\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Nationality\": \"\",\n    \"PhotoUrl\": \"\",\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"Position\": \"\",\n    \"PositionCategory\": \"\",\n    \"RotoWirePlayerID\": {{faker 'datatype.number'}},\n    \"ShortName\": \"\",\n    \"Updated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUpdated\": \"\",\n    \"UsaTodayHeadshotNoBackgroundUrl\": \"\",\n    \"UsaTodayHeadshotUpdated\": \"\",\n    \"UsaTodayHeadshotUrl\": \"\",\n    \"UsaTodayPlayerID\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "14901ae5-20b4-4015-8514-f0ef669cb8ff",
+      "documentation": "Memberships (Recently Changed)",
+      "method": "get",
+      "endpoint": ":format/RecentlyChangedMemberships/:days",
+      "responses": [
+        {
+          "uuid": "5aac6358-db79-44f3-a034-7c2bb7c18a0d",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"EndDate\": \"\",\n    \"MembershipId\": {{faker 'datatype.number'}},\n    \"PlayerId\": {{faker 'datatype.number'}},\n    \"PlayerName\": \"\",\n    \"StartDate\": \"\",\n    \"TeamArea\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Updated\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "87895c8b-c0bd-47a6-b8fa-4ba20e467539",
+      "documentation": "Schedule",
+      "method": "get",
+      "endpoint": ":format/Schedule/:roundid",
+      "responses": [
+        {
+          "uuid": "3da36859-4493-4958-b10a-0ef09f42cd45",
+          "body": "[\n  {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayTeamCountryCode\": \"\",\n    \"AwayTeamFormation\": \"\",\n    \"AwayTeamId\": {{faker 'datatype.number'}},\n    \"AwayTeamKey\": \"\",\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamName\": \"\",\n    \"AwayTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"AwayTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"Clock\": {{faker 'datatype.number'}},\n    \"ClockDisplay\": \"\",\n    \"ClockExtra\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DrawMoneyLine\": {{faker 'datatype.number'}},\n    \"GameId\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamId\": {{faker 'datatype.number'}},\n    \"GlobalGameId\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamId\": {{faker 'datatype.number'}},\n    \"Group\": \"\",\n    \"HomeTeamCountryCode\": \"\",\n    \"HomeTeamFormation\": \"\",\n    \"HomeTeamId\": {{faker 'datatype.number'}},\n    \"HomeTeamKey\": \"\",\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamName\": \"\",\n    \"HomeTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"HomeTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"Period\": \"\",\n    \"PlayoffAggregateScore\": {\n      \"Created\": \"\",\n      \"TeamA_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamA_Id\": {{faker 'datatype.number'}},\n      \"TeamB_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamB_Id\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"WinningTeamId\": {{faker 'datatype.number'}}\n    },\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UpdatedUtc\": \"\",\n    \"VenueId\": {{faker 'datatype.number'}},\n    \"VenueType\": \"\",\n    \"Week\": {{faker 'datatype.number'}},\n    \"Winner\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6af97d20-ba4a-4117-9f37-64be67af8f70",
+      "documentation": "Season Teams",
+      "method": "get",
+      "endpoint": ":format/SeasonTeams/:seasonid",
+      "responses": [
+        {
+          "uuid": "109daa02-9164-44de-8ddb-8ca6a5e32f08",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"Gender\": \"\",\n    \"SeasonId\": {{faker 'datatype.number'}},\n    \"SeasonTeamId\": {{faker 'datatype.number'}},\n    \"Team\": {\n      \"Active\": {{faker 'datatype.boolean'}},\n      \"Address\": \"\",\n      \"AreaId\": {{faker 'datatype.number'}},\n      \"AreaName\": \"\",\n      \"City\": \"\",\n      \"ClubColor1\": \"\",\n      \"ClubColor2\": \"\",\n      \"ClubColor3\": \"\",\n      \"Email\": \"\",\n      \"Fax\": \"\",\n      \"Founded\": {{faker 'datatype.number'}},\n      \"FullName\": \"\",\n      \"Gender\": \"\",\n      \"GlobalTeamId\": {{faker 'datatype.number'}},\n      \"Key\": \"\",\n      \"Name\": \"\",\n      \"Nickname1\": \"\",\n      \"Nickname2\": \"\",\n      \"Nickname3\": \"\",\n      \"Phone\": \"\",\n      \"TeamId\": {{faker 'datatype.number'}},\n      \"Type\": \"\",\n      \"VenueId\": {{faker 'datatype.number'}},\n      \"VenueName\": \"\",\n      \"Website\": \"\",\n      \"WikipediaLogoUrl\": \"\",\n      \"WikipediaWordMarkUrl\": \"\",\n      \"Zip\": \"\"\n    },\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"TeamName\": \"\",\n    \"Type\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1eaa4ace-0d94-411c-bb8c-6869b9df3e39",
+      "documentation": "Standings",
+      "method": "get",
+      "endpoint": ":format/Standings/:roundid",
+      "responses": [
+        {
+          "uuid": "08375fb1-ea1c-4c63-a989-6460746e096a",
+          "body": "[\n  {\n    \"Draws\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalTeamID\": {{faker 'datatype.number'}},\n    \"GoalsAgainst\": {{faker 'datatype.number'}},\n    \"GoalsDifferential\": {{faker 'datatype.number'}},\n    \"GoalsScored\": {{faker 'datatype.number'}},\n    \"Group\": \"\",\n    \"Losses\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Order\": {{faker 'datatype.number'}},\n    \"Points\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Scope\": \"\",\n    \"ShortName\": \"\",\n    \"StandingId\": {{faker 'datatype.number'}},\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"Wins\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ff707ee-eec2-4691-a1ba-6dbdcf40ce0e",
+      "documentation": "Team Game Stats by Date",
+      "method": "get",
+      "endpoint": ":format/TeamGameStatsByDate/:date",
+      "responses": [
+        {
+          "uuid": "831ecb33-8af4-4acf-a4c6-d66ae291a37e",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"CornersWon\": {{faker 'datatype.number'}},\n    \"Crosses\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DefenderCleanSheets\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsMondogoal\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"Fouled\": {{faker 'datatype.number'}},\n    \"Fouls\": {{faker 'datatype.number'}},\n    \"GameId\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalGameId\": {{faker 'datatype.number'}},\n    \"GlobalOpponentId\": {{faker 'datatype.number'}},\n    \"GlobalTeamId\": {{faker 'datatype.number'}},\n    \"GoalkeeperCleanSheets\": {{faker 'datatype.number'}},\n    \"GoalkeeperGoalsAgainst\": {{faker 'datatype.number'}},\n    \"GoalkeeperSaves\": {{faker 'datatype.number'}},\n    \"GoalkeeperSingleGoalAgainst\": {{faker 'datatype.number'}},\n    \"GoalkeeperWins\": {{faker 'datatype.number'}},\n    \"Goals\": {{faker 'datatype.number'}},\n    \"HomeOrAway\": \"\",\n    \"Interceptions\": {{faker 'datatype.number'}},\n    \"IsGameOver\": {{faker 'datatype.boolean'}},\n    \"LastManTackle\": {{faker 'datatype.number'}},\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Offsides\": {{faker 'datatype.number'}},\n    \"Opponent\": \"\",\n    \"OpponentId\": {{faker 'datatype.number'}},\n    \"OpponentScore\": {{faker 'datatype.number'}},\n    \"OwnGoals\": {{faker 'datatype.number'}},\n    \"Passes\": {{faker 'datatype.number'}},\n    \"PassesCompleted\": {{faker 'datatype.number'}},\n    \"PenaltiesConceded\": {{faker 'datatype.number'}},\n    \"PenaltiesWon\": {{faker 'datatype.number'}},\n    \"PenaltyKickGoals\": {{faker 'datatype.number'}},\n    \"PenaltyKickMisses\": {{faker 'datatype.number'}},\n    \"PenaltyKickSaves\": {{faker 'datatype.number'}},\n    \"Possession\": {{faker 'datatype.number'}},\n    \"RedCards\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Score\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Shots\": {{faker 'datatype.number'}},\n    \"ShotsOnGoal\": {{faker 'datatype.number'}},\n    \"StatId\": {{faker 'datatype.number'}},\n    \"TacklesWon\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"Touches\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UpdatedUtc\": \"\",\n    \"YellowCards\": {{faker 'datatype.number'}},\n    \"YellowRedCards\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f4d231a8-3660-4fe5-9878-9a8d3a2e82dc",
+      "documentation": "Team Season Stats",
+      "method": "get",
+      "endpoint": ":format/TeamSeasonStats/:roundid",
+      "responses": [
+        {
+          "uuid": "c5312225-99cb-4d74-8741-b1d4040a3873",
+          "body": "[\n  {\n    \"Assists\": {{faker 'datatype.number'}},\n    \"BlockedShots\": {{faker 'datatype.number'}},\n    \"CornersWon\": {{faker 'datatype.number'}},\n    \"Crosses\": {{faker 'datatype.number'}},\n    \"DefenderCleanSheets\": {{faker 'datatype.number'}},\n    \"FantasyPoints\": {{faker 'datatype.number'}},\n    \"FantasyPointsDraftKings\": {{faker 'datatype.number'}},\n    \"FantasyPointsFanDuel\": {{faker 'datatype.number'}},\n    \"FantasyPointsMondogoal\": {{faker 'datatype.number'}},\n    \"FantasyPointsYahoo\": {{faker 'datatype.number'}},\n    \"Fouled\": {{faker 'datatype.number'}},\n    \"Fouls\": {{faker 'datatype.number'}},\n    \"Games\": {{faker 'datatype.number'}},\n    \"GlobalTeamId\": {{faker 'datatype.number'}},\n    \"GoalkeeperCleanSheets\": {{faker 'datatype.number'}},\n    \"GoalkeeperGoalsAgainst\": {{faker 'datatype.number'}},\n    \"GoalkeeperSaves\": {{faker 'datatype.number'}},\n    \"GoalkeeperSingleGoalAgainst\": {{faker 'datatype.number'}},\n    \"GoalkeeperWins\": {{faker 'datatype.number'}},\n    \"Goals\": {{faker 'datatype.number'}},\n    \"Interceptions\": {{faker 'datatype.number'}},\n    \"LastManTackle\": {{faker 'datatype.number'}},\n    \"Minutes\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Offsides\": {{faker 'datatype.number'}},\n    \"OpponentScore\": {{faker 'datatype.number'}},\n    \"OwnGoals\": {{faker 'datatype.number'}},\n    \"Passes\": {{faker 'datatype.number'}},\n    \"PassesCompleted\": {{faker 'datatype.number'}},\n    \"PenaltiesConceded\": {{faker 'datatype.number'}},\n    \"PenaltiesWon\": {{faker 'datatype.number'}},\n    \"PenaltyKickGoals\": {{faker 'datatype.number'}},\n    \"PenaltyKickMisses\": {{faker 'datatype.number'}},\n    \"PenaltyKickSaves\": {{faker 'datatype.number'}},\n    \"Possession\": {{faker 'datatype.number'}},\n    \"RedCards\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Score\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Shots\": {{faker 'datatype.number'}},\n    \"ShotsOnGoal\": {{faker 'datatype.number'}},\n    \"StatId\": {{faker 'datatype.number'}},\n    \"TacklesWon\": {{faker 'datatype.number'}},\n    \"Team\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"Touches\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UpdatedUtc\": \"\",\n    \"YellowCards\": {{faker 'datatype.number'}},\n    \"YellowRedCards\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf036335-1613-420d-90db-2de7b96a78ef",
+      "documentation": "Teams",
+      "method": "get",
+      "endpoint": ":format/Teams",
+      "responses": [
+        {
+          "uuid": "c78af148-6428-4dbb-a0fa-504c59589a7e",
+          "body": "[\n  {\n    \"Active\": {{faker 'datatype.boolean'}},\n    \"Address\": \"\",\n    \"AreaId\": {{faker 'datatype.number'}},\n    \"AreaName\": \"\",\n    \"City\": \"\",\n    \"ClubColor1\": \"\",\n    \"ClubColor2\": \"\",\n    \"ClubColor3\": \"\",\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"Founded\": {{faker 'datatype.number'}},\n    \"FullName\": \"\",\n    \"Gender\": \"\",\n    \"GlobalTeamId\": {{faker 'datatype.number'}},\n    \"Key\": \"\",\n    \"Name\": \"\",\n    \"Nickname1\": \"\",\n    \"Nickname2\": \"\",\n    \"Nickname3\": \"\",\n    \"Phone\": \"\",\n    \"TeamId\": {{faker 'datatype.number'}},\n    \"Type\": \"\",\n    \"VenueId\": {{faker 'datatype.number'}},\n    \"VenueName\": \"\",\n    \"Website\": \"\",\n    \"WikipediaLogoUrl\": \"\",\n    \"WikipediaWordMarkUrl\": \"\",\n    \"Zip\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7d7b4f42-b852-43c0-9fbe-6cd5fc7946f5",
+      "documentation": "Upcoming Schedule By Player",
+      "method": "get",
+      "endpoint": ":format/UpcomingScheduleByPlayer/:playerid",
+      "responses": [
+        {
+          "uuid": "b3b42583-7086-45a1-97f2-bd45bb3999e3",
+          "body": "[\n  {\n    \"Attendance\": {{faker 'datatype.number'}},\n    \"AwayTeamCountryCode\": \"\",\n    \"AwayTeamFormation\": \"\",\n    \"AwayTeamId\": {{faker 'datatype.number'}},\n    \"AwayTeamKey\": \"\",\n    \"AwayTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"AwayTeamName\": \"\",\n    \"AwayTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"AwayTeamScore\": {{faker 'datatype.number'}},\n    \"AwayTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"AwayTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"Clock\": {{faker 'datatype.number'}},\n    \"ClockDisplay\": \"\",\n    \"ClockExtra\": {{faker 'datatype.number'}},\n    \"DateTime\": \"\",\n    \"Day\": \"\",\n    \"DrawMoneyLine\": {{faker 'datatype.number'}},\n    \"GameId\": {{faker 'datatype.number'}},\n    \"GlobalAwayTeamId\": {{faker 'datatype.number'}},\n    \"GlobalGameId\": {{faker 'datatype.number'}},\n    \"GlobalHomeTeamId\": {{faker 'datatype.number'}},\n    \"Group\": \"\",\n    \"HomeTeamCountryCode\": \"\",\n    \"HomeTeamFormation\": \"\",\n    \"HomeTeamId\": {{faker 'datatype.number'}},\n    \"HomeTeamKey\": \"\",\n    \"HomeTeamMoneyLine\": {{faker 'datatype.number'}},\n    \"HomeTeamName\": \"\",\n    \"HomeTeamPointSpreadPayout\": {{faker 'datatype.number'}},\n    \"HomeTeamScore\": {{faker 'datatype.number'}},\n    \"HomeTeamScoreExtraTime\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePenalty\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod1\": {{faker 'datatype.number'}},\n    \"HomeTeamScorePeriod2\": {{faker 'datatype.number'}},\n    \"IsClosed\": {{faker 'datatype.boolean'}},\n    \"OverPayout\": {{faker 'datatype.number'}},\n    \"OverUnder\": {{faker 'datatype.number'}},\n    \"Period\": \"\",\n    \"PlayoffAggregateScore\": {\n      \"Created\": \"\",\n      \"TeamA_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamA_Id\": {{faker 'datatype.number'}},\n      \"TeamB_AggregateScore\": {{faker 'datatype.number'}},\n      \"TeamB_Id\": {{faker 'datatype.number'}},\n      \"Updated\": \"\",\n      \"WinningTeamId\": {{faker 'datatype.number'}}\n    },\n    \"PointSpread\": {{faker 'datatype.number'}},\n    \"RoundId\": {{faker 'datatype.number'}},\n    \"Season\": {{faker 'datatype.number'}},\n    \"SeasonType\": {{faker 'datatype.number'}},\n    \"Status\": \"\",\n    \"UnderPayout\": {{faker 'datatype.number'}},\n    \"Updated\": \"\",\n    \"UpdatedUtc\": \"\",\n    \"VenueId\": {{faker 'datatype.number'}},\n    \"VenueType\": \"\",\n    \"Week\": {{faker 'datatype.number'}},\n    \"Winner\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23edc8da-3488-44b8-a8c0-23ef08de81f5",
+      "documentation": "Venues",
+      "method": "get",
+      "endpoint": ":format/Venues",
+      "responses": [
+        {
+          "uuid": "7c300ac2-72d5-4520-a614-2999664f123c",
+          "body": "[\n  {\n    \"Address\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"City\": \"\",\n    \"Country\": \"\",\n    \"GeoLat\": {{faker 'datatype.number'}},\n    \"GeoLong\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Nickname1\": \"\",\n    \"Nickname2\": \"\",\n    \"Open\": {{faker 'datatype.boolean'}},\n    \"Opened\": {{faker 'datatype.number'}},\n    \"Surface\": \"\",\n    \"VenueId\": {{faker 'datatype.number'}},\n    \"Zip\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

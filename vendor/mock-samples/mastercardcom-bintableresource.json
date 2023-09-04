@@ -1,0 +1,92 @@
+{
+  "uuid": "3de90319-8670-48ad-a4b3-c5adacf80d80",
+  "lastMigration": 24,
+  "name": "MasterCard Bin Table Listing",
+  "endpointPrefix": "fraud/mtf/bintable/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "3e9d83ec-622e-40da-96f1-57d01c29fa38",
+      "documentation": "BIN Table Listing file",
+      "method": "get",
+      "endpoint": "binlisting",
+      "responses": [
+        {
+          "uuid": "325e1b47-872e-45a2-90f1-3aeca830b643",
+          "body": "{\n  \"data\": \"001234\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the BIN Table Listing file and available to Merchants",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e713f33c-0f8c-4220-9ae0-fd1a7e67b4b2",
+          "body": "{\n  \"ReasonCode\": \"RESOURCE_UNKOWN\",\n  \"Source\": \"System\",\n  \"description\": \"Resource not found\",\n  \"recoverable\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

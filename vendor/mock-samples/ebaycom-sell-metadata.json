@@ -1,0 +1,856 @@
+{
+  "uuid": "b10ef527-3e56-49b0-bd84-5b957f09c0fe",
+  "lastMigration": 24,
+  "name": "Metadata API",
+  "endpointPrefix": "sell/metadata/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8dbff666-fcc2-4f81-92c2-6933973f2e59",
+      "documentation": "This method retrieves all the sales tax jurisdictions for the country that you specify in the countryCode path parameter. Countries with valid sales tax jurisdictions are Canada and the US. The response from this call tells you the jurisdictions for which a seller can configure tax tables. Although setting up tax tables is optional, you can use the createOrReplaceSalesTax in the Account API call to configure the tax tables for the jurisdictions you sell to.",
+      "method": "get",
+      "endpoint": "country/:countryCode/sales_tax_jurisdiction",
+      "responses": [
+        {
+          "uuid": "fab95e78-088c-457c-ba8c-8be6e37cfd59",
+          "body": "{\n  \"salesTaxJurisdictions\": [\n    {\n      \"salesTaxJurisdictionId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ce6e8062-b473-4a5b-b4a4-eb6f5d8e6425",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "979103a5-59d0-4985-bca5-6f22ee6b9d0c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "598a7a6f-d5f5-4f97-8150-72f334b93d0e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "33f09bde-1296-41bd-aa46-d2a797a31964",
+      "documentation": "This method returns the eBay policies that define how to list automotive-parts-compatibility items in the categories of a specific marketplace. By default, this method returns the entire category tree for the specified marketplace. You can limit the size of the result set by using the filter query parameter to specify only the category IDs you want to review. Tip: This method can return a very large response payload and we strongly recommend you get the results from this call in a GZIP file by including the following HTTP header with your request: &nbsp;&nbsp;Accept-Encoding: application/gzip",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_automotive_parts_compatibility_policies",
+      "responses": [
+        {
+          "uuid": "93ad1547-7467-40ab-a62f-fbc6f6f35260",
+          "body": "{\n  \"automotivePartsCompatibilityPolicies\": [\n    {\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\",\n      \"compatibilityBasedOn\": \"\",\n      \"compatibleVehicleTypes\": [\n        \"\"\n      ],\n      \"maxNumberOfCompatibleVehicles\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "324ed9ec-8a93-47a5-b923-11ed6c3366fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c5b816aa-d274-43c8-99c4-ffd9291ff8d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c9e98c6d-74d0-402b-b89e-8f9b97c57b04",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c24766d4-72ea-4d1c-8a04-92c95cb0288d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0af424b7-1d87-417d-83ea-9844bb912632",
+      "documentation": "This method returns item condition metadata on one, multiple, or all eBay categories on an eBay marketplace. This metadata consists of the different item conditions (with IDs) that an eBay category supports, and a boolean to indicate if an eBay category requires an item condition. The identifier of the eBay marketplace is passed in as a path parameter, and unless one or more eBay category IDs are passed in through the filter query parameter, this method will return metadata on every single category for the specified marketplace. If you only want to view item condition metadata for one eBay category or a select group of eBay categories, you can pass in up to 50 eBay category ID through the filter query parameter. Important!: Certified Refurbished-eligible sellers must use an OAuth token created with the authorization code grant flow and https://api.ebay.com/oauth/api_scope/sell.inventory scope in order to retrieve the 'Certified Refurbished' condition (condition ID 2000) for the relevant categories. The Certified Refurbished item condition will not be returned if an OAuth token created with the client credentials grant flow and https://api.ebay.com/oauth/api_scope scope is used, or if any seller is not eligible to list with that item condition. See the Specifying OAuth scopes topic for more information about specifying scopes. Tip: If you retrieve metadata on all eBay categories for a marketplace, the response payload can be quite large. For this reason, we suggest that you consider using the Accept-Encoding request header and set its value to application/gzip. By doing this, the response payload output will be compressed into a GZIP file.",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_item_condition_policies",
+      "responses": [
+        {
+          "uuid": "6b9323b5-bf0f-49aa-bae8-817594c2492d",
+          "body": "{\n  \"itemConditionPolicies\": [\n    {\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\",\n      \"itemConditionRequired\": {{faker 'datatype.boolean'}},\n      \"itemConditions\": [\n        {\n          \"conditionDescription\": \"\",\n          \"conditionId\": \"\"\n        }\n      ]\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b31831f-79b6-4c84-94c7-315c2f612f01",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f167943a-8793-46bf-a6ed-2e738ad117be",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "59f82adb-7231-4db1-b330-e1e44b975a26",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "605341bf-cf95-4b4d-b3d6-c4da8c105caf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7eb0346b-7ed4-4126-8598-7ecee24ba0fb",
+      "documentation": "This method returns the eBay policies that define the allowed listing structures for the categories of a specific marketplace. The listing-structure policies currently pertain to whether or not you can list items with variations. By default, this method returns the entire category tree for the specified marketplace. You can limit the size of the result set by using the filter query parameter to specify only the category IDs you want to review. Tip: This method can return a very large response payload and we strongly recommend you get the results from this call in a GZIP file by including the following HTTP header with your request: &nbsp;&nbsp;Accept-Encoding: application/gzip",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_listing_structure_policies",
+      "responses": [
+        {
+          "uuid": "de5b118b-f303-4675-9b02-09ebc9fa3a7b",
+          "body": "{\n  \"listingStructurePolicies\": [\n    {\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\",\n      \"variationsSupported\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0ecffd9b-750a-4f20-b8e6-e2e1fdc3b355",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "046633f1-6ada-4a63-8e9d-ef16b1c35dfb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cf3bf875-f1b4-46c1-862b-829be23580a7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3fa0172b-4492-4325-b8fd-e3e10c66a44e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e64d738-9147-4123-b252-9df382db0b53",
+      "documentation": "This method returns the eBay policies that define the supported negotiated price features (like &quot;best offer&quot;) for the categories of a specific marketplace. By default, this method returns the entire category tree for the specified marketplace. You can limit the size of the result set by using the filter query parameter to specify only the category IDs you want to review. Tip: This method can return a very large response payload and we strongly recommend you get the results from this call in a GZIP file by including the following HTTP header with your request: &nbsp;&nbsp;Accept-Encoding: application/gzip",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_negotiated_price_policies",
+      "responses": [
+        {
+          "uuid": "cbb6752e-cefc-4f58-a578-edd31dad5512",
+          "body": "{\n  \"negotiatedPricePolicies\": [\n    {\n      \"bestOfferAutoAcceptEnabled\": {{faker 'datatype.boolean'}},\n      \"bestOfferAutoDeclineEnabled\": {{faker 'datatype.boolean'}},\n      \"bestOfferCounterEnabled\": {{faker 'datatype.boolean'}},\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\"\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2c363a48-2d91-4ab0-8845-19e1855d627c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d19021b8-4687-470f-b9f5-c2d5db2c975d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3a84951e-5795-42be-a606-e377714b5038",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3299ce58-b1e5-4037-a830-bd9d02dfff35",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d99da5e8-df76-4ae8-8d8d-584ecb311474",
+      "documentation": "This method retrieves a list of leaf categories for a marketplace and identifies the categories that require items to have an eBay product ID value in order to be listed in those categories. An eBay product ID value (known as an &quot;ePID&quot;) is a value that references a specific product in the eBay Catalog. Important: eBay catalog product adoption is not currently required for any product categories. If product adoption requirements change, they will be noted here. Use the marketplace_id path parameter to specify the marketplace you want to review and use the filter query parameter to limit the categories returned in the response. Tip: This method can return a very large response payload and we strongly recommend you get the results from this call in a GZIP file by including the following HTTP header with your request: &nbsp;&nbsp;Accept-Encoding: application/gzip",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_product_adoption_policies",
+      "responses": [
+        {
+          "uuid": "7a00bd80-611a-4d88-b9e4-45e7dcd592e6",
+          "body": "{\n  \"productAdoptionPolicies\": [\n    {\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\",\n      \"exclusion\": {\n        \"brands\": [\n          \"\"\n        ]\n      },\n      \"productRequired\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f3cc069c-9949-4663-9501-521d442c5b1a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "88a39deb-680b-4a1b-9fc3-db6133c351d2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b9524f8-72e4-40fc-b702-c7afb03b0516",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "15565fb7-0132-4f8f-a251-20111f99454b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "908a246b-2d57-438b-ba46-286a7b18a2f2",
+      "documentation": "This method returns the eBay policies that define whether or not you must include a return policy for the items you list in the categories of a specific marketplace, plus the guidelines for creating domestic and international return policies in the different eBay categories. By default, this method returns the entire category tree for the specified marketplace. You can limit the size of the result set by using the filter query parameter to specify only the category IDs you want to review. Tip: This method can return a very large response payload and we strongly recommend you get the results from this call in a GZIP file by including the following HTTP header with your request: &nbsp;&nbsp;Accept-Encoding: application/gzip",
+      "method": "get",
+      "endpoint": "marketplace/:marketplace_id/get_return_policies",
+      "responses": [
+        {
+          "uuid": "4193d4cf-f357-4864-8cd4-e3503a7908a6",
+          "body": "{\n  \"returnPolicies\": [\n    {\n      \"categoryId\": \"\",\n      \"categoryTreeId\": \"\",\n      \"domestic\": {\n        \"policyDescriptionEnabled\": {{faker 'datatype.boolean'}},\n        \"refundMethods\": [\n          \"\"\n        ],\n        \"returnMethods\": [\n          \"\"\n        ],\n        \"returnPeriods\": [\n          {\n            \"unit\": \"\",\n            \"value\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"returnShippingCostPayers\": [\n          \"\"\n        ],\n        \"returnsAcceptanceEnabled\": {{faker 'datatype.boolean'}}\n      },\n      \"international\": {\n        \"policyDescriptionEnabled\": {{faker 'datatype.boolean'}},\n        \"refundMethods\": [\n          \"\"\n        ],\n        \"returnMethods\": [\n          \"\"\n        ],\n        \"returnPeriods\": [\n          {\n            \"unit\": \"\",\n            \"value\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"returnShippingCostPayers\": [\n          \"\"\n        ],\n        \"returnsAcceptanceEnabled\": {{faker 'datatype.boolean'}}\n      },\n      \"required\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f98a0bb5-96a4-4df1-9bf0-98875feef246",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "54776256-dcbe-4648-84bc-4d7fb2042cf6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8dfff7b8-0c3d-49b6-a222-9f50bb6ecfa4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "76960bbd-4d79-4a16-a77b-83a8bfecdd97",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

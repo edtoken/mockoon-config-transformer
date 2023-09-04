@@ -1,0 +1,646 @@
+{
+  "uuid": "4cc6fff9-0da2-4ad1-ad99-dd0b5b699609",
+  "lastMigration": 24,
+  "name": "Twilio - Studio",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "bdfac366-76d3-4f9d-ba9d-840697cbaf28",
+      "documentation": "Retrieve a list of all Flows.",
+      "method": "get",
+      "endpoint": "v2/Flows",
+      "responses": [
+        {
+          "uuid": "77069b2a-28e3-4fed-82b8-09cde9b10fe9",
+          "body": "{\n  \"flows\": [\n    {\n      \"account_sid\": \"\",\n      \"commit_message\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"definition\": \"\",\n      \"errors\": [\n        \"\"\n      ],\n      \"friendly_name\": \"\",\n      \"links\": {},\n      \"revision\": {{faker 'datatype.number'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n      \"url\": \"\",\n      \"valid\": {{faker 'datatype.boolean'}},\n      \"warnings\": [\n        \"\"\n      ],\n      \"webhook_url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "85265632-f4a7-4dba-a79f-6ead0f80cd1d",
+      "documentation": "Create a Flow.",
+      "method": "post",
+      "endpoint": "v2/Flows",
+      "responses": [
+        {
+          "uuid": "90ba1b57-6d50-421f-a772-c431bf4cb20b",
+          "body": "{\n  \"account_sid\": \"\",\n  \"commit_message\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"definition\": \"\",\n  \"errors\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"revision\": {{faker 'datatype.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n  \"url\": \"\",\n  \"valid\": {{faker 'datatype.boolean'}},\n  \"warnings\": [\n    \"\"\n  ],\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a193d53-6aa7-4a1a-8a4a-332a6cb73552",
+      "documentation": "Validate flow JSON definition",
+      "method": "post",
+      "endpoint": "v2/Flows/Validate",
+      "responses": [
+        {
+          "uuid": "cf4204cc-6644-48e0-bde7-1e412df36ae2",
+          "body": "{\n  \"valid\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "21f2addc-da99-4e93-acc7-ca8d3b0023dd",
+      "documentation": "Retrieve a list of all Executions for the Flow.",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions",
+      "responses": [
+        {
+          "uuid": "127292af-5d3e-4b7a-9c24-317f863a8d73",
+          "body": "{\n  \"executions\": [\n    {\n      \"account_sid\": \"\",\n      \"contact_channel_address\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n      \"url\": \"\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09f0985e-f2f0-451c-9efd-84cdb8a88ecf",
+      "documentation": "Triggers a new Execution for the Flow",
+      "method": "post",
+      "endpoint": "v2/Flows/:FlowSid/Executions",
+      "responses": [
+        {
+          "uuid": "0cc26bee-517d-463b-973f-cc70a914d4ec",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4916fabf-c336-4e82-84ec-d7a64d5a10d2",
+      "documentation": "Retrieve the most recent context for an Execution.",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:ExecutionSid/Context",
+      "responses": [
+        {
+          "uuid": "6f01c79f-517b-4fa5-9be3-2844442416cb",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "761d0c02-cdba-49f7-abab-27dbf8d95567",
+      "documentation": "Retrieve a list of all Steps for an Execution.",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:ExecutionSid/Steps",
+      "responses": [
+        {
+          "uuid": "01b49226-6a6d-4082-8b06-7aa586e006d3",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"steps\": [\n    {\n      \"account_sid\": \"\",\n      \"context\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"execution_sid\": \"\",\n      \"flow_sid\": \"\",\n      \"links\": {},\n      \"name\": \"\",\n      \"sid\": \"\",\n      \"transitioned_from\": \"\",\n      \"transitioned_to\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9e8f4f30-76be-4257-8c69-89a4a79c5024",
+      "documentation": "Retrieve a Step.",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:ExecutionSid/Steps/:Sid",
+      "responses": [
+        {
+          "uuid": "af239b9c-9d91-4c61-b05f-5658a83df357",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"name\": \"\",\n  \"sid\": \"\",\n  \"transitioned_from\": \"\",\n  \"transitioned_to\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa5863d9-3a4a-4bba-a9cf-fb8c29a9d19a",
+      "documentation": "Retrieve the context for an Execution Step.",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:ExecutionSid/Steps/:StepSid/Context",
+      "responses": [
+        {
+          "uuid": "5d24f05d-f395-4aec-a71f-acc156d3d24f",
+          "body": "{\n  \"account_sid\": \"\",\n  \"context\": \"\",\n  \"execution_sid\": \"\",\n  \"flow_sid\": \"\",\n  \"step_sid\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f6a2b683-0afc-4caa-845d-10e4858900d1",
+      "documentation": "Delete the Execution and all Steps relating to it.",
+      "method": "delete",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "a2f8248c-0bf4-4090-a061-0c7858632d43",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "379799fe-aec8-4de7-b185-224101730930",
+      "documentation": "Retrieve an Execution",
+      "method": "get",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "62b2b098-63c7-4c99-997f-cf0cad4aacaa",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2aa65ae0-742e-4a52-83ef-b8214d7e8fcf",
+      "documentation": "Update the status of an Execution to `ended`.",
+      "method": "post",
+      "endpoint": "v2/Flows/:FlowSid/Executions/:Sid",
+      "responses": [
+        {
+          "uuid": "58562e18-706b-44ff-90d0-85f608e251b2",
+          "body": "{\n  \"account_sid\": \"\",\n  \"contact_channel_address\": \"\",\n  \"context\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"flow_sid\": \"\",\n  \"links\": {},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'active' 'ended')}}\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d52e2e9c-09ca-47b4-b292-6aeaaf5d12af",
+      "documentation": "Delete a specific Flow.",
+      "method": "delete",
+      "endpoint": "v2/Flows/:Sid",
+      "responses": [
+        {
+          "uuid": "17abcc06-e561-45a1-a664-19f6b29cda9b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4f4fbddd-c433-4b1b-ae3e-6a400093eaf5",
+      "documentation": "Retrieve a specific Flow.",
+      "method": "get",
+      "endpoint": "v2/Flows/:Sid",
+      "responses": [
+        {
+          "uuid": "afe9e8ed-2bc6-4e79-8a14-c990d50888f8",
+          "body": "{\n  \"account_sid\": \"\",\n  \"commit_message\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"definition\": \"\",\n  \"errors\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"revision\": {{faker 'datatype.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n  \"url\": \"\",\n  \"valid\": {{faker 'datatype.boolean'}},\n  \"warnings\": [\n    \"\"\n  ],\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7ea0c361-be19-4b2b-9afc-29da7a96bb46",
+      "documentation": "Update a Flow.",
+      "method": "post",
+      "endpoint": "v2/Flows/:Sid",
+      "responses": [
+        {
+          "uuid": "1061c609-1997-4b20-af2a-3e724e973724",
+          "body": "{\n  \"account_sid\": \"\",\n  \"commit_message\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"definition\": \"\",\n  \"errors\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"links\": {},\n  \"revision\": {{faker 'datatype.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n  \"url\": \"\",\n  \"valid\": {{faker 'datatype.boolean'}},\n  \"warnings\": [\n    \"\"\n  ],\n  \"webhook_url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00e5e5d7-d5a2-42c0-b95a-06744139dd4c",
+      "documentation": "Retrieve a list of all Flows revisions.",
+      "method": "get",
+      "endpoint": "v2/Flows/:Sid/Revisions",
+      "responses": [
+        {
+          "uuid": "8a3c414b-6c29-407d-a032-fb98f32b5aab",
+          "body": "{\n  \"meta\": {\n    \"first_page_url\": \"\",\n    \"key\": \"\",\n    \"next_page_url\": \"\",\n    \"page\": {{faker 'datatype.number'}},\n    \"page_size\": {{faker 'datatype.number'}},\n    \"previous_page_url\": \"\",\n    \"url\": \"\"\n  },\n  \"revisions\": [\n    {\n      \"account_sid\": \"\",\n      \"commit_message\": \"\",\n      \"date_created\": \"{{faker 'date.recent' 365}}\",\n      \"date_updated\": \"{{faker 'date.recent' 365}}\",\n      \"definition\": \"\",\n      \"errors\": [\n        \"\"\n      ],\n      \"friendly_name\": \"\",\n      \"revision\": {{faker 'datatype.number'}},\n      \"sid\": \"\",\n      \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n      \"url\": \"\",\n      \"valid\": {{faker 'datatype.boolean'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7c9d6ad4-8813-42ea-9fad-75ea26f19990",
+      "documentation": "Retrieve a specific Flow revision.",
+      "method": "get",
+      "endpoint": "v2/Flows/:Sid/Revisions/:Revision",
+      "responses": [
+        {
+          "uuid": "2e6ca160-972c-46ec-97d6-a950156a939e",
+          "body": "{\n  \"account_sid\": \"\",\n  \"commit_message\": \"\",\n  \"date_created\": \"{{faker 'date.recent' 365}}\",\n  \"date_updated\": \"{{faker 'date.recent' 365}}\",\n  \"definition\": \"\",\n  \"errors\": [\n    \"\"\n  ],\n  \"friendly_name\": \"\",\n  \"revision\": {{faker 'datatype.number'}},\n  \"sid\": \"\",\n  \"status\": \"{{oneOf (array 'draft' 'published')}}\",\n  \"url\": \"\",\n  \"valid\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "450dcc28-0132-40f4-9597-54f1b3af8908",
+      "documentation": "Fetch flow test users",
+      "method": "get",
+      "endpoint": "v2/Flows/:Sid/TestUsers",
+      "responses": [
+        {
+          "uuid": "d84208da-f35f-4e2d-a972-9b8c4d0c23c1",
+          "body": "{\n  \"sid\": \"\",\n  \"test_users\": [\n    \"\"\n  ],\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d1f6323-3f54-404a-a49a-9c04f05ad7e4",
+      "documentation": "Update flow test users",
+      "method": "post",
+      "endpoint": "v2/Flows/:Sid/TestUsers",
+      "responses": [
+        {
+          "uuid": "7be44fda-b189-4bc8-9672-78e016713bde",
+          "body": "{\n  \"sid\": \"\",\n  \"test_users\": [\n    \"\"\n  ],\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

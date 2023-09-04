@@ -1,0 +1,3042 @@
+{
+  "uuid": "c95cd2e0-0e26-418c-8175-fe759dea4630",
+  "lastMigration": 24,
+  "name": "Members API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f757b977-317d-47ff-9191-2814bde79c17",
+      "documentation": "Returns a list of locations, both parent and child",
+      "method": "get",
+      "endpoint": "api/Location/Browse/:locationType/:locationName",
+      "responses": [
+        {
+          "uuid": "e38af9b1-0d89-4b0f-bbe9-a6ff11272179",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"childContexts\": [\n      {\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"type\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n        \"typeName\": \"\"\n      }\n    ],\n    \"context\": {\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"type\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"typeName\": \"\"\n    },\n    \"parentContext\": {\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"type\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"typeName\": \"\"\n    },\n    \"stateOfTheParties\": [\n      {\n        \"female\": {{faker 'datatype.number'}},\n        \"male\": {{faker 'datatype.number'}},\n        \"nonBinary\": {{faker 'datatype.number'}},\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"total\": {{faker 'datatype.number'}}\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3fec820d-84e3-4ccb-b7d5-f16bb5c61a5e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "916fff83-c3c5-434e-8c24-83ce5513125d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f825982e-5334-4b2d-9831-d4e73897f7a3",
+      "documentation": "Returns a list of constituencies",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/Search",
+      "responses": [
+        {
+          "uuid": "e91edbde-0285-460a-a417-f383b4399751",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"currentRepresentation\": {\n          \"member\": {\n            \"links\": [\n              {\n                \"href\": \"\",\n                \"method\": \"\",\n                \"rel\": \"\"\n              }\n            ],\n            \"value\": {\n              \"gender\": \"\",\n              \"id\": {{faker 'datatype.number'}},\n              \"latestHouseMembership\": {\n                \"house\": \"{{oneOf (array '1' '2')}}\",\n                \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipEndReason\": \"\",\n                \"membershipEndReasonId\": {{faker 'datatype.number'}},\n                \"membershipEndReasonNotes\": \"\",\n                \"membershipFrom\": \"\",\n                \"membershipFromId\": {{faker 'datatype.number'}},\n                \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipStatus\": {\n                  \"statusDescription\": \"\",\n                  \"statusId\": {{faker 'datatype.number'}},\n                  \"statusIsActive\": {{faker 'datatype.boolean'}},\n                  \"statusNotes\": \"\",\n                  \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n                }\n              },\n              \"latestParty\": {\n                \"abbreviation\": \"\",\n                \"backgroundColour\": \"\",\n                \"foregroundColour\": \"\",\n                \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n                \"id\": {{faker 'datatype.number'}},\n                \"isIndependentParty\": {{faker 'datatype.boolean'}},\n                \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n                \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n                \"name\": \"\"\n              },\n              \"nameAddressAs\": \"\",\n              \"nameDisplayAs\": \"\",\n              \"nameFullTitle\": \"\",\n              \"nameListAs\": \"\",\n              \"thumbnailUrl\": \"\"\n            }\n          },\n          \"representation\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          }\n        },\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b0dbe526-3aa6-45ab-b89b-baa94e394a41",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5e639b2-32f5-4dfb-8f11-fde31471a1c1",
+      "documentation": "Returns a constituency by ID",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id",
+      "responses": [
+        {
+          "uuid": "31bfecd1-5773-474b-9952-a41d1bb09492",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"currentRepresentation\": {\n      \"member\": {\n        \"links\": [\n          {\n            \"href\": \"\",\n            \"method\": \"\",\n            \"rel\": \"\"\n          }\n        ],\n        \"value\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        }\n      },\n      \"representation\": {\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipEndReason\": \"\",\n        \"membershipEndReasonId\": {{faker 'datatype.number'}},\n        \"membershipEndReasonNotes\": \"\",\n        \"membershipFrom\": \"\",\n        \"membershipFromId\": {{faker 'datatype.number'}},\n        \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipStatus\": {\n          \"statusDescription\": \"\",\n          \"statusId\": {{faker 'datatype.number'}},\n          \"statusIsActive\": {{faker 'datatype.boolean'}},\n          \"statusNotes\": \"\",\n          \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      }\n    },\n    \"endDate\": \"{{faker 'date.recent' 365}}\",\n    \"id\": {{faker 'datatype.number'}},\n    \"name\": \"\",\n    \"startDate\": \"{{faker 'date.recent' 365}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a034f775-6136-4083-8004-2ae19cb286a0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1bb991d2-3a5a-4e20-a18a-bdb8c8923a65",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "afbb0d13-701a-4a96-8d04-8da35e7ba715",
+      "documentation": "Returns latest election result by constituency id",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/ElectionResult/Latest",
+      "responses": [
+        {
+          "uuid": "f24759c4-8492-4971-8454-089b8d9484d3",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"candidates\": [\n      {\n        \"memberId\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"rankOrder\": {{faker 'datatype.number'}},\n        \"resultChange\": \"\",\n        \"voteShare\": {{faker 'datatype.float'}},\n        \"votes\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"constituencyName\": \"\",\n    \"electionDate\": \"{{faker 'date.recent' 365}}\",\n    \"electionId\": {{faker 'datatype.number'}},\n    \"electionTitle\": \"\",\n    \"electorate\": {{faker 'datatype.number'}},\n    \"isGeneralElection\": {{faker 'datatype.boolean'}},\n    \"isNotional\": {{faker 'datatype.boolean'}},\n    \"majority\": {{faker 'datatype.number'}},\n    \"result\": \"\",\n    \"turnout\": {{faker 'datatype.number'}},\n    \"winningParty\": {\n      \"abbreviation\": \"\",\n      \"backgroundColour\": \"\",\n      \"foregroundColour\": \"\",\n      \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"id\": {{faker 'datatype.number'}},\n      \"isIndependentParty\": {{faker 'datatype.boolean'}},\n      \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n      \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f2bcdc38-1573-4a60-95a3-f6f73bf5d59d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fbbb7942-ea42-4128-af45-14924d56bca4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34f99ca7-4a27-4752-ac5c-9e961bd1d498",
+      "documentation": "Returns an election result by constituency and election id",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/ElectionResult/:electionId",
+      "responses": [
+        {
+          "uuid": "3f4f3e44-1d72-47aa-a9ac-7db4d72bf327",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"candidates\": [\n      {\n        \"memberId\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"rankOrder\": {{faker 'datatype.number'}},\n        \"resultChange\": \"\",\n        \"voteShare\": {{faker 'datatype.float'}},\n        \"votes\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"constituencyName\": \"\",\n    \"electionDate\": \"{{faker 'date.recent' 365}}\",\n    \"electionId\": {{faker 'datatype.number'}},\n    \"electionTitle\": \"\",\n    \"electorate\": {{faker 'datatype.number'}},\n    \"isGeneralElection\": {{faker 'datatype.boolean'}},\n    \"isNotional\": {{faker 'datatype.boolean'}},\n    \"majority\": {{faker 'datatype.number'}},\n    \"result\": \"\",\n    \"turnout\": {{faker 'datatype.number'}},\n    \"winningParty\": {\n      \"abbreviation\": \"\",\n      \"backgroundColour\": \"\",\n      \"foregroundColour\": \"\",\n      \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"id\": {{faker 'datatype.number'}},\n      \"isIndependentParty\": {{faker 'datatype.boolean'}},\n      \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n      \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2a5e5b0d-4916-4c45-8b5c-f5de4e3056bd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "009b6ee5-2f97-45e9-b803-7e9a65e5440c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "55775caa-2fb8-4beb-adc3-398bde3563a6",
+      "documentation": "Returns a list of election results by constituency ID",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/ElectionResults",
+      "responses": [
+        {
+          "uuid": "5fea37d9-b793-476a-bc5f-3747ac9f26b7",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"candidates\": [\n        {\n          \"memberId\": {{faker 'datatype.number'}},\n          \"name\": \"\",\n          \"party\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"rankOrder\": {{faker 'datatype.number'}},\n          \"resultChange\": \"\",\n          \"voteShare\": {{faker 'datatype.float'}},\n          \"votes\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"constituencyName\": \"\",\n      \"electionDate\": \"{{faker 'date.recent' 365}}\",\n      \"electionId\": {{faker 'datatype.number'}},\n      \"electionTitle\": \"\",\n      \"electorate\": {{faker 'datatype.number'}},\n      \"isGeneralElection\": {{faker 'datatype.boolean'}},\n      \"isNotional\": {{faker 'datatype.boolean'}},\n      \"majority\": {{faker 'datatype.number'}},\n      \"result\": \"\",\n      \"turnout\": {{faker 'datatype.number'}},\n      \"winningParty\": {\n        \"abbreviation\": \"\",\n        \"backgroundColour\": \"\",\n        \"foregroundColour\": \"\",\n        \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isIndependentParty\": {{faker 'datatype.boolean'}},\n        \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n        \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n        \"name\": \"\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f2a452b6-4326-4297-87bd-b8d4d5d096d4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3b00bd19-0e58-412e-8831-41b4f81bcc5b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ee469af-9146-45b0-83e8-8eaf8a2cb3e5",
+      "documentation": "Returns geometry by constituency ID",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/Geometry",
+      "responses": [
+        {
+          "uuid": "8aee40cf-b95c-4bca-93f0-9e4de0bb2bac",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a81cfd81-b9cc-4597-9b3a-5e889326e2e9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4d206ea9-9ea5-473b-9622-e9780bbe71d6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06c408a7-dc59-469b-a4a4-e1490af2955a",
+      "documentation": "Returns a list of representations by constituency ID",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/Representations",
+      "responses": [
+        {
+          "uuid": "7c156849-48b0-4dbe-8927-139addebea81",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"member\": {\n        \"links\": [\n          {\n            \"href\": \"\",\n            \"method\": \"\",\n            \"rel\": \"\"\n          }\n        ],\n        \"value\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        }\n      },\n      \"representation\": {\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipEndReason\": \"\",\n        \"membershipEndReasonId\": {{faker 'datatype.number'}},\n        \"membershipEndReasonNotes\": \"\",\n        \"membershipFrom\": \"\",\n        \"membershipFromId\": {{faker 'datatype.number'}},\n        \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipStatus\": {\n          \"statusDescription\": \"\",\n          \"statusId\": {{faker 'datatype.number'}},\n          \"statusIsActive\": {{faker 'datatype.boolean'}},\n          \"statusNotes\": \"\",\n          \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0feb885c-0ff2-4843-a46a-c64dd1f36015",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b08a1044-1b46-45ea-bd8c-6105c1441040",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8f5529df-4239-475d-9018-8f90ce855af3",
+      "documentation": "Returns a synopsis by constituency ID",
+      "method": "get",
+      "endpoint": "api/Location/Constituency/:id/Synopsis",
+      "responses": [
+        {
+          "uuid": "65481323-ae91-4614-a839-31bc18d69d64",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7ea41bf3-8c35-4a42-930b-70a27f16265a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30897143-5c94-4dec-a7c5-d290c2fd1b5d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "063bc64a-c022-42ec-806f-1ab3d2046fc3",
+      "documentation": "Returns a list of registered interests",
+      "method": "get",
+      "endpoint": "api/LordsInterests/Register",
+      "responses": [
+        {
+          "uuid": "88d57ffb-fd93-4b54-b5d1-78b9f30a99ca",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"interestCategories\": [\n          {\n            \"interests\": [\n              {\n                \"createdWhen\": \"{{faker 'date.recent' 365}}\",\n                \"deletedWhen\": \"{{faker 'date.recent' 365}}\",\n                \"interest\": \"\",\n                \"lastAmendedWhen\": \"{{faker 'date.recent' 365}}\"\n              }\n            ],\n            \"name\": \"\",\n            \"sortOrder\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"member\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        }\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "59b62f5c-9236-4a5c-9dd6-813606ac436a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9c1f4af4-35ef-4f07-b653-520bd80c3eff",
+      "documentation": "Returns a list of staff",
+      "method": "get",
+      "endpoint": "api/LordsInterests/Staff",
+      "responses": [
+        {
+          "uuid": "2cf49bfc-9c77-4551-b4fc-537f96d134cc",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"member\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        },\n        \"staff\": [\n          {\n            \"details\": \"\",\n            \"forename\": \"\",\n            \"surname\": \"\",\n            \"title\": \"\"\n          }\n        ]\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04a2d65a-bd44-4e84-8bde-d5e9a0244923",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8f279ce6-9c7b-47c7-a103-b7e8c8e2faa5",
+      "documentation": "Return members by ID with list of their historical names, parties and memberships",
+      "method": "get",
+      "endpoint": "api/Members/History",
+      "responses": [
+        {
+          "uuid": "5591a890-a383-45d5-8e51-a5fface63659",
+          "body": "[\n  {\n    \"links\": [\n      {\n        \"href\": \"\",\n        \"method\": \"\",\n        \"rel\": \"\"\n      }\n    ],\n    \"value\": {\n      \"houseMembershipHistory\": [\n        {\n          \"house\": \"{{oneOf (array '1' '2')}}\",\n          \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipEndReason\": \"\",\n          \"membershipEndReasonId\": {{faker 'datatype.number'}},\n          \"membershipEndReasonNotes\": \"\",\n          \"membershipFrom\": \"\",\n          \"membershipFromId\": {{faker 'datatype.number'}},\n          \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipStatus\": {\n            \"statusDescription\": \"\",\n            \"statusId\": {{faker 'datatype.number'}},\n            \"statusIsActive\": {{faker 'datatype.boolean'}},\n            \"statusNotes\": \"\",\n            \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n          }\n        }\n      ],\n      \"id\": {{faker 'datatype.number'}},\n      \"nameHistory\": [\n        {\n          \"endDate\": \"{{faker 'date.recent' 365}}\",\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"startDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"partyHistory\": [\n        {\n          \"endDate\": \"{{faker 'date.recent' 365}}\",\n          \"party\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"startDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"thumbnailUrl\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5b1b234a-9388-4b16-9b1e-0a6d51cd8618",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ccde2f57-8dcf-470b-863a-41962bc70f31",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b745b643-0f3b-4f5d-85d1-d2bedaf6dc42",
+      "documentation": "Returns a list of current members of the Commons or Lords",
+      "method": "get",
+      "endpoint": "api/Members/Search",
+      "responses": [
+        {
+          "uuid": "bd66d9e6-ee16-40e1-b6ce-94232d016116",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"gender\": \"\",\n        \"id\": {{faker 'datatype.number'}},\n        \"latestHouseMembership\": {\n          \"house\": \"{{oneOf (array '1' '2')}}\",\n          \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipEndReason\": \"\",\n          \"membershipEndReasonId\": {{faker 'datatype.number'}},\n          \"membershipEndReasonNotes\": \"\",\n          \"membershipFrom\": \"\",\n          \"membershipFromId\": {{faker 'datatype.number'}},\n          \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipStatus\": {\n            \"statusDescription\": \"\",\n            \"statusId\": {{faker 'datatype.number'}},\n            \"statusIsActive\": {{faker 'datatype.boolean'}},\n            \"statusNotes\": \"\",\n            \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n          }\n        },\n        \"latestParty\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"nameAddressAs\": \"\",\n        \"nameDisplayAs\": \"\",\n        \"nameFullTitle\": \"\",\n        \"nameListAs\": \"\",\n        \"thumbnailUrl\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "517b186c-79c0-438d-9b7e-4983a47b20ee",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8835058b-3d21-4126-a8f5-c92c74c64e3d",
+      "documentation": "Returns a list of members of the Commons or Lords",
+      "method": "get",
+      "endpoint": "api/Members/SearchHistorical",
+      "responses": [
+        {
+          "uuid": "f612b949-81fe-4fb9-81c9-ae816b6fca43",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"gender\": \"\",\n        \"id\": {{faker 'datatype.number'}},\n        \"latestHouseMembership\": {\n          \"house\": \"{{oneOf (array '1' '2')}}\",\n          \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipEndReason\": \"\",\n          \"membershipEndReasonId\": {{faker 'datatype.number'}},\n          \"membershipEndReasonNotes\": \"\",\n          \"membershipFrom\": \"\",\n          \"membershipFromId\": {{faker 'datatype.number'}},\n          \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n          \"membershipStatus\": {\n            \"statusDescription\": \"\",\n            \"statusId\": {{faker 'datatype.number'}},\n            \"statusIsActive\": {{faker 'datatype.boolean'}},\n            \"statusNotes\": \"\",\n            \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n          }\n        },\n        \"latestParty\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"nameAddressAs\": \"\",\n        \"nameDisplayAs\": \"\",\n        \"nameFullTitle\": \"\",\n        \"nameListAs\": \"\",\n        \"thumbnailUrl\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4c85a114-e250-4a4e-9d53-7ba15f87c9ff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "390f07c2-819c-464c-be5a-60b02ebd636f",
+      "documentation": "Return member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id",
+      "responses": [
+        {
+          "uuid": "c47f0dc6-e687-4514-8b9a-783e15edc2b2",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"gender\": \"\",\n    \"id\": {{faker 'datatype.number'}},\n    \"latestHouseMembership\": {\n      \"house\": \"{{oneOf (array '1' '2')}}\",\n      \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n      \"membershipEndReason\": \"\",\n      \"membershipEndReasonId\": {{faker 'datatype.number'}},\n      \"membershipEndReasonNotes\": \"\",\n      \"membershipFrom\": \"\",\n      \"membershipFromId\": {{faker 'datatype.number'}},\n      \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n      \"membershipStatus\": {\n        \"statusDescription\": \"\",\n        \"statusId\": {{faker 'datatype.number'}},\n        \"statusIsActive\": {{faker 'datatype.boolean'}},\n        \"statusNotes\": \"\",\n        \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    },\n    \"latestParty\": {\n      \"abbreviation\": \"\",\n      \"backgroundColour\": \"\",\n      \"foregroundColour\": \"\",\n      \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"id\": {{faker 'datatype.number'}},\n      \"isIndependentParty\": {{faker 'datatype.boolean'}},\n      \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n      \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    },\n    \"nameAddressAs\": \"\",\n    \"nameDisplayAs\": \"\",\n    \"nameFullTitle\": \"\",\n    \"nameListAs\": \"\",\n    \"thumbnailUrl\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8ac25a09-2dd5-4260-8554-472b442735d2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f9ca1b08-194d-46a4-9be7-8d5131cd32fc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6a223cc-1194-44d6-a11b-67fe77118d6e",
+      "documentation": "Return biography of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Biography",
+      "responses": [
+        {
+          "uuid": "5a7609c6-6528-45e3-b379-7a512099c570",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"committeeMemberships\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"electionsContested\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"governmentPosts\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"houseMemberships\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"oppositionPosts\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"otherPosts\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"partyAffiliations\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"representations\": [\n      {\n        \"additionalInfo\": \"\",\n        \"additionalInfoLink\": \"\",\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "74a928b5-e37c-4f4c-b532-b6a8378167d6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16800071-cce3-4234-a9bf-d4d4dfff4f4f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "abcf7ef6-3765-420f-94a2-0100a53d9790",
+      "documentation": "Return list of contact details of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Contact",
+      "responses": [
+        {
+          "uuid": "7b3c9839-85b6-441f-b647-4aac9b1e3f7e",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"email\": \"\",\n      \"fax\": \"\",\n      \"isPreferred\": {{faker 'datatype.boolean'}},\n      \"isWebAddress\": {{faker 'datatype.boolean'}},\n      \"line1\": \"\",\n      \"line2\": \"\",\n      \"line3\": \"\",\n      \"line4\": \"\",\n      \"line5\": \"\",\n      \"notes\": \"\",\n      \"phone\": \"\",\n      \"postcode\": \"\",\n      \"type\": \"\",\n      \"typeDescription\": \"\",\n      \"typeId\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cb8bc0bf-e795-4dfa-8067-5f83db13fdc3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bec1f046-d5b2-4e02-bdc5-5c35673965b4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0d3df95c-0827-4764-8d6b-7abf46c404cb",
+      "documentation": "Return contribution summary of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/ContributionSummary",
+      "responses": [
+        {
+          "uuid": "3f43f6a1-5217-4a20-a88e-48612a36d2df",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"answerCount\": {{faker 'datatype.number'}},\n        \"debateId\": {{faker 'datatype.number'}},\n        \"debateTitle\": \"\",\n        \"debateWebsiteId\": \"\",\n        \"firstTimecode\": \"{{faker 'date.recent' 365}}\",\n        \"house\": \"\",\n        \"interventionCount\": {{faker 'datatype.number'}},\n        \"pointsOfOrderCount\": {{faker 'datatype.number'}},\n        \"questionCount\": {{faker 'datatype.number'}},\n        \"section\": \"\",\n        \"sittingDate\": \"{{faker 'date.recent' 365}}\",\n        \"speechCount\": {{faker 'datatype.number'}},\n        \"statementsCount\": {{faker 'datatype.number'}},\n        \"supplementaryQuestionCount\": {{faker 'datatype.number'}},\n        \"totalContributions\": {{faker 'datatype.number'}}\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "49117da7-658e-4262-8f69-9dec4c2b6002",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4e0d5b36-01a6-4b18-890c-9120311791c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b850bf14-5585-4ed5-82be-4c05cf68f20e",
+      "documentation": "Return list of early day motions of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Edms",
+      "responses": [
+        {
+          "uuid": "7cc66ec4-bf08-4e18-9530-98c075e6947b",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"dateTabled\": \"{{faker 'date.recent' 365}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isAmendment\": {{faker 'datatype.boolean'}},\n        \"isPrayer\": {{faker 'datatype.boolean'}},\n        \"number\": \"\",\n        \"sponsorsCount\": {{faker 'datatype.number'}},\n        \"title\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9094ff21-8af6-4b4d-ab11-3cdfe1a8597c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bff3bf69-240c-43e1-96c6-b32627926f05",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b75d17da-0d95-4f59-b908-319545163f3b",
+      "documentation": "Return experience of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Experience",
+      "responses": [
+        {
+          "uuid": "c563e1ab-f1ca-49da-92ad-7a54bad4334c",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"endMonth\": {{faker 'datatype.number'}},\n      \"endYear\": {{faker 'datatype.number'}},\n      \"id\": {{faker 'datatype.number'}},\n      \"organisation\": \"\",\n      \"startMonth\": {{faker 'datatype.number'}},\n      \"startYear\": {{faker 'datatype.number'}},\n      \"title\": \"\",\n      \"type\": \"\",\n      \"typeId\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6c8c6e3b-9bac-4a03-973a-ac6668188242",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e7f39e81-1092-4c73-a515-dbbd7693d04f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dae12319-9327-4870-8b3e-1f885776dddc",
+      "documentation": "Return list of areas of focus of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Focus",
+      "responses": [
+        {
+          "uuid": "24390c63-10eb-47a9-a265-0669bf48251c",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"category\": \"\",\n      \"focus\": [\n        \"\"\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "42bdcd84-0d9e-420b-903e-fbac7093ef2f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f219b6cf-c5d3-465f-8513-9a94f7bb2d0c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "caf8e516-8bad-435b-bc48-fdbba3b20bb6",
+      "documentation": "Return latest election result of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/LatestElectionResult",
+      "responses": [
+        {
+          "uuid": "dac2e59a-b158-4b55-8697-9a15da84cf0e",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": {\n    \"candidates\": [\n      {\n        \"memberId\": {{faker 'datatype.number'}},\n        \"name\": \"\",\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"rankOrder\": {{faker 'datatype.number'}},\n        \"resultChange\": \"\",\n        \"voteShare\": {{faker 'datatype.float'}},\n        \"votes\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"constituencyName\": \"\",\n    \"electionDate\": \"{{faker 'date.recent' 365}}\",\n    \"electionId\": {{faker 'datatype.number'}},\n    \"electionTitle\": \"\",\n    \"electorate\": {{faker 'datatype.number'}},\n    \"isGeneralElection\": {{faker 'datatype.boolean'}},\n    \"isNotional\": {{faker 'datatype.boolean'}},\n    \"majority\": {{faker 'datatype.number'}},\n    \"result\": \"\",\n    \"turnout\": {{faker 'datatype.number'}},\n    \"winningParty\": {\n      \"abbreviation\": \"\",\n      \"backgroundColour\": \"\",\n      \"foregroundColour\": \"\",\n      \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n      \"id\": {{faker 'datatype.number'}},\n      \"isIndependentParty\": {{faker 'datatype.boolean'}},\n      \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n      \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3bc1edc8-3d36-492a-a65f-de3810f29adb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41ffabb8-c6e4-4caa-8b98-497f3a389f22",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f2032c64-b28f-484e-a728-c9c86337c423",
+      "documentation": "Return portrait of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Portrait",
+      "responses": [
+        {
+          "uuid": "e45352f1-31c1-4a6f-a791-b4eb502b195b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1a22413e-6a66-47a7-b3fa-592f3df6e06f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "79e9f3ea-6f09-4ffa-8d83-e127d1724a93",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c80b44ee-1b33-4133-a167-c72baab60c80",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "87eaa6ce-4193-4328-acc5-6df16d62d4fc",
+      "documentation": "Return portrait url of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/PortraitUrl",
+      "responses": [
+        {
+          "uuid": "25cdb23d-558e-4255-a133-69e76fbe6982",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "568904b4-3092-46d5-9218-db3657dc13eb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bb700203-5f26-4b3b-8989-852db912877b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4b623400-26ad-4d84-a553-811e6bfb843b",
+      "documentation": "Return list of registered interests of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/RegisteredInterests",
+      "responses": [
+        {
+          "uuid": "2be32a6f-876c-4e02-8401-8b3cd46eb7b7",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"interests\": [\n        {\n          \"createdWhen\": \"{{faker 'date.recent' 365}}\",\n          \"deletedWhen\": \"{{faker 'date.recent' 365}}\",\n          \"interest\": \"\",\n          \"lastAmendedWhen\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"name\": \"\",\n      \"sortOrder\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fbdbe630-1940-4e92-a0b1-57399990e37d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ce1ace1c-a0b3-4aa7-9ee6-1fa446a0343f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3ccc2eee-17d4-4024-bb57-b0ca16d2bfe0",
+      "documentation": "Return list of staff of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Staff",
+      "responses": [
+        {
+          "uuid": "3c98e6ba-33b1-4968-8bd1-0a22ac39fb33",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": [\n    {\n      \"details\": \"\",\n      \"forename\": \"\",\n      \"surname\": \"\",\n      \"title\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a0f91e8c-fe53-40b1-b3bc-98f28241e87c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "07a0435f-dfbf-4c9e-80c6-7ce937acdb4c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b33ffe92-4a70-4301-a633-858a35fc9ea6",
+      "documentation": "Return synopsis of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Synopsis",
+      "responses": [
+        {
+          "uuid": "3dcbf118-03fc-415b-b714-412ac32a52b7",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "557ac671-7a11-4a40-ae2b-2b9053a78d60",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4778eee1-8a62-4e54-8526-77f8900cfb6d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5adcdef2-711b-4ec1-8821-cf6768c8d09e",
+      "documentation": "Return thumbnail of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Thumbnail",
+      "responses": [
+        {
+          "uuid": "fefbf6dc-6c9c-4f54-919c-bc76af33d797",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "959ba1db-c334-41f5-ad20-b1dd4970ab93",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc68062c-c9e1-4872-9137-c0a60c988fce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b657ac2-c0d4-4c15-b794-e4c5efdf4559",
+      "documentation": "Return thumbnail url of member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/ThumbnailUrl",
+      "responses": [
+        {
+          "uuid": "70834224-5641-451a-9a97-3c49502fe211",
+          "body": "{\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"value\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5df1b32-d001-4fc5-a2a3-ad988fcfc4ac",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cf39bccb-6137-466d-aae7-e517b7c0fe01",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a91f833-891d-4fad-9a01-9db3d0f47de1",
+      "documentation": "Return list of votes by member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/Voting",
+      "responses": [
+        {
+          "uuid": "8a911fd1-bd93-4a09-bfbc-1307cf5c5f8c",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"actedAsTeller\": {{faker 'datatype.boolean'}},\n        \"date\": \"{{faker 'date.recent' 365}}\",\n        \"divisionNumber\": {{faker 'datatype.number'}},\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"inAffirmativeLobby\": {{faker 'datatype.boolean'}},\n        \"numberAgainst\": {{faker 'datatype.number'}},\n        \"numberInFavour\": {{faker 'datatype.number'}},\n        \"title\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "230516ce-2550-4b45-be09-763963afe3a7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eb454e70-4296-45e6-a246-03b6db8fa385",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52aaecf7-a5c3-4a32-a15c-eae4a0665933",
+      "documentation": "Return list of written questions by member by ID",
+      "method": "get",
+      "endpoint": "api/Members/:id/WrittenQuestions",
+      "responses": [
+        {
+          "uuid": "1f6e52b6-178a-4084-a217-a44a104e8888",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"answerIsCorrection\": {{faker 'datatype.boolean'}},\n        \"answerIsHolding\": {{faker 'datatype.boolean'}},\n        \"answerText\": \"\",\n        \"answeringBody\": {\n          \"department\": {\n            \"id\": {{faker 'datatype.number'}},\n            \"imageUrl\": \"\",\n            \"name\": \"\",\n            \"url\": \"\"\n          },\n          \"id\": {{faker 'datatype.number'}},\n          \"name\": \"\",\n          \"shortName\": \"\",\n          \"target\": \"\"\n        },\n        \"answeringBodyId\": {{faker 'datatype.number'}},\n        \"answeringMember\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        },\n        \"answeringMemberId\": {{faker 'datatype.number'}},\n        \"askingMemberId\": {{faker 'datatype.number'}},\n        \"attachmentCount\": {{faker 'datatype.number'}},\n        \"correctingMember\": {\n          \"gender\": \"\",\n          \"id\": {{faker 'datatype.number'}},\n          \"latestHouseMembership\": {\n            \"house\": \"{{oneOf (array '1' '2')}}\",\n            \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipEndReason\": \"\",\n            \"membershipEndReasonId\": {{faker 'datatype.number'}},\n            \"membershipEndReasonNotes\": \"\",\n            \"membershipFrom\": \"\",\n            \"membershipFromId\": {{faker 'datatype.number'}},\n            \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n            \"membershipStatus\": {\n              \"statusDescription\": \"\",\n              \"statusId\": {{faker 'datatype.number'}},\n              \"statusIsActive\": {{faker 'datatype.boolean'}},\n              \"statusNotes\": \"\",\n              \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n            }\n          },\n          \"latestParty\": {\n            \"abbreviation\": \"\",\n            \"backgroundColour\": \"\",\n            \"foregroundColour\": \"\",\n            \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n            \"id\": {{faker 'datatype.number'}},\n            \"isIndependentParty\": {{faker 'datatype.boolean'}},\n            \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n            \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n            \"name\": \"\"\n          },\n          \"nameAddressAs\": \"\",\n          \"nameDisplayAs\": \"\",\n          \"nameFullTitle\": \"\",\n          \"nameListAs\": \"\",\n          \"thumbnailUrl\": \"\"\n        },\n        \"correctingMemberId\": {{faker 'datatype.number'}},\n        \"dateAnswered\": \"{{faker 'date.recent' 365}}\",\n        \"dateForAnswer\": \"{{faker 'date.recent' 365}}\",\n        \"dateTabled\": \"{{faker 'date.recent' 365}}\",\n        \"groupedQuestions\": [\n          \"\"\n        ],\n        \"groupedQuestionsDates\": [\n          {\n            \"dateTabled\": \"{{faker 'date.recent' 365}}\",\n            \"questionUin\": \"\"\n          }\n        ],\n        \"heading\": \"\",\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isNamedDay\": {{faker 'datatype.boolean'}},\n        \"isWithdrawn\": {{faker 'datatype.boolean'}},\n        \"memberHasInterest\": {{faker 'datatype.boolean'}},\n        \"questionText\": \"\",\n        \"uin\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1efd219c-a40b-4722-99e0-c2340d50d4fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "097518a2-9243-4e61-b92f-a2181dc89dff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "72459c6d-f598-4f01-8cc1-8c92bce85cf9",
+      "documentation": "Returns a list of current parties with at least one active member.",
+      "method": "get",
+      "endpoint": "api/Parties/GetActive/:house",
+      "responses": [
+        {
+          "uuid": "19db1202-4c4b-4ac1-9a74-361c2426a1d3",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"abbreviation\": \"\",\n        \"backgroundColour\": \"\",\n        \"foregroundColour\": \"\",\n        \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isIndependentParty\": {{faker 'datatype.boolean'}},\n        \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n        \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n        \"name\": \"\"\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d1235ae0-9eb7-4149-b74e-562d5da91ba3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b589d5c3-52cd-4487-a110-abfe027d7d48",
+      "documentation": "Returns the composition of the House of Lords by peerage type.",
+      "method": "get",
+      "endpoint": "api/Parties/LordsByType/:forDate",
+      "responses": [
+        {
+          "uuid": "3422272b-9555-499c-9e5c-f65b60b7d5b2",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"bishop\": {{faker 'datatype.number'}},\n        \"hereditary\": {{faker 'datatype.number'}},\n        \"life\": {{faker 'datatype.number'}},\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"total\": {{faker 'datatype.number'}}\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5cf86372-04a1-41a8-bc3d-2e8fff78f106",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b39337ff-0e2c-4508-b314-7a55bca65384",
+      "documentation": "Returns current state of parties",
+      "method": "get",
+      "endpoint": "api/Parties/StateOfTheParties/:house/:forDate",
+      "responses": [
+        {
+          "uuid": "75107ad3-74a9-496f-98e1-f5bc175787df",
+          "body": "{\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"href\": \"\",\n          \"method\": \"\",\n          \"rel\": \"\"\n        }\n      ],\n      \"value\": {\n        \"female\": {{faker 'datatype.number'}},\n        \"male\": {{faker 'datatype.number'}},\n        \"nonBinary\": {{faker 'datatype.number'}},\n        \"party\": {\n          \"abbreviation\": \"\",\n          \"backgroundColour\": \"\",\n          \"foregroundColour\": \"\",\n          \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n          \"id\": {{faker 'datatype.number'}},\n          \"isIndependentParty\": {{faker 'datatype.boolean'}},\n          \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n          \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        },\n        \"total\": {{faker 'datatype.number'}}\n      }\n    }\n  ],\n  \"links\": [\n    {\n      \"href\": \"\",\n      \"method\": \"\",\n      \"rel\": \"\"\n    }\n  ],\n  \"resultContext\": \"\",\n  \"skip\": {{faker 'datatype.number'}},\n  \"take\": {{faker 'datatype.number'}},\n  \"totalResults\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "242e9cf3-d8ed-4316-b006-787831fdaa8d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4bba7d47-f92e-41e7-893a-802d57ff22f1",
+      "documentation": "Returns a list of departments.",
+      "method": "get",
+      "endpoint": "api/Posts/Departments/:type",
+      "responses": [
+        {
+          "uuid": "7eb34384-c5dc-428d-92ad-e2c63fcf28e8",
+          "body": "[\n  {\n    \"id\": {{faker 'datatype.number'}},\n    \"imageUrl\": \"\",\n    \"name\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "130d4846-feca-4dc8-952c-678e56454357",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96b80d64-b61f-4063-9a23-35ca2af32b53",
+      "documentation": "Returns a list of government posts.",
+      "method": "get",
+      "endpoint": "api/Posts/GovernmentPosts",
+      "responses": [
+        {
+          "uuid": "449092c8-bcc6-4658-bba7-968b36341f32",
+          "body": "[\n  {\n    \"links\": [\n      {\n        \"href\": \"\",\n        \"method\": \"\",\n        \"rel\": \"\"\n      }\n    ],\n    \"value\": {\n      \"createdWhen\": \"{{faker 'date.recent' 365}}\",\n      \"governmentDepartments\": [\n        {\n          \"id\": {{faker 'datatype.number'}},\n          \"imageUrl\": \"\",\n          \"name\": \"\",\n          \"url\": \"\"\n        }\n      ],\n      \"hansardName\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"order\": {{faker 'datatype.number'}},\n      \"postHolders\": [\n        {\n          \"endDate\": \"{{faker 'date.recent' 365}}\",\n          \"isPaid\": {{faker 'datatype.boolean'}},\n          \"layingMinisterName\": \"\",\n          \"member\": {\n            \"links\": [\n              {\n                \"href\": \"\",\n                \"method\": \"\",\n                \"rel\": \"\"\n              }\n            ],\n            \"value\": {\n              \"gender\": \"\",\n              \"id\": {{faker 'datatype.number'}},\n              \"latestHouseMembership\": {\n                \"house\": \"{{oneOf (array '1' '2')}}\",\n                \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipEndReason\": \"\",\n                \"membershipEndReasonId\": {{faker 'datatype.number'}},\n                \"membershipEndReasonNotes\": \"\",\n                \"membershipFrom\": \"\",\n                \"membershipFromId\": {{faker 'datatype.number'}},\n                \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipStatus\": {\n                  \"statusDescription\": \"\",\n                  \"statusId\": {{faker 'datatype.number'}},\n                  \"statusIsActive\": {{faker 'datatype.boolean'}},\n                  \"statusNotes\": \"\",\n                  \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n                }\n              },\n              \"latestParty\": {\n                \"abbreviation\": \"\",\n                \"backgroundColour\": \"\",\n                \"foregroundColour\": \"\",\n                \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n                \"id\": {{faker 'datatype.number'}},\n                \"isIndependentParty\": {{faker 'datatype.boolean'}},\n                \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n                \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n                \"name\": \"\"\n              },\n              \"nameAddressAs\": \"\",\n              \"nameDisplayAs\": \"\",\n              \"nameFullTitle\": \"\",\n              \"nameListAs\": \"\",\n              \"thumbnailUrl\": \"\"\n            }\n          },\n          \"startDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"type\": \"{{oneOf (array '0' '1' '2')}}\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b0e66081-1f9a-4912-bab7-e585d2a75527",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "359dee54-29ed-4557-8f0a-f68b7b068793",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d9899491-88c6-45f5-9cee-51a723c13e73",
+      "documentation": "Returns a list of opposition posts.",
+      "method": "get",
+      "endpoint": "api/Posts/OppositionPosts",
+      "responses": [
+        {
+          "uuid": "1644cb74-44b1-4e32-b520-7beb229fdcca",
+          "body": "[\n  {\n    \"links\": [\n      {\n        \"href\": \"\",\n        \"method\": \"\",\n        \"rel\": \"\"\n      }\n    ],\n    \"value\": {\n      \"createdWhen\": \"{{faker 'date.recent' 365}}\",\n      \"governmentDepartments\": [\n        {\n          \"id\": {{faker 'datatype.number'}},\n          \"imageUrl\": \"\",\n          \"name\": \"\",\n          \"url\": \"\"\n        }\n      ],\n      \"hansardName\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"order\": {{faker 'datatype.number'}},\n      \"postHolders\": [\n        {\n          \"endDate\": \"{{faker 'date.recent' 365}}\",\n          \"isPaid\": {{faker 'datatype.boolean'}},\n          \"layingMinisterName\": \"\",\n          \"member\": {\n            \"links\": [\n              {\n                \"href\": \"\",\n                \"method\": \"\",\n                \"rel\": \"\"\n              }\n            ],\n            \"value\": {\n              \"gender\": \"\",\n              \"id\": {{faker 'datatype.number'}},\n              \"latestHouseMembership\": {\n                \"house\": \"{{oneOf (array '1' '2')}}\",\n                \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipEndReason\": \"\",\n                \"membershipEndReasonId\": {{faker 'datatype.number'}},\n                \"membershipEndReasonNotes\": \"\",\n                \"membershipFrom\": \"\",\n                \"membershipFromId\": {{faker 'datatype.number'}},\n                \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipStatus\": {\n                  \"statusDescription\": \"\",\n                  \"statusId\": {{faker 'datatype.number'}},\n                  \"statusIsActive\": {{faker 'datatype.boolean'}},\n                  \"statusNotes\": \"\",\n                  \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n                }\n              },\n              \"latestParty\": {\n                \"abbreviation\": \"\",\n                \"backgroundColour\": \"\",\n                \"foregroundColour\": \"\",\n                \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n                \"id\": {{faker 'datatype.number'}},\n                \"isIndependentParty\": {{faker 'datatype.boolean'}},\n                \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n                \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n                \"name\": \"\"\n              },\n              \"nameAddressAs\": \"\",\n              \"nameDisplayAs\": \"\",\n              \"nameFullTitle\": \"\",\n              \"nameListAs\": \"\",\n              \"thumbnailUrl\": \"\"\n            }\n          },\n          \"startDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"type\": \"{{oneOf (array '0' '1' '2')}}\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "336020a8-1e84-40d4-8282-67ae2f60f926",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2419990e-3c60-4246-a618-472f53a0e830",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "efde9e84-bce3-42c0-b314-2c779144efa6",
+      "documentation": "Returns a list containing the speaker and deputy speakers.",
+      "method": "get",
+      "endpoint": "api/Posts/SpeakerAndDeputies/:forDate",
+      "responses": [
+        {
+          "uuid": "9b6d13c3-0078-4277-9e31-e9c97bc400f1",
+          "body": "[\n  {\n    \"links\": [\n      {\n        \"href\": \"\",\n        \"method\": \"\",\n        \"rel\": \"\"\n      }\n    ],\n    \"value\": {\n      \"gender\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"latestHouseMembership\": {\n        \"house\": \"{{oneOf (array '1' '2')}}\",\n        \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipEndReason\": \"\",\n        \"membershipEndReasonId\": {{faker 'datatype.number'}},\n        \"membershipEndReasonNotes\": \"\",\n        \"membershipFrom\": \"\",\n        \"membershipFromId\": {{faker 'datatype.number'}},\n        \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n        \"membershipStatus\": {\n          \"statusDescription\": \"\",\n          \"statusId\": {{faker 'datatype.number'}},\n          \"statusIsActive\": {{faker 'datatype.boolean'}},\n          \"statusNotes\": \"\",\n          \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      },\n      \"latestParty\": {\n        \"abbreviation\": \"\",\n        \"backgroundColour\": \"\",\n        \"foregroundColour\": \"\",\n        \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isIndependentParty\": {{faker 'datatype.boolean'}},\n        \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n        \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n        \"name\": \"\"\n      },\n      \"nameAddressAs\": \"\",\n      \"nameDisplayAs\": \"\",\n      \"nameFullTitle\": \"\",\n      \"nameListAs\": \"\",\n      \"thumbnailUrl\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2ca0eb5d-0070-4f89-ae3a-491cb7c71327",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "becb96db-b780-46c2-b220-90fa7a14652a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b61be4d4-af1b-4cc9-989a-1243d84c50e2",
+      "documentation": "Returns a list of spokespersons.",
+      "method": "get",
+      "endpoint": "api/Posts/Spokespersons",
+      "responses": [
+        {
+          "uuid": "683465be-f391-4c66-9e14-56a1df9f1ad0",
+          "body": "[\n  {\n    \"links\": [\n      {\n        \"href\": \"\",\n        \"method\": \"\",\n        \"rel\": \"\"\n      }\n    ],\n    \"value\": {\n      \"createdWhen\": \"{{faker 'date.recent' 365}}\",\n      \"governmentDepartments\": [\n        {\n          \"id\": {{faker 'datatype.number'}},\n          \"imageUrl\": \"\",\n          \"name\": \"\",\n          \"url\": \"\"\n        }\n      ],\n      \"hansardName\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"name\": \"\",\n      \"order\": {{faker 'datatype.number'}},\n      \"postHolders\": [\n        {\n          \"endDate\": \"{{faker 'date.recent' 365}}\",\n          \"isPaid\": {{faker 'datatype.boolean'}},\n          \"layingMinisterName\": \"\",\n          \"member\": {\n            \"links\": [\n              {\n                \"href\": \"\",\n                \"method\": \"\",\n                \"rel\": \"\"\n              }\n            ],\n            \"value\": {\n              \"gender\": \"\",\n              \"id\": {{faker 'datatype.number'}},\n              \"latestHouseMembership\": {\n                \"house\": \"{{oneOf (array '1' '2')}}\",\n                \"membershipEndDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipEndReason\": \"\",\n                \"membershipEndReasonId\": {{faker 'datatype.number'}},\n                \"membershipEndReasonNotes\": \"\",\n                \"membershipFrom\": \"\",\n                \"membershipFromId\": {{faker 'datatype.number'}},\n                \"membershipStartDate\": \"{{faker 'date.recent' 365}}\",\n                \"membershipStatus\": {\n                  \"statusDescription\": \"\",\n                  \"statusId\": {{faker 'datatype.number'}},\n                  \"statusIsActive\": {{faker 'datatype.boolean'}},\n                  \"statusNotes\": \"\",\n                  \"statusStartDate\": \"{{faker 'date.recent' 365}}\"\n                }\n              },\n              \"latestParty\": {\n                \"abbreviation\": \"\",\n                \"backgroundColour\": \"\",\n                \"foregroundColour\": \"\",\n                \"governmentType\": \"{{oneOf (array '0' '1' '2' '3')}}\",\n                \"id\": {{faker 'datatype.number'}},\n                \"isIndependentParty\": {{faker 'datatype.boolean'}},\n                \"isLordsMainParty\": {{faker 'datatype.boolean'}},\n                \"isLordsSpiritualParty\": {{faker 'datatype.boolean'}},\n                \"name\": \"\"\n              },\n              \"nameAddressAs\": \"\",\n              \"nameDisplayAs\": \"\",\n              \"nameFullTitle\": \"\",\n              \"nameListAs\": \"\",\n              \"thumbnailUrl\": \"\"\n            }\n          },\n          \"startDate\": \"{{faker 'date.recent' 365}}\"\n        }\n      ],\n      \"type\": \"{{oneOf (array '0' '1' '2')}}\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5a40f8eb-9296-469f-ad4e-70d746d23d86",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "327252ee-71b2-4aec-a49b-e1f2e20fc2b7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1b981d91-8653-4849-8db8-21cac1f871eb",
+      "documentation": "Returns a list of answering bodies.",
+      "method": "get",
+      "endpoint": "api/Reference/AnsweringBodies",
+      "responses": [
+        {
+          "uuid": "ecf8107b-5da5-4e1f-8258-48c56b9663fa",
+          "body": "[\n  {\n    \"department\": {\n      \"id\": {{faker 'datatype.number'}},\n      \"imageUrl\": \"\",\n      \"name\": \"\",\n      \"url\": \"\"\n    },\n    \"id\": {{faker 'datatype.number'}},\n    \"name\": \"\",\n    \"shortName\": \"\",\n    \"target\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2aed015d-59dc-468d-bfaf-e2257f140a3a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34b8067f-52bf-4644-858b-62445c425f0a",
+      "documentation": "Returns a list of departments.",
+      "method": "get",
+      "endpoint": "api/Reference/Departments",
+      "responses": [
+        {
+          "uuid": "09f9e628-2d1d-461c-83cf-d9392f4c72a3",
+          "body": "[\n  {\n    \"id\": {{faker 'datatype.number'}},\n    \"imageUrl\": \"\",\n    \"name\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e6c28d2e-3669-4491-9b2c-02bebb5503f9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ce749e4-0284-4c4c-ad9b-6efb6414ea9f",
+      "documentation": "Returns department logo.",
+      "method": "get",
+      "endpoint": "api/Reference/Departments/:id/Logo",
+      "responses": [
+        {
+          "uuid": "12ef561f-3057-4787-bee6-82fb1a168090",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "780fc70e-5764-4b8c-bdc0-4c7940d9c14f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4487efe9-414a-4bea-b0a4-f2f47c910726",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b7ae2848-b148-43f8-b877-8b5b563bcd5f",
+      "documentation": "Returns a list of policy interest.",
+      "method": "get",
+      "endpoint": "api/Reference/PolicyInterests",
+      "responses": [
+        {
+          "uuid": "2f7df6cd-c686-4112-b06f-a13ea7a7b738",
+          "body": "[\n  {\n    \"description\": \"\",\n    \"id\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,418 @@
+{
+  "uuid": "2cb5cb65-8301-4bcc-b927-16a2e024ebc9",
+  "lastMigration": 24,
+  "name": "Medium.com - Unofficial API Spec",
+  "endpointPrefix": "v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "80cc2f9b-1663-427a-bb9f-924a0ea9ae01",
+      "documentation": "User details",
+      "method": "get",
+      "endpoint": "me",
+      "responses": [
+        {
+          "uuid": "41806e48-ed33-4d88-87a2-6059c27389a9",
+          "body": "{\n  \"data\": {\n    \"id\": \"5303d74c64f66366f00cb9b2a94f3251bf5\",\n    \"imageUrl\": \"https://images.medium.com/0*fkfQiTzT7TlUGGyI.png\",\n    \"name\": \"Jamie Talbot\",\n    \"url\": \"https://medium.com/@majelbstoat\",\n    \"username\": \"majelbstoat\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "35dfed8b-8c63-4328-b4e5-5c671817a072",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The `accessToken` is invalid or has been revoked.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a712b64d-a38a-43f4-ab71-931e2dbe32ac",
+      "documentation": "Contributors of Publication",
+      "method": "get",
+      "endpoint": "publications/:publicationId/contributors",
+      "responses": [
+        {
+          "uuid": "69ebc58a-54f4-40d5-b62a-57505f17f54e",
+          "body": "{\n  \"data\": [\n    {\n      \"publicationId\": \"b45573563f5a\",\n      \"role\": \"editor\",\n      \"userId\": \"13a06af8f81849c64dafbce822cbafbfab7ed7cecf82135bca946807ea351290d\"\n    },\n    {\n      \"publicationId\": \"b45573563f5a\",\n      \"role\": \"editor\",\n      \"userId\": \"1c9c63b15b874d3e354340b7d7458d55e1dda0f6470074df1cc99608a372866ac\"\n    },\n    {\n      \"publicationId\": \"b45573563f5a\",\n      \"role\": \"editor\",\n      \"userId\": \"1cc07499453463518b77d31650c0b53609dc973ad8ebd33690c7be9236e9384ad\"\n    },\n    {\n      \"publicationId\": \"b45573563f5a\",\n      \"role\": \"writer\",\n      \"userId\": \"196f70942410555f4b3030debc4f199a0d5a0309a7b9df96c57b8ec6e4b5f11d7\"\n    },\n    {\n      \"publicationId\": \"b45573563f5a\",\n      \"role\": \"writer\",\n      \"userId\": \"14d4a581f21ff537d245461b8ff2ae9b271b57d9554e25d863e3df6ef03ddd480\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c6bd483b-a493-4649-b8a4-2f3f807cf470",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The `accessToken` is invalid or has been revoked.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a028ec71-f0bc-4321-9e0c-e1be16c6806e",
+      "documentation": "Create Publication Post",
+      "method": "post",
+      "endpoint": "publications/:publicationId/posts",
+      "responses": [
+        {
+          "uuid": "5e60cb67-3efe-4d8c-acea-e2eca610e5f4",
+          "body": "{\n  \"data\": {\n    \"authorId\": \"5303d74c64f66366f00cb9b2a94f3251bf5\",\n    \"canonicalUrl\": \"http://jamietalbot.com/posts/liverpool-fc\",\n    \"id\": \"e6f36a\",\n    \"license\": \"all-rights-reserved\",\n    \"licenseUrl\": \"https://medium.com/policy/9db0094a1e0f\",\n    \"publishStatus\": \"public\",\n    \"publishedAt\": 1442286338435,\n    \"tags\": [\n      \"football\",\n      \"sport\",\n      \"Liverpool\"\n    ],\n    \"title\": \"Liverpool FC\",\n    \"url\": \"https://medium.com/@majelbstoat/liverpool-fc-e6f36a\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4afb7657-a945-4e49-be37-7079f4695747",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Required fields were invalid, not specified.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a9c08e8b-609e-4b51-a353-5c6bfda80c30",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The `accessToken` is invalid or has been revoked.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5ea63529-9efa-42f7-ac21-6e364c04c8a9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The `publicationId` in request path doesn’t point to a publication that the user can publish into.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c5a5a46b-b93f-472f-8ccc-fbce28ecc7a4",
+      "documentation": "Create User Post",
+      "method": "post",
+      "endpoint": "users/:authorId/posts",
+      "responses": [
+        {
+          "uuid": "c0e3eefa-d837-443f-be0e-2aa986cffcf0",
+          "body": "{\n  \"data\": {\n    \"authorId\": \"5303d74c64f66366f00cb9b2a94f3251bf5\",\n    \"canonicalUrl\": \"http://jamietalbot.com/posts/liverpool-fc\",\n    \"id\": \"e6f36a\",\n    \"license\": \"all-rights-reserved\",\n    \"licenseUrl\": \"https://medium.com/policy/9db0094a1e0f\",\n    \"publishStatus\": \"public\",\n    \"publishedAt\": 1442286338435,\n    \"tags\": [\n      \"football\",\n      \"sport\",\n      \"Liverpool\"\n    ],\n    \"title\": \"Liverpool FC\",\n    \"url\": \"https://medium.com/@majelbstoat/liverpool-fc-e6f36a\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "946c6580-be69-4d85-bcc0-940b3e8b5598",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Required fields were invalid, not specified.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c219a605-092f-4b5b-afa8-425f90f8150c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The `accessToken` is invalid or has been revoked.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "777a234b-28b8-471d-8502-81af1ec2fa58",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The user does not have permission to publish, or the authorId in the request path points to wrong/non-existent user.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "123ca894-e63b-4a69-97ef-51069ac8ef3d",
+      "documentation": "User's publications",
+      "method": "get",
+      "endpoint": "users/:userId/publications",
+      "responses": [
+        {
+          "uuid": "6e7c8807-93b3-4642-aa22-3595e775547d",
+          "body": "{\n  \"data\": [\n    {\n      \"description\": \"What is this thing and how does it work?\",\n      \"id\": \"b969ac62a46b\",\n      \"imageUrl\": \"https://cdn-images-1.medium.com/fit/c/200/200/0*ae1jbP_od0W6EulE.jpeg\",\n      \"name\": \"About Medium\",\n      \"url\": \"https://medium.com/about\"\n    },\n    {\n      \"description\": \"Medium’s Developer resources\",\n      \"id\": \"b45573563f5a\",\n      \"imageUrl\": \"https://cdn-images-1.medium.com/fit/c/200/200/1*ccokMT4VXmDDO1EoQQHkzg@2x.png\",\n      \"name\": \"Developers\",\n      \"url\": \"https://medium.com/developers\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "758e4f29-fe2d-4354-b816-cdad5b04aec1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The `accessToken` is invalid, lacks the `listPublications` scope or has been revoked.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c824a82d-7c95-4fb3-af69-69f0b3663f34",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The request attempts to list publications for another user.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,398 @@
+{
+  "uuid": "fd4e9090-7ae5-4eca-885a-eb301038a071",
+  "lastMigration": 24,
+  "name": "Pricing API",
+  "endpointPrefix": "account",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b14498ad-17fc-4deb-8aa2-89f5a71a182b",
+      "documentation": "Retrieve outbound pricing for all countries.",
+      "method": "get",
+      "endpoint": "get-full-pricing/outbound/:type",
+      "responses": [
+        {
+          "uuid": "9060c95d-cf1b-4470-bd3a-65e6236e323d",
+          "body": "{\n  \"count\": \"243\",\n  \"countries\": [\n    {\n      \"countryDisplayName\": \"Canada\",\n      \"countryName\": \"Canada\",\n      \"currency\": \"EUR\",\n      \"defaultPrice\": \"0.00620000\",\n      \"dialingPrefix\": \"1\",\n      \"networks\": [\n        {\n          \"currency\": \"EUR\",\n          \"mcc\": \"302\",\n          \"mnc\": \"530\",\n          \"networkCode\": \"302530\",\n          \"networkName\": \"Keewaytinook Okimakanak\",\n          \"price\": \"0.00590000\",\n          \"type\": \"mobile\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Pricing response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b3d28587-bfde-41dd-ad88-90bd974c42a1",
+          "body": "{\n  \"error_title\": \"Bad Request\",\n  \"invalid_parameters\": {\n    \"message\": \"Is required\",\n    \"parameter\": \"country\"\n  },\n  \"type\": \"BAD_REQUEST\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. You probably provided an invalid parameter.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "489073a4-6268-4183-aa02-687c9ae03391",
+          "body": "{\n  \"code\": \"401\",\n  \"currency\": \"EUR\",\n  \"error-code-label\": \"authentication failed\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "You did not provide valid credentials",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "906f071c-1b27-468c-93dd-c4e070be8a06",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The page you requested was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cc195960-085c-4091-9d33-780b6f18a0c3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You made too many requests. The API is rate limited to one request per second.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16147918-4baa-454d-b444-b1b9dc661da2",
+      "documentation": "Retrieve outbound pricing for a specific dialing prefix.",
+      "method": "get",
+      "endpoint": "get-prefix-pricing/outbound/:type",
+      "responses": [
+        {
+          "uuid": "18c0e532-e76c-4d78-9b74-d4d2a48180b7",
+          "body": "{\n  \"count\": \"243\",\n  \"countries\": [\n    {\n      \"countryDisplayName\": \"Canada\",\n      \"countryName\": \"Canada\",\n      \"currency\": \"EUR\",\n      \"defaultPrice\": \"0.00620000\",\n      \"dialingPrefix\": \"1\",\n      \"networks\": [\n        {\n          \"currency\": \"EUR\",\n          \"mcc\": \"302\",\n          \"mnc\": \"530\",\n          \"networkCode\": \"302530\",\n          \"networkName\": \"Keewaytinook Okimakanak\",\n          \"price\": \"0.00590000\",\n          \"type\": \"mobile\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Pricing countries response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b6de446-f30a-4571-a2ff-bf7af86bdc8b",
+          "body": "{\n  \"error_title\": \"Bad Request\",\n  \"invalid_parameters\": {\n    \"message\": \"Is required\",\n    \"parameter\": \"country\"\n  },\n  \"type\": \"BAD_REQUEST\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. You probably provided an invalid parameter.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d6c12998-d6cc-4d2b-a198-f3b934ec3617",
+          "body": "{\n  \"code\": \"401\",\n  \"currency\": \"EUR\",\n  \"error-code-label\": \"authentication failed\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "You did not provide valid credentials",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "67e1ff62-cfd9-4bad-a8e1-b34142ad491a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The page you requested was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9531b547-4a37-43b0-a51a-1c63d4e74847",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You made too many requests. The API is rate limited to one request per second.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f2c152e-5c2a-40d3-ac9a-c953921cb2b9",
+      "documentation": "Retrieve outbound pricing for a specific country.",
+      "method": "get",
+      "endpoint": "get-pricing/outbound/:type",
+      "responses": [
+        {
+          "uuid": "e29379a2-0a5e-47e4-ab9e-1d54f34bf74a",
+          "body": "{\n  \"countryCode\": \"CA\",\n  \"countryDisplayName\": \"Canada\",\n  \"countryName\": \"Canada\",\n  \"currency\": \"EUR\",\n  \"defaultPrice\": \"0.00620000\",\n  \"dialingPrefix\": \"1\",\n  \"networks\": [\n    {\n      \"currency\": \"EUR\",\n      \"mcc\": \"302\",\n      \"mnc\": \"530\",\n      \"networkCode\": \"302530\",\n      \"networkName\": \"Keewaytinook Okimakanak\",\n      \"price\": \"0.00590000\",\n      \"type\": \"mobile\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Pricing information for a specific country.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cde7ec3a-7751-42c9-8363-9ecc402a9fd2",
+          "body": "{\n  \"error_title\": \"Bad Request\",\n  \"invalid_parameters\": {\n    \"message\": \"Is required\",\n    \"parameter\": \"country\"\n  },\n  \"type\": \"BAD_REQUEST\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request. You probably provided an invalid parameter.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6729fd47-3438-4a27-a3a2-04eaf7b2168f",
+          "body": "{\n  \"code\": \"401\",\n  \"currency\": \"EUR\",\n  \"error-code-label\": \"authentication failed\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "You did not provide valid credentials",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dd572687-6f23-41d3-9f44-fcd918ba9630",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The page you requested was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30fc677a-2838-4c1a-a256-46be3f4608ae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You made too many requests. The API is rate limited to one request per second.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

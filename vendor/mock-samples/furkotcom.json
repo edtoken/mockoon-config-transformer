@@ -1,0 +1,102 @@
+{
+  "uuid": "25f46690-ecc0-4614-ab3a-fa9622ba707f",
+  "lastMigration": 24,
+  "name": "Furkot Trips",
+  "endpointPrefix": "pub/api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "e6d3b8a7-a5a6-4756-8863-085e03e680f3",
+      "documentation": "list user's trips",
+      "method": "get",
+      "endpoint": "trip",
+      "responses": [
+        {
+          "uuid": "6bbaa234-f940-4e67-a863-f81381a7c152",
+          "body": "[\n  {\n    \"begin\": \"{{faker 'date.recent' 365}}\",\n    \"description\": \"\",\n    \"end\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"\",\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "20ba7d8b-e89e-4ea1-a25a-cb041625a01a",
+      "documentation": "list stops for a trip identified by {trip_id}",
+      "method": "get",
+      "endpoint": "trip/:trip_id/stop",
+      "responses": [
+        {
+          "uuid": "175c9d91-7c7d-421f-a878-718384ba5e27",
+          "body": "[\n  {\n    \"address\": \"\",\n    \"arrival\": \"{{faker 'date.recent' 365}}\",\n    \"coordinates\": {\n      \"lat\": {{faker 'datatype.float'}},\n      \"lon\": {{faker 'datatype.float'}}\n    },\n    \"departure\": \"{{faker 'date.recent' 365}}\",\n    \"name\": \"\",\n    \"nights\": {{faker 'datatype.number'}},\n    \"route\": {\n      \"distance\": {{faker 'datatype.number'}},\n      \"duration\": {{faker 'datatype.number'}},\n      \"mode\": \"{{oneOf (array 'car' 'motorcycle' 'bicycle' 'walk' 'other')}}\",\n      \"polyline\": \"\"\n    },\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,2792 @@
+{
+  "uuid": "d81e90c1-5f1a-4271-8ab0-c6156742b128",
+  "lastMigration": 24,
+  "name": "AppVeyor REST API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "119fcf98-c1c8-44ec-a240-e680763b9d39",
+      "documentation": "Encrypt a value for use in StoredValue.",
+      "method": "post",
+      "endpoint": "account/encrypt",
+      "responses": [
+        {
+          "uuid": "d350e4b4-fac5-42c0-a84f-afa13208d41b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bf7b07fc-f702-4f71-b7e7-bc4b57d858ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5082f44e-2e04-441b-906b-ef3dadcf541a",
+      "documentation": "Get build artifacts",
+      "method": "get",
+      "endpoint": "buildjobs/:jobId/artifacts",
+      "responses": [
+        {
+          "uuid": "88f65691-dc24-4c98-b8c5-dfb0eab1c571",
+          "body": "[\n  {\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"fileName\": \"\",\n    \"name\": \"\",\n    \"size\": {{faker 'datatype.number'}},\n    \"type\": \"{{oneOf (array 'Auto' 'AzureCloudService' 'AzureCloudServiceConfig' 'ElasticBeanstalkPackage' 'File' 'NuGetPackage' 'OctopusPackage' 'SsdtPackage' 'WebDeployPackage' 'Zip')}}\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "156f5d27-e5c3-4d6b-9ecd-c27e00b45bce",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f213fb41-c534-4e0d-b3e4-f865b3368cbb",
+      "documentation": "Download build artifact",
+      "method": "get",
+      "endpoint": "buildjobs/:jobId/artifacts/:artifactFileName",
+      "responses": [
+        {
+          "uuid": "25e299fd-8c30-40c5-ac88-d7cb16493b4b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "be7658dc-3332-4fc4-8a3f-cad5685f3b04",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7f9eaef6-a59e-4ba6-b498-d27b7be9c8ea",
+      "documentation": "Download build log",
+      "method": "get",
+      "endpoint": "buildjobs/:jobId/log",
+      "responses": [
+        {
+          "uuid": "42f8bc24-bd28-4280-8a5e-b4c983d7e94c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4079c46d-a37d-4240-9308-6ab59f70e29f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "377b2f94-82d9-46c9-9787-5fa187fd4f20",
+      "documentation": "Start build of branch most recent commit",
+      "method": "post",
+      "endpoint": "builds",
+      "responses": [
+        {
+          "uuid": "4b1d5117-a8de-478f-9504-91676f4a2549",
+          "body": "{\n  \"branch\": \"\",\n  \"buildId\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"version\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a3e800e9-6784-44ed-a928-d1da425c344c",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8cba1cc-8abe-4983-9254-87f9c707fbce",
+      "documentation": "Re-run build",
+      "method": "put",
+      "endpoint": "builds",
+      "responses": [
+        {
+          "uuid": "9315f784-65aa-425c-8f06-bdb66c36d9a0",
+          "body": "{\n  \"branch\": \"\",\n  \"buildId\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"version\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2f4be477-0b4c-4e62-8cfc-d19ff1471967",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2d93e680-3268-4e77-a118-a9207869fa71",
+      "documentation": "Cancel build",
+      "method": "delete",
+      "endpoint": "builds/:accountName/:projectSlug/:buildVersion",
+      "responses": [
+        {
+          "uuid": "95cd80bc-c61b-4f53-a55c-dfef64c0aa84",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "797135e9-350f-42fb-9e30-7278b5d63ae5",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d14a289d-b408-4a23-9d11-5252e4a1f224",
+      "documentation": "Get collaborators",
+      "method": "get",
+      "endpoint": "collaborators",
+      "responses": [
+        {
+          "uuid": "ad640ee2-6ce3-47bd-81c5-9708a775a58b",
+          "body": "[\n  {\n    \"email\": \"john@smith.com\",\n    \"failedBuildNotification\": \"all\",\n    \"fullName\": \"John Smith\",\n    \"notifyWhenBuildStatusChangedOnly\": true,\n    \"roleId\": 4,\n    \"successfulBuildNotification\": \"all\",\n    \"userId\": 3019\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "63206057-387d-4a7f-80d3-f988d1b07d9d",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1681614a-0d8e-4652-919f-afc0968ab013",
+      "documentation": "Add collaborator",
+      "method": "post",
+      "endpoint": "collaborators",
+      "responses": [
+        {
+          "uuid": "27202349-d728-411d-970f-f6c01ca359dd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8f1d267a-4ae2-4bc6-80ee-bc956a741f16",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6cfd2303-93cc-47ea-bc7a-3d098fe18e02",
+      "documentation": "Update collaborator",
+      "method": "put",
+      "endpoint": "collaborators",
+      "responses": [
+        {
+          "uuid": "e94ed042-c1ac-4d00-a897-c0fdd98585bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca9722db-6bbb-4c27-a567-22f4cbbf72ad",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4d70e0b7-a942-4dd8-a203-d426301cb2bb",
+      "documentation": "Delete collaborator",
+      "method": "delete",
+      "endpoint": "collaborators/:userId",
+      "responses": [
+        {
+          "uuid": "c1793028-6f9a-4c11-be08-b1c4ee18a300",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "529802f9-962d-44da-914a-7a6869dbb541",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8d7c13d8-cd3a-4c63-ba5a-edd289b3b102",
+      "documentation": "Get collaborator",
+      "method": "get",
+      "endpoint": "collaborators/:userId",
+      "responses": [
+        {
+          "uuid": "f338829e-ca1a-4435-b72a-882c793d4927",
+          "body": "{\n  \"roles\": [\n    {\n      \"created\": \"{{faker 'date.recent' 365}}\",\n      \"updated\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"user\": {\n    \"email\": \"john@smith.com\",\n    \"failedBuildNotification\": \"all\",\n    \"fullName\": \"John Smith\",\n    \"notifyWhenBuildStatusChangedOnly\": true,\n    \"roleId\": 4,\n    \"successfulBuildNotification\": \"all\",\n    \"userId\": 3019\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7e0d9388-8d22-4522-93bc-cb2fb2c158bd",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa56d0b9-02fd-4253-acc1-38d6cb47050c",
+      "documentation": "Start deployment",
+      "method": "post",
+      "endpoint": "deployments",
+      "responses": [
+        {
+          "uuid": "5247d5bc-47f0-4920-bd0e-8a0656eee90c",
+          "body": "{\n  \"build\": {\n    \"branch\": \"\",\n    \"buildId\": {{faker 'datatype.number'}},\n    \"message\": \"\",\n    \"version\": \"\"\n  },\n  \"deploymentId\": {{faker 'datatype.number'}},\n  \"finished\": \"{{faker 'date.recent' 365}}\",\n  \"started\": \"{{faker 'date.recent' 365}}\",\n  \"status\": \"{{oneOf (array 'cancelled' 'cancelling' 'failed' 'queued' 'running' 'starting' 'success')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "74c6ac88-88a9-45aa-8e89-5eb0b3eb1d84",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30b90d89-293e-41f6-816b-db8868241b75",
+      "documentation": "Cancel deployment",
+      "method": "delete",
+      "endpoint": "deployments/stop",
+      "responses": [
+        {
+          "uuid": "57ec41f6-e2dc-43d8-bec8-4e2068d1b14f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "07f3e3b4-f1f6-4fa9-919f-4ef9be3fed83",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c75e08ad-4ae1-4742-97a9-b7c5cae0d51d",
+      "documentation": "Get deployment",
+      "method": "get",
+      "endpoint": "deployments/:deploymentId",
+      "responses": [
+        {
+          "uuid": "2a5d9407-2986-4b41-ac77-0bc665f9b65d",
+          "body": "{\n  \"deployment\": {\n    \"build\": {\n      \"branch\": \"\",\n      \"buildId\": {{faker 'datatype.number'}},\n      \"message\": \"\",\n      \"version\": \"\"\n    },\n    \"deploymentId\": {{faker 'datatype.number'}},\n    \"finished\": \"{{faker 'date.recent' 365}}\",\n    \"started\": \"{{faker 'date.recent' 365}}\",\n    \"status\": \"{{oneOf (array 'cancelled' 'cancelling' 'failed' 'queued' 'running' 'starting' 'success')}}\"\n  },\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "83ab31ed-f8f5-4983-ae99-beb3b84f5876",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "29d9a6ce-5391-4047-a18a-057696ed19d9",
+      "documentation": "Get environments",
+      "method": "get",
+      "endpoint": "environments",
+      "responses": [
+        {
+          "uuid": "25e7a344-789f-4ddf-81cc-5ab50accb28a",
+          "body": "[\n  {\n    \"deploymentEnvironmentId\": {{faker 'datatype.number'}},\n    \"name\": \"\",\n    \"provider\": \"{{oneOf (array 'Agent' 'AzureBlob' 'AzureCS' 'AzureWebJob' 'BinTray' 'FTP' 'GitHub' 'NuGet' 'S3' 'SqlDatabase' 'WebDeploy' 'Webhook')}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5ab75505-4240-4cc3-a062-19a2ff513f89",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7e280a16-a12b-4b3a-b1ec-ddd9b726c0ed",
+      "documentation": "Add environment",
+      "method": "post",
+      "endpoint": "environments",
+      "responses": [
+        {
+          "uuid": "6c03ebd4-a719-4bab-ac66-2cf443a8923a",
+          "body": "{\n  \"deploymentEnvironmentId\": 3018,\n  \"environmentAccessKey\": \"gi3ttevuk7123\",\n  \"name\": \"production\",\n  \"settings\": {\n    \"environmentVariables\": [\n      {\n        \"name\": \"my-var\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"123\"\n        }\n      }\n    ],\n    \"provider\": \"FTP\",\n    \"providerSettings\": [\n      {\n        \"name\": \"server\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"ftp.myserver.com\"\n        }\n      },\n      {\n        \"name\": \"username\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"ftp-user\"\n        }\n      },\n      {\n        \"name\": \"password\",\n        \"value\": {\n          \"isEncrypted\": true,\n          \"value\": \"password\"\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7e8f6d14-36d7-454e-ad16-be88613dd5c9",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a204f704-7245-40bc-a5f0-5ad0d983fe4b",
+      "documentation": "Update environment",
+      "method": "put",
+      "endpoint": "environments",
+      "responses": [
+        {
+          "uuid": "d838cf51-3ddf-45dc-a983-3a3f179b6796",
+          "body": "{\n  \"deploymentEnvironmentId\": 3018,\n  \"environmentAccessKey\": \"gi3ttevuk7123\",\n  \"name\": \"production\",\n  \"settings\": {\n    \"environmentVariables\": [\n      {\n        \"name\": \"my-var\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"123\"\n        }\n      }\n    ],\n    \"provider\": \"FTP\",\n    \"providerSettings\": [\n      {\n        \"name\": \"server\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"ftp.myserver.com\"\n        }\n      },\n      {\n        \"name\": \"username\",\n        \"value\": {\n          \"isEncrypted\": false,\n          \"value\": \"ftp-user\"\n        }\n      },\n      {\n        \"name\": \"password\",\n        \"value\": {\n          \"isEncrypted\": true,\n          \"value\": \"password\"\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e2c533cf-448c-423b-9be2-29fce5117394",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d211e774-f7e3-4171-8f55-56166a05b3fc",
+      "documentation": "Delete environment",
+      "method": "delete",
+      "endpoint": "environments/:deploymentEnvironmentId",
+      "responses": [
+        {
+          "uuid": "5febc625-0942-4e2f-a865-1c4e47aa2a44",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85bb92ac-38b6-4e85-b7cd-49b2d40f2938",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77152d74-201c-45b8-9c4d-60e991ca9041",
+      "documentation": "Get environment deployments",
+      "method": "get",
+      "endpoint": "environments/:deploymentEnvironmentId/deployments",
+      "responses": [
+        {
+          "uuid": "b4e12216-7865-4525-8004-2e9dbe216b71",
+          "body": "{\n  \"deployments\": [\n    {\n      \"build\": {\n        \"branch\": \"\",\n        \"buildId\": {{faker 'datatype.number'}},\n        \"message\": \"\",\n        \"version\": \"\"\n      },\n      \"deploymentId\": {{faker 'datatype.number'}},\n      \"finished\": \"{{faker 'date.recent' 365}}\",\n      \"started\": \"{{faker 'date.recent' 365}}\",\n      \"status\": \"{{oneOf (array 'cancelled' 'cancelling' 'failed' 'queued' 'running' 'starting' 'success')}}\"\n    }\n  ],\n  \"environment\": {\n    \"deploymentEnvironmentId\": {{faker 'datatype.number'}},\n    \"name\": \"\",\n    \"provider\": \"{{oneOf (array 'Agent' 'AzureBlob' 'AzureCS' 'AzureWebJob' 'BinTray' 'FTP' 'GitHub' 'NuGet' 'S3' 'SqlDatabase' 'WebDeploy' 'Webhook')}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f88a9bca-e2a5-4ade-a2e0-be28bb658f0a",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d473d568-53cd-42fa-b7c9-1ce3b378f376",
+      "documentation": "Get environment settings",
+      "method": "get",
+      "endpoint": "environments/:deploymentEnvironmentId/settings",
+      "responses": [
+        {
+          "uuid": "26cb61c0-cc17-4da7-b213-a25eaf3d0f7b",
+          "body": "{\n  \"environment\": {\n    \"deploymentEnvironmentId\": 3018,\n    \"environmentAccessKey\": \"gi3ttevuk7123\",\n    \"name\": \"production\",\n    \"settings\": {\n      \"environmentVariables\": [\n        {\n          \"name\": \"my-var\",\n          \"value\": {\n            \"isEncrypted\": false,\n            \"value\": \"123\"\n          }\n        }\n      ],\n      \"provider\": \"FTP\",\n      \"providerSettings\": [\n        {\n          \"name\": \"server\",\n          \"value\": {\n            \"isEncrypted\": false,\n            \"value\": \"ftp.myserver.com\"\n          }\n        },\n        {\n          \"name\": \"username\",\n          \"value\": {\n            \"isEncrypted\": false,\n            \"value\": \"ftp-user\"\n          }\n        },\n        {\n          \"name\": \"password\",\n          \"value\": {\n            \"isEncrypted\": true,\n            \"value\": \"password\"\n          }\n        }\n      ]\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7be15253-5509-4fae-8b1a-28b11684ff27",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7774992e-294a-435e-95b3-215668280d58",
+      "documentation": "Get projects",
+      "method": "get",
+      "endpoint": "projects",
+      "responses": [
+        {
+          "uuid": "a5f7aae8-5420-4105-b199-56020243db5d",
+          "body": "[\n  {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1bbe3f88-f8be-4d2c-ab15-3364d5c7e6aa",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ad26cc79-613f-4a33-865f-5e67dbc514dc",
+      "documentation": "Add project",
+      "method": "post",
+      "endpoint": "projects",
+      "responses": [
+        {
+          "uuid": "92affd46-32fe-485e-9b45-b3e57ae96e39",
+          "body": "{\n  \"accountName\": \"\",\n  \"name\": \"\",\n  \"projectId\": {{faker 'datatype.number'}},\n  \"slug\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9bf3e52e-6a83-44e7-a89a-22397372d693",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c1d8e0d-6273-435f-8e81-d8b8274c67a0",
+      "documentation": "Update project",
+      "method": "put",
+      "endpoint": "projects",
+      "responses": [
+        {
+          "uuid": "5bf683d0-a24d-4c7c-8eb4-407ab2e81db9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dfb16b46-81c7-453b-b8b8-3d03faa08dff",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "793be0a4-a109-42d7-a795-a8f7d12d5c2f",
+      "documentation": "Get status badge image for a project with a public repository",
+      "method": "get",
+      "endpoint": "projects/status/:badgeRepoProvider/:repoAccountName/:repoSlug",
+      "responses": [
+        {
+          "uuid": "b62ea558-394d-428b-b8e2-518c5a88865f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "68736ec5-425d-4999-a67f-d50dc570cb1e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fefd8401-d639-45a4-af45-d3056acda6bf",
+      "documentation": "Get project status badge image",
+      "method": "get",
+      "endpoint": "projects/status/:statusBadgeId",
+      "responses": [
+        {
+          "uuid": "f2224171-6dbb-4b93-93fc-3ce505d3004e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a7a31538-df1c-4cd0-93a9-2bdd1c7646fe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0d4d095a-334f-4e6f-bf95-fd5bbe4e6b54",
+      "documentation": "Get project branch status badge image",
+      "method": "get",
+      "endpoint": "projects/status/:statusBadgeId/branch/:buildBranch",
+      "responses": [
+        {
+          "uuid": "6ce4084c-0886-4ea9-93f4-634ffd0f013b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dbe9a059-b13e-4d43-8e24-71452e6a2ba8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/svg+xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aaf8804e-8ce6-4af2-aded-6d70b626cc3f",
+      "documentation": "Delete project",
+      "method": "delete",
+      "endpoint": "projects/:accountName/:projectSlug",
+      "responses": [
+        {
+          "uuid": "c8e7c19d-9798-4b85-9396-116b1355cca9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6c729d77-4430-4e2c-8649-b5f1ebb78114",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3832b559-75a6-4557-8d8c-2401477e0eca",
+      "documentation": "Get project last build",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug",
+      "responses": [
+        {
+          "uuid": "58cbee1c-8e1f-4e71-a629-7e28238deb45",
+          "body": "{\n  \"build\": {\n    \"branch\": \"\",\n    \"buildId\": {{faker 'datatype.number'}},\n    \"message\": \"\",\n    \"version\": \"\"\n  },\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a6cc435d-15af-4707-b2f9-6be15a6f0609",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13d0d7e3-0877-41b5-82bb-8cee35876eed",
+      "documentation": "Get last successful build artifact",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/artifacts/:artifactFileName",
+      "responses": [
+        {
+          "uuid": "93e47e5c-190f-4ff4-85b2-9a1b7cc8e91b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7395f56d-d065-48b6-85f0-9942a95813ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f7c6a4b-94ad-4cf8-8d79-45751e5e2f3a",
+      "documentation": "Get project last branch build",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/branch/:buildBranch",
+      "responses": [
+        {
+          "uuid": "033e92d3-671f-4551-b225-44c79dbd893e",
+          "body": "{\n  \"build\": {\n    \"branch\": \"\",\n    \"buildId\": {{faker 'datatype.number'}},\n    \"message\": \"\",\n    \"version\": \"\"\n  },\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04d70342-a89b-4465-9b9e-d5d4f0e67033",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eadfd0ac-38ab-4d90-bc38-ab881fb630b4",
+      "documentation": "Get project build by version",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/build/:buildVersion",
+      "responses": [
+        {
+          "uuid": "62deb9bd-5fc1-455a-b880-1342a7f7a192",
+          "body": "{\n  \"build\": {\n    \"branch\": \"\",\n    \"buildId\": {{faker 'datatype.number'}},\n    \"message\": \"\",\n    \"version\": \"\"\n  },\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "41f2b30a-f7f0-42a9-af04-843ac3b19a0e",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b20479ee-c24c-4c91-ab1a-1f9b1848ff79",
+      "documentation": "Delete project build cache",
+      "method": "delete",
+      "endpoint": "projects/:accountName/:projectSlug/buildcache",
+      "responses": [
+        {
+          "uuid": "d3b19948-8851-46be-aff7-3daf103ccd35",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cfeb8bff-25c5-42aa-9d0d-4b84df39a99f",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8cc4050-9aa8-4e50-beb6-60820f4c27de",
+      "documentation": "Get project deployments",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/deployments",
+      "responses": [
+        {
+          "uuid": "0f8ecbd6-e141-4d15-a615-4984b4b69ed1",
+          "body": "{\n  \"deployments\": [\n    {\n      \"build\": {\n        \"branch\": \"\",\n        \"buildId\": {{faker 'datatype.number'}},\n        \"message\": \"\",\n        \"version\": \"\"\n      },\n      \"deploymentId\": {{faker 'datatype.number'}},\n      \"finished\": \"{{faker 'date.recent' 365}}\",\n      \"started\": \"{{faker 'date.recent' 365}}\",\n      \"status\": \"{{oneOf (array 'cancelled' 'cancelling' 'failed' 'queued' 'running' 'starting' 'success')}}\"\n    }\n  ],\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e5bf895e-5739-4a7a-9ca3-ed96afa86808",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35520510-b05d-4278-b6c1-8461d963e93a",
+      "documentation": "Get project history",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/history",
+      "responses": [
+        {
+          "uuid": "8c956f7a-232a-4173-8771-b9db1bc17521",
+          "body": "{\n  \"builds\": [\n    {\n      \"branch\": \"\",\n      \"buildId\": {{faker 'datatype.number'}},\n      \"message\": \"\",\n      \"version\": \"\"\n    }\n  ],\n  \"project\": {\n    \"accountName\": \"\",\n    \"name\": \"\",\n    \"projectId\": {{faker 'datatype.number'}},\n    \"slug\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bab27df8-0f1c-44f3-a2b5-362196358597",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a6407d9-d8f1-40df-9259-74376402ed27",
+      "documentation": "Get project settings",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/settings",
+      "responses": [
+        {
+          "uuid": "6283b238-c9c9-45a3-8fdc-2dab2c7b38c4",
+          "body": "{\n  \"build\": {\n    \"project\": \"MySolution.sln\",\n    \"publish_wap\": true,\n    \"verbosity\": \"minimal\"\n  },\n  \"version\": \"1.0.{build}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8330297e-a098-4c7b-92c1-ab630667d6cf",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a1f3ab51-fdb4-4eb3-90df-eda81e0dd1de",
+      "documentation": "Update project build number",
+      "method": "put",
+      "endpoint": "projects/:accountName/:projectSlug/settings/build-number",
+      "responses": [
+        {
+          "uuid": "bd413a55-9843-486c-9a1d-10ea1e0ad26a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5a7d3623-efb6-4cc3-a9a8-9b410ebd1967",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d90f20b9-9317-488b-b71b-8df1d2dcc0cd",
+      "documentation": "Get project environment variables",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/settings/environment-variables",
+      "responses": [
+        {
+          "uuid": "60bc7429-d8e8-4fc6-bb4d-92273b686834",
+          "body": "[\n  {\n    \"name\": \"\",\n    \"value\": {\n      \"isEncrypted\": {{faker 'datatype.boolean'}},\n      \"value\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7b52d2ca-b1be-44d6-95f6-f7487b9606fd",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd6267dc-9e1b-44e6-b8d9-bba763f9f2e0",
+      "documentation": "Update project environment variables",
+      "method": "put",
+      "endpoint": "projects/:accountName/:projectSlug/settings/environment-variables",
+      "responses": [
+        {
+          "uuid": "7d7b35f1-1c79-4b42-ab28-cae21a931bb8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "13fef84f-651d-4f28-a0b3-98abbc0f94ce",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "efef8ca2-d3d6-4e3d-89be-aaf58052e4d6",
+      "documentation": "Get project settings in YAML",
+      "method": "get",
+      "endpoint": "projects/:accountName/:projectSlug/settings/yaml",
+      "responses": [
+        {
+          "uuid": "719f8dde-c14a-41d8-9807-ef241425a52c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success\n\nThe schema type of this response could be specified as `file` to\ndenote opaque binary data.  The generated Java code for `file`\nsaves the response as a temporary file, making it a little more\ndifficult to use and less efficient for common cases.  If `string`\ncauses problems for other generators, can switch to `file` type.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "acabec52-b664-477e-a283-1dda7f255383",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43d543e2-42cd-4021-9018-b96e209ea4eb",
+      "documentation": "Update project settings in YAML",
+      "method": "put",
+      "endpoint": "projects/:accountName/:projectSlug/settings/yaml",
+      "responses": [
+        {
+          "uuid": "7c7c8c36-a873-425b-a789-481e161dd71b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e9513c87-eb0d-4bbd-9e1c-6e509a0c7c5b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "71043862-f4c6-463e-8dbd-211f1e075b42",
+      "documentation": "Get roles",
+      "method": "get",
+      "endpoint": "roles",
+      "responses": [
+        {
+          "uuid": "0584d71e-fd78-437a-8ff0-9766a8026d43",
+          "body": "[\n  {\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"updated\": \"{{faker 'date.recent' 365}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0ce48088-41c4-44aa-8971-83732619b97e",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ec46d6da-5805-4715-8b35-2f88bf7cf6f7",
+      "documentation": "Add role",
+      "method": "post",
+      "endpoint": "roles",
+      "responses": [
+        {
+          "uuid": "355377a9-46a9-49b4-bf66-2e8265cfce8b",
+          "body": "{\n  \"created\": \"2014-03-18T20:12:08.4749886+00:00\",\n  \"groups\": [\n    {\n      \"name\": \"Deny\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Deny all projects and environments, unless explicitly allowed\",\n          \"name\": \"DenyAllProjectsEnvironments\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Projects\",\n      \"permissions\": [\n        {\n          \"allowed\": true,\n          \"description\": \"Create, delete projects, update project settings\",\n          \"name\": \"ManageProjects\"\n        },\n        {\n          \"allowed\": true,\n          \"description\": \"Update project settings\",\n          \"name\": \"UpdateProjectSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Run project builds\",\n          \"name\": \"RunProjectBuild\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete project builds\",\n          \"name\": \"DeleteProjectBuilds\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Environments\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Create, delete projects, update environment settings\",\n          \"name\": \"ManageEnvironments\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update environment settings\",\n          \"name\": \"UpdateEnvironmentSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Deploy to environment\",\n          \"name\": \"DeployToEnvironment\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Account\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Update account details\",\n          \"name\": \"UpdateAccountDetails\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Users\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new user\",\n          \"name\": \"AddUser\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update user details\",\n          \"name\": \"UpdateUserDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete user\",\n          \"name\": \"DeleteUser\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Roles\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new role\",\n          \"name\": \"AddRole\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update role details\",\n          \"name\": \"UpdateRoleDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete role\",\n          \"name\": \"DeleteRole\"\n        }\n      ]\n    },\n    {\n      \"name\": \"User\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Generate API keys\",\n          \"name\": \"ConfigureApiKeys\"\n        }\n      ]\n    }\n  ],\n  \"isSystem\": false,\n  \"name\": \"My Role\",\n  \"roleId\": 3040\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a66a6a8d-b271-4615-a751-084823013acd",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ed9018b-1623-4a85-8a27-0a6e68e64542",
+      "documentation": "Update role",
+      "method": "put",
+      "endpoint": "roles",
+      "responses": [
+        {
+          "uuid": "04109a2b-a9fb-494f-8e4e-6ac3074c2fd3",
+          "body": "{\n  \"created\": \"2014-03-18T20:12:08.4749886+00:00\",\n  \"groups\": [\n    {\n      \"name\": \"Deny\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Deny all projects and environments, unless explicitly allowed\",\n          \"name\": \"DenyAllProjectsEnvironments\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Projects\",\n      \"permissions\": [\n        {\n          \"allowed\": true,\n          \"description\": \"Create, delete projects, update project settings\",\n          \"name\": \"ManageProjects\"\n        },\n        {\n          \"allowed\": true,\n          \"description\": \"Update project settings\",\n          \"name\": \"UpdateProjectSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Run project builds\",\n          \"name\": \"RunProjectBuild\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete project builds\",\n          \"name\": \"DeleteProjectBuilds\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Environments\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Create, delete projects, update environment settings\",\n          \"name\": \"ManageEnvironments\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update environment settings\",\n          \"name\": \"UpdateEnvironmentSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Deploy to environment\",\n          \"name\": \"DeployToEnvironment\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Account\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Update account details\",\n          \"name\": \"UpdateAccountDetails\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Users\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new user\",\n          \"name\": \"AddUser\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update user details\",\n          \"name\": \"UpdateUserDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete user\",\n          \"name\": \"DeleteUser\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Roles\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new role\",\n          \"name\": \"AddRole\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update role details\",\n          \"name\": \"UpdateRoleDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete role\",\n          \"name\": \"DeleteRole\"\n        }\n      ]\n    },\n    {\n      \"name\": \"User\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Generate API keys\",\n          \"name\": \"ConfigureApiKeys\"\n        }\n      ]\n    }\n  ],\n  \"isSystem\": false,\n  \"name\": \"My Role\",\n  \"roleId\": 3040\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "22e3e792-372b-45dc-b664-4cc0b471f06b",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6e6b6940-bf6a-47f6-8e2e-2e1fca886bbf",
+      "documentation": "Delete role",
+      "method": "delete",
+      "endpoint": "roles/:roleId",
+      "responses": [
+        {
+          "uuid": "2f8b752b-dae4-4ed5-9f85-fe19775a7afb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "00c1341e-6835-41a9-91f7-4d495677476e",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d35f4aee-52c4-4aa4-bbd7-50ef014e818d",
+      "documentation": "Get role",
+      "method": "get",
+      "endpoint": "roles/:roleId",
+      "responses": [
+        {
+          "uuid": "b19e5a80-179d-4396-9d74-a82c0b01ce22",
+          "body": "{\n  \"created\": \"2014-03-18T20:12:08.4749886+00:00\",\n  \"groups\": [\n    {\n      \"name\": \"Deny\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Deny all projects and environments, unless explicitly allowed\",\n          \"name\": \"DenyAllProjectsEnvironments\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Projects\",\n      \"permissions\": [\n        {\n          \"allowed\": true,\n          \"description\": \"Create, delete projects, update project settings\",\n          \"name\": \"ManageProjects\"\n        },\n        {\n          \"allowed\": true,\n          \"description\": \"Update project settings\",\n          \"name\": \"UpdateProjectSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Run project builds\",\n          \"name\": \"RunProjectBuild\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete project builds\",\n          \"name\": \"DeleteProjectBuilds\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Environments\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Create, delete projects, update environment settings\",\n          \"name\": \"ManageEnvironments\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update environment settings\",\n          \"name\": \"UpdateEnvironmentSettings\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Deploy to environment\",\n          \"name\": \"DeployToEnvironment\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Account\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Update account details\",\n          \"name\": \"UpdateAccountDetails\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Users\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new user\",\n          \"name\": \"AddUser\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update user details\",\n          \"name\": \"UpdateUserDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete user\",\n          \"name\": \"DeleteUser\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Roles\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Add new role\",\n          \"name\": \"AddRole\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Update role details\",\n          \"name\": \"UpdateRoleDetails\"\n        },\n        {\n          \"allowed\": false,\n          \"description\": \"Delete role\",\n          \"name\": \"DeleteRole\"\n        }\n      ]\n    },\n    {\n      \"name\": \"User\",\n      \"permissions\": [\n        {\n          \"allowed\": false,\n          \"description\": \"Generate API keys\",\n          \"name\": \"ConfigureApiKeys\"\n        }\n      ]\n    }\n  ],\n  \"isSystem\": false,\n  \"name\": \"My Role\",\n  \"roleId\": 3040\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5f938689-0543-498f-ac06-47f57a84eb7b",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e57989ba-d8f5-4d58-b255-18411340e4fd",
+      "documentation": "Get users",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "383eca80-1231-443f-8c1f-b02b4656915b",
+          "body": "[\n  {\n    \"email\": \"john@smith.com\",\n    \"failedBuildNotification\": \"all\",\n    \"fullName\": \"John Smith\",\n    \"notifyWhenBuildStatusChangedOnly\": true,\n    \"roleId\": 4,\n    \"successfulBuildNotification\": \"all\",\n    \"userId\": 3019\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "540642e5-63c2-461d-802b-ebefb28ddcca",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "31c4192b-83f7-46a9-aec3-571b22db9342",
+      "documentation": "Add user",
+      "method": "post",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "b6b11cd6-c08a-4a50-933e-4e1f7a7ae575",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "103a1f28-3364-4437-a708-51de08fd6c30",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d4ba11e1-573c-4a6b-b66a-e84bc5dafb9a",
+      "documentation": "Update user",
+      "method": "put",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "f4e515c8-e4a2-4232-abf9-eeb59490b8cd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d12a355b-f00d-40c9-858c-f9c03acb7623",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e3fb242-0beb-407a-a60f-1040a045aa0c",
+      "documentation": "Delete user",
+      "method": "delete",
+      "endpoint": "users/:userId",
+      "responses": [
+        {
+          "uuid": "18c514f9-7d1f-435c-a7c4-d07232e91569",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d13aa694-5098-4539-bf53-45f4a4590d9f",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b1cc2935-e49e-448f-9f0e-4b7d37d83825",
+      "documentation": "Get user",
+      "method": "get",
+      "endpoint": "users/:userId",
+      "responses": [
+        {
+          "uuid": "ef14d403-99f3-4c8b-8c2a-6cb2a378caa1",
+          "body": "{\n  \"roles\": [\n    {\n      \"created\": \"{{faker 'date.recent' 365}}\",\n      \"updated\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"user\": {\n    \"email\": \"john@smith.com\",\n    \"failedBuildNotification\": \"all\",\n    \"fullName\": \"John Smith\",\n    \"notifyWhenBuildStatusChangedOnly\": true,\n    \"roleId\": 4,\n    \"successfulBuildNotification\": \"all\",\n    \"userId\": 3019\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5aeb6f04-6934-4fbc-9557-0217103e297b",
+          "body": "{\n  \"message\": \"\",\n  \"modelState\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

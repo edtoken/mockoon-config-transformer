@@ -1,0 +1,702 @@
+{
+  "uuid": "5ade10f9-4ea5-4c65-8dc4-b0545c326eab",
+  "lastMigration": 24,
+  "name": "Asynchronous Speech-To-Text API Documentation",
+  "endpointPrefix": "speechtotext/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8d57176e-2e7d-491f-a540-99e2891de0c8",
+      "documentation": "Get Account",
+      "method": "get",
+      "endpoint": "account",
+      "responses": [
+        {
+          "uuid": "8c22b623-72cf-418b-985e-72b74629cbae",
+          "body": "{\n  \"balance_seconds\": 150,\n  \"email\": \"jay@rev.ai\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Rev.ai Account",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "42067b90-4e63-425c-ad39-9a63c9eeaa81",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9104ae6-adf4-41a9-b968-caa32efb8b1d",
+      "documentation": "Get List of Jobs",
+      "method": "get",
+      "endpoint": "jobs",
+      "responses": [
+        {
+          "uuid": "ca7c9575-8c64-4169-beb4-b74f97ebb12d",
+          "body": "[\n  {\n    \"created_on\": \"2018-05-05T23:23:22.29Z\",\n    \"delete_after_seconds\": 50,\n    \"id\": \"Umx5c6F7pH7r\",\n    \"status\": \"in_progress\",\n    \"type\": \"async\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of Rev.ai Transcription Jobs",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "572fe26d-327c-41ea-bf9c-2eb720440fe5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3a60de1c-2604-43ae-b5b9-38961a074fdf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5fe73606-097b-454a-b7ef-f78abfecdc8f",
+      "documentation": "Submit Transcription Job",
+      "method": "post",
+      "endpoint": "jobs",
+      "responses": [
+        {
+          "uuid": "ba3ed4c6-2a82-4c9c-b585-9ab04c2431e5",
+          "body": "{\n  \"created_on\": \"2018-05-05T23:23:22.29Z\",\n  \"delete_after_seconds\": 50,\n  \"id\": \"Umx5c6F7pH7r\",\n  \"status\": \"in_progress\",\n  \"type\": \"async\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Transcription Job Details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5c349408-994f-4928-b620-e871022c8783",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77dfef7e-31a7-4566-9395-1f2aeee100e4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c7e11fd4-571d-4b7b-8fc0-4328d10f7651",
+          "body": "",
+          "latency": 0,
+          "statusCode": 413,
+          "label": "Payload Too Large\n***\nOnly returned when job is submitted using a local file as part of `multipart/form-data`. Use a `media_url`\nfor files larger than 2GBs\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a1f89f5f-cd60-4111-8c3a-e2e6329cfe3b",
+      "documentation": "Delete Job by Id",
+      "method": "delete",
+      "endpoint": "jobs/:id",
+      "responses": [
+        {
+          "uuid": "366d0d0e-d4aa-4d0c-afd6-2141668a8164",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Job was successfully deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "002d8bb6-9036-403b-ae9b-7da32324e4d9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "20fad277-4f70-4fb0-8d58-468759b643fe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Job Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e4dc356e-e290-4413-9155-c4432a7025c6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Invalid Deletion State\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4881ae1f-850c-48c2-9b69-bd294e2030bd",
+      "documentation": "Get Job By Id",
+      "method": "get",
+      "endpoint": "jobs/:id",
+      "responses": [
+        {
+          "uuid": "d837742b-78ba-45c7-81c9-7d9b457a055d",
+          "body": "{\n  \"created_on\": \"2018-05-05T23:23:22.29Z\",\n  \"delete_after_seconds\": 50,\n  \"id\": \"Umx5c6F7pH7r\",\n  \"status\": \"in_progress\",\n  \"type\": \"async\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Transcription Job Details",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca53b19e-8753-4610-8d96-3d2fae3a48cd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "25597565-4314-4d32-94c4-c1efc1fad9a2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Job Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f22fee11-37da-4a6e-beb2-0477ace890ba",
+      "documentation": "Get Captions",
+      "method": "get",
+      "endpoint": "jobs/:id/captions",
+      "responses": [
+        {
+          "uuid": "b48892f5-6f9c-4fc4-b485-53e6d188d6b6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Rev.ai API Captions\n***\nNote: Caption output format is required in the Accept header. The supported headers are `application/x-subrip` and `text/vtt`.\n([SRT](https://en.wikipedia.org/wiki/SubRip))\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-subrip"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ef12a759-aecd-4b1d-a338-e132b8ff627f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0ffdfee5-3c67-44a3-a697-aafd8dae0f38",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Job Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3d43ded7-3372-4c9a-aad3-7757e2ed0b62",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Invalid Job Property",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "375f8479-bfc6-474e-a64a-ad6c1b8dedf1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Invalid Caption Format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0725711d-834c-4ad5-aff3-841651f7aa95",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Invalid Job State\n***\nIn case of failure, more details can be found at [`GET /jobs/{id}`](#operation/GetJobById)\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f630c33c-dc1e-48f2-b897-1e42a4880f8c",
+      "documentation": "Get Transcript By Id",
+      "method": "get",
+      "endpoint": "jobs/:id/transcript",
+      "responses": [
+        {
+          "uuid": "5e6cad39-85f0-4e74-8a0e-42ccf7dafec7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Rev.ai API Transcript\n***\nNote: Transcript output format is required in the Accept header. Output can either be in Rev's JSON format or plaintext.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/vnd.rev.transcript.v1.0+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "61f74462-eea3-44c2-be9e-6d7d9d16b220",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Request Unauthorized\n***\nCaused by an old or invalid [access token](#section/Authentication/Access-Token), try regenerating your token on your [access token page](https://rev.ai/access_token).\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "58072072-516a-4d49-91e3-40b4bd462423",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Job Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cf4d4649-74cc-427f-965b-9798ec8ae334",
+          "body": "",
+          "latency": 0,
+          "statusCode": 406,
+          "label": "Invalid Transcript Format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "33fd9497-c59c-4c0d-9509-84f70da6fdf2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Invalid Job State\n***\nIn case of failure, more details can be found at [`GET /jobs/{id}`](#operation/GetJobById)\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

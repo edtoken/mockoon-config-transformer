@@ -1,0 +1,4776 @@
+{
+  "uuid": "00e50094-32d4-4539-b7bb-b70f294ebf3d",
+  "lastMigration": 24,
+  "name": "IoE² IoT API - to create end-user applications",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8a3902f9-f9fd-4796-8740-80fa597f6cce",
+      "documentation": "Change the password",
+      "method": "post",
+      "endpoint": "account/change-password",
+      "responses": [
+        {
+          "uuid": "0b38a9c4-1d47-452c-bc27-c5c1314fc231",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Change successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5f646fb-2a78-488e-bdb6-d9825a778565",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4a4bebd4-d006-4ddf-9954-3d7882e6228d",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a835d6ec-ca3c-403f-909e-67db2c8fb73c",
+      "documentation": "List Places of the Account",
+      "method": "get",
+      "endpoint": "account/places",
+      "responses": [
+        {
+          "uuid": "5eede022-4504-4dd3-a741-8b7a6b7576c0",
+          "body": "[\n  {\n    \"id\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4b3c5fd-01ad-4190-8a0f-47e884dbc2b0",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "151c77f9-1105-4568-bd5c-b28be7cfed82",
+      "documentation": "Create a Place",
+      "method": "post",
+      "endpoint": "account/places",
+      "responses": [
+        {
+          "uuid": "a7a3da74-8078-4038-acb4-aad54491e083",
+          "body": "{\n  \"code\": 201,\n  \"message\": \"Place created\",\n  \"resource\": {\n    \"entity\": \"Place\",\n    \"href\": \"/places/3HA6YcSCTSFX6SPPrI9PxQ\",\n    \"id\": \"3HA6YcSCTSFX6SPPrI9PxQ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "*Place* successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "98f559da-7d99-45bc-a0ac-7f19ce3462ac",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36605ae5-9776-443c-951b-ce9aab07fce9",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1cd864fc-e449-424a-880a-9bfb02e94afc",
+      "documentation": "List active Tokens of the Account",
+      "method": "get",
+      "endpoint": "account/tokens",
+      "responses": [
+        {
+          "uuid": "23099115-3cfd-47be-afcb-4735af1e8228",
+          "body": "[\n  {\n    \"appName\": \"Home Eopath\",\n    \"id\": \"dfSDdRcsd\",\n    \"lastUse\": \"{{faker 'date.recent' 365}}\",\n    \"places\": [\n      {\n        \"id\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n        \"name\": \"\"\n      }\n    ],\n    \"refreshTokenExpires\": \"{{faker 'date.recent' 365}}\",\n    \"self\": {{faker 'datatype.boolean'}},\n    \"user\": {\n      \"canLogin\": {{faker 'datatype.boolean'}},\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"id\": \"RGV2aWNlMDAwMDAwMDAwMZ\",\n      \"locale\": \"fr-FR\",\n      \"metadata\": {},\n      \"name\": \"\",\n      \"phoneNumber\": \"+33177494646\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d0fb59fc-0f69-4724-82f6-f91711ee468a",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d7a9304-381a-4d4d-8c3b-5a0ade5eee6b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "756bcd95-e2dd-4efc-83fb-2f5707d796e9",
+      "documentation": "Revoke a Token",
+      "method": "delete",
+      "endpoint": "account/tokens/:tokenId",
+      "responses": [
+        {
+          "uuid": "503c6e51-e21c-41b0-8a82-a785b6bf7cc1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Resource successfully deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d948c0a9-c615-4f89-9482-607a0c37f929",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "146835de-36e5-4f6c-adfc-d7c33cff2de8",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a5c4033a-e1e7-4557-b00e-1a0dc94851e1",
+      "documentation": "List Users of the Account",
+      "method": "get",
+      "endpoint": "account/users",
+      "responses": [
+        {
+          "uuid": "1a87636f-720b-4118-bedd-9d7e2bedd090",
+          "body": "[\n  {\n    \"canLogin\": {{faker 'datatype.boolean'}},\n    \"email\": \"{{faker 'internet.email'}}\",\n    \"id\": \"RGV2aWNlMDAwMDAwMDAwMZ\",\n    \"locale\": \"fr-FR\",\n    \"metadata\": {},\n    \"name\": \"\",\n    \"phoneNumber\": \"+33177494646\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "14e6b6cd-384c-4b50-b36c-29aece2814eb",
+      "documentation": "New User",
+      "method": "post",
+      "endpoint": "account/users",
+      "responses": [
+        {
+          "uuid": "8131a1f5-00ee-414c-b5c1-587b8e0910ed",
+          "body": "{\n  \"code\": 201,\n  \"message\": \"User created\",\n  \"resource\": {\n    \"entity\": \"User\",\n    \"href\": \"/users/RGV2aWNlMDAwMDAwMDAwMZ\",\n    \"id\": \"RGV2aWNlMDAwMDAwMDAwMZ\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "*User* successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a25f787a-9d6b-49cd-91b3-0cfdeac6e70e",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b85bddbb-d8a6-43ac-98bd-191db873b66f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "da2285a6-8de0-430a-8e25-aa5730e15136",
+      "documentation": "Delete a User",
+      "method": "delete",
+      "endpoint": "account/users/:userId",
+      "responses": [
+        {
+          "uuid": "2f4f5f8c-c31b-44f2-a63e-09579f81b030",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Resource successfully deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fa9020fa-e8d6-47d7-9b44-0e0f9292ca12",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fd3a0f69-4de0-4762-bc12-1c7bfd2078d9",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3431400e-20de-4d9b-9d0b-ab72afd87de1",
+      "documentation": "Information about a User",
+      "method": "get",
+      "endpoint": "account/users/:userId",
+      "responses": [
+        {
+          "uuid": "0bb327a6-266d-4470-98ee-6c27837e7ddd",
+          "body": "{\n  \"account\": \"t1hqYcQITCFX-AObjs_t4Q\",\n  \"canLogin\": {{faker 'datatype.boolean'}},\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"locale\": \"fr-FR\",\n  \"metadata\": {},\n  \"name\": \"\",\n  \"phoneNumber\": \"+33177494646\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*User* information.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c6b0473a-cd1e-4248-b81f-ed094006844c",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c25f67b-ab48-4e7b-9957-fec5fc50395d",
+      "documentation": "Modify a User",
+      "method": "patch",
+      "endpoint": "account/users/:userId",
+      "responses": [
+        {
+          "uuid": "f6550c4d-9009-49de-bf75-98dc3c8dc745",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3d5ed35d-9fde-4ed2-af5e-12917d62c960",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38c03a5b-36e5-4f5d-b2ba-2d5c9ae86720",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8a2c142b-08f2-42c2-b6e2-e896a11e8e4e",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4ffa9fe7-9115-48e2-9581-2dfbfa1d2e2f",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "account/users/:userId/metadata",
+      "responses": [
+        {
+          "uuid": "71a69c5f-49bb-45a4-b67b-8ba1b3248aef",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85a17b23-550e-40ba-9d9d-a79c1fbc3d85",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "91478fdb-6c12-4d66-9192-75b2b2e7ec66",
+      "documentation": "Modify metadata",
+      "method": "patch",
+      "endpoint": "account/users/:userId/metadata",
+      "responses": [
+        {
+          "uuid": "17f6d06b-4483-4aa3-b337-57e5afe1a59c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6d694a45-9dd5-460c-a010-ec141ec9d542",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc4e05b0-27e9-47a2-b748-490e4dd90d60",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*User* doesn't exist in this *Account* or the requester doesn't have access to a *Place* on which this *User* has access.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1b00e281-8188-408b-9714-0618424b357c",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64cc450c-20d2-4263-be49-12d365f83f5d",
+      "documentation": "Get a token using login+password",
+      "method": "post",
+      "endpoint": "auth/login",
+      "responses": [
+        {
+          "uuid": "f4956f47-f39e-4b4d-a8fb-dc361997a36f",
+          "body": "{\n  \"accessToken\": \"\",\n  \"accessTokenExpires\": \"{{faker 'date.recent' 365}}\",\n  \"refreshToken\": \"\",\n  \"refreshTokenExpires\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Login successful. The access token is given to use the API. The refresh token must be stored in a safe place.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6b9d19c4-65e6-4b41-b6a4-114eff8611c6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failure.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d34a0775-4a5c-470c-955c-9ae4041c0c6d",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "672b0c23-1da8-4269-a588-db37dceb751c",
+      "documentation": "Refresh a token",
+      "method": "post",
+      "endpoint": "auth/refresh",
+      "responses": [
+        {
+          "uuid": "cc17775f-a1be-4ab2-916a-fbdaadd7e1a0",
+          "body": "{\n  \"accessToken\": \"\",\n  \"accessTokenExpires\": \"{{faker 'date.recent' 365}}\",\n  \"refreshToken\": \"\",\n  \"refreshTokenExpires\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Refresh successful. A new access token is given to use the API.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d248c2ff-9081-40f2-8d03-63bc87a580e6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failure.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "088fa6ad-d7ee-494b-b55f-3b7dd948ecfc",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2ed06fc4-08e3-4cf9-b2c7-8f7023f752c4",
+      "documentation": "Ask for a new password",
+      "method": "post",
+      "endpoint": "auth/reset-password",
+      "responses": [
+        {
+          "uuid": "b1dff8f2-0f79-4e9e-8589-1f5afcfd71df",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "As this request is not authenticated, response is always successful to not reveal (in)existence of accounts.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8313dd39-4e46-4b1b-8613-0227f72afca0",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "21eaf949-3a21-4ef8-97ec-afe155b4ab3f",
+      "documentation": "Revoke a token",
+      "method": "post",
+      "endpoint": "auth/revoke",
+      "responses": [
+        {
+          "uuid": "6d70c135-dfd4-4591-940f-6d18c5afa698",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Revocation successful. The token used for the request is now invalid.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8ecbc67b-c85a-4d5b-9ff2-76add745177b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Authentication failure.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a372ed97-7b1a-443b-8994-2012bc745506",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53ce41e7-ccf6-4315-8820-e2a872483078",
+      "documentation": "Information about a Device",
+      "method": "get",
+      "endpoint": "devices/:deviceId",
+      "responses": [
+        {
+          "uuid": "7fbb3f49-6e55-4b70-9dba-5700d8a12686",
+          "body": "{\n  \"address\": \"\",\n  \"attributes\": {},\n  \"class\": \"\",\n  \"functionalities\": [\n    {\n      \"class\": \"\",\n      \"device\": \"RGV2aWNlMDAwMDAwMDAwMA\",\n      \"endpoint\": {{faker 'datatype.number'}},\n      \"id\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n      \"metadata\": {},\n      \"name\": \"\",\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"isOnline\": {{faker 'datatype.boolean'}},\n  \"manufacturer\": \"\",\n  \"metadata\": {},\n  \"model\": \"\",\n  \"name\": \"\",\n  \"place\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n  \"protocol\": \"\",\n  \"tags\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e8698be5-6a44-4746-8007-bf3d9c84ad44",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6e6fabc4-f51a-4190-b2c1-f9efeb1d5815",
+      "documentation": "Update a Device",
+      "method": "patch",
+      "endpoint": "devices/:deviceId",
+      "responses": [
+        {
+          "uuid": "cf82d5e9-fe0b-484f-981f-647f6c10a787",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d0a294a1-9380-4712-8c83-33472c4940ca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0fc07476-fb56-46d3-8562-26ae29b61f0d",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Device* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d3d2c82f-87a1-4e5c-837d-c34b918a8d9f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d432d61-fcd3-4288-91a7-f8689d3d87cc",
+      "documentation": "Add dynamically a functionality",
+      "method": "post",
+      "endpoint": "devices/:deviceId/functionalities",
+      "responses": [
+        {
+          "uuid": "831f2327-bae5-4f63-ad6b-53fa39b08ef6",
+          "body": "{\n  \"code\": 201,\n  \"message\": \"Functionality created\",\n  \"resource\": {\n    \"entity\": \"Functionality\",\n    \"href\": \"/functionalities/RnVuY3Rpb25hbGl0eTAwMA\",\n    \"id\": \"RnVuY3Rpb25hbGl0eTAwMA\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "*Functionality* successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5c0a4773-3535-4b08-ac1d-2be0b29563c0",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Device* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa0770ee-ff97-4ca8-8967-74ec84c45976",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "99ca88fa-9fb9-4687-92a5-e095107eab6d",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "devices/:deviceId/metadata",
+      "responses": [
+        {
+          "uuid": "def9a479-ca73-40ea-9fda-7cb4af0983c5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e6918294-8bfe-43d1-9e36-45f16fcd6b41",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e844cf2e-6db4-45d6-a9c4-fbee27370e1f",
+      "documentation": "Modify metadata",
+      "method": "patch",
+      "endpoint": "devices/:deviceId/metadata",
+      "responses": [
+        {
+          "uuid": "2a77a253-a691-48b6-8988-1d281f225854",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "65c205b3-5d45-4b0f-911c-beb995e1bd06",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1de0a5fd-654c-41fe-bd79-5df7b9ee8ad2",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Device* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "61f84efc-e730-4779-bf2c-3a3f91ea06de",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a07271ce-b97f-4613-9ff1-eba396c97712",
+      "documentation": "Run actions",
+      "method": "post",
+      "endpoint": "devices/:deviceId/run/:action",
+      "responses": [
+        {
+          "uuid": "7edac369-3dc3-4d03-b6f1-f713157bba8b",
+          "body": "[\n  {\n    \"functionality\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n    \"result\": [],\n    \"status\": 200\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b605e852-fb0b-4b7c-80e2-0bbf5856de53",
+          "body": "{\n  \"code\": \"{{oneOf (array '450')}}\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 450,
+          "label": "The gateway of the Place is not reachable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3ff4c714-e249-422f-8bd7-bd7c47f725c3",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b50e8822-5ca8-4f0b-a361-05b7cdbc13e5",
+      "documentation": "List tags",
+      "method": "get",
+      "endpoint": "devices/:deviceId/tags",
+      "responses": [
+        {
+          "uuid": "856c8a42-2cab-4c40-9ca9-92822e6e05ab",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "88dc5aaf-4453-403d-a0ba-9e020b6c7b0b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0bc9bc5d-68dc-42b6-bb95-2fe52e7ffd69",
+      "documentation": "Modify tags",
+      "method": "patch",
+      "endpoint": "devices/:deviceId/tags",
+      "responses": [
+        {
+          "uuid": "6bd2f06f-10a1-4d7c-8b48-40302c0c45cd",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new list of tags is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6da5bc5f-5394-4076-8669-e0c889e8c263",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7f5da050-4ed6-4d58-96fc-d29ef4159ab1",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Device* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "22a87ec8-fc89-4d32-9c00-2336dbe9f48d",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "909440c1-82e8-4671-99a3-e4107fbf3153",
+      "documentation": "Information about a Functionality",
+      "method": "get",
+      "endpoint": "functionalities/:functionalityId",
+      "responses": [
+        {
+          "uuid": "f31f004b-4363-45f1-a9d5-d6500f714721",
+          "body": "{\n  \"actions\": [\n    \"\"\n  ],\n  \"attributes\": [\n    \"\"\n  ],\n  \"class\": \"\",\n  \"device\": \"RGV2aWNlMDAwMDAwMDAwMA\",\n  \"endpoint\": {{faker 'datatype.number'}},\n  \"metadata\": {},\n  \"name\": \"\",\n  \"tags\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bae40a20-c388-4226-8d20-e8d761e2daf2",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34b262ec-bfd8-42ae-a571-015b53009bec",
+      "documentation": "Modify a Functionality",
+      "method": "patch",
+      "endpoint": "functionalities/:functionalityId",
+      "responses": [
+        {
+          "uuid": "13bb341c-4baa-4396-9feb-a803d41c0f8d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fb2c95a9-7e03-4a27-ad3f-82c1113e2af9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "65a1a65e-ac97-4f4b-99f4-125cb9f5347c",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Functionality* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "997e17e3-1d73-470d-a046-55e81d36af21",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "28c66414-d533-4d72-acbf-92b99d6c420e",
+      "documentation": "Get history of multiple attributes",
+      "method": "get",
+      "endpoint": "functionalities/:functionalityId/attributes",
+      "responses": [
+        {
+          "uuid": "54b1f700-3952-46cc-95b0-942e006d0a94",
+          "body": "{\n  \"Counter\": [\n    {\n      \"value\": 0,\n      \"when\": \"2014-02-17T12:31:00Z\"\n    }\n  ],\n  \"Schedule\": [\n    {\n      \"value\": [\n        {\n          \"DTSTAMP\": \"20120101T000000Z\",\n          \"DTSTART\": {\n            \"\": \"20120101T063000\",\n            \"TZID\": \"Europe/Paris\"\n          },\n          \"RRULE\": {\n            \"FREQ\": \"DAILY\"\n          },\n          \"SUMMARY\": \"2\",\n          \"UID\": \"HP-06h30@si.ijenko.net\"\n        },\n        {\n          \"DTSTAMP\": \"20120101T000000Z\",\n          \"DTSTART\": {\n            \"\": \"20120101T223000\",\n            \"TZID\": \"Europe/Paris\"\n          },\n          \"RRULE\": {\n            \"FREQ\": \"DAILY\"\n          },\n          \"SUMMARY\": \"3\",\n          \"UID\": \"HC-22h30@si.ijenko.net\"\n        }\n      ],\n      \"when\": \"2014-02-17T00:00:00Z\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7bbba2f5-0cff-4c8e-a346-aabb1723fd2a",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aaa54c8a-cd69-45da-9007-8b96ba408164",
+      "documentation": "Get an Attribute value",
+      "method": "get",
+      "endpoint": "functionalities/:functionalityId/attributes/:attributeName",
+      "responses": [
+        {
+          "uuid": "c107cc37-bc33-443c-afad-1ed372adfbbc",
+          "body": "{\n  \"value\": 0,\n  \"when\": \"2014-02-17T12:31:00Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "20b8bb66-6b09-4adc-81f3-b1d529096f7a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No value has yet been set on this attribute.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "274e2b68-187b-4488-9638-1dd8fb0a8748",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c4d8ca06-dcfe-4588-ae32-086b1daf84b2",
+      "documentation": "Modify an Attribute value",
+      "method": "put",
+      "endpoint": "functionalities/:functionalityId/attributes/:attributeName",
+      "responses": [
+        {
+          "uuid": "05c86c1b-4197-4206-ad2d-ff1fa2649366",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7b4e3871-1041-4289-9c93-3f2040aea6ef",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Action' 'Attribute' 'Bus')}}\",\n    \"href\": \"\",\n    \"id\": \"\",\n    \"parent\": {\n      \"entity\": \"{{oneOf (array 'Place' 'Functionality')}}\",\n      \"id\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "*Attribute* is not writable.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "582f62e8-2965-48eb-aefa-4d7422a89806",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eec1e52b-f82a-4000-bc0f-8dce3cb8c8bb",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "functionalities/:functionalityId/metadata",
+      "responses": [
+        {
+          "uuid": "8a368793-ddec-4866-bcaf-d9f3e7cebb20",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed07fb65-732d-4519-b0c6-1c80b00319a6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "67e66076-1a1e-4bb0-b80b-703a896f3932",
+      "documentation": "Modify metadata",
+      "method": "patch",
+      "endpoint": "functionalities/:functionalityId/metadata",
+      "responses": [
+        {
+          "uuid": "a04062cc-ab35-4f3e-816e-aec80ebfd106",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9b1bb50e-7ed9-4e18-ab1e-9b21f9c43cdd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e0005b0a-c232-4a51-8edf-4edde8057427",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Functionality* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "380d759b-85a8-4eb8-a5a2-abc7e0e4f90b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "acfaaa9c-65f0-43e1-b511-fbc541511eaa",
+      "documentation": "Run an action",
+      "method": "post",
+      "endpoint": "functionalities/:functionalityId/run/:action",
+      "responses": [
+        {
+          "uuid": "e1e3578a-ed42-4588-87a3-922adc2f2ba2",
+          "body": "{\n  \"functionality\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n  \"result\": [],\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "45afb8fe-3b60-41b8-aa6e-cc3b14bc0f34",
+          "body": "{\n  \"code\": \"{{oneOf (array '450')}}\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 450,
+          "label": "The gateway of the Place is not reachable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ed5224b5-a53d-44aa-80d4-d50474fe8df3",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "663fc9db-58cf-42e3-a605-e15f32736478",
+      "documentation": "List tags",
+      "method": "get",
+      "endpoint": "functionalities/:functionalityId/tags",
+      "responses": [
+        {
+          "uuid": "b434028b-2825-4456-9f87-c11b412d1cd8",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d4f68709-4ec3-44d2-91c4-57aec6254562",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "22f0b84b-9409-485e-83ea-2e17ac8dc5fc",
+      "documentation": "Modify tags",
+      "method": "patch",
+      "endpoint": "functionalities/:functionalityId/tags",
+      "responses": [
+        {
+          "uuid": "69c62f20-83e6-4d50-b8e1-35a674c9146d",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new list of tags is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5fd94677-a78f-4d4f-83a9-31313eae36a5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "241cb680-6340-4b8f-9a38-9ffb1dd5c101",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Functionality* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "008dddfb-af26-418f-9878-a4f0ca3a1a21",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "661830b7-c20b-4889-84f7-49bec16b75b1",
+      "documentation": "Information about the User",
+      "method": "get",
+      "endpoint": "me",
+      "responses": [
+        {
+          "uuid": "0ac5a1b2-1b7a-44ca-826c-1a44c75f46ef",
+          "body": "{\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"id\": \"RGV2aWNlMDAwMDAwMDAwMZ\",\n  \"locale\": \"fr-FR\",\n  \"login\": \"\",\n  \"metadata\": {},\n  \"name\": \"\",\n  \"phoneNumber\": \"+33177494646\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b6556e95-94ee-477c-b35f-1a8a0edcf598",
+      "documentation": "Update User information",
+      "method": "patch",
+      "endpoint": "me",
+      "responses": [
+        {
+          "uuid": "09d4046c-6daf-4898-a5f3-fa0dc6adcc4b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "188b5d12-a9fc-4a51-a3a9-74aa80b857f8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5034e184-4f32-4f11-b640-501e2b6a20e1",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "465feda3-1af7-4778-bfc4-a46492e2fb7b",
+      "documentation": "Delete a Notification",
+      "method": "delete",
+      "endpoint": "notifications/:notificationId",
+      "responses": [
+        {
+          "uuid": "ec307ebe-58d3-4d72-8c72-f69baae0edd2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Resource successfully deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "16036c95-5fc9-455a-b79c-b3aeb9503371",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Notification* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "58063134-f548-4377-a391-e9cc698de278",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "02b3573b-a901-4fba-b842-556542336d26",
+      "documentation": "Information about a Notification",
+      "method": "get",
+      "endpoint": "notifications/:notificationId",
+      "responses": [
+        {
+          "uuid": "f69f3e1e-c5f7-4823-b7de-f6972068895f",
+          "body": "{\n  \"data\": {},\n  \"metadata\": {},\n  \"name\": \"\",\n  \"place\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n  \"routing\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c198cfaa-6d79-4e54-abf3-54caeaf8eff6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Notification* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e61b9487-43d3-4068-97b8-88f088f4d718",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64f38ca2-15cf-4b22-b248-13225d7d71ba",
+      "documentation": "Modify a Notification",
+      "method": "patch",
+      "endpoint": "notifications/:notificationId",
+      "responses": [
+        {
+          "uuid": "b7f99408-86ca-4549-af37-0a4797fa4961",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "59e2ffc5-f3fb-4e12-9e95-947f6580e11e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e16d95ba-e6d5-4848-8425-aadd7ad16b8c",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Notification* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7d1d94d5-1f97-4a8b-87a7-462f74c023e4",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7475229a-97b7-4bea-bc21-4de3cf7fdf0d",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "notifications/:notificationId/metadata",
+      "responses": [
+        {
+          "uuid": "c41c29dd-93f8-44d6-b0fe-0c19aa01b0f6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "28e17bf1-f79f-4167-8991-dfa7bc336a76",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a04a8165-2d8a-4c0b-9cf2-9df6ba600f4e",
+      "documentation": "Modify metadata of a Notification",
+      "method": "patch",
+      "endpoint": "notifications/:notificationId/metadata",
+      "responses": [
+        {
+          "uuid": "9ac66e79-5d67-4b80-b0b2-376313a8e9ee",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2f759945-9dd6-4090-b7a9-4be0a7997b6a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8f7df0f8-b989-4d21-b505-7a49f17fe2f8",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Notification* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d00878a-33a3-4d5a-9cda-b60c384a730b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ece7581e-5117-4315-8ec7-513d1f0147c7",
+      "documentation": "List accessible Places",
+      "method": "get",
+      "endpoint": "places",
+      "responses": [
+        {
+          "uuid": "d3f20466-604a-48db-b448-2f58b2235a50",
+          "body": "[\n  {\n    \"id\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "af43e554-b045-447c-8672-d1a9ddd14de8",
+      "documentation": "Information about a Place",
+      "method": "get",
+      "endpoint": "places/:placeId",
+      "responses": [
+        {
+          "uuid": "2d4ca6c1-a15b-405f-b379-aeaaedff39a4",
+          "body": "{\n  \"account\": \"t1hqYcQITCFX-AObjs_t4Q\",\n  \"country\": \"FR\",\n  \"metadata\": {},\n  \"name\": \"⌂ Home\",\n  \"timeZone\": \"Europe/Paris\",\n  \"zipCode\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0eaceda2-73e2-4f90-92fe-0f7f1d8d2c22",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "*Place* doesn't exist or the requester doesn't have access.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "34653840-dfdc-4e38-814a-a7318aa3c686",
+      "documentation": "Update a Place",
+      "method": "patch",
+      "endpoint": "places/:placeId",
+      "responses": [
+        {
+          "uuid": "17c6398d-d653-4928-9ea2-4259240286b7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "34cc9364-0237-43d4-b529-954902952800",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3cd2e25-45ba-446f-9d1c-68a50523b852",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "The authentication token doesn't allow to modify the *Account*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dc54b20d-9359-4737-a14c-6a24c1924946",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "acc32504-244b-4035-9875-6e356cdcef56",
+      "documentation": "List Buses",
+      "method": "get",
+      "endpoint": "places/:placeId/buses",
+      "responses": [
+        {
+          "uuid": "c89dfadb-ceff-4e8a-ac98-fd8d9c55f40e",
+          "body": "[\n  {\n    \"functionality\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n    \"id\": \"\",\n    \"protocol\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "efdaabdb-fe88-4fdb-8361-b1ec047a9b30",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Action' 'Attribute' 'Bus')}}\",\n    \"href\": \"\",\n    \"id\": \"\",\n    \"parent\": {\n      \"entity\": \"{{oneOf (array 'Place' 'Functionality')}}\",\n      \"id\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Bus* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4910072f-040d-4a74-9628-c38710d0dd07",
+      "documentation": "State of the pairing window",
+      "method": "get",
+      "endpoint": "places/:placeId/buses/:busId/pairing",
+      "responses": [
+        {
+          "uuid": "d0e82b46-8102-4a9d-8de0-ac2d8e3f0621",
+          "body": "{\n  \"duration\": {{faker 'datatype.number'}},\n  \"enabled\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "State information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "596a1dd5-1c5d-4d1f-8e4e-e29c149da3b8",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Action' 'Attribute' 'Bus')}}\",\n    \"href\": \"\",\n    \"id\": \"\",\n    \"parent\": {\n      \"entity\": \"{{oneOf (array 'Place' 'Functionality')}}\",\n      \"id\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Bus* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "72aabab3-123b-437c-8dc5-167b54d52067",
+      "documentation": "Open/Close the pairing window",
+      "method": "put",
+      "endpoint": "places/:placeId/buses/:busId/pairing",
+      "responses": [
+        {
+          "uuid": "d84bc77c-d0f6-4669-8a2b-24d3342cf272",
+          "body": "{\n  \"duration\": {{faker 'datatype.number'}},\n  \"enabled\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "State information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9ba4e8d9-a5cc-4d90-8e48-3680fd88f7c3",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Action' 'Attribute' 'Bus')}}\",\n    \"href\": \"\",\n    \"id\": \"\",\n    \"parent\": {\n      \"entity\": \"{{oneOf (array 'Place' 'Functionality')}}\",\n      \"id\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Bus* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "743029d4-cfb2-419c-8089-e3cbd1b47c2f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7e64da8e-113a-45c0-8e32-4171db18e1ab",
+      "documentation": "List of Devices",
+      "method": "get",
+      "endpoint": "places/:placeId/devices",
+      "responses": [
+        {
+          "uuid": "aebf153a-ede6-4ddf-a0d1-5d24f03b7393",
+          "body": "[\n  {\n    \"address\": \"\",\n    \"class\": \"\",\n    \"id\": \"RGV2aWNlMDAwMDAwMDAwMA\",\n    \"isOnline\": {{faker 'datatype.boolean'}},\n    \"metadata\": {},\n    \"name\": \"\",\n    \"place\": \"3HA6YcSCTSFX6SPPrI9PxQ\",\n    \"tags\": [\n      \"\"\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d7116635-4f4e-4d6f-bb51-4fbecd51df4c",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a84d8df-be8d-4517-ac76-1e7b7e66dd99",
+      "documentation": "Get autonomy rate of the place",
+      "method": "get",
+      "endpoint": "places/:placeId/electricity/autonomy",
+      "responses": [
+        {
+          "uuid": "2e17fa0b-3edd-48ba-be43-8ba72001df1a",
+          "body": "{\n  \"autonomy\": 0.4,\n  \"code\": 200000,\n  \"from\": \"2016-03-02T09:00:00Z\",\n  \"to\": \"2016-03-02T10:00:00Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ba27e2cb-5d30-4b76-bd00-459f2447ce8b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "291c2e39-fb3b-4383-83e2-6cf6ba5960eb",
+      "documentation": "Get electricity virtual flows",
+      "method": "get",
+      "endpoint": "places/:placeId/electricity/flows",
+      "responses": [
+        {
+          "uuid": "561a1f21-5202-4dd6-b97f-a1543c8ec78b",
+          "body": "{\n  \"code\": 200000,\n  \"flows\": {\n    \"elec_local\": [\n      {\n        \"class\": \"ElecMetering\",\n        \"factor\": 1,\n        \"id\": \"SF4_y4SoTCpYXgGODJplJQ\"\n      }\n    ],\n    \"elec_total_usage\": [\n      {\n        \"class\": \"ElecMetering\",\n        \"factor\": 1,\n        \"flow\": \"elec_total_gen\",\n        \"id\": \"SF4_y4SoTCpYXgGODJplJQ\"\n      },\n      {\n        \"class\": \"ElecSmartMetering\",\n        \"factor\": 1,\n        \"flow\": \"elec_drawn\",\n        \"id\": \"lvxvQ9SqXCpYSqHOJI7tIA\"\n      },\n      {\n        \"class\": \"ElecSmartMetering\",\n        \"factor\": -1,\n        \"flow\": \"elec_feed_in\",\n        \"id\": \"d1xvwdWKWCpYH6GPjovnLg\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Place is available. `code` gives the functional result.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5daad721-0552-43cf-9eb7-6078c5eb54c8",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5640b7a5-e243-4d2f-8c05-64ac48528777",
+      "documentation": "Get electricity flows setup",
+      "method": "get",
+      "endpoint": "places/:placeId/electricity/flows/setup",
+      "responses": [
+        {
+          "uuid": "f3a68c34-b283-46c4-ba88-77df6178d023",
+          "body": "{\n  \"elec_drawn\": [\n    {\n      \"class\": \"ElecSmartMetering\",\n      \"id\": \"lvxvQ9SqXCpYSqHOJI7tIA\"\n    }\n  ],\n  \"elec_feed_in\": [\n    {\n      \"class\": \"ElecSmartMetering\",\n      \"id\": \"d1xvwdWKWCpYH6GPjovnLg\"\n    }\n  ],\n  \"elec_total_gen\": [\n    {\n      \"class\": \"ElecMetering\",\n      \"id\": \"SF4_y4SoTCpYXgGODJplJQ\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a1a48c5c-8e4e-4cdb-be58-dfa970e47f5f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c405da8f-689c-4367-9113-6daea1a478fb",
+      "documentation": "Get self-consumption rate of the place",
+      "method": "get",
+      "endpoint": "places/:placeId/electricity/self-consumption",
+      "responses": [
+        {
+          "uuid": "d5c9a3b0-3043-491e-bfd1-61410c02f74f",
+          "body": "{\n  \"code\": 200000,\n  \"from\": \"2016-03-02T10:00:00Z\",\n  \"selfConsumption\": 1,\n  \"to\": \"2016-03-02T11:00:00Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bf1ff4ce-82ae-4cea-b5e5-b051e3d0da24",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "10fe06a4-5a4d-44fb-8283-963a37ef9d70",
+      "documentation": "List Functionalities",
+      "method": "get",
+      "endpoint": "places/:placeId/functionalities",
+      "responses": [
+        {
+          "uuid": "81c9cd89-e3ff-44be-abde-7799722767ae",
+          "body": "[\n  {\n    \"class\": \"\",\n    \"device\": \"RGV2aWNlMDAwMDAwMDAwMA\",\n    \"endpoint\": {{faker 'datatype.number'}},\n    \"id\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n    \"metadata\": {},\n    \"name\": \"\",\n    \"tags\": [\n      \"\"\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e81abead-ef49-4d53-ac96-d8702fa10bb4",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "558e1e8e-663f-4973-b081-bdf97d7c485f",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "places/:placeId/metadata",
+      "responses": [
+        {
+          "uuid": "f2d501f1-4222-46c5-80a1-a169ed4ce535",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cab0ed24-9498-4e6b-83ab-bb8e73fed02b",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ee169c7d-05a3-450e-b85c-00a824486f51",
+      "documentation": "Modify metadata",
+      "method": "patch",
+      "endpoint": "places/:placeId/metadata",
+      "responses": [
+        {
+          "uuid": "39a48aab-a434-453a-8f68-5f628d492399",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b372226d-b0d4-4744-b18d-7739509e46bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd220f39-b07f-410c-a170-01a48dc52714",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Place* doesn't exist or the requester doesn't have access.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ba8a10c2-b927-46a1-a54b-11923f9a837f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c558c157-a935-41e1-ae58-f11ab950748c",
+      "documentation": "List Notifications",
+      "method": "get",
+      "endpoint": "places/:placeId/notifications",
+      "responses": [
+        {
+          "uuid": "c57fadcb-7214-4c86-a8db-91eb068cec28",
+          "body": "[\n  {\n    \"id\": \"InovwcCIGM5X7KvKrJ7vJw\",\n    \"metadata\": {},\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2028a645-3e9f-40ee-9a29-06eab9c8353f",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ff361637-90c0-48d9-83b9-b8af0eb4abca",
+      "documentation": "Create a Notification",
+      "method": "post",
+      "endpoint": "places/:placeId/notifications",
+      "responses": [
+        {
+          "uuid": "c1230414-3377-4d85-9cf5-380340793c26",
+          "body": "{\n  \"code\": 201,\n  \"message\": \"Notification created\",\n  \"resource\": {\n    \"entity\": \"Notification\",\n    \"href\": \"/notifications/InovwcCIGM5X7KvKrJ7vJw\",\n    \"id\": \"InovwcCIGM5X7KvKrJ7vJw\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "*Notification* successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ef9c8a09-f765-41d8-83e7-e2ef97353a5a",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Place* doesn't exist or the requester doesn't have access.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7fefab04-6d52-46fc-95bd-a3ffbf0a7fa5",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1a82077c-de12-49bc-9ae7-4d7a874d486b",
+      "documentation": "List Programs",
+      "method": "get",
+      "endpoint": "places/:placeId/programs",
+      "responses": [
+        {
+          "uuid": "93e8427c-8e05-4576-a351-217efa95abff",
+          "body": "[\n  {\n    \"enabled\": {{faker 'datatype.boolean'}},\n    \"id\": \"3_J_6ZWICc5X_KverorNvw\",\n    \"metadata\": {},\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "905f32cc-9d83-4e89-ab32-79082b7b05fa",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a4b4e814-3d77-45b0-860e-e787e149e043",
+      "documentation": "Create a Program",
+      "method": "post",
+      "endpoint": "places/:placeId/programs",
+      "responses": [
+        {
+          "uuid": "08d7c195-25a9-4afa-900a-44ab262d9e66",
+          "body": "{\n  \"code\": 201,\n  \"message\": \"Program created\",\n  \"resource\": {\n    \"entity\": \"Program\",\n    \"href\": \"/programs/3_J_6ZWICc5X_KverorNvw\",\n    \"id\": \"3_J_6ZWICc5X_KverorNvw\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "*Program* successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e0f1c210-4bcd-44cc-a562-cd7804745c31",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Place* doesn't exist or the requester doesn't have access.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0ab856a8-bb7f-43b5-b126-2ef53daf9772",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eb98f683-d18b-4a72-9916-b02654c24e03",
+      "documentation": "Run actions",
+      "method": "post",
+      "endpoint": "places/:placeId/run/:action",
+      "responses": [
+        {
+          "uuid": "966ded4d-761e-4efe-9db4-a7c9e9ea5064",
+          "body": "[\n  {\n    \"functionality\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n    \"result\": [],\n    \"status\": 200\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e3ed9ba2-3280-4f9f-b7d5-659c833a4347",
+          "body": "{\n  \"code\": \"{{oneOf (array '450')}}\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 450,
+          "label": "The gateway of the Place is not reachable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "518dba26-1ce8-4881-82dd-ba9fe81a6dbc",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "735925a5-7556-4c3f-9943-44821fa1d8a3",
+      "documentation": "Delete a Program",
+      "method": "delete",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "7a11e6a6-e0c7-4f65-8e8a-5baa29fcc82c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Resource successfully deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0c2d8882-6838-4978-b463-161bedb45eb6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ee66670e-6c25-4d02-9407-4dc0b3ee0a94",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "431c7940-c37e-4e4a-b2bf-32e68ea5eda2",
+      "documentation": "Information about a Program",
+      "method": "get",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "88b00b04-4fa6-43f5-8d46-37b59dd6ebef",
+          "body": "{\n  \"code\": \"\",\n  \"enabled\": {{faker 'datatype.boolean'}},\n  \"metadata\": {},\n  \"name\": \"\",\n  \"place\": \"3HA6YcSCTSFX6SPPrI9PxQ\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9d9d1d4e-0f6b-41db-8d40-35ccf2e11e92",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5414c70c-0635-40cf-b407-db0e1de556df",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d9674199-9e88-427a-956c-1632e4ed006c",
+      "documentation": "Modify a Program",
+      "method": "patch",
+      "endpoint": "programs/:programId",
+      "responses": [
+        {
+          "uuid": "168bd5ec-22df-4e40-902b-0fe720fb524c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Modification successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd170231-5eba-41a0-9b27-bd9b437b5b6f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cca3a092-4e22-431b-a317-e087adc46a22",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f54168f-fbdb-42a0-896d-de145feb513d",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd25f4b4-5e18-4924-83c1-e1af644ec078",
+      "documentation": "History of executions of a Program",
+      "method": "get",
+      "endpoint": "programs/:programId/log",
+      "responses": [
+        {
+          "uuid": "499fc230-54af-4f81-b046-cd26058ce610",
+          "body": "[\n  {\n    \"actions\": [\n      {\n        \"functionality\": \"RnVuY3Rpb25hbGl0eTAwMA\",\n        \"result\": [],\n        \"status\": 200\n      }\n    ],\n    \"errors\": [\n      \"\"\n    ],\n    \"notifications\": [\n      \"InovwcCIGM5X7KvKrJ7vJw\"\n    ],\n    \"when\": \"{{faker 'date.recent' 365}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "308520f0-86cd-4133-8c1f-e439aad38878",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "39089872-058b-471d-bc2e-6ecc0b89ae96",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "884c6d51-0226-4f98-932b-e8a8db7a53b8",
+      "documentation": "List metadata",
+      "method": "get",
+      "endpoint": "programs/:programId/metadata",
+      "responses": [
+        {
+          "uuid": "9400fe7c-0d74-483e-9497-50093e2a44f7",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "80dfbe06-0219-494f-a6b9-7b62508cc1b8",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a6091a9-86d4-4531-bccc-28b4fc7827d1",
+      "documentation": "Modify metadata of a Program",
+      "method": "patch",
+      "endpoint": "programs/:programId/metadata",
+      "responses": [
+        {
+          "uuid": "0154593d-087e-46f9-8d89-532aa23f33a5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful. The new metadata is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a7c53661-b1c7-433c-9319-d03f216f4f11",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Successful, but nothing changed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "756418f9-bfd4-4b32-86b7-65e285a29f1e",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1b2597a4-6664-491c-bdd8-d4a8243432e6",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43453564-2739-4e1e-bce9-1e63a558d598",
+      "documentation": "Run the Program",
+      "method": "post",
+      "endpoint": "programs/:programId/run",
+      "responses": [
+        {
+          "uuid": "50f47031-9435-4b00-adf0-2bb1864eb641",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "*Program* successfully launched.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1425e599-ff10-43fa-b3f7-6e042b84a8a9",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\",\n  \"resource\": {\n    \"entity\": \"{{oneOf (array 'Device' 'Functionality' 'Notification' 'Place' 'Program' 'User' 'Account' 'AccountsBase')}}\",\n    \"href\": \"\",\n    \"id\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "*Program* doesn't exist or the requester doesn't have appropriate access to the *Place*.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c6d49bc-982a-43fa-ac61-4c46c87d1636",
+          "body": "{\n  \"code\": {{faker 'datatype.number'}},\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Other error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

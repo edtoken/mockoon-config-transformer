@@ -1,0 +1,2254 @@
+{
+  "uuid": "9cfe91f5-9ebf-47f4-bf15-50591836074e",
+  "lastMigration": 24,
+  "name": "StatSocial Platform API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "2bec0241-463b-4dd5-b3d7-88007f430a2c",
+      "documentation": "Used to understand API usage",
+      "method": "get",
+      "endpoint": "applications/status/",
+      "responses": [
+        {
+          "uuid": "86b0ae39-df84-4a52-9271-4f36cb5926af",
+          "body": "{\n  \"data\": {\n    \"remaining_count\": {{faker 'datatype.number'}},\n    \"reports\": {\n      \"created\": \"\",\n      \"name\": \"\",\n      \"report_type\": \"\",\n      \"status\": \"\"\n    },\n    \"total_reports_count\": {{faker 'datatype.number'}},\n    \"total_reports_done\": {{faker 'datatype.number'}}\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "873bcffc-a06d-4716-9d63-3ab8f77e0949",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a5c0e21e-acee-4e66-aafc-588a9ae0f974",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "75304f2c-2263-488e-97e3-55e03fc7d6a9",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: you are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "048872dc-db1e-4a09-9399-a396c6431b3a",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ef28f9f9-5bba-4755-93d1-16b0241c9082",
+      "documentation": "Obtain report output",
+      "method": "get",
+      "endpoint": "reports/",
+      "responses": [
+        {
+          "uuid": "15db212e-f73e-4fd5-b6e0-14199ba29180",
+          "body": "{\n  \"data\": {\n    \"Combined Age\": {\n      \"18 - 24\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"25 - 34\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"35 - 44\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      }\n    },\n    \"Sex\": {\n      \"Female\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"Male\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      }\n    }\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c93e0858-d9a8-43d0-b02c-307edb201744",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: Invalid or non-existent baseline supplied, error_code_msg: INVALID_BASELINE}<br>{success: 0, msg: Invalid report_date parameter value. Must be an integer, error_code_msg: INVALID_REPORT_DATE}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5f7d4c9e-2e92-4718-ae32-5a491ebae0ce",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "17289fc0-9c4c-4ac2-9e83-d2cdd219ff93",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: You are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9c229cb9-4573-4b14-8b6b-a09a4d7d3321",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: Report does not currently exist, error_code_msg: API_ERROR_RETRIEVING_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cd4f7bc4-39aa-4d1c-a4ac-a07d247cf8e2",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "999562c1-35ba-4007-bb94-047f0749c30d",
+      "documentation": "Obtain report output",
+      "method": "post",
+      "endpoint": "reports/",
+      "responses": [
+        {
+          "uuid": "0fff93f0-b421-45f3-975b-d8c3b7264c49",
+          "body": "{\n  \"data\": {\n    \"Combined Age\": {\n      \"18 - 24\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"25 - 34\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"35 - 44\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      }\n    },\n    \"Sex\": {\n      \"Female\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"Male\": {\n        \"average\": {{faker 'datatype.number'}},\n        \"multiplicity\": {{faker 'datatype.number'}},\n        \"percentile\": {{faker 'datatype.number'}},\n        \"statistical_info\": {\n          \"error_range\": {{faker 'datatype.number'}},\n          \"lower_bound\": {{faker 'datatype.number'}},\n          \"upper_bound\": {{faker 'datatype.number'}}\n        },\n        \"stdev\": {{faker 'datatype.number'}},\n        \"value\": {{faker 'datatype.number'}}\n      }\n    }\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f5c6398c-8b70-4df6-bc3c-02f6330db629",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: Invalid or non-existent baseline supplied, error_code_msg: INVALID_BASELINE}<br>{success: 0, msg: Invalid report_date parameter value. Must be an integer, error_code_msg: INVALID_REPORT_DATE}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3e40997a-176b-4368-9e7f-a143251e1f3a",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6b77e4e2-c384-4bd5-985f-16bbe6b319d1",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: You are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5750b4b3-9a12-40f9-a72f-5e736fa708e8",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: Report does not currently exist, error_code_msg: API_ERROR_RETRIEVING_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ba4ffc6e-8c26-46c8-8bc7-a1b7675060ff",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "37454c5d-eec8-43ee-8017-c20d2b5d6716",
+      "documentation": "Step 3 of executing custom report",
+      "method": "get",
+      "endpoint": "reports/custom/create/",
+      "responses": [
+        {
+          "uuid": "046ce793-e194-4ffa-969e-22ff22c63e74",
+          "body": "{\n  \"data\": {\n    \"report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "032a6870-ba90-4eb2-8399-f24e3aa272f9",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "141cbdc1-edfe-4c72-9cb8-42813e3d4c21",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d50e5067-1eaa-45ad-ba50-970bbeec2154",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: you are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b032e5ca-9f79-4e94-93c5-f21394c935ad",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: The upload hash provided does not exist, error_code_msg: UPLOAD_HASH_DOES_NOT_EXIST}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd88806a-ddd7-4c78-9999-dd208847819e",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4cdaa5c3-07bf-40c7-89f2-6bc9de59a764",
+      "documentation": "Step 3 of executing custom report",
+      "method": "post",
+      "endpoint": "reports/custom/create/",
+      "responses": [
+        {
+          "uuid": "5e05f9a6-a655-4c8b-ba4b-8ac0e2ba5259",
+          "body": "{\n  \"data\": {\n    \"report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5286864-085f-4c25-a9d5-8c6b5fdf33f0",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a27d0cc1-84f4-4f77-a80d-e3e6f91516e0",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1a3f94c5-cf8e-4f86-bb19-4406d6693db1",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: you are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b78c1824-4637-4409-96ed-d4564e47d162",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: The upload hash provided does not exist, error_code_msg: UPLOAD_HASH_DOES_NOT_EXIST}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5e370068-981d-495e-a570-b98257ac9a80",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "32e02365-a9c3-4787-b7d3-bfdb253891b6",
+      "documentation": "Step 1 of executing custom report",
+      "method": "get",
+      "endpoint": "reports/custom/generate/",
+      "responses": [
+        {
+          "uuid": "a5cd41d9-a997-49f7-8657-a5b30c1c3c5a",
+          "body": "{\n  \"data\": {\n    \"upload_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f1c0bc0f-073d-47fd-9660-6e495242fa2a",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9331a14f-0bdd-4cde-be52-44c019e6e09f",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b2827e84-107d-47fe-a2f9-77fec0f3b78b",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a35133a6-95eb-49b4-b7e6-ad912e319341",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ff6fb2f7-89fe-4fd0-857f-f455b6e3a274",
+      "documentation": "Step 1 of executing custom report",
+      "method": "post",
+      "endpoint": "reports/custom/generate/",
+      "responses": [
+        {
+          "uuid": "60884dae-6f9a-4ec8-a032-96faacbf942c",
+          "body": "{\n  \"data\": {\n    \"upload_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cd74b793-3176-4c0b-a677-a53d700a64f3",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9ffe7827-481d-4afc-a470-8efddb1e053f",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7a7053b-7f0c-4199-9d90-5028c2f4eda8",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eba74d3e-56a2-4c51-8e06-79610af733ef",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "524256d0-40e6-4cf7-bfd5-e7e7efaf8e82",
+      "documentation": "Step 2 of executing custom report",
+      "method": "get",
+      "endpoint": "reports/custom/insert/",
+      "responses": [
+        {
+          "uuid": "230ddafa-0e4e-4c3e-85d5-4ee1fbf24a23",
+          "body": "{\n  \"data\": {\n    \"distinct_relations\": {{faker 'datatype.number'}},\n    \"total_relations\": {{faker 'datatype.number'}}\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "90444fe4-b771-40ff-84dc-8ecb36ad44dc",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: IDS array is too long or in an incorrect format, error_code_msg: API_INVALID_IDS}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fb25ea48-55bc-41af-9b29-ae0fcb94717f",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f2e8a0fa-e5d5-4937-8da1-236b4d0a1079",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e272b92e-b4bb-4ca2-8270-1a8f19ef8f92",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: The upload hash provided does not exist, error_code_msg: UPLOAD_HASH_DOES_NOT_EXIST}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "411ab194-5a2b-47cf-a9d9-5ac07133e9df",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error trying to insert relations to custom, error_code_msg: API_ERROR_INSERTING_TO_CUSTOM}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9af4d81-414f-4cc1-82b1-43dfb50d5fca",
+      "documentation": "Step 2 of executing custom report",
+      "method": "post",
+      "endpoint": "reports/custom/insert/",
+      "responses": [
+        {
+          "uuid": "86b0f31e-1a56-49d4-9113-1ead2ab5ca98",
+          "body": "{\n  \"data\": {\n    \"distinct_relations\": {{faker 'datatype.number'}},\n    \"total_relations\": {{faker 'datatype.number'}}\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "836e9c82-5d79-48b7-b503-15e5ccd0fe4a",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: IDS array is too long or in an incorrect format, error_code_msg: API_INVALID_IDS}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f97320ac-4e81-4afe-a3e4-f86ff52cbc15",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d137dd3-6052-4b4f-93eb-0c026785e25f",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c0366892-ad87-4944-b2ef-13076d8cb7ba",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: The upload hash provided does not exist, error_code_msg: UPLOAD_HASH_DOES_NOT_EXIST}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4494e63e-7d64-4026-9b9f-75b9d786bc60",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error trying to insert relations to custom, error_code_msg: API_ERROR_INSERTING_TO_CUSTOM}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c2b92d54-e82d-4c84-847d-ef3440b434c4",
+      "documentation": "Get report dates available for a specific report",
+      "method": "get",
+      "endpoint": "reports/dates/",
+      "responses": [
+        {
+          "uuid": "12a4e326-0c82-4d15-80ae-734104186b5e",
+          "body": "{\n  \"data\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "823efa49-7b34-4228-ab2a-15944eef1fbd",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "418e41a8-5a60-462e-b622-734855eac8fd",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "034d5797-49af-4fd4-8008-feb0cc476a8c",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: You are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "31c606ec-fa94-4345-95cd-5d5a7b33f22e",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: Report does not currently exist, error_code_msg: API_ERROR_RETRIEVING_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e84b005f-eb14-41a6-8656-79a0cf9a5d85",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "adf63573-1ff8-4054-a4da-f7ef877ca8d9",
+      "documentation": "Get report dates available for a specific report",
+      "method": "post",
+      "endpoint": "reports/dates/",
+      "responses": [
+        {
+          "uuid": "6b559fa1-3848-400a-abbf-1a84a72f89fe",
+          "body": "{\n  \"data\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "df8c0bf6-a485-4402-833a-6e7f53a33766",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "45df492a-61a9-4345-a9c9-1c976b5800e4",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "51fcec95-edbc-4cd4-b644-1de3c5e18125",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: You are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "46af3fa4-d87c-4f39-bbe3-ec92fac287ab",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "{success: 0, msg: Report does not currently exist, error_code_msg: API_ERROR_RETRIEVING_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a30d1e65-1b74-45c2-a252-49630512d833",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "333d1d7d-d119-4b81-a51b-e3aecb936318",
+      "documentation": "Get list of generated reports",
+      "method": "get",
+      "endpoint": "reports/status/",
+      "responses": [
+        {
+          "uuid": "4cb92849-5aac-4a05-a4f7-c387689f4227",
+          "body": "{\n  \"msg\": \"\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a4977a8b-373d-47ca-8e16-204366bd5ead",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "63f23a4a-174a-4c2f-8bb3-6bd695e27f84",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "86c84c37-f3d4-41f6-8b3a-48e2c49e6a7c",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: you are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a613152d-96ae-4d0b-9fd9-49782370828d",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "173ee932-2dda-4fef-8981-d82d545db004",
+      "documentation": "Get list of generated reports",
+      "method": "post",
+      "endpoint": "reports/status/",
+      "responses": [
+        {
+          "uuid": "8d0b5eec-efe5-43cb-9298-d9e08b1bd5c0",
+          "body": "{\n  \"msg\": \"\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7666989e-0393-4d3c-9e51-174c3899e5ee",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "44f1284a-3bc3-44e8-a995-0b8f359dcde1",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f1e0b7b3-3316-4a82-98b2-446ee7b594a0",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "{success: 0, msg: you are going too fast}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cb0657a9-51d6-4d7e-b3f1-25c220580989",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}<br>{success: 0, msg: Report has no data, error_code_msg: API_ERROR_EMPTY_REPORT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "05d5029c-6560-4f40-9e43-e49347d56589",
+      "documentation": "Used to create tweet reports",
+      "method": "get",
+      "endpoint": "reports/tweet/create/",
+      "responses": [
+        {
+          "uuid": "bc08f81c-b6a5-4805-ae63-638a0ee3d5ad",
+          "body": "{\n  \"data\": {\n    \"aggregate_report_hash\": \"\",\n    \"daily_report_hash\": \"\",\n    \"monthly_report_hash\": \"\",\n    \"weekly_report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0ec075de-e32a-41f0-b6db-b5e4a6dc0e8e",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "590ef2e8-555c-4baf-bbad-2e552262f159",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9ea78ad5-048c-4502-ac9c-575cfc6347a7",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "906a2eff-d00a-44a7-b6f4-8758c45e9b61",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dc1d5464-7d2f-4214-bfd4-49f622f2bc77",
+      "documentation": "Used to create tweet reports",
+      "method": "post",
+      "endpoint": "reports/tweet/create/",
+      "responses": [
+        {
+          "uuid": "b00fe02b-33aa-43cd-8567-8b2f589eb16b",
+          "body": "{\n  \"data\": {\n    \"aggregate_report_hash\": \"\",\n    \"daily_report_hash\": \"\",\n    \"monthly_report_hash\": \"\",\n    \"weekly_report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "08a3c861-d273-4e82-a8b7-03fdb8fe9552",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f5555a16-99ba-42ca-a32f-f7d46dc66fad",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6fb8d6eb-015d-4c0b-a8f5-82ff38941246",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3bd74274-6d5a-4742-ae14-b49758932d44",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "223faaf2-d619-4ee6-8381-da1689305aca",
+      "documentation": "Used to create twitter follower report",
+      "method": "get",
+      "endpoint": "reports/twitter/create/",
+      "responses": [
+        {
+          "uuid": "217a904a-ec49-408f-a5d5-0daf76b7720d",
+          "body": "{\n  \"data\": {\n    \"report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8a6e73a3-733e-4e7c-9590-77a9a9943aae",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: The twitter account provided has no audience, error_code_msg: API_TWITTER_ERROR_INSUFFICIENT_COUNT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8ef0e2fe-bcca-42e4-9dac-eebf996a88e3",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}<br>{success: 0, msg: The twitter account provided is private, error_code_msg: API_TWITTER_ERROR_PRIVATE}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4815578f-40ec-4a7a-9b8d-a1f321d7dd44",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fae9af46-d6da-443e-8e38-b9ce62c71d51",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error requesting twitter info, error_code_msg: API_TWITTER_ERROR}<br>{success: 0, msg: Error inserting new twitter report, error_code_msg: API_ERROR_CREATING_TWITTER_ACCOUNT}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "67cb8806-6750-47de-a092-b699469a10ed",
+      "documentation": "Used to create twitter follower report",
+      "method": "post",
+      "endpoint": "reports/twitter/create/",
+      "responses": [
+        {
+          "uuid": "a2aefd42-389c-4ecd-a2fd-43a8c89dfb6e",
+          "body": "{\n  \"data\": {\n    \"report_hash\": \"\"\n  },\n  \"msg\": \"success\",\n  \"success\": \"true\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "200702ae-94e0-4bb3-9bf4-2e5268b12160",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API parameters, error_code_msg: API_INVALID_PARAMS}<br>{success: 0, msg: Error please include the 'action' parameter, error_code_msg: API_MISSING_ACTION_PARAMETER}<br>{success: 0, msg: The twitter account provided has no audience, error_code_msg: API_TWITTER_ERROR_INSUFFICIENT_COUNT}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3995cd09-6342-4675-b5e8-a679d74fe5e0",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Possible reasons include:<br>{success: 0, msg: Invalid API key, error_code_msg: API_INVALID_KEY}<br>{success: 0, msg: The twitter account provided is private, error_code_msg: API_TWITTER_ERROR_PRIVATE}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f52a9519-1ae0-4f3f-9e78-c65814b7a606",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Possible reasons include:<br>{success: 0, msg: you are going too fast}<br>{success: 0, msg: Not enough tokens remaining under your application, error_code_msg: API_INSUFFICIENT_TOKENS_REMAINING}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6e33c261-3753-4a45-9d2c-ae16f6cccad5",
+          "body": "{\n  \"error_code_msg\": \"\",\n  \"msg\": \"\",\n  \"success\": \"false\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Possible reasons include:<br>{success: 0, msg: Error requesting twitter info, error_code_msg: API_TWITTER_ERROR}<br>{success: 0, msg: Error inserting new twitter report, error_code_msg: API_ERROR_CREATING_TWITTER_ACCOUNT}<br>{success: 0, msg: Error getting application's credentials, error_code_msg: API_ERROR_GETTING_APPLICATION_INFO}}<br>{success: 0, msg: Internal database error, error_code_msg: API_ERROR_DATABASE_INITIATION_ERROR}",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

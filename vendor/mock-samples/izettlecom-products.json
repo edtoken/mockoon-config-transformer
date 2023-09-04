@@ -1,0 +1,1724 @@
+{
+  "uuid": "8e684471-6204-45d6-b55d-3c76e63bd961",
+  "lastMigration": 24,
+  "name": "Zettle Product Library API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f237e0cd-f882-41f4-ae72-bb34585032ce",
+      "documentation": "Retrieves all categories",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/categories/v2",
+      "responses": [
+        {
+          "uuid": "4ac52b0a-b1e0-4473-ba27-6f24fa39f4c1",
+          "body": "{\n  \"categories\": [\n    {\n      \"name\": \"\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of all categories",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "366cf2ab-2fc0-4fc6-bfe1-e04098fdcbfc",
+      "documentation": "Creates a new category",
+      "method": "post",
+      "endpoint": "organizations/:organizationUuid/categories/v2",
+      "responses": [
+        {
+          "uuid": "c3fae404-b887-4994-9d8e-4c6652b156e7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Category created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "465c5112-7a62-4bd1-b68d-09bdf7793009",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0d514baa-3d75-4abf-bacd-48ea2506a2ca",
+      "documentation": "Retrieves all discounts",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/discounts",
+      "responses": [
+        {
+          "uuid": "1ddaf0a9-39b1-4e1c-98b2-f489fd6adeeb",
+          "body": "[\n  {\n    \"amount\": {\n      \"amount\": {{faker 'datatype.number'}},\n      \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n    },\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"description\": \"\",\n    \"etag\": \"\",\n    \"externalReference\": \"\",\n    \"imageLookupKeys\": [\n      \"\"\n    ],\n    \"name\": \"\",\n    \"percentage\": {{faker 'datatype.number'}},\n    \"updated\": \"{{faker 'date.recent' 365}}\",\n    \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n    \"uuid\": \"{{faker 'datatype.uuid'}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of all discounts",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a41575b-9153-42fc-b261-8d78266e536f",
+      "documentation": "Creates a discount",
+      "method": "post",
+      "endpoint": "organizations/:organizationUuid/discounts",
+      "responses": [
+        {
+          "uuid": "4fa53efb-5e73-4df5-9125-a5ccb13d4a93",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Discount created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b9f29f72-bc42-4143-a3ad-a8d9c0dd302d",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3f72989b-5dfa-4377-9933-a252cc2b9917",
+      "documentation": "Deletes a single discount ",
+      "method": "delete",
+      "endpoint": "organizations/:organizationUuid/discounts/:discountUuid",
+      "responses": [
+        {
+          "uuid": "9ef0d447-d2fb-4674-bb82-896138be1a47",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Discount deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca792ebe-547a-4469-8911-c6edf39a4aba",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or Discount not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "011d8e18-b05b-4d18-bbfa-8210f14d3a00",
+      "documentation": "Retrieves a single discount",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/discounts/:discountUuid",
+      "responses": [
+        {
+          "uuid": "a5637a3a-671e-4d68-a029-81e802c33899",
+          "body": "{\n  \"amount\": {\n    \"amount\": {{faker 'datatype.number'}},\n    \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n  },\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"etag\": \"\",\n  \"externalReference\": \"\",\n  \"imageLookupKeys\": [\n    \"\"\n  ],\n  \"name\": \"\",\n  \"percentage\": {{faker 'datatype.number'}},\n  \"updated\": \"{{faker 'date.recent' 365}}\",\n  \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Discount",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "307714ab-ea8b-4fe7-bf5b-95a1ffd795f4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not modified",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "efcb387b-715c-4d7d-932d-230623a4544e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or Discount not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e15f189-374e-4f3f-b3d3-0d9180a5e6ba",
+      "documentation": "Updates a single discount",
+      "method": "put",
+      "endpoint": "organizations/:organizationUuid/discounts/:discountUuid",
+      "responses": [
+        {
+          "uuid": "4646cdf9-b279-410a-9155-05c11186b4e2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Discount updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "66c6667c-033e-457f-97ba-c44eb053364b",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dc88d6cb-b92c-4153-86f6-ef72976be211",
+          "body": "",
+          "latency": 0,
+          "statusCode": 412,
+          "label": "Precondition failed: ETag did not match the expected value",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "385a90a8-baf9-4719-a8b7-e9a12b85c259",
+      "documentation": "Retrieves all library item images",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/images",
+      "responses": [
+        {
+          "uuid": "bdcabc65-cfa5-4d9c-976b-ec22ef94b584",
+          "body": "{\n  \"imageUrls\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of all image urls",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "532bb326-8a2a-4cdd-920d-f83482723b4d",
+      "documentation": "Gets status for latest import",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/import/status",
+      "responses": [
+        {
+          "uuid": "61f7236f-6349-455b-9f8a-302aafc64234",
+          "body": "{\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"errorMessage\": \"\",\n  \"finished\": \"{{faker 'date.recent' 365}}\",\n  \"items\": {{faker 'datatype.number'}},\n  \"state\": \"{{oneOf (array 'IMPORTING' 'FINISHED_SUCCESS' 'FINISHED_FAILED')}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Import status",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0d601370-6d21-4097-acf0-6f8a59f7010c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or import not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c67d481c-30b2-4e7d-b0ec-b6a911a8bf7d",
+      "documentation": "Gets status for an import",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/import/status/:importUuid",
+      "responses": [
+        {
+          "uuid": "8877a953-4bad-45d1-ba9e-deb3bb33aa57",
+          "body": "{\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"errorMessage\": \"\",\n  \"finished\": \"{{faker 'date.recent' 365}}\",\n  \"items\": {{faker 'datatype.number'}},\n  \"state\": \"{{oneOf (array 'IMPORTING' 'FINISHED_SUCCESS' 'FINISHED_FAILED')}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Import status",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "03de935f-3104-4f8a-bb61-e84736c1db8e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or import not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a98f1eb5-0501-4494-bd0e-ff04cccc3bbf",
+      "documentation": "Bulk import library items",
+      "method": "post",
+      "endpoint": "organizations/:organizationUuid/import/v2",
+      "responses": [
+        {
+          "uuid": "9ea9ca79-ed8f-4f47-b85b-56092f7e5ebc",
+          "body": "{\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"errorMessage\": \"\",\n  \"finished\": \"{{faker 'date.recent' 365}}\",\n  \"items\": {{faker 'datatype.number'}},\n  \"state\": \"{{oneOf (array 'IMPORTING' 'FINISHED_SUCCESS' 'FINISHED_FAILED')}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Import status",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "16020172-614b-44a2-b450-7916230c1244",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a5e52957-cc34-4033-a485-4f098741d6bb",
+      "documentation": "Retrieves the entire library",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/library",
+      "responses": [
+        {
+          "uuid": "e3c0ee87-e1c6-43eb-ab6a-e1a331e16d0d",
+          "body": "{\n  \"deletedDiscounts\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"deletedProducts\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"discounts\": [\n    {\n      \"amount\": {\n        \"amount\": {{faker 'datatype.number'}},\n        \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n      },\n      \"created\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"etag\": \"\",\n      \"externalReference\": \"\",\n      \"imageLookupKeys\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"percentage\": {{faker 'datatype.number'}},\n      \"updated\": \"{{faker 'date.recent' 365}}\",\n      \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ],\n  \"fromEventLogUuid\": \"{{faker 'datatype.uuid'}}\",\n  \"products\": [\n    {\n      \"categories\": [\n        \"\"\n      ],\n      \"category\": {\n        \"name\": \"\",\n        \"uuid\": \"{{faker 'datatype.uuid'}}\"\n      },\n      \"created\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"etag\": \"\",\n      \"externalReference\": \"\",\n      \"imageLookupKeys\": [\n        \"\"\n      ],\n      \"metadata\": {\n        \"inPos\": {{faker 'datatype.boolean'}},\n        \"source\": {\n          \"external\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        }\n      },\n      \"name\": \"\",\n      \"online\": {\n        \"description\": \"\",\n        \"presentation\": {\n          \"additionalImageUrls\": [\n            \"\"\n          ],\n          \"displayImageUrl\": \"\",\n          \"mediaUrls\": [\n            \"\"\n          ]\n        },\n        \"seo\": {\n          \"metaDescription\": \"\",\n          \"slug\": \"\",\n          \"title\": \"\"\n        },\n        \"shipping\": {\n          \"shippingPricingModel\": \"{{oneOf (array 'FREE' 'STANDARD')}}\",\n          \"weight\": {\n            \"unit\": \"{{oneOf (array 'kg' 'g' 'oz' 'lb')}}\",\n            \"weight\": {{faker 'datatype.number'}}\n          },\n          \"weightInGrams\": {{faker 'datatype.number'}}\n        },\n        \"status\": \"{{oneOf (array 'ACTIVE' 'HIDDEN')}}\",\n        \"title\": \"\"\n      },\n      \"presentation\": {\n        \"backgroundColor\": \"\",\n        \"imageUrl\": \"\",\n        \"textColor\": \"\"\n      },\n      \"taxCode\": \"\",\n      \"taxExempt\": {{faker 'datatype.boolean'}},\n      \"taxRates\": [\n        \"{{faker 'datatype.uuid'}}\"\n      ],\n      \"unitName\": \"\",\n      \"updated\": \"{{faker 'date.recent' 365}}\",\n      \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\",\n      \"variantOptionDefinitions\": {\n        \"definitions\": [\n          {\n            \"name\": \"\",\n            \"properties\": [\n              {\n                \"imageUrl\": \"\",\n                \"value\": \"\"\n              }\n            ]\n          }\n        ]\n      },\n      \"variants\": [\n        {\n          \"barcode\": \"\",\n          \"costPrice\": {\n            \"amount\": {{faker 'datatype.number'}},\n            \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n          },\n          \"description\": \"\",\n          \"name\": \"\",\n          \"options\": [\n            {\n              \"name\": \"\",\n              \"value\": \"\"\n            }\n          ],\n          \"presentation\": {\n            \"backgroundColor\": \"\",\n            \"imageUrl\": \"\",\n            \"textColor\": \"\"\n          },\n          \"price\": {\n            \"amount\": {{faker 'datatype.number'}},\n            \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n          },\n          \"sku\": \"\",\n          \"uuid\": \"{{faker 'datatype.uuid'}}\",\n          \"vatPercentage\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"vatPercentage\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"untilEventLogUuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of library items",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Link",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "28b52967-dacb-4b75-8d19-5d6fec8c1e1b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 412,
+          "label": "Invalid event log uuid. If the eventLogUuid query parameter was provided a 412 response indicates that the number of changes in the product exceeds the limit since that particular event (currently 500 changes). \nWhen this happens, the client should remove the eventLogUuid query parameters and try again.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "07bf079c-1eb4-4755-b388-2365ab0464e6",
+      "documentation": "Deletes a list of products",
+      "method": "delete",
+      "endpoint": "organizations/:organizationUuid/products",
+      "responses": [
+        {
+          "uuid": "34977312-bf43-4c3b-a30d-448c837414ee",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Products deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "61fc5a3b-0f5d-42a6-99ac-463334dfe2e2",
+      "documentation": "Retrieves all products visible in POS",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/products",
+      "responses": [
+        {
+          "uuid": "b86536ad-4d60-41b9-8d43-a60a5aaeb9c9",
+          "body": "[\n  {\n    \"categories\": [\n      \"\"\n    ],\n    \"category\": {\n      \"name\": \"\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\"\n    },\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"description\": \"\",\n    \"etag\": \"\",\n    \"externalReference\": \"\",\n    \"imageLookupKeys\": [\n      \"\"\n    ],\n    \"metadata\": {\n      \"inPos\": {{faker 'datatype.boolean'}},\n      \"source\": {\n        \"external\": {{faker 'datatype.boolean'}},\n        \"name\": \"\"\n      }\n    },\n    \"name\": \"\",\n    \"online\": {\n      \"description\": \"\",\n      \"presentation\": {\n        \"additionalImageUrls\": [\n          \"\"\n        ],\n        \"displayImageUrl\": \"\",\n        \"mediaUrls\": [\n          \"\"\n        ]\n      },\n      \"seo\": {\n        \"metaDescription\": \"\",\n        \"slug\": \"\",\n        \"title\": \"\"\n      },\n      \"shipping\": {\n        \"shippingPricingModel\": \"{{oneOf (array 'FREE' 'STANDARD')}}\",\n        \"weight\": {\n          \"unit\": \"{{oneOf (array 'kg' 'g' 'oz' 'lb')}}\",\n          \"weight\": {{faker 'datatype.number'}}\n        },\n        \"weightInGrams\": {{faker 'datatype.number'}}\n      },\n      \"status\": \"{{oneOf (array 'ACTIVE' 'HIDDEN')}}\",\n      \"title\": \"\"\n    },\n    \"presentation\": {\n      \"backgroundColor\": \"\",\n      \"imageUrl\": \"\",\n      \"textColor\": \"\"\n    },\n    \"taxCode\": \"\",\n    \"taxExempt\": {{faker 'datatype.boolean'}},\n    \"taxRates\": [\n      \"{{faker 'datatype.uuid'}}\"\n    ],\n    \"unitName\": \"\",\n    \"updated\": \"{{faker 'date.recent' 365}}\",\n    \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n    \"uuid\": \"{{faker 'datatype.uuid'}}\",\n    \"variantOptionDefinitions\": {\n      \"definitions\": [\n        {\n          \"name\": \"\",\n          \"properties\": [\n            {\n              \"imageUrl\": \"\",\n              \"value\": \"\"\n            }\n          ]\n        }\n      ]\n    },\n    \"variants\": [\n      {\n        \"barcode\": \"\",\n        \"costPrice\": {\n          \"amount\": {{faker 'datatype.number'}},\n          \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n        },\n        \"description\": \"\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"name\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"presentation\": {\n          \"backgroundColor\": \"\",\n          \"imageUrl\": \"\",\n          \"textColor\": \"\"\n        },\n        \"price\": {\n          \"amount\": {{faker 'datatype.number'}},\n          \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n        },\n        \"sku\": \"\",\n        \"uuid\": \"{{faker 'datatype.uuid'}}\",\n        \"vatPercentage\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"vatPercentage\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of products",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47dc1973-4259-4cab-87fb-24ed3146021e",
+      "documentation": "Creates a new product",
+      "method": "post",
+      "endpoint": "organizations/:organizationUuid/products",
+      "responses": [
+        {
+          "uuid": "e7a562e8-d3d6-4b3b-967f-ff8dca3a5c3f",
+          "body": "{\n  \"categories\": [\n    \"\"\n  ],\n  \"category\": {\n    \"name\": \"\",\n    \"uuid\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"etag\": \"\",\n  \"externalReference\": \"\",\n  \"imageLookupKeys\": [\n    \"\"\n  ],\n  \"metadata\": {\n    \"inPos\": {{faker 'datatype.boolean'}},\n    \"source\": {\n      \"external\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  },\n  \"name\": \"\",\n  \"online\": {\n    \"description\": \"\",\n    \"presentation\": {\n      \"additionalImageUrls\": [\n        \"\"\n      ],\n      \"displayImageUrl\": \"\",\n      \"mediaUrls\": [\n        \"\"\n      ]\n    },\n    \"seo\": {\n      \"metaDescription\": \"\",\n      \"slug\": \"\",\n      \"title\": \"\"\n    },\n    \"shipping\": {\n      \"shippingPricingModel\": \"{{oneOf (array 'FREE' 'STANDARD')}}\",\n      \"weight\": {\n        \"unit\": \"{{oneOf (array 'kg' 'g' 'oz' 'lb')}}\",\n        \"weight\": {{faker 'datatype.number'}}\n      },\n      \"weightInGrams\": {{faker 'datatype.number'}}\n    },\n    \"status\": \"{{oneOf (array 'ACTIVE' 'HIDDEN')}}\",\n    \"title\": \"\"\n  },\n  \"presentation\": {\n    \"backgroundColor\": \"\",\n    \"imageUrl\": \"\",\n    \"textColor\": \"\"\n  },\n  \"taxCode\": \"\",\n  \"taxExempt\": {{faker 'datatype.boolean'}},\n  \"taxRates\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"unitName\": \"\",\n  \"updated\": \"{{faker 'date.recent' 365}}\",\n  \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\",\n  \"variantOptionDefinitions\": {\n    \"definitions\": [\n      {\n        \"name\": \"\",\n        \"properties\": [\n          {\n            \"imageUrl\": \"\",\n            \"value\": \"\"\n          }\n        ]\n      }\n    ]\n  },\n  \"variants\": [\n    {\n      \"barcode\": \"\",\n      \"costPrice\": {\n        \"amount\": {{faker 'datatype.number'}},\n        \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n      },\n      \"description\": \"\",\n      \"name\": \"\",\n      \"options\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"presentation\": {\n        \"backgroundColor\": \"\",\n        \"imageUrl\": \"\",\n        \"textColor\": \"\"\n      },\n      \"price\": {\n        \"amount\": {{faker 'datatype.number'}},\n        \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n      },\n      \"sku\": \"\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\",\n      \"vatPercentage\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"vatPercentage\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Product created. It will include the Product in the response only if 'returnEntity' is true",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4a93b31b-53fb-4c08-a314-3dc92d9e6e7a",
+      "documentation": "Creates a product identifier",
+      "method": "post",
+      "endpoint": "organizations/:organizationUuid/products/online/slug",
+      "responses": [
+        {
+          "uuid": "04375be4-023e-4def-85d0-9171cee10333",
+          "body": "{\n  \"productName\": \"\",\n  \"slug\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Product slug",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bb2ec2c8-0911-4c64-b847-998b59bbc54d",
+      "documentation": "Retrieves an aggregate of active Options in the library",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/products/options",
+      "responses": [
+        {
+          "uuid": "325a846e-d453-444b-91d8-fed82e10b943",
+          "body": "[\n  {\n    \"options\": [\n      {\n        \"name\": \"\",\n        \"values\": [\n          \"\"\n        ]\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of Options",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "af7634db-f0e9-493c-a6aa-1f2e1af3a263",
+      "documentation": "Retrieves all products visible in POS – v2",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/products/v2",
+      "responses": [
+        {
+          "uuid": "4da2f27e-c377-4b36-b657-693387a6fff3",
+          "body": "[\n  {\n    \"categories\": [\n      \"\"\n    ],\n    \"category\": {\n      \"name\": \"\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\"\n    },\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"description\": \"\",\n    \"etag\": \"\",\n    \"externalReference\": \"\",\n    \"imageLookupKeys\": [\n      \"\"\n    ],\n    \"metadata\": {\n      \"inPos\": {{faker 'datatype.boolean'}},\n      \"source\": {\n        \"external\": {{faker 'datatype.boolean'}},\n        \"name\": \"\"\n      }\n    },\n    \"name\": \"\",\n    \"online\": {\n      \"description\": \"\",\n      \"presentation\": {\n        \"additionalImageUrls\": [\n          \"\"\n        ],\n        \"displayImageUrl\": \"\",\n        \"mediaUrls\": [\n          \"\"\n        ]\n      },\n      \"seo\": {\n        \"metaDescription\": \"\",\n        \"slug\": \"\",\n        \"title\": \"\"\n      },\n      \"shipping\": {\n        \"shippingPricingModel\": \"{{oneOf (array 'FREE' 'STANDARD')}}\",\n        \"weight\": {\n          \"unit\": \"{{oneOf (array 'kg' 'g' 'oz' 'lb')}}\",\n          \"weight\": {{faker 'datatype.number'}}\n        },\n        \"weightInGrams\": {{faker 'datatype.number'}}\n      },\n      \"status\": \"{{oneOf (array 'ACTIVE' 'HIDDEN')}}\",\n      \"title\": \"\"\n    },\n    \"presentation\": {\n      \"backgroundColor\": \"\",\n      \"imageUrl\": \"\",\n      \"textColor\": \"\"\n    },\n    \"taxCode\": \"\",\n    \"taxExempt\": {{faker 'datatype.boolean'}},\n    \"taxRates\": [\n      \"{{faker 'datatype.uuid'}}\"\n    ],\n    \"unitName\": \"\",\n    \"updated\": \"{{faker 'date.recent' 365}}\",\n    \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n    \"uuid\": \"{{faker 'datatype.uuid'}}\",\n    \"variantOptionDefinitions\": {\n      \"definitions\": [\n        {\n          \"name\": \"\",\n          \"properties\": [\n            {\n              \"imageUrl\": \"\",\n              \"value\": \"\"\n            }\n          ]\n        }\n      ]\n    },\n    \"variants\": [\n      {\n        \"barcode\": \"\",\n        \"costPrice\": {\n          \"amount\": {{faker 'datatype.number'}},\n          \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n        },\n        \"description\": \"\",\n        \"name\": \"\",\n        \"options\": [\n          {\n            \"name\": \"\",\n            \"value\": \"\"\n          }\n        ],\n        \"presentation\": {\n          \"backgroundColor\": \"\",\n          \"imageUrl\": \"\",\n          \"textColor\": \"\"\n        },\n        \"price\": {\n          \"amount\": {{faker 'datatype.number'}},\n          \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n        },\n        \"sku\": \"\",\n        \"uuid\": \"{{faker 'datatype.uuid'}}\",\n        \"vatPercentage\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"vatPercentage\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of products",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44f7385a-8954-4671-bf35-e6d04da0c7a0",
+      "documentation": "Retrieves the count of existing products",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/products/v2/count",
+      "responses": [
+        {
+          "uuid": "efe3b03b-bdde-4dc3-be53-d6745f031853",
+          "body": "[\n  {\n    \"productCount\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Count of existing products",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2eb86d8f-6d6f-47e3-914e-19e82d389315",
+      "documentation": "Updates a single product",
+      "method": "put",
+      "endpoint": "organizations/:organizationUuid/products/v2/:productUuid",
+      "responses": [
+        {
+          "uuid": "0015ca93-1f01-4e29-8faf-8e6f23edda65",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Product updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "12f723c8-2b92-43bc-bf7b-11a9a0283be0",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7bd3a0ab-a58b-44e1-ab7c-e0962332199f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 412,
+          "label": "Precondition failed: ETag did not match the expected value",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "14f3817f-7a9a-42c5-ba25-9733d7f93ed1",
+      "documentation": "Deletes a single product",
+      "method": "delete",
+      "endpoint": "organizations/:organizationUuid/products/:productUuid",
+      "responses": [
+        {
+          "uuid": "8204642a-902b-4c5b-95e3-9e18caf2f959",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Product deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "491de306-15e1-4cf3-ac0a-b4171a6e0196",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or Product not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bcee0a18-a8fe-4407-90bb-c18231facb6d",
+      "documentation": "Retrieves a single product",
+      "method": "get",
+      "endpoint": "organizations/:organizationUuid/products/:productUuid",
+      "responses": [
+        {
+          "uuid": "12c2be97-95f6-4a61-a551-732911ffd22a",
+          "body": "{\n  \"categories\": [\n    \"\"\n  ],\n  \"category\": {\n    \"name\": \"\",\n    \"uuid\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"\",\n  \"etag\": \"\",\n  \"externalReference\": \"\",\n  \"imageLookupKeys\": [\n    \"\"\n  ],\n  \"metadata\": {\n    \"inPos\": {{faker 'datatype.boolean'}},\n    \"source\": {\n      \"external\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  },\n  \"name\": \"\",\n  \"online\": {\n    \"description\": \"\",\n    \"presentation\": {\n      \"additionalImageUrls\": [\n        \"\"\n      ],\n      \"displayImageUrl\": \"\",\n      \"mediaUrls\": [\n        \"\"\n      ]\n    },\n    \"seo\": {\n      \"metaDescription\": \"\",\n      \"slug\": \"\",\n      \"title\": \"\"\n    },\n    \"shipping\": {\n      \"shippingPricingModel\": \"{{oneOf (array 'FREE' 'STANDARD')}}\",\n      \"weight\": {\n        \"unit\": \"{{oneOf (array 'kg' 'g' 'oz' 'lb')}}\",\n        \"weight\": {{faker 'datatype.number'}}\n      },\n      \"weightInGrams\": {{faker 'datatype.number'}}\n    },\n    \"status\": \"{{oneOf (array 'ACTIVE' 'HIDDEN')}}\",\n    \"title\": \"\"\n  },\n  \"presentation\": {\n    \"backgroundColor\": \"\",\n    \"imageUrl\": \"\",\n    \"textColor\": \"\"\n  },\n  \"taxCode\": \"\",\n  \"taxExempt\": {{faker 'datatype.boolean'}},\n  \"taxRates\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"unitName\": \"\",\n  \"updated\": \"{{faker 'date.recent' 365}}\",\n  \"updatedBy\": \"{{faker 'datatype.uuid'}}\",\n  \"uuid\": \"{{faker 'datatype.uuid'}}\",\n  \"variantOptionDefinitions\": {\n    \"definitions\": [\n      {\n        \"name\": \"\",\n        \"properties\": [\n          {\n            \"imageUrl\": \"\",\n            \"value\": \"\"\n          }\n        ]\n      }\n    ]\n  },\n  \"variants\": [\n    {\n      \"barcode\": \"\",\n      \"costPrice\": {\n        \"amount\": {{faker 'datatype.number'}},\n        \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n      },\n      \"description\": \"\",\n      \"name\": \"\",\n      \"options\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"presentation\": {\n        \"backgroundColor\": \"\",\n        \"imageUrl\": \"\",\n        \"textColor\": \"\"\n      },\n      \"price\": {\n        \"amount\": {{faker 'datatype.number'}},\n        \"currencyId\": \"{{oneOf (array 'AED' 'AFA' 'AFN' 'ALL' 'AMD' 'ANG' 'AOA' 'ARS' 'AUD' 'AWG' 'AZM' 'AZN' 'BAM' 'BBD' 'BDT' 'BGN' 'BHD' 'BIF' 'BMD' 'BND' 'BOB' 'BRL' 'BSD' 'BTN' 'BWP' 'BYR' 'BZD' 'CAD' 'CDF' 'CHF' 'CLP' 'CNY' 'COP' 'CRC' 'CSD' 'CUC' 'CUP' 'CVE' 'CYP' 'CZK' 'DJF' 'DKK' 'DOP' 'DZD' 'EEK' 'EGP' 'ERN' 'ETB' 'EUR' 'FJD' 'FKP' 'GBP' 'GEL' 'GGP' 'GHC' 'GHS' 'GIP' 'GMD' 'GNF' 'GTQ' 'GYD' 'HKD' 'HNL' 'HRK' 'HTG' 'HUF' 'IDR' 'ILS' 'IMP' 'INR' 'IQD' 'IRR' 'ISK' 'JEP' 'JMD' 'JOD' 'JPY' 'KES' 'KGS' 'KHR' 'KMF' 'KPW' 'KRW' 'KWD' 'KYD' 'KZT' 'LAK' 'LBP' 'LKR' 'LRD' 'LSL' 'LTL' 'LVL' 'LYD' 'MAD' 'MDL' 'MGA' 'MKD' 'MMK' 'MNT' 'MOP' 'MRO' 'MTL' 'MUR' 'MVR' 'MWK' 'MXN' 'MYR' 'MZM' 'MZN' 'NAD' 'NGN' 'NIO' 'NOK' 'NPR' 'NZD' 'OMR' 'PAB' 'PEN' 'PGK' 'PHP' 'PKR' 'PLN' 'PYG' 'QAR' 'RON' 'RSD' 'RUB' 'RWF' 'SAR' 'SBD' 'SCR' 'SDD' 'SDG' 'SEK' 'SGD' 'SHP' 'SIT' 'SKK' 'SLL' 'SOS' 'SPL' 'SRD' 'SSP' 'STD' 'SVC' 'SYP' 'SZL' 'THB' 'TJS' 'TMM' 'TMT' 'TND' 'TOP' 'TRL' 'TRY' 'TTD' 'TVD' 'TWD' 'TZS' 'UAH' 'UGX' 'USD' 'UYU' 'UZS' 'VEB' 'VEF' 'VND' 'VUV' 'WST' 'XAF' 'XAG' 'XAU' 'XCD' 'XDR' 'XOF' 'XPD' 'XPF' 'XPT' 'YER' 'ZAR' 'ZMK' 'ZMW' 'ZWD' 'ZWL')}}\"\n      },\n      \"sku\": \"\",\n      \"uuid\": \"{{faker 'datatype.uuid'}}\",\n      \"vatPercentage\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"vatPercentage\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Product",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c430238a-68cd-46a1-9a06-bfb1df161ff1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 304,
+          "label": "Not modified",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fc221929-faca-449e-87a0-932e955fd4a7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Malformed ETag",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "83033931-7d9e-463b-ba46-7ed88b4f19dc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Organization or Product not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eda7376a-1a7a-4bd7-a2d7-b0ec444579a8",
+      "documentation": "Gets all tax rates available",
+      "method": "get",
+      "endpoint": "v1/taxes",
+      "responses": [
+        {
+          "uuid": "5651801e-724e-41e5-9050-d651991f1fad",
+          "body": "[\n  {\n    \"taxRates\": [\n      {\n        \"default\": {{faker 'datatype.boolean'}},\n        \"label\": \"\",\n        \"percentage\": {{faker 'datatype.number'}},\n        \"uuid\": \"{{faker 'datatype.uuid'}}\"\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of tax rates",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85d0ff81-386f-4766-865f-e0002f9bc7f8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70b6bc87-a4ce-4af3-a604-d7cd05784ff7",
+      "documentation": "Creates new tax rates",
+      "method": "post",
+      "endpoint": "v1/taxes",
+      "responses": [
+        {
+          "uuid": "dae35362-e548-428f-b026-e2ff7f987283",
+          "body": "{\n  \"taxRates\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"label\": \"\",\n      \"percentage\": {{faker 'datatype.number'}},\n      \"uuid\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Tax rates created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "89598182-be6d-4cfb-9379-280815d815cd",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "af870bc4-5a43-4a56-a304-eb268779530a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e44d5342-f074-473c-b0ca-ecbfa63e69d3",
+      "documentation": "Gets all tax rates and a count of products associated with each",
+      "method": "get",
+      "endpoint": "v1/taxes/count",
+      "responses": [
+        {
+          "uuid": "4e6b81ce-9cd0-489d-ac51-65d62da31d19",
+          "body": "{\n  \"counts\": [\n    {\n      \"count\": {{faker 'datatype.number'}},\n      \"taxRateUuid\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Count of products for each tax rate",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9a6ea238-490e-4ff4-8bcc-c74fdd76113b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "354a8825-d8c3-4189-9540-8c3c5a091b48",
+      "documentation": "Gets the organization tax settings ",
+      "method": "get",
+      "endpoint": "v1/taxes/settings",
+      "responses": [
+        {
+          "uuid": "57b82d82-2457-46d1-a8da-36ef8c6879cb",
+          "body": "{\n  \"organizationUuid\": \"{{faker 'datatype.uuid'}}\",\n  \"taxationMode\": \"{{oneOf (array 'EXCLUSIVE' 'INCLUSIVE')}}\",\n  \"taxationType\": \"{{oneOf (array 'NONE' 'SALES_TAX' 'VAT')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Tax settings",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "05f8e5ac-a755-4d12-bd94-41436e90e272",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9aee946f-fbee-486d-8af9-082019356641",
+      "documentation": "Updates the organization tax settings",
+      "method": "put",
+      "endpoint": "v1/taxes/settings",
+      "responses": [
+        {
+          "uuid": "aa5a36d5-63b2-481d-bef1-88e44f3bf0df",
+          "body": "{\n  \"organizationUuid\": \"{{faker 'datatype.uuid'}}\",\n  \"taxationMode\": \"{{oneOf (array 'EXCLUSIVE' 'INCLUSIVE')}}\",\n  \"taxationType\": \"{{oneOf (array 'NONE' 'SALES_TAX' 'VAT')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Updated tax settings",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f92382de-0799-4e93-ab89-22aedd1e8e32",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e1870b4a-7871-4ea1-8a94-5036dbbb7532",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "988897ac-fa79-4606-872c-5fc66ee957af",
+      "documentation": "Deletes a single tax rate",
+      "method": "delete",
+      "endpoint": "v1/taxes/:taxRateUuid",
+      "responses": [
+        {
+          "uuid": "df285e87-16c9-45f8-8826-9ac816d7289d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Tax rate deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c1b9d3f5-c7fd-4024-8c53-147c0de156f1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "119eec6a-dede-4954-88ac-85f576b258ce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Tax rate not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3384a094-7184-4dc7-a997-4852436bbc0a",
+      "documentation": "Gets a single tax rate",
+      "method": "get",
+      "endpoint": "v1/taxes/:taxRateUuid",
+      "responses": [
+        {
+          "uuid": "cfcf35aa-33f6-451e-99d8-3a305d06fcaf",
+          "body": "{\n  \"default\": {{faker 'datatype.boolean'}},\n  \"label\": \"\",\n  \"percentage\": {{faker 'datatype.number'}},\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Single tax rate",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "25a08d73-48bb-4343-a264-a84da0948d0c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "761e8487-302b-4fe8-8b39-e63d95bca40b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Tax rate not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "15885178-10d3-4be6-988c-05b2cb8d8b4c",
+      "documentation": "Updates a single tax rate",
+      "method": "put",
+      "endpoint": "v1/taxes/:taxRateUuid",
+      "responses": [
+        {
+          "uuid": "5697dec4-176b-4895-90f1-7d76cf29592d",
+          "body": "{\n  \"default\": {{faker 'datatype.boolean'}},\n  \"label\": \"\",\n  \"percentage\": {{faker 'datatype.number'}},\n  \"uuid\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Updated tax rate",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "52738297-3523-445b-b52b-669dd46d3e85",
+          "body": "{\n  \"developerMessage\": \"\",\n  \"errorType\": \"\",\n  \"violations\": [\n    {\n      \"constraintType\": \"{{oneOf (array 'MUST_BE_FALSE' 'MUST_BE_TRUE' 'MUST_BE_LESS_THAN' 'MUST_BE_GREATER_THAN' 'DIGIT_OUT_OF_BOUNDS' 'DATE_MUST_BE_IN_THE_FUTURE' 'MUST_BE_LESS_OR_EQUAL_THAN' 'MUST_BE_GREATER_OR_EQUAL_TO' 'MUST_NOT_BE_NULL' 'MUST_BE_NULL' 'DATE_MUST_BE_IN_THE_PAST' 'MUST_MATCH_PATTERN' 'INVALID_SIZE' 'INVALID_EMAIL' 'MUST_NOT_BE_EMPTY' 'INVALID_RANGE' 'UNKNOWN')}}\",\n      \"developerMessage\": \"\",\n      \"expected\": \"\",\n      \"propertyName\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request body",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f346dac-8738-4daa-a6f4-de006a6ecd60",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Not a sales tax user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "683ab57f-190e-496d-afeb-b584bdd0b2a6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Tax rate not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

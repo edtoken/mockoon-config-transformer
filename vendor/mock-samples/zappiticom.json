@@ -1,0 +1,262 @@
+{
+  "uuid": "93adfe31-fb17-4aa0-b3ec-47cb6d95b804",
+  "lastMigration": 24,
+  "name": "Zappiti Player API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 8990,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "62897caf-9dca-4df0-b9e9-186818e22481",
+      "documentation": "Check if Zappiti Service app status on the player",
+      "method": "post",
+      "endpoint": "CheckZappitiService",
+      "responses": [
+        {
+          "uuid": "ff088095-7c88-4716-9440-003756d9ad46",
+          "body": "{\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "CheckZappitiServiceResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06303029-1768-4d63-a4a7-08a7982df20b",
+      "documentation": "Get user's login details",
+      "method": "post",
+      "endpoint": "ConnectionDetails",
+      "responses": [
+        {
+          "uuid": "4660e565-3484-4b8b-b599-caa9b0c19527",
+          "body": "{\n  \"AuthKey\": \"{{faker 'datatype.uuid'}}\",\n  \"Collection\": \"\",\n  \"Email\": \"\",\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\",\n  \"ServerIp\": \"\",\n  \"ServerPort\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "ConnectionDetailsResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0423f730-023a-41d9-918a-a51666ca5194",
+      "documentation": "Open a popup that allow the user to install Zappiti Service, if not already installed",
+      "method": "post",
+      "endpoint": "InstallZappitiService",
+      "responses": [
+        {
+          "uuid": "c596220c-bf20-4209-a186-6e2d6c73c050",
+          "body": "{\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "InstallZappitiServiceResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8e4d4b2b-56e3-49ce-a57a-a88dc206f905",
+      "documentation": "Get server status",
+      "method": "post",
+      "endpoint": "IsAlive",
+      "responses": [
+        {
+          "uuid": "bbd489d4-ce25-4cb9-b481-643449495fff",
+          "body": "{\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "IsAliveResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8ca8311-a3cf-4797-9bb5-27a005f3a3d9",
+      "documentation": "Get informations about last media playback",
+      "method": "post",
+      "endpoint": "LastMedia",
+      "responses": [
+        {
+          "uuid": "5e80d9db-3139-4a1e-9cb3-33a6fe832ad1",
+          "body": "{\n  \"Actors\": [\n    \"\"\n  ],\n  \"BackgroundUrl\": \"\",\n  \"Directors\": [\n    \"\"\n  ],\n  \"Episode\": {{faker 'datatype.number'}},\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\",\n  \"PosterUrl\": \"\",\n  \"Runtime\": {{faker 'datatype.number'}},\n  \"Season\": {{faker 'datatype.number'}},\n  \"Synopsis\": \"\",\n  \"Title\": \"\",\n  \"TvShowName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "LastMediaResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c99c9ed-6791-4fe8-a191-9deae2383b61",
+      "documentation": "Start the playback",
+      "method": "post",
+      "endpoint": "StartVideo",
+      "responses": [
+        {
+          "uuid": "5ae8ddc4-3e2a-4902-9727-4d1d5a9b8817",
+          "body": "{\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "StartVideoResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "05eaa1b0-af55-462f-b53f-301a046e69cd",
+      "documentation": "Start Zappiti Service if not started yet",
+      "method": "post",
+      "endpoint": "StartZappitiService",
+      "responses": [
+        {
+          "uuid": "501f20e0-737f-47cb-b843-a863328ba32a",
+          "body": "{\n  \"ErrorCode\": \"{{oneOf (array 'None' 'Failed' 'Exist' 'NotInstalled' 'NotRunning' 'Running' 'FailToStart' 'BadApiKey')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "StartZappitiServiceResult",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

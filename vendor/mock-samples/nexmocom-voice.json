@@ -1,0 +1,370 @@
+{
+  "uuid": "31f0d56f-e4f1-49cd-83d6-aaa2375fdbbe",
+  "lastMigration": 24,
+  "name": "Voice API",
+  "endpointPrefix": "v1/calls",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "63e25380-78cb-42f4-b46a-5987bdeb58d8",
+      "documentation": "Get details of your calls",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "41f9c7f1-00df-4a5c-a87e-57e47b794055",
+          "body": "{\n  \"_embedded\": {\n    \"calls\": [\n      {\n        \"_links\": {\n          \"self\": {\n            \"href\": \"/calls/63f61863-4a51-4f6b-86e1-46edebcf9356\"\n          }\n        },\n        \"conversation_uuid\": \"CON-f972836a-550f-45fa-956c-12a2ab5b7d22\",\n        \"direction\": \"{{oneOf (array 'outbound' 'inbound')}}\",\n        \"duration\": \"60\",\n        \"end_time\": \"2020-01-01 12:00:00\",\n        \"from\": {\n          \"number\": \"447700900001\",\n          \"type\": \"phone\"\n        },\n        \"network\": \"65512\",\n        \"price\": \"23.40\",\n        \"rate\": \"0.39\",\n        \"start_time\": \"2020-01-01 12:00:00\",\n        \"status\": \"completed\",\n        \"to\": {\n          \"number\": \"447700900000\",\n          \"type\": \"phone\"\n        },\n        \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n      }\n    ]\n  },\n  \"_links\": {\n    \"self\": {\n      \"href\": \"/calls?page_size=10&record_index=20&order=asc\"\n    }\n  },\n  \"count\": 100,\n  \"page_size\": 10,\n  \"record_index\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f943f1bf-b545-48d2-8ffa-08bb2d0e6af1",
+      "documentation": "Create an outbound call",
+      "method": "post",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "bec288b8-f3f8-48b4-8249-25c33d3a7639",
+          "body": "{\n  \"conversation_uuid\": \"CON-f972836a-550f-45fa-956c-12a2ab5b7d22\",\n  \"direction\": \"{{oneOf (array 'outbound' 'inbound')}}\",\n  \"status\": \"completed\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c30eeb0-99ef-4a74-b0f1-29e427f8abde",
+      "documentation": "Get detail of a specific call",
+      "method": "get",
+      "endpoint": ":uuid",
+      "responses": [
+        {
+          "uuid": "060de8ee-5d29-42a6-a353-4f31404b84c3",
+          "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"/calls/63f61863-4a51-4f6b-86e1-46edebcf9356\"\n    }\n  },\n  \"conversation_uuid\": \"CON-f972836a-550f-45fa-956c-12a2ab5b7d22\",\n  \"direction\": \"{{oneOf (array 'outbound' 'inbound')}}\",\n  \"duration\": \"60\",\n  \"end_time\": \"2020-01-01 12:00:00\",\n  \"from\": {\n    \"number\": \"447700900001\",\n    \"type\": \"phone\"\n  },\n  \"network\": \"65512\",\n  \"price\": \"23.40\",\n  \"rate\": \"0.39\",\n  \"start_time\": \"2020-01-01 12:00:00\",\n  \"status\": \"completed\",\n  \"to\": {\n    \"number\": \"447700900000\",\n    \"type\": \"phone\"\n  },\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "45b756de-4def-4261-80db-848706e4a80f",
+      "documentation": "Modify an in progress call",
+      "method": "put",
+      "endpoint": ":uuid",
+      "responses": [
+        {
+          "uuid": "ea13138a-74fb-4339-861e-02c7228989c6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "871fb721-9cc7-4c24-96f8-c717b206bb54",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fd6b1ffe-44ca-4f3a-9024-52809f9708e6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f10f51d-3777-4bdf-8b76-bbc46e9eb953",
+      "documentation": "Play DTMF tones into a call",
+      "method": "put",
+      "endpoint": ":uuid/dtmf",
+      "responses": [
+        {
+          "uuid": "d33d2f1a-4b8e-4c14-a6f6-76a32b292879",
+          "body": "{\n  \"message\": \"DTMF sent\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b31b56ea-93d3-419c-9e81-a751fc1626d6",
+      "documentation": "Stop playing an audio file into a call",
+      "method": "delete",
+      "endpoint": ":uuid/stream",
+      "responses": [
+        {
+          "uuid": "4c8c45c9-bb94-46c3-bf10-8eebcdc85011",
+          "body": "{\n  \"message\": \"Stream stopped\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d03577d5-5a3e-4107-b585-1d6520a0cabd",
+      "documentation": "Play an audio file into a call",
+      "method": "put",
+      "endpoint": ":uuid/stream",
+      "responses": [
+        {
+          "uuid": "d9df0c67-178a-4e9a-a3cc-e81476aaf415",
+          "body": "{\n  \"message\": \"Stream started\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "379744a1-03c2-4383-bb7c-b3e83ff5005e",
+      "documentation": "Stop text to speech in a call",
+      "method": "delete",
+      "endpoint": ":uuid/talk",
+      "responses": [
+        {
+          "uuid": "c4e0f25e-a8e7-4478-83bf-ab2fc04471e8",
+          "body": "{\n  \"message\": \"Talk stopped\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9ee02232-702f-4a28-bf8d-04116a8a0d39",
+      "documentation": "Play text to speech into a call",
+      "method": "put",
+      "endpoint": ":uuid/talk",
+      "responses": [
+        {
+          "uuid": "b5670d48-b26b-402f-ba70-a8988f8896aa",
+          "body": "{\n  \"message\": \"Talk started\",\n  \"uuid\": \"63f61863-4a51-4f6b-86e1-46edebcf9356\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

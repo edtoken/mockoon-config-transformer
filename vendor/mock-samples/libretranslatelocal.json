@@ -1,0 +1,418 @@
+{
+  "uuid": "cc5f6143-753c-4b9d-8bea-09c94dc9319c",
+  "lastMigration": 24,
+  "name": "LibreTranslate",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "0e7981dd-ed62-44c7-8707-999be1223ee5",
+      "documentation": "Detect the language of a single text",
+      "method": "post",
+      "endpoint": "detect",
+      "responses": [
+        {
+          "uuid": "03dfa8fd-7ca0-4c71-b37e-bcb2e3294af7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Detections",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "23f33275-6147-4a99-99c8-15598ef2f860",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3ec70e7d-f33c-492e-a754-97f058db31d1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Banned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6031867e-b443-4357-aae3-14b10c134f27",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Slow down",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cdd1cf2e-c527-4b6c-967b-0a0df361b935",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Detection error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aaea18ee-2ba2-4a07-96d8-8889cc5736a1",
+      "documentation": "Retrieve frontend specific settings",
+      "method": "get",
+      "endpoint": "frontend/settings",
+      "responses": [
+        {
+          "uuid": "73875f27-ca42-4b99-9dc3-a8e4bb2e34c3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "frontend settings",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0b3f3d3e-cd1e-470b-a4ce-b4e3e11f8c56",
+      "documentation": "Retrieve list of supported languages",
+      "method": "get",
+      "endpoint": "languages",
+      "responses": [
+        {
+          "uuid": "69701cf9-d259-45b3-bf58-459c4732aded",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of languages",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b98f4350-945a-4b77-90eb-1e7a36d7b2e1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Slow down",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52796639-9902-4f1b-8db4-9df228049a40",
+      "documentation": "Retrieve list of supported languages",
+      "method": "post",
+      "endpoint": "languages",
+      "responses": [
+        {
+          "uuid": "c318b229-dc50-48f7-a4cc-7031a7b71159",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of languages",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a46f3d1a-e87b-4c85-8ba9-b36da697870b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Slow down",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e2a19a1e-d079-4b5d-b513-8676f4d655f0",
+      "documentation": "Translate text from a language to another",
+      "method": "post",
+      "endpoint": "translate",
+      "responses": [
+        {
+          "uuid": "d1d470ea-b3c8-44cd-87fe-c44997d1f4bc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Translated text",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bf8beb76-1917-41e5-8de7-3d3bb65193ed",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6db9df17-ebc4-42fa-b41a-4395bade3392",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Banned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "839ef9c2-72ad-4599-a2e2-1e59aa1a77bb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Slow down",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1614fbad-795e-4094-ada2-941250cfd367",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Translation error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "*/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

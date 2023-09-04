@@ -1,0 +1,92 @@
+{
+  "uuid": "ff45131e-29d6-4fb5-9f98-2eca21b2d68f",
+  "lastMigration": 24,
+  "name": "MonitorManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b382770a-75a9-499c-9ca2-61dd16dee66a",
+      "documentation": "**Lists the baseline values for a resource**.",
+      "method": "post",
+      "endpoint": ":resourceUri/providers/microsoft.insights/calculatebaseline",
+      "responses": [
+        {
+          "uuid": "67e3cf69-2278-4c65-9305-7139ddd0efea",
+          "body": "{\n  \"baseline\": [\n    {\n      \"highThresholds\": [\n        {{faker 'datatype.float'}}\n      ],\n      \"lowThresholds\": [\n        {{faker 'datatype.float'}}\n      ],\n      \"sensitivity\": \"{{oneOf (array 'Low' 'Medium' 'High')}}\"\n    }\n  ],\n  \"timestamps\": [\n    \"{{faker 'date.recent' 365}}\"\n  ],\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful request to get the list of metric values.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bd93701d-78db-49ff-bbe4-47bcdd5f8f51",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

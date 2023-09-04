@@ -1,0 +1,1100 @@
+{
+  "uuid": "8e721060-7356-4282-a717-b478a572ecbe",
+  "lastMigration": 24,
+  "name": "AzureDigitalTwinsManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b2e9e2c9-bf1d-4a4f-9cdd-24b5f9539830",
+      "documentation": "Lists all of the available DigitalTwins service REST API operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.DigitalTwins/operations",
+      "responses": [
+        {
+          "uuid": "7536a17b-5d49-42c8-8568-002dc2741dbc",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "09ceeaab-9acd-449a-8508-c55f47d80c5d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b65febd0-122a-41d6-ae3f-2644aa701782",
+      "documentation": "Get all the DigitalTwinsInstances in a subscription.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
+      "responses": [
+        {
+          "uuid": "d95649e8-df41-4474-9dc6-e3c86b892436",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"sku\": {\n        \"name\": \"{{oneOf (array 'F1')}}\"\n      },\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized array of the metadata from all the DigitalTwinsInstances in the subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "74d5fdb9-f551-4758-b8a8-411178512da1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53872111-5e77-4eb9-a95d-1da0c714280c",
+      "documentation": "Check if a DigitalTwinsInstance name is available.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DigitalTwins/locations/:location/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "763b9fb5-7c57-4efd-b772-b1a366c5e342",
+          "body": "{\n  \"message\": \"\",\n  \"name\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"{{oneOf (array 'Invalid' 'AlreadyExists')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized response that specifies whether the DigitalTwins service name is available. If the name is not available, the body contains the reason.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5441fdfa-caf2-417e-b07a-d88e33a95159",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2dbe6cc5-71dd-47da-b6eb-3de98166bae3",
+      "documentation": "Get all the DigitalTwinsInstances in a resource group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
+      "responses": [
+        {
+          "uuid": "38155373-9e90-439f-bcd9-87c3ebe7cc28",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"sku\": {\n        \"name\": \"{{oneOf (array 'F1')}}\"\n      },\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized array of the metadata from all the DigitalTwinsInstances in the resource group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed18c549-8bc1-4adb-9c9c-1b77fb9faa45",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0782eb6b-c5de-469a-bc77-16e33662b844",
+      "documentation": "Delete a DigitalTwinsInstance.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName",
+      "responses": [
+        {
+          "uuid": "7a100a5c-c2eb-463b-8a43-93b7ea56e2fe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the delete operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f1b892b6-3e40-449c-bf15-13ab0b47e346",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"sku\": {\n    \"name\": \"{{oneOf (array 'F1')}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted - Delete request accepted; the operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c0e805a1-0e4f-4ea6-9dc6-7a9293d332b6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Once the long running delete operation completes successfully, a 204 No Content status code is returned when the status polling request finds the DigitalTwins service metadata in the service and the status of the delete operation is set to a completed state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "293fc00f-4321-42fd-a1de-6759368778fb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "39e18f18-27bd-4faf-b606-e3f1e494ae92",
+      "documentation": "Get DigitalTwinsInstances resource.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName",
+      "responses": [
+        {
+          "uuid": "fc7904cd-5eaf-42f7-a158-ca16d64cd781",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"sku\": {\n    \"name\": \"{{oneOf (array 'F1')}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The body contains all the non-security properties of the DigitalTwinsInstance. Security-related properties are set to null.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4f202198-2300-455e-85c6-94f970517650",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8770e257-c6b9-4f4c-bb28-08853e9c303b",
+      "documentation": "Update metadata of DigitalTwinsInstance.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName",
+      "responses": [
+        {
+          "uuid": "3e7b1a78-fee3-4dc5-b5b0-dc279b397575",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"sku\": {\n    \"name\": \"{{oneOf (array 'F1')}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the create or update operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fa581263-ebde-4b5b-8785-1f685abc710a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Accepted - Put request accepted; the operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6e07366e-f82c-46e9-afd8-99eaff345b2e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "532bb6b5-d868-4781-92b6-fac3a0ac1594",
+      "documentation": "Create or update the metadata of a DigitalTwinsInstance. The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName",
+      "responses": [
+        {
+          "uuid": "b2504e98-a8f2-4f21-bc06-0d8a80168bd1",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"sku\": {\n    \"name\": \"{{oneOf (array 'F1')}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the create or update operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ff407a87-70be-41b9-972a-e903af168376",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"sku\": {\n    \"name\": \"{{oneOf (array 'F1')}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created - Put request accepted; the operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "18bd1f41-20cd-4294-a499-926e9c03b072",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b73a5a1-d4da-4dce-b966-cf3468b0f79b",
+      "documentation": "Get DigitalTwinsInstance Endpoints.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName/endpoints",
+      "responses": [
+        {
+          "uuid": "e730027d-6108-4c4d-959f-1a781ced75d0",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The body contains all the non-security properties of the DigitalTwinsInstance. Security-related properties are set to null.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "efb313e1-73ec-4fc7-a445-7500190f26e8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3fb043ab-19ad-442c-b6d4-08c2c93031ff",
+      "documentation": "Delete a DigitalTwinsInstance endpoint.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName/endpoints/:endpointName",
+      "responses": [
+        {
+          "uuid": "0da8e172-6b79-4c5e-9412-4fdafaabe4bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the delete operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "636700ab-bcab-4f3e-833d-c9ebe09ffa6c",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted - Delete request accepted; the operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27bd766c-676a-4bd0-83b4-5469006930a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Once the long running delete operation completes successfully, a 204 No Content status code is returned when the status polling request finds the DigitalTwins service metadata in the service and the status of the delete operation is set to a completed state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c088479a-7cde-4a78-8675-5bb7e442be15",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d5fb3cdf-2d4b-4417-abfc-d42627ebe053",
+      "documentation": "Get DigitalTwinsInstances Endpoint.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName/endpoints/:endpointName",
+      "responses": [
+        {
+          "uuid": "ee4780a7-56a9-4412-9f80-916b11e0df40",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The body contains all the non-security properties of the DigitalTwinsInstance. Security-related properties are set to null.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a2d832a3-490f-4609-8c49-ae14208254d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "765f9281-27f3-49b3-92f1-5d264b8bc1bd",
+      "documentation": "Create or update DigitalTwinsInstance endpoint.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName/endpoints/:endpointName",
+      "responses": [
+        {
+          "uuid": "2c3b9b34-4d3f-48b2-8117-51e5c0754ece",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the create or update operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ab47dc19-f4f8-4e8a-943e-ba9f7bbc3469",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created - Put request accepted; the operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa1b94df-419f-43a9-b46b-8614e54933f1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ecd6701-66cd-4837-8c6b-6ede65a3ca4b",
+      "documentation": "Get DigitalTwinsInstance IoTHubs.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DigitalTwins/digitalTwinsInstances/:resourceName/integrationResources",
+      "responses": [
+        {
+          "uuid": "fe314177-74b3-4608-9a07-c4537d196f2f",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The body contains all the non-security properties of the DigitalTwinsInstance. Security-related properties are set to null.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ad9b8dc6-643e-4063-8157-847e054c2859",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3f9d1e05-903a-4921-94ef-6992805f716f",
+      "documentation": "Deletes a DigitalTwinsInstance link with IoTHub.",
+      "method": "delete",
+      "endpoint": ":scope/providers/Microsoft.DigitalTwins/integrationResources/:integrationResourceName",
+      "responses": [
+        {
+          "uuid": "16211394-4369-44d9-a44c-f12ade379fc6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. DigitalTwinsInstance IoTHub link has been Deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c18be831-e6ab-4bea-be03-5167e0736838",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. Response includes a Location header which points to the DigitalTwins and IoTHub Integration resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f065ffd-845e-4aa6-96ff-a53d7ef3e984",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "NoContent. DigitalTwinsInstance IoTHub link does not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e7a77b7f-b841-42c0-9c05-b12a9b6c017d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6fde6b6c-4f8f-44a8-8b42-cf8137527a51",
+      "documentation": "Gets properties of an IoTHub Integration.",
+      "method": "get",
+      "endpoint": ":scope/providers/Microsoft.DigitalTwins/integrationResources/:integrationResourceName",
+      "responses": [
+        {
+          "uuid": "8341835d-4266-4980-ae07-b5fa6b78d917",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains metadata about IoTHub and DigitalTwinsInstance Integration.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cf366fa0-0f81-464f-8139-4d1aabed9c87",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44df3b26-0a8e-4e03-8a5f-51a988926dc8",
+      "documentation": "Creates or Updates an IoTHub Integration with DigitalTwinsInstances.",
+      "method": "put",
+      "endpoint": ":scope/providers/Microsoft.DigitalTwins/integrationResources/:integrationResourceName",
+      "responses": [
+        {
+          "uuid": "aefc8f7e-4c00-4211-a946-d1e874385b22",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "This is an asynchronous operation. The body contains metadata about IoTHub and DigitalTwinsInstance Integration.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c980c396-4371-432d-a5f1-c6c9316bb741",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

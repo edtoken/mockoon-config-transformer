@@ -1,0 +1,4172 @@
+{
+  "uuid": "bf4aa7ed-4ef7-49ff-9bb0-45aa6d766809",
+  "lastMigration": 24,
+  "name": "Cosmos DB",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "bd3eb6a5-c139-4916-ab53-b6491e52059c",
+      "documentation": "Checks that the Azure Cosmos DB account name already exists. A valid account name may contain only lowercase letters, numbers, and the '-' character, and must be between 3 and 50 characters.",
+      "method": "head",
+      "endpoint": "providers/Microsoft.DocumentDB/databaseAccountNames/:accountName",
+      "responses": [
+        {
+          "uuid": "816feb8d-4230-44d6-bbf1-c266cb51c4c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The account name is valid but is already in use.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "53c4db1f-7300-40a4-8a50-41895a16f06b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found. The account name is available and valid.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9fbb47cb-ee6f-44ad-9ff7-92ebed6cadbe",
+      "documentation": "Lists all of the available Cosmos DB Resource Provider operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.DocumentDB/operations",
+      "responses": [
+        {
+          "uuid": "15b4795c-d6a0-4381-a62c-3f6a842f8d8a",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"Description\": \"\",\n        \"Operation\": \"\",\n        \"Provider\": \"\",\n        \"Resource\": \"\"\n      },\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b805d707-1e54-4bd5-8656-ab07fe16e3cd",
+      "documentation": "Lists all the Azure Cosmos DB database accounts available under the subscription.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DocumentDB/databaseAccounts",
+      "responses": [
+        {
+          "uuid": "862a9f8d-fd95-4f98-8bb5-05e97b139500",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "963804b8-39c0-41d5-9ce4-adc44a97cb38",
+      "documentation": "Lists all the Azure Cosmos DB database accounts available under the given resource group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts",
+      "responses": [
+        {
+          "uuid": "3c41cb81-1dea-419d-b3f5-90988bea7f0a",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "798f547d-ee3f-473b-b828-1c4b204b01c5",
+      "documentation": "Deletes an existing Azure Cosmos DB database account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName",
+      "responses": [
+        {
+          "uuid": "62e88ab5-6dcc-4a09-94d3-2bfa444110ef",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The database account delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3b62690e-a3af-4ef0-a9e4-64c9c9b8287a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified account does not exist in the subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7f23988b-c24c-4997-a728-67f9e2b4736d",
+      "documentation": "Retrieves the properties of an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName",
+      "responses": [
+        {
+          "uuid": "588006df-375a-4b54-8b40-5f247a417b09",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The database account properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2a3fbef0-967e-4693-b373-9fef0ffee0f4",
+      "documentation": "Updates the properties of an existing Azure Cosmos DB database account.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName",
+      "responses": [
+        {
+          "uuid": "ed8cfe04-f8f3-4cfc-ba40-2829c6f4ff9a",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The database account update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a126e023-58d0-44e1-a9f8-af9f4a33ab81",
+      "documentation": "Creates or updates an Azure Cosmos DB database account. The \"Update\" method is preferred when performing updates on an account.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName",
+      "responses": [
+        {
+          "uuid": "e1a7c0ca-7408-40c5-aaa8-567dc10ff260",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The database account create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c8b316f-cda3-4e5a-bf94-a2286275c8e2",
+      "documentation": "Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces",
+      "responses": [
+        {
+          "uuid": "467ac5d5-b510-46c3-b96b-3bcb52b3d161",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra keyspace properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44e26c2d-993e-4f6e-ab3c-5395130414b5",
+      "documentation": "Deletes an existing Azure Cosmos DB Cassandra keyspace.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName",
+      "responses": [
+        {
+          "uuid": "849ff700-6ffe-40e1-834d-923a1b35d9fd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Cassandra keyspace delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4511c2f4-8a33-4fd6-b1b2-8a2646268b39",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The Cassandra keyspace delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f7d817cc-8856-4b81-a04f-be94b2d36c80",
+      "documentation": "Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName",
+      "responses": [
+        {
+          "uuid": "9171ded8-396b-4d82-817f-15fc1bcdd52a",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra keyspace property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4d2e2880-1945-496c-bf59-3fdd63ea427c",
+      "documentation": "Create or update an Azure Cosmos DB Cassandra keyspace",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName",
+      "responses": [
+        {
+          "uuid": "3121da1b-701c-4be2-adaf-b5b7f2ea2406",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra keyspace create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "449a3838-e7fb-4ae6-aab5-f253435b61b3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Cassandra keyspace create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "79946d4c-dcbd-4353-9514-996513a01cf6",
+      "documentation": "Lists the Cassandra table under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables",
+      "responses": [
+        {
+          "uuid": "587d8fef-dda2-479c-95d9-53e2fd7d607a",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra table properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b05b8f8d-7f63-43af-9e43-7857d4bc617f",
+      "documentation": "Deletes an existing Azure Cosmos DB Cassandra table.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "9214ad45-e6da-475b-97bb-99189e2168ba",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Cassandra table delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "333c6d37-7ad5-47cd-b6b2-c675378aa67d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The Cassandra table delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9ee4e375-8ad3-4bf1-a853-b9736ee5a067",
+      "documentation": "Gets the Cassandra table under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "6a62f799-8c1a-4a60-baea-fbc210999e67",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra table property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6bd0d1e2-6a03-4eea-9d0c-9b2789d9368d",
+      "documentation": "Create or update an Azure Cosmos DB Cassandra Table",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "0642bfdb-42bd-4f56-9c18-f9b5c135bce8",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Cassandra Table create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ffc32fb1-834a-414a-87ed-c2a7a676fddc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Cassandra Table create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c2ab9141-e6dc-453b-9fd6-ef3658a5d259",
+      "documentation": "Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables/:tableName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "11a4acbb-6c3c-405a-83f7-3f9cc5b6a864",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Cassandra table was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0fb92230-b474-418f-88db-7b5362f51f18",
+      "documentation": "Update RUs per second of an Azure Cosmos DB Cassandra table",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/tables/:tableName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "4286a493-9707-470d-9f30-8fc4ef7a3a68",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Cassandra table update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8836f8d6-2eab-46cd-9c86-26d082019912",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the Cassandra table update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "78bc0698-07fb-4f55-8049-c117cf5aa5a9",
+      "documentation": "Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "e520f010-95cd-461b-806b-b9f8b52f0c1f",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Cassandra Keyspace was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "479c1450-5720-4cdc-91ec-4f1020789294",
+      "documentation": "Update RUs per second of an Azure Cosmos DB Cassandra Keyspace",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/cassandraKeyspaces/:keyspaceName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "35717da4-8424-45b1-bd4a-3d4e0b9fee15",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Cassandra Keyspace update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5fc18666-7ffb-4a8a-813e-a35d468e35ca",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the Cassandra Keyspace update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77889a89-4007-4ae1-8237-532672027deb",
+      "documentation": "Retrieves metric definitions for the given collection.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/metricDefinitions",
+      "responses": [
+        {
+          "uuid": "d6d473e8-18c0-426c-9883-f0aa3bad4548",
+          "body": "{\n  \"value\": [\n    {\n      \"metricAvailabilities\": [\n        {\n          \"retention\": \"\",\n          \"timeGrain\": \"\"\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"primaryAggregationType\": \"{{oneOf (array 'None' 'Average' 'Total' 'Minimum' 'Maximum' 'Last')}}\",\n      \"resourceUri\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metric definitions for the collection were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70b70fb4-7b83-48cc-bb2f-185308567746",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account and collection.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/metrics",
+      "responses": [
+        {
+          "uuid": "b5e35280-e33e-4df3-8ad2-5c68b58ed374",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metrics for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "435a8200-6b8c-474d-b663-10c7dbbcbbcf",
+      "documentation": "Retrieves the metrics determined by the given filter for the given partition key range id.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/partitionKeyRangeId/:partitionKeyRangeId/metrics",
+      "responses": [
+        {
+          "uuid": "85f6ed0c-d63b-4d34-a7d2-f51636110820",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The partition-level metrics for the partition key range id were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "50e2ead4-959c-4b21-99bb-6b2c18c9251c",
+      "documentation": "Retrieves the metrics determined by the given filter for the given collection, split by partition.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/partitions/metrics",
+      "responses": [
+        {
+          "uuid": "7cb0f6e1-80b2-424d-bbdb-43b767d7776f",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The partition-level metrics for the collection were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "32fca4a4-e311-44c7-9804-dbf45f21bc9b",
+      "documentation": "Retrieves the usages (most recent storage data) for the given collection, split by partition.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/partitions/usages",
+      "responses": [
+        {
+          "uuid": "828a0b15-c115-44e0-b261-b33c76a17225",
+          "body": "{\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.number'}},\n      \"limit\": {{faker 'datatype.number'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"quotaPeriod\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The usages for the collection, per partition were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13e9e304-ec14-44b4-b08f-d816d09c0961",
+      "documentation": "Retrieves the usages (most recent storage data) for the given collection.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/collections/:collectionRid/usages",
+      "responses": [
+        {
+          "uuid": "0245f0ac-4da2-4021-b405-e41afeeb70d8",
+          "body": "{\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.number'}},\n      \"limit\": {{faker 'datatype.number'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"quotaPeriod\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The usages for the collection were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3b018297-b7cd-4904-9feb-d44faa58ecf8",
+      "documentation": "Retrieves metric definitions for the given database.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/metricDefinitions",
+      "responses": [
+        {
+          "uuid": "2aa0caf8-1220-4e64-aed1-50748e1efdd5",
+          "body": "{\n  \"value\": [\n    {\n      \"metricAvailabilities\": [\n        {\n          \"retention\": \"\",\n          \"timeGrain\": \"\"\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"primaryAggregationType\": \"{{oneOf (array 'None' 'Average' 'Total' 'Minimum' 'Maximum' 'Last')}}\",\n      \"resourceUri\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metric definitions for the database were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "de62d8c8-7e49-45c3-88cb-0bfcf1349d70",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account and database.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/metrics",
+      "responses": [
+        {
+          "uuid": "2fcf4152-52eb-4aba-968f-6f4e57676645",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metrics for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "265a9c84-ed28-443f-bdcf-fbb6574bef1b",
+      "documentation": "Retrieves the usages (most recent data) for the given database.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/databases/:databaseRid/usages",
+      "responses": [
+        {
+          "uuid": "7b5d9201-c807-4766-a1fc-c0982121d0d0",
+          "body": "{\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.number'}},\n      \"limit\": {{faker 'datatype.number'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"quotaPeriod\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The usages for the database were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06d655de-8171-43de-9b18-26829579ac71",
+      "documentation": "Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/failoverPriorityChange",
+      "responses": [
+        {
+          "uuid": "f6f50798-c722-43da-bc18-397b8347e499",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. The failover policy change operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a0d1f398-93e8-4fdb-9767-3787678812b3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "15dc392b-dad5-4f94-aead-730bc2d6d466",
+      "documentation": "Lists the Gremlin databases under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases",
+      "responses": [
+        {
+          "uuid": "71531e5e-3a7d-4dc4-b7aa-b04a435b0f77",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin database properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fbbbd62e-5568-4357-9c09-90ae10462468",
+      "documentation": "Deletes an existing Azure Cosmos DB Gremlin database.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "d7ae53d6-99b9-46a3-955a-e4116558cb1e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Gremlin database delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed7728c8-d27d-4180-8dfa-0c93a5e6c88e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The Gremlin database delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "36141a8e-dd4a-4963-9d80-848cad724d65",
+      "documentation": "Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "6f1d3720-e708-4612-85ac-c78059912867",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin database property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "02faca34-14d7-463c-a0ff-191e7b341d0e",
+      "documentation": "Create or update an Azure Cosmos DB Gremlin database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "7e23f3a7-99d1-4f55-93c4-db52523b8d68",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin database create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "383a46fa-7e10-4711-8659-3c9150227952",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Gremlin database create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3a8cb51c-3d79-4c9a-b896-87580185f4f2",
+      "documentation": "Lists the Gremlin graph under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs",
+      "responses": [
+        {
+          "uuid": "399b97fa-1117-49d0-9a8a-990218a45ea6",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin graph properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fc8d296b-bcf8-4cc0-8227-21c85f0bb6f5",
+      "documentation": "Deletes an existing Azure Cosmos DB Gremlin graph.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs/:graphName",
+      "responses": [
+        {
+          "uuid": "f48c642c-2c39-48f6-b0c4-dbaf7fcd8aa7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Gremlin graph delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca25e528-f4c8-4cce-bf73-934d0aeda023",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The Gremlin graph delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c04bb5e-6d24-4b03-b08e-47d63a147f5b",
+      "documentation": "Gets the Gremlin graph under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs/:graphName",
+      "responses": [
+        {
+          "uuid": "b7a31042-87c6-4415-b95d-37f1e5c08198",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin graph property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e5a2139e-b462-411d-9f07-8bdf6fa5341d",
+      "documentation": "Create or update an Azure Cosmos DB Gremlin graph",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs/:graphName",
+      "responses": [
+        {
+          "uuid": "7e60a3a6-1a67-4e30-b62c-67804dbb0556",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Gremlin graph create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "35e9d0f6-f63b-404a-bdb5-fd379262810a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Gremlin graph create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a3e40d25-66ae-404f-b5b0-8ce0a36e5a4d",
+      "documentation": "Gets the Gremlin graph throughput under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs/:graphName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "f14dfdcc-f81d-4fbe-a5ff-e5373c46d8d8",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Gremlin graph was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "90b0dabe-1099-48ff-a4fd-e4c4c483bed8",
+      "documentation": "Update RUs per second of an Azure Cosmos DB Gremlin graph",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/graphs/:graphName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "f9f11061-b3bc-44d4-9261-9ac1f031b289",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Gremlin graph update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "39dd0b35-9674-4317-b4fc-05b5b020680c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the Gremlin graph update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "57ed81f7-73cd-47df-8b92-62a12dc2180d",
+      "documentation": "Gets the RUs per second of the Gremlin database under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "5fb1fb7b-b72c-4151-bf45-bef67127c76b",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Gremlin database was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "14ca5c8f-90e8-45cf-ba36-84bc2506b7dd",
+      "documentation": "Update RUs per second of an Azure Cosmos DB Gremlin database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/gremlinDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "9112b7aa-3b4e-4c03-a59a-f8ff0cccd877",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Gremlin database update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "949460de-1fac-41bd-94cf-1ce3076746e4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the Gremlin database update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "75df47c4-c5b5-4262-841b-86edb18d0123",
+      "documentation": "Lists the connection strings for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/listConnectionStrings",
+      "responses": [
+        {
+          "uuid": "1b67c6b7-882f-4f42-94e8-694db16c2db2",
+          "body": "{\n  \"connectionStrings\": [\n    {\n      \"connectionString\": \"\",\n      \"description\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b2ee72c-0fba-40da-a4bd-e12c3bacee96",
+      "documentation": "Lists the access keys for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/listKeys",
+      "responses": [
+        {
+          "uuid": "9e70a425-3036-4313-9384-39d22d515d49",
+          "body": "{\n  \"primaryReadonlyMasterKey\": \"\",\n  \"secondaryReadonlyMasterKey\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "66547dcc-c82f-41c8-8189-723651d0d63d",
+      "documentation": "Retrieves metric definitions for the given database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/metricDefinitions",
+      "responses": [
+        {
+          "uuid": "4a6d87f6-f690-4c6f-9c35-003cb0261bdf",
+          "body": "{\n  \"value\": [\n    {\n      \"metricAvailabilities\": [\n        {\n          \"retention\": \"\",\n          \"timeGrain\": \"\"\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"primaryAggregationType\": \"{{oneOf (array 'None' 'Average' 'Total' 'Minimum' 'Maximum' 'Last')}}\",\n      \"resourceUri\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metric definitions for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c32924e-7a17-4212-8174-8e5574cb957f",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/metrics",
+      "responses": [
+        {
+          "uuid": "835a3d80-4367-4434-a0af-693831729cb9",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metrics for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a2115366-df5c-44dd-abb5-5010dc94889d",
+      "documentation": "Lists the MongoDB databases under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases",
+      "responses": [
+        {
+          "uuid": "e6ff0768-97c3-4b75-86b1-4e2a3c811bf7",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB database properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d260ed6f-99aa-4930-9a25-acc0a139ce43",
+      "documentation": "Deletes an existing Azure Cosmos DB MongoDB database.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "45c459f9-f4d5-400d-9856-39a01386578a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The MongoDB database delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ca994e62-110f-482c-bac4-ce11e8c479c3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The MongoDB database delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "823f2631-672e-4a53-9277-108b2ea92e5d",
+      "documentation": "Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "b3bd3c93-9ac1-446f-9fc7-564c030ce049",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB database property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9ba25d4-12f3-4f69-a5e2-4799bf3bdd8a",
+      "documentation": "Create or updates Azure Cosmos DB MongoDB database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "35baac4a-d808-4b39-b582-e0d555e7484d",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB database create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd513431-a7c7-4cdb-b7bf-afceaa27c238",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The MongoDB database create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4410aa16-6076-4f0b-b738-f286a157a973",
+      "documentation": "Lists the MongoDB collection under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections",
+      "responses": [
+        {
+          "uuid": "a46ac7fb-0d75-489e-a20f-d903b0b959a7",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB collection properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6e91870-8074-48f7-bda0-4eb2f4f21565",
+      "documentation": "Deletes an existing Azure Cosmos DB MongoDB Collection.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections/:collectionName",
+      "responses": [
+        {
+          "uuid": "a27b13d3-56fd-4aeb-9377-c8e60323871d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The MongoDB collection delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "104892ee-39e7-414d-a8c6-72c4b8cf76d2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The MongoDB collection delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b09095f6-9910-4b05-b3c9-4166abf32d0f",
+      "documentation": "Gets the MongoDB collection under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections/:collectionName",
+      "responses": [
+        {
+          "uuid": "051fcc81-d26b-4801-b99b-2f58bad65f7e",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB collection property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43799491-3376-4b65-b3dc-fdd7871c6905",
+      "documentation": "Create or update an Azure Cosmos DB MongoDB Collection",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections/:collectionName",
+      "responses": [
+        {
+          "uuid": "15848dd5-46c2-4d4c-86ad-a672f246d3de",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The MongoDB Collection create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7b173eb5-267f-42e8-8e0e-9dfe3c72e611",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The MongoDB Collection create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "455f3c3a-f5c8-4db4-8e68-6f9c841949ce",
+      "documentation": "Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections/:collectionName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "2e70d2ba-a535-4c4a-855d-1a958e5838b5",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the MongoDB collection was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e057e0e9-5e9b-4ea9-bbc9-733f3ae93de1",
+      "documentation": "Update the RUs per second of an Azure Cosmos DB MongoDB collection",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/collections/:collectionName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "27b539c0-f64f-4319-b3d2-b89422f4197d",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the MongoDB collection update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d6536ce9-93cb-4cfa-be1f-8caba29cfc8e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the MongoDB collection update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81853353-9771-4819-950a-ca38736dc867",
+      "documentation": "Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "4ec3fe64-10e1-4c04-8eb9-7677dec9ee06",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the MongoDB database was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81db8ee4-c627-42d2-bbad-3c1fdf63a97a",
+      "documentation": "Update RUs per second of the an Azure Cosmos DB MongoDB database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/mongodbDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "9ba915e3-250e-49ff-bee8-9f86122933da",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the MongoDB database update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ff81f0d0-e8d7-4e27-9910-e04ebb5fe83c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the MongoDB database update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a5431946-1b40-401e-9e00-98978170efda",
+      "documentation": "Offline the specified region for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/offlineRegion",
+      "responses": [
+        {
+          "uuid": "8c84c0d7-1873-4614-9444-5ca9dd30b087",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The offline region operation is completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "047f9252-c625-48c1-bb54-01739321948f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. The offline region operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "50dfc28e-a295-4951-88fd-1790e6064e2b",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fda63cfc-2dc9-4c53-8971-062fdcc3986e",
+      "documentation": "Online the specified region for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/onlineRegion",
+      "responses": [
+        {
+          "uuid": "667d7b66-cf78-446e-bc83-8658c365fa80",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The online region operation is completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "abb02e97-a1a6-4667-b749-f99d70f26557",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. The online region operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9bc737ae-fc76-4371-8fdd-d53edab2b5f9",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d260de40-e16d-4f6b-85e7-d84a074a385a",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/percentile/metrics",
+      "responses": [
+        {
+          "uuid": "d3dba756-ba70-48e0-9ee9-ec52f268f4ce",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The percentile metrics for the account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f392ce55-3657-46ec-82fb-4e5291e7be43",
+      "documentation": "Lists the read-only access keys for the specified Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/readonlykeys",
+      "responses": [
+        {
+          "uuid": "45e1f9bb-440b-423d-ae04-04eb78400ce7",
+          "body": "{\n  \"primaryReadonlyMasterKey\": \"\",\n  \"secondaryReadonlyMasterKey\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a9187c4b-d6f4-4736-9e76-12e7c5d0a75c",
+      "documentation": "Lists the read-only access keys for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/readonlykeys",
+      "responses": [
+        {
+          "uuid": "e8721cb9-c166-453b-a43d-d01ea90b6c3e",
+          "body": "{\n  \"primaryReadonlyMasterKey\": \"\",\n  \"secondaryReadonlyMasterKey\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "62611c2a-6fe0-404e-9c4a-d6b1bd005406",
+      "documentation": "Regenerates an access key for the specified Azure Cosmos DB database account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/regenerateKey",
+      "responses": [
+        {
+          "uuid": "7bbc0403-ec74-4d19-a14e-92f74b019c08",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "de465403-2c8d-45b9-8707-fe77d9aeb93a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted. The regenerate key operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2dd125ce-9bd3-4be4-b620-b1ed75eab6b4",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account, collection and region.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/region/:region/databases/:databaseRid/collections/:collectionRid/metrics",
+      "responses": [
+        {
+          "uuid": "b33ea7ac-8182-44ed-9574-aaf454237087",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metrics for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d80d4286-e5aa-4382-bed9-79de43f2e285",
+      "documentation": "Retrieves the metrics determined by the given filter for the given partition key range id and region.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/region/:region/databases/:databaseRid/collections/:collectionRid/partitionKeyRangeId/:partitionKeyRangeId/metrics",
+      "responses": [
+        {
+          "uuid": "78b49033-acc4-40c6-8736-8d38308cfaf3",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The partition-level metrics for the partition key range id and region were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "79e8ba9c-9ae6-4519-89f9-3f1de37d71bc",
+      "documentation": "Retrieves the metrics determined by the given filter for the given collection and region, split by partition.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/region/:region/databases/:databaseRid/collections/:collectionRid/partitions/metrics",
+      "responses": [
+        {
+          "uuid": "37151ae4-221b-49e4-8988-ef8b348708ba",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The partition-level metrics for the collection and region were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "15a50bde-498a-40d2-9ab0-f7dd5776f16e",
+      "documentation": "Retrieves the metrics determined by the given filter for the given database account and region.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/region/:region/metrics",
+      "responses": [
+        {
+          "uuid": "54679945-d8ef-446f-93b8-79fc67f5c808",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The metrics for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4efe5cc6-6026-4172-a69e-0c3b6af22bd2",
+      "documentation": "Retrieves the metrics determined by the given filter for the given account, source and target region. This url is only for PBS and Replication Latency data",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sourceRegion/:sourceRegion/targetRegion/:targetRegion/percentile/metrics",
+      "responses": [
+        {
+          "uuid": "05600647-ea05-4785-b56e-90aed2618eba",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The percentile metrics for the account, source and target regions were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bede389d-1512-4154-a475-3d46af45d16a",
+      "documentation": "Lists the SQL databases under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases",
+      "responses": [
+        {
+          "uuid": "b969f12f-a372-44f6-91ee-7311291c617c",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL database properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52570529-be71-441c-93b4-48f1016063a7",
+      "documentation": "Deletes an existing Azure Cosmos DB SQL database.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "4dde87c1-475d-4c97-9692-b449b8dc1ade",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL database delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9945dad8-cae4-4d34-be6b-ea58590f2b6b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The SQL database delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2309a3f-2cc3-4525-84ae-dc411664b430",
+      "documentation": "Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "faa2b319-ee25-448b-9677-a5909b9ceaa2",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL database property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09c73f48-eaf3-49b5-9749-f924b9436ff6",
+      "documentation": "Create or update an Azure Cosmos DB SQL database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName",
+      "responses": [
+        {
+          "uuid": "b5a73c32-4497-4788-8151-b4c113d6ed4c",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL database create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4ee7a68e-45f3-442d-b9a4-80f53648295c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL database create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "56f0fbb5-f681-4f17-b4cb-a3519f340cf2",
+      "documentation": "Lists the SQL container under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers",
+      "responses": [
+        {
+          "uuid": "817ed0a1-4156-409a-bced-9fcab50d7511",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL container properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cb901b50-49c1-4799-a781-56d4317c3c22",
+      "documentation": "Deletes an existing Azure Cosmos DB SQL container.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "e4d63ef0-90f3-4512-ab49-29ef282598be",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL container delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c72c8d66-0337-4e7d-a85d-5bd383b92932",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The SQL container delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d30924fd-50ca-45e0-92f7-52220eb62dd0",
+      "documentation": "Gets the SQL container under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "197eb47e-e445-4d7d-8561-2a447884b824",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL container property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "686d88e6-e2fb-41b2-bff2-584af5c6a609",
+      "documentation": "Create or update an Azure Cosmos DB SQL container",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "f4a3953b-024c-4b8d-a071-70d102b608d9",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL container create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c8df59fb-5598-45a4-b42a-29236efa746d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL container create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "26fa5ce9-c93d-4fc4-a84a-f38c7fee7c66",
+      "documentation": "Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/storedProcedures",
+      "responses": [
+        {
+          "uuid": "832d43eb-ff98-48e7-9806-77a7c34ef9ac",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL stored procedure properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8a29f779-b667-41bd-824a-aaaa304277e2",
+      "documentation": "Deletes an existing Azure Cosmos DB SQL storedProcedure.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/storedProcedures/:storedProcedureName",
+      "responses": [
+        {
+          "uuid": "b2c53f1b-eb80-4a0f-9b72-e8180bd1b357",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL storedProcedure delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0d4a305e-cebf-4140-a684-060fb9ad799a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The SQL storedProcedure delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ec4abef-2fb4-4003-84d9-92b431c2c30d",
+      "documentation": "Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/storedProcedures/:storedProcedureName",
+      "responses": [
+        {
+          "uuid": "52ac7aa0-b323-4b3d-8ea9-dd93ba69ead1",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL storedProcedure property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "18dcaaa7-d4aa-4245-9862-9697da5c7efc",
+      "documentation": "Create or update an Azure Cosmos DB SQL storedProcedure",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/storedProcedures/:storedProcedureName",
+      "responses": [
+        {
+          "uuid": "0aa4da73-bfcb-415e-8009-fca76041658c",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL storedProcedure create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4922125a-6c47-4425-90e2-d26691b1a4d0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL storedProcedure create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d1d6a910-64fa-4e96-a4e2-a2700b94724a",
+      "documentation": "Gets the RUs per second of the SQL container under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "e41b2765-67ea-4feb-ab02-3a51da7f70ca",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the SQL container was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2715462e-6d42-4f5d-b176-3f5eeeafea4f",
+      "documentation": "Update RUs per second of an Azure Cosmos DB SQL container",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "d6cbef70-20d7-4891-899a-2d5c6ceba85b",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the SQL container update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a661329b-4721-4042-9c18-21c136e9f028",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the SQL container update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f200c139-db3f-42d7-bd25-cdc5b5071eca",
+      "documentation": "Lists the SQL trigger under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/triggers",
+      "responses": [
+        {
+          "uuid": "35c62bdf-0f1a-4c3b-bbbb-1266e50fec89",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL trigger properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ff7b162-8124-4563-8cc6-02b01219b5a1",
+      "documentation": "Deletes an existing Azure Cosmos DB SQL trigger.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/triggers/:triggerName",
+      "responses": [
+        {
+          "uuid": "4fdeee53-ed5d-4daa-8173-bd373e93df32",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL trigger delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cb4ffac4-7a75-4cd2-9db5-69d9de28c854",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The SQL trigger delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe97663e-def8-4f01-b508-15be21bcb40f",
+      "documentation": "Gets the SQL trigger under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/triggers/:triggerName",
+      "responses": [
+        {
+          "uuid": "8fb6997c-5992-4a9b-ad4a-f2a9f4493548",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL trigger property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "18d2a6b5-1a47-46fc-932d-09d1b084981e",
+      "documentation": "Create or update an Azure Cosmos DB SQL trigger",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/triggers/:triggerName",
+      "responses": [
+        {
+          "uuid": "2b3b4a3e-60b6-480f-86b3-839ce5f3795c",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL trigger create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f975fb0a-5dcd-4010-82e7-a8659c9c771f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL trigger create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44907c74-9a3c-4b87-aae1-7c8625daee87",
+      "documentation": "Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/userDefinedFunctions",
+      "responses": [
+        {
+          "uuid": "f81059cd-5381-4356-9c5f-4f9cf5e89cec",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL userDefinedFunction properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b3e283aa-b815-4967-be28-71526e0ae29e",
+      "documentation": "Deletes an existing Azure Cosmos DB SQL userDefinedFunction.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/userDefinedFunctions/:userDefinedFunctionName",
+      "responses": [
+        {
+          "uuid": "9256c0f4-79b5-4b55-bee9-6425700ccfb5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL userDefinedFunction delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "25e32316-034f-41c6-8220-d7f1f8b2da50",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The SQL userDefinedFunction delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "afbacaef-53f7-44cb-9493-7bc3b5c4b584",
+      "documentation": "Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/userDefinedFunctions/:userDefinedFunctionName",
+      "responses": [
+        {
+          "uuid": "f956d94f-225d-4e6f-803c-326f87d0e043",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL userDefinedFunction property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "85bc4130-ccff-45be-b01b-ca82f5efe7b0",
+      "documentation": "Create or update an Azure Cosmos DB SQL userDefinedFunction",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/containers/:containerName/userDefinedFunctions/:userDefinedFunctionName",
+      "responses": [
+        {
+          "uuid": "97d043b4-b4e7-488c-8cc2-f5177ea9bd50",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The SQL userDefinedFunction create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6780e8e6-d9df-4408-b4e3-68aaa4ac33c2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The SQL userDefinedFunction create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "97d5bdb5-e64b-435b-8be9-d1c22ad7a1ba",
+      "documentation": "Gets the RUs per second of the SQL database under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "686a329d-c81a-4001-90ac-37a8cb9f7393",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the SQL database was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fabba003-54da-4049-bafb-d78dc08ed2dc",
+      "documentation": "Update RUs per second of an Azure Cosmos DB SQL database",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/sqlDatabases/:databaseName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "d53ab678-6d17-45ea-a3d0-f14be7ae0942",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the SQL database update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "feb5fc54-7b4a-4e47-bd08-fe4a74c5538a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the SQL database update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d23b6c46-0210-4216-a71d-f9f3ee8f580f",
+      "documentation": "Lists the Tables under an existing Azure Cosmos DB database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables",
+      "responses": [
+        {
+          "uuid": "2242a146-9e7f-43a1-814d-6906c87b4fca",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Table properties were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "568c1a04-41bb-4ac4-afc3-9abc4faf8c4b",
+      "documentation": "Deletes an existing Azure Cosmos DB Table.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "43ce0199-11cc-4536-9be8-a74a5b65d6c7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Table delete operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d1163fd3-f16a-436e-8a8f-60fc5e64c8e6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The Table delete operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74450783-1f2a-4976-8a2b-cf595a5c8df8",
+      "documentation": "Gets the Tables under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "b1385460-187e-495d-9c13-a0a32371dac0",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Table property was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a0aeebc5-ddab-4d2f-8601-cfad91cdf2ce",
+      "documentation": "Create or update an Azure Cosmos DB Table",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables/:tableName",
+      "responses": [
+        {
+          "uuid": "4fb5a9f0-0bbc-495d-ac03-16f20922dae6",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Table create or update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "52c7b2cd-d01f-4216-b754-2460c0edbdaa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The Table create or update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "95400dd7-86c0-4314-a694-06e746fed665",
+      "documentation": "Gets the RUs per second of the Table under an existing Azure Cosmos DB database account with the provided name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables/:tableName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "2e179734-0413-4fe1-bb1b-b1a64f2dd580",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Table was retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "063e0b16-2b6c-4e23-a515-6f08ca967bbd",
+      "documentation": "Update RUs per second of an Azure Cosmos DB Table",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/tables/:tableName/throughputSettings/default",
+      "responses": [
+        {
+          "uuid": "a145c3db-308c-4baf-b916-da2455954c12",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The RUs per second of the Table update operation was completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "73becef0-32a1-4f47-907e-78f66042600e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The RUs per second of the Table update operation will complete asynchronously.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "db14c3a9-773f-40c1-b562-c9c9d164b702",
+      "documentation": "Retrieves the metrics determined by the given filter for the given account target region. This url is only for PBS and Replication Latency data",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/targetRegion/:targetRegion/percentile/metrics",
+      "responses": [
+        {
+          "uuid": "2d0f376d-fde5-4006-ba94-6b2c9db028a1",
+          "body": "{\n  \"value\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"metricValues\": [\n        {\n          \"_count\": {{faker 'datatype.number'}},\n          \"average\": {{faker 'datatype.float'}},\n          \"maximum\": {{faker 'datatype.float'}},\n          \"minimum\": {{faker 'datatype.float'}},\n          \"timestamp\": \"{{faker 'date.recent' 365}}\",\n          \"total\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"timeGrain\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The percentile metrics for the account and target regions were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9c62db30-4085-4d14-bf1c-03526c2e64de",
+      "documentation": "Retrieves the usages (most recent data) for the given database account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/:accountName/usages",
+      "responses": [
+        {
+          "uuid": "a3f5fba3-a07f-4469-a302-f01d14afaeb7",
+          "body": "{\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.number'}},\n      \"limit\": {{faker 'datatype.number'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"quotaPeriod\": \"\",\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountPerSecond' 'BytesPerSecond' 'Milliseconds')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The usages for the database account were retrieved successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

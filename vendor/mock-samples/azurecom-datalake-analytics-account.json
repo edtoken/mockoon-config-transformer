@@ -1,0 +1,1206 @@
+{
+  "uuid": "b28508df-d9b6-42c1-8e2f-9db3e8fb43de",
+  "lastMigration": 24,
+  "name": "DataLakeAnalyticsAccountManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b84f3917-9e0c-4fd3-84bc-bd115c37a348",
+      "documentation": "Lists all of the available Data Lake Analytics REST API operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.DataLakeAnalytics/operations",
+      "responses": [
+        {
+          "uuid": "daba8b7a-1a59-49b0-8152-4085e1ad6956",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\",\n      \"origin\": \"{{oneOf (array 'user' 'system' 'user,system')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully listed the available operations for Data Lake Analytics.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96ec45af-f137-4a2e-b091-edc67a4f2976",
+      "documentation": "Gets the first page of Data Lake Analytics accounts, if any, within the current subscription. This includes a link to the next page, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeAnalytics/accounts",
+      "responses": [
+        {
+          "uuid": "614d616d-d545-4a77-9802-fde5e71c92fe",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of Azure Data Lake Analytics accounts.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ff8531b9-7fb0-417a-8885-1834e832374f",
+      "documentation": "Gets subscription-level properties and limits for Data Lake Analytics specified by resource location.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeAnalytics/locations/:location/capability",
+      "responses": [
+        {
+          "uuid": "f60d1cbf-4c14-4e02-91dc-2696ecf5b929",
+          "body": "{\n  \"accountCount\": {{faker 'datatype.number'}},\n  \"maxAccountCount\": {{faker 'datatype.number'}},\n  \"migrationState\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'Registered' 'Suspended' 'Deleted' 'Unregistered' 'Warned')}}\",\n  \"subscriptionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the subscription-level properties and limits for Data Lake Analytics specified by resource location.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2ceb1ca0-daa7-401b-97cc-80f96b1cfbfa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Subscription not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "303d5455-8677-4ed8-a006-8ff4de3a872d",
+      "documentation": "Checks whether the specified account name is available or taken.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeAnalytics/locations/:location/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "5bf20601-dd5d-47b8-b971-2c295ab02282",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the Data Lake Analytics account name availability information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "14a9dee2-dfee-4fdc-b91c-cd6fbea8241c",
+      "documentation": "Gets the first page of Data Lake Analytics accounts, if any, within a specific resource group. This includes a link to the next page, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts",
+      "responses": [
+        {
+          "uuid": "bb4bd8a8-7bdd-41b3-97b2-eec0a199a9fd",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of accounts in the specified resource group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "be1f15e2-c8d9-4508-ac7f-248694f78e65",
+      "documentation": "Begins the delete process for the Data Lake Analytics account object specified by the account name.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "51c9beb9-a62a-49e2-b77f-4b8e46a686c6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fce2f657-cf8d-4898-9c7d-7db4a83881ff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Successfully initiated the deletion of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6faea654-63d0-44f6-93bd-49e5a1018ad3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified account was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ffbb59ad-7c27-4bdf-bb54-e2fde6ebb010",
+      "documentation": "Gets details of the specified Data Lake Analytics account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "fe847a0f-2cf0-4ae4-8c0c-ac3274132d16",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the details of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "17b67489-3e5b-4d3b-b0ff-d9ecbe4931fc",
+      "documentation": "Updates the Data Lake Analytics account object specified by the accountName with the contents of the account object.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "18c6c94b-252a-4cc6-93dc-58c14b86eebf",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5b7f5d18-94df-49be-8a19-856904fce966",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully initiated an update of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c7522e3b-a006-48c3-9ec3-33ad258efb2d",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Successfully initiated an update of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81adc509-d400-426d-b21b-9bb6762b05eb",
+      "documentation": "Creates the specified Data Lake Analytics account. This supplies the user with computation services for Data Lake Analytics workloads.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "77e7db0e-0bf3-4d9a-8c8f-b62d247bfab6",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4fb32a4-de3e-452c-8320-a61dd9210ce5",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully initiated creation of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "72dbded8-0759-4710-b60c-c89632263eaf",
+      "documentation": "Lists the Data Lake Analytics compute policies within the specified Data Lake Analytics account. An account supports, at most, 50 policies",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/computePolicies",
+      "responses": [
+        {
+          "uuid": "f28c13a7-a312-47b2-b487-d0b6734c2097",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully listed the compute policies.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3cc48670-5830-43d6-a475-421c1fd56944",
+      "documentation": "Deletes the specified compute policy from the specified Data Lake Analytics account",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/computePolicies/:computePolicyName",
+      "responses": [
+        {
+          "uuid": "66f6a1ab-2ce6-48ee-a179-1c4f568b4234",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified compute policy",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "043d2d1f-703e-48d1-ac34-cc477ba39274",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified compute policy does not exist or was already deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a771726-57c8-4dd0-b32e-96283b72ee93",
+      "documentation": "Gets the specified Data Lake Analytics compute policy.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/computePolicies/:computePolicyName",
+      "responses": [
+        {
+          "uuid": "5cab4aab-a01f-4f25-be34-26af17225fcc",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified compute policy.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c4294122-eb9c-4c9f-8793-81f46fa1abef",
+      "documentation": "Updates the specified compute policy.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/computePolicies/:computePolicyName",
+      "responses": [
+        {
+          "uuid": "91c8e838-d23c-4ba8-b218-f6eeb5b3d98f",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the specified compute policy",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96d12953-e4b6-4e2f-9680-229160213777",
+      "documentation": "Creates or updates the specified compute policy. During update, the compute policy with the specified name will be replaced with this new compute policy. An account supports, at most, 50 policies",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/computePolicies/:computePolicyName",
+      "responses": [
+        {
+          "uuid": "981a261b-d9cd-4e25-85d2-326157d508fe",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created or updated the specified compute policy",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "831a80ff-278d-4ffb-bb45-1cd93729b12b",
+      "documentation": "Gets the first page of Data Lake Store accounts linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/dataLakeStoreAccounts",
+      "responses": [
+        {
+          "uuid": "4a108638-5ac6-43a6-99c0-529d5196d742",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of Data Lake Store accounts.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a999df5-beae-43bc-9dba-03d91195e0f0",
+      "documentation": "Updates the Data Lake Analytics account specified to remove the specified Data Lake Store account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/dataLakeStoreAccounts/:dataLakeStoreAccountName",
+      "responses": [
+        {
+          "uuid": "9b3adadb-5934-453f-b447-a68b1dd8a159",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully removed the specified Azure Data Lake Store account information from the specified Azure Data Lake Analytics account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "89a30bca-700a-433a-adbc-f564d872c879",
+      "documentation": "Gets the specified Data Lake Store account details in the specified Data Lake Analytics account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/dataLakeStoreAccounts/:dataLakeStoreAccountName",
+      "responses": [
+        {
+          "uuid": "22293884-b7ae-4cce-80c9-120215e730e3",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified Azure Data Lake Store account information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "25e92ea3-5e64-4270-b464-c9806d8bda44",
+      "documentation": "Updates the specified Data Lake Analytics account to include the additional Data Lake Store account.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/dataLakeStoreAccounts/:dataLakeStoreAccountName",
+      "responses": [
+        {
+          "uuid": "6c654a7e-17ec-4a56-a028-940790759c7d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully added the specified Azure Data Lake Store account information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7e1b7363-fd68-449b-827c-f6d5757603a3",
+      "documentation": "Lists the Data Lake Analytics firewall rules within the specified Data Lake Analytics account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/firewallRules",
+      "responses": [
+        {
+          "uuid": "725ae58d-ba6d-4328-b740-2217b412f6e1",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully listed the firewall rules.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "731c2c1c-b2b7-4897-b489-b1750711ff96",
+      "documentation": "Deletes the specified firewall rule from the specified Data Lake Analytics account",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "64ac13bf-db2f-43cc-983a-5697d9ba3ad9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified firewall rule",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "db4b84ba-d36e-4a3f-b5ad-fe3d5175fb7b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified firewall rule does not exist or was already deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13470ec6-7984-4c23-9ba9-8528cf39dcc1",
+      "documentation": "Gets the specified Data Lake Analytics firewall rule.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "6e2d84c2-367e-4019-af10-c01f00d2f243",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified firewall rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35e4ef92-0b61-4546-83ab-f7cdb7abb9bf",
+      "documentation": "Updates the specified firewall rule.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "320e61d5-819e-47ec-a84c-a71476576e6f",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the specified firewall rule",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "05cd3e58-fae7-4a74-96bc-9fa303858f3e",
+      "documentation": "Creates or updates the specified firewall rule. During update, the firewall rule with the specified name will be replaced with this new firewall rule.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "2c762070-665e-4079-b684-6429e47fdca1",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created or updated the specified firewall rule",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "df6353a9-56b6-4649-9f3e-861367a329bc",
+      "documentation": "Gets the first page of Azure Storage accounts, if any, linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts",
+      "responses": [
+        {
+          "uuid": "23352251-c1e0-4f2f-9b10-6f626735aa35",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of Azure Storage accounts.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "95339eb0-b915-4827-a777-2bab727f509c",
+      "documentation": "Updates the specified Data Lake Analytics account to remove an Azure Storage account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName",
+      "responses": [
+        {
+          "uuid": "1b91a396-8907-4fd6-9f28-ba4c36f4ad43",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified Azure Storage account information from the Azure Data Lake Analytics account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4364adb8-b7db-4f46-ac30-19d1de46466c",
+      "documentation": "Gets the specified Azure Storage account linked to the given Data Lake Analytics account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName",
+      "responses": [
+        {
+          "uuid": "21b55bea-021d-4931-8164-7b4d5634e8a0",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified Azure Storage account information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "48b4ba3d-3c40-476a-b78d-339c2c56a6ee",
+      "documentation": "Updates the Data Lake Analytics account to replace Azure Storage blob account details, such as the access key and/or suffix.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName",
+      "responses": [
+        {
+          "uuid": "bd32e0da-b09a-4415-a9c0-dfb22f548d51",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully update the specified Azure Storage account information for the specified Azure Data Lake Analytics account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a489c1bf-0111-4ec2-9647-36a365ae9225",
+      "documentation": "Updates the specified Data Lake Analytics account to add an Azure Storage account.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName",
+      "responses": [
+        {
+          "uuid": "9d834277-1635-42df-8890-ee4ba8169fbd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully added the specified Azure Storage account information to the specified Azure Data Lake Analytics account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1cd3f2f5-f73c-4c68-8ce4-5dbfba401874",
+      "documentation": "Lists the Azure Storage containers, if any, associated with the specified Data Lake Analytics and Azure Storage account combination. The response includes a link to the next page of results, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName/containers",
+      "responses": [
+        {
+          "uuid": "f67cf1a6-bcb3-4581-8dd2-89d5c55b8376",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of Azure Storage containers under the specified Azure Data Lake Analytics account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7711e0cf-648b-4a05-8b45-af89f33311ac",
+      "documentation": "Gets the specified Azure Storage container associated with the given Data Lake Analytics and Azure Storage accounts.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "0b05e7d7-c8b4-472f-99af-ce01699c1316",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified Azure Storage container information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a9a5ec5a-a7fb-4aef-b3ab-33456a03f206",
+      "documentation": "Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeAnalytics/accounts/:accountName/storageAccounts/:storageAccountName/containers/:containerName/listSasTokens",
+      "responses": [
+        {
+          "uuid": "caeb784c-f441-4037-80be-5b1630d74f13",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"accessToken\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of Storage Account SAS tokens for the specified Azure Storage account container.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,2502 @@
+{
+  "uuid": "81ae1e0e-a4e3-4235-b511-d49b07407d1d",
+  "lastMigration": 24,
+  "name": "Brain Web API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "abcaa8e1-ecfe-405b-b924-5f28a0094c24",
+      "documentation": "Authentication information",
+      "method": "get",
+      "endpoint": "authinfo",
+      "responses": [
+        {
+          "uuid": "4b8ca42f-83c3-4db5-aee6-db7cb4f36a97",
+          "body": "{\n  \"api_key_id\": \"5b7d6cbd7503c445552a1664\",\n  \"auth_method\": \"{{oneOf (array 'user_session' 'internal' 'static_api_key')}}\",\n  \"authenticated\": {{faker 'datatype.boolean'}},\n  \"permissions\": {\n    \"mutate\": {{faker 'datatype.boolean'}}\n  },\n  \"url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"user_id\": \"5b7d6cbd7503c445552a1664\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the authentication information",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "954cfe81-7e8d-4e9c-a600-072bedd59258",
+      "documentation": "Get all binary large objects (blob)",
+      "method": "get",
+      "endpoint": "blobs",
+      "responses": [
+        {
+          "uuid": "11769fad-ac30-444c-bcbc-4a813f85d835",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of blobs",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6466583-9bff-496d-86fd-7292fb97cb24",
+      "documentation": "Create binary large object (blob) metadata",
+      "method": "post",
+      "endpoint": "blobs",
+      "responses": [
+        {
+          "uuid": "1e562460-219d-446d-9b7a-4d9b8098217c",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f91d1b51-fee9-4ee0-95af-edfda391bca1",
+      "documentation": "Delete binary large object (blob)",
+      "method": "delete",
+      "endpoint": "blobs/:id",
+      "responses": [
+        {
+          "uuid": "b446213d-f327-4d04-bf9c-02cf3683ddb8",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a37dc20f-44fc-4e28-8e95-e70300f99c76",
+      "documentation": "Get binary large object (blob)",
+      "method": "get",
+      "endpoint": "blobs/:id",
+      "responses": [
+        {
+          "uuid": "e15f14d0-1725-4586-8ca0-a6597245bbae",
+          "body": "{\n  \"blob_key\": \"foobar\",\n  \"content_type\": \"image/png\",\n  \"download_url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"filename\": \"Foo bar\",\n  \"hash\": \"50df961c6c099f778fa50647572ef21f4ef416d52f7e00e311d7dbca1a735f6a\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_last_accessed\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"upload_url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the blob",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e61587c6-fe38-4ca9-bdd2-510ab92e2882",
+      "documentation": "Download a binary large object (blob)",
+      "method": "get",
+      "endpoint": "blobs/:id/download/:filename",
+      "responses": [
+        {
+          "uuid": "79ba86ef-63de-4227-8d7a-8f05aaec8520",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The stored binary blob",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "image/*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "27e206f1-ab0b-4808-9c85-6d1fbd4c99e4",
+      "documentation": "Create binary large object (blob)",
+      "method": "post",
+      "endpoint": "blobs/:id/upload",
+      "responses": [
+        {
+          "uuid": "b08d3d22-4b0f-4150-b7aa-3c714af415ce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Upload was successful",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a3176af8-d3ab-4ebe-978a-b1f6a3c55e38",
+      "documentation": "Get all events",
+      "method": "get",
+      "endpoint": "events",
+      "responses": [
+        {
+          "uuid": "e2e4e806-d117-480b-b9c4-5973d5a0d65f",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of events",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "87f022fe-416a-4c6b-8b53-6c04d1e1dc78",
+      "documentation": "Get event",
+      "method": "get",
+      "endpoint": "events/:id",
+      "responses": [
+        {
+          "uuid": "95e303c9-1de6-4243-9478-cfb55c597ac5",
+          "body": "{\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"payload\": {\n    \"foo\": \"bar\"\n  },\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_event\": \"2018-08-30T09:51:59.737Z\",\n  \"time_expire\": \"2018-08-30T09:51:59.737Z\",\n  \"topic\": {\n    \"action\": \"{{oneOf (array 'created' 'updated' 'deleted' 'disappeared' 'connection-rssi-changed')}}\",\n    \"arguments\": {\n      \"foo\": \"bar\"\n    },\n    \"resource_id\": \"5b7d6cbd7503c445552a1664\",\n    \"resource_type\": \"{{oneOf (array 'blobs' 'items' 'keys' 'kvpairs' 'locations' 'presences' 'services' 'spots' 'subscriptions' 'users')}}\",\n    \"resource_url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the event",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2533d425-604b-4fc1-920f-fca8ccaf87b6",
+      "documentation": "Get all items",
+      "method": "get",
+      "endpoint": "items",
+      "responses": [
+        {
+          "uuid": "e45f3890-fe7a-4337-9a86-9592778f4521",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of items",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa9f629f-e9b7-44e2-b826-5898ba29f7af",
+      "documentation": "Create item",
+      "method": "post",
+      "endpoint": "items",
+      "responses": [
+        {
+          "uuid": "7c0e30bb-72b9-4182-a280-8a083a5ac6e2",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "722f90d4-23ed-4d4c-bbd4-551956e8866b",
+      "documentation": "Delete item",
+      "method": "delete",
+      "endpoint": "items/:id",
+      "responses": [
+        {
+          "uuid": "063d06db-5993-40da-9377-da27233eadac",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e240e41-31fa-457c-bb69-888f1cf69c88",
+      "documentation": "Get item",
+      "method": "get",
+      "endpoint": "items/:id",
+      "responses": [
+        {
+          "uuid": "be57d705-a9e8-4c4e-9add-5e8a5b397b0d",
+          "body": "{\n  \"config_request\": {\n    \"foo\": \"bar\"\n  },\n  \"custom\": {\n    \"foo\": \"bar\"\n  },\n  \"label\": \"Foo Bar\",\n  \"location_request\": \"5b7d6cbd7503c445552a1664\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the items",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a89764dd-b217-4418-90de-2119d7bb16f2",
+      "documentation": "Update existing item",
+      "method": "put",
+      "endpoint": "items/:id",
+      "responses": [
+        {
+          "uuid": "26888823-2d5a-4cf5-97cf-22ca5c115db3",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f54eb555-c065-4bb9-9178-5abbd679e154",
+      "documentation": "Get all keys",
+      "method": "get",
+      "endpoint": "keys",
+      "responses": [
+        {
+          "uuid": "9f9aa5d7-42b8-41b8-b2a8-21dcb4e4d171",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of keys",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf4e42cc-3e1a-4f88-ad3f-69cfecd36296",
+      "documentation": "Create key",
+      "method": "post",
+      "endpoint": "keys",
+      "responses": [
+        {
+          "uuid": "bee9a2a8-cb0a-4730-9fca-2524da5c8bd9",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f9041824-fad0-44b3-aeb2-12cc0fec3e0b",
+      "documentation": "Delete key",
+      "method": "delete",
+      "endpoint": "keys/:id",
+      "responses": [
+        {
+          "uuid": "f0825b0d-de47-4e5c-a850-ec4ec0a22ac9",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "59daed49-736f-4f57-bd32-dc27c04c78c8",
+      "documentation": "Get key",
+      "method": "get",
+      "endpoint": "keys/:id",
+      "responses": [
+        {
+          "uuid": "9ee2e3d9-2fb9-41bf-bf07-499209093ba7",
+          "body": "{\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"is_read_only\": {{faker 'datatype.boolean'}},\n  \"label\": \"\",\n  \"secret\": \"59cb1e86-a08d-44c9-9b37-c27f4ccd97f4\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the key",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d62bf4e8-07f3-4e88-8ac2-067b9aacfc74",
+      "documentation": "Update existing key",
+      "method": "put",
+      "endpoint": "keys/:id",
+      "responses": [
+        {
+          "uuid": "58551a08-54f5-4265-9e25-45ccf1120a5b",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4fe0efd3-9af7-40f2-825a-110e91ab9a92",
+      "documentation": "Get all key-value pairs",
+      "method": "get",
+      "endpoint": "kvpairs",
+      "responses": [
+        {
+          "uuid": "e5194d7f-c05d-4c36-9e9b-81ae6f77a2f2",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of key-value pairs",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ea7d261-0f0f-4ef1-ae91-0812dd73e399",
+      "documentation": "Create key-value pair",
+      "method": "post",
+      "endpoint": "kvpairs",
+      "responses": [
+        {
+          "uuid": "4a408cfb-cab1-417d-8442-bcfb074cd669",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "940525a8-4a7e-40cc-a356-3498152ea9a2",
+      "documentation": "Delete key-value pair",
+      "method": "delete",
+      "endpoint": "kvpairs/:id",
+      "responses": [
+        {
+          "uuid": "0cce989e-a857-4ac2-9736-fa044acf5f07",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e8979b3f-e5ab-49b8-af0b-03f984476dd2",
+      "documentation": "Get key-value pair",
+      "method": "get",
+      "endpoint": "kvpairs/:id",
+      "responses": [
+        {
+          "uuid": "eb26f572-a489-4e04-a85c-de1c1ac71c17",
+          "body": "{\n  \"kv_value\": \"all the bars\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the subscription",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b66b2a7d-4af0-4856-864d-24ddc2d022d4",
+      "documentation": "Update existing Key-value pair",
+      "method": "put",
+      "endpoint": "kvpairs/:id",
+      "responses": [
+        {
+          "uuid": "6330d20e-a6c0-4bf2-9a56-8388c3cdedd7",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2364fe53-28e8-431e-9ae9-1fb072a87cb1",
+      "documentation": "Get all location rules",
+      "method": "get",
+      "endpoint": "locationrules",
+      "responses": [
+        {
+          "uuid": "a170753b-a842-48cf-8def-a216e157a327",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of location rules",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f06cd71f-1f78-452f-95f5-d0c0b7546c4f",
+      "documentation": "Create location rule",
+      "method": "post",
+      "endpoint": "locationrules",
+      "responses": [
+        {
+          "uuid": "dc294f0d-3913-4740-a9ca-db39e78ebeac",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b3291a1-1c67-44f4-b476-bc9307104638",
+      "documentation": "Delete location rule",
+      "method": "delete",
+      "endpoint": "locationrules/:id",
+      "responses": [
+        {
+          "uuid": "49d1ce6f-946c-412c-ba89-9549880fa91c",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2cd56b7f-d0da-4626-8b92-100a65e65590",
+      "documentation": "Get location rule",
+      "method": "get",
+      "endpoint": "locationrules/:id",
+      "responses": [
+        {
+          "uuid": "6ae94e89-6c8a-441a-a04d-ea0d71f849de",
+          "body": "{\n  \"conditions\": \"\",\n  \"enabled\": true,\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"label\": \"Foo Bar\",\n  \"parameters\": {},\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"type\": \"{{oneOf (array 'allow' 'disallow' 'disappeared' 'debounce')}}\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the location rule",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "adfe47db-37b0-4606-aed1-9d6ff624bd36",
+      "documentation": "Update existing location rule",
+      "method": "put",
+      "endpoint": "locationrules/:id",
+      "responses": [
+        {
+          "uuid": "a7b5d3f2-b586-498d-9d6e-f8fa366aa4f5",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64ecff66-4a35-4395-8789-9bbdd6c7ad8f",
+      "documentation": "Get all locations",
+      "method": "get",
+      "endpoint": "locations",
+      "responses": [
+        {
+          "uuid": "2245ea0d-1c33-4afd-82b6-17b838e0c9e8",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of locations",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b6e12ac-eb58-4640-996b-e163c88a5a67",
+      "documentation": "Create location",
+      "method": "post",
+      "endpoint": "locations",
+      "responses": [
+        {
+          "uuid": "d33afe91-036b-4dac-8472-4362195c4a89",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c86a904-9cd2-4cc3-9f82-6b1886c64df1",
+      "documentation": "Delete location",
+      "method": "delete",
+      "endpoint": "locations/:id",
+      "responses": [
+        {
+          "uuid": "88a51d44-85c8-4f3c-85ac-d96b0ae40942",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cc7c4083-1b98-42ce-8a22-1d3995f2e236",
+      "documentation": "Get location",
+      "method": "get",
+      "endpoint": "locations/:id",
+      "responses": [
+        {
+          "uuid": "510f9cbc-d5c6-46a7-8b26-6c49e8c82677",
+          "body": "{\n  \"custom\": {\n    \"foo\": \"bar\"\n  },\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"label\": \"Foo Bar\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the location",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ef71493-6742-4bc8-bcc7-661f1f1dcca9",
+      "documentation": "Update existing location",
+      "method": "put",
+      "endpoint": "locations/:id",
+      "responses": [
+        {
+          "uuid": "ee3e886c-e2ba-4034-bfe3-73feca0b64b2",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c16ade18-0276-4986-90e6-8aeef539ea51",
+      "documentation": "Get all presences",
+      "method": "get",
+      "endpoint": "presences",
+      "responses": [
+        {
+          "uuid": "fb067492-7b4e-47c0-b57c-63851b0c6300",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of presences",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cbd9383b-b7d5-4c11-a2dc-33f861fd2725",
+      "documentation": "Get presence",
+      "method": "get",
+      "endpoint": "presences/:id",
+      "responses": [
+        {
+          "uuid": "4ed1b444-19ff-47ba-bc6f-eeb39f374514",
+          "body": "{\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"item\": {\n    \"config_request\": {\n      \"foo\": \"bar\"\n    },\n    \"custom\": {\n      \"foo\": \"bar\"\n    },\n    \"label\": \"Foo Bar\",\n    \"location_request\": \"5b7d6cbd7503c445552a1664\",\n    \"metadata\": {\n      \"foo\": \"bar\"\n    }\n  },\n  \"item_id\": \"5b7d6cbd7503c445552a1664\",\n  \"item_url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"location\": {\n    \"custom\": {\n      \"foo\": \"bar\"\n    },\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"label\": \"Foo Bar\",\n    \"metadata\": {\n      \"foo\": \"bar\"\n    },\n    \"time_created\": \"2018-08-30T09:51:59.737Z\",\n    \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"location_id\": \"5b7d6cbd7503c445552a1664\",\n  \"location_url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"proximity\": \"{{oneOf (array 'far' 'near' 'immediate')}}\",\n  \"technology\": \"{{oneOf (array 'bluetooth' 'optical' 'rfid')}}\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the presence",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c43caa13-4a92-4c17-9fa7-67785f04edb6",
+      "documentation": "Get all services",
+      "method": "get",
+      "endpoint": "services",
+      "responses": [
+        {
+          "uuid": "8c9cb265-b46e-46b3-b344-bd482b730729",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of services",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f75c1838-8c48-41cf-badd-a007386a7404",
+      "documentation": "Get service",
+      "method": "get",
+      "endpoint": "services/:id",
+      "responses": [
+        {
+          "uuid": "e9f134a0-590d-44e5-81b5-eb026f6029b6",
+          "body": "{\n  \"boot_count\": 22,\n  \"config\": {\n    \"foo\": \"bar\"\n  },\n  \"config_request\": {\n    \"foo\": \"bar\"\n  },\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"name\": \"Foo Bar\",\n  \"restart_request\": true,\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"version\": \"1.2.3\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the service",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44ccd58e-fa1c-443d-800c-1c7c081fa57a",
+      "documentation": "Update existing service",
+      "method": "put",
+      "endpoint": "services/:id",
+      "responses": [
+        {
+          "uuid": "39f589ec-45e3-41e5-9e77-6c632cf235f2",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3e96d43a-020f-4319-9138-dba279b68818",
+      "documentation": "Get all item lists",
+      "method": "get",
+      "endpoint": "sets/itemlists",
+      "responses": [
+        {
+          "uuid": "13ac7c9f-c2ca-4a88-b7b2-fe35afd32505",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of item lists",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "775b0b90-9d47-4aa1-8c1b-be2785487c10",
+      "documentation": "Create item list",
+      "method": "post",
+      "endpoint": "sets/itemlists",
+      "responses": [
+        {
+          "uuid": "68fdabfa-f621-472f-9787-710f0750973b",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "178df031-1c18-48cb-bcce-cbfe8ea21257",
+      "documentation": "Delete item list",
+      "method": "delete",
+      "endpoint": "sets/itemlists/:id",
+      "responses": [
+        {
+          "uuid": "882e515e-d4ec-404e-b067-a7548d4fd5e2",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16b8d31c-c553-455f-886c-5df528fefff2",
+      "documentation": "Get item list",
+      "method": "get",
+      "endpoint": "sets/itemlists/:id",
+      "responses": [
+        {
+          "uuid": "24050471-0203-4a7a-a262-063dd50b7558",
+          "body": "{\n  \"custom\": {\n    \"foo\": \"bar\"\n  },\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"label\": \"Foo Bar\",\n  \"list\": \"https://brain.intellifi.nl/api/foobar\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"sha1\": \"\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the item list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3f34ecb7-b9c6-4feb-870c-9b83379d65b4",
+      "documentation": "Update existing item list",
+      "method": "put",
+      "endpoint": "sets/itemlists/:id",
+      "responses": [
+        {
+          "uuid": "4424af79-4c5f-44d3-b454-a6d9d6a6f808",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eb6b931a-0d66-442b-a910-9eebaa20d3c5",
+      "documentation": "Get item ids for this list",
+      "method": "get",
+      "endpoint": "sets/itemlists/:id/ids",
+      "responses": [
+        {
+          "uuid": "b87358eb-2fa8-49a0-884a-9ec5d9beef78",
+          "body": "[\n  \"5b7d6cbd7503c445552a1664\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An array object containing the item ids for this list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d5a13936-8b44-43d5-b8cc-74c068d0031f",
+      "documentation": "Add items to an existing list",
+      "method": "post",
+      "endpoint": "sets/itemlists/:id/ids",
+      "responses": [
+        {
+          "uuid": "f9d450bc-a26b-4005-99e5-e092a6b9f419",
+          "body": "{\n  \"status\": 200,\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the status and the total amount of items in the newly added list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b4a5c570-18d1-4332-ba1a-7da98a9220e6",
+      "documentation": "Delete item from list",
+      "method": "delete",
+      "endpoint": "sets/itemlists/:id/ids/:itemId",
+      "responses": [
+        {
+          "uuid": "51bbd40c-d33d-4519-adb9-1d5eb2774d05",
+          "body": "{\n  \"status\": 200,\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the status and the total amount of items in the list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "af30633e-268d-4918-8333-91fd14086a62",
+      "documentation": "Get all spot lists",
+      "method": "get",
+      "endpoint": "sets/spotlists",
+      "responses": [
+        {
+          "uuid": "896f1152-da7a-460e-a50d-f0a7b7a08a92",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of spot lists",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c3157a54-38c9-42e5-bb30-58ba8476d823",
+      "documentation": "Create spot list",
+      "method": "post",
+      "endpoint": "sets/spotlists",
+      "responses": [
+        {
+          "uuid": "f2111bd8-af94-4c96-a03b-5feb1e8f5460",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "92727d79-e637-425c-ab81-0f6e392a1adb",
+      "documentation": "Delete spot list",
+      "method": "delete",
+      "endpoint": "sets/spotlists/:id",
+      "responses": [
+        {
+          "uuid": "899e1589-644d-456b-8d17-5403dc64f326",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "24653279-fa3f-4442-a9d8-2a5aa85b9b8b",
+      "documentation": "Info for a specific spot list",
+      "method": "get",
+      "endpoint": "sets/spotlists/:id",
+      "responses": [
+        {
+          "uuid": "22650b79-2a8f-48f9-a5a4-fa010df9d421",
+          "body": "{\n  \"custom\": {\n    \"foo\": \"bar\"\n  },\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"label\": \"Foo Bar\",\n  \"list\": \"https://brain.intellifi.nl/api/foobar\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spot list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ced69029-dd2e-4654-a1a7-51eb60d8a069",
+      "documentation": "Update existing spot list",
+      "method": "put",
+      "endpoint": "sets/spotlists/:id",
+      "responses": [
+        {
+          "uuid": "a7eedeb1-2903-4f74-8c97-c0b4669395d9",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2931f8f0-128d-4015-a954-9c6aaea385b8",
+      "documentation": "Get spot ids for this list",
+      "method": "get",
+      "endpoint": "sets/spotlists/:id/ids",
+      "responses": [
+        {
+          "uuid": "d5162db0-a2b9-43cb-b7d1-251553006ab8",
+          "body": "[\n  \"5b7d6cbd7503c445552a1664\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "An array object containing the item ids for this list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69cecc0c-71d6-4bb9-a9dd-39117af4253d",
+      "documentation": "Add spots to an existing list",
+      "method": "post",
+      "endpoint": "sets/spotlists/:id/ids",
+      "responses": [
+        {
+          "uuid": "e79df23e-5bba-4ae0-b3ad-4c422c3baffa",
+          "body": "{\n  \"status\": 200,\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the status and the total amount of items in the newly added list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e7e1fe63-79f5-4f87-be8d-374b57ed216e",
+      "documentation": "Delete spot from list",
+      "method": "delete",
+      "endpoint": "sets/spotlists/:id/ids/:itemId",
+      "responses": [
+        {
+          "uuid": "e707528a-aec1-47ec-abb2-7af5555cc00b",
+          "body": "{\n  \"status\": 200,\n  \"total\": 2\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the status and the total amount of items in the list",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9c70c4fb-fdfe-4f4e-babf-bd7a8e79335e",
+      "documentation": "Get all spots",
+      "method": "get",
+      "endpoint": "spots",
+      "responses": [
+        {
+          "uuid": "b03364af-5200-4762-aa85-716d1e60d537",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of spots",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "572f3a50-b441-49a3-b9cf-5fb14e026e6a",
+      "documentation": "Get spot",
+      "method": "get",
+      "endpoint": "spots/:id",
+      "responses": [
+        {
+          "uuid": "5da166c2-afea-4d93-87ae-f19c5ac82003",
+          "body": "{\n  \"antenna_report_locations\": [\n    {\n      \"antenna_number\": 1,\n      \"report_location\": {\n        \"custom\": {\n          \"foo\": \"bar\"\n        },\n        \"id\": \"5b7d6cbd7503c445552a1664\",\n        \"label\": \"Foo Bar\",\n        \"metadata\": {\n          \"foo\": \"bar\"\n        },\n        \"time_created\": \"2018-08-30T09:51:59.737Z\",\n        \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n        \"url\": \"https://brain.intellifi.nl/api/foobar\"\n      },\n      \"report_location_id\": \"5b7d6cbd7503c445552a1664\",\n      \"report_location_url\": \"https://brain.intellifi.nl/api/foobar\"\n    }\n  ],\n  \"config\": {\n    \"foo\": \"bar\"\n  },\n  \"config_request\": {\n    \"foo\": \"bar\"\n  },\n  \"geo_coords\": {\n    \"lat\": {{faker 'datatype.number'}},\n    \"lng\": {{faker 'datatype.number'}},\n    \"time_updated\": \"2018-08-30T09:51:59.737Z\"\n  },\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"is_online\": true,\n  \"request_counter\": 73807,\n  \"senses\": {\n    \"foo\": \"bar\"\n  },\n  \"senses_request\": {\n    \"foo\": \"bar\"\n  },\n  \"serial_number\": 1337,\n  \"status\": {\n    \"foo\": \"bar\"\n  },\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spot",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6e575995-b11c-43a0-a622-028e6788692e",
+      "documentation": "Update existing spot",
+      "method": "put",
+      "endpoint": "spots/:id",
+      "responses": [
+        {
+          "uuid": "847672e1-81bc-4641-bca6-682384ba73bd",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7939dd62-e703-4c00-ab1f-983d64019b0c",
+      "documentation": "Get spotsets",
+      "method": "get",
+      "endpoint": "spots/:id/sets",
+      "responses": [
+        {
+          "uuid": "8f8cc9bc-29cc-497f-a853-4493f096d391",
+          "body": "{\n  \"created_by\": \"\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"setid\": {{faker 'datatype.number'}},\n  \"spot_id\": \"5b7d6cbd7503c445552a1664\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spotset",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cab70179-3f79-4c30-ae32-711d24c38bb8",
+      "documentation": "Create spotset",
+      "method": "post",
+      "endpoint": "spots/:id/sets",
+      "responses": [
+        {
+          "uuid": "f999558a-59bd-4911-bd2f-800212f8bcd2",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b42452af-1c72-48bb-9a89-4d63dd180142",
+      "documentation": "Get spotset",
+      "method": "get",
+      "endpoint": "spots/:id/sets/:setId",
+      "responses": [
+        {
+          "uuid": "e7f4de06-acca-4bf6-8580-453414109263",
+          "body": "{\n  \"created_by\": \"\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"setid\": {{faker 'datatype.number'}},\n  \"spot_id\": \"5b7d6cbd7503c445552a1664\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spotset",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "418e4575-10eb-44b4-8995-a36d3143c9e7",
+      "documentation": "Update existing spotset",
+      "method": "put",
+      "endpoint": "spots/:id/sets/:setId",
+      "responses": [
+        {
+          "uuid": "b7d97544-9bf2-40cd-99f8-3c85030a31fd",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3616a56d-b359-49fb-b5a3-d2268238a44e",
+      "documentation": "Get spotsets",
+      "method": "get",
+      "endpoint": "spotsets",
+      "responses": [
+        {
+          "uuid": "f055db4d-69e9-4bf2-b0d8-b4026c1ee56b",
+          "body": "{\n  \"created_by\": \"\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"setid\": {{faker 'datatype.number'}},\n  \"spot_id\": \"5b7d6cbd7503c445552a1664\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spotset",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1706e5c1-2a93-479b-bf17-ae4b67c409d2",
+      "documentation": "Create spotset",
+      "method": "post",
+      "endpoint": "spotsets",
+      "responses": [
+        {
+          "uuid": "59ac1367-3b35-4ff2-829c-1bed31d05d03",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5dc86ca6-0fb2-49d2-973b-fb3d8ebc4dc9",
+      "documentation": "Get spotset",
+      "method": "get",
+      "endpoint": "spotsets/:id",
+      "responses": [
+        {
+          "uuid": "6da68d0e-ed47-43eb-adc5-68b33f1283fe",
+          "body": "{\n  \"created_by\": \"\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"setid\": {{faker 'datatype.number'}},\n  \"spot_id\": \"5b7d6cbd7503c445552a1664\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the spotset",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06039f4f-3466-4003-aed0-635cdea24cb4",
+      "documentation": "Update existing spotset",
+      "method": "put",
+      "endpoint": "spotsets/:id",
+      "responses": [
+        {
+          "uuid": "4eb81914-b4e9-4aa2-a640-3437a92640e0",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a0114600-77e4-431a-b174-b6c65369520e",
+      "documentation": "Get all subscriptions",
+      "method": "get",
+      "endpoint": "subscriptions",
+      "responses": [
+        {
+          "uuid": "337463f6-f0e6-498a-8804-3516da180594",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of subscriptions",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0b5eecec-ea00-4103-9b10-2a9866b754e2",
+      "documentation": "Create subscription",
+      "method": "post",
+      "endpoint": "subscriptions",
+      "responses": [
+        {
+          "uuid": "5a02ffa2-beef-4224-858c-75721786669f",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dd9206b7-b624-4eff-b51c-3ad8c2cfe694",
+      "documentation": "Delete subscription",
+      "method": "delete",
+      "endpoint": "subscriptions/:id",
+      "responses": [
+        {
+          "uuid": "cec29a1f-90be-4a52-9a9a-98a9ac7198ad",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "070336e6-5945-4b2d-bd10-002d633e68ed",
+      "documentation": "Get subscription",
+      "method": "get",
+      "endpoint": "subscriptions/:id",
+      "responses": [
+        {
+          "uuid": "ab359613-78ae-47b3-bf78-0eabad1b3334",
+          "body": "{\n  \"custom\": {\n    \"foo\": \"bar\"\n  },\n  \"database_hold_time_h\": 2,\n  \"description\": \"Item events\",\n  \"events_url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"populate_events\": {{faker 'datatype.boolean'}},\n  \"target_delivery_last_failure\": {},\n  \"target_delivery_status\": {},\n  \"target_retry\": {{faker 'datatype.boolean'}},\n  \"target_url\": \"\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"topic_filter\": \"items/#\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\",\n  \"verify_target_certificate\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the subscription",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ee05eaf3-647d-47d8-a9eb-1c38ace1f962",
+      "documentation": "Update existing subscription",
+      "method": "put",
+      "endpoint": "subscriptions/:id",
+      "responses": [
+        {
+          "uuid": "a7a5e8a0-46c9-4c9e-a41f-e64db7e795cb",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a902280-2d46-4d34-a43d-f4c3074fbc6c",
+      "documentation": "Get subscription events",
+      "method": "get",
+      "endpoint": "subscriptions/:id/events",
+      "responses": [
+        {
+          "uuid": "094fb7a5-2abd-4eae-8dd5-483163f1c448",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the events for a specific subscription",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "02a3f784-3ad9-40da-8760-cd55a9988f17",
+      "documentation": "Get all users",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "d70d7e1f-d41e-4a3f-8687-64c8dd961e6d",
+          "body": "{\n  \"count\": 293401,\n  \"count_current\": 100,\n  \"is_limited\": true,\n  \"next_url\": \"https://brain.intellifi.nl/api/items?before_id=5b599c427503c44239cf0399\",\n  \"query_duration_ms\": 42,\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing a list of users",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "66d4b54c-f67b-4e21-bb15-70d28febab23",
+      "documentation": "Create user",
+      "method": "post",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "31b97bb4-b6aa-4b71-a396-9e842d89765b",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "A JSON object containing the newly added resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7dc6971f-d0e1-4490-b77e-1c92d051b505",
+      "documentation": "Delete user",
+      "method": "delete",
+      "endpoint": "users/:id",
+      "responses": [
+        {
+          "uuid": "5beb7c63-8ef5-4119-ad00-1e6805adb4e4",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the deleted resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d7f7deaf-f445-4f1a-a23c-2383363e90e9",
+      "documentation": "Get user",
+      "method": "get",
+      "endpoint": "users/:id",
+      "responses": [
+        {
+          "uuid": "dcda42e8-5b3c-4f97-825d-bfdd6b5047e9",
+          "body": "{\n  \"email\": \"user@intellifi.nl\",\n  \"first_name\": \"Foo\",\n  \"id\": \"5b7d6cbd7503c445552a1664\",\n  \"is_admin\": {{faker 'datatype.boolean'}},\n  \"is_locked\": {{faker 'datatype.boolean'}},\n  \"last_name\": \"Bar\",\n  \"password\": \"password1\",\n  \"time_created\": \"2018-08-30T09:51:59.737Z\",\n  \"time_updated\": \"2018-08-30T09:51:59.737Z\",\n  \"url\": \"https://brain.intellifi.nl/api/foobar\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the user",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e24da3f3-615e-4ce8-b4b8-374412d4ad5b",
+      "documentation": "Update existing user",
+      "method": "put",
+      "endpoint": "users/:id",
+      "responses": [
+        {
+          "uuid": "d1b9f69f-9d35-4754-9fe5-c61a184afb34",
+          "body": "{\n  \"resource\": {\n    \"id\": \"5b7d6cbd7503c445552a1664\",\n    \"url\": \"https://brain.intellifi.nl/api/foobar\"\n  },\n  \"status\": 200\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A JSON object containing the modified resource",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

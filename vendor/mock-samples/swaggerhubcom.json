@@ -1,0 +1,1672 @@
+{
+  "uuid": "59678a04-0ead-47f1-a2f2-8c8f73e5bd83",
+  "lastMigration": 24,
+  "name": "SwaggerHub Registry API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "39a203f0-e023-40d2-a48f-f6452330f369",
+      "documentation": "Retrieves a list of currently defined APIs in APIs.json format.",
+      "method": "get",
+      "endpoint": "apis",
+      "responses": [
+        {
+          "uuid": "9b75d3e5-b077-43f4-bff3-8c72e4ad6441",
+          "body": "",
+          "latency": 0,
+          "statusCode": 303,
+          "label": "303 response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f3f24c1b-9628-446c-b6d9-ae08f35e796b",
+      "documentation": "Retrieves an APIs.json listing of all APIs defined for this owner",
+      "method": "get",
+      "endpoint": "apis/:owner",
+      "responses": [
+        {
+          "uuid": "d8824a2b-08b4-4a90-93c3-e591001b785e",
+          "body": "{\n  \"apis\": [\n    {\n      \"description\": \"This is a sample Petstore server.\",\n      \"name\": \"petstore\",\n      \"properties\": [\n        {\n          \"type\": \"Swagger\",\n          \"url\": \"https://api.swaggerhub.com/apis/username/petstore/1.1\"\n        },\n        {\n          \"type\": \"X-Version\",\n          \"value\": \"1.1\"\n        },\n        {\n          \"type\": \"X-Created\",\n          \"value\": \"2017-01-16T13:39:06Z\"\n        },\n        {\n          \"type\": \"X-Modified\",\n          \"value\": \"2017-01-25T11:48:13Z\"\n        },\n        {\n          \"type\": \"X-Published\",\n          \"value\": \"true\"\n        },\n        {\n          \"type\": \"X-Versions\",\n          \"value\": \"1.0,*1.1,1.1-oas3\"\n        },\n        {\n          \"type\": \"X-Private\",\n          \"value\": \"false\"\n        },\n        {\n          \"type\": \"X-Notifications\",\n          \"value\": \"true\"\n        }\n      ],\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"Default registry listing\",\n  \"modified\": \"{{faker 'date.recent' 365}}\",\n  \"name\": \"Default listing\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"specificationVersion\": \"\",\n  \"totalCount\": {{faker 'datatype.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of APIs in APIs.json format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "24afd46c-f9ab-466c-a7e4-b8c1f4222a8f",
+      "documentation": "Deletes the specified API",
+      "method": "delete",
+      "endpoint": "apis/:owner/:api",
+      "responses": [
+        {
+          "uuid": "8fb78eea-711f-4041-8dd0-0c34bf27ee20",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The API was successfully deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "beec836c-f176-4489-bf97-ecbdf6a76657",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "373dbde9-df67-4244-852e-d3e0ee959f0e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c1a5d0eb-bc3d-497f-a037-36e743de9dd1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "The API has published versions and cannot be deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5ed7300-02bb-412a-961d-57132dd0dec6",
+      "documentation": "Retrieves an APIs.json listing for all API versions for this owner and API",
+      "method": "get",
+      "endpoint": "apis/:owner/:api",
+      "responses": [
+        {
+          "uuid": "f073b5db-de24-423a-9aba-d587f11aeeb3",
+          "body": "{\n  \"apis\": [\n    {\n      \"description\": \"This is a sample Petstore server.\",\n      \"name\": \"petstore\",\n      \"properties\": [\n        {\n          \"type\": \"Swagger\",\n          \"url\": \"https://api.swaggerhub.com/apis/username/petstore/1.1\"\n        },\n        {\n          \"type\": \"X-Version\",\n          \"value\": \"1.1\"\n        },\n        {\n          \"type\": \"X-Created\",\n          \"value\": \"2017-01-16T13:39:06Z\"\n        },\n        {\n          \"type\": \"X-Modified\",\n          \"value\": \"2017-01-25T11:48:13Z\"\n        },\n        {\n          \"type\": \"X-Published\",\n          \"value\": \"true\"\n        },\n        {\n          \"type\": \"X-Versions\",\n          \"value\": \"1.0,*1.1,1.1-oas3\"\n        },\n        {\n          \"type\": \"X-Private\",\n          \"value\": \"false\"\n        },\n        {\n          \"type\": \"X-Notifications\",\n          \"value\": \"true\"\n        }\n      ],\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"Default registry listing\",\n  \"modified\": \"{{faker 'date.recent' 365}}\",\n  \"name\": \"Default listing\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"specificationVersion\": \"\",\n  \"totalCount\": {{faker 'datatype.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of API versions in APIs.json format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "75849530-99a9-40db-8efc-888dd503a7ee",
+      "documentation": "Saves the provided Swagger definition",
+      "method": "post",
+      "endpoint": "apis/:owner/:api",
+      "responses": [
+        {
+          "uuid": "19db1f0f-1d05-4e4b-a59d-ad28c58fa6ce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The API was successfully saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c18e6c8e-e32d-44c3-a229-b6a212c1a477",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "New API was successfully saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dd9f620c-e421-4053-ae7d-eda0148473af",
+          "body": "",
+          "latency": 0,
+          "statusCode": 205,
+          "label": "The API was successfully saved and should be reloaded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e378de99-5430-41e4-9743-2f08caa937e3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "The Swagger definition was invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b30253a4-afd6-4b05-8a63-30762c920cf4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Maximum number of APIs reached",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eb81b6d5-3de1-465a-9b5b-1da4f7e395d0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Cannot overwrite a published API version",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc202e6f-6607-4a04-afe6-31de096b8d9b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "Invalid content type",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d3a65727-71a5-4629-ab98-70e42f2c10ed",
+      "documentation": "Deletes API's collaboration",
+      "method": "delete",
+      "endpoint": "apis/:owner/:api/.collaboration",
+      "responses": [
+        {
+          "uuid": "36733063-1421-4185-beeb-30e9ea4a74bc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted a collaboration",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "22a0e39e-1452-4bca-9dca-b5f87039e04a",
+      "documentation": "Gets API's collaboration",
+      "method": "get",
+      "endpoint": "apis/:owner/:api/.collaboration",
+      "responses": [
+        {
+          "uuid": "52375b4c-827a-4901-8beb-cf58e50af08e",
+          "body": "{\n  \"hint\": {\n    \"type\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"members\": [\n    {\n      \"name\": \"\",\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"title\": \"\",\n      \"uuid\": \"\"\n    }\n  ],\n  \"owner\": \"\",\n  \"owners\": [\n    \"\"\n  ],\n  \"pendingMembers\": [\n    {\n      \"name\": \"\",\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"title\": \"\",\n      \"uuid\": \"\"\n    }\n  ],\n  \"teams\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The existing collaboration on an API",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d49a96dd-46d3-436c-85e1-d0d859362276",
+      "documentation": "Updates API's collaboration",
+      "method": "put",
+      "endpoint": "apis/:owner/:api/.collaboration",
+      "responses": [
+        {
+          "uuid": "28244af5-2bd0-413d-b10f-a52f6c4d73bb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated API collaboration",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "743fde65-825b-4789-89a7-7e461d594e0a",
+      "documentation": "Deletes a particular version of the specified API",
+      "method": "delete",
+      "endpoint": "apis/:owner/:api/:version",
+      "responses": [
+        {
+          "uuid": "50c4804a-0d83-42cc-a5d6-2e73cdf8f998",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The API version was successfully deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "48dae89e-9f88-470e-a2c9-1d4aaa3c6620",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "80ffbbb8-e982-4170-be2d-7b18a811dad5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5efb83fd-5dc3-45aa-a16a-55a31d074acd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "The API version is published and cannot be deleted or it is the only version of this API",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b0424bcb-38b4-41fb-af1d-e8e010638bc0",
+      "documentation": "Retrieves the Swagger definition for the specified API and version",
+      "method": "get",
+      "endpoint": "apis/:owner/:api/:version",
+      "responses": [
+        {
+          "uuid": "3fe1e6db-5d93-4a78-bf5e-f132b5dce7c6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Swagger API in requested format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e6a9c86c-ceb3-4339-bd35-892f254f3e64",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d00a0506-bb81-4659-a371-98995007e507",
+      "documentation": "Returns comments for the specified API version",
+      "method": "get",
+      "endpoint": "apis/:owner/:api/:version/.comment",
+      "responses": [
+        {
+          "uuid": "d86085b9-910f-459f-9a3b-1c2b6a65f355",
+          "body": "[\n  {\n    \"body\": \"\",\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"141b0adb-f26a-438b-be78-906445c91a36\",\n    \"modified\": \"{{faker 'date.recent' 365}}\",\n    \"user\": {\n      \"active\": {{faker 'datatype.boolean'}},\n      \"id\": \"alex\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of comments for the specified API version",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4f008575-4cbf-4968-986a-98bdc5391841",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No comments were found for the specified API version",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8df7c083-7a62-432e-b83c-b9e63b8c85ff",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The access token is missing or invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27f0f836-86f9-4932-9a8c-046623d93b8e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied (insufficient user permissions)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3af87d65-24a3-43e3-aee2-630a614c845b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API or version was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1451479f-6524-4a63-b1c9-4f69c18de1d0",
+      "documentation": "Retrieves the Swagger definition for the specified API and version in JSON format",
+      "method": "get",
+      "endpoint": "apis/:owner/:api/:version/swagger.json",
+      "responses": [
+        {
+          "uuid": "0430a716-535f-4494-8c10-5d03ee9a56b4",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Swagger API in JSON format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3474a177-483e-46d1-ae5e-6d3a59dcedcd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9fefec8-2e08-456f-b154-9914a29e87a0",
+      "documentation": "Retrieves the Swagger definition for the specified API and version in YAML format",
+      "method": "get",
+      "endpoint": "apis/:owner/:api/:version/swagger.yaml",
+      "responses": [
+        {
+          "uuid": "a1453cbc-6521-456b-a33c-836a79e51ee6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Swagger API in YAML format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/yaml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "14894019-2c91-4ff2-b8c3-1254754181af",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified API was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/yaml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bb4b1fcf-095b-4ce5-ae2d-d164af6f5744",
+      "documentation": "Retrieves a list of currently defined domains in APIs.json format",
+      "method": "get",
+      "endpoint": "domains",
+      "responses": [
+        {
+          "uuid": "c4109179-8d31-4c28-a277-afcff0798cf5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 303,
+          "label": "303 response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "11feb3fc-ac25-439a-9e84-05023f3224b7",
+      "documentation": "Retrieves an APIs.json listing of all domains defined for this owner",
+      "method": "get",
+      "endpoint": "domains/:owner",
+      "responses": [
+        {
+          "uuid": "5f9e5c36-3637-43b8-95f4-9484c114d09a",
+          "body": "{\n  \"apis\": [\n    {\n      \"description\": \"This is a sample Petstore server.\",\n      \"name\": \"petstore\",\n      \"properties\": [\n        {\n          \"type\": \"Swagger\",\n          \"url\": \"https://api.swaggerhub.com/apis/username/petstore/1.1\"\n        },\n        {\n          \"type\": \"X-Version\",\n          \"value\": \"1.1\"\n        },\n        {\n          \"type\": \"X-Created\",\n          \"value\": \"2017-01-16T13:39:06Z\"\n        },\n        {\n          \"type\": \"X-Modified\",\n          \"value\": \"2017-01-25T11:48:13Z\"\n        },\n        {\n          \"type\": \"X-Published\",\n          \"value\": \"true\"\n        },\n        {\n          \"type\": \"X-Versions\",\n          \"value\": \"1.0,*1.1,1.1-oas3\"\n        },\n        {\n          \"type\": \"X-Private\",\n          \"value\": \"false\"\n        },\n        {\n          \"type\": \"X-Notifications\",\n          \"value\": \"true\"\n        }\n      ],\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"Default registry listing\",\n  \"modified\": \"{{faker 'date.recent' 365}}\",\n  \"name\": \"Default listing\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"specificationVersion\": \"\",\n  \"totalCount\": {{faker 'datatype.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of domains in APIs.json format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a4948c7-07b8-4ffc-9743-a39b12b9dd84",
+      "documentation": "Deletes the specified domain",
+      "method": "delete",
+      "endpoint": "domains/:owner/:domain",
+      "responses": [
+        {
+          "uuid": "28488216-ce84-40af-b264-bdf5f3d170c3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The domain was successfully deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1177ec06-fd9b-48eb-9804-d77c8677fd61",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "caa9c92f-d6a3-44a5-959a-520f3a8cacf8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fcc4085c-3dc3-42f1-8fce-0b2134a3de23",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "The domain has published versions and can not be deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6bfa26f2-91cd-45de-a333-dd6efcaf3cd4",
+          "body": "{\n  \"items\": [\n    {}\n  ],\n  \"offset\": {{faker 'datatype.number'}},\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 424,
+          "label": "Cannot delete because there are some dependencies for domain",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eec14b4d-e03d-44a1-8f0d-752be32017a7",
+      "documentation": "Retrieves an APIs.json listing for all domain versions for this owner and domain",
+      "method": "get",
+      "endpoint": "domains/:owner/:domain",
+      "responses": [
+        {
+          "uuid": "b431c324-ebc6-4cd1-9822-0c08c9702078",
+          "body": "{\n  \"apis\": [\n    {\n      \"description\": \"This is a sample Petstore server.\",\n      \"name\": \"petstore\",\n      \"properties\": [\n        {\n          \"type\": \"Swagger\",\n          \"url\": \"https://api.swaggerhub.com/apis/username/petstore/1.1\"\n        },\n        {\n          \"type\": \"X-Version\",\n          \"value\": \"1.1\"\n        },\n        {\n          \"type\": \"X-Created\",\n          \"value\": \"2017-01-16T13:39:06Z\"\n        },\n        {\n          \"type\": \"X-Modified\",\n          \"value\": \"2017-01-25T11:48:13Z\"\n        },\n        {\n          \"type\": \"X-Published\",\n          \"value\": \"true\"\n        },\n        {\n          \"type\": \"X-Versions\",\n          \"value\": \"1.0,*1.1,1.1-oas3\"\n        },\n        {\n          \"type\": \"X-Private\",\n          \"value\": \"false\"\n        },\n        {\n          \"type\": \"X-Notifications\",\n          \"value\": \"true\"\n        }\n      ],\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"Default registry listing\",\n  \"modified\": \"{{faker 'date.recent' 365}}\",\n  \"name\": \"Default listing\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"specificationVersion\": \"\",\n  \"totalCount\": {{faker 'datatype.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of domain versions in APIs.json format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1820a246-aedb-40cc-be3c-a90ad6f6f47e",
+      "documentation": "Saves the provided Swagger definition of a domain",
+      "method": "post",
+      "endpoint": "domains/:owner/:domain",
+      "responses": [
+        {
+          "uuid": "3309cf24-84a0-4d72-87fa-9399137855c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The domain was successfully saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4cf13407-cabd-4e97-9a38-1af4023ef381",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "New domain was successfully saved",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e0669c9e-a9be-45b7-b4c2-93cc8894a750",
+          "body": "",
+          "latency": 0,
+          "statusCode": 205,
+          "label": "The domain was successfully saved and should be reloaded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27109b72-1c47-4f42-ad37-faab731d5bf1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Maximum number of domains reached",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "20ae809c-5d52-44a6-b80f-2f5a12114bcd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Cannot overwrite a published domain version",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2f49eec6-27cb-48e2-a6ce-b945e2add029",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "Invalid content type",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "32020f49-c131-44f3-9619-f8cbe4fd1ee8",
+      "documentation": "Deletes a particular version of the specified domain",
+      "method": "delete",
+      "endpoint": "domains/:owner/:domain/:version",
+      "responses": [
+        {
+          "uuid": "80e461bd-0873-4542-80bd-839bc5c37bd7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The domain version was successfully deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6d3d0c09-1ccd-40ed-be41-dbf3250e954c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1c933569-ccd2-4c28-a06b-4db326d6848a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6402d11f-52e6-4d82-8bea-ac51908060e8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "The domain version is published and can not be deleted or it is the only version of this API",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "91eb4272-d313-40d3-8f45-577e490323d8",
+          "body": "{\n  \"items\": [\n    {}\n  ],\n  \"offset\": {{faker 'datatype.number'}},\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 424,
+          "label": "Cannot delete because there are some dependencies for domain",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9af802d0-6b6c-4d01-8c71-f3b65751f15f",
+      "documentation": "Retrieves the Swagger definition for the specified domain and version",
+      "method": "get",
+      "endpoint": "domains/:owner/:domain/:version",
+      "responses": [
+        {
+          "uuid": "c0a45c76-dba2-45f3-afd3-74b6b7a8f65f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The Swagger domain in requested format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "60ec558b-3ad6-4470-80cf-a06a0e27e53e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b11911e-228f-4205-bdf0-d1d73e6a6970",
+      "documentation": "Returns comments for the specified domain version",
+      "method": "get",
+      "endpoint": "domains/:owner/:domain/:version/.comment",
+      "responses": [
+        {
+          "uuid": "0b14c50b-7b95-423d-8b3f-321de78f736f",
+          "body": "[\n  {\n    \"body\": \"\",\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"141b0adb-f26a-438b-be78-906445c91a36\",\n    \"modified\": \"{{faker 'date.recent' 365}}\",\n    \"user\": {\n      \"active\": {{faker 'datatype.boolean'}},\n      \"id\": \"alex\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Comments for the specified domain",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c0fb3b6b-55ca-4c43-a0cf-23eee2a0d0d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No comments were found for the specified domain version",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "48f2c89f-8194-4509-8af7-10a3f3d88766",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "The access token is missing or invalid",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ca629ed3-9a52-40a7-bf23-a08c615a8d05",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access denied (insufficient user permissions)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b71fd95b-6ad5-4a5d-86ce-c755d9e5cdbe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain or version was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4e5f85b7-b22e-43ec-a78d-affb4e4cf4d6",
+      "documentation": "Retrieves the definition for the specified domain and version in JSON format",
+      "method": "get",
+      "endpoint": "domains/:owner/:domain/:version/domain.json",
+      "responses": [
+        {
+          "uuid": "56394726-e242-4ba9-a7eb-c7ec801a6c9d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Definition in JSON format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c815e7b9-a14b-4d12-996c-c6758d4730a1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "48f9900a-1b67-45f5-ad11-ae527a9b46fb",
+      "documentation": "Retrieves the definition for the specified domain and version in YAML format",
+      "method": "get",
+      "endpoint": "domains/:owner/:domain/:version/domain.yaml",
+      "responses": [
+        {
+          "uuid": "9b8a4829-37eb-4307-b635-fa0e72b19c09",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Definition in YAML format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/yaml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "32433ccd-ca5e-43ea-b7f7-d074b080e595",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified domain was not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/yaml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4e7cc753-af98-442d-a8d8-a1775f17a9a3",
+      "documentation": "Retrieves a list of currently defined APIs and Domains in APIs.json format",
+      "method": "get",
+      "endpoint": "specs",
+      "responses": [
+        {
+          "uuid": "1f2cde41-8dda-48f4-b751-39836b786bca",
+          "body": "{\n  \"apis\": [\n    {\n      \"description\": \"This is a sample Petstore server.\",\n      \"name\": \"petstore\",\n      \"properties\": [\n        {\n          \"type\": \"Swagger\",\n          \"url\": \"https://api.swaggerhub.com/apis/username/petstore/1.1\"\n        },\n        {\n          \"type\": \"X-Version\",\n          \"value\": \"1.1\"\n        },\n        {\n          \"type\": \"X-Created\",\n          \"value\": \"2017-01-16T13:39:06Z\"\n        },\n        {\n          \"type\": \"X-Modified\",\n          \"value\": \"2017-01-25T11:48:13Z\"\n        },\n        {\n          \"type\": \"X-Published\",\n          \"value\": \"true\"\n        },\n        {\n          \"type\": \"X-Versions\",\n          \"value\": \"1.0,*1.1,1.1-oas3\"\n        },\n        {\n          \"type\": \"X-Private\",\n          \"value\": \"false\"\n        },\n        {\n          \"type\": \"X-Notifications\",\n          \"value\": \"true\"\n        }\n      ],\n      \"tags\": [\n        \"\"\n      ]\n    }\n  ],\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"description\": \"Default registry listing\",\n  \"modified\": \"{{faker 'date.recent' 365}}\",\n  \"name\": \"Default listing\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"specificationVersion\": \"\",\n  \"totalCount\": {{faker 'datatype.number'}},\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of APIs and Domains in APIs.json format",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,362 @@
+{
+  "uuid": "af68e3fd-de66-47e8-986a-7b9635f4d051",
+  "lastMigration": 24,
+  "name": "ACE Provisioning ManagementPartner",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "34526446-2a03-4556-8f88-ff18fd3de883",
+      "documentation": "Get operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.ManagementPartner/operations",
+      "responses": [
+        {
+          "uuid": "0206c7fe-d108-4bd4-9ab7-d88148010fba",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\",\n      \"origin\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List all the operations.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8c714723-e817-4da5-b7fc-4a1f405884c4",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8dc010a2-8ca7-496d-be3b-259d66883bd9",
+      "documentation": "Get a specific `Partner`.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.ManagementPartner/partners",
+      "responses": [
+        {
+          "uuid": "eef3a6b8-5f8c-4abb-8f10-542490a93392",
+          "body": "{\n  \"etag\": {{faker 'datatype.number'}},\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdTime\": \"{{faker 'date.recent' 365}}\",\n    \"objectId\": \"\",\n    \"partnerId\": \"\",\n    \"partnerName\": \"\",\n    \"state\": \"{{oneOf (array 'Active' 'Deleted')}}\",\n    \"tenantId\": \"\",\n    \"updatedTime\": \"{{faker 'date.recent' 365}}\",\n    \"version\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get the details of the `Partner`.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "702ecb6d-f18c-4656-993f-22e81c1d27a9",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00667892-9db3-4a2c-82ef-5e5510487ab2",
+      "documentation": "Delete a specific `Partner`.",
+      "method": "delete",
+      "endpoint": "providers/Microsoft.ManagementPartner/partners/:partnerId",
+      "responses": [
+        {
+          "uuid": "e3e5254f-0e11-4631-8697-4314a7679b0e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Deleted the `Partner`.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d66ccb32-7d0c-4b93-9136-2c4207206415",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b6bb94d9-96f9-4dd7-899f-1631fce50500",
+      "documentation": "Get a specific `Partner`.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.ManagementPartner/partners/:partnerId",
+      "responses": [
+        {
+          "uuid": "a96cdfd2-1c8c-4b90-8a18-8ddda815032b",
+          "body": "{\n  \"etag\": {{faker 'datatype.number'}},\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdTime\": \"{{faker 'date.recent' 365}}\",\n    \"objectId\": \"\",\n    \"partnerId\": \"\",\n    \"partnerName\": \"\",\n    \"state\": \"{{oneOf (array 'Active' 'Deleted')}}\",\n    \"tenantId\": \"\",\n    \"updatedTime\": \"{{faker 'date.recent' 365}}\",\n    \"version\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get the details of the `Partner`.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "834cce50-7b52-490d-9b61-ace32dca6418",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e08a5f58-5c0d-4b30-968a-975144b962b1",
+      "documentation": "Update a specific `Partner`.",
+      "method": "patch",
+      "endpoint": "providers/Microsoft.ManagementPartner/partners/:partnerId",
+      "responses": [
+        {
+          "uuid": "6fd802da-d515-4d03-aa9e-77e370249161",
+          "body": "{\n  \"etag\": {{faker 'datatype.number'}},\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdTime\": \"{{faker 'date.recent' 365}}\",\n    \"objectId\": \"\",\n    \"partnerId\": \"\",\n    \"partnerName\": \"\",\n    \"state\": \"{{oneOf (array 'Active' 'Deleted')}}\",\n    \"tenantId\": \"\",\n    \"updatedTime\": \"{{faker 'date.recent' 365}}\",\n    \"version\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get the details of the `Partner`.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f1e66e1f-91c4-486e-9236-3dafc38bce26",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a39fb3de-13e1-4ab0-a846-3225c0b57c04",
+      "documentation": "Create a specific `Partner`.",
+      "method": "put",
+      "endpoint": "providers/Microsoft.ManagementPartner/partners/:partnerId",
+      "responses": [
+        {
+          "uuid": "72be6e33-d2bd-42fb-87d3-eba6225be0a7",
+          "body": "{\n  \"etag\": {{faker 'datatype.number'}},\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdTime\": \"{{faker 'date.recent' 365}}\",\n    \"objectId\": \"\",\n    \"partnerId\": \"\",\n    \"partnerName\": \"\",\n    \"state\": \"{{oneOf (array 'Active' 'Deleted')}}\",\n    \"tenantId\": \"\",\n    \"updatedTime\": \"{{faker 'date.recent' 365}}\",\n    \"version\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get the details of the `Partner`.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "80177b99-3e0a-4f52-b13d-296624d468f0",
+          "body": "{\n  \"error\": {\n    \"code\": \"{{oneOf (array 'NotFound' 'Conflict' 'BadRequest')}}\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Unexpected error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

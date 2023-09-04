@@ -1,0 +1,2790 @@
+{
+  "uuid": "3805ac43-c250-4970-8f8b-9b01db665cf9",
+  "lastMigration": 24,
+  "name": "Transport for London Unified API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "1b6334e2-593b-4e8a-a163-29459dd3f2b2",
+      "documentation": "Gets all accident details for accidents occuring in the specified year",
+      "method": "get",
+      "endpoint": "AccidentStats/:year",
+      "responses": [
+        {
+          "uuid": "006198ad-599c-46ac-8cb6-dd56ecd8eca3",
+          "body": "[\n  {\n    \"borough\": \"\",\n    \"casualties\": [\n      {\n        \"age\": {{faker 'datatype.number'}},\n        \"ageBand\": \"\",\n        \"class\": \"\",\n        \"mode\": \"\",\n        \"severity\": \"\"\n      }\n    ],\n    \"date\": \"{{faker 'date.recent' 365}}\",\n    \"id\": {{faker 'datatype.number'}},\n    \"lat\": {{faker 'datatype.float'}},\n    \"location\": \"\",\n    \"lon\": {{faker 'datatype.float'}},\n    \"severity\": \"\",\n    \"vehicles\": [\n      {\n        \"type\": \"\"\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f2ad8b2f-60ba-4085-83cd-0b05aeca38da",
+      "documentation": "Gets air quality data feed",
+      "method": "get",
+      "endpoint": "AirQuality",
+      "responses": [
+        {
+          "uuid": "f9c3fad2-0a46-4765-a529-7e66013f01e8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1a108788-ce63-40d6-b02d-c3a0cda3b09f",
+      "documentation": "Gets all bike point locations. The Place object has an addtionalProperties array which contains the nbBikes, nbDocks and nbSpaces\r\n            numbers which give the status of the BikePoint. A mismatch in these numbers i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.",
+      "method": "get",
+      "endpoint": "BikePoint",
+      "responses": [
+        {
+          "uuid": "32028219-69bc-4e6b-b5b5-1440f2d57533",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e1e3b2b0-312d-42e6-a99b-2b31dea815db",
+      "documentation": "Search for bike stations by their name, a bike point's name often contains information about the name of the street\r\n            or nearby landmarks, for example. Note that the search result does not contain the PlaceProperties i.e. the status\r\n            or occupancy of the BikePoint, to get that information you should retrieve the BikePoint by its id on /BikePoint/id.",
+      "method": "get",
+      "endpoint": "BikePoint/Search",
+      "responses": [
+        {
+          "uuid": "25cfc47c-86c7-48f3-b819-b8f28925b930",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9abb9eb-0d1c-40bf-920f-b81bd5971381",
+      "documentation": "Gets the bike point with the given id.",
+      "method": "get",
+      "endpoint": "BikePoint/:id",
+      "responses": [
+        {
+          "uuid": "9ea0fa48-4704-4532-8def-d51ce108e132",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ffde7566-1ff1-4c3b-976a-5bfe1dc4393a",
+      "documentation": "Gets taxis and minicabs contact information",
+      "method": "get",
+      "endpoint": "Cabwise/search",
+      "responses": [
+        {
+          "uuid": "693cd46a-ea8d-4c2c-bc63-26302ed26f7b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "71943a8e-5e0d-4245-b67d-c1530fb67b29",
+      "documentation": "Perform a Journey Planner search from the parameters specified in simple types",
+      "method": "get",
+      "endpoint": "Journey/JourneyResults/:from/to/:to",
+      "responses": [
+        {
+          "uuid": "42eb075c-f4a1-4129-8e97-bbca2d60c246",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6974dd23-250d-479d-ab7d-12d4b8cc29bc",
+      "documentation": "Gets a list of all of the available journey planner modes",
+      "method": "get",
+      "endpoint": "Journey/Meta/Modes",
+      "responses": [
+        {
+          "uuid": "47f704ae-63a1-47a8-b4b6-cbd2328a09fe",
+          "body": "[\n  {\n    \"isFarePaying\": {{faker 'datatype.boolean'}},\n    \"isScheduledService\": {{faker 'datatype.boolean'}},\n    \"isTflService\": {{faker 'datatype.boolean'}},\n    \"modeName\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd0da511-956f-4817-91a8-e4e263d3cf62",
+      "documentation": "Gets a list of valid disruption categories",
+      "method": "get",
+      "endpoint": "Line/Meta/DisruptionCategories",
+      "responses": [
+        {
+          "uuid": "2fee07f3-4b88-40f0-96aa-4b190eb95928",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ef49e473-76d1-41b9-8002-2d4dc10b547e",
+      "documentation": "Gets a list of valid modes",
+      "method": "get",
+      "endpoint": "Line/Meta/Modes",
+      "responses": [
+        {
+          "uuid": "fcc14083-7283-42a7-b66c-821f758c54ee",
+          "body": "[\n  {\n    \"isFarePaying\": {{faker 'datatype.boolean'}},\n    \"isScheduledService\": {{faker 'datatype.boolean'}},\n    \"isTflService\": {{faker 'datatype.boolean'}},\n    \"modeName\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a30e057f-ee5c-4a9e-a855-2ec6959e1fe4",
+      "documentation": "Gets a list of valid ServiceTypes to filter on",
+      "method": "get",
+      "endpoint": "Line/Meta/ServiceTypes",
+      "responses": [
+        {
+          "uuid": "6bf529b7-962a-431a-88b4-7a451684c8d3",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b8e34bf-56cf-4fea-92f4-3cac61396777",
+      "documentation": "Gets a list of valid severity codes",
+      "method": "get",
+      "endpoint": "Line/Meta/Severity",
+      "responses": [
+        {
+          "uuid": "23b38e00-9b76-414e-a4dd-d6a961cedc5d",
+          "body": "[\n  {\n    \"description\": \"\",\n    \"modeName\": \"\",\n    \"severityLevel\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a8ab7aa3-c5ba-42bf-9d4e-9b043efef44b",
+      "documentation": "Gets lines that serve the given modes.",
+      "method": "get",
+      "endpoint": "Line/Mode/:modes",
+      "responses": [
+        {
+          "uuid": "b759a9c7-479a-4b38-a94a-20255c157faa",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fcde0e2b-4432-4d04-bca4-e528e52b02fe",
+      "documentation": "Get disruptions for all lines of the given modes.",
+      "method": "get",
+      "endpoint": "Line/Mode/:modes/Disruption",
+      "responses": [
+        {
+          "uuid": "06d67ce4-4c04-466a-bcd1-ce801467dfe0",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7127833b-08fe-4d07-85a8-b1896b5a54e1",
+      "documentation": "Gets all lines and their valid routes for given modes, including the name and id of the originating and terminating stops for each route",
+      "method": "get",
+      "endpoint": "Line/Mode/:modes/Route",
+      "responses": [
+        {
+          "uuid": "02242d00-5b59-46dc-8222-b5b56bc6b9fa",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "961c136f-d825-4bbf-848d-979711d5f5ff",
+      "documentation": "Gets the line status of for all lines for the given modes",
+      "method": "get",
+      "endpoint": "Line/Mode/:modes/Status",
+      "responses": [
+        {
+          "uuid": "c192ce74-2bd1-4f6b-b62d-2533d5e3be89",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "08d1b5f8-dce8-4728-8520-324bf564bd51",
+      "documentation": "Get all valid routes for all lines, including the name and id of the originating and terminating stops for each route.",
+      "method": "get",
+      "endpoint": "Line/Route",
+      "responses": [
+        {
+          "uuid": "4946c157-e835-44f6-8afd-6215718a9d17",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d66438a5-2de3-4ab0-a4be-e6adc5e7ab8f",
+      "documentation": "Search for lines or routes matching the query string",
+      "method": "get",
+      "endpoint": "Line/Search/:query",
+      "responses": [
+        {
+          "uuid": "f0c62ecc-6002-44c2-b4e3-c35288cbaeae",
+          "body": "{\n  \"input\": \"\",\n  \"searchMatches\": [\n    {\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lineId\": \"\",\n      \"lineName\": \"\",\n      \"lineRouteSection\": [\n        {\n          \"destination\": \"\",\n          \"direction\": \"\",\n          \"fromStation\": \"\",\n          \"routeId\": {{faker 'datatype.number'}},\n          \"serviceType\": \"\",\n          \"toStation\": \"\",\n          \"vehicleDestinationText\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"matchedRouteSections\": [\n        {\n          \"id\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"matchedStops\": [\n        {\n          \"accessibilitySummary\": \"\",\n          \"direction\": \"\",\n          \"hasDisruption\": {{faker 'datatype.boolean'}},\n          \"icsId\": \"\",\n          \"id\": \"\",\n          \"lat\": {{faker 'datatype.float'}},\n          \"lines\": [\n            {\n              \"crowding\": {\n                \"passengerFlows\": [\n                  {\n                    \"timeSlice\": \"\",\n                    \"value\": {{faker 'datatype.number'}}\n                  }\n                ],\n                \"trainLoadings\": [\n                  {\n                    \"direction\": \"\",\n                    \"line\": \"\",\n                    \"lineDirection\": \"\",\n                    \"naptanTo\": \"\",\n                    \"platformDirection\": \"\",\n                    \"timeSlice\": \"\",\n                    \"value\": {{faker 'datatype.number'}}\n                  }\n                ]\n              },\n              \"fullName\": \"\",\n              \"id\": \"\",\n              \"name\": \"\",\n              \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n              \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n              \"type\": \"\",\n              \"uri\": \"\"\n            }\n          ],\n          \"lon\": {{faker 'datatype.float'}},\n          \"modes\": [\n            \"\"\n          ],\n          \"name\": \"\",\n          \"parentId\": \"\",\n          \"routeId\": {{faker 'datatype.number'}},\n          \"stationId\": \"\",\n          \"status\": {{faker 'datatype.boolean'}},\n          \"stopLetter\": \"\",\n          \"stopType\": \"\",\n          \"topMostParentId\": \"\",\n          \"towards\": \"\",\n          \"url\": \"\",\n          \"zone\": \"\"\n        }\n      ],\n      \"mode\": \"\",\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c73331d1-60bd-41a5-8b8d-06e39aaa6b4b",
+      "documentation": "Gets the line status for all lines with a given severity\r\n            A list of valid severity codes can be obtained from a call to Line/Meta/Severity",
+      "method": "get",
+      "endpoint": "Line/Status/:severity",
+      "responses": [
+        {
+          "uuid": "dcc4a7a3-a5c9-4d30-b0aa-0642d6c9c9c9",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cc345eac-3e6b-4578-b585-53a81e2d18ed",
+      "documentation": "Gets lines that match the specified line ids.",
+      "method": "get",
+      "endpoint": "Line/:ids",
+      "responses": [
+        {
+          "uuid": "61844795-e797-4cde-acb5-981736564fc1",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d4a22229-93c0-42c7-911c-2861bf7c7eff",
+      "documentation": "Get the list of arrival predictions for given line ids based at the given stop",
+      "method": "get",
+      "endpoint": "Line/:ids/Arrivals/:stopPointId",
+      "responses": [
+        {
+          "uuid": "001d3866-9a69-4389-bb70-fd0428a9726a",
+          "body": "[\n  {\n    \"bearing\": \"\",\n    \"currentLocation\": \"\",\n    \"destinationName\": \"\",\n    \"destinationNaptanId\": \"\",\n    \"direction\": \"\",\n    \"expectedArrival\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"\",\n    \"lineId\": \"\",\n    \"lineName\": \"\",\n    \"modeName\": \"\",\n    \"naptanId\": \"\",\n    \"operationType\": {{faker 'datatype.number'}},\n    \"platformName\": \"\",\n    \"stationName\": \"\",\n    \"timeToLive\": \"{{faker 'date.recent' 365}}\",\n    \"timeToStation\": {{faker 'datatype.number'}},\n    \"timestamp\": \"{{faker 'date.recent' 365}}\",\n    \"timing\": {\n      \"countdownServerAdjustment\": \"\",\n      \"insert\": \"{{faker 'date.recent' 365}}\",\n      \"read\": \"{{faker 'date.recent' 365}}\",\n      \"received\": \"{{faker 'date.recent' 365}}\",\n      \"sent\": \"{{faker 'date.recent' 365}}\",\n      \"source\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"towards\": \"\",\n    \"vehicleId\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6172d2b0-ac93-4482-92c0-34884949f33a",
+      "documentation": "Get disruptions for the given line ids",
+      "method": "get",
+      "endpoint": "Line/:ids/Disruption",
+      "responses": [
+        {
+          "uuid": "77b5c9b1-1c18-4eef-abab-aa84af6d303d",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "685fceaa-701a-4c6c-998b-906a843cc8c3",
+      "documentation": "Get all valid routes for given line ids, including the name and id of the originating and terminating stops for each route.",
+      "method": "get",
+      "endpoint": "Line/:ids/Route",
+      "responses": [
+        {
+          "uuid": "e2f26c66-612d-4ac4-aca2-0ce6c2d3998f",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "78d8bf97-fce6-46df-b07f-e513f2e455ca",
+      "documentation": "Gets the line status of for given line ids e.g Minor Delays",
+      "method": "get",
+      "endpoint": "Line/:ids/Status",
+      "responses": [
+        {
+          "uuid": "3d7ac12a-453e-42b1-b3ea-ad469e7da255",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8c53de3-42e4-4f1f-a1c0-b679a78b8ebc",
+      "documentation": "Gets the line status for given line ids during the provided dates e.g Minor Delays",
+      "method": "get",
+      "endpoint": "Line/:ids/Status/:StartDate/to/:EndDate",
+      "responses": [
+        {
+          "uuid": "ab273a05-7e4a-4412-9ac2-bef17906f4c0",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dd0e5a59-5d32-416f-8dc1-b22696771151",
+      "documentation": "Gets all valid routes for given line id, including the sequence of stops on each route.",
+      "method": "get",
+      "endpoint": "Line/:id/Route/Sequence/:direction",
+      "responses": [
+        {
+          "uuid": "930f8bc1-4bb8-4e90-959c-ffc34a263401",
+          "body": "{\n  \"direction\": \"\",\n  \"isOutboundOnly\": {{faker 'datatype.boolean'}},\n  \"lineId\": \"\",\n  \"lineName\": \"\",\n  \"lineStrings\": [\n    \"\"\n  ],\n  \"mode\": \"\",\n  \"orderedLineRoutes\": [\n    {\n      \"name\": \"\",\n      \"naptanIds\": [\n        \"\"\n      ],\n      \"serviceType\": \"\"\n    }\n  ],\n  \"stations\": [\n    {\n      \"accessibilitySummary\": \"\",\n      \"direction\": \"\",\n      \"hasDisruption\": {{faker 'datatype.boolean'}},\n      \"icsId\": \"\",\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lines\": [\n        {\n          \"crowding\": {\n            \"passengerFlows\": [\n              {\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ],\n            \"trainLoadings\": [\n              {\n                \"direction\": \"\",\n                \"line\": \"\",\n                \"lineDirection\": \"\",\n                \"naptanTo\": \"\",\n                \"platformDirection\": \"\",\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ]\n          },\n          \"fullName\": \"\",\n          \"id\": \"\",\n          \"name\": \"\",\n          \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n          \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"modes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"parentId\": \"\",\n      \"routeId\": {{faker 'datatype.number'}},\n      \"stationId\": \"\",\n      \"status\": {{faker 'datatype.boolean'}},\n      \"stopLetter\": \"\",\n      \"stopType\": \"\",\n      \"topMostParentId\": \"\",\n      \"towards\": \"\",\n      \"url\": \"\",\n      \"zone\": \"\"\n    }\n  ],\n  \"stopPointSequences\": [\n    {\n      \"branchId\": {{faker 'datatype.number'}},\n      \"direction\": \"\",\n      \"lineId\": \"\",\n      \"lineName\": \"\",\n      \"nextBranchIds\": [\n        {{faker 'datatype.number'}}\n      ],\n      \"prevBranchIds\": [\n        {{faker 'datatype.number'}}\n      ],\n      \"serviceType\": \"{{oneOf (array 'Regular' 'Night')}}\",\n      \"stopPoint\": [\n        {\n          \"accessibilitySummary\": \"\",\n          \"direction\": \"\",\n          \"hasDisruption\": {{faker 'datatype.boolean'}},\n          \"icsId\": \"\",\n          \"id\": \"\",\n          \"lat\": {{faker 'datatype.float'}},\n          \"lines\": [\n            {\n              \"crowding\": {\n                \"passengerFlows\": [\n                  {\n                    \"timeSlice\": \"\",\n                    \"value\": {{faker 'datatype.number'}}\n                  }\n                ],\n                \"trainLoadings\": [\n                  {\n                    \"direction\": \"\",\n                    \"line\": \"\",\n                    \"lineDirection\": \"\",\n                    \"naptanTo\": \"\",\n                    \"platformDirection\": \"\",\n                    \"timeSlice\": \"\",\n                    \"value\": {{faker 'datatype.number'}}\n                  }\n                ]\n              },\n              \"fullName\": \"\",\n              \"id\": \"\",\n              \"name\": \"\",\n              \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n              \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n              \"type\": \"\",\n              \"uri\": \"\"\n            }\n          ],\n          \"lon\": {{faker 'datatype.float'}},\n          \"modes\": [\n            \"\"\n          ],\n          \"name\": \"\",\n          \"parentId\": \"\",\n          \"routeId\": {{faker 'datatype.number'}},\n          \"stationId\": \"\",\n          \"status\": {{faker 'datatype.boolean'}},\n          \"stopLetter\": \"\",\n          \"stopType\": \"\",\n          \"topMostParentId\": \"\",\n          \"towards\": \"\",\n          \"url\": \"\",\n          \"zone\": \"\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7735496e-4ded-4a67-807d-c4d47bf6c484",
+      "documentation": "Gets a list of the stations that serve the given line id",
+      "method": "get",
+      "endpoint": "Line/:id/StopPoints",
+      "responses": [
+        {
+          "uuid": "bcc79e27-9653-4ab4-bf23-e5c69c87c2bc",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64abdc9b-4fa9-4435-8ab2-0ab431acd45d",
+      "documentation": "Gets the timetable for a specified station on the give line",
+      "method": "get",
+      "endpoint": "Line/:id/Timetable/:fromStopPointId",
+      "responses": [
+        {
+          "uuid": "14c116a2-2468-423c-b768-d693dfa60c46",
+          "body": "{\n  \"direction\": \"\",\n  \"disambiguation\": {\n    \"disambiguationOptions\": [\n      {\n        \"description\": \"\",\n        \"uri\": \"\"\n      }\n    ]\n  },\n  \"lineId\": \"\",\n  \"lineName\": \"\",\n  \"pdfUrl\": \"\",\n  \"stations\": [\n    {\n      \"accessibilitySummary\": \"\",\n      \"direction\": \"\",\n      \"hasDisruption\": {{faker 'datatype.boolean'}},\n      \"icsId\": \"\",\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lines\": [\n        {\n          \"crowding\": {\n            \"passengerFlows\": [\n              {\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ],\n            \"trainLoadings\": [\n              {\n                \"direction\": \"\",\n                \"line\": \"\",\n                \"lineDirection\": \"\",\n                \"naptanTo\": \"\",\n                \"platformDirection\": \"\",\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ]\n          },\n          \"fullName\": \"\",\n          \"id\": \"\",\n          \"name\": \"\",\n          \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n          \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"modes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"parentId\": \"\",\n      \"routeId\": {{faker 'datatype.number'}},\n      \"stationId\": \"\",\n      \"status\": {{faker 'datatype.boolean'}},\n      \"stopLetter\": \"\",\n      \"stopType\": \"\",\n      \"topMostParentId\": \"\",\n      \"towards\": \"\",\n      \"url\": \"\",\n      \"zone\": \"\"\n    }\n  ],\n  \"statusErrorMessage\": \"\",\n  \"stops\": [\n    {\n      \"accessibilitySummary\": \"\",\n      \"direction\": \"\",\n      \"hasDisruption\": {{faker 'datatype.boolean'}},\n      \"icsId\": \"\",\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lines\": [\n        {\n          \"crowding\": {\n            \"passengerFlows\": [\n              {\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ],\n            \"trainLoadings\": [\n              {\n                \"direction\": \"\",\n                \"line\": \"\",\n                \"lineDirection\": \"\",\n                \"naptanTo\": \"\",\n                \"platformDirection\": \"\",\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ]\n          },\n          \"fullName\": \"\",\n          \"id\": \"\",\n          \"name\": \"\",\n          \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n          \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"modes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"parentId\": \"\",\n      \"routeId\": {{faker 'datatype.number'}},\n      \"stationId\": \"\",\n      \"status\": {{faker 'datatype.boolean'}},\n      \"stopLetter\": \"\",\n      \"stopType\": \"\",\n      \"topMostParentId\": \"\",\n      \"towards\": \"\",\n      \"url\": \"\",\n      \"zone\": \"\"\n    }\n  ],\n  \"timetable\": {\n    \"departureStopId\": \"\",\n    \"routes\": [\n      {\n        \"schedules\": [\n          {\n            \"firstJourney\": {\n              \"hour\": \"\",\n              \"intervalId\": {{faker 'datatype.number'}},\n              \"minute\": \"\"\n            },\n            \"knownJourneys\": [\n              {\n                \"hour\": \"\",\n                \"intervalId\": {{faker 'datatype.number'}},\n                \"minute\": \"\"\n              }\n            ],\n            \"lastJourney\": {\n              \"hour\": \"\",\n              \"intervalId\": {{faker 'datatype.number'}},\n              \"minute\": \"\"\n            },\n            \"name\": \"\",\n            \"periods\": [\n              {\n                \"frequency\": {\n                  \"highestFrequency\": {{faker 'datatype.float'}},\n                  \"lowestFrequency\": {{faker 'datatype.float'}}\n                },\n                \"fromTime\": {\n                  \"hour\": \"\",\n                  \"minute\": \"\"\n                },\n                \"toTime\": {\n                  \"hour\": \"\",\n                  \"minute\": \"\"\n                },\n                \"type\": \"{{oneOf (array 'Normal' 'FrequencyHours' 'FrequencyMinutes' 'Unknown')}}\"\n              }\n            ]\n          }\n        ],\n        \"stationIntervals\": [\n          {\n            \"id\": \"\",\n            \"intervals\": [\n              {\n                \"stopId\": \"\",\n                \"timeToArrival\": {{faker 'datatype.float'}}\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4486a3e0-5484-4485-bb3d-e5aea334a3ab",
+      "documentation": "Gets the timetable for a specified station on the give line with specified destination",
+      "method": "get",
+      "endpoint": "Line/:id/Timetable/:fromStopPointId/to/:toStopPointId",
+      "responses": [
+        {
+          "uuid": "5c5a8993-d9cb-49f8-82eb-469e37bf8656",
+          "body": "{\n  \"direction\": \"\",\n  \"disambiguation\": {\n    \"disambiguationOptions\": [\n      {\n        \"description\": \"\",\n        \"uri\": \"\"\n      }\n    ]\n  },\n  \"lineId\": \"\",\n  \"lineName\": \"\",\n  \"pdfUrl\": \"\",\n  \"stations\": [\n    {\n      \"accessibilitySummary\": \"\",\n      \"direction\": \"\",\n      \"hasDisruption\": {{faker 'datatype.boolean'}},\n      \"icsId\": \"\",\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lines\": [\n        {\n          \"crowding\": {\n            \"passengerFlows\": [\n              {\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ],\n            \"trainLoadings\": [\n              {\n                \"direction\": \"\",\n                \"line\": \"\",\n                \"lineDirection\": \"\",\n                \"naptanTo\": \"\",\n                \"platformDirection\": \"\",\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ]\n          },\n          \"fullName\": \"\",\n          \"id\": \"\",\n          \"name\": \"\",\n          \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n          \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"modes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"parentId\": \"\",\n      \"routeId\": {{faker 'datatype.number'}},\n      \"stationId\": \"\",\n      \"status\": {{faker 'datatype.boolean'}},\n      \"stopLetter\": \"\",\n      \"stopType\": \"\",\n      \"topMostParentId\": \"\",\n      \"towards\": \"\",\n      \"url\": \"\",\n      \"zone\": \"\"\n    }\n  ],\n  \"statusErrorMessage\": \"\",\n  \"stops\": [\n    {\n      \"accessibilitySummary\": \"\",\n      \"direction\": \"\",\n      \"hasDisruption\": {{faker 'datatype.boolean'}},\n      \"icsId\": \"\",\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lines\": [\n        {\n          \"crowding\": {\n            \"passengerFlows\": [\n              {\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ],\n            \"trainLoadings\": [\n              {\n                \"direction\": \"\",\n                \"line\": \"\",\n                \"lineDirection\": \"\",\n                \"naptanTo\": \"\",\n                \"platformDirection\": \"\",\n                \"timeSlice\": \"\",\n                \"value\": {{faker 'datatype.number'}}\n              }\n            ]\n          },\n          \"fullName\": \"\",\n          \"id\": \"\",\n          \"name\": \"\",\n          \"routeType\": \"{{oneOf (array 'Unknown' 'All' 'Cycle Superhighways' 'Quietways' 'Cycleways' 'Mini-Hollands' 'Central London Grid' 'Streetspace Route')}}\",\n          \"status\": \"{{oneOf (array 'Unknown' 'All' 'Open' 'In Progress' 'Planned' 'Planned - Subject to feasibility and consultation.' 'Not Open')}}\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        }\n      ],\n      \"lon\": {{faker 'datatype.float'}},\n      \"modes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"parentId\": \"\",\n      \"routeId\": {{faker 'datatype.number'}},\n      \"stationId\": \"\",\n      \"status\": {{faker 'datatype.boolean'}},\n      \"stopLetter\": \"\",\n      \"stopType\": \"\",\n      \"topMostParentId\": \"\",\n      \"towards\": \"\",\n      \"url\": \"\",\n      \"zone\": \"\"\n    }\n  ],\n  \"timetable\": {\n    \"departureStopId\": \"\",\n    \"routes\": [\n      {\n        \"schedules\": [\n          {\n            \"firstJourney\": {\n              \"hour\": \"\",\n              \"intervalId\": {{faker 'datatype.number'}},\n              \"minute\": \"\"\n            },\n            \"knownJourneys\": [\n              {\n                \"hour\": \"\",\n                \"intervalId\": {{faker 'datatype.number'}},\n                \"minute\": \"\"\n              }\n            ],\n            \"lastJourney\": {\n              \"hour\": \"\",\n              \"intervalId\": {{faker 'datatype.number'}},\n              \"minute\": \"\"\n            },\n            \"name\": \"\",\n            \"periods\": [\n              {\n                \"frequency\": {\n                  \"highestFrequency\": {{faker 'datatype.float'}},\n                  \"lowestFrequency\": {{faker 'datatype.float'}}\n                },\n                \"fromTime\": {\n                  \"hour\": \"\",\n                  \"minute\": \"\"\n                },\n                \"toTime\": {\n                  \"hour\": \"\",\n                  \"minute\": \"\"\n                },\n                \"type\": \"{{oneOf (array 'Normal' 'FrequencyHours' 'FrequencyMinutes' 'Unknown')}}\"\n              }\n            ]\n          }\n        ],\n        \"stationIntervals\": [\n          {\n            \"id\": \"\",\n            \"intervals\": [\n              {\n                \"stopId\": \"\",\n                \"timeToArrival\": {{faker 'datatype.float'}}\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b555820a-d605-4f35-95f4-cb4f8789d136",
+      "documentation": "Returns the service type active for a mode.\r\n            Currently only supports tube",
+      "method": "get",
+      "endpoint": "Mode/ActiveServiceTypes",
+      "responses": [
+        {
+          "uuid": "0c18a820-aa15-4b3d-adf6-0f91a587314d",
+          "body": "[\n  {\n    \"mode\": \"\",\n    \"serviceType\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "adca50e9-ccf5-47b3-a431-1ae5281788c4",
+      "documentation": "Gets the next arrival predictions for all stops of a given mode",
+      "method": "get",
+      "endpoint": "Mode/:mode/Arrivals",
+      "responses": [
+        {
+          "uuid": "2133b14c-24cd-49da-ae53-7672ed6cc946",
+          "body": "[\n  {\n    \"bearing\": \"\",\n    \"currentLocation\": \"\",\n    \"destinationName\": \"\",\n    \"destinationNaptanId\": \"\",\n    \"direction\": \"\",\n    \"expectedArrival\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"\",\n    \"lineId\": \"\",\n    \"lineName\": \"\",\n    \"modeName\": \"\",\n    \"naptanId\": \"\",\n    \"operationType\": {{faker 'datatype.number'}},\n    \"platformName\": \"\",\n    \"stationName\": \"\",\n    \"timeToLive\": \"{{faker 'date.recent' 365}}\",\n    \"timeToStation\": {{faker 'datatype.number'}},\n    \"timestamp\": \"{{faker 'date.recent' 365}}\",\n    \"timing\": {\n      \"countdownServerAdjustment\": \"\",\n      \"insert\": \"{{faker 'date.recent' 365}}\",\n      \"read\": \"{{faker 'date.recent' 365}}\",\n      \"received\": \"{{faker 'date.recent' 365}}\",\n      \"sent\": \"{{faker 'date.recent' 365}}\",\n      \"source\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"towards\": \"\",\n    \"vehicleId\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "24ae5e4e-aa57-4b08-a49f-5de4fb7b7369",
+      "documentation": "Get the occupancy for bike points.",
+      "method": "get",
+      "endpoint": "Occupancy/BikePoints/:ids",
+      "responses": [
+        {
+          "uuid": "12db8b38-1fb3-4d3b-a946-eabb35310f96",
+          "body": "[\n  {\n    \"bikesCount\": {{faker 'datatype.number'}},\n    \"emptyDocks\": {{faker 'datatype.number'}},\n    \"id\": \"\",\n    \"name\": \"\",\n    \"totalDocks\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a7d4ce39-4861-417b-bfb5-af3608e06249",
+      "documentation": "Gets the occupancy for all car parks that have occupancy data",
+      "method": "get",
+      "endpoint": "Occupancy/CarPark",
+      "responses": [
+        {
+          "uuid": "14afbf6b-9646-4206-a5d7-db9a066fe625",
+          "body": "[\n  {\n    \"bays\": [\n      {\n        \"bayCount\": {{faker 'datatype.number'}},\n        \"bayType\": \"\",\n        \"free\": {{faker 'datatype.number'}},\n        \"occupied\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"carParkDetailsUrl\": \"\",\n    \"id\": \"\",\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96c593c1-29a0-40a5-9776-e517e1e6e83e",
+      "documentation": "Gets the occupancy for a car park with a given id",
+      "method": "get",
+      "endpoint": "Occupancy/CarPark/:id",
+      "responses": [
+        {
+          "uuid": "a11aa12a-8604-4620-abba-9786aba032fc",
+          "body": "{\n  \"bays\": [\n    {\n      \"bayCount\": {{faker 'datatype.number'}},\n      \"bayType\": \"\",\n      \"free\": {{faker 'datatype.number'}},\n      \"occupied\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"carParkDetailsUrl\": \"\",\n  \"id\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a60b23ad-6063-4b0d-b1a3-2ac8e1400bef",
+      "documentation": "Gets the occupancy for all charge connectors",
+      "method": "get",
+      "endpoint": "Occupancy/ChargeConnector",
+      "responses": [
+        {
+          "uuid": "aadf1a1c-59e1-46d6-8560-5da6f2c137da",
+          "body": "[\n  {\n    \"id\": {{faker 'datatype.number'}},\n    \"sourceSystemPlaceId\": \"\",\n    \"status\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "67a890fc-f16e-4222-9532-a71b52ec8f37",
+      "documentation": "Gets the occupancy for a charge connectors with a given id (sourceSystemPlaceId)",
+      "method": "get",
+      "endpoint": "Occupancy/ChargeConnector/:ids",
+      "responses": [
+        {
+          "uuid": "27a4a08f-d972-48ea-b0ba-e75076fb7052",
+          "body": "[\n  {\n    \"id\": {{faker 'datatype.number'}},\n    \"sourceSystemPlaceId\": \"\",\n    \"status\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "034950a5-60ac-4e77-8003-3a7b17c29102",
+      "documentation": "Gets the places that lie within a geographic region. The geographic region of interest can either be specified\r\n            by using a lat/lon geo-point and a radius in metres to return places within the locus defined by the lat/lon of\r\n            its centre or alternatively, by the use of a bounding box defined by the lat/lon of its north-west and south-east corners.\r\n            Optionally filters on type and can strip properties for a smaller payload.",
+      "method": "get",
+      "endpoint": "Place",
+      "responses": [
+        {
+          "uuid": "fac2d628-64d8-42de-97c8-e2223ea561bc",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2229b24b-3778-4a3a-8cf2-2cd392723a86",
+      "documentation": "Gets the set of streets associated with a post code.",
+      "method": "get",
+      "endpoint": "Place/Address/Streets/:Postcode",
+      "responses": [
+        {
+          "uuid": "521d1951-b05f-4f30-95d0-5b944ed2da10",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41e7f23e-7e3d-4bad-b2ee-e79ef6363dde",
+      "documentation": "Gets a list of all of the available place property categories and keys.",
+      "method": "get",
+      "endpoint": "Place/Meta/Categories",
+      "responses": [
+        {
+          "uuid": "5b0bf88a-7224-49c5-9f7e-c78fd29d8fd6",
+          "body": "[\n  {\n    \"availableKeys\": [\n      \"\"\n    ],\n    \"category\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c60d7dc-90e2-4e96-9833-12cd1c827823",
+      "documentation": "Gets a list of the available types of Place.",
+      "method": "get",
+      "endpoint": "Place/Meta/PlaceTypes",
+      "responses": [
+        {
+          "uuid": "f7c41cfb-a12c-4e72-a67c-8adc95c74d30",
+          "body": "[\n  {\n    \"availableKeys\": [\n      \"\"\n    ],\n    \"category\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b8f65dd7-7c5a-42c1-b935-68bc1000ea2e",
+      "documentation": "Gets all places that matches the given query",
+      "method": "get",
+      "endpoint": "Place/Search",
+      "responses": [
+        {
+          "uuid": "98e14268-d91a-4b33-97ec-f1cec262248b",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "deeedf8b-3758-4873-bf3a-a9a0c8718bf3",
+      "documentation": "Gets all places of a given type",
+      "method": "get",
+      "endpoint": "Place/Type/:types",
+      "responses": [
+        {
+          "uuid": "7815f944-2ec1-4d8f-bd27-f7a821699e88",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f293a9b4-3271-4f13-a075-13a8d16652ec",
+      "documentation": "Gets the place with the given id.",
+      "method": "get",
+      "endpoint": "Place/:id",
+      "responses": [
+        {
+          "uuid": "8a864883-7099-4b89-94ff-3dd31bbe624f",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16c52e4f-8975-4091-bc2d-5757e4abbb64",
+      "documentation": "Gets any places of the given type whose geography intersects the given latitude and longitude. In practice this means the Place\r\n            must be polygonal e.g. a BoroughBoundary.",
+      "method": "get",
+      "endpoint": "Place/:type/At/:Lat/:Lon",
+      "responses": [
+        {
+          "uuid": "88eee532-7680-4f68-bb62-ac41fa87e491",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd05f5da-da2e-48d6-9e8c-8a88fd9c1f4a",
+      "documentation": "Gets the place overlay for a given set of co-ordinates and a given width/height.",
+      "method": "get",
+      "endpoint": "Place/:type/overlay/:z/:Lat/:Lon/:width/:height",
+      "responses": [
+        {
+          "uuid": "104c4e6a-317f-41f6-8642-0be6c12d3e29",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "da59b441-3a22-499a-9b99-30d51b3d9b65",
+      "documentation": "Gets all roads managed by TfL",
+      "method": "get",
+      "endpoint": "Road",
+      "responses": [
+        {
+          "uuid": "bdff6bf5-aa21-4862-9c10-d4ab21f4270c",
+          "body": "[\n  {\n    \"bounds\": \"\",\n    \"displayName\": \"\",\n    \"envelope\": \"\",\n    \"group\": \"\",\n    \"id\": \"\",\n    \"statusAggregationEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusAggregationStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusSeverity\": \"\",\n    \"statusSeverityDescription\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8dc658c-92e7-4661-ace6-5b386cb42fab",
+      "documentation": "Gets a list of valid RoadDisruption categories",
+      "method": "get",
+      "endpoint": "Road/Meta/Categories",
+      "responses": [
+        {
+          "uuid": "70908529-7697-4874-8f95-e0ee6f14e115",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1189442e-a2fc-4e0d-810d-6851f4d55702",
+      "documentation": "Gets a list of valid RoadDisruption severity codes",
+      "method": "get",
+      "endpoint": "Road/Meta/Severities",
+      "responses": [
+        {
+          "uuid": "d66852d6-0614-4943-849e-4792adc56be3",
+          "body": "[\n  {\n    \"description\": \"\",\n    \"modeName\": \"\",\n    \"severityLevel\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "90c105b6-4a2b-45d9-8751-a23d772efc33",
+      "documentation": "Gets a list of active disruptions filtered by disruption Ids.",
+      "method": "get",
+      "endpoint": "Road/all/Disruption/:disruptionIds",
+      "responses": [
+        {
+          "uuid": "6b13729e-207c-46ab-a4c2-02954a58698a",
+          "body": "{\n  \"category\": \"\",\n  \"comments\": \"\",\n  \"corridorIds\": [\n    \"\"\n  ],\n  \"currentUpdate\": \"\",\n  \"currentUpdateDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"endDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"geography\": {\n    \"geography\": {\n      \"coordinateSystemId\": {{faker 'datatype.number'}},\n      \"wellKnownBinary\": \"\",\n      \"wellKnownText\": \"\"\n    }\n  },\n  \"geometry\": {\n    \"geography\": {\n      \"coordinateSystemId\": {{faker 'datatype.number'}},\n      \"wellKnownBinary\": \"\",\n      \"wellKnownText\": \"\"\n    }\n  },\n  \"hasClosures\": {{faker 'datatype.boolean'}},\n  \"id\": \"\",\n  \"isProvisional\": {{faker 'datatype.boolean'}},\n  \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n  \"levelOfInterest\": \"\",\n  \"linkText\": \"\",\n  \"linkUrl\": \"\",\n  \"location\": \"\",\n  \"ordinal\": {{faker 'datatype.number'}},\n  \"point\": \"\",\n  \"publishEndDate\": \"{{faker 'date.recent' 365}}\",\n  \"publishStartDate\": \"{{faker 'date.recent' 365}}\",\n  \"recurringSchedules\": [\n    {\n      \"endTime\": \"{{faker 'date.recent' 365}}\",\n      \"startTime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"roadDisruptionImpactAreas\": [\n    {\n      \"endDate\": \"{{faker 'date.recent' 365}}\",\n      \"endTime\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"polygon\": {\n        \"geography\": {\n          \"coordinateSystemId\": {{faker 'datatype.number'}},\n          \"wellKnownBinary\": \"\",\n          \"wellKnownText\": \"\"\n        }\n      },\n      \"roadDisruptionId\": \"\",\n      \"startDate\": \"{{faker 'date.recent' 365}}\",\n      \"startTime\": \"\"\n    }\n  ],\n  \"roadDisruptionLines\": [\n    {\n      \"endDate\": \"{{faker 'date.recent' 365}}\",\n      \"endTime\": \"\",\n      \"id\": {{faker 'datatype.number'}},\n      \"isDiversion\": {{faker 'datatype.boolean'}},\n      \"multiLineString\": {\n        \"geography\": {\n          \"coordinateSystemId\": {{faker 'datatype.number'}},\n          \"wellKnownBinary\": \"\",\n          \"wellKnownText\": \"\"\n        }\n      },\n      \"roadDisruptionId\": \"\",\n      \"startDate\": \"{{faker 'date.recent' 365}}\",\n      \"startTime\": \"\"\n    }\n  ],\n  \"roadProject\": {\n    \"boroughsBenefited\": [\n      \"\"\n    ],\n    \"constructionEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"constructionStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"consultationEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"consultationPageUrl\": \"\",\n    \"consultationStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"contactEmail\": \"\",\n    \"contactName\": \"\",\n    \"cycleSuperhighwayId\": \"\",\n    \"externalPageUrl\": \"\",\n    \"phase\": \"{{oneOf (array 'Unscoped' 'Concept' 'ConsultationEnded' 'Consultation' 'Construction' 'Complete')}}\",\n    \"projectDescription\": \"\",\n    \"projectId\": \"\",\n    \"projectName\": \"\",\n    \"projectPageUrl\": \"\",\n    \"projectSummaryPageUrl\": \"\",\n    \"schemeName\": \"\"\n  },\n  \"severity\": \"\",\n  \"startDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"status\": \"\",\n  \"streets\": [\n    {\n      \"closure\": \"\",\n      \"directions\": \"\",\n      \"name\": \"\",\n      \"segments\": [\n        {\n          \"lineString\": \"\",\n          \"sourceSystemId\": {{faker 'datatype.number'}},\n          \"sourceSystemKey\": \"\",\n          \"toid\": \"\"\n        }\n      ],\n      \"sourceSystemId\": {{faker 'datatype.number'}},\n      \"sourceSystemKey\": \"\"\n    }\n  ],\n  \"subCategory\": \"\",\n  \"timeFrame\": \"\",\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6fce7135-c98a-4904-8ba0-0c2270bc413f",
+      "documentation": "Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.",
+      "method": "get",
+      "endpoint": "Road/all/Street/Disruption",
+      "responses": [
+        {
+          "uuid": "2619393c-9502-4c9e-952f-4d9fb11815c3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "95bb9fcd-6f1d-4fea-9cb8-f31b33541741",
+      "documentation": "Gets the road with the specified id (e.g. A1)",
+      "method": "get",
+      "endpoint": "Road/:ids",
+      "responses": [
+        {
+          "uuid": "8b8a9730-b04a-4627-b0c8-9b895f3036ee",
+          "body": "[\n  {\n    \"bounds\": \"\",\n    \"displayName\": \"\",\n    \"envelope\": \"\",\n    \"group\": \"\",\n    \"id\": \"\",\n    \"statusAggregationEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusAggregationStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusSeverity\": \"\",\n    \"statusSeverityDescription\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "24e007c6-35a8-42d1-8443-fe0bf748c76b",
+      "documentation": "Get active disruptions, filtered by road ids",
+      "method": "get",
+      "endpoint": "Road/:ids/Disruption",
+      "responses": [
+        {
+          "uuid": "4aad597a-db08-4f93-97aa-c567fd6c16f8",
+          "body": "[\n  {\n    \"category\": \"\",\n    \"comments\": \"\",\n    \"corridorIds\": [\n      \"\"\n    ],\n    \"currentUpdate\": \"\",\n    \"currentUpdateDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"endDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"geography\": {\n      \"geography\": {\n        \"coordinateSystemId\": {{faker 'datatype.number'}},\n        \"wellKnownBinary\": \"\",\n        \"wellKnownText\": \"\"\n      }\n    },\n    \"geometry\": {\n      \"geography\": {\n        \"coordinateSystemId\": {{faker 'datatype.number'}},\n        \"wellKnownBinary\": \"\",\n        \"wellKnownText\": \"\"\n      }\n    },\n    \"hasClosures\": {{faker 'datatype.boolean'}},\n    \"id\": \"\",\n    \"isProvisional\": {{faker 'datatype.boolean'}},\n    \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n    \"levelOfInterest\": \"\",\n    \"linkText\": \"\",\n    \"linkUrl\": \"\",\n    \"location\": \"\",\n    \"ordinal\": {{faker 'datatype.number'}},\n    \"point\": \"\",\n    \"publishEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"publishStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"recurringSchedules\": [\n      {\n        \"endTime\": \"{{faker 'date.recent' 365}}\",\n        \"startTime\": \"{{faker 'date.recent' 365}}\"\n      }\n    ],\n    \"roadDisruptionImpactAreas\": [\n      {\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"endTime\": \"\",\n        \"id\": {{faker 'datatype.number'}},\n        \"polygon\": {\n          \"geography\": {\n            \"coordinateSystemId\": {{faker 'datatype.number'}},\n            \"wellKnownBinary\": \"\",\n            \"wellKnownText\": \"\"\n          }\n        },\n        \"roadDisruptionId\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\",\n        \"startTime\": \"\"\n      }\n    ],\n    \"roadDisruptionLines\": [\n      {\n        \"endDate\": \"{{faker 'date.recent' 365}}\",\n        \"endTime\": \"\",\n        \"id\": {{faker 'datatype.number'}},\n        \"isDiversion\": {{faker 'datatype.boolean'}},\n        \"multiLineString\": {\n          \"geography\": {\n            \"coordinateSystemId\": {{faker 'datatype.number'}},\n            \"wellKnownBinary\": \"\",\n            \"wellKnownText\": \"\"\n          }\n        },\n        \"roadDisruptionId\": \"\",\n        \"startDate\": \"{{faker 'date.recent' 365}}\",\n        \"startTime\": \"\"\n      }\n    ],\n    \"roadProject\": {\n      \"boroughsBenefited\": [\n        \"\"\n      ],\n      \"constructionEndDate\": \"{{faker 'date.recent' 365}}\",\n      \"constructionStartDate\": \"{{faker 'date.recent' 365}}\",\n      \"consultationEndDate\": \"{{faker 'date.recent' 365}}\",\n      \"consultationPageUrl\": \"\",\n      \"consultationStartDate\": \"{{faker 'date.recent' 365}}\",\n      \"contactEmail\": \"\",\n      \"contactName\": \"\",\n      \"cycleSuperhighwayId\": \"\",\n      \"externalPageUrl\": \"\",\n      \"phase\": \"{{oneOf (array 'Unscoped' 'Concept' 'ConsultationEnded' 'Consultation' 'Construction' 'Complete')}}\",\n      \"projectDescription\": \"\",\n      \"projectId\": \"\",\n      \"projectName\": \"\",\n      \"projectPageUrl\": \"\",\n      \"projectSummaryPageUrl\": \"\",\n      \"schemeName\": \"\"\n    },\n    \"severity\": \"\",\n    \"startDateTime\": \"{{faker 'date.recent' 365}}\",\n    \"status\": \"\",\n    \"streets\": [\n      {\n        \"closure\": \"\",\n        \"directions\": \"\",\n        \"name\": \"\",\n        \"segments\": [\n          {\n            \"lineString\": \"\",\n            \"sourceSystemId\": {{faker 'datatype.number'}},\n            \"sourceSystemKey\": \"\",\n            \"toid\": \"\"\n          }\n        ],\n        \"sourceSystemId\": {{faker 'datatype.number'}},\n        \"sourceSystemKey\": \"\"\n      }\n    ],\n    \"subCategory\": \"\",\n    \"timeFrame\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2dd7ee0e-29d6-4243-beb6-30940bb183d2",
+      "documentation": "Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.",
+      "method": "get",
+      "endpoint": "Road/:ids/Status",
+      "responses": [
+        {
+          "uuid": "3b17341a-f849-4149-9b08-e96232aa76ae",
+          "body": "[\n  {\n    \"bounds\": \"\",\n    \"displayName\": \"\",\n    \"envelope\": \"\",\n    \"group\": \"\",\n    \"id\": \"\",\n    \"statusAggregationEndDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusAggregationStartDate\": \"{{faker 'date.recent' 365}}\",\n    \"statusSeverity\": \"\",\n    \"statusSeverityDescription\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f412675c-54b8-41c5-b744-736b615f119e",
+      "documentation": "Search the site for occurrences of the query string. The maximum number of results returned is equal to the maximum page size\r\n            of 100. To return subsequent pages, use the paginated overload.",
+      "method": "get",
+      "endpoint": "Search",
+      "responses": [
+        {
+          "uuid": "ce03fe03-db55-4f68-bd9c-e4e89b9397cb",
+          "body": "{\n  \"from\": {{faker 'datatype.number'}},\n  \"matches\": [\n    {\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lon\": {{faker 'datatype.float'}},\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"maxScore\": {{faker 'datatype.float'}},\n  \"page\": {{faker 'datatype.number'}},\n  \"pageSize\": {{faker 'datatype.number'}},\n  \"provider\": \"\",\n  \"query\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6c7b02d9-6373-4f9b-8a62-1adf497bd1d4",
+      "documentation": "Searches the bus schedules folder on S3 for a given bus number.",
+      "method": "get",
+      "endpoint": "Search/BusSchedules",
+      "responses": [
+        {
+          "uuid": "a1766b99-e508-4340-9f8e-2421638e1c37",
+          "body": "{\n  \"from\": {{faker 'datatype.number'}},\n  \"matches\": [\n    {\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lon\": {{faker 'datatype.float'}},\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"maxScore\": {{faker 'datatype.float'}},\n  \"page\": {{faker 'datatype.number'}},\n  \"pageSize\": {{faker 'datatype.number'}},\n  \"provider\": \"\",\n  \"query\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "26514cf2-3d60-407b-a315-e940bb09407b",
+      "documentation": "Gets the available search categories.",
+      "method": "get",
+      "endpoint": "Search/Meta/Categories",
+      "responses": [
+        {
+          "uuid": "f841e795-cda6-4369-85fd-6b3aa53d51ec",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd8ca695-5ac4-4f69-9907-7d0fa856175c",
+      "documentation": "Gets the available searchProvider names.",
+      "method": "get",
+      "endpoint": "Search/Meta/SearchProviders",
+      "responses": [
+        {
+          "uuid": "79f4ce8c-5f3f-42df-846b-3268864287b2",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bc4dec46-c87f-4701-911d-81b6e4005ea2",
+      "documentation": "Gets the available sorting options.",
+      "method": "get",
+      "endpoint": "Search/Meta/Sorts",
+      "responses": [
+        {
+          "uuid": "e1a5ebf4-fd48-4c74-b1f5-f1bb4d0f38a7",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "38d57d3c-fa81-4123-97e8-7f7b59f5ade4",
+      "documentation": "Gets a list of StopPoints within {radius} by the specified criteria",
+      "method": "get",
+      "endpoint": "StopPoint",
+      "responses": [
+        {
+          "uuid": "d11b4885-ee5c-4715-b672-706d2b619ff9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23f34e76-3f10-4954-81fb-61263f3431ad",
+      "documentation": "Gets the list of available StopPoint additional information categories",
+      "method": "get",
+      "endpoint": "StopPoint/Meta/Categories",
+      "responses": [
+        {
+          "uuid": "025b94a7-a956-4e59-a92f-9d1648547b99",
+          "body": "[\n  {\n    \"availableKeys\": [\n      \"\"\n    ],\n    \"category\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e4372beb-97a0-448a-91f9-54550e2113f0",
+      "documentation": "Gets the list of available StopPoint modes",
+      "method": "get",
+      "endpoint": "StopPoint/Meta/Modes",
+      "responses": [
+        {
+          "uuid": "85eff591-5205-432d-b82b-f3b640e424b3",
+          "body": "[\n  {\n    \"isFarePaying\": {{faker 'datatype.boolean'}},\n    \"isScheduledService\": {{faker 'datatype.boolean'}},\n    \"isTflService\": {{faker 'datatype.boolean'}},\n    \"modeName\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e1d3a1e3-02ac-4edf-b5ad-0585042148b1",
+      "documentation": "Gets the list of available StopPoint types",
+      "method": "get",
+      "endpoint": "StopPoint/Meta/StopTypes",
+      "responses": [
+        {
+          "uuid": "6ff427a1-0ef7-4ac9-8cc1-8a8965af4c9b",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4a552a43-dd04-4340-aba0-2971ac9fd245",
+      "documentation": "Gets a list of StopPoints filtered by the modes available at that StopPoint.",
+      "method": "get",
+      "endpoint": "StopPoint/Mode/:modes",
+      "responses": [
+        {
+          "uuid": "c243569b-1bf2-4deb-9689-ccabb0153cb5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9251bfd8-73fc-46de-9db7-d049500bcb9f",
+      "documentation": "Gets a distinct list of disrupted stop points for the given modes",
+      "method": "get",
+      "endpoint": "StopPoint/Mode/:modes/Disruption",
+      "responses": [
+        {
+          "uuid": "7a13da4d-4a5b-4a80-902b-28ebeb0d82af",
+          "body": "[\n  {\n    \"additionalInformation\": \"\",\n    \"appearance\": \"\",\n    \"atcoCode\": \"\",\n    \"commonName\": \"\",\n    \"description\": \"\",\n    \"fromDate\": \"{{faker 'date.recent' 365}}\",\n    \"mode\": \"\",\n    \"stationAtcoCode\": \"\",\n    \"toDate\": \"{{faker 'date.recent' 365}}\",\n    \"type\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fbe0efff-0dd3-43a4-ade8-6d57a7ce4756",
+      "documentation": "Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.",
+      "method": "get",
+      "endpoint": "StopPoint/Search",
+      "responses": [
+        {
+          "uuid": "551df199-1f11-4c1d-8cd5-311ba2b861e6",
+          "body": "{\n  \"from\": {{faker 'datatype.number'}},\n  \"matches\": [\n    {\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lon\": {{faker 'datatype.float'}},\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"maxScore\": {{faker 'datatype.float'}},\n  \"page\": {{faker 'datatype.number'}},\n  \"pageSize\": {{faker 'datatype.number'}},\n  \"provider\": \"\",\n  \"query\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8be22ab-55a3-4cd3-9355-69671f8fe411",
+      "documentation": "Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.",
+      "method": "get",
+      "endpoint": "StopPoint/Search/:query",
+      "responses": [
+        {
+          "uuid": "fd51c671-a057-44be-89c5-505c77c73a79",
+          "body": "{\n  \"from\": {{faker 'datatype.number'}},\n  \"matches\": [\n    {\n      \"id\": \"\",\n      \"lat\": {{faker 'datatype.float'}},\n      \"lon\": {{faker 'datatype.float'}},\n      \"name\": \"\",\n      \"url\": \"\"\n    }\n  ],\n  \"maxScore\": {{faker 'datatype.float'}},\n  \"page\": {{faker 'datatype.number'}},\n  \"pageSize\": {{faker 'datatype.number'}},\n  \"provider\": \"\",\n  \"query\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2b79d15b-391b-4a1e-be2f-fa62cb21e8fc",
+      "documentation": "Gets the service types for a given stoppoint",
+      "method": "get",
+      "endpoint": "StopPoint/ServiceTypes",
+      "responses": [
+        {
+          "uuid": "d04edc13-2b97-48a0-9157-cbe0182d017d",
+          "body": "[\n  {\n    \"lineName\": \"\",\n    \"lineSpecificServiceTypes\": [\n      {\n        \"serviceType\": {\n          \"name\": \"\",\n          \"uri\": \"\"\n        },\n        \"stopServesServiceType\": {{faker 'datatype.boolean'}}\n      }\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d06c0b9-a81c-4ed6-9cfe-897c82193e19",
+      "documentation": "Gets a StopPoint for a given sms code.",
+      "method": "get",
+      "endpoint": "StopPoint/Sms/:id",
+      "responses": [
+        {
+          "uuid": "f4492309-59d8-4e4d-bbbe-475409d0c8fd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4a958f53-21a5-4eb5-9614-0b4c1fbd161d",
+      "documentation": "Gets all stop points of a given type",
+      "method": "get",
+      "endpoint": "StopPoint/Type/:types",
+      "responses": [
+        {
+          "uuid": "c1be653b-52d2-4607-9d0f-d3bef7693f3a",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1061b6c4-f4ac-4b47-acb6-09cf5c4aaf74",
+      "documentation": "Gets all the stop points of given type(s) with a page number",
+      "method": "get",
+      "endpoint": "StopPoint/Type/:types/page/:page",
+      "responses": [
+        {
+          "uuid": "a219b670-d6ed-4a43-9ebc-deeb5f111ddb",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0aca4f79-de5e-405d-8bc4-07dba6a4bbec",
+      "documentation": "Gets a list of StopPoints corresponding to the given list of stop ids.",
+      "method": "get",
+      "endpoint": "StopPoint/:ids",
+      "responses": [
+        {
+          "uuid": "c1af3e82-3853-4daa-8bfb-0aadc0e7fd3d",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9e30375a-4dc4-4713-b47d-7ea787918cf8",
+      "documentation": "Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.",
+      "method": "get",
+      "endpoint": "StopPoint/:ids/Disruption",
+      "responses": [
+        {
+          "uuid": "32c267fa-f683-4481-8e3e-8fafaea59598",
+          "body": "[\n  {\n    \"additionalInformation\": \"\",\n    \"appearance\": \"\",\n    \"atcoCode\": \"\",\n    \"commonName\": \"\",\n    \"description\": \"\",\n    \"fromDate\": \"{{faker 'date.recent' 365}}\",\n    \"mode\": \"\",\n    \"stationAtcoCode\": \"\",\n    \"toDate\": \"{{faker 'date.recent' 365}}\",\n    \"type\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "65720bdd-026c-4084-9bdd-e821ad9cb5e6",
+      "documentation": "Gets the list of arrival and departure predictions for the given stop point id (overground, tfl rail and thameslink only)",
+      "method": "get",
+      "endpoint": "StopPoint/:id/ArrivalDepartures",
+      "responses": [
+        {
+          "uuid": "c796152b-62c5-4b6c-9309-3c98174c181a",
+          "body": "[\n  {\n    \"cause\": \"\",\n    \"departureStatus\": \"{{oneOf (array 'OnTime' 'Delayed' 'Cancelled' 'NotStoppingAtStation')}}\",\n    \"destinationName\": \"\",\n    \"destinationNaptanId\": \"\",\n    \"estimatedTimeOfArrival\": \"{{faker 'date.recent' 365}}\",\n    \"estimatedTimeOfDeparture\": \"{{faker 'date.recent' 365}}\",\n    \"minutesAndSecondsToArrival\": \"\",\n    \"minutesAndSecondsToDeparture\": \"\",\n    \"naptanId\": \"\",\n    \"platformName\": \"\",\n    \"scheduledTimeOfArrival\": \"{{faker 'date.recent' 365}}\",\n    \"scheduledTimeOfDeparture\": \"{{faker 'date.recent' 365}}\",\n    \"stationName\": \"\",\n    \"timing\": {\n      \"countdownServerAdjustment\": \"\",\n      \"insert\": \"{{faker 'date.recent' 365}}\",\n      \"read\": \"{{faker 'date.recent' 365}}\",\n      \"received\": \"{{faker 'date.recent' 365}}\",\n      \"sent\": \"{{faker 'date.recent' 365}}\",\n      \"source\": \"{{faker 'date.recent' 365}}\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "11846651-e942-44ca-b2fe-83607b3c177e",
+      "documentation": "Gets the list of arrival predictions for the given stop point id",
+      "method": "get",
+      "endpoint": "StopPoint/:id/Arrivals",
+      "responses": [
+        {
+          "uuid": "56546692-1e64-4e99-9f0b-bf5762f7d8e0",
+          "body": "[\n  {\n    \"bearing\": \"\",\n    \"currentLocation\": \"\",\n    \"destinationName\": \"\",\n    \"destinationNaptanId\": \"\",\n    \"direction\": \"\",\n    \"expectedArrival\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"\",\n    \"lineId\": \"\",\n    \"lineName\": \"\",\n    \"modeName\": \"\",\n    \"naptanId\": \"\",\n    \"operationType\": {{faker 'datatype.number'}},\n    \"platformName\": \"\",\n    \"stationName\": \"\",\n    \"timeToLive\": \"{{faker 'date.recent' 365}}\",\n    \"timeToStation\": {{faker 'datatype.number'}},\n    \"timestamp\": \"{{faker 'date.recent' 365}}\",\n    \"timing\": {\n      \"countdownServerAdjustment\": \"\",\n      \"insert\": \"{{faker 'date.recent' 365}}\",\n      \"read\": \"{{faker 'date.recent' 365}}\",\n      \"received\": \"{{faker 'date.recent' 365}}\",\n      \"sent\": \"{{faker 'date.recent' 365}}\",\n      \"source\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"towards\": \"\",\n    \"vehicleId\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ad50ad99-1d18-4cc7-8a13-29368fe54b97",
+      "documentation": "Gets Stopoints that are reachable from a station/line combination.",
+      "method": "get",
+      "endpoint": "StopPoint/:id/CanReachOnLine/:lineId",
+      "responses": [
+        {
+          "uuid": "726efe1a-3fe7-4e1b-8911-81da4c15c99d",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eb3cb053-7442-4083-8f9d-4c6a4e262d32",
+      "documentation": "Gets all the Crowding data (static) for the StopPointId, plus crowding data for a given line and optionally a particular direction.",
+      "method": "get",
+      "endpoint": "StopPoint/:id/Crowding/:line",
+      "responses": [
+        {
+          "uuid": "c9410717-e4d1-48aa-b98c-a8d54c87e780",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "197533b2-fc4a-4902-a6bc-415ee807d7b6",
+      "documentation": "Returns the canonical direction, \"inbound\" or \"outbound\", for a given pair of stop point Ids in the direction from -&gt; to.",
+      "method": "get",
+      "endpoint": "StopPoint/:id/DirectionTo/:toStopPointId",
+      "responses": [
+        {
+          "uuid": "a5472d1d-8810-45a9-89a9-0fccb061c10e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a180b9f2-7b0d-47fb-9ada-898a3c739b8e",
+      "documentation": "Returns the route sections for all the lines that service the given stop point ids",
+      "method": "get",
+      "endpoint": "StopPoint/:id/Route",
+      "responses": [
+        {
+          "uuid": "5711e9a1-cb7d-43f7-ab01-0d40b70abb61",
+          "body": "[\n  {\n    \"destinationName\": \"\",\n    \"direction\": \"\",\n    \"isActive\": {{faker 'datatype.boolean'}},\n    \"lineId\": \"\",\n    \"lineString\": \"\",\n    \"mode\": \"\",\n    \"naptanId\": \"\",\n    \"routeSectionName\": \"\",\n    \"serviceType\": \"\",\n    \"validFrom\": \"{{faker 'date.recent' 365}}\",\n    \"validTo\": \"{{faker 'date.recent' 365}}\",\n    \"vehicleDestinationText\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "341641ad-dc48-403d-ad26-0fe135de69ae",
+      "documentation": "Get a list of places corresponding to a given id and place types.",
+      "method": "get",
+      "endpoint": "StopPoint/:id/placeTypes",
+      "responses": [
+        {
+          "uuid": "3ff2870c-627f-4108-9693-470dcb82f53c",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ca59689a-d07f-48f9-9257-2bf62f3a8b36",
+      "documentation": "Get car parks corresponding to the given stop point id.",
+      "method": "get",
+      "endpoint": "StopPoint/:stopPointId/CarParks",
+      "responses": [
+        {
+          "uuid": "2f78c5ab-b3f6-456b-a59b-4c7e85a37326",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e4c2c1b-f12f-450a-afcb-fb7583da44ed",
+      "documentation": "Gets a list of taxi ranks corresponding to the given stop point id.",
+      "method": "get",
+      "endpoint": "StopPoint/:stopPointId/TaxiRanks",
+      "responses": [
+        {
+          "uuid": "bdbdde57-8219-4a6c-8c9a-ac5e57edd4de",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "37685af9-8a85-45b5-8bca-b5995a500398",
+      "documentation": "Gets the TravelTime overlay.",
+      "method": "get",
+      "endpoint": "TravelTimes/compareOverlay/:z/mapcenter/:mapCenterLat/:mapCenterLon/pinlocation/:pinLat/:pinLon/dimensions/:width/:height",
+      "responses": [
+        {
+          "uuid": "ba224991-f70b-49b8-bf85-fe504ae40d72",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ea88fbc2-f310-4b05-8a8c-f8b49e4f1683",
+      "documentation": "Gets the TravelTime overlay.",
+      "method": "get",
+      "endpoint": "TravelTimes/overlay/:z/mapcenter/:mapCenterLat/:mapCenterLon/pinlocation/:pinLat/:pinLon/dimensions/:width/:height",
+      "responses": [
+        {
+          "uuid": "26526ba2-3dbc-4b9c-bf5e-3785425be0ec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "df0b0fdd-288e-4120-9928-41edfb03446f",
+      "documentation": "Gets the Emissions Surcharge compliance for the Vehicle",
+      "method": "get",
+      "endpoint": "Vehicle/EmissionSurcharge",
+      "responses": [
+        {
+          "uuid": "08bb4e11-d6db-4f0e-b4dd-01fd331e58c6",
+          "body": "{\n  \"colour\": \"\",\n  \"compliance\": \"{{oneOf (array 'NotAvailable' 'NotCompliant' 'Compliant' 'Exempt')}}\",\n  \"make\": \"\",\n  \"model\": \"\",\n  \"type\": \"\",\n  \"vrm\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "737f3d38-24a2-4f0d-8288-e9ba56581954",
+      "documentation": "Gets the Ulez Surcharge compliance for the Vehicle",
+      "method": "get",
+      "endpoint": "Vehicle/UlezCompliance",
+      "responses": [
+        {
+          "uuid": "fe4014ed-1151-4e19-9949-2b2b01780215",
+          "body": "{\n  \"colour\": \"\",\n  \"compliance\": \"{{oneOf (array 'NotAvailable' 'NotCompliant' 'Compliant' 'Exempt')}}\",\n  \"make\": \"\",\n  \"model\": \"\",\n  \"type\": \"\",\n  \"vrm\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9c343f8-250e-4a6b-babc-6aca1015486b",
+      "documentation": "Gets the predictions for a given list of vehicle Id's.",
+      "method": "get",
+      "endpoint": "Vehicle/:ids/Arrivals",
+      "responses": [
+        {
+          "uuid": "d957bfd4-a50e-4162-943f-41465de1d9d7",
+          "body": "[\n  {\n    \"bearing\": \"\",\n    \"currentLocation\": \"\",\n    \"destinationName\": \"\",\n    \"destinationNaptanId\": \"\",\n    \"direction\": \"\",\n    \"expectedArrival\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"\",\n    \"lineId\": \"\",\n    \"lineName\": \"\",\n    \"modeName\": \"\",\n    \"naptanId\": \"\",\n    \"operationType\": {{faker 'datatype.number'}},\n    \"platformName\": \"\",\n    \"stationName\": \"\",\n    \"timeToLive\": \"{{faker 'date.recent' 365}}\",\n    \"timeToStation\": {{faker 'datatype.number'}},\n    \"timestamp\": \"{{faker 'date.recent' 365}}\",\n    \"timing\": {\n      \"countdownServerAdjustment\": \"\",\n      \"insert\": \"{{faker 'date.recent' 365}}\",\n      \"read\": \"{{faker 'date.recent' 365}}\",\n      \"received\": \"{{faker 'date.recent' 365}}\",\n      \"sent\": \"{{faker 'date.recent' 365}}\",\n      \"source\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"towards\": \"\",\n    \"vehicleId\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,2028 @@
+{
+  "uuid": "fc947421-737a-4d27-b936-157fe04ea088",
+  "lastMigration": 24,
+  "name": "Listen API: Podcast Search & Directory API",
+  "endpointPrefix": "api/v2",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "cc9c3698-fca9-40e3-8cea-d8da9ae123d4",
+      "documentation": "Fetch a list of best podcasts by genre",
+      "method": "get",
+      "endpoint": "best_podcasts",
+      "responses": [
+        {
+          "uuid": "a9062b3d-a34e-46a6-8103-904a269e398c",
+          "body": "{\n  \"has_next\": true,\n  \"has_previous\": {{faker 'datatype.boolean'}},\n  \"id\": 95,\n  \"listennotes_url\": \"https://www.listennotes.com/best-business-news-podcasts-95/\",\n  \"name\": \"Business News\",\n  \"next_page_number\": 3,\n  \"page_number\": 2,\n  \"parent_id\": 93,\n  \"podcasts\": [\n    {\n      \"country\": \"United States\",\n      \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n      \"earliest_pub_date_ms\": 1470667902000,\n      \"email\": \"hello@example.com\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"extra\": {\n        \"facebook_handle\": \"sw7x7\",\n        \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n        \"instagram_handle\": \"sw7x7\",\n        \"linkedin_url\": \"\",\n        \"patreon_handle\": \"sw7x7\",\n        \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n        \"twitter_handle\": \"SW7x7podcast\",\n        \"url1\": \"\",\n        \"url2\": \"\",\n        \"url3\": \"\",\n        \"wechat_handle\": \"\",\n        \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n      },\n      \"genre_ids\": [\n        138,\n        86,\n        160,\n        68,\n        82,\n        100,\n        101\n      ],\n      \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"is_claimed\": true,\n      \"itunes_id\": 896354638,\n      \"language\": \"English\",\n      \"latest_pub_date_ms\": 1557499770000,\n      \"listen_score\": 81,\n      \"listen_score_global_rank\": \"0.5%\",\n      \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n      \"looking_for\": {\n        \"cohosts\": true,\n        \"cross_promotion\": true,\n        \"guests\": true,\n        \"sponsors\": true\n      },\n      \"publisher\": \"Planet Broadcasting\",\n      \"rss\": \"https://sw7x7.libsyn.com/rss\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n      \"total_episodes\": 324,\n      \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n      \"website\": \"http://sw7x7.com/\"\n    }\n  ],\n  \"previous_page_number\": 1,\n  \"total\": 325\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "19899cc1-b8fd-4341-8ac5-98d884009d88",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eeb7219c-99f8-49c1-8417-4dcfd7f115a3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ddcf6e61-034b-4882-b2b0-fcb8d585e343",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f8949f8-8a66-4945-94b1-819aafa42f9b",
+      "documentation": "Fetch curated lists of podcasts",
+      "method": "get",
+      "endpoint": "curated_podcasts",
+      "responses": [
+        {
+          "uuid": "fe0f18b3-aad4-49d6-8aa7-2580804a72e4",
+          "body": "{\n  \"curated_lists\": [\n    {\n      \"description\": \"Commuting to work is always better when you have a great new podcast to listen to, and this year, we have discovered some of our favorite podcasts yet for readers and book-lovers. These podcasts for readers entertain us and provide no shortage of new book recommendations too.\",\n      \"id\": \"Vb017Sx3l8F\",\n      \"listennotes_url\": \"https://www.listennotes.com/curated-podcasts/7-bookish-podcasts-for-avid-readers-on-H2r-TCWai8K/\",\n      \"podcasts\": [\n        {\n          \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n          \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n          \"listen_score\": 81,\n          \"listen_score_global_rank\": \"0.5%\",\n          \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n          \"publisher\": \"Planet Broadcasting\",\n          \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n          \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n        }\n      ],\n      \"pub_date_ms\": 1556843484301,\n      \"source_domain\": \"parade.com\",\n      \"source_url\": \"https://parade.com/718913/ashley_johnson/7-bookish-podcasts-for-avid-readers-on-the-go/\",\n      \"title\": \"7 Bookish Podcasts for Avid Readers On the Go\",\n      \"total\": 25\n    }\n  ],\n  \"has_next\": true,\n  \"has_previous\": true,\n  \"next_page_number\": 3,\n  \"page_number\": 2,\n  \"previous_page_number\": 1,\n  \"total\": 25\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d0e1bf93-5b79-4ffa-99d9-024c51301d27",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "08f90497-a9b1-465f-b99d-667ddcfd52a5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "017fcb9a-e2af-4cbb-8e56-4485c89566cc",
+      "documentation": "Fetch a curated list of podcasts by id",
+      "method": "get",
+      "endpoint": "curated_podcasts/:id",
+      "responses": [
+        {
+          "uuid": "62bff0ae-d3b9-427b-bbd9-4b4441ff1e6f",
+          "body": "{\n  \"description\": \"Commuting to work is always better when you have a great new podcast to listen to, and this year, we have discovered some of our favorite podcasts yet for readers and book-lovers. These podcasts for readers entertain us and provide no shortage of new book recommendations too.\",\n  \"id\": \"Vb017Sx3l8F\",\n  \"listennotes_url\": \"https://www.listennotes.com/curated-podcasts/7-bookish-podcasts-for-avid-readers-on-H2r-TCWai8K/\",\n  \"podcasts\": [\n    {\n      \"country\": \"United States\",\n      \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n      \"earliest_pub_date_ms\": 1470667902000,\n      \"email\": \"hello@example.com\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"extra\": {\n        \"facebook_handle\": \"sw7x7\",\n        \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n        \"instagram_handle\": \"sw7x7\",\n        \"linkedin_url\": \"\",\n        \"patreon_handle\": \"sw7x7\",\n        \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n        \"twitter_handle\": \"SW7x7podcast\",\n        \"url1\": \"\",\n        \"url2\": \"\",\n        \"url3\": \"\",\n        \"wechat_handle\": \"\",\n        \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n      },\n      \"genre_ids\": [\n        138,\n        86,\n        160,\n        68,\n        82,\n        100,\n        101\n      ],\n      \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"is_claimed\": true,\n      \"itunes_id\": 896354638,\n      \"language\": \"English\",\n      \"latest_pub_date_ms\": 1557499770000,\n      \"listen_score\": 81,\n      \"listen_score_global_rank\": \"0.5%\",\n      \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n      \"looking_for\": {\n        \"cohosts\": true,\n        \"cross_promotion\": true,\n        \"guests\": true,\n        \"sponsors\": true\n      },\n      \"publisher\": \"Planet Broadcasting\",\n      \"rss\": \"https://sw7x7.libsyn.com/rss\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n      \"total_episodes\": 324,\n      \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n      \"website\": \"http://sw7x7.com/\"\n    }\n  ],\n  \"pub_date_ms\": 1556843484301,\n  \"source_domain\": \"parade.com\",\n  \"source_url\": \"https://parade.com/718913/ashley_johnson/7-bookish-podcasts-for-avid-readers-on-the-go/\",\n  \"title\": \"7 Bookish Podcasts for Avid Readers On the Go\",\n  \"total\": 25\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bc009fa5-1264-4a0f-b612-62fa88490ec5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "367bdc39-197f-41c1-9fd0-90e367891ca8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1fb13d25-43ce-4378-8126-a79524689216",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2d5f79e-fa54-4519-aabd-c40c4d1837df",
+      "documentation": "Batch fetch basic meta data for episodes",
+      "method": "post",
+      "endpoint": "episodes",
+      "responses": [
+        {
+          "uuid": "a84406e0-ccdc-4096-aba1-4553ea7b6ffc",
+          "body": "{\n  \"episodes\": [\n    {\n      \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n      \"audio_length_sec\": 567,\n      \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d82e50314174754a3b603912448e812\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n      \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n      \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n      \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n      \"podcast\": {\n        \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n        \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n        \"listen_score\": 81,\n        \"listen_score_global_rank\": \"0.5%\",\n        \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n        \"publisher\": \"Planet Broadcasting\",\n        \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n        \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n      },\n      \"pub_date_ms\": 1474873200000,\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "caad1311-402f-4be9-ac28-2a7c7f2f6f79",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9ecb843b-b804-4d90-a9cb-1ae4a2da2980",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9c2d3050-813f-44f8-a93d-00944b578b48",
+      "documentation": "Fetch detailed meta data for an episode by id",
+      "method": "get",
+      "endpoint": "episodes/:id",
+      "responses": [
+        {
+          "uuid": "9ed4b3ff-4eb9-41a8-94ab-ddf2d9d9a775",
+          "body": "{\n  \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n  \"audio_length_sec\": 567,\n  \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n  \"explicit_content\": {{faker 'datatype.boolean'}},\n  \"id\": \"4d82e50314174754a3b603912448e812\",\n  \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n  \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n  \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n  \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n  \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n  \"podcast\": {\n    \"country\": \"United States\",\n    \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n    \"earliest_pub_date_ms\": 1470667902000,\n    \"email\": \"hello@example.com\",\n    \"explicit_content\": {{faker 'datatype.boolean'}},\n    \"extra\": {\n      \"facebook_handle\": \"sw7x7\",\n      \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n      \"instagram_handle\": \"sw7x7\",\n      \"linkedin_url\": \"\",\n      \"patreon_handle\": \"sw7x7\",\n      \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n      \"twitter_handle\": \"SW7x7podcast\",\n      \"url1\": \"\",\n      \"url2\": \"\",\n      \"url3\": \"\",\n      \"wechat_handle\": \"\",\n      \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n    },\n    \"genre_ids\": [\n      138,\n      86,\n      160,\n      68,\n      82,\n      100,\n      101\n    ],\n    \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n    \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n    \"is_claimed\": true,\n    \"itunes_id\": 896354638,\n    \"language\": \"English\",\n    \"latest_pub_date_ms\": 1557499770000,\n    \"listen_score\": 81,\n    \"listen_score_global_rank\": \"0.5%\",\n    \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n    \"looking_for\": {\n      \"cohosts\": true,\n      \"cross_promotion\": true,\n      \"guests\": true,\n      \"sponsors\": true\n    },\n    \"publisher\": \"Planet Broadcasting\",\n    \"rss\": \"https://sw7x7.libsyn.com/rss\",\n    \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n    \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n    \"total_episodes\": 324,\n    \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n    \"website\": \"http://sw7x7.com/\"\n  },\n  \"pub_date_ms\": 1474873200000,\n  \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n  \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\",\n  \"transcript\": \"00:00:07 Welcome to this podcast...\\n\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "84d75054-7536-42e2-928a-fda5157090f8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a6912334-f6ca-42b9-8bce-4d5cefcb4e96",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3184899f-40c3-46ba-8171-134998db1950",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "df5dedf0-d767-45e5-ab30-5f23c2adccf9",
+      "documentation": "Fetch recommendations for an episode",
+      "method": "get",
+      "endpoint": "episodes/:id/recommendations",
+      "responses": [
+        {
+          "uuid": "d40726bd-a1a9-4351-ae71-bfa8054c6df9",
+          "body": "{\n  \"recommendations\": [\n    {\n      \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n      \"audio_length_sec\": 567,\n      \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d82e50314174754a3b603912448e812\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n      \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n      \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n      \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n      \"podcast\": {\n        \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n        \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n        \"listen_score\": 81,\n        \"listen_score_global_rank\": \"0.5%\",\n        \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n        \"publisher\": \"Planet Broadcasting\",\n        \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n        \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n      },\n      \"pub_date_ms\": 1474873200000,\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f6ed84a6-ff33-4133-9c47-dd1d4e0b02b8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e43961dd-5d37-4807-8992-61c5bf6833d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d8d03539-5e55-47ab-9414-11960b3f88a0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8e55c42e-0c9f-44af-a276-5d9b3033f098",
+      "documentation": "Fetch a list of podcast genres",
+      "method": "get",
+      "endpoint": "genres",
+      "responses": [
+        {
+          "uuid": "4bdb4881-5683-4e23-bc36-31ac0cb13e2b",
+          "body": "{\n  \"genres\": [\n    {\n      \"id\": 140,\n      \"name\": \"Web Design\",\n      \"parent_id\": 127\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b7e44df4-ae75-4f7d-b438-fceeccf58eea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9ea4b728-795d-4db1-bbc8-1cd257f3bec7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69c6846a-c4b9-42ab-8927-de7f0e4da24c",
+      "documentation": "Fetch a random podcast episode",
+      "method": "get",
+      "endpoint": "just_listen",
+      "responses": [
+        {
+          "uuid": "de45bf8c-55f0-4b80-87cc-f74e49a28bec",
+          "body": "{\n  \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n  \"audio_length_sec\": 567,\n  \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n  \"explicit_content\": {{faker 'datatype.boolean'}},\n  \"id\": \"4d82e50314174754a3b603912448e812\",\n  \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n  \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n  \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n  \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n  \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n  \"podcast\": {\n    \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n    \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n    \"listen_score\": 81,\n    \"listen_score_global_rank\": \"0.5%\",\n    \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n    \"publisher\": \"Planet Broadcasting\",\n    \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n    \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n  },\n  \"pub_date_ms\": 1474873200000,\n  \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n  \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a288bdff-00d4-4a00-b8f2-0405d4450a0d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6109b175-6cfd-4b95-af42-97a6389a1666",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fc9280b0-29de-4986-b75a-76eb32c42590",
+      "documentation": "Fetch a list of supported languages for podcasts",
+      "method": "get",
+      "endpoint": "languages",
+      "responses": [
+        {
+          "uuid": "497a0a0b-08da-402e-aac2-5f0cb4d03408",
+          "body": "{\n  \"languages\": [\n    \"Any language\",\n    \"Afar\",\n    \"Abkhazian\",\n    \"Afrikaans\",\n    \"Akan\",\n    \"Albanian\",\n    \"Arabic\",\n    \"Azerbaijani\",\n    \"Bambara\",\n    \"Bashkir\",\n    \"Basque\",\n    \"Belarusian\",\n    \"Bulgarian\",\n    \"Catalan\",\n    \"Chamorro\",\n    \"Chinese\",\n    \"Croatian\",\n    \"Czech\",\n    \"Danish\",\n    \"Dutch\",\n    \"English\",\n    \"Estonian\",\n    \"Faeroese\",\n    \"Finnish\",\n    \"French\",\n    \"Gaelic\",\n    \"Galician\",\n    \"German\",\n    \"Greek\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "86e8f3a0-1a39-4b48-9b12-f07d7fcc7d1a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9a0ed2a6-b225-4cbc-b168-980fb282c733",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a47d7129-b154-4616-ad8c-1ed0780bd013",
+      "documentation": "Fetch a list of your playlists.",
+      "method": "get",
+      "endpoint": "playlists",
+      "responses": [
+        {
+          "uuid": "8566421c-fcdb-48f3-9cb8-60499a57f890",
+          "body": "{\n  \"has_next\": true,\n  \"has_previous\": true,\n  \"next_page_number\": 3,\n  \"page_number\": 2,\n  \"playlists\": [\n    {\n      \"description\": \"A curated playlist of podcasts about podcasting.\",\n      \"episode_count\": 23,\n      \"id\": \"m1pe7z60bsw\",\n      \"image\": \"https://cdn-images-1.listennotes.com/playlist/image/6907e8ff6b6c45df94cc059753f369cc.JPEG\",\n      \"last_timestamp_ms\": 1595641092907,\n      \"listennotes_url\": \"https://www.listennotes.com/listen/podcasts-about-podcasting-m1pe7z60bsw/?display=episode\",\n      \"name\": \"My podcast playlist\",\n      \"podcast_count\": 10,\n      \"thumbnail\": \"https://d3sv2eduhewoas.cloudfront.net/playlist/image/48477deae02649d7ab9d3f1b3966af38.JPEG\",\n      \"visibility\": \"{{oneOf (array 'public' 'unlisted' 'private')}}\"\n    }\n  ],\n  \"previous_page_number\": 1,\n  \"total\": 325\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "da01479f-c416-4c9f-8deb-2f08c41023f4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5d4ef6ca-c2b5-4b9f-8a1d-b49a1bc4e51f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dd006f51-2838-41d3-ba26-fd31f113f643",
+      "documentation": "Fetch a playlist's info and items (i.e., episodes or podcasts).",
+      "method": "get",
+      "endpoint": "playlists/:id",
+      "responses": [
+        {
+          "uuid": "10cd2a6b-b4ef-4921-888d-00d6ca3fa644",
+          "body": "{\n  \"description\": \"A curated playlist of podcasts about podcasting.\",\n  \"id\": \"m1pe7z60bsw\",\n  \"image\": \"https://cdn-images-1.listennotes.com/playlist/image/6907e8ff6b6c45df94cc059753f369cc.JPEG\",\n  \"items\": [\n    {\n      \"added_at_ms\": 1595567004958,\n      \"data\": {\n        \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n        \"audio_length_sec\": 567,\n        \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n        \"explicit_content\": {{faker 'datatype.boolean'}},\n        \"id\": \"4d82e50314174754a3b603912448e812\",\n        \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n        \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n        \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n        \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n        \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n        \"podcast\": {\n          \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n          \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n          \"listen_score\": 81,\n          \"listen_score_global_rank\": \"0.5%\",\n          \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n          \"publisher\": \"Planet Broadcasting\",\n          \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n          \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n        },\n        \"pub_date_ms\": 1474873200000,\n        \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n        \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n      },\n      \"id\": 23,\n      \"notes\": \"This is a good episode.\",\n      \"type\": \"{{oneOf (array 'episode' 'custom_audio' 'podcast')}}\"\n    }\n  ],\n  \"last_timestamp_ms\": 1595641092907,\n  \"listennotes_url\": \"https://www.listennotes.com/listen/podcasts-about-podcasting-m1pe7z60bsw/?display=episode\",\n  \"name\": \"My podcast playlist\",\n  \"thumbnail\": \"https://d3sv2eduhewoas.cloudfront.net/playlist/image/48477deae02649d7ab9d3f1b3966af38.JPEG\",\n  \"total\": 325,\n  \"type\": \"{{oneOf (array 'episode_list' 'podcast_list')}}\",\n  \"visibility\": \"{{oneOf (array 'public' 'unlisted' 'private')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "26e44612-30fc-4292-a441-6a6d1364ece9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5d2c1eba-63ee-474c-8e69-9d585d706d91",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "040cc604-556e-4092-99ac-b77d39c415db",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "147fd9c1-8dd4-40ce-be89-b02f2d249864",
+      "documentation": "Batch fetch basic meta data for podcasts",
+      "method": "post",
+      "endpoint": "podcasts",
+      "responses": [
+        {
+          "uuid": "8bbf0a05-13d1-4548-9dc6-aa892f0540ad",
+          "body": "{\n  \"latest_episodes\": [\n    {\n      \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n      \"audio_length_sec\": 567,\n      \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d82e50314174754a3b603912448e812\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n      \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n      \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n      \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n      \"podcast\": {\n        \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n        \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n        \"listen_score\": 81,\n        \"listen_score_global_rank\": \"0.5%\",\n        \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n        \"publisher\": \"Planet Broadcasting\",\n        \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n        \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n      },\n      \"pub_date_ms\": 1474873200000,\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n    }\n  ],\n  \"podcasts\": [\n    {\n      \"country\": \"United States\",\n      \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n      \"earliest_pub_date_ms\": 1470667902000,\n      \"email\": \"hello@example.com\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"extra\": {\n        \"facebook_handle\": \"sw7x7\",\n        \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n        \"instagram_handle\": \"sw7x7\",\n        \"linkedin_url\": \"\",\n        \"patreon_handle\": \"sw7x7\",\n        \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n        \"twitter_handle\": \"SW7x7podcast\",\n        \"url1\": \"\",\n        \"url2\": \"\",\n        \"url3\": \"\",\n        \"wechat_handle\": \"\",\n        \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n      },\n      \"genre_ids\": [\n        138,\n        86,\n        160,\n        68,\n        82,\n        100,\n        101\n      ],\n      \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"is_claimed\": true,\n      \"itunes_id\": 896354638,\n      \"language\": \"English\",\n      \"latest_pub_date_ms\": 1557499770000,\n      \"listen_score\": 81,\n      \"listen_score_global_rank\": \"0.5%\",\n      \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n      \"looking_for\": {\n        \"cohosts\": true,\n        \"cross_promotion\": true,\n        \"guests\": true,\n        \"sponsors\": true\n      },\n      \"publisher\": \"Planet Broadcasting\",\n      \"rss\": \"https://sw7x7.libsyn.com/rss\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n      \"total_episodes\": 324,\n      \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n      \"website\": \"http://sw7x7.com/\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "95fd6261-6974-43b8-84ad-dba88a2d431c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dfec192f-ffde-455d-a4a4-76f304dd9bfa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d204bc45-61f1-4edb-86ee-83f9a2ce2e70",
+      "documentation": "Submit a podcast to Listen Notes database",
+      "method": "post",
+      "endpoint": "podcasts/submit",
+      "responses": [
+        {
+          "uuid": "f20d2781-a619-451a-8586-c9da0e8c18be",
+          "body": "{\n  \"podcast\": {\n    \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n    \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n    \"listen_score\": 81,\n    \"listen_score_global_rank\": \"0.5%\",\n    \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n    \"publisher\": \"Planet Broadcasting\",\n    \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n    \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n  },\n  \"status\": \"{{oneOf (array 'found' 'in review')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e76d1b9a-55f2-4635-b60f-2cb3b9c20941",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong on your end (Client side errors), e.g., missing required parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "479e27c3-0b86-4eef-bcdf-df19c09e5857",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a0572f8f-e846-453e-94fd-126f559f41b8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e143932-6302-4f5e-a50b-9156691c0a00",
+      "documentation": "Request to delete a podcast",
+      "method": "delete",
+      "endpoint": "podcasts/:id",
+      "responses": [
+        {
+          "uuid": "ce1b947f-32dc-4b7c-89db-c12831da8442",
+          "body": "{\n  \"status\": \"{{oneOf (array 'deleted' 'in review')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f8aa4c49-ab27-4f05-86d8-c39f4ed47b2e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4b2abc23-369a-42b2-a3cd-2a825b22d542",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8fd9f9c6-b6ac-43b3-8b19-4200467b7889",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3c07a1a9-c242-4f56-9b4e-c0bda681afec",
+      "documentation": "Fetch detailed meta data and episodes for a podcast by id",
+      "method": "get",
+      "endpoint": "podcasts/:id",
+      "responses": [
+        {
+          "uuid": "83a2d244-9ed5-4718-ad72-46e4134e1e71",
+          "body": "{\n  \"country\": \"United States\",\n  \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n  \"earliest_pub_date_ms\": 1470667902000,\n  \"email\": \"hello@example.com\",\n  \"episodes\": [\n    {\n      \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n      \"audio_length_sec\": 567,\n      \"description\": \"<p>Disney chief Bob Iger shared news about Star Wars movies in 2020 and beyond, but some media outlets gave conflicting reports about it. Here's the real scoop. Punch it!</p> <p>***We’re listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and you’ll get some fabulous rewards for your pledge.*** </p> <p>Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast.</p> <p>Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!</p>\\n\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d82e50314174754a3b603912448e812\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n      \"listennotes_edit_url\": \"https://www.listennotes.com/e/11b34041e804491b9704d11f283c74de/#edit\",\n      \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n      \"maybe_audio_invalid\": {{faker 'datatype.boolean'}},\n      \"pub_date_ms\": 1474873200000,\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Celebration Recap, Jason Fry and Christian Blauvelt Interviews – SWBW #101\"\n    }\n  ],\n  \"explicit_content\": {{faker 'datatype.boolean'}},\n  \"extra\": {\n    \"facebook_handle\": \"sw7x7\",\n    \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n    \"instagram_handle\": \"sw7x7\",\n    \"linkedin_url\": \"\",\n    \"patreon_handle\": \"sw7x7\",\n    \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n    \"twitter_handle\": \"SW7x7podcast\",\n    \"url1\": \"\",\n    \"url2\": \"\",\n    \"url3\": \"\",\n    \"wechat_handle\": \"\",\n    \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n  },\n  \"genre_ids\": [\n    138,\n    86,\n    160,\n    68,\n    82,\n    100,\n    101\n  ],\n  \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n  \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n  \"is_claimed\": true,\n  \"itunes_id\": 896354638,\n  \"language\": \"English\",\n  \"latest_pub_date_ms\": 1557499770000,\n  \"listen_score\": 81,\n  \"listen_score_global_rank\": \"0.5%\",\n  \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n  \"looking_for\": {\n    \"cohosts\": true,\n    \"cross_promotion\": true,\n    \"guests\": true,\n    \"sponsors\": true\n  },\n  \"next_episode_pub_date\": 1470667902000,\n  \"publisher\": \"Planet Broadcasting\",\n  \"rss\": \"https://sw7x7.libsyn.com/rss\",\n  \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n  \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n  \"total_episodes\": 324,\n  \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n  \"website\": \"http://sw7x7.com/\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fe589bde-c03b-4457-bdfc-64128633731a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "206beb6a-8d8d-47ce-bcae-7685a5054791",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e9a31a94-a43c-45dd-9e1f-ca90a345b69a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "68020ac4-a713-40c6-8561-106d85efa72a",
+      "documentation": "Fetch recommendations for a podcast",
+      "method": "get",
+      "endpoint": "podcasts/:id/recommendations",
+      "responses": [
+        {
+          "uuid": "d261fc55-adb7-4188-8508-305310be0a8b",
+          "body": "{\n  \"recommendations\": [\n    {\n      \"country\": \"United States\",\n      \"description\": \"<p>The Star Wars 7x7 Podcast is Rebel-rousing fun for everyday Jedi, between 7 and 14 minutes a day, 7 days a week. Join host Allen Voivod for Star Wars news, history, interviews, trivia, and deep dives into the Star Wars story as told in movies, books, comics, games, cartoons, and more. Subscribe now for your daily dose of Star Wars joy. It's destiny unleashed!</p>\",\n      \"earliest_pub_date_ms\": 1470667902000,\n      \"email\": \"hello@example.com\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"extra\": {\n        \"facebook_handle\": \"sw7x7\",\n        \"google_url\": \"https://play.google.com/music/listen?u=0#/ps/I7gdcrqcmvhfnhh2cyqkcg32tkq\",\n        \"instagram_handle\": \"sw7x7\",\n        \"linkedin_url\": \"\",\n        \"patreon_handle\": \"sw7x7\",\n        \"spotify_url\": \"https://open.spotify.com/show/2rQJUP9Y3HxemiW3JHt9WV\",\n        \"twitter_handle\": \"SW7x7podcast\",\n        \"url1\": \"\",\n        \"url2\": \"\",\n        \"url3\": \"\",\n        \"wechat_handle\": \"\",\n        \"youtube_url\": \"https://www.youtube.com/sw7x7\"\n      },\n      \"genre_ids\": [\n        138,\n        86,\n        160,\n        68,\n        82,\n        100,\n        101\n      ],\n      \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"is_claimed\": true,\n      \"itunes_id\": 896354638,\n      \"language\": \"English\",\n      \"latest_pub_date_ms\": 1557499770000,\n      \"listen_score\": 81,\n      \"listen_score_global_rank\": \"0.5%\",\n      \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n      \"looking_for\": {\n        \"cohosts\": true,\n        \"cross_promotion\": true,\n        \"guests\": true,\n        \"sponsors\": true\n      },\n      \"publisher\": \"Planet Broadcasting\",\n      \"rss\": \"https://sw7x7.libsyn.com/rss\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\",\n      \"total_episodes\": 324,\n      \"type\": \"{{oneOf (array 'episodic' 'serial')}}\",\n      \"website\": \"http://sw7x7.com/\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed564739-fca6-4aee-973f-5b7eb70f57da",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "01e7d1be-7209-4a73-9287-64f96cf87128",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Endpoint not exist, or podcast / episode not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2f8aa2b6-6e79-4d08-bef1-3fc0773ca722",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "774b040f-6f85-464f-ae04-f76f896c0078",
+      "documentation": "Fetch a list of supported countries/regions for best podcasts",
+      "method": "get",
+      "endpoint": "regions",
+      "responses": [
+        {
+          "uuid": "8f1dd3d7-3c58-4bfc-b424-891c902c6fec",
+          "body": "{\n  \"regions\": {\n    \"au\": \"Australia\",\n    \"de\": \"Germany\",\n    \"ua\": \"Ukraine\",\n    \"us\": \"United States\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9e747ee8-c7fd-4a4b-bdff-312f54a25741",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "68cb2a40-ac02-43d7-b803-a4ce8f326fed",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "46957d24-00f5-4110-8de6-559739911422",
+      "documentation": "Full-text search",
+      "method": "get",
+      "endpoint": "search",
+      "responses": [
+        {
+          "uuid": "38bf5037-8ba9-4d97-b87c-474d16072b65",
+          "body": "{\n  \"count\": 10,\n  \"next_offset\": 10,\n  \"results\": [\n    {\n      \"audio\": \"https://www.listennotes.com/e/p/11b34041e804491b9704d11f283c74de/\",\n      \"audio_length_sec\": 567,\n      \"description_highlighted\": \"...Go to http://Patreon.com/sw7x7 to donate to the <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> 7x7 podcast, and you'll get some fabulous rewards for your pledge.***  Check out SW7x7.com for full <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> 7x7 show notes and links, and to\\n\",\n      \"description_original\": \"Yeah, Star Wars Celebration Orlando is 32 days away, but what's the scoop on Celebration 2018? Plus, Rebels Day is Saturday, and much more in our update. Punch it! ***We're listener supported! Go to http://Patreon.com/sw7x7 to donate to the Star Wars 7x7 podcast, and youâ€™ll get some fabulous rewards for your pledge.***  Check out SW7x7.com for full Star Wars 7x7 show notes and links, and to comment on any of the content of this episode! If you like what you've heard, please leave us a rating or review on iTunes or Stitcher, which will also help more people discover this Star Wars podcast. Don't forget to join the Star Wars 7x7 fun on Facebook at Facebook.com/SW7x7, and follow the breaking news Twitter feed at Twitter.com/SW7x7Podcast. We're also on Pinterest and Instagram as \\\"SW7x7\\\" too, and we'd love to connect with you there!\\n\",\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d82e50314174754a3b603912448e812\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"itunes_id\": 896354638,\n      \"link\": \"https://www.npr.org/2020/01/22/798532179/soleimanis-iran\",\n      \"listennotes_url\": \"https://www.listennotes.com/e/4d82e50314174754a3b603912448e812/\",\n      \"podcast\": {\n        \"genre_ids\": [\n          138,\n          86,\n          160,\n          68,\n          82,\n          100,\n          101\n        ],\n        \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n        \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n        \"listen_score\": 81,\n        \"listen_score_global_rank\": \"0.5%\",\n        \"listennotes_url\": \"https://www.listennotes.com/c/4d3fe717742d4963a85562e9f84d8c79/\",\n        \"publisher_highlighted\": \"<span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> Daily, by Allen Voivod\",\n        \"publisher_original\": \"Star Wars Daily, by Allen Voivod\",\n        \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n        \"title_highlighted\": \"<span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> 7x7 | <span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> News, Interviews, and More!\",\n        \"title_original\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n      },\n      \"pub_date_ms\": 1474873200000,\n      \"rss\": \"https://sw7x7.libsyn.com/rss\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title_highlighted\": \"815: <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> 2020 Movie and Beyond!\",\n      \"title_original\": \"815: Star Wars 2020 Movie and Beyond!\",\n      \"transcripts_highlighted\": [\n        \"00:21:27  when Disney bought the <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> franchise from George Lucas they had a plan lots of <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> movies new <span class=\\\"ln-search-highlight\\\">Star</span> <span class=\\\"ln-search-highlight\\\">Wars</span> movies every month another one was just released while I was talking\\n\"\n      ]\n    }\n  ],\n  \"took\": 0.093,\n  \"total\": 1989\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1651d037-d8fa-48ff-943b-609719553569",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong on your end (Client side errors), e.g., missing required parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d579db60-6ec3-47d7-a98c-5bf3601fa70c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9fc43995-cdfc-45f2-bae2-11e4d06d8008",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b95aa893-f809-471c-bc84-dad9d8d89637",
+      "documentation": "Typeahead search",
+      "method": "get",
+      "endpoint": "typeahead",
+      "responses": [
+        {
+          "uuid": "d60cfd52-6137-4da9-b161-cbc0afbae900",
+          "body": "{\n  \"genres\": [\n    {\n      \"id\": 140,\n      \"name\": \"Web Design\",\n      \"parent_id\": 127\n    }\n  ],\n  \"podcasts\": [\n    {\n      \"explicit_content\": {{faker 'datatype.boolean'}},\n      \"id\": \"4d3fe717742d4963a85562e9f84d8c79\",\n      \"image\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.1400x1400.jpg\",\n      \"publisher_highlighted\": \"<span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> Daily, by Allen Voivod\",\n      \"publisher_original\": \"Star Wars Daily, by Allen Voivod\",\n      \"thumbnail\": \"https://cdn-images-1.listennotes.com/podcasts/exponent-ben-thompson-james-allworth-OaJSjb4xQv3.300x300.jpg\",\n      \"title_highlighted\": \"<span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> 7x7 | <span class=\\\\\\\"ln-search-highlight\\\\\\\">Star</span> <span class=\\\\\\\"ln-search-highlight\\\\\\\">Wars</span> News, Interviews, and More!\",\n      \"title_original\": \"Star Wars 7x7 | Star Wars News, Interviews, and More!\"\n    }\n  ],\n  \"terms\": [\n    \"startup sales\",\n    \"startup\",\n    \"startups\",\n    \"star wars\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-ListenAPI-FreeQuota",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-NextBillingDate",
+              "value": ""
+            },
+            {
+              "key": "X-ListenAPI-Usage",
+              "value": ""
+            },
+            {
+              "key": "X-listenAPI-Latency-Seconds",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5a927958-c299-4c4b-9f9b-12726eaf6b37",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong on your end (Client side errors), e.g., missing required parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e0ef054b-8866-4ca0-8de9-8ad28e85d046",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Wrong api key or your account is suspended.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e347df2e-a2bf-40e3-bb81-23f58874402c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "You are using FREE plan and you exceed the quota limit.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

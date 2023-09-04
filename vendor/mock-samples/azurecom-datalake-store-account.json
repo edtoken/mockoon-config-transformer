@@ -1,0 +1,1068 @@
+{
+  "uuid": "0a1ce269-05ff-46ed-9a7a-adfd5f1149a8",
+  "lastMigration": 24,
+  "name": "DataLakeStoreAccountManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8a5db280-1b8f-45fc-b31b-4d1c5ea6a28a",
+      "documentation": "Lists all of the available Data Lake Store REST API operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.DataLakeStore/operations",
+      "responses": [
+        {
+          "uuid": "494424de-1b75-4081-a5dd-3936350acff8",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\",\n      \"origin\": \"{{oneOf (array 'user' 'system' 'user,system')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully listed the available operations for Data Lake Store.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "325a8827-e559-4512-84be-f70fd4b6ccb5",
+      "documentation": "Lists the Data Lake Store accounts within the subscription. The response includes a link to the next page of results, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeStore/accounts",
+      "responses": [
+        {
+          "uuid": "0d97d8bd-8096-4eea-ba84-37ad0dbefc63",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of accounts.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ed2a8077-e6e0-4286-916f-6ee2a9660dd8",
+      "documentation": "Gets subscription-level properties and limits for Data Lake Store specified by resource location.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeStore/locations/:location/capability",
+      "responses": [
+        {
+          "uuid": "84d04f7f-5996-40aa-8d31-9b553dfa9a37",
+          "body": "{\n  \"accountCount\": {{faker 'datatype.number'}},\n  \"maxAccountCount\": {{faker 'datatype.number'}},\n  \"migrationState\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'Registered' 'Suspended' 'Deleted' 'Unregistered' 'Warned')}}\",\n  \"subscriptionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the subscription-level properties and limits for Data Lake Store specified by resource location.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ea3422e9-10bd-4a57-9b92-276228ccbe96",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Subscription not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a8e66c9-49a0-4ba0-a505-f504021032ae",
+      "documentation": "Checks whether the specified account name is available or taken.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeStore/locations/:location/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "0852d91b-08ea-495b-ae05-5b138d78239e",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the Data Lake Store account name availability information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "51da4d93-4cc7-41ba-b818-8e1642a79e45",
+      "documentation": "Gets the current usage count and the limit for the resources of the location under the subscription.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.DataLakeStore/locations/:location/usages",
+      "responses": [
+        {
+          "uuid": "e22dda4e-6f98-42d6-b20a-c5f68c870cae",
+          "body": "{\n  \"value\": [\n    {\n      \"currentValue\": {{faker 'datatype.number'}},\n      \"id\": \"\",\n      \"limit\": {{faker 'datatype.number'}},\n      \"name\": {\n        \"localizedValue\": \"\",\n        \"value\": \"\"\n      },\n      \"unit\": \"{{oneOf (array 'Count' 'Bytes' 'Seconds' 'Percent' 'CountsPerSecond' 'BytesPerSecond')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- current usage count and limit retrieved and returned successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f77bcbf4-8e2f-4a3c-8669-8df336f25a4a",
+      "documentation": "Lists the Data Lake Store accounts within a specific resource group. The response includes a link to the next page of results, if any.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts",
+      "responses": [
+        {
+          "uuid": "cc24b6c8-3932-4980-a4f5-cfdc6eb3d3f7",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of accounts in the specified resource group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a35d9ac5-f253-450d-9e8b-06055eda5764",
+      "documentation": "Deletes the specified Data Lake Store account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "4fff7106-eaf7-4727-9e7c-1527dc8a3c01",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0e74bac1-8ff9-4cba-8749-d12204dcd599",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Successfully initiated the deletion of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ce9ebf6f-5a77-4c0e-a652-a48f4134f36e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified account was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bfe8d7b9-19d2-4e5d-ac3d-d577820a03ba",
+      "documentation": "Gets the specified Data Lake Store account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "52832965-e930-4d8c-97e6-18dd9df7804e",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved details of the specified account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8eae3140-ac7b-4415-af2b-2365766f3c02",
+      "documentation": "Updates the specified Data Lake Store account information.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "be239880-9d5d-44a1-b083-b26d29f2cdec",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the account details.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b84286ed-b6cc-4b39-8372-6a40d0a9fbeb",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully initiated the update of the account details.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "682ff761-19f4-4055-bb76-4503dcb53072",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Successfully initiated the update of the account details.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "362efde5-832e-43ad-9f5d-58375aa367c8",
+      "documentation": "Creates the specified Data Lake Store account.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName",
+      "responses": [
+        {
+          "uuid": "bad9280f-fda2-4f51-b56d-d1bf500085a7",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created the account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4480f352-3c2a-47cd-8452-e13b37dd3338",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully initiated creation of the account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3f3df3b5-3d8f-4727-b01f-b5310c2ad181",
+      "documentation": "Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/enableKeyVault",
+      "responses": [
+        {
+          "uuid": "dabe5961-e635-4f95-925a-055e181f1190",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully enabled the user-managed Key Vault settings used for encrypting this Data Lake Store account.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "83646f5c-4a3d-4207-9fc9-bb82e37fa4e9",
+      "documentation": "Lists the Data Lake Store firewall rules within the specified Data Lake Store account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/firewallRules",
+      "responses": [
+        {
+          "uuid": "eae4d7ee-5b0a-414e-bade-baa3aab26f27",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of firewall rules.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "859441be-756f-4834-b58e-af45fb7814d8",
+      "documentation": "Deletes the specified firewall rule from the specified Data Lake Store account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "e73bca51-bf3a-46a4-b19a-de1d693d183c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified firewall rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3f73a6c5-e3fa-40c6-9147-f8dfc7e88441",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified firewall rule does not exist or was already deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13a07a3c-2aa2-4673-bef6-934e89d105ef",
+      "documentation": "Gets the specified Data Lake Store firewall rule.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "91dbf156-cd03-4487-88df-0a80e5399202",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the firewall rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53d19884-fba6-4aec-8a5b-67137ca5f79c",
+      "documentation": "Updates the specified firewall rule.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "7b73beaf-4414-4692-979a-2e267982f0d3",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the specified firewall rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "25a82674-a6ed-4b0a-9429-46ab6953d0a7",
+      "documentation": "Creates or updates the specified firewall rule. During update, the firewall rule with the specified name will be replaced with this new firewall rule.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/firewallRules/:firewallRuleName",
+      "responses": [
+        {
+          "uuid": "2f118a8e-dcd6-4874-8130-c8d0af72acf6",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created or updated the specified firewall rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ac46aa93-d1b1-4fe7-8362-facfb9cee0f3",
+      "documentation": "Lists the Data Lake Store trusted identity providers within the specified Data Lake Store account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/trustedIdProviders",
+      "responses": [
+        {
+          "uuid": "fe11dd04-fbb3-479b-92e9-f9759d97e227",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of trusted identity providers.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f05f4ae0-2521-4a12-b88a-2e276152806c",
+      "documentation": "Deletes the specified trusted identity provider from the specified Data Lake Store account",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/trustedIdProviders/:trustedIdProviderName",
+      "responses": [
+        {
+          "uuid": "9a117800-4fbe-4b82-990f-64e506aca633",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified trusted identity provider details.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f0e1333e-358e-42a5-b44c-f9bef6034d2e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified trusted identity provider was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "406fbe8b-acd6-4a56-8762-d113c77f2d91",
+      "documentation": "Gets the specified Data Lake Store trusted identity provider.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/trustedIdProviders/:trustedIdProviderName",
+      "responses": [
+        {
+          "uuid": "01bf2897-e87a-4ed5-b3a2-8adfbb8ed1a7",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved details of the specified trusted identity provider.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cdc64f20-1417-4176-b0f1-080706b62d0e",
+      "documentation": "Updates the specified trusted identity provider.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/trustedIdProviders/:trustedIdProviderName",
+      "responses": [
+        {
+          "uuid": "9dca7a1b-9e56-4c3a-b9a2-ed68a586c35d",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully added the trusted identity provider.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f1643e51-08d1-4f2c-9b63-de3b65a55eaa",
+      "documentation": "Creates or updates the specified trusted identity provider. During update, the trusted identity provider with the specified name will be replaced with this new provider",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/trustedIdProviders/:trustedIdProviderName",
+      "responses": [
+        {
+          "uuid": "5c4d8870-79c0-4f36-995e-0f15412b0fb5",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully added the trusted identity provider.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0b36099c-1c22-4999-af20-dff59957208a",
+      "documentation": "Lists the Data Lake Store virtual network rules within the specified Data Lake Store account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/virtualNetworkRules",
+      "responses": [
+        {
+          "uuid": "7384f892-2463-4b9a-8299-3ce633caf06d",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of virtual network rules.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e26dfaa-3b4d-4541-b15a-a5cda1faec3a",
+      "documentation": "Deletes the specified virtual network rule from the specified Data Lake Store account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/virtualNetworkRules/:virtualNetworkRuleName",
+      "responses": [
+        {
+          "uuid": "8465c1c8-b8a4-49b9-b8a2-5b6131d12ac8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the specified virtual network rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "61ff7121-f79a-4042-8097-992ff7ef2feb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified virtual network rule does not exist or was already deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4566a7f7-f819-4112-8361-f9bdf4a47d87",
+      "documentation": "Gets the specified Data Lake Store virtual network rule.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/virtualNetworkRules/:virtualNetworkRuleName",
+      "responses": [
+        {
+          "uuid": "b7a1d86e-f46c-49f8-9ab9-8a7d374497b0",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the virtual network rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a7d8b1fe-54af-428c-98d8-d9214b17c68d",
+      "documentation": "Updates the specified virtual network rule.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/virtualNetworkRules/:virtualNetworkRuleName",
+      "responses": [
+        {
+          "uuid": "f8271847-8803-4f6c-9749-e58cc2f196dc",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the specified virtual network rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e9f7e56-2ab9-4da8-80ec-e40e138cf434",
+      "documentation": "Creates or updates the specified virtual network rule. During update, the virtual network rule with the specified name will be replaced with this new virtual network rule.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.DataLakeStore/accounts/:accountName/virtualNetworkRules/:virtualNetworkRuleName",
+      "responses": [
+        {
+          "uuid": "33f27a1c-4442-4e3f-93c2-89846d6189f0",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created or updated the specified virtual network rule.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,136 @@
+{
+  "uuid": "0a24cfd2-fa8f-471e-8a5d-bbaf1fc8e3df",
+  "lastMigration": 24,
+  "name": "AWS Marketplace Entitlement Service",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "bc74a958-439f-444a-b3b5-8f2b0ca20b8c",
+      "documentation": "GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AWSMPEntitlementService.GetEntitlements",
+      "responses": [
+        {
+          "uuid": "0c585d7f-6587-44ac-be4a-ff5ee4da05d1",
+          "body": "{\n  \"Entitlements\": [\n    {\n      \"ProductCode\": \"\",\n      \"Dimension\": \"\",\n      \"CustomerIdentifier\": \"\",\n      \"Value\": {\n        \"IntegerValue\": {{faker 'datatype.number'}},\n        \"DoubleValue\": {{faker 'datatype.float'}},\n        \"BooleanValue\": {{faker 'datatype.boolean'}},\n        \"StringValue\": \"\"\n      },\n      \"ExpirationDate\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "63e887da-3624-4072-a74f-5a38f3d25a90",
+          "body": "{\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidParameterException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d2506b99-25d2-438f-8a0b-b225b7f6749e",
+          "body": "{\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f939b562-d93c-4b88-8f6d-cbdeb8a09b55",
+          "body": "{\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServiceErrorException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,548 @@
+{
+  "uuid": "33f8058e-8fe8-45aa-a417-588cdac81810",
+  "lastMigration": 24,
+  "name": "SqlManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "98941586-1292-4f85-a40b-ac8ae5f0647a",
+      "documentation": "Lists sync members in the given sync group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers",
+      "responses": [
+        {
+          "uuid": "b12ae657-0909-4892-8017-4b4a334a5f4c",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the list of sync members.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c6635457-38db-4534-a292-9661248fbaae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6dfa900d-904c-4d5b-a552-93be36acbc73",
+      "documentation": "Deletes a sync member.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName",
+      "responses": [
+        {
+          "uuid": "407260ca-18cf-4981-9526-f872810043f8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the sync member.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "29aff96f-04da-43a7-8196-2d7c170ebe4b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Deleting the sync member is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b02ba66-45c6-4c16-a9a5-a8b08450d739",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The specified sync member does not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "da8714d0-aecc-4813-810e-7668b32c0cc4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "49777306-0e89-4beb-b5a9-d22119575722",
+      "documentation": "Gets a sync member.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName",
+      "responses": [
+        {
+          "uuid": "06e5e9be-9406-42d8-9e0d-9fe6f429e239",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully retrieved the specified sync member.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c848eccf-a732-4927-aeb1-bfc6018584d9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1df55fc8-4230-4605-90fd-4d367b327f0d",
+      "documentation": "Updates an existing sync member.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName",
+      "responses": [
+        {
+          "uuid": "6e6d3723-564c-4815-bc7e-f104ff04f51b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the sync member.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0f292e85-e5f1-4e84-8b90-1172ea7ee725",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Updating the sync member is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30095626-f368-466b-a4bb-bfa8d7c44d60",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "832ccf7c-f3c9-4c82-9c5c-57265c4e0e5f",
+      "documentation": "Creates or updates a sync member.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName",
+      "responses": [
+        {
+          "uuid": "ee986cb1-5dc1-490a-ac71-7f40b0c0a84f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully updated the sync member.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7887ee9b-29e0-4809-8796-9a6b50a57156",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully created the sync member.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38ea4346-c005-4e2e-8b3e-cc4968e99582",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Creating or updating the sync member is in progress.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12b63e89-4263-449d-a834-74a1226401e5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e22b930d-c5fd-452c-9b33-c4e3db94fdbf",
+      "documentation": "Refreshes a sync member database schema.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName/refreshSchema",
+      "responses": [
+        {
+          "uuid": "0ac58d9a-0ef8-4c82-b65e-c27c1ab5f3f2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully refreshed a sync member schema.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4ce4190c-d907-437b-b11a-7466f125d7b1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The sync member schema refresh operation is on going.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6a430a2c-fac8-4d2f-98b6-2b418f751e7f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a3cd9a64-2452-4899-9990-b55858701ffc",
+      "documentation": "Gets a sync member database schema.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/syncGroups/:syncGroupName/syncMembers/:syncMemberName/schemas",
+      "responses": [
+        {
+          "uuid": "2266997a-3e95-4961-a9be-ee7314fb1e1e",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n      \"tables\": [\n        {\n          \"columns\": [\n            {\n              \"dataSize\": \"\",\n              \"dataType\": \"\",\n              \"errorId\": \"\",\n              \"hasError\": {{faker 'datatype.boolean'}},\n              \"isPrimaryKey\": {{faker 'datatype.boolean'}},\n              \"name\": \"\",\n              \"quotedName\": \"\"\n            }\n          ],\n          \"errorId\": \"\",\n          \"hasError\": {{faker 'datatype.boolean'}},\n          \"name\": \"\",\n          \"quotedName\": \"\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully get a sync member schema.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a87f613d-764e-4590-aba8-0624b1b243f4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 409 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

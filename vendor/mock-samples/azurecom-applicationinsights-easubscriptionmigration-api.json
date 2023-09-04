@@ -1,0 +1,178 @@
+{
+  "uuid": "0c6d0abe-4af1-43f5-a345-51058c2ad0b3",
+  "lastMigration": 24,
+  "name": "ApplicationInsightsManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "af9a0485-9cf5-4a0c-9b50-604713d3ca3f",
+      "documentation": "list date to migrate to new pricing model.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/microsoft.insights/listMigrationdate",
+      "responses": [
+        {
+          "uuid": "1614c40f-9105-4f6f-bcb4-f1895eee1e40",
+          "body": "{\n  \"isGrandFatherableSubscription\": {{faker 'datatype.boolean'}},\n  \"optedInDate\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success list migrate date information for this subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e429a318-cf0d-4453-9bde-37c488fcc9d1",
+      "documentation": "Enterprise Agreement Customer opted to use new pricing model.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/microsoft.insights/migrateToNewPricingModel",
+      "responses": [
+        {
+          "uuid": "703f344a-abd0-4675-a527-b3e14feeb531",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success migrate to new pricing model for this subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ab541dc0-32bd-4c9d-9dbb-093b500e8564",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ab2eafc1-4c0e-4f98-9360-bd44c90683f9",
+      "documentation": "Enterprise Agreement Customer roll back to use legacy pricing model.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/microsoft.insights/rollbackToLegacyPricingModel",
+      "responses": [
+        {
+          "uuid": "a8bd1d61-3594-43d9-bba3-6ba685b753f9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success roll back to legacy pricing model for this subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "26f831c4-9546-4441-b516-22dcba438a27",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

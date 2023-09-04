@@ -1,0 +1,342 @@
+{
+  "uuid": "8c14bcca-7b8e-4997-8d7b-f2ccd10f7cd1",
+  "lastMigration": 24,
+  "name": "Sessions API",
+  "endpointPrefix": "v2/sessions",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7de6b0ab-8a35-4bd3-b23a-4ce05b810ce2",
+      "documentation": "Logs in a customer and obtains an authentication ticket.",
+      "method": "post",
+      "endpoint": "tickets",
+      "responses": [
+        {
+          "uuid": "abc74546-c63f-4c86-8e1f-46ed077f9ff4",
+          "body": "{\n  \"expiryDateTime\": \"\",\n  \"extended\": {{faker 'datatype.boolean'}},\n  \"location\": \"\",\n  \"temporaryPassword\": {{faker 'datatype.boolean'}},\n  \"temporaryPasswordUrl\": \"\",\n  \"ticket\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "36284a41-e003-434f-ba52-4b881c874015",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Login - failed",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c3d1b19a-95c7-4d24-b8a3-4be4910c2713",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0f050d59-0bed-4703-92f1-7fb9c6293699",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Application metadata not configured correctly",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "04cd10df-c117-428c-a019-e8367dbc96d9",
+      "documentation": "Log out a customer.",
+      "method": "delete",
+      "endpoint": "tickets/:tgt",
+      "responses": [
+        {
+          "uuid": "a59fa869-b233-4d41-b013-47fe9c087161",
+          "body": "{\n  \"success\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success - Logout",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2018ec90-cc83-4c5c-8ebe-ae73f2fdef50",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8ebf15a2-bb61-4efe-861d-b391e3fb09cc",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7237af26-72e1-496d-98a1-34359fdf498e",
+      "documentation": "Checks the validity of a session ticket.",
+      "method": "get",
+      "endpoint": "tickets/:tgt",
+      "responses": [
+        {
+          "uuid": "04af985e-e6aa-4df6-962f-e91aa70c89b6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The validity status of the tgt",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6d90eba4-c3b7-412b-86b0-41e52e71cd37",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f5b87bb2-df56-419d-990f-8f95578dcca5",
+      "documentation": "Obtains a one-time Service Ticket that can be used to access other William Hill services.",
+      "method": "get",
+      "endpoint": "tickets/:tgt/serviceTicket",
+      "responses": [
+        {
+          "uuid": "f1e7b33b-9344-475e-955d-4bd04d0accef",
+          "body": "{\n  \"location\": \"\",\n  \"ticket\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success - Service Ticket created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "63cdbe7b-d8f6-4068-ba3d-d67aa20cd83a",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2879e2ba-d2b3-410c-ba13-9318fe1a2745",
+          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"\",\n      \"field\": \"\",\n      \"message\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

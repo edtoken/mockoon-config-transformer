@@ -1,0 +1,394 @@
+{
+  "uuid": "fc0f19be-0755-4d22-aad3-5cc7e9ea94af",
+  "lastMigration": 24,
+  "name": "AWS IoT Secure Tunneling",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "0f9d79a0-b9bd-434a-9c24-3dbf0a5513fa",
+      "documentation": "Closes a tunnel identified by the unique tunnel id. When a <code>CloseTunnel</code> request is received, we close the WebSocket connections between the client and proxy server so no data can be transmitted.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.CloseTunnel",
+      "responses": [
+        {
+          "uuid": "266cd7d4-1488-4f1c-ba82-bd54b0b11de9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f2effdd2-50a4-47bd-976e-0b34395452c7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "18c13425-f1a8-457b-8760-480d6ef68134",
+      "documentation": "Gets information about a tunnel identified by the unique tunnel id.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.DescribeTunnel",
+      "responses": [
+        {
+          "uuid": "dc4dfbdc-285e-4fcd-8caa-b7fbcb91fab4",
+          "body": "{\n  \"tunnel\": {\n    \"tunnelId\": \"\",\n    \"tunnelArn\": \"\",\n    \"status\": \"\",\n    \"sourceConnectionState\": {\n      \"status\": \"\",\n      \"lastUpdatedAt\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"destinationConnectionState\": {\n      \"status\": \"\",\n      \"lastUpdatedAt\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"description\": \"\",\n    \"destinationConfig\": {\n      \"thingName\": \"\",\n      \"services\": [\n        \"\"\n      ]\n    },\n    \"timeoutConfig\": {\n      \"maxLifetimeTimeoutMinutes\": {{faker 'datatype.number'}}\n    },\n    \"tags\": [\n      {\n        \"key\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"createdAt\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdatedAt\": \"{{faker 'date.recent' 365}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d8e19119-34ff-42d5-8e61-a2a5aad75b46",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "801eb97a-f0a6-4c10-87fc-12d70028c61d",
+      "documentation": "Lists the tags for the specified resource.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.ListTagsForResource",
+      "responses": [
+        {
+          "uuid": "2ffe009c-cd0f-48de-b1bb-9f7507b6431a",
+          "body": "{\n  \"tags\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "185049c7-11fc-461a-8409-7ded3d8ee170",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "71bbbcd9-0c9e-450c-a099-806d9748f26e",
+      "documentation": "List all tunnels for an AWS account. Tunnels are listed by creation time in descending order, newer tunnels will be listed before older tunnels.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.ListTunnels",
+      "responses": [
+        {
+          "uuid": "8c217b94-4d4a-49aa-97f8-c1b617725949",
+          "body": "{\n  \"tunnelSummaries\": [\n    {\n      \"tunnelId\": \"\",\n      \"tunnelArn\": \"\",\n      \"status\": \"\",\n      \"description\": \"\",\n      \"createdAt\": \"{{faker 'date.recent' 365}}\",\n      \"lastUpdatedAt\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9ce104ee-9b7e-47b1-92ee-c25848851fb0",
+      "documentation": "Creates a new tunnel, and returns two client access tokens for clients to use to connect to the AWS IoT Secure Tunneling proxy server.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.OpenTunnel",
+      "responses": [
+        {
+          "uuid": "ea86b729-8854-4b8c-9a27-6b28346e7fe3",
+          "body": "{\n  \"tunnelId\": \"\",\n  \"tunnelArn\": \"\",\n  \"sourceAccessToken\": \"\",\n  \"destinationAccessToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3eb972e3-c4fa-4fe2-aa58-c89342318647",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "LimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "49f085a5-343c-413d-a58d-f0266d8f68de",
+      "documentation": "A resource tag.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.TagResource",
+      "responses": [
+        {
+          "uuid": "f9eb0610-cec6-4872-bf4f-a8e2b1c745ef",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b910818b-1924-47f5-a7cc-a967f6bb0588",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ebb2e36c-2456-4b0a-a789-a61faf139462",
+      "documentation": "Removes a tag from a resource.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=IoTSecuredTunneling.UntagResource",
+      "responses": [
+        {
+          "uuid": "b5d52513-861d-4065-9f9b-9f604f0cb274",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "422ea614-0e35-4705-b6e7-c1a9f41078fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

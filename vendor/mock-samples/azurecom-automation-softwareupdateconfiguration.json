@@ -1,0 +1,298 @@
+{
+  "uuid": "731f9ab5-7f77-4894-ac43-4ac0337a58af",
+  "lastMigration": 24,
+  "name": "Update Management",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "4d959a4f-5019-4465-984c-0d53c2e5fb64",
+      "documentation": "Get all software update configurations for the account.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Automation/automationAccounts/:automationAccountName/softwareUpdateConfigurations",
+      "responses": [
+        {
+          "uuid": "44893721-a797-4ca5-a4e1-d02e38804f78",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"creationTime\": \"{{faker 'date.recent' 365}}\",\n        \"frequency\": \"{{oneOf (array 'OneTime' 'Day' 'Hour' 'Week' 'Month' 'Minute')}}\",\n        \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n        \"nextRun\": \"{{faker 'date.recent' 365}}\",\n        \"provisioningState\": \"\",\n        \"startTime\": \"{{faker 'date.recent' 365}}\",\n        \"updateConfiguration\": {\n          \"azureVirtualMachines\": [\n            \"\"\n          ],\n          \"duration\": \"\"\n        }\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Return list of software update configurations.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6ce59574-ab7c-4566-a9d4-0c617a2ecb02",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Automation error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "483a1704-be0f-4db4-bbdb-f7ffcba81cd8",
+      "documentation": "delete a specific software update configuration.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Automation/automationAccounts/:automationAccountName/softwareUpdateConfigurations/:softwareUpdateConfigurationName",
+      "responses": [
+        {
+          "uuid": "8c26ebf0-3cb0-482f-b204-526f33af72f3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The software update configuration has been deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7724b1b9-945e-41ff-a703-eea22b59d4fe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The software update configuration does not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "859e59bd-2c96-434b-a0e3-121a1f78d83c",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Automation error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f23525e0-738f-4631-b246-6020eb795a1f",
+      "documentation": "Get a single software update configuration by name.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Automation/automationAccounts/:automationAccountName/softwareUpdateConfigurations/:softwareUpdateConfigurationName",
+      "responses": [
+        {
+          "uuid": "e49d362d-445b-469e-b839-153e6403d683",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdBy\": \"\",\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"error\": {\n      \"code\": \"\",\n      \"message\": \"\"\n    },\n    \"lastModifiedBy\": \"\",\n    \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n    \"provisioningState\": \"\",\n    \"scheduleInfo\": {\n      \"advancedSchedule\": {\n        \"monthDays\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"monthlyOccurrences\": [\n          {\n            \"day\": \"{{oneOf (array 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' 'Sunday')}}\",\n            \"occurrence\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"weekDays\": [\n          \"\"\n        ]\n      },\n      \"creationTime\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"expiryTime\": \"{{faker 'date.recent' 365}}\",\n      \"expiryTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"frequency\": \"{{oneOf (array 'OneTime' 'Day' 'Hour' 'Week' 'Month' 'Minute')}}\",\n      \"interval\": {{faker 'datatype.number'}},\n      \"isEnabled\": {{faker 'datatype.boolean'}},\n      \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n      \"nextRun\": \"{{faker 'date.recent' 365}}\",\n      \"nextRunOffsetMinutes\": {{faker 'datatype.float'}},\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"startTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"timeZone\": \"\"\n    },\n    \"tasks\": {\n      \"postTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      },\n      \"preTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      }\n    },\n    \"updateConfiguration\": {\n      \"azureVirtualMachines\": [\n        \"\"\n      ],\n      \"duration\": \"\",\n      \"linux\": {\n        \"excludedPackageNameMasks\": [\n          \"\"\n        ],\n        \"includedPackageClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'Other')}}\",\n        \"includedPackageNameMasks\": [\n          \"\"\n        ],\n        \"rebootSetting\": \"\"\n      },\n      \"nonAzureComputerNames\": [\n        \"\"\n      ],\n      \"operatingSystem\": \"{{oneOf (array 'Windows' 'Linux')}}\",\n      \"targets\": {\n        \"azureQueries\": [\n          {\n            \"locations\": [\n              \"\"\n            ],\n            \"scope\": [\n              \"\"\n            ],\n            \"tagSettings\": {\n              \"filterOperator\": \"{{oneOf (array 'All' 'Any')}}\",\n              \"tags\": {}\n            }\n          }\n        ],\n        \"nonAzureQueries\": [\n          {\n            \"functionAlias\": \"\",\n            \"workspaceId\": \"\"\n          }\n        ]\n      },\n      \"windows\": {\n        \"excludedKbNumbers\": [\n          \"\"\n        ],\n        \"includedKbNumbers\": [\n          \"\"\n        ],\n        \"includedUpdateClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'UpdateRollup' 'FeaturePack' 'ServicePack' 'Definition' 'Tools' 'Updates')}}\",\n        \"rebootSetting\": \"\"\n      }\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A single software update configuration.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4c56b6b-2616-4275-9d03-d67ef8407e32",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Automation error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "302d1fc5-bf33-4cc7-8dfe-07d678f7517b",
+      "documentation": "Create a new software update configuration with the name given in the URI.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Automation/automationAccounts/:automationAccountName/softwareUpdateConfigurations/:softwareUpdateConfigurationName",
+      "responses": [
+        {
+          "uuid": "3569271c-cc9d-4c68-b337-ff9701bb8fee",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdBy\": \"\",\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"error\": {\n      \"code\": \"\",\n      \"message\": \"\"\n    },\n    \"lastModifiedBy\": \"\",\n    \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n    \"provisioningState\": \"\",\n    \"scheduleInfo\": {\n      \"advancedSchedule\": {\n        \"monthDays\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"monthlyOccurrences\": [\n          {\n            \"day\": \"{{oneOf (array 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' 'Sunday')}}\",\n            \"occurrence\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"weekDays\": [\n          \"\"\n        ]\n      },\n      \"creationTime\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"expiryTime\": \"{{faker 'date.recent' 365}}\",\n      \"expiryTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"frequency\": \"{{oneOf (array 'OneTime' 'Day' 'Hour' 'Week' 'Month' 'Minute')}}\",\n      \"interval\": {{faker 'datatype.number'}},\n      \"isEnabled\": {{faker 'datatype.boolean'}},\n      \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n      \"nextRun\": \"{{faker 'date.recent' 365}}\",\n      \"nextRunOffsetMinutes\": {{faker 'datatype.float'}},\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"startTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"timeZone\": \"\"\n    },\n    \"tasks\": {\n      \"postTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      },\n      \"preTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      }\n    },\n    \"updateConfiguration\": {\n      \"azureVirtualMachines\": [\n        \"\"\n      ],\n      \"duration\": \"\",\n      \"linux\": {\n        \"excludedPackageNameMasks\": [\n          \"\"\n        ],\n        \"includedPackageClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'Other')}}\",\n        \"includedPackageNameMasks\": [\n          \"\"\n        ],\n        \"rebootSetting\": \"\"\n      },\n      \"nonAzureComputerNames\": [\n        \"\"\n      ],\n      \"operatingSystem\": \"{{oneOf (array 'Windows' 'Linux')}}\",\n      \"targets\": {\n        \"azureQueries\": [\n          {\n            \"locations\": [\n              \"\"\n            ],\n            \"scope\": [\n              \"\"\n            ],\n            \"tagSettings\": {\n              \"filterOperator\": \"{{oneOf (array 'All' 'Any')}}\",\n              \"tags\": {}\n            }\n          }\n        ],\n        \"nonAzureQueries\": [\n          {\n            \"functionAlias\": \"\",\n            \"workspaceId\": \"\"\n          }\n        ]\n      },\n      \"windows\": {\n        \"excludedKbNumbers\": [\n          \"\"\n        ],\n        \"includedKbNumbers\": [\n          \"\"\n        ],\n        \"includedUpdateClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'UpdateRollup' 'FeaturePack' 'ServicePack' 'Definition' 'Tools' 'Updates')}}\",\n        \"rebootSetting\": \"\"\n      }\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Software update configuration with the same name and properties already exists.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6f038d30-09f5-458f-bffb-04b83bd62670",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"createdBy\": \"\",\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"error\": {\n      \"code\": \"\",\n      \"message\": \"\"\n    },\n    \"lastModifiedBy\": \"\",\n    \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n    \"provisioningState\": \"\",\n    \"scheduleInfo\": {\n      \"advancedSchedule\": {\n        \"monthDays\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"monthlyOccurrences\": [\n          {\n            \"day\": \"{{oneOf (array 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' 'Sunday')}}\",\n            \"occurrence\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"weekDays\": [\n          \"\"\n        ]\n      },\n      \"creationTime\": \"{{faker 'date.recent' 365}}\",\n      \"description\": \"\",\n      \"expiryTime\": \"{{faker 'date.recent' 365}}\",\n      \"expiryTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"frequency\": \"{{oneOf (array 'OneTime' 'Day' 'Hour' 'Week' 'Month' 'Minute')}}\",\n      \"interval\": {{faker 'datatype.number'}},\n      \"isEnabled\": {{faker 'datatype.boolean'}},\n      \"lastModifiedTime\": \"{{faker 'date.recent' 365}}\",\n      \"nextRun\": \"{{faker 'date.recent' 365}}\",\n      \"nextRunOffsetMinutes\": {{faker 'datatype.float'}},\n      \"startTime\": \"{{faker 'date.recent' 365}}\",\n      \"startTimeOffsetMinutes\": {{faker 'datatype.float'}},\n      \"timeZone\": \"\"\n    },\n    \"tasks\": {\n      \"postTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      },\n      \"preTask\": {\n        \"parameters\": {},\n        \"source\": \"\"\n      }\n    },\n    \"updateConfiguration\": {\n      \"azureVirtualMachines\": [\n        \"\"\n      ],\n      \"duration\": \"\",\n      \"linux\": {\n        \"excludedPackageNameMasks\": [\n          \"\"\n        ],\n        \"includedPackageClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'Other')}}\",\n        \"includedPackageNameMasks\": [\n          \"\"\n        ],\n        \"rebootSetting\": \"\"\n      },\n      \"nonAzureComputerNames\": [\n        \"\"\n      ],\n      \"operatingSystem\": \"{{oneOf (array 'Windows' 'Linux')}}\",\n      \"targets\": {\n        \"azureQueries\": [\n          {\n            \"locations\": [\n              \"\"\n            ],\n            \"scope\": [\n              \"\"\n            ],\n            \"tagSettings\": {\n              \"filterOperator\": \"{{oneOf (array 'All' 'Any')}}\",\n              \"tags\": {}\n            }\n          }\n        ],\n        \"nonAzureQueries\": [\n          {\n            \"functionAlias\": \"\",\n            \"workspaceId\": \"\"\n          }\n        ]\n      },\n      \"windows\": {\n        \"excludedKbNumbers\": [\n          \"\"\n        ],\n        \"includedKbNumbers\": [\n          \"\"\n        ],\n        \"includedUpdateClassifications\": \"{{oneOf (array 'Unclassified' 'Critical' 'Security' 'UpdateRollup' 'FeaturePack' 'ServicePack' 'Definition' 'Tools' 'Updates')}}\",\n        \"rebootSetting\": \"\"\n      }\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Software update configuration is created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "73fd1639-c599-4b86-ad04-a67663a206e3",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Automation error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

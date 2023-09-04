@@ -1,0 +1,134 @@
+{
+  "uuid": "212a3333-98ce-4d0c-a85f-1508027bfc96",
+  "lastMigration": 24,
+  "name": "Stackdriver Profiler API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "1c50ae07-41af-4b72-a9df-d9eafe99bec4",
+      "documentation": "UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation.",
+      "method": "patch",
+      "endpoint": "v2/:name",
+      "responses": [
+        {
+          "uuid": "13ba03cd-989d-4fd2-8f90-a38428c0db27",
+          "body": "{\n  \"deployment\": {\n    \"labels\": {},\n    \"projectId\": \"\",\n    \"target\": \"\"\n  },\n  \"duration\": \"\",\n  \"labels\": {},\n  \"name\": \"\",\n  \"profileBytes\": \"\",\n  \"profileType\": \"{{oneOf (array 'PROFILE_TYPE_UNSPECIFIED' 'CPU' 'WALL' 'HEAP' 'THREADS' 'CONTENTION' 'PEAK_HEAP' 'HEAP_ALLOC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "de61e4db-95f1-43a2-b6f1-b9b28e2453a0",
+      "documentation": "CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named \"google.rpc.retryinfo-bin\". ",
+      "method": "post",
+      "endpoint": "v2/:parent/profiles",
+      "responses": [
+        {
+          "uuid": "477e68b7-86ae-46ca-9721-990012508d1b",
+          "body": "{\n  \"deployment\": {\n    \"labels\": {},\n    \"projectId\": \"\",\n    \"target\": \"\"\n  },\n  \"duration\": \"\",\n  \"labels\": {},\n  \"name\": \"\",\n  \"profileBytes\": \"\",\n  \"profileType\": \"{{oneOf (array 'PROFILE_TYPE_UNSPECIFIED' 'CPU' 'WALL' 'HEAP' 'THREADS' 'CONTENTION' 'PEAK_HEAP' 'HEAP_ALLOC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "82577c9f-1e77-4dcc-932c-a2eec2289ca6",
+      "documentation": "CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it.",
+      "method": "post",
+      "endpoint": "v2/:parent/profiles:createOffline",
+      "responses": [
+        {
+          "uuid": "e2fb008d-b2de-419a-8f78-ac4c959ca5b6",
+          "body": "{\n  \"deployment\": {\n    \"labels\": {},\n    \"projectId\": \"\",\n    \"target\": \"\"\n  },\n  \"duration\": \"\",\n  \"labels\": {},\n  \"name\": \"\",\n  \"profileBytes\": \"\",\n  \"profileType\": \"{{oneOf (array 'PROFILE_TYPE_UNSPECIFIED' 'CPU' 'WALL' 'HEAP' 'THREADS' 'CONTENTION' 'PEAK_HEAP' 'HEAP_ALLOC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

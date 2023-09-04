@@ -1,0 +1,298 @@
+{
+  "uuid": "c95a6175-cd1e-4da0-bd3a-76347cdd3979",
+  "lastMigration": 24,
+  "name": "SqlManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7dd572a2-c5aa-4123-8606-c8f27535f2ab",
+      "documentation": "Gets a list of database restore points.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/restorePoints",
+      "responses": [
+        {
+          "uuid": "059ca535-9dd1-447a-9f0c-3572650771ab",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully returned restore points.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6a2d5d2f-9213-4f1d-a016-29bc46db780f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 FeatureDisabledOnSelectedEdition - User attempted to use a feature which is disabled on current database edition.\n\n * 400 BackupNotAllowedOnDeactivatedDatabase - Cannot create restore point on a deactivated database.\n\n * 400 RestorePointLimitReached - A restore point cannot be created because database would exceed the allowed quota of restore points.\n\n * 400 RestorePointAttemptToDeleteSystemBackup - Cannot delete system restore point.\n\n * 404 DatabaseRestorePointNotFound - Can not find database restore point.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 408 DatabaseRestorePointTimedOut - Create database restore point failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a1035ae9-df4f-4478-8671-a7355379fcab",
+      "documentation": "Creates a restore point for a data warehouse.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/restorePoints",
+      "responses": [
+        {
+          "uuid": "1e453cb4-6e69-4600-8301-c94371f9a9a6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully created the restore point request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "76b12144-f4b9-4b06-875e-38a924a385ef",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Successfully created the restore point request.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c1e9fc1-35ac-4921-927a-f9de0b0f721e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e48f2059-daa3-435b-bcbd-ca66ec186ed5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 FeatureDisabledOnSelectedEdition - User attempted to use a feature which is disabled on current database edition.\n\n * 400 BackupNotAllowedOnDeactivatedDatabase - Cannot create restore point on a deactivated database.\n\n * 400 RestorePointLimitReached - A restore point cannot be created because database would exceed the allowed quota of restore points.\n\n * 400 RestorePointAttemptToDeleteSystemBackup - Cannot delete system restore point.\n\n * 404 DatabaseRestorePointNotFound - Can not find database restore point.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 408 DatabaseRestorePointTimedOut - Create database restore point failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2bb6dcd0-bf74-479b-88a2-81565ad470ba",
+      "documentation": "Deletes a restore point.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/restorePoints/:restorePointName",
+      "responses": [
+        {
+          "uuid": "f01cf334-4128-4844-9720-932bbb03d2ef",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully deleted the restore point.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8eaecf48-a0c6-4c67-a751-99f83c3820e1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 FeatureDisabledOnSelectedEdition - User attempted to use a feature which is disabled on current database edition.\n\n * 400 BackupNotAllowedOnDeactivatedDatabase - Cannot create restore point on a deactivated database.\n\n * 400 RestorePointLimitReached - A restore point cannot be created because database would exceed the allowed quota of restore points.\n\n * 400 RestorePointAttemptToDeleteSystemBackup - Cannot delete system restore point.\n\n * 404 DatabaseRestorePointNotFound - Can not find database restore point.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 408 DatabaseRestorePointTimedOut - Create database restore point failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8fdc8553-4a07-4cc1-83c6-d922df791458",
+      "documentation": "Gets a restore point.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Sql/servers/:serverName/databases/:databaseName/restorePoints/:restorePointName",
+      "responses": [
+        {
+          "uuid": "58c35e39-ead7-4d5c-a87b-44357872c1e8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successfully returned the restore point.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e0f57a89-a206-4793-ae08-71dbba83486b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "*** Error Responses: ***\n\n * 400 FeatureDisabledOnSelectedEdition - User attempted to use a feature which is disabled on current database edition.\n\n * 400 BackupNotAllowedOnDeactivatedDatabase - Cannot create restore point on a deactivated database.\n\n * 400 RestorePointLimitReached - A restore point cannot be created because database would exceed the allowed quota of restore points.\n\n * 400 RestorePointAttemptToDeleteSystemBackup - Cannot delete system restore point.\n\n * 404 DatabaseRestorePointNotFound - Can not find database restore point.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 408 DatabaseRestorePointTimedOut - Create database restore point failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

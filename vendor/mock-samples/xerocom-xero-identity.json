@@ -1,0 +1,124 @@
+{
+  "uuid": "b32db746-c680-40e8-a6ce-22ea56f4ae91",
+  "lastMigration": 24,
+  "name": "Xero OAuth 2 Identity Service API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "6e535668-311e-4db4-8142-72873f3d1688",
+      "documentation": "Retrieves the connections for this user",
+      "method": "get",
+      "endpoint": "Connections",
+      "responses": [
+        {
+          "uuid": "906eb932-57ce-40b8-862c-35d5af50e4d3",
+          "body": "[\n  {\n    \"authEventId\": \"{{faker 'datatype.uuid'}}\",\n    \"createdDateUtc\": \"{{faker 'date.recent' 365}}\",\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"tenantId\": \"{{faker 'datatype.uuid'}}\",\n    \"tenantName\": \"\",\n    \"tenantType\": \"\",\n    \"updatedDateUtc\": \"{{faker 'date.recent' 365}}\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success - return response of type Connections array with 0 to n Connection",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "87d36425-485e-4e0c-aabc-af19274b19a8",
+      "documentation": "Deletes a connection for this user (i.e. disconnect a tenant)",
+      "method": "delete",
+      "endpoint": "Connections/:id",
+      "responses": [
+        {
+          "uuid": "3e2750f3-3181-4e21-b10e-650126b8a86c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success - connection has been deleted no content returned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "97ccf1be-2359-4b65-9e5c-92ed4513b217",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Resource not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

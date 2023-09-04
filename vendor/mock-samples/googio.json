@@ -1,0 +1,538 @@
+{
+  "uuid": "f275f270-abfc-48c9-ac08-215d2bffaff1",
+  "lastMigration": 24,
+  "name": "goog.io | Unoffical Google Search API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "e704937c-32de-4c8a-a9ab-0c7f7389d649",
+      "documentation": "Status",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "8196ca4f-1f0d-4302-9657-2c9ca486f28c",
+          "body": "{\n  \"status\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8695e5ad-f140-49ae-975d-113fe6f0d560",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e10d0bd5-720b-4d0b-b8c4-efc0f75abe3b",
+      "documentation": "Crawl",
+      "method": "get",
+      "endpoint": "v1/crawl/:query",
+      "responses": [
+        {
+          "uuid": "ec9817ce-8e46-4b3f-a0c6-0e7edb1c4f0f",
+          "body": "{\n  \"answer\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"total\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a9cf6f2f-02eb-4d68-bb24-f94c7067564c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "18c39dbc-f612-4a2e-aa97-57686d536e49",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5b109859-20ef-41c8-b48b-002d267f3de6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "051d8f9a-6c9b-457c-a3ff-12428610d43b",
+      "documentation": "Images",
+      "method": "get",
+      "endpoint": "v1/images/:query",
+      "responses": [
+        {
+          "uuid": "3dd5e0c1-168a-46d4-8beb-b387815f5ef2",
+          "body": "{\n  \"answers\": [\n    \"\"\n  ],\n  \"image_results\": [\n    {\n      \"image\": {\n        \"alt\": \"\",\n        \"src\": \"\"\n      },\n      \"link\": {\n        \"domain\": \"\",\n        \"href\": \"\",\n        \"title\": \"\"\n      }\n    }\n  ],\n  \"results\": [\n    {}\n  ],\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "06396656-63d1-4e46-873d-6b90068dedc5",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bc92b113-8fdd-4508-a949-83877ed35b78",
+      "documentation": "News",
+      "method": "get",
+      "endpoint": "v1/news/:query",
+      "responses": [
+        {
+          "uuid": "2a517629-9efb-4191-83db-f2e2b313d31b",
+          "body": "{\n  \"entries\": [\n    {\n      \"guidislink\": \"\",\n      \"id\": \"\",\n      \"link\": \"\",\n      \"links\": \"\",\n      \"published\": \"\",\n      \"published_parsed\": \"\",\n      \"source\": \"\",\n      \"sub_articles\": \"\",\n      \"summary\": \"\",\n      \"summary_detail\": \"\",\n      \"title\": \"\",\n      \"title_detail\": \"\"\n    }\n  ],\n  \"feed\": {\n    \"generator\": \"\",\n    \"generator_detail\": \"\",\n    \"language\": \"\",\n    \"link\": \"\",\n    \"links\": \"\",\n    \"publisher\": \"\",\n    \"publisher_detail\": \"\",\n    \"rights\": \"\",\n    \"rights_detail\": \"\",\n    \"subtitle\": \"\",\n    \"subtitle_detail\": \"\",\n    \"title\": \"\",\n    \"updated\": \"\",\n    \"updated_parsed\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7c407a86-720e-4c83-8a92-0ac980a05a0a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9db96012-9d3a-4427-bd09-cc3eb4bf42c7",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Unprocessable Entity (WebDAV)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "164c2707-156f-4bfb-8b07-a282503cf427",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e147ca5b-1a35-4034-b7f2-3b4795768b05",
+      "documentation": "Search",
+      "method": "get",
+      "endpoint": "v1/search/:query",
+      "responses": [
+        {
+          "uuid": "9b2754e6-3e11-40a5-a424-aa89b94484e1",
+          "body": "{\n  \"answer\": \"\",\n  \"results\": [\n    {\n      \"description\": \"\",\n      \"link\": \"\",\n      \"title\": \"\"\n    }\n  ],\n  \"total\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "10a3b30e-9101-46f6-b85d-8306d2d841a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c959857d-37bd-4f52-86b2-8a385049f505",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "449a53af-b2b0-4f2e-8bf0-bbe4951fbb25",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0966188a-beca-4ba5-9c78-82ead9f4d721",
+      "documentation": "SERP",
+      "method": "post",
+      "endpoint": "v1/serp/",
+      "responses": [
+        {
+          "uuid": "f5a5f522-72fe-4ec1-8355-7e58c7cb28d8",
+          "body": "{\n  \"position\": {{faker 'datatype.number'}},\n  \"query\": \"\",\n  \"searched_results\": {{faker 'datatype.number'}},\n  \"website\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful Response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1574dfa7-4397-4bd9-b601-4822c6f3b853",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e8c09c5c-26bb-4350-bf6c-3183a489c9f7",
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"\"\n      ],\n      \"msg\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Validation Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aed310d8-40f4-42ac-9928-d3d8e45e5460",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

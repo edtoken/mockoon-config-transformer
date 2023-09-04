@@ -1,0 +1,2206 @@
+{
+  "uuid": "6e9d1025-37c5-4392-8f01-259eff6bd586",
+  "lastMigration": 24,
+  "name": "AWS Elemental MediaStore",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "6b628b74-e936-4cdd-a6c7-6e347cea2a0f",
+      "documentation": "Creates a storage container to hold objects. A container is similar to a bucket in the Amazon S3 service.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.CreateContainer",
+      "responses": [
+        {
+          "uuid": "2ddcbbbf-cb13-40f7-b6dd-54ba46f61b84",
+          "body": "{\n  \"Container\": {\n    \"Endpoint\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"ARN\": \"\",\n    \"Name\": \"\",\n    \"Status\": \"\",\n    \"AccessLoggingEnabled\": {{faker 'datatype.boolean'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4e0c4f03-9ae8-4a50-a72b-33c8fe10f269",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3caebe82-6da1-43d5-a896-5ba0f0305b60",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "LimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ab6454f0-4d18-4de0-bf7f-87e7643b3d9f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0fb1308-1757-4284-b805-055c6f5e6ccf",
+      "documentation": "Deletes the specified container. Before you make a <code>DeleteContainer</code> request, delete any objects in the container or in any folders in the container. You can delete only empty containers. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DeleteContainer",
+      "responses": [
+        {
+          "uuid": "0a221194-39e7-47a5-8621-a80d03d97f93",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4adbd8f-66c1-4c75-a86d-712402d70c96",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "07a98552-2e36-4bc6-815f-6454ed2f2a47",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4da99bc3-d8c2-4bc8-bcec-4647a772dcb6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "448dcfdc-6e93-454f-aa65-007de835d976",
+      "documentation": "Deletes the access policy that is associated with the specified container.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DeleteContainerPolicy",
+      "responses": [
+        {
+          "uuid": "de7562e1-6546-4271-af86-3cdcfeb1bc9f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "62568f93-63c8-4685-818d-e163332bfd4c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a730c1fe-ff2e-4ffa-8dc0-cdbcd702e3e9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d9ba5f33-c846-40e9-b223-44c2fee6b47e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "061b54e8-c25f-4372-9a68-3af0b0195dcf",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3757a800-258f-4610-a4a2-7c318ba6e680",
+      "documentation": "<p>Deletes the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:DeleteCorsPolicy</code> action. The container owner has this permission by default and can grant this permission to others.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DeleteCorsPolicy",
+      "responses": [
+        {
+          "uuid": "c51eef4f-7724-429d-abae-0db5eb2063ee",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "da12a6a1-1961-487e-babf-8a95ac502e00",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a6f36245-c233-418d-bfd9-d55efdcd4285",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36b3c6cd-2ab0-41e8-9cd8-7ccf4c248408",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "CorsPolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8dad80cf-15d4-4470-ab12-4d8bfb2f9e6a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a295611-3ed9-49fd-9148-be042f9c525b",
+      "documentation": "Removes an object lifecycle policy from a container. It takes up to 20 minutes for the change to take effect.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DeleteLifecyclePolicy",
+      "responses": [
+        {
+          "uuid": "44d85c5e-5996-459e-935c-684ed77eed82",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8bced2de-61c4-40e2-98c6-240a1d668814",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "590291a9-8bef-4c40-801a-3216d6eed7c5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd56b1c3-0466-47fe-832a-66233b537556",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "138acab8-4723-46b8-9fb0-62375fb83f36",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "de02dc0f-75c1-4f88-809a-ac94a0b12078",
+      "documentation": "Deletes the metric policy that is associated with the specified container. If there is no metric policy associated with the container, MediaStore doesn't send metrics to CloudWatch.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DeleteMetricPolicy",
+      "responses": [
+        {
+          "uuid": "acbc254f-e153-4e9d-962f-ebe9dff355eb",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "caaf8994-47ac-40ab-9afc-7e785472e916",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1db4ac91-3cc0-4486-a30d-cf2ff779adfd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b7618b12-1883-4572-a177-2c74033506af",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "789bcf19-f7c7-4728-acb5-e2bd52e51442",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "36379447-fe57-4b2e-b1ce-0fbf5f0161ed",
+      "documentation": "Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container's endpoint does not change after it has been assigned. The <code>DescribeContainer</code> request returns a single <code>Container</code> object based on <code>ContainerName</code>. To return all <code>Container</code> objects that are associated with a specified AWS account, use <a>ListContainers</a>.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.DescribeContainer",
+      "responses": [
+        {
+          "uuid": "ca5b873f-f600-4e80-ab5e-4487937ef52e",
+          "body": "{\n  \"Container\": {\n    \"Endpoint\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"ARN\": \"\",\n    \"Name\": \"\",\n    \"Status\": \"\",\n    \"AccessLoggingEnabled\": {{faker 'datatype.boolean'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a8304ba7-935c-42f3-920c-10177cf4de02",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "68a756fd-ddf0-490b-b0e0-c710b4b85fad",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e891066f-bd75-487a-8dbe-b025b365513d",
+      "documentation": "Retrieves the access policy for the specified container. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.GetContainerPolicy",
+      "responses": [
+        {
+          "uuid": "148b4e5f-af45-45d5-aa75-5016fdc1ec39",
+          "body": "{\n  \"Policy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fb7bd126-fbd7-445a-a948-8d16a5c96262",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d4dc124f-91ff-490d-8e13-bbea98636a8a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "af02deb7-ebda-4052-972b-f50c7e88dd97",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ee4a5aea-4c17-4d3b-87a3-101058ba38a5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ca54c13e-b8b3-4bbc-baa0-f1dd63ab0133",
+      "documentation": "<p>Returns the cross-origin resource sharing (CORS) configuration information that is set for the container.</p> <p>To use this operation, you must have permission to perform the <code>MediaStore:GetCorsPolicy</code> action. By default, the container owner has this permission and can grant it to others.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.GetCorsPolicy",
+      "responses": [
+        {
+          "uuid": "9a3f8bb9-e32b-4bbd-ad9b-8c921bf2f600",
+          "body": "{\n  \"CorsPolicy\": [\n    {\n      \"AllowedOrigins\": [\n        \"\"\n      ],\n      \"AllowedMethods\": [\n        \"{{oneOf (array 'PUT' 'GET' 'DELETE' 'HEAD')}}\"\n      ],\n      \"AllowedHeaders\": [\n        \"\"\n      ],\n      \"MaxAgeSeconds\": {{faker 'datatype.number'}},\n      \"ExposeHeaders\": [\n        \"\"\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9919c1f4-d3b9-49e8-947c-b40e54e51f58",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa9f75da-e6d6-43f4-bd70-f4fa1bc97cc2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "05dcf148-27b8-4033-afd7-6691d3761a21",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "CorsPolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "890ab1ad-a304-41b9-8e19-284bb676fa24",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "85a431fb-53f1-4827-8fc3-960c32fa0a83",
+      "documentation": "Retrieves the object lifecycle policy that is assigned to a container.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.GetLifecyclePolicy",
+      "responses": [
+        {
+          "uuid": "e1059aad-555a-4564-9326-cea4aad43f31",
+          "body": "{\n  \"LifecyclePolicy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d33f7c46-1a52-4814-a7a4-00d19b03b5ce",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "08af57b2-17a3-4731-8c08-9a7f274dd2fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ff690522-66d8-4a34-800b-f710b7244e90",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "67a0bcc9-64f7-4f2a-a8b5-6310ba7a52b7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8744d3c2-1c24-4bf5-ac75-e4ae3c2618dd",
+      "documentation": "Returns the metric policy for the specified container. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.GetMetricPolicy",
+      "responses": [
+        {
+          "uuid": "d06750a9-708e-4fce-9245-8e491c87c3a0",
+          "body": "{\n  \"MetricPolicy\": {\n    \"ContainerLevelMetrics\": \"\",\n    \"MetricPolicyRules\": [\n      {\n        \"ObjectGroup\": \"\",\n        \"ObjectGroupName\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dd0290af-b74a-4619-a8cb-9ef2a8e75a28",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "442410b8-55f6-4384-ba22-f4489e6d46b7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "PolicyNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ea07f369-b563-4f75-a39b-d59bb6459041",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "949d4b92-be08-4794-87ae-46d28a28c573",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "02ef243b-3e2e-46d4-b953-2127102075f2",
+      "documentation": "<p>Lists the properties of all containers in AWS Elemental MediaStore. </p> <p>You can query to receive all the containers in one response. Or you can include the <code>MaxResults</code> parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the <code>NextToken</code> parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. </p> <p>See also <a>DescribeContainer</a>, which gets the properties of one container. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.ListContainers",
+      "responses": [
+        {
+          "uuid": "360dd948-34fa-4e34-964c-00c68a3754f9",
+          "body": "{\n  \"Containers\": [\n    {\n      \"Endpoint\": \"\",\n      \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n      \"ARN\": \"\",\n      \"Name\": \"\",\n      \"Status\": \"\",\n      \"AccessLoggingEnabled\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8210be81-a9a8-4869-b282-eb116da8da1c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f13f80d-9c61-44d5-af65-8da4ec073f9c",
+      "documentation": "Returns a list of the tags assigned to the specified container. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.ListTagsForResource",
+      "responses": [
+        {
+          "uuid": "9a7fc76d-2aef-48f7-9f07-0afb9ab60328",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bbaa5ff3-e483-41cd-a230-639c7d978d64",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6a8b504e-d34d-493e-9cc9-75a9d5fdcb7a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "441703e3-f29b-4315-93a5-6ee1cab1e5c8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "51795b58-b218-4eeb-ad2a-06f0bc1f8839",
+      "documentation": "<p>Creates an access policy for the specified container to restrict the users and clients that can access it. For information about the data that is included in an access policy, see the <a href=\"https://aws.amazon.com/documentation/iam/\">AWS Identity and Access Management User Guide</a>.</p> <p>For this release of the REST API, you can create only one policy for a container. If you enter <code>PutContainerPolicy</code> twice, the second command modifies the existing policy. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.PutContainerPolicy",
+      "responses": [
+        {
+          "uuid": "5e546795-74b8-4b4d-ac1e-3a854678ef72",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed011d5b-5090-44c8-8a57-f1148ba2dba9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4f461692-b825-4ea6-9be6-8626c020dc0a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e575896b-1b1d-4888-8e54-e9a2df5be0b0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa19b7a2-a87a-4cff-902c-9839cc6f9264",
+      "documentation": "<p>Sets the cross-origin resource sharing (CORS) configuration on a container so that the container can service cross-origin requests. For example, you might want to enable a request whose origin is http://www.example.com to access your AWS Elemental MediaStore container at my.example.container.com by using the browser's XMLHttpRequest capability.</p> <p>To enable CORS on a container, you attach a CORS policy to the container. In the CORS policy, you configure rules that identify origins and the HTTP methods that can be executed on your container. The policy can contain up to 398,000 characters. You can add up to 100 rules to a CORS policy. If more than one rule applies, the service uses the first applicable rule listed.</p> <p>To learn more about CORS, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html\">Cross-Origin Resource Sharing (CORS) in AWS Elemental MediaStore</a>.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.PutCorsPolicy",
+      "responses": [
+        {
+          "uuid": "34ba9208-22e4-4d3a-a7d5-e60c5ef2fb69",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0f2d3901-d188-4171-bc61-c9913935234c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f398cbff-e65d-4453-91a0-fad118683c7a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2df511c4-9ae3-4c9d-bb40-808a2971e36c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1d046f1c-4fc7-4e59-b771-3cf8e2a4fe91",
+      "documentation": "<p>Writes an object lifecycle policy to a container. If the container already has an object lifecycle policy, the service replaces the existing policy with the new policy. It takes up to 20 minutes for the change to take effect.</p> <p>For information about how to construct an object lifecycle policy, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html\">Components of an Object Lifecycle Policy</a>.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.PutLifecyclePolicy",
+      "responses": [
+        {
+          "uuid": "fa4caaf3-9a31-4d6b-bdde-d6f789b98b49",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4bdecc2d-3b9c-48a2-9833-51465fccce4b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f5ef934-85e5-42d3-b4be-4eeb70b6cf85",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "55108a4d-9899-4cb3-9508-87e0cf024caa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "15fb292d-13f1-4173-9d7f-c7bb5ec5f5ba",
+      "documentation": "The metric policy that you want to add to the container. A metric policy allows AWS Elemental MediaStore to send metrics to Amazon CloudWatch. It takes up to 20 minutes for the new policy to take effect.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.PutMetricPolicy",
+      "responses": [
+        {
+          "uuid": "86ad1e19-58d6-4c51-bd04-3715b3b2ae70",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "46f6fc0c-309f-482b-ade9-8c1dd7e43edc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bdebff19-97d6-4be4-8bf1-e5f3053b0a89",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5e2867ef-d41f-437e-bb15-266fe8da2d09",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3afe8303-88b0-4bc8-aac5-027fe8138fb6",
+      "documentation": "Starts access logging on the specified container. When you enable access logging on a container, MediaStore delivers access logs for objects stored in that container to Amazon CloudWatch Logs.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.StartAccessLogging",
+      "responses": [
+        {
+          "uuid": "afd3919c-444a-47d1-b1a2-d62c9b0a5e62",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bf02f338-c191-4af1-9b4d-e71549c1ea85",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "08759efd-4ef5-47f2-b7f4-492f0b74e92d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b070b768-1e44-46de-ba0d-7fa65aae3d8b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e101abae-202c-4802-8e23-026de05475be",
+      "documentation": "Stops access logging on the specified container. When you stop access logging on a container, MediaStore stops sending access logs to Amazon CloudWatch Logs. These access logs are not saved and are not retrievable.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.StopAccessLogging",
+      "responses": [
+        {
+          "uuid": "ed37b8c0-d544-41b9-b606-b5002cfe6a5b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c58b056e-3956-49bd-8f04-6cd213625928",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "215b7cfa-6e22-47b1-b8af-5474e36f779c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aae1ae5d-7763-4f2b-95f9-3528ca904ba6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c186bd3b-47be-4209-90a6-c01560efcf5f",
+      "documentation": "Adds tags to the specified AWS Elemental MediaStore container. Tags are key:value pairs that you can associate with AWS resources. For example, the tag key might be \"customer\" and the tag value might be \"companyA.\" You can specify one or more tags to add to each container. You can add up to 50 tags to each container. For more information about tagging, including naming and usage conventions, see <a href=\"https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html\">Tagging Resources in MediaStore</a>.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.TagResource",
+      "responses": [
+        {
+          "uuid": "de920829-dc72-4cf5-8aa7-a7cec158670e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f9c9ef6e-518a-4803-89b8-d7a42ddbb2f9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b371187d-4646-4d85-934e-5f0deb46df2f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "70e2ecfc-9ada-4870-b6f7-c5d12f96642e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf6c2c29-c22a-4579-8ac4-5b27afadb6ce",
+      "documentation": "Removes tags from the specified container. You can specify one or more tags to remove. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MediaStore_20170901.UntagResource",
+      "responses": [
+        {
+          "uuid": "34978f90-ec00-4afe-a34c-952a0cfb78a7",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8be36338-63cc-4af6-af2f-883973f84f07",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ContainerInUseException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d667c0da-51aa-44a2-8960-31bd7035f169",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ContainerNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "31eb7fd5-6ac0-4680-9864-ca314d70ce37",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

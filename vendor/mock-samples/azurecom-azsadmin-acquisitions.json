@@ -1,0 +1,92 @@
+{
+  "uuid": "fd009c2f-f4e4-4ace-b54b-87d66e54eecf",
+  "lastMigration": 24,
+  "name": "StorageManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c413d15a-d759-4606-8875-35b224492c1a",
+      "documentation": "Returns a list of BLOB acquisitions.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.Storage.Admin/locations/:location/acquisitions",
+      "responses": [
+        {
+          "uuid": "27c03c7c-4122-463b-b1e2-cf940066a7c1",
+          "body": "{\n  \"value\": [\n    {\n      \"acquisitionid\": \"\",\n      \"blob\": \"\",\n      \"container\": \"\",\n      \"filePath\": \"\",\n      \"filePathUnc\": \"\",\n      \"maximumblobsize\": {{faker 'datatype.number'}},\n      \"status\": \"{{oneOf (array 'Unknown' 'NotAcquired' 'Pending' 'Success' 'Failed')}}\",\n      \"storageaccount\": \"\",\n      \"susbcriptionid\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- The list of acquisitions has been returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "da29d1a0-6fb0-4506-8cde-b6f6eed635c5",
+          "body": "{\n  \"code\": \"\",\n  \"details\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"target\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error Response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

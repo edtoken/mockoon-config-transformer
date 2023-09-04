@@ -1,0 +1,2482 @@
+{
+  "uuid": "153d4546-6936-4702-b8ff-fe5a198062d9",
+  "lastMigration": 24,
+  "name": "Billbee API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "46a04fb1-6411-4ba0-a506-4bc27ba240ab",
+      "documentation": "Creates a new Billbee user account with the data passed",
+      "method": "post",
+      "endpoint": "api/v1/automaticprovision/createaccount",
+      "responses": [
+        {
+          "uuid": "f4b78cd8-ac4f-42a8-b690-4085f25cae03",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b3a2d94f-4d9d-4547-ac8c-38dd556edcc2",
+      "documentation": "Returns infos about Billbee terms and conditions",
+      "method": "get",
+      "endpoint": "api/v1/automaticprovision/termsinfo",
+      "responses": [
+        {
+          "uuid": "58e04030-5e57-4530-900c-093be677d735",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e02dc5f1-c02b-4ed2-86c7-61bd41b2e37b",
+      "documentation": "Gets a list of all connected cloud storage devices",
+      "method": "get",
+      "endpoint": "api/v1/cloudstorages",
+      "responses": [
+        {
+          "uuid": "1497efdf-2beb-4da1-81ed-dd080e372270",
+          "body": "{\n  \"Data\": [\n    {\n      \"Id\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Type\": \"\",\n      \"UsedAsPrinter\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81473728-1e74-4703-9e8a-d4297dcb2b3d",
+      "documentation": "Get a list of all customer addresses",
+      "method": "get",
+      "endpoint": "api/v1/customer-addresses",
+      "responses": [
+        {
+          "uuid": "dc9c240f-60e3-4d12-bc7a-e45602a8bf9d",
+          "body": "{\n  \"Data\": [\n    {\n      \"AddressAddition\": \"\",\n      \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"CountryCode\": \"\",\n      \"CustomerId\": {{faker 'datatype.number'}},\n      \"Email\": \"\",\n      \"Fax\": \"\",\n      \"FirstName\": \"\",\n      \"Housenumber\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LastName\": \"\",\n      \"Name2\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Zip\": \"\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "66f8fd0b-1bbc-48e4-b83c-601d539dc57e",
+      "documentation": "Creates a new customer address",
+      "method": "post",
+      "endpoint": "api/v1/customer-addresses",
+      "responses": [
+        {
+          "uuid": "2822940c-6805-443c-a048-a2c562754e68",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "82406b42-9b2a-4ad6-8c79-563a6f4ad4f0",
+      "documentation": "Queries a single customer address by id",
+      "method": "get",
+      "endpoint": "api/v1/customer-addresses/:id",
+      "responses": [
+        {
+          "uuid": "c00c3bc5-f16c-4b68-b2cf-dab83e0e87dc",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d703a198-1f14-42f4-b0a6-a830f0269c34",
+      "documentation": "Updates a customer address by id",
+      "method": "put",
+      "endpoint": "api/v1/customer-addresses/:id",
+      "responses": [
+        {
+          "uuid": "2e9de2ef-693b-46ec-a0e7-aa72deb7337d",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b55e5b51-577b-4561-8f34-ea2da1c0ac2b",
+      "documentation": "Get a list of all customers",
+      "method": "get",
+      "endpoint": "api/v1/customers",
+      "responses": [
+        {
+          "uuid": "1c302bc9-b5e3-4435-960d-24a7bd2d7e3f",
+          "body": "{\n  \"Data\": [\n    {\n      \"Email\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LanguageId\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"PriceGroupId\": {{faker 'datatype.number'}},\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Type\": {{faker 'datatype.number'}},\n      \"VatId\": \"\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c94d97b9-e0ec-4d32-b8d3-c821726b70e5",
+      "documentation": "Creates a new customer",
+      "method": "post",
+      "endpoint": "api/v1/customers",
+      "responses": [
+        {
+          "uuid": "cce0a8e4-1f69-465f-b1dd-9932ea7d6ea7",
+          "body": "{\n  \"Data\": {\n    \"Email\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LanguageId\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Number\": {{faker 'datatype.number'}},\n    \"PriceGroupId\": {{faker 'datatype.number'}},\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Type\": {{faker 'datatype.number'}},\n    \"VatId\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9302a76-07b2-4906-ae08-331a04482dc4",
+      "documentation": "Queries a single address from a customer",
+      "method": "get",
+      "endpoint": "api/v1/customers/addresses/:id",
+      "responses": [
+        {
+          "uuid": "e72d12e6-e491-4774-a7eb-d831a100a00e",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d68e2bef-a2d5-4ebd-a355-24c3d8d77b18",
+      "documentation": "Updates one or more fields of an address",
+      "method": "patch",
+      "endpoint": "api/v1/customers/addresses/:id",
+      "responses": [
+        {
+          "uuid": "06173f32-d1d6-4a9e-97ec-8c48f43405a6",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "acef4469-e537-48d8-912e-42297e7a545c",
+      "documentation": "Updates all fields of an address",
+      "method": "put",
+      "endpoint": "api/v1/customers/addresses/:id",
+      "responses": [
+        {
+          "uuid": "5233ece7-eb88-4d68-bc2c-91f12d205797",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "54260b78-f490-4af2-90b5-62d26fbba111",
+      "documentation": "Queries a single customer by id",
+      "method": "get",
+      "endpoint": "api/v1/customers/:id",
+      "responses": [
+        {
+          "uuid": "25cbf39f-e14b-477e-8011-8cd73f56aded",
+          "body": "{\n  \"Data\": {\n    \"Email\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LanguageId\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Number\": {{faker 'datatype.number'}},\n    \"PriceGroupId\": {{faker 'datatype.number'}},\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Type\": {{faker 'datatype.number'}},\n    \"VatId\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1cf72750-898a-4630-88a8-77414fa4c300",
+      "documentation": "Updates a customer by id",
+      "method": "put",
+      "endpoint": "api/v1/customers/:id",
+      "responses": [
+        {
+          "uuid": "02ad8820-5e32-4ac6-abff-def1e27e10d7",
+          "body": "{\n  \"Data\": {\n    \"Email\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LanguageId\": {{faker 'datatype.number'}},\n    \"Name\": \"\",\n    \"Number\": {{faker 'datatype.number'}},\n    \"PriceGroupId\": {{faker 'datatype.number'}},\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Type\": {{faker 'datatype.number'}},\n    \"VatId\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "045666d0-8c20-42de-8bd0-731a8c3ac75a",
+      "documentation": "Queries a list of addresses from a customer",
+      "method": "get",
+      "endpoint": "api/v1/customers/:id/addresses",
+      "responses": [
+        {
+          "uuid": "90071b71-cd2d-4a96-aae4-228b72d9cbb0",
+          "body": "{\n  \"Data\": [\n    {\n      \"AddressAddition\": \"\",\n      \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"CountryCode\": \"\",\n      \"CustomerId\": {{faker 'datatype.number'}},\n      \"Email\": \"\",\n      \"Fax\": \"\",\n      \"FirstName\": \"\",\n      \"Housenumber\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LastName\": \"\",\n      \"Name2\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Zip\": \"\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a929609-3c27-49a2-a69f-64e0ef65c669",
+      "documentation": "Adds a new address to a customer",
+      "method": "post",
+      "endpoint": "api/v1/customers/:id/addresses",
+      "responses": [
+        {
+          "uuid": "13cb9e96-5fc7-428e-acb8-7574da4d7731",
+          "body": "{\n  \"Data\": {\n    \"AddressAddition\": \"\",\n    \"AddressType\": \"{{oneOf (array '1' '2')}}\",\n    \"City\": \"\",\n    \"Company\": \"\",\n    \"CountryCode\": \"\",\n    \"CustomerId\": {{faker 'datatype.number'}},\n    \"Email\": \"\",\n    \"Fax\": \"\",\n    \"FirstName\": \"\",\n    \"Housenumber\": \"\",\n    \"Id\": {{faker 'datatype.number'}},\n    \"LastName\": \"\",\n    \"Name2\": \"\",\n    \"State\": \"\",\n    \"Street\": \"\",\n    \"Tel1\": \"\",\n    \"Tel2\": \"\",\n    \"Zip\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b4b4925b-f56d-47d8-9d19-b8f8bf32c679",
+      "documentation": "Queries a list of orders from a customer",
+      "method": "get",
+      "endpoint": "api/v1/customers/:id/orders",
+      "responses": [
+        {
+          "uuid": "fe693cfe-d756-421f-ae48-689bade645bb",
+          "body": "{\n  \"Data\": [\n    {\n      \"CanCreateAutoInvoice\": {{faker 'datatype.boolean'}},\n      \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"ExternalId\": \"\",\n      \"HasInvoice\": {{faker 'datatype.boolean'}},\n      \"Id\": {{faker 'datatype.number'}},\n      \"InvoiceCreatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n      \"InvoiceNumber\": \"\",\n      \"OrderStateId\": {{faker 'datatype.number'}},\n      \"OrderStateText\": \"\",\n      \"PaidAt\": \"{{faker 'date.recent' 365}}\",\n      \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n      \"ShopName\": \"\",\n      \"TotalGross\": {{faker 'datatype.float'}}\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4fbb27fa-738a-44a1-808a-50fb12a539da",
+      "documentation": "Returns a list with all defined orderstates",
+      "method": "get",
+      "endpoint": "api/v1/enums/orderstates",
+      "responses": [
+        {
+          "uuid": "7d56d779-619b-4709-819c-8a1202f06717",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "67b447f8-5c64-4334-bcf6-aa8ce30f38fb",
+      "documentation": "Returns a list with all defined paymenttypes",
+      "method": "get",
+      "endpoint": "api/v1/enums/paymenttypes",
+      "responses": [
+        {
+          "uuid": "e9c6753b-42aa-428c-81ea-7b2aa1131517",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5928ae08-d759-4ac1-9201-2af64bd95cd8",
+      "documentation": "Returns a list with all defined shipmenttypes",
+      "method": "get",
+      "endpoint": "api/v1/enums/shipmenttypes",
+      "responses": [
+        {
+          "uuid": "9dcc1ff6-7e8a-47b3-8124-b7108002418d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "789b08ab-0d5d-4872-ade6-1384eed8bd81",
+      "documentation": "Returns a list with all defined shippingcarriers",
+      "method": "get",
+      "endpoint": "api/v1/enums/shippingcarriers",
+      "responses": [
+        {
+          "uuid": "59cd17d1-f735-403b-82be-23d8f341138f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a7c847e-6bef-4256-8e29-cc8d956b9f48",
+      "documentation": "Get a list of all events optionally filtered by date. This request is extra throttled to 2 calls per page per hour.",
+      "method": "get",
+      "endpoint": "api/v1/events",
+      "responses": [
+        {
+          "uuid": "663ba6be-be98-4807-9743-77d39b162dbb",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0345f70d-4fed-4de7-9d7e-77f519f5925a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/layouts",
+      "responses": [
+        {
+          "uuid": "96c07786-632f-4682-82f4-c18b53b1427c",
+          "body": "{\n  \"Data\": [\n    {\n      \"Id\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Type\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c46d39a6-a799-45b0-a603-568fe3895d12",
+      "documentation": "Get a list of all orders optionally filtered by date",
+      "method": "get",
+      "endpoint": "api/v1/orders",
+      "responses": [
+        {
+          "uuid": "3fa63009-f102-408e-9bad-f27793249742",
+          "body": "{\n  \"Data\": [\n    {\n      \"AcceptLossOfReturnRight\": {{faker 'datatype.boolean'}},\n      \"AdjustmentCost\": {{faker 'datatype.float'}},\n      \"AdjustmentReason\": \"\",\n      \"ApiAccountId\": {{faker 'datatype.number'}},\n      \"ApiAccountName\": \"\",\n      \"BillBeeOrderId\": {{faker 'datatype.number'}},\n      \"BillBeeParentOrderId\": {{faker 'datatype.number'}},\n      \"Buyer\": {\n        \"BillbeeShopId\": {{faker 'datatype.number'}},\n        \"BillbeeShopName\": \"\",\n        \"Email\": \"\",\n        \"FirstName\": \"\",\n        \"FullName\": \"\",\n        \"Id\": \"\",\n        \"LastName\": \"\",\n        \"Nick\": \"\",\n        \"Platform\": \"\"\n      },\n      \"Comments\": [\n        {\n          \"Created\": \"{{faker 'date.recent' 365}}\",\n          \"FromCustomer\": {{faker 'datatype.boolean'}},\n          \"Id\": {{faker 'datatype.number'}},\n          \"Name\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"ConfirmedAt\": \"{{faker 'date.recent' 365}}\",\n      \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"Currency\": \"\",\n      \"CustomInvoiceNote\": \"\",\n      \"Customer\": {\n        \"Email\": \"\",\n        \"Id\": {{faker 'datatype.number'}},\n        \"LanguageId\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": {{faker 'datatype.number'}},\n        \"PriceGroupId\": {{faker 'datatype.number'}},\n        \"Tel1\": \"\",\n        \"Tel2\": \"\",\n        \"Type\": {{faker 'datatype.number'}},\n        \"VatId\": \"\"\n      },\n      \"CustomerNumber\": \"\",\n      \"CustomerVatId\": \"\",\n      \"DeliverySourceCountryCode\": \"\",\n      \"DistributionCenter\": \"\",\n      \"History\": [\n        {\n          \"Created\": \"{{faker 'date.recent' 365}}\",\n          \"EmployeeName\": \"\",\n          \"EventTypeName\": \"\",\n          \"Text\": \"\",\n          \"TypeId\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"Id\": \"\",\n      \"InvoiceAddress\": {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"City\": \"\",\n        \"Company\": \"\",\n        \"Country\": \"\",\n        \"CountryISO2\": \"\",\n        \"Email\": \"\",\n        \"FirstName\": \"\",\n        \"HouseNumber\": \"\",\n        \"LastName\": \"\",\n        \"Line2\": \"\",\n        \"NameAddition\": \"\",\n        \"Phone\": \"\",\n        \"State\": \"\",\n        \"Street\": \"\",\n        \"Zip\": \"\"\n      },\n      \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n      \"InvoiceNumber\": {{faker 'datatype.number'}},\n      \"InvoiceNumberPostfix\": \"\",\n      \"InvoiceNumberPrefix\": \"\",\n      \"IsCancelationFor\": \"\",\n      \"LanguageCode\": \"\",\n      \"LastModifiedAt\": \"{{faker 'date.recent' 365}}\",\n      \"MerchantVatId\": \"\",\n      \"OrderItems\": [\n        {\n          \"Attributes\": [\n            {\n              \"Id\": \"\",\n              \"Name\": \"\",\n              \"Price\": {{faker 'datatype.float'}},\n              \"Value\": \"\"\n            }\n          ],\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"Discount\": {{faker 'datatype.float'}},\n          \"DontAdjustStock\": {{faker 'datatype.boolean'}},\n          \"GetPriceFromArticleIfAny\": {{faker 'datatype.boolean'}},\n          \"InvoiceSKU\": \"\",\n          \"IsCoupon\": {{faker 'datatype.boolean'}},\n          \"Product\": {\n            \"BillbeeId\": {{faker 'datatype.number'}},\n            \"CountryOfOrigin\": \"\",\n            \"EAN\": \"\",\n            \"Id\": \"\",\n            \"Images\": [\n              {\n                \"ExternalId\": \"\",\n                \"IsDefaultImage\": {{faker 'datatype.boolean'}},\n                \"Position\": {{faker 'datatype.number'}},\n                \"Url\": \"\"\n              }\n            ],\n            \"IsDigital\": {{faker 'datatype.boolean'}},\n            \"OldId\": \"\",\n            \"PlatformData\": \"\",\n            \"SKU\": \"\",\n            \"SkuOrId\": \"\",\n            \"TARICCode\": \"\",\n            \"Title\": \"\",\n            \"Weight\": {{faker 'datatype.number'}}\n          },\n          \"Quantity\": {{faker 'datatype.float'}},\n          \"SerialNumber\": \"\",\n          \"ShippingProfileId\": \"\",\n          \"TaxAmount\": {{faker 'datatype.float'}},\n          \"TaxIndex\": {{faker 'datatype.number'}},\n          \"TotalPrice\": {{faker 'datatype.float'}},\n          \"TransactionId\": \"\",\n          \"UnrebatedTotalPrice\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"OrderNumber\": \"\",\n      \"PaidAmount\": {{faker 'datatype.float'}},\n      \"PayedAt\": \"{{faker 'date.recent' 365}}\",\n      \"PaymentInstruction\": \"\",\n      \"PaymentMethod\": \"{{oneOf (array '1' '2' '3' '4' '6' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99' '100' '101' '102' '103' '104' '105' '106' '107' '108' '109' '110' '111' '112' '113' '114' '115' '116' '117' '118' '119' '120' '121')}}\",\n      \"PaymentReference\": \"\",\n      \"PaymentTransactionId\": \"\",\n      \"Payments\": [\n        {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"Name\": \"\",\n          \"PayDate\": \"{{faker 'date.recent' 365}}\",\n          \"PayValue\": {{faker 'datatype.float'}},\n          \"PaymentType\": {{faker 'datatype.number'}},\n          \"Purpose\": \"\",\n          \"SourceTechnology\": \"\",\n          \"SourceText\": \"\",\n          \"TransactionId\": \"\"\n        }\n      ],\n      \"RebateDifference\": {{faker 'datatype.float'}},\n      \"Seller\": {\n        \"BillbeeShopId\": {{faker 'datatype.number'}},\n        \"BillbeeShopName\": \"\",\n        \"Email\": \"\",\n        \"FirstName\": \"\",\n        \"FullName\": \"\",\n        \"Id\": \"\",\n        \"LastName\": \"\",\n        \"Nick\": \"\",\n        \"Platform\": \"\"\n      },\n      \"SellerComment\": \"\",\n      \"ShipWeightKg\": {{faker 'datatype.float'}},\n      \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n      \"ShippingAddress\": {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"City\": \"\",\n        \"Company\": \"\",\n        \"Country\": \"\",\n        \"CountryISO2\": \"\",\n        \"Email\": \"\",\n        \"FirstName\": \"\",\n        \"HouseNumber\": \"\",\n        \"LastName\": \"\",\n        \"Line2\": \"\",\n        \"NameAddition\": \"\",\n        \"Phone\": \"\",\n        \"State\": \"\",\n        \"Street\": \"\",\n        \"Zip\": \"\"\n      },\n      \"ShippingCost\": {{faker 'datatype.float'}},\n      \"ShippingIds\": [\n        {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"Created\": \"{{faker 'date.recent' 365}}\",\n          \"ShipmentType\": {{faker 'datatype.number'}},\n          \"Shipper\": \"\",\n          \"ShippingCarrier\": {{faker 'datatype.number'}},\n          \"ShippingId\": \"\",\n          \"ShippingProviderId\": {{faker 'datatype.number'}},\n          \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n          \"TrackingUrl\": \"\"\n        }\n      ],\n      \"ShippingProfileId\": \"\",\n      \"ShippingProfileName\": \"\",\n      \"ShippingProviderId\": {{faker 'datatype.number'}},\n      \"ShippingProviderName\": \"\",\n      \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n      \"ShippingProviderProductName\": \"\",\n      \"ShippingServices\": [\n        {\n          \"CanBeConfigured\": {{faker 'datatype.boolean'}},\n          \"DisplayName\": \"\",\n          \"DisplayValue\": \"\",\n          \"PossibleValueLists\": [\n            {\n              \"key\": \"\",\n              \"value\": [\n                {\n                  \"key\": {{faker 'datatype.number'}},\n                  \"value\": \"\"\n                }\n              ]\n            }\n          ],\n          \"RequiresUserInput\": {{faker 'datatype.boolean'}},\n          \"ServiceName\": \"\",\n          \"typeName\": \"\"\n        }\n      ],\n      \"State\": \"{{oneOf (array '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16')}}\",\n      \"Tags\": [\n        \"\"\n      ],\n      \"TaxRate1\": {{faker 'datatype.float'}},\n      \"TaxRate2\": {{faker 'datatype.float'}},\n      \"TotalCost\": {{faker 'datatype.float'}},\n      \"UpdatedAt\": \"{{faker 'date.recent' 365}}\",\n      \"VatId\": \"\",\n      \"VatMode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0725923-08b8-4c03-af54-fc79b7cfebd2",
+      "documentation": "Creates a new order in the Billbee account",
+      "method": "post",
+      "endpoint": "api/v1/orders",
+      "responses": [
+        {
+          "uuid": "a60186f1-891f-4ff6-935d-a7c6fe59ae3c",
+          "body": "{\n  \"Data\": {\n    \"AcceptLossOfReturnRight\": {{faker 'datatype.boolean'}},\n    \"AdjustmentCost\": {{faker 'datatype.float'}},\n    \"AdjustmentReason\": \"\",\n    \"ApiAccountId\": {{faker 'datatype.number'}},\n    \"ApiAccountName\": \"\",\n    \"BillBeeOrderId\": {{faker 'datatype.number'}},\n    \"BillBeeParentOrderId\": {{faker 'datatype.number'}},\n    \"Buyer\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"Comments\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"FromCustomer\": {{faker 'datatype.boolean'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"ConfirmedAt\": \"{{faker 'date.recent' 365}}\",\n    \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"Currency\": \"\",\n    \"CustomInvoiceNote\": \"\",\n    \"Customer\": {\n      \"Email\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LanguageId\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"PriceGroupId\": {{faker 'datatype.number'}},\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Type\": {{faker 'datatype.number'}},\n      \"VatId\": \"\"\n    },\n    \"CustomerNumber\": \"\",\n    \"CustomerVatId\": \"\",\n    \"DeliverySourceCountryCode\": \"\",\n    \"DistributionCenter\": \"\",\n    \"History\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"EmployeeName\": \"\",\n        \"EventTypeName\": \"\",\n        \"Text\": \"\",\n        \"TypeId\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Id\": \"\",\n    \"InvoiceAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n    \"InvoiceNumber\": {{faker 'datatype.number'}},\n    \"InvoiceNumberPostfix\": \"\",\n    \"InvoiceNumberPrefix\": \"\",\n    \"IsCancelationFor\": \"\",\n    \"LanguageCode\": \"\",\n    \"LastModifiedAt\": \"{{faker 'date.recent' 365}}\",\n    \"MerchantVatId\": \"\",\n    \"OrderItems\": [\n      {\n        \"Attributes\": [\n          {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"Price\": {{faker 'datatype.float'}},\n            \"Value\": \"\"\n          }\n        ],\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Discount\": {{faker 'datatype.float'}},\n        \"DontAdjustStock\": {{faker 'datatype.boolean'}},\n        \"GetPriceFromArticleIfAny\": {{faker 'datatype.boolean'}},\n        \"InvoiceSKU\": \"\",\n        \"IsCoupon\": {{faker 'datatype.boolean'}},\n        \"Product\": {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"CountryOfOrigin\": \"\",\n          \"EAN\": \"\",\n          \"Id\": \"\",\n          \"Images\": [\n            {\n              \"ExternalId\": \"\",\n              \"IsDefaultImage\": {{faker 'datatype.boolean'}},\n              \"Position\": {{faker 'datatype.number'}},\n              \"Url\": \"\"\n            }\n          ],\n          \"IsDigital\": {{faker 'datatype.boolean'}},\n          \"OldId\": \"\",\n          \"PlatformData\": \"\",\n          \"SKU\": \"\",\n          \"SkuOrId\": \"\",\n          \"TARICCode\": \"\",\n          \"Title\": \"\",\n          \"Weight\": {{faker 'datatype.number'}}\n        },\n        \"Quantity\": {{faker 'datatype.float'}},\n        \"SerialNumber\": \"\",\n        \"ShippingProfileId\": \"\",\n        \"TaxAmount\": {{faker 'datatype.float'}},\n        \"TaxIndex\": {{faker 'datatype.number'}},\n        \"TotalPrice\": {{faker 'datatype.float'}},\n        \"TransactionId\": \"\",\n        \"UnrebatedTotalPrice\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"OrderNumber\": \"\",\n    \"PaidAmount\": {{faker 'datatype.float'}},\n    \"PayedAt\": \"{{faker 'date.recent' 365}}\",\n    \"PaymentInstruction\": \"\",\n    \"PaymentMethod\": \"{{oneOf (array '1' '2' '3' '4' '6' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99' '100' '101' '102' '103' '104' '105' '106' '107' '108' '109' '110' '111' '112' '113' '114' '115' '116' '117' '118' '119' '120' '121')}}\",\n    \"PaymentReference\": \"\",\n    \"PaymentTransactionId\": \"\",\n    \"Payments\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"PayDate\": \"{{faker 'date.recent' 365}}\",\n        \"PayValue\": {{faker 'datatype.float'}},\n        \"PaymentType\": {{faker 'datatype.number'}},\n        \"Purpose\": \"\",\n        \"SourceTechnology\": \"\",\n        \"SourceText\": \"\",\n        \"TransactionId\": \"\"\n      }\n    ],\n    \"RebateDifference\": {{faker 'datatype.float'}},\n    \"Seller\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"SellerComment\": \"\",\n    \"ShipWeightKg\": {{faker 'datatype.float'}},\n    \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n    \"ShippingAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"ShippingCost\": {{faker 'datatype.float'}},\n    \"ShippingIds\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"ShipmentType\": {{faker 'datatype.number'}},\n        \"Shipper\": \"\",\n        \"ShippingCarrier\": {{faker 'datatype.number'}},\n        \"ShippingId\": \"\",\n        \"ShippingProviderId\": {{faker 'datatype.number'}},\n        \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n        \"TrackingUrl\": \"\"\n      }\n    ],\n    \"ShippingProfileId\": \"\",\n    \"ShippingProfileName\": \"\",\n    \"ShippingProviderId\": {{faker 'datatype.number'}},\n    \"ShippingProviderName\": \"\",\n    \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n    \"ShippingProviderProductName\": \"\",\n    \"ShippingServices\": [\n      {\n        \"CanBeConfigured\": {{faker 'datatype.boolean'}},\n        \"DisplayName\": \"\",\n        \"DisplayValue\": \"\",\n        \"PossibleValueLists\": [\n          {\n            \"key\": \"\",\n            \"value\": [\n              {\n                \"key\": {{faker 'datatype.number'}},\n                \"value\": \"\"\n              }\n            ]\n          }\n        ],\n        \"RequiresUserInput\": {{faker 'datatype.boolean'}},\n        \"ServiceName\": \"\",\n        \"typeName\": \"\"\n      }\n    ],\n    \"State\": \"{{oneOf (array '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16')}}\",\n    \"Tags\": [\n      \"\"\n    ],\n    \"TaxRate1\": {{faker 'datatype.float'}},\n    \"TaxRate2\": {{faker 'datatype.float'}},\n    \"TotalCost\": {{faker 'datatype.float'}},\n    \"UpdatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"VatId\": \"\",\n    \"VatMode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "The order was created successfully",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "13d43ffb-fbdd-4f7d-ab88-5d49dfe65572",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid data was received in the request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9c912747-7c39-40b3-a2a0-736f7fdbaa05",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "An internal exception occured. Order was not created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8a644011-8a75-4f2b-b1a8-f3b30631a5f8",
+      "documentation": "Create an delivery note for an existing order. This request is extra throttled by order and api key to a maximum of 1 per 5 minutes.",
+      "method": "post",
+      "endpoint": "api/v1/orders/CreateDeliveryNote/:id",
+      "responses": [
+        {
+          "uuid": "e2910286-a2a7-4d7c-948d-a54751f37ecd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44bf8f5a-c064-40d6-9f53-cf35fdca0bcc",
+      "documentation": "Create an invoice for an existing order. This request is extra throttled by order and api key to a maximum of 1 per 5 minutes.",
+      "method": "post",
+      "endpoint": "api/v1/orders/CreateInvoice/:id",
+      "responses": [
+        {
+          "uuid": "2f0b53c1-b994-44fd-85d3-42377b220ec9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e5b22826-4a77-406c-ba20-3e51a188b960",
+      "documentation": "Returns a list of fields which can be updated with the orders/{id} patch call",
+      "method": "get",
+      "endpoint": "api/v1/orders/PatchableFields",
+      "responses": [
+        {
+          "uuid": "9340a618-2d4e-4d9e-9437-ec8b1147f9c3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7dd71aee-b064-41c4-857b-a70b35a85210",
+      "documentation": "Find a single order by its external id (order number)",
+      "method": "get",
+      "endpoint": "api/v1/orders/find/:id/:partner",
+      "responses": [
+        {
+          "uuid": "75eb3d67-a4c0-4000-9aff-93c56ac78694",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "25cb6624-7412-4fe1-8907-f8f18db32054",
+      "documentation": "Get a single order by its external order number",
+      "method": "get",
+      "endpoint": "api/v1/orders/findbyextref/:extRef",
+      "responses": [
+        {
+          "uuid": "a58b3340-99e4-4a19-986b-9ed498271ed2",
+          "body": "{\n  \"Data\": {\n    \"AcceptLossOfReturnRight\": {{faker 'datatype.boolean'}},\n    \"AdjustmentCost\": {{faker 'datatype.float'}},\n    \"AdjustmentReason\": \"\",\n    \"ApiAccountId\": {{faker 'datatype.number'}},\n    \"ApiAccountName\": \"\",\n    \"BillBeeOrderId\": {{faker 'datatype.number'}},\n    \"BillBeeParentOrderId\": {{faker 'datatype.number'}},\n    \"Buyer\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"Comments\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"FromCustomer\": {{faker 'datatype.boolean'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"ConfirmedAt\": \"{{faker 'date.recent' 365}}\",\n    \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"Currency\": \"\",\n    \"CustomInvoiceNote\": \"\",\n    \"Customer\": {\n      \"Email\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LanguageId\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"PriceGroupId\": {{faker 'datatype.number'}},\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Type\": {{faker 'datatype.number'}},\n      \"VatId\": \"\"\n    },\n    \"CustomerNumber\": \"\",\n    \"CustomerVatId\": \"\",\n    \"DeliverySourceCountryCode\": \"\",\n    \"DistributionCenter\": \"\",\n    \"History\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"EmployeeName\": \"\",\n        \"EventTypeName\": \"\",\n        \"Text\": \"\",\n        \"TypeId\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Id\": \"\",\n    \"InvoiceAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n    \"InvoiceNumber\": {{faker 'datatype.number'}},\n    \"InvoiceNumberPostfix\": \"\",\n    \"InvoiceNumberPrefix\": \"\",\n    \"IsCancelationFor\": \"\",\n    \"LanguageCode\": \"\",\n    \"LastModifiedAt\": \"{{faker 'date.recent' 365}}\",\n    \"MerchantVatId\": \"\",\n    \"OrderItems\": [\n      {\n        \"Attributes\": [\n          {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"Price\": {{faker 'datatype.float'}},\n            \"Value\": \"\"\n          }\n        ],\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Discount\": {{faker 'datatype.float'}},\n        \"DontAdjustStock\": {{faker 'datatype.boolean'}},\n        \"GetPriceFromArticleIfAny\": {{faker 'datatype.boolean'}},\n        \"InvoiceSKU\": \"\",\n        \"IsCoupon\": {{faker 'datatype.boolean'}},\n        \"Product\": {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"CountryOfOrigin\": \"\",\n          \"EAN\": \"\",\n          \"Id\": \"\",\n          \"Images\": [\n            {\n              \"ExternalId\": \"\",\n              \"IsDefaultImage\": {{faker 'datatype.boolean'}},\n              \"Position\": {{faker 'datatype.number'}},\n              \"Url\": \"\"\n            }\n          ],\n          \"IsDigital\": {{faker 'datatype.boolean'}},\n          \"OldId\": \"\",\n          \"PlatformData\": \"\",\n          \"SKU\": \"\",\n          \"SkuOrId\": \"\",\n          \"TARICCode\": \"\",\n          \"Title\": \"\",\n          \"Weight\": {{faker 'datatype.number'}}\n        },\n        \"Quantity\": {{faker 'datatype.float'}},\n        \"SerialNumber\": \"\",\n        \"ShippingProfileId\": \"\",\n        \"TaxAmount\": {{faker 'datatype.float'}},\n        \"TaxIndex\": {{faker 'datatype.number'}},\n        \"TotalPrice\": {{faker 'datatype.float'}},\n        \"TransactionId\": \"\",\n        \"UnrebatedTotalPrice\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"OrderNumber\": \"\",\n    \"PaidAmount\": {{faker 'datatype.float'}},\n    \"PayedAt\": \"{{faker 'date.recent' 365}}\",\n    \"PaymentInstruction\": \"\",\n    \"PaymentMethod\": \"{{oneOf (array '1' '2' '3' '4' '6' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99' '100' '101' '102' '103' '104' '105' '106' '107' '108' '109' '110' '111' '112' '113' '114' '115' '116' '117' '118' '119' '120' '121')}}\",\n    \"PaymentReference\": \"\",\n    \"PaymentTransactionId\": \"\",\n    \"Payments\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"PayDate\": \"{{faker 'date.recent' 365}}\",\n        \"PayValue\": {{faker 'datatype.float'}},\n        \"PaymentType\": {{faker 'datatype.number'}},\n        \"Purpose\": \"\",\n        \"SourceTechnology\": \"\",\n        \"SourceText\": \"\",\n        \"TransactionId\": \"\"\n      }\n    ],\n    \"RebateDifference\": {{faker 'datatype.float'}},\n    \"Seller\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"SellerComment\": \"\",\n    \"ShipWeightKg\": {{faker 'datatype.float'}},\n    \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n    \"ShippingAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"ShippingCost\": {{faker 'datatype.float'}},\n    \"ShippingIds\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"ShipmentType\": {{faker 'datatype.number'}},\n        \"Shipper\": \"\",\n        \"ShippingCarrier\": {{faker 'datatype.number'}},\n        \"ShippingId\": \"\",\n        \"ShippingProviderId\": {{faker 'datatype.number'}},\n        \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n        \"TrackingUrl\": \"\"\n      }\n    ],\n    \"ShippingProfileId\": \"\",\n    \"ShippingProfileName\": \"\",\n    \"ShippingProviderId\": {{faker 'datatype.number'}},\n    \"ShippingProviderName\": \"\",\n    \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n    \"ShippingProviderProductName\": \"\",\n    \"ShippingServices\": [\n      {\n        \"CanBeConfigured\": {{faker 'datatype.boolean'}},\n        \"DisplayName\": \"\",\n        \"DisplayValue\": \"\",\n        \"PossibleValueLists\": [\n          {\n            \"key\": \"\",\n            \"value\": [\n              {\n                \"key\": {{faker 'datatype.number'}},\n                \"value\": \"\"\n              }\n            ]\n          }\n        ],\n        \"RequiresUserInput\": {{faker 'datatype.boolean'}},\n        \"ServiceName\": \"\",\n        \"typeName\": \"\"\n      }\n    ],\n    \"State\": \"{{oneOf (array '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16')}}\",\n    \"Tags\": [\n      \"\"\n    ],\n    \"TaxRate1\": {{faker 'datatype.float'}},\n    \"TaxRate2\": {{faker 'datatype.float'}},\n    \"TotalCost\": {{faker 'datatype.float'}},\n    \"UpdatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"VatId\": \"\",\n    \"VatMode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "24fca59c-86e8-4db7-a3b2-dd427ff93233",
+      "documentation": "Get a list of all invoices optionally filtered by date. This request ist throttled to 1 per 1 minute for same page and minInvoiceDate",
+      "method": "get",
+      "endpoint": "api/v1/orders/invoices",
+      "responses": [
+        {
+          "uuid": "9ba1989d-f944-4c4f-8bad-7e334b8baa6b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4685e542-82ad-4ebb-93a2-dc5b35d56e9f",
+      "documentation": "Get a single order by its internal billbee id. This request is throttled to 6 calls per order in one minute",
+      "method": "get",
+      "endpoint": "api/v1/orders/:id",
+      "responses": [
+        {
+          "uuid": "a597697f-0836-49ce-a7fb-0a56773d38dd",
+          "body": "{\n  \"Data\": {\n    \"AcceptLossOfReturnRight\": {{faker 'datatype.boolean'}},\n    \"AdjustmentCost\": {{faker 'datatype.float'}},\n    \"AdjustmentReason\": \"\",\n    \"ApiAccountId\": {{faker 'datatype.number'}},\n    \"ApiAccountName\": \"\",\n    \"BillBeeOrderId\": {{faker 'datatype.number'}},\n    \"BillBeeParentOrderId\": {{faker 'datatype.number'}},\n    \"Buyer\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"Comments\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"FromCustomer\": {{faker 'datatype.boolean'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"ConfirmedAt\": \"{{faker 'date.recent' 365}}\",\n    \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"Currency\": \"\",\n    \"CustomInvoiceNote\": \"\",\n    \"Customer\": {\n      \"Email\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LanguageId\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"PriceGroupId\": {{faker 'datatype.number'}},\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Type\": {{faker 'datatype.number'}},\n      \"VatId\": \"\"\n    },\n    \"CustomerNumber\": \"\",\n    \"CustomerVatId\": \"\",\n    \"DeliverySourceCountryCode\": \"\",\n    \"DistributionCenter\": \"\",\n    \"History\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"EmployeeName\": \"\",\n        \"EventTypeName\": \"\",\n        \"Text\": \"\",\n        \"TypeId\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Id\": \"\",\n    \"InvoiceAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n    \"InvoiceNumber\": {{faker 'datatype.number'}},\n    \"InvoiceNumberPostfix\": \"\",\n    \"InvoiceNumberPrefix\": \"\",\n    \"IsCancelationFor\": \"\",\n    \"LanguageCode\": \"\",\n    \"LastModifiedAt\": \"{{faker 'date.recent' 365}}\",\n    \"MerchantVatId\": \"\",\n    \"OrderItems\": [\n      {\n        \"Attributes\": [\n          {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"Price\": {{faker 'datatype.float'}},\n            \"Value\": \"\"\n          }\n        ],\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Discount\": {{faker 'datatype.float'}},\n        \"DontAdjustStock\": {{faker 'datatype.boolean'}},\n        \"GetPriceFromArticleIfAny\": {{faker 'datatype.boolean'}},\n        \"InvoiceSKU\": \"\",\n        \"IsCoupon\": {{faker 'datatype.boolean'}},\n        \"Product\": {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"CountryOfOrigin\": \"\",\n          \"EAN\": \"\",\n          \"Id\": \"\",\n          \"Images\": [\n            {\n              \"ExternalId\": \"\",\n              \"IsDefaultImage\": {{faker 'datatype.boolean'}},\n              \"Position\": {{faker 'datatype.number'}},\n              \"Url\": \"\"\n            }\n          ],\n          \"IsDigital\": {{faker 'datatype.boolean'}},\n          \"OldId\": \"\",\n          \"PlatformData\": \"\",\n          \"SKU\": \"\",\n          \"SkuOrId\": \"\",\n          \"TARICCode\": \"\",\n          \"Title\": \"\",\n          \"Weight\": {{faker 'datatype.number'}}\n        },\n        \"Quantity\": {{faker 'datatype.float'}},\n        \"SerialNumber\": \"\",\n        \"ShippingProfileId\": \"\",\n        \"TaxAmount\": {{faker 'datatype.float'}},\n        \"TaxIndex\": {{faker 'datatype.number'}},\n        \"TotalPrice\": {{faker 'datatype.float'}},\n        \"TransactionId\": \"\",\n        \"UnrebatedTotalPrice\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"OrderNumber\": \"\",\n    \"PaidAmount\": {{faker 'datatype.float'}},\n    \"PayedAt\": \"{{faker 'date.recent' 365}}\",\n    \"PaymentInstruction\": \"\",\n    \"PaymentMethod\": \"{{oneOf (array '1' '2' '3' '4' '6' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99' '100' '101' '102' '103' '104' '105' '106' '107' '108' '109' '110' '111' '112' '113' '114' '115' '116' '117' '118' '119' '120' '121')}}\",\n    \"PaymentReference\": \"\",\n    \"PaymentTransactionId\": \"\",\n    \"Payments\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"PayDate\": \"{{faker 'date.recent' 365}}\",\n        \"PayValue\": {{faker 'datatype.float'}},\n        \"PaymentType\": {{faker 'datatype.number'}},\n        \"Purpose\": \"\",\n        \"SourceTechnology\": \"\",\n        \"SourceText\": \"\",\n        \"TransactionId\": \"\"\n      }\n    ],\n    \"RebateDifference\": {{faker 'datatype.float'}},\n    \"Seller\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"SellerComment\": \"\",\n    \"ShipWeightKg\": {{faker 'datatype.float'}},\n    \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n    \"ShippingAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"ShippingCost\": {{faker 'datatype.float'}},\n    \"ShippingIds\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"ShipmentType\": {{faker 'datatype.number'}},\n        \"Shipper\": \"\",\n        \"ShippingCarrier\": {{faker 'datatype.number'}},\n        \"ShippingId\": \"\",\n        \"ShippingProviderId\": {{faker 'datatype.number'}},\n        \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n        \"TrackingUrl\": \"\"\n      }\n    ],\n    \"ShippingProfileId\": \"\",\n    \"ShippingProfileName\": \"\",\n    \"ShippingProviderId\": {{faker 'datatype.number'}},\n    \"ShippingProviderName\": \"\",\n    \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n    \"ShippingProviderProductName\": \"\",\n    \"ShippingServices\": [\n      {\n        \"CanBeConfigured\": {{faker 'datatype.boolean'}},\n        \"DisplayName\": \"\",\n        \"DisplayValue\": \"\",\n        \"PossibleValueLists\": [\n          {\n            \"key\": \"\",\n            \"value\": [\n              {\n                \"key\": {{faker 'datatype.number'}},\n                \"value\": \"\"\n              }\n            ]\n          }\n        ],\n        \"RequiresUserInput\": {{faker 'datatype.boolean'}},\n        \"ServiceName\": \"\",\n        \"typeName\": \"\"\n      }\n    ],\n    \"State\": \"{{oneOf (array '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16')}}\",\n    \"Tags\": [\n      \"\"\n    ],\n    \"TaxRate1\": {{faker 'datatype.float'}},\n    \"TaxRate2\": {{faker 'datatype.float'}},\n    \"TotalCost\": {{faker 'datatype.float'}},\n    \"UpdatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"VatId\": \"\",\n    \"VatMode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d41397b-015c-4c9c-a182-28feaaedb02b",
+      "documentation": "Updates one or more fields of an order",
+      "method": "patch",
+      "endpoint": "api/v1/orders/:id",
+      "responses": [
+        {
+          "uuid": "9863f51f-37f2-4391-a5ca-9c40961c5dde",
+          "body": "{\n  \"Data\": {\n    \"AcceptLossOfReturnRight\": {{faker 'datatype.boolean'}},\n    \"AdjustmentCost\": {{faker 'datatype.float'}},\n    \"AdjustmentReason\": \"\",\n    \"ApiAccountId\": {{faker 'datatype.number'}},\n    \"ApiAccountName\": \"\",\n    \"BillBeeOrderId\": {{faker 'datatype.number'}},\n    \"BillBeeParentOrderId\": {{faker 'datatype.number'}},\n    \"Buyer\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"Comments\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"FromCustomer\": {{faker 'datatype.boolean'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"ConfirmedAt\": \"{{faker 'date.recent' 365}}\",\n    \"CreatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"Currency\": \"\",\n    \"CustomInvoiceNote\": \"\",\n    \"Customer\": {\n      \"Email\": \"\",\n      \"Id\": {{faker 'datatype.number'}},\n      \"LanguageId\": {{faker 'datatype.number'}},\n      \"Name\": \"\",\n      \"Number\": {{faker 'datatype.number'}},\n      \"PriceGroupId\": {{faker 'datatype.number'}},\n      \"Tel1\": \"\",\n      \"Tel2\": \"\",\n      \"Type\": {{faker 'datatype.number'}},\n      \"VatId\": \"\"\n    },\n    \"CustomerNumber\": \"\",\n    \"CustomerVatId\": \"\",\n    \"DeliverySourceCountryCode\": \"\",\n    \"DistributionCenter\": \"\",\n    \"History\": [\n      {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"EmployeeName\": \"\",\n        \"EventTypeName\": \"\",\n        \"Text\": \"\",\n        \"TypeId\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"Id\": \"\",\n    \"InvoiceAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"InvoiceDate\": \"{{faker 'date.recent' 365}}\",\n    \"InvoiceNumber\": {{faker 'datatype.number'}},\n    \"InvoiceNumberPostfix\": \"\",\n    \"InvoiceNumberPrefix\": \"\",\n    \"IsCancelationFor\": \"\",\n    \"LanguageCode\": \"\",\n    \"LastModifiedAt\": \"{{faker 'date.recent' 365}}\",\n    \"MerchantVatId\": \"\",\n    \"OrderItems\": [\n      {\n        \"Attributes\": [\n          {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"Price\": {{faker 'datatype.float'}},\n            \"Value\": \"\"\n          }\n        ],\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Discount\": {{faker 'datatype.float'}},\n        \"DontAdjustStock\": {{faker 'datatype.boolean'}},\n        \"GetPriceFromArticleIfAny\": {{faker 'datatype.boolean'}},\n        \"InvoiceSKU\": \"\",\n        \"IsCoupon\": {{faker 'datatype.boolean'}},\n        \"Product\": {\n          \"BillbeeId\": {{faker 'datatype.number'}},\n          \"CountryOfOrigin\": \"\",\n          \"EAN\": \"\",\n          \"Id\": \"\",\n          \"Images\": [\n            {\n              \"ExternalId\": \"\",\n              \"IsDefaultImage\": {{faker 'datatype.boolean'}},\n              \"Position\": {{faker 'datatype.number'}},\n              \"Url\": \"\"\n            }\n          ],\n          \"IsDigital\": {{faker 'datatype.boolean'}},\n          \"OldId\": \"\",\n          \"PlatformData\": \"\",\n          \"SKU\": \"\",\n          \"SkuOrId\": \"\",\n          \"TARICCode\": \"\",\n          \"Title\": \"\",\n          \"Weight\": {{faker 'datatype.number'}}\n        },\n        \"Quantity\": {{faker 'datatype.float'}},\n        \"SerialNumber\": \"\",\n        \"ShippingProfileId\": \"\",\n        \"TaxAmount\": {{faker 'datatype.float'}},\n        \"TaxIndex\": {{faker 'datatype.number'}},\n        \"TotalPrice\": {{faker 'datatype.float'}},\n        \"TransactionId\": \"\",\n        \"UnrebatedTotalPrice\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"OrderNumber\": \"\",\n    \"PaidAmount\": {{faker 'datatype.float'}},\n    \"PayedAt\": \"{{faker 'date.recent' 365}}\",\n    \"PaymentInstruction\": \"\",\n    \"PaymentMethod\": \"{{oneOf (array '1' '2' '3' '4' '6' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99' '100' '101' '102' '103' '104' '105' '106' '107' '108' '109' '110' '111' '112' '113' '114' '115' '116' '117' '118' '119' '120' '121')}}\",\n    \"PaymentReference\": \"\",\n    \"PaymentTransactionId\": \"\",\n    \"Payments\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"PayDate\": \"{{faker 'date.recent' 365}}\",\n        \"PayValue\": {{faker 'datatype.float'}},\n        \"PaymentType\": {{faker 'datatype.number'}},\n        \"Purpose\": \"\",\n        \"SourceTechnology\": \"\",\n        \"SourceText\": \"\",\n        \"TransactionId\": \"\"\n      }\n    ],\n    \"RebateDifference\": {{faker 'datatype.float'}},\n    \"Seller\": {\n      \"BillbeeShopId\": {{faker 'datatype.number'}},\n      \"BillbeeShopName\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"FullName\": \"\",\n      \"Id\": \"\",\n      \"LastName\": \"\",\n      \"Nick\": \"\",\n      \"Platform\": \"\"\n    },\n    \"SellerComment\": \"\",\n    \"ShipWeightKg\": {{faker 'datatype.float'}},\n    \"ShippedAt\": \"{{faker 'date.recent' 365}}\",\n    \"ShippingAddress\": {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"City\": \"\",\n      \"Company\": \"\",\n      \"Country\": \"\",\n      \"CountryISO2\": \"\",\n      \"Email\": \"\",\n      \"FirstName\": \"\",\n      \"HouseNumber\": \"\",\n      \"LastName\": \"\",\n      \"Line2\": \"\",\n      \"NameAddition\": \"\",\n      \"Phone\": \"\",\n      \"State\": \"\",\n      \"Street\": \"\",\n      \"Zip\": \"\"\n    },\n    \"ShippingCost\": {{faker 'datatype.float'}},\n    \"ShippingIds\": [\n      {\n        \"BillbeeId\": {{faker 'datatype.number'}},\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"ShipmentType\": {{faker 'datatype.number'}},\n        \"Shipper\": \"\",\n        \"ShippingCarrier\": {{faker 'datatype.number'}},\n        \"ShippingId\": \"\",\n        \"ShippingProviderId\": {{faker 'datatype.number'}},\n        \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n        \"TrackingUrl\": \"\"\n      }\n    ],\n    \"ShippingProfileId\": \"\",\n    \"ShippingProfileName\": \"\",\n    \"ShippingProviderId\": {{faker 'datatype.number'}},\n    \"ShippingProviderName\": \"\",\n    \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n    \"ShippingProviderProductName\": \"\",\n    \"ShippingServices\": [\n      {\n        \"CanBeConfigured\": {{faker 'datatype.boolean'}},\n        \"DisplayName\": \"\",\n        \"DisplayValue\": \"\",\n        \"PossibleValueLists\": [\n          {\n            \"key\": \"\",\n            \"value\": [\n              {\n                \"key\": {{faker 'datatype.number'}},\n                \"value\": \"\"\n              }\n            ]\n          }\n        ],\n        \"RequiresUserInput\": {{faker 'datatype.boolean'}},\n        \"ServiceName\": \"\",\n        \"typeName\": \"\"\n      }\n    ],\n    \"State\": \"{{oneOf (array '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16')}}\",\n    \"Tags\": [\n      \"\"\n    ],\n    \"TaxRate1\": {{faker 'datatype.float'}},\n    \"TaxRate2\": {{faker 'datatype.float'}},\n    \"TotalCost\": {{faker 'datatype.float'}},\n    \"UpdatedAt\": \"{{faker 'date.recent' 365}}\",\n    \"VatId\": \"\",\n    \"VatMode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5')}}\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9665a68c-05af-4b76-b3d9-25372504ceb6",
+      "documentation": "Changes the main state of a single order",
+      "method": "put",
+      "endpoint": "api/v1/orders/:id/orderstate",
+      "responses": [
+        {
+          "uuid": "7a49ce40-5195-4832-8091-cb135dde2d24",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fab61c0b-b8c5-47d3-9429-4176ea593090",
+      "documentation": "Parses a text and replaces all placeholders",
+      "method": "post",
+      "endpoint": "api/v1/orders/:id/parse-placeholders",
+      "responses": [
+        {
+          "uuid": "60b45079-8315-4212-a18e-8db0b3942a6c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6f703d9b-80ff-4052-8f99-8afe10d81e88",
+      "documentation": "Sends a message to the buyer",
+      "method": "post",
+      "endpoint": "api/v1/orders/:id/send-message",
+      "responses": [
+        {
+          "uuid": "91bddc0d-df87-4225-916d-bed77f53825a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f19737ee-ff5a-40ab-8c28-65bffc56452f",
+      "documentation": "Add a shipment to a given order",
+      "method": "post",
+      "endpoint": "api/v1/orders/:id/shipment",
+      "responses": [
+        {
+          "uuid": "c87d85eb-5a67-4f83-a79e-be00acc9caa7",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f5acd06-dd5b-4baf-a02c-b2fb9168bfc0",
+      "documentation": "Attach one or more tags to an order",
+      "method": "post",
+      "endpoint": "api/v1/orders/:id/tags",
+      "responses": [
+        {
+          "uuid": "aa6b580d-b063-467d-99d2-0798d0af3fec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fa7bc8d4-ead3-49b8-ac96-de6fb0b634fc",
+      "documentation": "Updates/Sets the tags attached to an order",
+      "method": "put",
+      "endpoint": "api/v1/orders/:id/tags",
+      "responses": [
+        {
+          "uuid": "e6a380ad-93ec-47f1-85c6-86cf94fe0311",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5e021d31-4a43-4249-a23e-cca6ce40a52d",
+      "documentation": "Triggers a rule event",
+      "method": "post",
+      "endpoint": "api/v1/orders/:id/trigger-event",
+      "responses": [
+        {
+          "uuid": "1980a31c-4800-4899-8f52-de2f743638d6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47855ca9-45c8-40a5-8a81-94a6469d2237",
+      "documentation": "Get a list of all products",
+      "method": "get",
+      "endpoint": "api/v1/products",
+      "responses": [
+        {
+          "uuid": "0ef82894-844e-4334-98ad-09cad06f6ed1",
+          "body": "{\n  \"Data\": [\n    {\n      \"BasicAttributes\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"BillOfMaterial\": [\n        {\n          \"Amount\": {{faker 'datatype.float'}},\n          \"ArticleId\": {{faker 'datatype.number'}},\n          \"SKU\": \"\"\n        }\n      ],\n      \"Category1\": {\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\"\n      },\n      \"Category2\": {\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\"\n      },\n      \"Category3\": {\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\"\n      },\n      \"Condition\": {{faker 'datatype.number'}},\n      \"CostPrice\": {{faker 'datatype.float'}},\n      \"CountryOfOrigin\": \"\",\n      \"CustomFields\": [\n        {\n          \"ArticleId\": {{faker 'datatype.number'}},\n          \"Definition\": {\n            \"Configuration\": {},\n            \"Id\": {{faker 'datatype.number'}},\n            \"IsNullable\": {{faker 'datatype.boolean'}},\n            \"Name\": \"\",\n            \"Type\": \"{{oneOf (array '0' '1' '2' '3')}}\"\n          },\n          \"DefinitionId\": {{faker 'datatype.number'}},\n          \"Id\": {{faker 'datatype.number'}},\n          \"Value\": {}\n        }\n      ],\n      \"DeliveryTime\": {{faker 'datatype.number'}},\n      \"Description\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"EAN\": \"\",\n      \"ExportDescription\": \"\",\n      \"ExportDescriptionMultiLanguage\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"HeightCm\": {{faker 'datatype.float'}},\n      \"Id\": {{faker 'datatype.number'}},\n      \"Images\": [\n        {\n          \"ArticleId\": {{faker 'datatype.number'}},\n          \"Id\": {{faker 'datatype.number'}},\n          \"IsDefault\": {{faker 'datatype.boolean'}},\n          \"Position\": {{faker 'datatype.number'}},\n          \"ThumbPathExt\": \"\",\n          \"ThumbUrl\": \"\",\n          \"Url\": \"\"\n        }\n      ],\n      \"InvoiceText\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"IsCustomizable\": {{faker 'datatype.boolean'}},\n      \"IsDigital\": {{faker 'datatype.boolean'}},\n      \"LengthCm\": {{faker 'datatype.float'}},\n      \"LowStock\": {{faker 'datatype.boolean'}},\n      \"Manufacturer\": \"\",\n      \"Materials\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"Occasion\": {{faker 'datatype.number'}},\n      \"Price\": {{faker 'datatype.float'}},\n      \"Recipient\": {{faker 'datatype.number'}},\n      \"SKU\": \"\",\n      \"ShippingProductId\": {{faker 'datatype.number'}},\n      \"ShortDescription\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"SoldAmount\": {{faker 'datatype.float'}},\n      \"SoldAmountLast30Days\": {{faker 'datatype.float'}},\n      \"SoldSumGross\": {{faker 'datatype.float'}},\n      \"SoldSumGrossLast30Days\": {{faker 'datatype.float'}},\n      \"SoldSumNet\": {{faker 'datatype.float'}},\n      \"SoldSumNetLast30Days\": {{faker 'datatype.float'}},\n      \"Sources\": [\n        {\n          \"ApiAccountId\": {{faker 'datatype.number'}},\n          \"ApiAccountName\": \"\",\n          \"Custom\": {},\n          \"ExportFactor\": {{faker 'datatype.float'}},\n          \"Id\": {{faker 'datatype.number'}},\n          \"Source\": \"\",\n          \"SourceId\": \"\",\n          \"StockSyncInactive\": {{faker 'datatype.boolean'}},\n          \"StockSyncMax\": {{faker 'datatype.float'}},\n          \"StockSyncMin\": {{faker 'datatype.float'}},\n          \"UnitsPerItem\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"StockCode\": \"\",\n      \"StockCurrent\": {{faker 'datatype.float'}},\n      \"StockDesired\": {{faker 'datatype.float'}},\n      \"StockReduceItemsPerSale\": {{faker 'datatype.float'}},\n      \"StockWarning\": {{faker 'datatype.float'}},\n      \"Stocks\": [\n        {\n          \"Name\": \"\",\n          \"StockCode\": \"\",\n          \"StockCurrent\": {{faker 'datatype.float'}},\n          \"StockDesired\": {{faker 'datatype.float'}},\n          \"StockId\": {{faker 'datatype.number'}},\n          \"StockWarning\": {{faker 'datatype.float'}},\n          \"UnfulfilledAmount\": {{faker 'datatype.float'}}\n        }\n      ],\n      \"Tags\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"TaricNumber\": \"\",\n      \"Title\": [\n        {\n          \"LanguageCode\": \"\",\n          \"Text\": \"\"\n        }\n      ],\n      \"Type\": {{faker 'datatype.number'}},\n      \"Unit\": {{faker 'datatype.number'}},\n      \"UnitsPerItem\": {{faker 'datatype.float'}},\n      \"Vat1Rate\": {{faker 'datatype.float'}},\n      \"Vat2Rate\": {{faker 'datatype.float'}},\n      \"VatIndex\": {{faker 'datatype.number'}},\n      \"Weight\": {{faker 'datatype.number'}},\n      \"WeightNet\": {{faker 'datatype.number'}},\n      \"WidthCm\": {{faker 'datatype.float'}}\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70c95144-6b57-45b7-8d69-9468ec0f796e",
+      "documentation": "Creates a new product",
+      "method": "post",
+      "endpoint": "api/v1/products",
+      "responses": [
+        {
+          "uuid": "2f765c4b-2b46-4dbf-95b5-488ed8d922cc",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "59c55bd9-ef85-482e-8a1c-a325421c9e48",
+      "documentation": "Returns a list of fields which can be updated with the patch call",
+      "method": "get",
+      "endpoint": "api/v1/products/PatchableFields",
+      "responses": [
+        {
+          "uuid": "448fbd9f-e98f-4717-bd53-146ace1234cd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e618938-259b-4685-b95d-b39f5b98880f",
+      "documentation": "GEts a list of all defined categories",
+      "method": "get",
+      "endpoint": "api/v1/products/category",
+      "responses": [
+        {
+          "uuid": "d18828b5-3900-4b93-814b-edce5697c8f2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "edf47fd2-97f6-44e5-88df-82c548ecd446",
+      "documentation": "Queries a list of all custom fields",
+      "method": "get",
+      "endpoint": "api/v1/products/custom-fields",
+      "responses": [
+        {
+          "uuid": "e593187d-c7c1-4624-8992-6771034d568e",
+          "body": "{\n  \"Data\": [\n    {\n      \"Configuration\": {},\n      \"Id\": {{faker 'datatype.number'}},\n      \"IsNullable\": {{faker 'datatype.boolean'}},\n      \"Name\": \"\",\n      \"Type\": \"{{oneOf (array '0' '1' '2' '3')}}\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4088ebc4-c0b7-4c49-a0f1-42cdb81d0cdd",
+      "documentation": "Queries a single custom field",
+      "method": "get",
+      "endpoint": "api/v1/products/custom-fields/:id",
+      "responses": [
+        {
+          "uuid": "1e071615-cff4-417f-a081-d6ef8418e05e",
+          "body": "{\n  \"Data\": {\n    \"Configuration\": {},\n    \"Id\": {{faker 'datatype.number'}},\n    \"IsNullable\": {{faker 'datatype.boolean'}},\n    \"Name\": \"\",\n    \"Type\": \"{{oneOf (array '0' '1' '2' '3')}}\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e9cf2e2a-97f3-4344-aff8-bef6e3da68fd",
+      "documentation": "Delete multiple images by id",
+      "method": "post",
+      "endpoint": "api/v1/products/images/delete",
+      "responses": [
+        {
+          "uuid": "2e9d0160-d3a6-4240-bfda-9a26df5a0737",
+          "body": "{\n  \"Data\": {\n    \"Deleted\": [\n      {{faker 'datatype.number'}}\n    ],\n    \"NotFound\": [\n      {{faker 'datatype.number'}}\n    ]\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "db4da794-ff51-4239-a9d0-94c4472e5731",
+      "documentation": "Deletes a single image by id",
+      "method": "delete",
+      "endpoint": "api/v1/products/images/:imageId",
+      "responses": [
+        {
+          "uuid": "9bc1522b-3fec-49d3-ad6c-f25424a29818",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23abc24d-bce6-4081-89da-4d5f6d1399bd",
+      "documentation": "Returns a single image by id",
+      "method": "get",
+      "endpoint": "api/v1/products/images/:imageId",
+      "responses": [
+        {
+          "uuid": "7e42dd19-bc27-4d77-be35-310e6856f68f",
+          "body": "{\n  \"Data\": {\n    \"ArticleId\": {{faker 'datatype.number'}},\n    \"Id\": {{faker 'datatype.number'}},\n    \"IsDefault\": {{faker 'datatype.boolean'}},\n    \"Position\": {{faker 'datatype.number'}},\n    \"ThumbPathExt\": \"\",\n    \"ThumbUrl\": \"\",\n    \"Url\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "869806dc-c146-406a-993a-a886842d488b",
+      "documentation": "Queries the reserved amount for a single article by id or by sku",
+      "method": "get",
+      "endpoint": "api/v1/products/reservedamount",
+      "responses": [
+        {
+          "uuid": "af791f5c-b3e6-46e7-8efa-45ba184478f4",
+          "body": "{\n  \"Data\": {\n    \"ReservedAmount\": {{faker 'datatype.float'}}\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "691291b8-2bba-4b69-b2c4-d430d42b9d28",
+      "documentation": "Update the stock qty of an article",
+      "method": "post",
+      "endpoint": "api/v1/products/updatestock",
+      "responses": [
+        {
+          "uuid": "a9494354-fed0-4740-aa19-6410504ff4fa",
+          "body": "{\n  \"Data\": {\n    \"CurrentStock\": {{faker 'datatype.float'}},\n    \"Message\": \"\",\n    \"SKU\": \"\",\n    \"UnfulfilledAmount\": {{faker 'datatype.float'}}\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cddbb939-cf2a-4e08-ac95-df67f220fe42",
+      "documentation": "Update the stock code of an article",
+      "method": "post",
+      "endpoint": "api/v1/products/updatestockcode",
+      "responses": [
+        {
+          "uuid": "2dc6eae3-53ce-47fa-9333-192558f0ede9",
+          "body": "{\n  \"Data\": {},\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "36f34804-d36b-4482-9568-52ce089506b7",
+      "documentation": "Update the stock qty for multiple articles at once",
+      "method": "post",
+      "endpoint": "api/v1/products/updatestockmultiple",
+      "responses": [
+        {
+          "uuid": "8f135ab2-49f8-4fa3-bf9b-9321891200bd",
+          "body": "[\n  {\n    \"Data\": {\n      \"CurrentStock\": {{faker 'datatype.float'}},\n      \"Message\": \"\",\n      \"SKU\": \"\",\n      \"UnfulfilledAmount\": {{faker 'datatype.float'}}\n    },\n    \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n    \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n    \"ErrorMessage\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ec472ae7-b644-44ee-9560-a49d2b3c9491",
+      "documentation": "Deletes a product",
+      "method": "delete",
+      "endpoint": "api/v1/products/:id",
+      "responses": [
+        {
+          "uuid": "22888aa6-be03-4d5e-8ab5-3ed3902ec1c2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e8523590-4724-4b46-8805-e5b11cdbb506",
+      "documentation": "Queries a single article by id or by sku",
+      "method": "get",
+      "endpoint": "api/v1/products/:id",
+      "responses": [
+        {
+          "uuid": "28051e03-a9d4-4a4b-b866-f3809908cb81",
+          "body": "{\n  \"Data\": {\n    \"BasicAttributes\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"BillOfMaterial\": [\n      {\n        \"Amount\": {{faker 'datatype.float'}},\n        \"ArticleId\": {{faker 'datatype.number'}},\n        \"SKU\": \"\"\n      }\n    ],\n    \"Category1\": {\n      \"Id\": {{faker 'datatype.number'}},\n      \"Name\": \"\"\n    },\n    \"Category2\": {\n      \"Id\": {{faker 'datatype.number'}},\n      \"Name\": \"\"\n    },\n    \"Category3\": {\n      \"Id\": {{faker 'datatype.number'}},\n      \"Name\": \"\"\n    },\n    \"Condition\": {{faker 'datatype.number'}},\n    \"CostPrice\": {{faker 'datatype.float'}},\n    \"CountryOfOrigin\": \"\",\n    \"CustomFields\": [\n      {\n        \"ArticleId\": {{faker 'datatype.number'}},\n        \"Definition\": {\n          \"Configuration\": {},\n          \"Id\": {{faker 'datatype.number'}},\n          \"IsNullable\": {{faker 'datatype.boolean'}},\n          \"Name\": \"\",\n          \"Type\": \"{{oneOf (array '0' '1' '2' '3')}}\"\n        },\n        \"DefinitionId\": {{faker 'datatype.number'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Value\": {}\n      }\n    ],\n    \"DeliveryTime\": {{faker 'datatype.number'}},\n    \"Description\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"EAN\": \"\",\n    \"ExportDescription\": \"\",\n    \"ExportDescriptionMultiLanguage\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"HeightCm\": {{faker 'datatype.float'}},\n    \"Id\": {{faker 'datatype.number'}},\n    \"Images\": [\n      {\n        \"ArticleId\": {{faker 'datatype.number'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"IsDefault\": {{faker 'datatype.boolean'}},\n        \"Position\": {{faker 'datatype.number'}},\n        \"ThumbPathExt\": \"\",\n        \"ThumbUrl\": \"\",\n        \"Url\": \"\"\n      }\n    ],\n    \"InvoiceText\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"IsCustomizable\": {{faker 'datatype.boolean'}},\n    \"IsDigital\": {{faker 'datatype.boolean'}},\n    \"LengthCm\": {{faker 'datatype.float'}},\n    \"LowStock\": {{faker 'datatype.boolean'}},\n    \"Manufacturer\": \"\",\n    \"Materials\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"Occasion\": {{faker 'datatype.number'}},\n    \"Price\": {{faker 'datatype.float'}},\n    \"Recipient\": {{faker 'datatype.number'}},\n    \"SKU\": \"\",\n    \"ShippingProductId\": {{faker 'datatype.number'}},\n    \"ShortDescription\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"SoldAmount\": {{faker 'datatype.float'}},\n    \"SoldAmountLast30Days\": {{faker 'datatype.float'}},\n    \"SoldSumGross\": {{faker 'datatype.float'}},\n    \"SoldSumGrossLast30Days\": {{faker 'datatype.float'}},\n    \"SoldSumNet\": {{faker 'datatype.float'}},\n    \"SoldSumNetLast30Days\": {{faker 'datatype.float'}},\n    \"Sources\": [\n      {\n        \"ApiAccountId\": {{faker 'datatype.number'}},\n        \"ApiAccountName\": \"\",\n        \"Custom\": {},\n        \"ExportFactor\": {{faker 'datatype.float'}},\n        \"Id\": {{faker 'datatype.number'}},\n        \"Source\": \"\",\n        \"SourceId\": \"\",\n        \"StockSyncInactive\": {{faker 'datatype.boolean'}},\n        \"StockSyncMax\": {{faker 'datatype.float'}},\n        \"StockSyncMin\": {{faker 'datatype.float'}},\n        \"UnitsPerItem\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"StockCode\": \"\",\n    \"StockCurrent\": {{faker 'datatype.float'}},\n    \"StockDesired\": {{faker 'datatype.float'}},\n    \"StockReduceItemsPerSale\": {{faker 'datatype.float'}},\n    \"StockWarning\": {{faker 'datatype.float'}},\n    \"Stocks\": [\n      {\n        \"Name\": \"\",\n        \"StockCode\": \"\",\n        \"StockCurrent\": {{faker 'datatype.float'}},\n        \"StockDesired\": {{faker 'datatype.float'}},\n        \"StockId\": {{faker 'datatype.number'}},\n        \"StockWarning\": {{faker 'datatype.float'}},\n        \"UnfulfilledAmount\": {{faker 'datatype.float'}}\n      }\n    ],\n    \"Tags\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"TaricNumber\": \"\",\n    \"Title\": [\n      {\n        \"LanguageCode\": \"\",\n        \"Text\": \"\"\n      }\n    ],\n    \"Type\": {{faker 'datatype.number'}},\n    \"Unit\": {{faker 'datatype.number'}},\n    \"UnitsPerItem\": {{faker 'datatype.float'}},\n    \"Vat1Rate\": {{faker 'datatype.float'}},\n    \"Vat2Rate\": {{faker 'datatype.float'}},\n    \"VatIndex\": {{faker 'datatype.number'}},\n    \"Weight\": {{faker 'datatype.number'}},\n    \"WeightNet\": {{faker 'datatype.number'}},\n    \"WidthCm\": {{faker 'datatype.float'}}\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "687cabf8-cd43-4a68-8cb5-9cc68fb0037a",
+      "documentation": "Updates one or more fields of a product",
+      "method": "patch",
+      "endpoint": "api/v1/products/:id",
+      "responses": [
+        {
+          "uuid": "030744b5-fe32-46ac-a4f8-cb4adb67cf12",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5f011719-9dbc-4967-b8f8-5828dfe6134b",
+      "documentation": "Returns a list of all images of the product",
+      "method": "get",
+      "endpoint": "api/v1/products/:productId/images",
+      "responses": [
+        {
+          "uuid": "9e0982d2-7384-4f66-b567-1a0a9152be60",
+          "body": "{\n  \"Data\": [\n    {\n      \"ArticleId\": {{faker 'datatype.number'}},\n      \"Id\": {{faker 'datatype.number'}},\n      \"IsDefault\": {{faker 'datatype.boolean'}},\n      \"Position\": {{faker 'datatype.number'}},\n      \"ThumbPathExt\": \"\",\n      \"ThumbUrl\": \"\",\n      \"Url\": \"\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ecf70376-fadd-49fa-91ec-5bf9d422cbcc",
+      "documentation": "Add multiple images to a product or replace the product images by the given images",
+      "method": "put",
+      "endpoint": "api/v1/products/:productId/images",
+      "responses": [
+        {
+          "uuid": "917b1b94-edfd-42ff-bbec-261c36876d08",
+          "body": "{\n  \"Data\": {\n    \"ArticleId\": {{faker 'datatype.number'}},\n    \"Id\": {{faker 'datatype.number'}},\n    \"IsDefault\": {{faker 'datatype.boolean'}},\n    \"Position\": {{faker 'datatype.number'}},\n    \"ThumbPathExt\": \"\",\n    \"ThumbUrl\": \"\",\n    \"Url\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "92b00742-74c9-4b01-acba-bff5fbe06a3a",
+      "documentation": "Deletes a single image from a product",
+      "method": "delete",
+      "endpoint": "api/v1/products/:productId/images/:imageId",
+      "responses": [
+        {
+          "uuid": "74067e8e-8b48-4d83-8350-10fb04100444",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9988c785-b96c-4693-b0eb-37f1d8516975",
+      "documentation": "Returns a single image by id",
+      "method": "get",
+      "endpoint": "api/v1/products/:productId/images/:imageId",
+      "responses": [
+        {
+          "uuid": "b049c27f-757d-44ed-af8a-0ec59cec0afd",
+          "body": "{\n  \"Data\": {\n    \"ArticleId\": {{faker 'datatype.number'}},\n    \"Id\": {{faker 'datatype.number'}},\n    \"IsDefault\": {{faker 'datatype.boolean'}},\n    \"Position\": {{faker 'datatype.number'}},\n    \"ThumbPathExt\": \"\",\n    \"ThumbUrl\": \"\",\n    \"Url\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f65d01b-0a49-4972-b980-a06390b9f386",
+      "documentation": "Add or update an existing image of a product",
+      "method": "put",
+      "endpoint": "api/v1/products/:productId/images/:imageId",
+      "responses": [
+        {
+          "uuid": "d109d8ac-1375-4312-9259-8d5de26c0f49",
+          "body": "{\n  \"Data\": {\n    \"ArticleId\": {{faker 'datatype.number'}},\n    \"Id\": {{faker 'datatype.number'}},\n    \"IsDefault\": {{faker 'datatype.boolean'}},\n    \"Position\": {{faker 'datatype.number'}},\n    \"ThumbPathExt\": \"\",\n    \"ThumbUrl\": \"\",\n    \"Url\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "40a44a58-205b-4cdc-8911-8c5161e48188",
+      "documentation": "Search for products, customers and orders.\r\nType can be \"order\", \"product\" and / or \"customer\"\r\nTerm can contains lucene query syntax",
+      "method": "post",
+      "endpoint": "api/v1/search",
+      "responses": [
+        {
+          "uuid": "7b92e804-1140-43a2-ad32-81e2cca0b119",
+          "body": "{\n  \"Data\": {\n    \"Customers\": [\n      {\n        \"Addresses\": \"\",\n        \"Id\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"Number\": \"\"\n      }\n    ],\n    \"Orders\": [\n      {\n        \"ArticleTexts\": \"\",\n        \"BuyerName\": \"\",\n        \"CustomerName\": \"\",\n        \"ExternalReference\": \"\",\n        \"Id\": {{faker 'datatype.number'}},\n        \"InvoiceNumber\": \"\"\n      }\n    ],\n    \"Products\": [\n      {\n        \"Id\": {{faker 'datatype.number'}},\n        \"SKU\": \"\",\n        \"ShortText\": \"\",\n        \"Tags\": \"\"\n      }\n    ]\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b58e1b8-fa1d-4535-8254-c6ddecd5a466",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/v1/shipment/ping",
+      "responses": [
+        {
+          "uuid": "69cd32e3-bc12-4854-ad6a-4ec4c71664de",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58732231-b479-420d-94be-782c120c6d86",
+      "documentation": "Creates a new shipment with the selected Shippingprovider",
+      "method": "post",
+      "endpoint": "api/v1/shipment/shipment",
+      "responses": [
+        {
+          "uuid": "7026e248-a4f4-4057-b994-974ce9e56bc2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d867acfc-e5b3-4a77-bca7-7889e7425a7f",
+      "documentation": "Get a list of all shipments optionally filtered by date. All parameters are optional.",
+      "method": "get",
+      "endpoint": "api/v1/shipment/shipments",
+      "responses": [
+        {
+          "uuid": "e8d7d4c9-e2f6-4c8b-8642-52a749f17b0e",
+          "body": "{\n  \"Data\": [\n    {\n      \"BillbeeId\": {{faker 'datatype.number'}},\n      \"Created\": \"{{faker 'date.recent' 365}}\",\n      \"ShipmentType\": {{faker 'datatype.number'}},\n      \"Shipper\": \"\",\n      \"ShippingCarrier\": {{faker 'datatype.number'}},\n      \"ShippingId\": \"\",\n      \"ShippingProviderId\": {{faker 'datatype.number'}},\n      \"ShippingProviderProductId\": {{faker 'datatype.number'}},\n      \"TrackingUrl\": \"\"\n    }\n  ],\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\",\n  \"Paging\": {\n    \"Page\": {{faker 'datatype.number'}},\n    \"PageSize\": {{faker 'datatype.number'}},\n    \"TotalPages\": {{faker 'datatype.number'}},\n    \"TotalRows\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "684e5b9f-00c1-4885-a206-9b039fd3cf13",
+      "documentation": "Queries the currently available shipping carriers.",
+      "method": "get",
+      "endpoint": "api/v1/shipment/shippingcarriers",
+      "responses": [
+        {
+          "uuid": "54c2ee2a-8e76-40c0-abae-b2063e920003",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a6984273-aca6-4316-b7d2-e7b108c1a645",
+      "documentation": "Query all defined shipping providers",
+      "method": "get",
+      "endpoint": "api/v1/shipment/shippingproviders",
+      "responses": [
+        {
+          "uuid": "ad26228c-895d-4b95-b1d6-986a4b1347b9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4311742e-49b1-4947-9abd-42c551f58ba9",
+      "documentation": "Creates a shipment for an order in billbee",
+      "method": "post",
+      "endpoint": "api/v1/shipment/shipwithlabel",
+      "responses": [
+        {
+          "uuid": "b0949e31-be07-414e-92ec-4d397be7b951",
+          "body": "{\n  \"Data\": {\n    \"Carrier\": \"\",\n    \"ExportDocsPdf\": \"\",\n    \"LabelDataPdf\": \"\",\n    \"OrderId\": {{faker 'datatype.number'}},\n    \"OrderReference\": \"\",\n    \"ShippingDate\": \"{{faker 'date.recent' 365}}\",\n    \"ShippingId\": \"\",\n    \"TrackingUrl\": \"\"\n  },\n  \"ErrorCode\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorDescription\": \"{{oneOf (array '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27')}}\",\n  \"ErrorMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b3374c6b-ecbc-42f8-a1bf-ea40605e3736",
+      "documentation": "Deletes all existing WebHook registrations.",
+      "method": "delete",
+      "endpoint": "api/v1/webhooks",
+      "responses": [
+        {
+          "uuid": "64aace03-5332-48e0-a35d-bb9027dbb9eb",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "88e46894-17b9-4dc8-86c4-18f629130857",
+      "documentation": "Gets all registered WebHooks for a given user.",
+      "method": "get",
+      "endpoint": "api/v1/webhooks",
+      "responses": [
+        {
+          "uuid": "95450531-2368-43a7-bd7b-41ac0380252d",
+          "body": "[\n  {\n    \"Description\": \"\",\n    \"Filters\": [\n      \"\"\n    ],\n    \"Headers\": {},\n    \"Id\": \"\",\n    \"IsPaused\": {{faker 'datatype.boolean'}},\n    \"Properties\": {},\n    \"Secret\": \"\",\n    \"WebHookUri\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "90bdcb6c-c50e-4859-a66c-0bc8abd8d353",
+      "documentation": "Registers a new WebHook for a given user.",
+      "method": "post",
+      "endpoint": "api/v1/webhooks",
+      "responses": [
+        {
+          "uuid": "005843bd-a961-4772-bd17-9eab9e64811b",
+          "body": "{\n  \"Description\": \"\",\n  \"Filters\": [\n    \"\"\n  ],\n  \"Headers\": {},\n  \"Id\": \"\",\n  \"IsPaused\": {{faker 'datatype.boolean'}},\n  \"Properties\": {},\n  \"Secret\": \"\",\n  \"WebHookUri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9364659d-13e8-4e55-8e09-12c5683adc9c",
+      "documentation": "Returns a list of all known filters you can use to register webhooks",
+      "method": "get",
+      "endpoint": "api/v1/webhooks/filters",
+      "responses": [
+        {
+          "uuid": "b57b3b1e-3d3c-4faa-a05d-cf11b20c9edc",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "28b15f80-aece-4f3c-99d1-adc976def313",
+      "documentation": "Deletes an existing WebHook registration.",
+      "method": "delete",
+      "endpoint": "api/v1/webhooks/:id",
+      "responses": [
+        {
+          "uuid": "bffae085-3137-4414-bfe3-d81783a360f0",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3f6422c6-ee05-4b02-be48-d6e8e46d3813",
+      "documentation": "Looks up a registered WebHook with the given {id} for a given user.",
+      "method": "get",
+      "endpoint": "api/v1/webhooks/:id",
+      "responses": [
+        {
+          "uuid": "f1a0c6d4-8f79-484e-a3b2-beb5f1e7e24d",
+          "body": "{\n  \"Description\": \"\",\n  \"Filters\": [\n    \"\"\n  ],\n  \"Headers\": {},\n  \"Id\": \"\",\n  \"IsPaused\": {{faker 'datatype.boolean'}},\n  \"Properties\": {},\n  \"Secret\": \"\",\n  \"WebHookUri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81713178-bdd2-43bd-a6b3-4012d5800e83",
+      "documentation": "Updates an existing WebHook registration.",
+      "method": "put",
+      "endpoint": "api/v1/webhooks/:id",
+      "responses": [
+        {
+          "uuid": "6d919659-17ab-4053-b370-7c980d7b54dc",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

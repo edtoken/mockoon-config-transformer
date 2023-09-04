@@ -1,0 +1,4186 @@
+{
+  "uuid": "2ecf3200-8106-43f4-80d2-7aa0176101dd",
+  "lastMigration": 24,
+  "name": "Airbyte Configuration API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "3a928173-17dc-4b44-9a34-4c44b0c21eb1",
+      "documentation": "Create a connection between a source and a destination",
+      "method": "post",
+      "endpoint": "v1/connections/create",
+      "responses": [
+        {
+          "uuid": "e18a9981-cdc5-421e-89e3-f42759122b1e",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "69a5b9e9-72fc-41af-b89b-7ab4b473be6f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d547f21e-647b-4ee6-b313-07fe8338bcc3",
+      "documentation": "Delete a connection",
+      "method": "post",
+      "endpoint": "v1/connections/delete",
+      "responses": [
+        {
+          "uuid": "58fbbd39-2088-4ccd-afe0-dbb4644a6790",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6661b4d1-43e3-4e2e-9985-cf4a6814c772",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0aa7cdd9-0a6b-48f3-a356-1ddf32622911",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d3934e38-3d82-47ca-9f1c-8619bf2e2d6c",
+      "documentation": "Get a connection",
+      "method": "post",
+      "endpoint": "v1/connections/get",
+      "responses": [
+        {
+          "uuid": "55f59e44-95fb-429c-b8c4-d8901b89cfcb",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f02bfe46-a9c6-4d44-9722-546df0ff657a",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4af9de9a-857e-470b-bf67-5b460354d290",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "da64e64d-d60e-4f93-85d1-027164aa013b",
+      "documentation": "Returns all connections for a workspace.",
+      "method": "post",
+      "endpoint": "v1/connections/list",
+      "responses": [
+        {
+          "uuid": "766395fa-5b9b-4351-a751-5a5007e04c22",
+          "body": "{\n  \"connections\": [\n    {\n      \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n      \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n      \"name\": \"\",\n      \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n      \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n      \"operationIds\": [\n        \"{{faker 'datatype.uuid'}}\"\n      ],\n      \"prefix\": \"\",\n      \"resourceRequirements\": {\n        \"cpu_limit\": \"\",\n        \"cpu_request\": \"\",\n        \"memory_limit\": \"\",\n        \"memory_request\": \"\"\n      },\n      \"schedule\": {\n        \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n        \"units\": {{faker 'datatype.number'}}\n      },\n      \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n      \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n      \"syncCatalog\": {\n        \"streams\": [\n          {\n            \"config\": {\n              \"aliasName\": \"\",\n              \"cursorField\": [\n                \"\"\n              ],\n              \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n              \"primaryKey\": [\n                [\n                  \"\"\n                ]\n              ],\n              \"selected\": {{faker 'datatype.boolean'}},\n              \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n            },\n            \"stream\": {\n              \"defaultCursorField\": [\n                \"\"\n              ],\n              \"jsonSchema\": {},\n              \"name\": \"\",\n              \"namespace\": \"\",\n              \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n              \"sourceDefinedPrimaryKey\": [\n                [\n                  \"\"\n                ]\n              ],\n              \"supportedSyncModes\": [\n                \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n              ]\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c2f94031-a0c5-47cf-be70-4b031626095c",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1020e5b2-be30-4236-82f3-b44e095ccf72",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dfcf2893-fe3b-43c0-9346-6bd2f2eae47a",
+      "documentation": "Reset the data for the connection. Deletes data generated by the connection in the destination. Resets any cursors back to initial state.",
+      "method": "post",
+      "endpoint": "v1/connections/reset",
+      "responses": [
+        {
+          "uuid": "8b6caf55-7ea9-4115-bdc2-675b6408e2e8",
+          "body": "{\n  \"attempts\": [\n    {\n      \"attempt\": {\n        \"bytesSynced\": {{faker 'datatype.number'}},\n        \"createdAt\": {{faker 'datatype.number'}},\n        \"endedAt\": {{faker 'datatype.number'}},\n        \"id\": {{faker 'datatype.number'}},\n        \"recordsSynced\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'running' 'failed' 'succeeded')}}\",\n        \"updatedAt\": {{faker 'datatype.number'}}\n      },\n      \"logs\": {\n        \"logLines\": [\n          \"\"\n        ]\n      }\n    }\n  ],\n  \"job\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"id\": {{faker 'datatype.number'}},\n    \"status\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n    \"updatedAt\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a077d53c-0a10-4dca-a105-6696879ff379",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "266126ee-ebaa-4968-8478-b175364359fa",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c0c29003-656f-4757-8e30-96ad1fa18155",
+      "documentation": "Trigger a manual sync of the connection",
+      "method": "post",
+      "endpoint": "v1/connections/sync",
+      "responses": [
+        {
+          "uuid": "973316cc-3d59-4e8f-b3b9-9a5377c6f5ab",
+          "body": "{\n  \"attempts\": [\n    {\n      \"attempt\": {\n        \"bytesSynced\": {{faker 'datatype.number'}},\n        \"createdAt\": {{faker 'datatype.number'}},\n        \"endedAt\": {{faker 'datatype.number'}},\n        \"id\": {{faker 'datatype.number'}},\n        \"recordsSynced\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'running' 'failed' 'succeeded')}}\",\n        \"updatedAt\": {{faker 'datatype.number'}}\n      },\n      \"logs\": {\n        \"logLines\": [\n          \"\"\n        ]\n      }\n    }\n  ],\n  \"job\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"id\": {{faker 'datatype.number'}},\n    \"status\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n    \"updatedAt\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3eab3d54-f543-42bd-a948-32d8242f4969",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dc37a7b4-09b5-4b8b-879b-fae7293a1cd9",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3153c778-019d-40dc-a390-f618c39581cd",
+      "documentation": "Update a connection",
+      "method": "post",
+      "endpoint": "v1/connections/update",
+      "responses": [
+        {
+          "uuid": "c46a09d7-bdde-4d9a-aa46-f7e4330a97c5",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "890caf25-73ff-47b7-bf1b-e6cd66f70f9e",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c8e2164-d727-4795-bd72-4d3fa4b3b7e3",
+      "documentation": "Export Airbyte Configuration and Data Archive",
+      "method": "post",
+      "endpoint": "v1/deployment/export",
+      "responses": [
+        {
+          "uuid": "49a7f325-af76-4959-aed3-250343b5e05a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-gzip"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c1ad526-343b-47e9-a291-cf62fb7e1a0e",
+      "documentation": "Import Airbyte Configuration and Data Archive",
+      "method": "post",
+      "endpoint": "v1/deployment/import",
+      "responses": [
+        {
+          "uuid": "226e8b91-ca10-45c3-a9f3-245574e4c09d",
+          "body": "{\n  \"reason\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5e0768d8-87b3-4cd0-ac3e-68fc481961af",
+      "documentation": "Get specification for a destinationDefinition",
+      "method": "post",
+      "endpoint": "v1/destination_definition_specifications/get",
+      "responses": [
+        {
+          "uuid": "f69215f5-4ae2-49cf-a32f-b86ac4912d54",
+          "body": "{\n  \"connectionSpecification\": {\n    \"user\": {\n      \"type\": \"string\"\n    }\n  },\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"documentationUrl\": \"\",\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"supportedDestinationSyncModes\": [\n    \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\"\n  ],\n  \"supportsDbt\": {{faker 'datatype.boolean'}},\n  \"supportsNormalization\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "766c01e4-eacc-464d-8af5-65a047cfb359",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "81d058a5-82ec-45cb-b64c-1c7c1104f4e6",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ac8db77-3365-4091-b01f-b56585eb1c27",
+      "documentation": "Creates a destinationsDefinition",
+      "method": "post",
+      "endpoint": "v1/destination_definitions/create",
+      "responses": [
+        {
+          "uuid": "f60bcdff-967f-465c-af30-b60a4bce638a",
+          "body": "{\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7a1d4903-a665-4878-8f68-75d50817b385",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "61cc7930-079e-4f4d-aa7d-df5b96ec5788",
+      "documentation": "Get destinationDefinition",
+      "method": "post",
+      "endpoint": "v1/destination_definitions/get",
+      "responses": [
+        {
+          "uuid": "83b84c58-03d9-4022-af61-3db47812d8d2",
+          "body": "{\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c64f030d-239f-4cc7-978c-aa393293314f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c04c1a87-0fc7-4442-a938-7aa376376eff",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e82c38fb-eed7-452a-b790-fff4c967aa0c",
+      "documentation": "List all the destinationDefinitions the current Airbyte deployment is configured to use",
+      "method": "post",
+      "endpoint": "v1/destination_definitions/list",
+      "responses": [
+        {
+          "uuid": "3e7e7800-f1c5-4321-adec-a133bd02a75e",
+          "body": "{\n  \"destinationDefinitions\": [\n    {\n      \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n      \"dockerImageTag\": \"\",\n      \"dockerRepository\": \"\",\n      \"documentationUrl\": \"\",\n      \"icon\": \"\",\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8177d27-d061-470e-98bb-af046e6c9a88",
+      "documentation": "List the latest destinationDefinitions Airbyte supports",
+      "method": "post",
+      "endpoint": "v1/destination_definitions/list_latest",
+      "responses": [
+        {
+          "uuid": "919e2cf2-8278-4232-a8b4-80150f582ce3",
+          "body": "{\n  \"destinationDefinitions\": [\n    {\n      \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n      \"dockerImageTag\": \"\",\n      \"dockerRepository\": \"\",\n      \"documentationUrl\": \"\",\n      \"icon\": \"\",\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53426deb-0492-4274-809f-d9ee724524d7",
+      "documentation": "Update destinationDefinition",
+      "method": "post",
+      "endpoint": "v1/destination_definitions/update",
+      "responses": [
+        {
+          "uuid": "92c0637d-78d5-413d-8fb0-daf18c61ae20",
+          "body": "{\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e8ca93ab-819f-4006-946e-d5528d95e42d",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "01838e73-6460-4874-b3d7-983d9712d32f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ec9b3b5-9d98-4dd0-bcbf-fbbdc408217a",
+      "documentation": "Check connection to the destination",
+      "method": "post",
+      "endpoint": "v1/destinations/check_connection",
+      "responses": [
+        {
+          "uuid": "3580b1dd-4a51-431f-8aaa-8cda78d74761",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f0e90a8c-d087-43a4-90ff-fdb3efbfee40",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6df9e7da-8e6f-4c4d-9dd7-6035a3049047",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "60a705f7-ee90-4f6d-9ec2-5a883cb6d258",
+      "documentation": "Check connection for a proposed update to a destination",
+      "method": "post",
+      "endpoint": "v1/destinations/check_connection_for_update",
+      "responses": [
+        {
+          "uuid": "2c0d0377-6ba1-4cff-8c1f-490d64aba655",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "91207a0d-e457-45b3-bf5c-ec058f4b7e22",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b941742c-a9da-426a-b04e-1ade0f548fbf",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9dbe270-d82c-4bc8-8eb0-37f3f63df6f0",
+      "documentation": "Create a destination",
+      "method": "post",
+      "endpoint": "v1/destinations/create",
+      "responses": [
+        {
+          "uuid": "409f7695-ae3f-4254-b292-2ce7b4489295",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationName\": \"\",\n  \"name\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cba5945f-c90e-42db-9fd4-c8624b71c303",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "270565a4-bb6b-4513-a43c-81915cd8e8e3",
+      "documentation": "Delete the destination",
+      "method": "post",
+      "endpoint": "v1/destinations/delete",
+      "responses": [
+        {
+          "uuid": "f4bb433a-266a-48c4-bdf3-2dd66e4cc242",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e1fd3ea5-e3f8-4f4d-b50d-7bf58bbea070",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6bf9f25a-d917-48da-b97f-10a8d190e3fb",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ff2808a7-5d8d-4aaf-bc9e-43854463013a",
+      "documentation": "Get configured destination",
+      "method": "post",
+      "endpoint": "v1/destinations/get",
+      "responses": [
+        {
+          "uuid": "1762d988-b5ca-4bc7-9646-0ed4ddf3b63e",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationName\": \"\",\n  \"name\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5bdf02ce-b45e-457f-bec0-98b7d4fbb4f9",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1f02983e-4f49-4db3-b993-1b779f70d5e9",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c5362c7-1f7c-484d-8d1d-5ca5ffdefd61",
+      "documentation": "List configured destinations for a workspace",
+      "method": "post",
+      "endpoint": "v1/destinations/list",
+      "responses": [
+        {
+          "uuid": "569c81fc-ffa6-4f13-a245-1b3a676eca73",
+          "body": "{\n  \"destinations\": [\n    {\n      \"connectionConfiguration\": {\n        \"user\": \"charles\"\n      },\n      \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n      \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n      \"destinationName\": \"\",\n      \"name\": \"\",\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "571b4e57-26a8-4f0e-bb43-bc3fedc7544a",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b7977c2-09c3-45e5-9a76-cc14a3f27b40",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70895169-baa2-4c60-af97-4cd59c3d5962",
+      "documentation": "Update a destination",
+      "method": "post",
+      "endpoint": "v1/destinations/update",
+      "responses": [
+        {
+          "uuid": "b96bdba4-2c94-4466-8824-941595426a7f",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationName\": \"\",\n  \"name\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "01ec922e-6771-4e6e-9924-0d1ac13cfd60",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cb08e4dc-53fd-4839-94ae-86bc11b3fc46",
+      "documentation": "Health Check",
+      "method": "get",
+      "endpoint": "v1/health",
+      "responses": [
+        {
+          "uuid": "380c5538-28ea-48ef-8c61-2dd1a83c9d68",
+          "body": "{\n  \"db\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ed1c2184-ef6a-4e72-b5f3-408985c99608",
+      "documentation": "Cancels a job",
+      "method": "post",
+      "endpoint": "v1/jobs/cancel",
+      "responses": [
+        {
+          "uuid": "18df66a4-68c8-4354-952d-68219285dfda",
+          "body": "{\n  \"attempts\": [\n    {\n      \"attempt\": {\n        \"bytesSynced\": {{faker 'datatype.number'}},\n        \"createdAt\": {{faker 'datatype.number'}},\n        \"endedAt\": {{faker 'datatype.number'}},\n        \"id\": {{faker 'datatype.number'}},\n        \"recordsSynced\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'running' 'failed' 'succeeded')}}\",\n        \"updatedAt\": {{faker 'datatype.number'}}\n      },\n      \"logs\": {\n        \"logLines\": [\n          \"\"\n        ]\n      }\n    }\n  ],\n  \"job\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"id\": {{faker 'datatype.number'}},\n    \"status\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n    \"updatedAt\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3adfbf2b-0bff-423e-abaf-562692b1d615",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ece647ca-2ea1-430b-b4bd-bbbf5c743b9f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "22fb76ed-1979-4efe-b150-27cb49862b1f",
+      "documentation": "Get information about a job",
+      "method": "post",
+      "endpoint": "v1/jobs/get",
+      "responses": [
+        {
+          "uuid": "17bddd2d-409f-45e0-9766-4ca36f4bdf66",
+          "body": "{\n  \"attempts\": [\n    {\n      \"attempt\": {\n        \"bytesSynced\": {{faker 'datatype.number'}},\n        \"createdAt\": {{faker 'datatype.number'}},\n        \"endedAt\": {{faker 'datatype.number'}},\n        \"id\": {{faker 'datatype.number'}},\n        \"recordsSynced\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'running' 'failed' 'succeeded')}}\",\n        \"updatedAt\": {{faker 'datatype.number'}}\n      },\n      \"logs\": {\n        \"logLines\": [\n          \"\"\n        ]\n      }\n    }\n  ],\n  \"job\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"id\": {{faker 'datatype.number'}},\n    \"status\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n    \"updatedAt\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "09d196b2-4e4f-4e6b-a571-15ec74421345",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f2edac1-8b0b-47ec-b6b2-f4b28c76c0c2",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e0981222-de46-4c0d-aa1a-6988894e954c",
+      "documentation": "Returns recent jobs for a connection. Jobs are returned in descending order by createdAt.",
+      "method": "post",
+      "endpoint": "v1/jobs/list",
+      "responses": [
+        {
+          "uuid": "50fc6f50-0520-4951-b981-1a480d62cca7",
+          "body": "{\n  \"jobs\": [\n    {\n      \"attempts\": [\n        {\n          \"bytesSynced\": {{faker 'datatype.number'}},\n          \"createdAt\": {{faker 'datatype.number'}},\n          \"endedAt\": {{faker 'datatype.number'}},\n          \"id\": {{faker 'datatype.number'}},\n          \"recordsSynced\": {{faker 'datatype.number'}},\n          \"status\": \"{{oneOf (array 'running' 'failed' 'succeeded')}}\",\n          \"updatedAt\": {{faker 'datatype.number'}}\n        }\n      ],\n      \"job\": {\n        \"configId\": \"\",\n        \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n        \"createdAt\": {{faker 'datatype.number'}},\n        \"id\": {{faker 'datatype.number'}},\n        \"status\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n        \"updatedAt\": {{faker 'datatype.number'}}\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b20753c-a635-4d4c-9816-f3533ebb9852",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "29eb84e4-fa0d-496f-b594-c8743bbb382f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fadb776c-3101-436c-b83f-f0c82a404bc9",
+      "documentation": "Get logs",
+      "method": "post",
+      "endpoint": "v1/logs/get",
+      "responses": [
+        {
+          "uuid": "236f50aa-0df7-4c73-9e38-3a809286256f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Returns the log file",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a56a81ac-b1ee-4629-a63c-3a52613ca707",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b53b91b2-2fd5-4512-8e22-918c72e8710b",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "94010c3b-65f5-49c5-9ac5-aa22d09978e7",
+      "documentation": "Try sending a notifications",
+      "method": "post",
+      "endpoint": "v1/notifications/try",
+      "responses": [
+        {
+          "uuid": "89c31a85-beb8-4377-9c90-82dad1c441bc",
+          "body": "{\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b15fbcd-8aa1-422a-b313-c8167f6cdd65",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bb938963-2ecb-4cb8-937b-6e559a0a017b",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "896b0563-d742-4bd3-b677-df592eae9bb9",
+      "documentation": "Returns the openapi specification",
+      "method": "get",
+      "endpoint": "v1/openapi",
+      "responses": [
+        {
+          "uuid": "ead0bbdf-b098-4277-8258-4b41d27a01ab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Returns the openapi specification file",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "563580ed-9a24-45fc-9672-c144a79cd6e5",
+      "documentation": "Check if an operation to be created is valid",
+      "method": "post",
+      "endpoint": "v1/operations/check",
+      "responses": [
+        {
+          "uuid": "ff62d79c-53de-4554-9cf1-63bf68b78f6e",
+          "body": "{\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f3036eab-c68f-4184-ad20-bdfb8bf8a192",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "629a1a4f-ac27-4527-aecd-dbb8c593e04f",
+      "documentation": "Create an operation to be applied as part of a connection pipeline",
+      "method": "post",
+      "endpoint": "v1/operations/create",
+      "responses": [
+        {
+          "uuid": "68518c1f-fd45-4a12-8e59-d68ac0fb6355",
+          "body": "{\n  \"name\": \"\",\n  \"operationId\": \"{{faker 'datatype.uuid'}}\",\n  \"operatorConfiguration\": {\n    \"dbt\": {\n      \"dbtArguments\": \"\",\n      \"dockerImage\": \"\",\n      \"gitRepoBranch\": \"\",\n      \"gitRepoUrl\": \"\"\n    },\n    \"normalization\": {\n      \"option\": \"{{oneOf (array 'basic')}}\"\n    },\n    \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n  },\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ffab7792-ff77-4305-95c5-232a79b5f50f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a2cbeb41-0b33-418f-b8a2-10bd8dd523a6",
+      "documentation": "Delete an operation",
+      "method": "post",
+      "endpoint": "v1/operations/delete",
+      "responses": [
+        {
+          "uuid": "6738ed62-01ea-4cfd-801f-190d25899322",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "07029618-2130-4586-8e6b-b8889a95bda2",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e176887f-189b-4aac-ab0e-b49c96976383",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2d54d9f1-f067-4793-9743-25b1f6a16255",
+      "documentation": "Returns an operation",
+      "method": "post",
+      "endpoint": "v1/operations/get",
+      "responses": [
+        {
+          "uuid": "8bacb65f-d7da-48db-83c1-ebafd8e773a9",
+          "body": "{\n  \"name\": \"\",\n  \"operationId\": \"{{faker 'datatype.uuid'}}\",\n  \"operatorConfiguration\": {\n    \"dbt\": {\n      \"dbtArguments\": \"\",\n      \"dockerImage\": \"\",\n      \"gitRepoBranch\": \"\",\n      \"gitRepoUrl\": \"\"\n    },\n    \"normalization\": {\n      \"option\": \"{{oneOf (array 'basic')}}\"\n    },\n    \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n  },\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cad7fc92-2957-4a1e-b181-b556ad31ba83",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4b8f73bf-33ae-4987-a598-ae7f27236f74",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c202f2f8-f38c-4386-b115-220799796e26",
+      "documentation": "Returns all operations for a connection.",
+      "method": "post",
+      "endpoint": "v1/operations/list",
+      "responses": [
+        {
+          "uuid": "5a6c730b-f60d-4411-aecd-3c397970753a",
+          "body": "{\n  \"operations\": [\n    {\n      \"name\": \"\",\n      \"operationId\": \"{{faker 'datatype.uuid'}}\",\n      \"operatorConfiguration\": {\n        \"dbt\": {\n          \"dbtArguments\": \"\",\n          \"dockerImage\": \"\",\n          \"gitRepoBranch\": \"\",\n          \"gitRepoUrl\": \"\"\n        },\n        \"normalization\": {\n          \"option\": \"{{oneOf (array 'basic')}}\"\n        },\n        \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n      },\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "36877d5a-4c0d-4fd6-abaa-65f21c0ca74a",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9b1c424b-081d-42b7-af4e-b3f7777f1e9e",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "353e7f70-a2a1-40c0-b388-5ed4547b97cb",
+      "documentation": "Update an operation",
+      "method": "post",
+      "endpoint": "v1/operations/update",
+      "responses": [
+        {
+          "uuid": "f458bc55-4d5e-42df-a150-7ca39fc29b52",
+          "body": "{\n  \"name\": \"\",\n  \"operationId\": \"{{faker 'datatype.uuid'}}\",\n  \"operatorConfiguration\": {\n    \"dbt\": {\n      \"dbtArguments\": \"\",\n      \"dockerImage\": \"\",\n      \"gitRepoBranch\": \"\",\n      \"gitRepoUrl\": \"\"\n    },\n    \"normalization\": {\n      \"option\": \"{{oneOf (array 'basic')}}\"\n    },\n    \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n  },\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fbe1275d-50d4-4c8a-8bee-82e6ed405390",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "11bb2df4-69b6-41a1-869e-c4172ca1d22f",
+      "documentation": "Run check connection for a given destination configuration",
+      "method": "post",
+      "endpoint": "v1/scheduler/destinations/check_connection",
+      "responses": [
+        {
+          "uuid": "fffa8024-5c48-49c5-aaff-aedeb1df3b95",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2a6e2cfe-7dfb-45dc-bca8-5f95f8153794",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5f74f259-848a-4cdb-b545-719f41480e96",
+      "documentation": "Run check connection for a given source configuration",
+      "method": "post",
+      "endpoint": "v1/scheduler/sources/check_connection",
+      "responses": [
+        {
+          "uuid": "44c9c084-4608-42e4-b2b1-78461fdf03f2",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85bbc42d-c547-41b8-9ba3-81ad3247176b",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "97e5de16-cd52-4f20-a559-19e44b881f08",
+      "documentation": "Run discover schema for a given source a source configuration",
+      "method": "post",
+      "endpoint": "v1/scheduler/sources/discover_schema",
+      "responses": [
+        {
+          "uuid": "31ac9476-7af6-463a-bc52-457dfe359e89",
+          "body": "{\n  \"catalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  },\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5c9bc8fb-fc5d-4188-941f-67b24e57ff94",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "856f0103-deed-4915-9a6d-605f2ac88122",
+      "documentation": "Get specification for a SourceDefinition.",
+      "method": "post",
+      "endpoint": "v1/source_definition_specifications/get",
+      "responses": [
+        {
+          "uuid": "4ca7057d-14b6-4bc9-8990-aecd308d31cc",
+          "body": "{\n  \"connectionSpecification\": {\n    \"user\": {\n      \"type\": \"string\"\n    }\n  },\n  \"documentationUrl\": \"\",\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "126ea151-dd40-4a7b-ae35-16b2df7ad6a6",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13cec865-47ea-4e42-ada6-a782d7cc1f65",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "84370f60-7c60-48c0-a89c-b2f2b475590f",
+      "documentation": "Creates a sourceDefinition",
+      "method": "post",
+      "endpoint": "v1/source_definitions/create",
+      "responses": [
+        {
+          "uuid": "47fc6a9c-6d29-4244-bf4e-dfa7a64a958f",
+          "body": "{\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "89ddde5e-0991-49a9-91ec-8ddda30be1bc",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "08c33599-d5b1-4ef6-b747-ad98dcefa66a",
+      "documentation": "Get source",
+      "method": "post",
+      "endpoint": "v1/source_definitions/get",
+      "responses": [
+        {
+          "uuid": "7d76c59f-1333-49b8-8ad9-62b86c88ab42",
+          "body": "{\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fb4c3724-48ca-4661-9225-660956cd1a91",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41d86974-4b9b-4223-95e7-febf2c9fd62c",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cb83ef57-6d0e-442c-986a-1534b9be32b2",
+      "documentation": "List all the sourceDefinitions the current Airbyte deployment is configured to use",
+      "method": "post",
+      "endpoint": "v1/source_definitions/list",
+      "responses": [
+        {
+          "uuid": "529caf61-8f2a-4829-b9c5-556b9d65b96b",
+          "body": "{\n  \"sourceDefinitions\": [\n    {\n      \"dockerImageTag\": \"\",\n      \"dockerRepository\": \"\",\n      \"documentationUrl\": \"\",\n      \"icon\": \"\",\n      \"name\": \"\",\n      \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ba251f50-5616-4749-a5f3-d33013c5eacb",
+      "documentation": "List the latest sourceDefinitions Airbyte supports",
+      "method": "post",
+      "endpoint": "v1/source_definitions/list_latest",
+      "responses": [
+        {
+          "uuid": "606cf2b6-e452-4a75-8858-17ada0a24494",
+          "body": "{\n  \"sourceDefinitions\": [\n    {\n      \"dockerImageTag\": \"\",\n      \"dockerRepository\": \"\",\n      \"documentationUrl\": \"\",\n      \"icon\": \"\",\n      \"name\": \"\",\n      \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c52d72b-dd99-4976-9440-0349584004f9",
+      "documentation": "Update a sourceDefinition",
+      "method": "post",
+      "endpoint": "v1/source_definitions/update",
+      "responses": [
+        {
+          "uuid": "86201bb0-af04-4677-aea5-b40eda857425",
+          "body": "{\n  \"dockerImageTag\": \"\",\n  \"dockerRepository\": \"\",\n  \"documentationUrl\": \"\",\n  \"icon\": \"\",\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6529988d-a80f-4375-b4b1-3a7eeef05574",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d6f93e7-2e4f-4c5b-9cb5-7b692019d8ef",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5bb8efcf-0ee7-497d-9ba9-430b852f057f",
+      "documentation": "Check connection to the source",
+      "method": "post",
+      "endpoint": "v1/sources/check_connection",
+      "responses": [
+        {
+          "uuid": "399c29dc-57f5-445a-9528-6beed3668dbb",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fefb9bb5-798a-4159-9d88-1b7f8660af91",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d06e179e-0763-47ce-bbcc-ae3745e4b8b4",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ee946557-ad4c-4730-80f4-765f523236ed",
+      "documentation": "Check connection for a proposed update to a source",
+      "method": "post",
+      "endpoint": "v1/sources/check_connection_for_update",
+      "responses": [
+        {
+          "uuid": "6403275a-f1a7-47d1-8eb8-b1ad93dc9133",
+          "body": "{\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  },\n  \"message\": \"\",\n  \"status\": \"{{oneOf (array 'succeeded' 'failed')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cf51ea7d-e508-4836-8fb1-91c4d7a88379",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f07625dd-a72f-4f52-84ec-1b3ba685be50",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c78fd20d-5e71-488c-81d7-867068df1762",
+      "documentation": "Create a source",
+      "method": "post",
+      "endpoint": "v1/sources/create",
+      "responses": [
+        {
+          "uuid": "6b73a7e8-e391-449e-aeaa-7ff738701140",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceName\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ebdb7573-022a-4c96-9916-42b9b21ca6c3",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "93f3a799-6428-4105-909f-20e2826ddc41",
+      "documentation": "Delete a source",
+      "method": "post",
+      "endpoint": "v1/sources/delete",
+      "responses": [
+        {
+          "uuid": "89871f6e-baf7-4b85-b109-6ad8f31a39aa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8633e6c1-0675-465c-b79b-43fa0e80a9c7",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "464c82b2-5274-438a-a246-b07c068e709a",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b6a91d3-cd14-448b-9210-4af7eabef30f",
+      "documentation": "Discover the schema catalog of the source",
+      "method": "post",
+      "endpoint": "v1/sources/discover_schema",
+      "responses": [
+        {
+          "uuid": "3117ff60-85e1-499e-9b67-e8ef9f4751c1",
+          "body": "{\n  \"catalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  },\n  \"jobInfo\": {\n    \"configId\": \"\",\n    \"configType\": \"{{oneOf (array 'check_connection_source' 'check_connection_destination' 'discover_schema' 'get_spec' 'sync' 'reset_connection')}}\",\n    \"createdAt\": {{faker 'datatype.number'}},\n    \"endedAt\": {{faker 'datatype.number'}},\n    \"id\": \"{{faker 'datatype.uuid'}}\",\n    \"logs\": {\n      \"logLines\": [\n        \"\"\n      ]\n    },\n    \"succeeded\": {{faker 'datatype.boolean'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2affc364-0734-44c2-b7cb-48953099811f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c5f543d-c573-4638-857c-001df7459be0",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "01f0ff4b-5000-439c-beb7-96fdf1a0f010",
+      "documentation": "Get source",
+      "method": "post",
+      "endpoint": "v1/sources/get",
+      "responses": [
+        {
+          "uuid": "5b4fb8a9-2fd9-4082-9bd3-94083a0cdcc3",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceName\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "57ae468d-207e-458f-8e27-291a3ff4a613",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c07e1aa0-e685-4ba8-89a2-062d0ccfdbc1",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fee7f3d8-ebb2-4438-8898-54275175a1c5",
+      "documentation": "List sources for workspace",
+      "method": "post",
+      "endpoint": "v1/sources/list",
+      "responses": [
+        {
+          "uuid": "0c23c1af-2e3d-42e7-82ff-9198bcd20ffe",
+          "body": "{\n  \"sources\": [\n    {\n      \"connectionConfiguration\": {\n        \"user\": \"charles\"\n      },\n      \"name\": \"\",\n      \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n      \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n      \"sourceName\": \"\",\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "586f490b-66c2-4173-8060-1ada751a73ed",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cb8b5ad9-6e2f-40dc-be4d-b26bca97d76b",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5279a59e-c5da-4ed9-92d7-2cf3676935ea",
+      "documentation": "Update a source",
+      "method": "post",
+      "endpoint": "v1/sources/update",
+      "responses": [
+        {
+          "uuid": "2f66d0ea-0340-4fc8-8ead-9f9ad2820c5e",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceName\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5db1f1fa-f624-4d6e-92d5-f5456f7fbfc7",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b274d781-9a13-4e3f-88ae-032164ec3058",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "04afdd27-ec35-4683-9f97-e98d3108ea9d",
+      "documentation": "Fetch the current state for a connection.",
+      "method": "post",
+      "endpoint": "v1/state/get",
+      "responses": [
+        {
+          "uuid": "5aa49986-3e30-4066-ac1a-a729876a920a",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"state\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c671bde9-e7b3-411a-88a8-ec743fe2f7fb",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "53e70b9d-d763-4e6b-9ed6-c0875b61b0a0",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fca3cad3-14c6-4143-85e0-c7883bb2c208",
+      "documentation": "Create a connection",
+      "method": "post",
+      "endpoint": "v1/web_backend/connections/create",
+      "responses": [
+        {
+          "uuid": "c2285739-e93d-44f9-94c1-8271f4711224",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destination\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationName\": \"\",\n    \"name\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"isSyncing\": {{faker 'datatype.boolean'}},\n  \"latestSyncJobCreatedAt\": {{faker 'datatype.number'}},\n  \"latestSyncJobStatus\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"operations\": [\n    {\n      \"name\": \"\",\n      \"operationId\": \"{{faker 'datatype.uuid'}}\",\n      \"operatorConfiguration\": {\n        \"dbt\": {\n          \"dbtArguments\": \"\",\n          \"dockerImage\": \"\",\n          \"gitRepoBranch\": \"\",\n          \"gitRepoUrl\": \"\"\n        },\n        \"normalization\": {\n          \"option\": \"{{oneOf (array 'basic')}}\"\n        },\n        \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n      },\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"source\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"name\": \"\",\n    \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceName\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "95e7a237-276c-44bc-8bf3-2c8b67ffe14c",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "182ed762-b9e8-4468-8e58-57665970891a",
+      "documentation": "Get a connection",
+      "method": "post",
+      "endpoint": "v1/web_backend/connections/get",
+      "responses": [
+        {
+          "uuid": "ead7768e-ca6d-4bac-8293-2de1253edc23",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destination\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationName\": \"\",\n    \"name\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"isSyncing\": {{faker 'datatype.boolean'}},\n  \"latestSyncJobCreatedAt\": {{faker 'datatype.number'}},\n  \"latestSyncJobStatus\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"operations\": [\n    {\n      \"name\": \"\",\n      \"operationId\": \"{{faker 'datatype.uuid'}}\",\n      \"operatorConfiguration\": {\n        \"dbt\": {\n          \"dbtArguments\": \"\",\n          \"dockerImage\": \"\",\n          \"gitRepoBranch\": \"\",\n          \"gitRepoUrl\": \"\"\n        },\n        \"normalization\": {\n          \"option\": \"{{oneOf (array 'basic')}}\"\n        },\n        \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n      },\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"source\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"name\": \"\",\n    \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceName\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "44bd5e78-5a41-46f2-b060-a5c2031fae86",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d144beaf-3548-4bae-9814-b71ef7699ac7",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd47ace0-ad87-403d-b5f1-c8a8f633376e",
+      "documentation": "Returns all connections for a workspace.",
+      "method": "post",
+      "endpoint": "v1/web_backend/connections/list",
+      "responses": [
+        {
+          "uuid": "ebc22c19-6c5e-407e-80e7-b2da26be9f16",
+          "body": "{\n  \"connections\": [\n    {\n      \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n      \"destination\": {\n        \"connectionConfiguration\": {\n          \"user\": \"charles\"\n        },\n        \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n        \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n        \"destinationName\": \"\",\n        \"name\": \"\",\n        \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n      },\n      \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n      \"isSyncing\": {{faker 'datatype.boolean'}},\n      \"latestSyncJobCreatedAt\": {{faker 'datatype.number'}},\n      \"latestSyncJobStatus\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n      \"name\": \"\",\n      \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n      \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n      \"operationIds\": [\n        \"{{faker 'datatype.uuid'}}\"\n      ],\n      \"operations\": [\n        {\n          \"name\": \"\",\n          \"operationId\": \"{{faker 'datatype.uuid'}}\",\n          \"operatorConfiguration\": {\n            \"dbt\": {\n              \"dbtArguments\": \"\",\n              \"dockerImage\": \"\",\n              \"gitRepoBranch\": \"\",\n              \"gitRepoUrl\": \"\"\n            },\n            \"normalization\": {\n              \"option\": \"{{oneOf (array 'basic')}}\"\n            },\n            \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n          },\n          \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n        }\n      ],\n      \"prefix\": \"\",\n      \"resourceRequirements\": {\n        \"cpu_limit\": \"\",\n        \"cpu_request\": \"\",\n        \"memory_limit\": \"\",\n        \"memory_request\": \"\"\n      },\n      \"schedule\": {\n        \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n        \"units\": {{faker 'datatype.number'}}\n      },\n      \"source\": {\n        \"connectionConfiguration\": {\n          \"user\": \"charles\"\n        },\n        \"name\": \"\",\n        \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n        \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n        \"sourceName\": \"\",\n        \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n      },\n      \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n      \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n      \"syncCatalog\": {\n        \"streams\": [\n          {\n            \"config\": {\n              \"aliasName\": \"\",\n              \"cursorField\": [\n                \"\"\n              ],\n              \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n              \"primaryKey\": [\n                [\n                  \"\"\n                ]\n              ],\n              \"selected\": {{faker 'datatype.boolean'}},\n              \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n            },\n            \"stream\": {\n              \"defaultCursorField\": [\n                \"\"\n              ],\n              \"jsonSchema\": {},\n              \"name\": \"\",\n              \"namespace\": \"\",\n              \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n              \"sourceDefinedPrimaryKey\": [\n                [\n                  \"\"\n                ]\n              ],\n              \"supportedSyncModes\": [\n                \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n              ]\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c8b663d3-2efc-45a5-99d4-27e22d7d03b9",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "00906d52-63fe-4dbe-b03f-dc1aefc47114",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2672169a-02cc-405a-ad7c-d1f96ce3cbe1",
+      "documentation": "Update a connection",
+      "method": "post",
+      "endpoint": "v1/web_backend/connections/update",
+      "responses": [
+        {
+          "uuid": "3f3350cb-590f-4464-8932-dc2c55c24f6e",
+          "body": "{\n  \"connectionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destination\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n    \"destinationName\": \"\",\n    \"name\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"isSyncing\": {{faker 'datatype.boolean'}},\n  \"latestSyncJobCreatedAt\": {{faker 'datatype.number'}},\n  \"latestSyncJobStatus\": \"{{oneOf (array 'pending' 'running' 'incomplete' 'failed' 'succeeded' 'cancelled')}}\",\n  \"name\": \"\",\n  \"namespaceDefinition\": \"{{oneOf (array 'source' 'destination' 'customformat')}}\",\n  \"namespaceFormat\": \"${SOURCE_NAMESPACE}\",\n  \"operationIds\": [\n    \"{{faker 'datatype.uuid'}}\"\n  ],\n  \"operations\": [\n    {\n      \"name\": \"\",\n      \"operationId\": \"{{faker 'datatype.uuid'}}\",\n      \"operatorConfiguration\": {\n        \"dbt\": {\n          \"dbtArguments\": \"\",\n          \"dockerImage\": \"\",\n          \"gitRepoBranch\": \"\",\n          \"gitRepoUrl\": \"\"\n        },\n        \"normalization\": {\n          \"option\": \"{{oneOf (array 'basic')}}\"\n        },\n        \"operatorType\": \"{{oneOf (array 'normalization' 'dbt')}}\"\n      },\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ],\n  \"prefix\": \"\",\n  \"resourceRequirements\": {\n    \"cpu_limit\": \"\",\n    \"cpu_request\": \"\",\n    \"memory_limit\": \"\",\n    \"memory_request\": \"\"\n  },\n  \"schedule\": {\n    \"timeUnit\": \"{{oneOf (array 'minutes' 'hours' 'days' 'weeks' 'months')}}\",\n    \"units\": {{faker 'datatype.number'}}\n  },\n  \"source\": {\n    \"connectionConfiguration\": {\n      \"user\": \"charles\"\n    },\n    \"name\": \"\",\n    \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n    \"sourceName\": \"\",\n    \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n  },\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"status\": \"{{oneOf (array 'active' 'inactive' 'deprecated')}}\",\n  \"syncCatalog\": {\n    \"streams\": [\n      {\n        \"config\": {\n          \"aliasName\": \"\",\n          \"cursorField\": [\n            \"\"\n          ],\n          \"destinationSyncMode\": \"{{oneOf (array 'append' 'overwrite' 'append_dedup')}}\",\n          \"primaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"selected\": {{faker 'datatype.boolean'}},\n          \"syncMode\": \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n        },\n        \"stream\": {\n          \"defaultCursorField\": [\n            \"\"\n          ],\n          \"jsonSchema\": {},\n          \"name\": \"\",\n          \"namespace\": \"\",\n          \"sourceDefinedCursor\": {{faker 'datatype.boolean'}},\n          \"sourceDefinedPrimaryKey\": [\n            [\n              \"\"\n            ]\n          ],\n          \"supportedSyncModes\": [\n            \"{{oneOf (array 'full_refresh' 'incremental')}}\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3b8e089c-9542-4319-856c-79bce1954389",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d44b9f12-5025-4de6-8531-dceac9b8768a",
+      "documentation": "Recreate a destination",
+      "method": "post",
+      "endpoint": "v1/web_backend/destinations/recreate",
+      "responses": [
+        {
+          "uuid": "91073528-0419-4d5b-911a-3c5c0aecb562",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"destinationDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationId\": \"{{faker 'datatype.uuid'}}\",\n  \"destinationName\": \"\",\n  \"name\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4adf2d3f-9d35-4278-ab72-43d9afd653ce",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c5330ac5-43d0-48c5-8a7f-e9c250df248b",
+      "documentation": "Recreate a source",
+      "method": "post",
+      "endpoint": "v1/web_backend/sources/recreate",
+      "responses": [
+        {
+          "uuid": "2e3a308c-4a84-451e-b7f8-873ebaf6bc0e",
+          "body": "{\n  \"connectionConfiguration\": {\n    \"user\": \"charles\"\n  },\n  \"name\": \"\",\n  \"sourceDefinitionId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceId\": \"{{faker 'datatype.uuid'}}\",\n  \"sourceName\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b5456192-3dab-486b-b6f4-45cef70ee4a2",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fdae7c6d-f995-4182-ad4f-1af31c2d0f12",
+      "documentation": "Creates a workspace",
+      "method": "post",
+      "endpoint": "v1/workspaces/create",
+      "responses": [
+        {
+          "uuid": "bb0a078c-654a-4762-8d4d-8a6e36896b79",
+          "body": "{\n  \"anonymousDataCollection\": {{faker 'datatype.boolean'}},\n  \"customerId\": \"{{faker 'datatype.uuid'}}\",\n  \"displaySetupWizard\": {{faker 'datatype.boolean'}},\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"initialSetupComplete\": {{faker 'datatype.boolean'}},\n  \"name\": \"\",\n  \"news\": {{faker 'datatype.boolean'}},\n  \"notifications\": [\n    {\n      \"notificationType\": \"{{oneOf (array 'slack')}}\",\n      \"slackConfiguration\": {\n        \"webhook\": \"\"\n      }\n    }\n  ],\n  \"securityUpdates\": {{faker 'datatype.boolean'}},\n  \"slug\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4914f5f5-f33a-480b-895f-265131a79da4",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a061abcf-ef22-422a-8507-6561853a46d1",
+      "documentation": "Deletes a workspace",
+      "method": "post",
+      "endpoint": "v1/workspaces/delete",
+      "responses": [
+        {
+          "uuid": "3e6a5d3e-7021-4915-ba22-331647741077",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "The resource was deleted successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "181480cd-2e48-498d-b10f-9c2f79fe825f",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3d839cf3-2dca-4d9c-a2b0-cfd024909708",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "459e0f5f-3ff1-4d18-bd6d-35fe93b54cd8",
+      "documentation": "Find workspace by ID",
+      "method": "post",
+      "endpoint": "v1/workspaces/get",
+      "responses": [
+        {
+          "uuid": "8d18a10d-77e1-4424-9f27-f138da1bb361",
+          "body": "{\n  \"anonymousDataCollection\": {{faker 'datatype.boolean'}},\n  \"customerId\": \"{{faker 'datatype.uuid'}}\",\n  \"displaySetupWizard\": {{faker 'datatype.boolean'}},\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"initialSetupComplete\": {{faker 'datatype.boolean'}},\n  \"name\": \"\",\n  \"news\": {{faker 'datatype.boolean'}},\n  \"notifications\": [\n    {\n      \"notificationType\": \"{{oneOf (array 'slack')}}\",\n      \"slackConfiguration\": {\n        \"webhook\": \"\"\n      }\n    }\n  ],\n  \"securityUpdates\": {{faker 'datatype.boolean'}},\n  \"slug\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e7f1669d-54fb-480d-afeb-38df054d5cc2",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9ce5ed5f-ed9b-4f5d-87c6-b341e43cdc32",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "38b82a2b-31fb-40cb-8071-b9741620bde2",
+      "documentation": "Find workspace by slug",
+      "method": "post",
+      "endpoint": "v1/workspaces/get_by_slug",
+      "responses": [
+        {
+          "uuid": "42f76da9-f4ee-4697-9326-99abce0ddd5f",
+          "body": "{\n  \"anonymousDataCollection\": {{faker 'datatype.boolean'}},\n  \"customerId\": \"{{faker 'datatype.uuid'}}\",\n  \"displaySetupWizard\": {{faker 'datatype.boolean'}},\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"initialSetupComplete\": {{faker 'datatype.boolean'}},\n  \"name\": \"\",\n  \"news\": {{faker 'datatype.boolean'}},\n  \"notifications\": [\n    {\n      \"notificationType\": \"{{oneOf (array 'slack')}}\",\n      \"slackConfiguration\": {\n        \"webhook\": \"\"\n      }\n    }\n  ],\n  \"securityUpdates\": {{faker 'datatype.boolean'}},\n  \"slug\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6ccf3582-d0f2-408d-a46e-7b6a6034669d",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6e77529c-8529-426d-8f27-7ac60223c29c",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a11c554-d90f-44fb-a724-188c03523152",
+      "documentation": "List all workspaces registered in the current Airbyte deployment",
+      "method": "post",
+      "endpoint": "v1/workspaces/list",
+      "responses": [
+        {
+          "uuid": "c1ce4d5b-677c-4e1f-9a25-baeed5626cec",
+          "body": "{\n  \"workspaces\": [\n    {\n      \"anonymousDataCollection\": {{faker 'datatype.boolean'}},\n      \"customerId\": \"{{faker 'datatype.uuid'}}\",\n      \"displaySetupWizard\": {{faker 'datatype.boolean'}},\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"initialSetupComplete\": {{faker 'datatype.boolean'}},\n      \"name\": \"\",\n      \"news\": {{faker 'datatype.boolean'}},\n      \"notifications\": [\n        {\n          \"notificationType\": \"{{oneOf (array 'slack')}}\",\n          \"slackConfiguration\": {\n            \"webhook\": \"\"\n          }\n        }\n      ],\n      \"securityUpdates\": {{faker 'datatype.boolean'}},\n      \"slug\": \"\",\n      \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ba200cc4-4128-4605-8a93-dc9d30234775",
+      "documentation": "Update workspace state",
+      "method": "post",
+      "endpoint": "v1/workspaces/update",
+      "responses": [
+        {
+          "uuid": "eb54fdd9-934f-4b09-b33f-09c59b75febf",
+          "body": "{\n  \"anonymousDataCollection\": {{faker 'datatype.boolean'}},\n  \"customerId\": \"{{faker 'datatype.uuid'}}\",\n  \"displaySetupWizard\": {{faker 'datatype.boolean'}},\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"initialSetupComplete\": {{faker 'datatype.boolean'}},\n  \"name\": \"\",\n  \"news\": {{faker 'datatype.boolean'}},\n  \"notifications\": [\n    {\n      \"notificationType\": \"{{oneOf (array 'slack')}}\",\n      \"slackConfiguration\": {\n        \"webhook\": \"\"\n      }\n    }\n  ],\n  \"securityUpdates\": {{faker 'datatype.boolean'}},\n  \"slug\": \"\",\n  \"workspaceId\": \"{{faker 'datatype.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful operation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ef1a007f-93e8-4b5e-afc2-4bcd7d878aaf",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"id\": \"\",\n  \"message\": \"\",\n  \"rootCauseExceptionClassName\": \"\",\n  \"rootCauseExceptionStack\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Object with given id was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc019495-40bf-4714-b1c9-4163d0e86ffd",
+          "body": "{\n  \"exceptionClassName\": \"\",\n  \"exceptionStack\": [\n    \"\"\n  ],\n  \"message\": \"\",\n  \"validationErrors\": [\n    {\n      \"invalidValue\": \"\",\n      \"message\": \"\",\n      \"propertyPath\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "Input failed validation",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

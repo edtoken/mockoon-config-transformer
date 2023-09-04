@@ -1,0 +1,1290 @@
+{
+  "uuid": "5c773834-69ec-4680-8400-3e34e80d1105",
+  "lastMigration": 24,
+  "name": "Synthetics",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "e31ac3ed-ebc1-4b82-8c64-a73d1d31543a",
+      "documentation": "<p>Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the outside-in. Canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. You can set up a canary to run continuously or just once. </p> <p>Do not use <code>CreateCanary</code> to modify an existing canary. Use <a href=\"https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html\">UpdateCanary</a> instead.</p> <p>To create canaries, you must have the <code>CloudWatchSyntheticsFullAccess</code> policy. If you are creating a new IAM role for the canary, you also need the the <code>iam:CreateRole</code>, <code>iam:CreatePolicy</code> and <code>iam:AttachRolePolicy</code> permissions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles\">Necessary Roles and Permissions</a>.</p> <p>Do not include secrets or proprietary information in your canary names. The canary name makes up part of the Amazon Resource Name (ARN) for the canary, and the ARN is included in outbound calls over the internet. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html\">Security Considerations for Synthetics Canaries</a>.</p>",
+      "method": "post",
+      "endpoint": "canary",
+      "responses": [
+        {
+          "uuid": "77ee0bbe-4266-48b2-8dd7-2d3d5904754d",
+          "body": "{\n  \"Canary\": {\n    \"Id\": \"\",\n    \"Name\": \"\",\n    \"Code\": {\n      \"SourceLocationArn\": \"\",\n      \"Handler\": \"\"\n    },\n    \"ExecutionRoleArn\": \"\",\n    \"Schedule\": {\n      \"Expression\": \"\",\n      \"DurationInSeconds\": {{faker 'datatype.number'}}\n    },\n    \"RunConfig\": {\n      \"TimeoutInSeconds\": {{faker 'datatype.number'}},\n      \"MemoryInMB\": {{faker 'datatype.number'}},\n      \"ActiveTracing\": {{faker 'datatype.boolean'}}\n    },\n    \"SuccessRetentionPeriodInDays\": {{faker 'datatype.number'}},\n    \"FailureRetentionPeriodInDays\": {{faker 'datatype.number'}},\n    \"Status\": {\n      \"State\": \"\",\n      \"StateReason\": \"\",\n      \"StateReasonCode\": \"\"\n    },\n    \"Timeline\": {\n      \"Created\": \"{{faker 'date.recent' 365}}\",\n      \"LastModified\": \"{{faker 'date.recent' 365}}\",\n      \"LastStarted\": \"{{faker 'date.recent' 365}}\",\n      \"LastStopped\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"ArtifactS3Location\": \"\",\n    \"EngineArn\": \"\",\n    \"RuntimeVersion\": \"\",\n    \"VpcConfig\": {\n      \"VpcId\": \"\",\n      \"SubnetIds\": [\n        \"\"\n      ],\n      \"SecurityGroupIds\": [\n        \"\"\n      ]\n    },\n    \"VisualReference\": {\n      \"BaseScreenshots\": [\n        {\n          \"ScreenshotName\": \"\",\n          \"IgnoreCoordinates\": [\n            \"\"\n          ]\n        }\n      ],\n      \"BaseCanaryRunId\": \"\"\n    },\n    \"Tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f0ae80f-89ca-4847-9f83-9d7522ae2f51",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "08c38a62-7220-48b7-8553-dbabb8d32702",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ef417375-d009-4059-97bb-0e3cdf89cd95",
+      "documentation": "<p>Permanently deletes the specified canary.</p> <p>When you delete a canary, resources used and created by the canary are not automatically deleted. After you delete a canary that you do not intend to use again, you should also delete the following:</p> <ul> <li> <p>The Lambda functions and layers used by this canary. These have the prefix <code>cwsyn-<i>MyCanaryName</i> </code>.</p> </li> <li> <p>The CloudWatch alarms created for this canary. These alarms have a name of <code>Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i> </code>.</p> </li> <li> <p>Amazon S3 objects and buckets, such as the canary's artifact location.</p> </li> <li> <p>IAM roles created for the canary. If they were created in the console, these roles have the name <code> role/service-role/CloudWatchSyntheticsRole-<i>MyCanaryName</i> </code>.</p> </li> <li> <p>CloudWatch Logs log groups created for the canary. These logs groups have the name <code>/aws/lambda/cwsyn-<i>MyCanaryName</i> </code>. </p> </li> </ul> <p>Before you delete a canary, you might want to use <code>GetCanary</code> to display the information about this canary. Make note of the information returned by this operation so that you can delete these resources after you delete the canary.</p>",
+      "method": "delete",
+      "endpoint": "canary/:name",
+      "responses": [
+        {
+          "uuid": "f2696573-4161-4272-b74d-f0b3f69f32a0",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "26f2ff97-2bd3-40f4-ad7a-ca3db873f9ae",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7be235f1-5134-4109-b097-4281de86a40d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ce3c973f-fba3-4fea-9a23-2cded33eaef5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5d3f45bf-e70b-48e5-a256-7f0caf899360",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "62025e23-2a55-4c17-a0c8-639328b538e1",
+      "documentation": "Retrieves complete information about one canary. You must specify the name of the canary that you want. To get a list of canaries and their names, use <a href=\"https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html\">DescribeCanaries</a>.",
+      "method": "get",
+      "endpoint": "canary/:name",
+      "responses": [
+        {
+          "uuid": "e2c923a9-0762-4279-bb5b-eb7faa6db8ad",
+          "body": "{\n  \"Canary\": {\n    \"Id\": \"\",\n    \"Name\": \"\",\n    \"Code\": {\n      \"SourceLocationArn\": \"\",\n      \"Handler\": \"\"\n    },\n    \"ExecutionRoleArn\": \"\",\n    \"Schedule\": {\n      \"Expression\": \"\",\n      \"DurationInSeconds\": {{faker 'datatype.number'}}\n    },\n    \"RunConfig\": {\n      \"TimeoutInSeconds\": {{faker 'datatype.number'}},\n      \"MemoryInMB\": {{faker 'datatype.number'}},\n      \"ActiveTracing\": {{faker 'datatype.boolean'}}\n    },\n    \"SuccessRetentionPeriodInDays\": {{faker 'datatype.number'}},\n    \"FailureRetentionPeriodInDays\": {{faker 'datatype.number'}},\n    \"Status\": {\n      \"State\": \"\",\n      \"StateReason\": \"\",\n      \"StateReasonCode\": \"\"\n    },\n    \"Timeline\": {\n      \"Created\": \"{{faker 'date.recent' 365}}\",\n      \"LastModified\": \"{{faker 'date.recent' 365}}\",\n      \"LastStarted\": \"{{faker 'date.recent' 365}}\",\n      \"LastStopped\": \"{{faker 'date.recent' 365}}\"\n    },\n    \"ArtifactS3Location\": \"\",\n    \"EngineArn\": \"\",\n    \"RuntimeVersion\": \"\",\n    \"VpcConfig\": {\n      \"VpcId\": \"\",\n      \"SubnetIds\": [\n        \"\"\n      ],\n      \"SecurityGroupIds\": [\n        \"\"\n      ]\n    },\n    \"VisualReference\": {\n      \"BaseScreenshots\": [\n        {\n          \"ScreenshotName\": \"\",\n          \"IgnoreCoordinates\": [\n            \"\"\n          ]\n        }\n      ],\n      \"BaseCanaryRunId\": \"\"\n    },\n    \"Tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1d0a2739-ba13-45a4-951c-a170195f4192",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc902113-5e9b-4be6-8ade-83f8aae342bf",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ac47ae22-7efd-4845-ab0c-4d225f3e0ac6",
+      "documentation": "<p>Use this operation to change the settings of a canary that has already been created.</p> <p>You can't use this operation to update the tags of an existing canary. To change the tags of an existing canary, use <a href=\"https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html\">TagResource</a>.</p>",
+      "method": "patch",
+      "endpoint": "canary/:name",
+      "responses": [
+        {
+          "uuid": "66775d7d-3446-4a0b-9114-585199bd46c7",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0addc02c-d637-4319-bb86-0fca954e319f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a7dd1331-e5ef-4201-90e4-bfe017243804",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6cf16c15-6e73-4964-b675-1688dc405148",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c2e20b28-e6e0-4311-be14-0ee01c72fc66",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f49c0ba9-7b05-4a7a-bd4f-2a3bde5b3c23",
+      "documentation": "<p>This operation returns a list of the canaries in your account, along with full details about each canary.</p> <p>This operation does not have resource-level authorization, so if a user is able to use <code>DescribeCanaries</code>, the user can see all of the canaries in the account. A deny policy can only be used to restrict access to all canaries. It cannot be used on specific resources. </p>",
+      "method": "post",
+      "endpoint": "canaries",
+      "responses": [
+        {
+          "uuid": "648f428d-545d-4ac2-b234-09a63237036d",
+          "body": "{\n  \"Canaries\": [\n    {\n      \"Id\": \"\",\n      \"Name\": \"\",\n      \"Code\": {\n        \"SourceLocationArn\": \"\",\n        \"Handler\": \"\"\n      },\n      \"ExecutionRoleArn\": \"\",\n      \"Schedule\": {\n        \"Expression\": \"\",\n        \"DurationInSeconds\": {{faker 'datatype.number'}}\n      },\n      \"RunConfig\": {\n        \"TimeoutInSeconds\": {{faker 'datatype.number'}},\n        \"MemoryInMB\": {{faker 'datatype.number'}},\n        \"ActiveTracing\": {{faker 'datatype.boolean'}}\n      },\n      \"SuccessRetentionPeriodInDays\": {{faker 'datatype.number'}},\n      \"FailureRetentionPeriodInDays\": {{faker 'datatype.number'}},\n      \"Status\": {\n        \"State\": \"\",\n        \"StateReason\": \"\",\n        \"StateReasonCode\": \"\"\n      },\n      \"Timeline\": {\n        \"Created\": \"{{faker 'date.recent' 365}}\",\n        \"LastModified\": \"{{faker 'date.recent' 365}}\",\n        \"LastStarted\": \"{{faker 'date.recent' 365}}\",\n        \"LastStopped\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"ArtifactS3Location\": \"\",\n      \"EngineArn\": \"\",\n      \"RuntimeVersion\": \"\",\n      \"VpcConfig\": {\n        \"VpcId\": \"\",\n        \"SubnetIds\": [\n          \"\"\n        ],\n        \"SecurityGroupIds\": [\n          \"\"\n        ]\n      },\n      \"VisualReference\": {\n        \"BaseScreenshots\": [\n          {\n            \"ScreenshotName\": \"\",\n            \"IgnoreCoordinates\": [\n              \"\"\n            ]\n          }\n        ],\n        \"BaseCanaryRunId\": \"\"\n      },\n      \"Tags\": {}\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "24b4e69f-64b3-4919-9c22-b4e6ab1ade39",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "487cf434-dce2-4d11-ba7e-4e4e2294c2a2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d9a8de45-9f6c-4c27-90c4-9b178c16f6b1",
+      "documentation": "Use this operation to see information from the most recent run of each canary that you have created.",
+      "method": "post",
+      "endpoint": "canaries/last-run",
+      "responses": [
+        {
+          "uuid": "10249a81-ed99-44f8-9e6f-9f716ff6dabb",
+          "body": "{\n  \"CanariesLastRun\": [\n    {\n      \"CanaryName\": \"\",\n      \"LastRun\": {\n        \"Id\": \"\",\n        \"Name\": \"\",\n        \"Status\": {\n          \"State\": \"\",\n          \"StateReason\": \"\",\n          \"StateReasonCode\": \"\"\n        },\n        \"Timeline\": {\n          \"Started\": \"{{faker 'date.recent' 365}}\",\n          \"Completed\": \"{{faker 'date.recent' 365}}\"\n        },\n        \"ArtifactS3Location\": \"\"\n      }\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c168ed78-d6a4-4cb8-b003-ac999e4da922",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e6bbbcf-cb23-43eb-8d88-eeb993d0a3f2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0a403e04-8197-4c76-b5ca-5acb3b193ba8",
+      "documentation": "Returns a list of Synthetics canary runtime versions. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html\"> Canary Runtime Versions</a>.",
+      "method": "post",
+      "endpoint": "runtime-versions",
+      "responses": [
+        {
+          "uuid": "c0273954-89b5-418c-a5c8-82728f54942e",
+          "body": "{\n  \"RuntimeVersions\": [\n    {\n      \"VersionName\": \"\",\n      \"Description\": \"\",\n      \"ReleaseDate\": \"{{faker 'date.recent' 365}}\",\n      \"DeprecationDate\": \"{{faker 'date.recent' 365}}\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85735bad-94b2-4cf2-8061-7a95f3700d2f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fbd0765a-61e4-47a0-b521-16fe36bbdc5f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47872b70-349d-4f75-a471-560937879640",
+      "documentation": "Retrieves a list of runs for a specified canary.",
+      "method": "post",
+      "endpoint": "canary/:name/runs",
+      "responses": [
+        {
+          "uuid": "6cd7e423-9966-42ae-b6df-6159f8fa75b1",
+          "body": "{\n  \"CanaryRuns\": [\n    {\n      \"Id\": \"\",\n      \"Name\": \"\",\n      \"Status\": {\n        \"State\": \"\",\n        \"StateReason\": \"\",\n        \"StateReasonCode\": \"\"\n      },\n      \"Timeline\": {\n        \"Started\": \"{{faker 'date.recent' 365}}\",\n        \"Completed\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"ArtifactS3Location\": \"\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b0bb7d11-a305-4303-ac93-bb973fc56f65",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aa3395f1-6ebf-45a6-834c-ac3369ba2205",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd81daa1-8da9-48ad-8374-4bd82e715ddf",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9057030a-b531-4ec3-87d7-dd9d36b05c90",
+      "documentation": "Displays the tags associated with a canary.",
+      "method": "get",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "90f6c23c-9ebe-406a-8a4b-9322a7b55d0f",
+          "body": "{\n  \"Tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "836da42f-8121-44cc-8749-e5e8cf5b88e2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e42f6fb9-6bce-4730-a4cd-807eb11e4504",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "035a1ba8-1f91-425f-a7ec-29c29d8fb2ed",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b0a266fe-329a-4440-a321-2228912af54b",
+      "documentation": "<p>Assigns one or more tags (key-value pairs) to the specified canary. </p> <p>Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only resources with certain tag values.</p> <p>Tags don't have any semantic meaning to Amazon Web Services and are interpreted strictly as strings of characters.</p> <p>You can use the <code>TagResource</code> action with a canary that already has tags. If you specify a new tag key for the alarm, this tag is appended to the list of tags associated with the alarm. If you specify a tag key that is already associated with the alarm, the new tag value that you specify replaces the previous value for that tag.</p> <p>You can associate as many as 50 tags with a canary.</p>",
+      "method": "post",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "1b2f61cc-43ac-4eef-ba22-205949d2bbc6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b2314b3a-c1a4-4f9e-ba49-073a37e7c3ee",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f343dda-6778-439b-b1d0-d3eadf24ee21",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b600bcbb-ebc6-47e0-929a-76028a8dfcb6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "db919b09-a29c-4e4f-a3a4-2f97daf0f634",
+      "documentation": "Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's <code>Schedule</code>. To see a canary's schedule, use <a href=\"https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html\">GetCanary</a>.",
+      "method": "post",
+      "endpoint": "canary/:name/start",
+      "responses": [
+        {
+          "uuid": "7d11761e-5421-4f24-b2c8-06146146989c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "17cbc8b0-4d48-4297-981c-84ee04f2894e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "593c9c38-89cd-4d3b-8752-9136bb5b211b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "591274f1-ba90-494d-bc20-d03d4c9da2f0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e08f8a10-d48e-4d94-9d4a-df160292032c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9553c854-8d02-4874-a3a1-b039b8d40807",
+      "documentation": "<p>Stops the canary to prevent all future runs. If the canary is currently running, Synthetics stops waiting for the current run of the specified canary to complete. The run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run.</p> <p>You can use <code>StartCanary</code> to start it running again with the canary’s current schedule at any point in the future. </p>",
+      "method": "post",
+      "endpoint": "canary/:name/stop",
+      "responses": [
+        {
+          "uuid": "90a3479b-52a1-48cb-a342-1f7bc0a39e36",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4345fd53-f95a-44ad-a83f-f589ade7994a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e3a091c7-64e0-450f-91b4-0165eb54e1d3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1c28ce1d-1ae5-4541-99c5-47f4e8f19bd1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6126e45c-5753-4f30-bfc0-79ddf77b5dfd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "43b01d0f-63c9-44c2-94aa-e048eb232f5a",
+      "documentation": "Removes one or more tags from the specified canary.",
+      "method": "delete",
+      "endpoint": "tags/:resourceArn#tagKeys",
+      "responses": [
+        {
+          "uuid": "04f66906-b8e2-4f37-a03c-1d00d61dd4e2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a7aa1f97-727c-428f-b052-3aec1bb56042",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "62566e19-addf-4649-9acc-32832b27b2d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7d6248f-43e4-4126-85b9-4863aa8c5349",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

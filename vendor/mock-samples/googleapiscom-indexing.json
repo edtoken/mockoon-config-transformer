@@ -1,0 +1,102 @@
+{
+  "uuid": "b93ccb28-6091-443e-824a-0ce59840057c",
+  "lastMigration": 24,
+  "name": "Indexing API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "31cdb992-27ce-4ff0-86a7-0aa7f7ba0e7a",
+      "documentation": "Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.",
+      "method": "get",
+      "endpoint": "v3/urlNotifications/metadata",
+      "responses": [
+        {
+          "uuid": "dc854e16-6bf0-4954-bf7e-773a3a2090a2",
+          "body": "{\n  \"latestRemove\": {\n    \"notifyTime\": \"\",\n    \"type\": \"{{oneOf (array 'URL_NOTIFICATION_TYPE_UNSPECIFIED' 'URL_UPDATED' 'URL_DELETED')}}\",\n    \"url\": \"\"\n  },\n  \"latestUpdate\": {\n    \"notifyTime\": \"\",\n    \"type\": \"{{oneOf (array 'URL_NOTIFICATION_TYPE_UNSPECIFIED' 'URL_UPDATED' 'URL_DELETED')}}\",\n    \"url\": \"\"\n  },\n  \"url\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5a78fa5b-3d97-4672-9a92-085fd07c0a98",
+      "documentation": "Notifies that a URL has been updated or deleted.",
+      "method": "post",
+      "endpoint": "v3/urlNotifications:publish",
+      "responses": [
+        {
+          "uuid": "08f913f9-8a24-4764-b3c0-ca6d4123584a",
+          "body": "{\n  \"urlNotificationMetadata\": {\n    \"latestRemove\": {\n      \"notifyTime\": \"\",\n      \"type\": \"{{oneOf (array 'URL_NOTIFICATION_TYPE_UNSPECIFIED' 'URL_UPDATED' 'URL_DELETED')}}\",\n      \"url\": \"\"\n    },\n    \"latestUpdate\": {\n      \"notifyTime\": \"\",\n      \"type\": \"{{oneOf (array 'URL_NOTIFICATION_TYPE_UNSPECIFIED' 'URL_UPDATED' 'URL_DELETED')}}\",\n      \"url\": \"\"\n    },\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

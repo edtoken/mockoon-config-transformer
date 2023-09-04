@@ -1,0 +1,294 @@
+{
+  "uuid": "0717e73e-6b12-42c5-8b4f-c693fe9e3d9f",
+  "lastMigration": 24,
+  "name": "Bulk WHOIS API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "11e6bd8c-93c3-4e4e-bae0-38318de3e806",
+      "documentation": "Get your batches",
+      "method": "get",
+      "endpoint": "batch",
+      "responses": [
+        {
+          "uuid": "168135f8-aabe-4f16-be71-ce559e08b790",
+          "body": "{\n  \"batches\": [\n    {\n      \"completed\": {{faker 'datatype.boolean'}},\n      \"count\": {{faker 'datatype.number'}},\n      \"created_at\": \"\",\n      \"id\": \"\",\n      \"operation\": \"\",\n      \"results\": [\n        \"\"\n      ],\n      \"status\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8b3c445-2e42-4759-8740-58d6632840de",
+      "documentation": "Create batch. Batch is then being processed until all provided items have been completed. At any time it can be `get` to provide current status with results optionally.",
+      "method": "post",
+      "endpoint": "batch",
+      "responses": [
+        {
+          "uuid": "bc349c76-194a-440e-b87b-dafed390f4e2",
+          "body": "{\n  \"completed\": {{faker 'datatype.boolean'}},\n  \"count\": {{faker 'datatype.number'}},\n  \"created_at\": \"\",\n  \"id\": \"\",\n  \"operation\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"status\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6dc16f1b-12d5-4625-92dd-f8891901161c",
+      "documentation": "Delete batch",
+      "method": "delete",
+      "endpoint": "batch/:id",
+      "responses": [
+        {
+          "uuid": "a42cdf31-8ee1-4586-aa73-faa0184bd438",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "605ada82-f13d-47c9-89a6-b7d7d2743ba4",
+      "documentation": "Get batch",
+      "method": "get",
+      "endpoint": "batch/:id",
+      "responses": [
+        {
+          "uuid": "f0e013f7-ca91-4bc3-8850-bac766da67d2",
+          "body": "{\n  \"completed\": {{faker 'datatype.boolean'}},\n  \"count\": {{faker 'datatype.number'}},\n  \"created_at\": \"\",\n  \"id\": \"\",\n  \"operation\": \"\",\n  \"results\": [\n    \"\"\n  ],\n  \"status\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ea52f84f-a11a-4937-84db-7c814b823086",
+      "documentation": "Query domain database",
+      "method": "get",
+      "endpoint": "db",
+      "responses": [
+        {
+          "uuid": "8ed3dc3d-a882-45fe-ad6b-2659e0f749e2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e4f91df0-559b-44ff-9e9b-5690ccc14b4d",
+      "documentation": "Check domain availability",
+      "method": "get",
+      "endpoint": "domains/:domain/check",
+      "responses": [
+        {
+          "uuid": "d41a19fb-814f-4319-8cdc-af0424b1f140",
+          "body": "{\n  \"isAvailable\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3d4f41a2-8e42-427e-bfd9-4329e7460087",
+      "documentation": "Check domain rank (authority).",
+      "method": "get",
+      "endpoint": "domains/:domain/rank",
+      "responses": [
+        {
+          "uuid": "09c48264-9eb5-40a6-b0d8-f0496fed1b77",
+          "body": "{\n  \"rank\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "839d6246-934f-44c1-a40e-80a93e3d50b8",
+      "documentation": "WHOIS query for a domain",
+      "method": "get",
+      "endpoint": "domains/:domain/whois",
+      "responses": [
+        {
+          "uuid": "7c6ffd82-880e-4ec5-9824-75e088567a83",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

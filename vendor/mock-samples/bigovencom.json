@@ -1,0 +1,2402 @@
+{
+  "uuid": "147bc300-e064-4901-9dd3-58156c302ed2",
+  "lastMigration": 24,
+  "name": "500,000+ Recipe and Grocery List API (v2)",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "86ccd742-7fe8-486a-8b48-5b008095fc3a",
+      "documentation": "Get a food article",
+      "method": "get",
+      "endpoint": "article/:uniqueKeyword",
+      "responses": [
+        {
+          "uuid": "bff77870-07d2-4b88-92a8-ecd8771089d2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Article successfully returned",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8151593f-4b64-48e9-852b-da50621af01b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Article not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e390d39-1463-4b2b-8d42-b20f29585981",
+      "documentation": "Gets a recipe collection. A recipe collection is a curated set of recipes.",
+      "method": "get",
+      "endpoint": "collection/:id",
+      "responses": [
+        {
+          "uuid": "95098b04-f7e1-4ed6-9dd3-763cd578fcc4",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"SpellSuggest\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "20e0188e-8d08-494b-9a80-425ed65eb718",
+      "documentation": "Gets a recipe collection metadata. A recipe collection is a curated set of recipes.",
+      "method": "get",
+      "endpoint": "collection/:id/meta",
+      "responses": [
+        {
+          "uuid": "f3f629d6-a33e-44f0-b94c-34abdabfab72",
+          "body": "{\n  \"Description\": \"\",\n  \"ID\": {{faker 'datatype.number'}},\n  \"IsFiltered\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"MobileUrl\": \"\",\n  \"PRO\": {{faker 'datatype.boolean'}},\n  \"PhotoUrl\": \"\",\n  \"Results\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"Title\": \"\",\n  \"Token\": \"\",\n  \"WebUrl\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1fb8a311-dcbe-432c-8de4-04e11149b5c6",
+      "documentation": "Get the list of current, seasonal recipe collections. From here, you can use the /collection/{id} endpoint to retrieve the recipes in those collections.",
+      "method": "get",
+      "endpoint": "collections",
+      "responses": [
+        {
+          "uuid": "10624025-a6fc-4672-a3dd-2170e22ebc21",
+          "body": "[\n  {\n    \"Description\": \"\",\n    \"ID\": {{faker 'datatype.number'}},\n    \"IsFiltered\": {{faker 'datatype.boolean'}},\n    \"IsSponsored\": {{faker 'datatype.boolean'}},\n    \"MobileUrl\": \"\",\n    \"PRO\": {{faker 'datatype.boolean'}},\n    \"PhotoUrl\": \"\",\n    \"Results\": [\n      {\n        \"Category\": \"\",\n        \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n        \"Cuisine\": \"\",\n        \"HasVideos\": {{faker 'datatype.boolean'}},\n        \"IsBookmark\": {{faker 'datatype.boolean'}},\n        \"IsPrivate\": {{faker 'datatype.boolean'}},\n        \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n        \"Microcategory\": \"\",\n        \"PhotoUrl\": \"\",\n        \"Poster\": {\n          \"FirstName\": \"\",\n          \"LastName\": \"\",\n          \"PhotoUrl\": \"\",\n          \"UserID\": {{faker 'datatype.number'}},\n          \"UserName\": \"\"\n        },\n        \"RecipeID\": {{faker 'datatype.number'}},\n        \"ReviewCount\": {{faker 'datatype.number'}},\n        \"Servings\": {{faker 'datatype.float'}},\n        \"StarRating\": {{faker 'datatype.float'}},\n        \"Subcategory\": \"\",\n        \"Title\": \"\",\n        \"TotalTries\": {{faker 'datatype.number'}},\n        \"WebURL\": \"\"\n      }\n    ],\n    \"Title\": \"\",\n    \"Token\": \"\",\n    \"WebUrl\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b92b224f-5f0f-44c4-bdaa-b02face1d300",
+      "documentation": "Delete all the items on a grocery list; faster operation than a sync with deleted items.",
+      "method": "delete",
+      "endpoint": "grocerylist",
+      "responses": [
+        {
+          "uuid": "52ce09c4-1790-46f6-8987-4d65e243cefd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a8a4de97-efea-493b-99db-53b86c8fbc7a",
+      "documentation": "Get the user's grocery list.  User is determined by Basic Authentication.",
+      "method": "get",
+      "endpoint": "grocerylist",
+      "responses": [
+        {
+          "uuid": "d0263938-3938-4075-900e-0f6f1df3e322",
+          "body": "{\n  \"Items\": [\n    {\n      \"BigOvenObject\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Department\": \"\",\n      \"DisplayQuantity\": \"\",\n      \"GUID\": \"\",\n      \"IsChecked\": {{faker 'datatype.boolean'}},\n      \"ItemID\": {{faker 'datatype.number'}},\n      \"LastModified\": \"{{faker 'date.recent' 365}}\",\n      \"LocalStatus\": \"\",\n      \"Name\": \"\",\n      \"Notes\": \"\",\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ThirdPartyURL\": \"\"\n    }\n  ],\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"Recipes\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"VersionGuid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6154c050-cb43-443a-a7cc-2496c270dee6",
+      "documentation": "Clears the checked lines.",
+      "method": "post",
+      "endpoint": "grocerylist/clearcheckedlines",
+      "responses": [
+        {
+          "uuid": "fbf880ae-a7a1-41e4-a5dc-eeb19a1d3af0",
+          "body": "{\n  \"Items\": [\n    {\n      \"BigOvenObject\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Department\": \"\",\n      \"DisplayQuantity\": \"\",\n      \"GUID\": \"\",\n      \"IsChecked\": {{faker 'datatype.boolean'}},\n      \"ItemID\": {{faker 'datatype.number'}},\n      \"LastModified\": \"{{faker 'date.recent' 365}}\",\n      \"LocalStatus\": \"\",\n      \"Name\": \"\",\n      \"Notes\": \"\",\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ThirdPartyURL\": \"\"\n    }\n  ],\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"Recipes\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"VersionGuid\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9aac1e88-4038-41f9-8031-b3bc414a9bd5",
+      "documentation": "Departmentalize a list of strings -- used for ad-hoc grocery list item addition",
+      "method": "post",
+      "endpoint": "grocerylist/department",
+      "responses": [
+        {
+          "uuid": "68196976-6e11-42a3-a8f3-9d1c7aab969e",
+          "body": "[\n  {\n    \"dept\": \"\",\n    \"item\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c213085f-4767-4d6f-85e6-4172459b9c73",
+      "documentation": "Add a single line item to the grocery list",
+      "method": "post",
+      "endpoint": "grocerylist/item",
+      "responses": [
+        {
+          "uuid": "21e8b857-5857-4b93-a3d8-b0e2244ef828",
+          "body": "{\n  \"DateAdded\": \"{{faker 'date.recent' 365}}\",\n  \"Dept\": \"\",\n  \"GUID\": \"\",\n  \"HTMLItemName\": \"\",\n  \"IsChecked\": {{faker 'datatype.boolean'}},\n  \"ItemName\": \"\",\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"ListID\": {{faker 'datatype.number'}},\n  \"MealPlanID\": {{faker 'datatype.number'}},\n  \"MealPlanObjectType\": {{faker 'datatype.number'}},\n  \"Notes\": \"\",\n  \"PendingAddition\": {{faker 'datatype.boolean'}},\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ShoppingListLineID\": {{faker 'datatype.number'}},\n  \"Store\": \"\",\n  \"TextAmt\": \"\",\n  \"ThirdPartyHost\": \"\",\n  \"ThirdPartyTitle\": \"\",\n  \"ThirdPartyURL\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ab17d8c-8d9c-4fd3-8530-0037a6d25549",
+      "documentation": "/grocerylist/item/{guid}  DELETE will delete this item assuming you own it.",
+      "method": "delete",
+      "endpoint": "grocerylist/item/:guid",
+      "responses": [
+        {
+          "uuid": "c92eb5de-28e9-4c00-8db7-b1576e904465",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe553f8b-b23a-432b-b9a6-9def38fe5ce8",
+      "documentation": "Update a grocery item by GUID",
+      "method": "put",
+      "endpoint": "grocerylist/item/:guid",
+      "responses": [
+        {
+          "uuid": "6f69f8aa-3247-4df2-858e-7095d6644cf1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "65d5965d-dd88-44e4-a579-3d9507b58ed0",
+      "documentation": "Add a single line item to the grocery list",
+      "method": "post",
+      "endpoint": "grocerylist/line",
+      "responses": [
+        {
+          "uuid": "72ade0d0-a548-45ee-a30d-c47e40281f90",
+          "body": "{\n  \"DateAdded\": \"{{faker 'date.recent' 365}}\",\n  \"Dept\": \"\",\n  \"GUID\": \"\",\n  \"HTMLItemName\": \"\",\n  \"IsChecked\": {{faker 'datatype.boolean'}},\n  \"ItemName\": \"\",\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"ListID\": {{faker 'datatype.number'}},\n  \"MealPlanID\": {{faker 'datatype.number'}},\n  \"MealPlanObjectType\": {{faker 'datatype.number'}},\n  \"Notes\": \"\",\n  \"PendingAddition\": {{faker 'datatype.boolean'}},\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ShoppingListLineID\": {{faker 'datatype.number'}},\n  \"Store\": \"\",\n  \"TextAmt\": \"\",\n  \"ThirdPartyHost\": \"\",\n  \"ThirdPartyTitle\": \"\",\n  \"ThirdPartyURL\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d04513c5-fc0d-400f-b280-cf8614f34d3a",
+      "documentation": "Add a Recipe to the grocery list.  In the request data, pass in recipeId, scale (scale=1.0 says to keep the recipe the same size as originally posted), markAsPending (true/false) to indicate that\r\n            the lines in the recipe should be marked in a \"pending\" (unconfirmed by user) state.",
+      "method": "post",
+      "endpoint": "grocerylist/recipe",
+      "responses": [
+        {
+          "uuid": "4546a1fe-2435-44e5-94ad-40945645e7e1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "590690ec-8d88-420d-831a-f225f8b46d7a",
+      "documentation": "Synchronize the grocery list.  Call this with a POST to /grocerylist/sync",
+      "method": "post",
+      "endpoint": "grocerylist/sync",
+      "responses": [
+        {
+          "uuid": "bc02cf28-2659-4b85-a831-99da4dce440a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70109f5c-5bc1-4776-a950-149866f11c32",
+      "documentation": "POST: /image/avatar\r\n             \r\n            Testing with Postman (validated 11/20/2015):\r\n            1) Remove the Content-Type header; add authentication information\r\n            2) On the request, click Body and choose \"form-data\", then add a line item with \"key\" column set to \"file\" and on the right,\r\n            change the type of the input from Text to File.  Browse and choose a JPG.",
+      "method": "post",
+      "endpoint": "image/avatar",
+      "responses": [
+        {
+          "uuid": "6935af53-a8a7-4322-ab9a-f1addbf556b8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b018ce5b-b3ec-4b29-ae6c-fa8ab1338526",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "if bad request (e.g., missing parameters)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36a19fbb-50f0-41cc-a981-7acc9fb559d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "if the user is unknown",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d01a0dac-70c4-4ee5-afd5-e9adabeeb313",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "if unsupported media type (e.g., bad JPG)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "737f803d-0cfe-4fc6-9507-249ef4f52eff",
+      "documentation": "Indexes this instance.",
+      "method": "get",
+      "endpoint": "me",
+      "responses": [
+        {
+          "uuid": "f7b82d3a-b521-41ce-8724-bfcaf1fbfdc1",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "26b492ad-0caa-47af-9ff4-b5318bbd6b05",
+      "documentation": "Puts me.",
+      "method": "put",
+      "endpoint": "me",
+      "responses": [
+        {
+          "uuid": "3ddef4cc-a7b0-4a5a-bcb4-977cf3338912",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a15ed310-8cd5-4197-8d75-e8570daf4060",
+      "documentation": "Puts me personal.",
+      "method": "put",
+      "endpoint": "me/personal",
+      "responses": [
+        {
+          "uuid": "7da33040-5666-4623-8244-c8f4cac66ea5",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0661493-428b-429b-97c4-9dacef3f7879",
+      "documentation": "Puts me preferences.",
+      "method": "put",
+      "endpoint": "me/preferences",
+      "responses": [
+        {
+          "uuid": "4cace97f-767f-4881-84c4-b15eed919129",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2790d71e-3a26-4edb-86dc-56efd711836e",
+      "documentation": "Gets the options.",
+      "method": "get",
+      "endpoint": "me/preferences/options",
+      "responses": [
+        {
+          "uuid": "e3975650-5f1b-482a-944d-46408e689597",
+          "body": "{\n  \"EatingStyle\": {\n    \"Options\": [\n      {\n        \"Description\": \"\",\n        \"Key\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "19e1c1da-befa-45ee-9cec-cc6e282a80f3",
+      "documentation": "Puts me.",
+      "method": "put",
+      "endpoint": "me/profile",
+      "responses": [
+        {
+          "uuid": "5c318530-bc30-4b43-bf83-9fb84cf2b45d",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3b218c2f-4a1d-43e1-a744-830a2d07b237",
+      "documentation": "Skinnies this instance.",
+      "method": "get",
+      "endpoint": "me/skinny",
+      "responses": [
+        {
+          "uuid": "9b78736b-b6cf-48f4-adf0-da364894bdd6",
+          "body": "{\n  \"Accounting\": {\n    \"CreditBalance\": {{faker 'datatype.number'}},\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserLevel\": \"\"\n  },\n  \"BOAuthToken\": \"\",\n  \"LastChangeLogID\": \"\",\n  \"Personal\": {\n    \"Email\": \"\",\n    \"Location\": {\n      \"City\": \"\",\n      \"Country\": \"\",\n      \"DMA\": {{faker 'datatype.number'}}\n    }\n  },\n  \"Preferences\": {\n    \"EatingStyle\": \"\"\n  },\n  \"Profile\": {\n    \"AboutMe\": \"\",\n    \"BackgroundUrl\": \"\",\n    \"Counts\": {\n      \"AddedCount\": {{faker 'datatype.number'}},\n      \"FollowersCount\": {{faker 'datatype.number'}},\n      \"FollowingCount\": {{faker 'datatype.number'}},\n      \"PrivateRecipeCount\": {{faker 'datatype.number'}},\n      \"PublicRecipeCount\": {{faker 'datatype.number'}},\n      \"TotalRecipes\": {{faker 'datatype.number'}}\n    },\n    \"FirstName\": \"\",\n    \"FullName\": \"\",\n    \"HomeUrl\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "38985d08-18ed-4aeb-992a-d3995e78c403",
+      "documentation": "Add a new recipe",
+      "method": "post",
+      "endpoint": "recipe",
+      "responses": [
+        {
+          "uuid": "178db1e7-4e3f-4284-ba9f-35dc75c988e0",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"HeroPhotoUrl\": \"\",\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "54755edd-f4b3-4372-a356-091f8c5bf5ea",
+      "documentation": "Update a recipe",
+      "method": "put",
+      "endpoint": "recipe",
+      "responses": [
+        {
+          "uuid": "17256452-79ed-4522-9bd0-f03fca030bc9",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"HeroPhotoUrl\": \"\",\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "56201d1c-1c73-410c-a27e-3e3d50a25c96",
+      "documentation": "Given a query, return recipe titles starting with query. Query must be at least 3 chars in length.",
+      "method": "get",
+      "endpoint": "recipe/autocomplete",
+      "responses": [
+        {
+          "uuid": "7164628c-2b76-4fd5-b2ad-94983bbd81c7",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a7f10769-a163-468c-a49c-8306b2b0f9e0",
+      "documentation": "Automatics the complete all recipes.",
+      "method": "get",
+      "endpoint": "recipe/autocomplete/all",
+      "responses": [
+        {
+          "uuid": "c1beb398-6dac-40b1-8c33-d4fb29ddfa6a",
+          "body": "[\n  {\n    \"ImageURL\": \"\",\n    \"QualityScore\": {{faker 'datatype.number'}},\n    \"RecipeID\": {{faker 'datatype.number'}},\n    \"Servings\": {{faker 'datatype.float'}},\n    \"Title\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9581661a-a0b0-425f-bf69-73f1ca36dcc1",
+      "documentation": "Automatics the complete my recipes.",
+      "method": "get",
+      "endpoint": "recipe/autocomplete/mine",
+      "responses": [
+        {
+          "uuid": "79c6f26f-d24f-435a-9125-587cdfc4d755",
+          "body": "[\n  {\n    \"ImageURL\": \"\",\n    \"QualityScore\": {{faker 'datatype.number'}},\n    \"RecipeID\": {{faker 'datatype.number'}},\n    \"Servings\": {{faker 'datatype.float'}},\n    \"Title\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c7d6fe60-c079-490d-acd0-2b2849fb34d2",
+      "documentation": "Get a list of recipe categories (the ID field can be used for include_cat in search parameters)",
+      "method": "get",
+      "endpoint": "recipe/categories",
+      "responses": [
+        {
+          "uuid": "039c3b69-fea4-4b4a-b988-0fb18b4096a2",
+          "body": "[\n  {\n    \"Category\": \"\",\n    \"DefaultActiveMinutes\": {{faker 'datatype.number'}},\n    \"DefaultTotalMinutes\": {{faker 'datatype.number'}},\n    \"ID\": {{faker 'datatype.number'}},\n    \"ParentID\": {{faker 'datatype.number'}},\n    \"PrimaryImage\": \"\",\n    \"ShortDescription\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "32dd445d-c85c-4bc5-95b9-567cf26c0893",
+      "documentation": "Returns last active recipe for the user",
+      "method": "get",
+      "endpoint": "recipe/get/active/recipe",
+      "responses": [
+        {
+          "uuid": "29cd6c1e-f858-4be7-b186-d1ff09bcb248",
+          "body": "{\n  \"Data\": {},\n  \"Message\": \"\",\n  \"StatusCode\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f624b921-953f-43b7-bc52-46ffda037188",
+      "documentation": "Gets recipe single step as text",
+      "method": "post",
+      "endpoint": "recipe/get/saved/step",
+      "responses": [
+        {
+          "uuid": "0d7e8550-6b0e-4e05-ae46-cb78eb0a4b07",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a1a542b6-f86d-4a8a-98bc-ca34a87f1b3a",
+      "documentation": "Returns stored step number and number of steps in recipe",
+      "method": "post",
+      "endpoint": "recipe/get/step/number",
+      "responses": [
+        {
+          "uuid": "0e6f6dfd-aadb-4783-98ca-6b769b7efcef",
+          "body": "{\n  \"Data\": {},\n  \"Message\": \"\",\n  \"StatusCode\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e328552-de06-491a-881f-d98ce3cc2d53",
+      "documentation": "Gets the pending by user.",
+      "method": "get",
+      "endpoint": "recipe/photos/pending",
+      "responses": [
+        {
+          "uuid": "83379f63-f925-4d15-9fdf-d1f853c645b9",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Caption\": \"\",\n      \"CreationDate\": \"\",\n      \"ImageID\": {{faker 'datatype.number'}},\n      \"IsPrimary\": {{faker 'datatype.boolean'}},\n      \"MaxImageSquare\": {{faker 'datatype.number'}},\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9fbd575d-c118-4a93-aa66-a107d10e516f",
+      "documentation": "Stores recipe step number and returns saved step data",
+      "method": "post",
+      "endpoint": "recipe/post/step",
+      "responses": [
+        {
+          "uuid": "bd6d8a35-29b1-4eaa-9218-bb2bfef5dbe6",
+          "body": "{\n  \"Data\": {},\n  \"Message\": \"\",\n  \"StatusCode\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b4116034-8706-4f4b-8639-741ef7525a7c",
+      "documentation": "DELETE a reply to a given review. Authenticated user must be the one who originally posted the reply.",
+      "method": "delete",
+      "endpoint": "recipe/review/replies/:replyId",
+      "responses": [
+        {
+          "uuid": "6344cfdb-2667-4c83-96ee-6adaeb56dc43",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9dc26442-71db-4e7b-8293-73f7782a243b",
+      "documentation": "Update (PUT) a reply to a given review. Authenticated user must be the original one that posted the reply.",
+      "method": "put",
+      "endpoint": "recipe/review/replies/:replyId",
+      "responses": [
+        {
+          "uuid": "32f9a4e2-e041-4a4f-9653-6888ae37bd6a",
+          "body": "{\n  \"Comment\": \"\",\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"ID\": \"\",\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  },\n  \"ReviewID\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "66ca60ad-379c-4231-b3c8-66343a9f1a47",
+      "documentation": "Get a given review by string-style ID. This will return a payload with FeaturedReply, ReplyCount.\r\n            Recommended display is to list top-level reviews with one featured reply underneath. \r\n            Currently, the FeaturedReply is the most recent one for that rating.",
+      "method": "get",
+      "endpoint": "recipe/review/:reviewId",
+      "responses": [
+        {
+          "uuid": "72b27119-8fd6-4bf4-b199-584fddfcf5e3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "99121046-a47e-4bd1-8e10-6478f1cb4907",
+      "documentation": "Update a given top-level review.",
+      "method": "put",
+      "endpoint": "recipe/review/:reviewId",
+      "responses": [
+        {
+          "uuid": "086fe7b8-0075-498c-9ba6-4a147feff72f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6d07a6f0-0a05-4a57-a1e7-a82d006ecce2",
+      "documentation": "Get a paged list of replies for a given review.",
+      "method": "get",
+      "endpoint": "recipe/review/:reviewId/replies",
+      "responses": [
+        {
+          "uuid": "0f3f02a4-e8aa-465a-95a7-56d9e8851561",
+          "body": "[\n  {\n    \"Comment\": \"\",\n    \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n    \"ID\": \"\",\n    \"LastModified\": \"{{faker 'date.recent' 365}}\",\n    \"Poster\": {\n      \"FirstName\": \"\",\n      \"LastName\": \"\",\n      \"PhotoUrl\": \"\",\n      \"UserID\": {{faker 'datatype.number'}},\n      \"UserName\": \"\"\n    },\n    \"ReviewID\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "54d30671-9d26-4255-a5ce-9ad4783195c5",
+      "documentation": "POST a reply to a given review. The date will be set by server. Note that replies no longer have star ratings, only top-level reviews do.",
+      "method": "post",
+      "endpoint": "recipe/review/:reviewId/replies",
+      "responses": [
+        {
+          "uuid": "e7444d23-536f-4a44-a658-62d539a3c342",
+          "body": "{\n  \"Comment\": \"\",\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"ID\": \"\",\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"LastName\": \"\",\n    \"PhotoUrl\": \"\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\"\n  },\n  \"ReviewID\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6b4b0c24-8e88-4faa-a594-f7b89cf32c9f",
+      "documentation": "POST an image as a new RecipeScan request\r\n                1)  Fetch the filename -- DONE\r\n                2)  Copy it to the pics/scan folder - ENSURE NO NAMING COLLISIONS -- DONE\r\n                3)  Create 120 thumbnail size  in pics/scan/120 -- DONE\r\n                4)  Insert the CloudTasks record\r\n                5)  Create the HIT\r\n                6)  Update the CloudTasks record with the HIT ID\r\n                7)  Email the requesing user\r\n                8)  Call out to www.bigoven.com to fetch the image and re-create the thumbnail",
+      "method": "post",
+      "endpoint": "recipe/scan",
+      "responses": [
+        {
+          "uuid": "b3dc1f66-6e4b-4352-80d9-97821bba27e3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Not authorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bdf959ce-affb-4268-9d79-ea6928fa01f5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Payment required (not enough credits)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "84aaadd7-c2ae-445c-bee9-82d9d927173e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "Bad media type (bad JPG)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8d9d38b5-f1cc-4300-9f4b-8b9f8bb9725b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "General error on initiating RecipeScan task; please try again or contact us at support[at]bigoven.com",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6db51d21-5fdd-465a-8153-6df701c9c4e9",
+      "documentation": "Return full Recipe detail with steps. Returns 403 if the recipe is owned by someone else.",
+      "method": "get",
+      "endpoint": "recipe/steps/:id",
+      "responses": [
+        {
+          "uuid": "00ee6688-b41e-4491-906a-8c2a64bb00da",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"PhotoUrl\": \"\",\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Steps\": [\n    {\n      \"EndGantt\": {{faker 'datatype.number'}},\n      \"StartGantt\": {{faker 'datatype.number'}},\n      \"Text\": \"\"\n    }\n  ],\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "303334a8-d909-4db5-a2bb-df13cfed462f",
+      "documentation": "Delete a Recipe (you must be authenticated as an owner of the recipe)",
+      "method": "delete",
+      "endpoint": "recipe/:id",
+      "responses": [
+        {
+          "uuid": "a954803d-3e2c-4c0f-90d9-1f463f40f523",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b292fe4-4524-45a1-a3df-fc76dc916f0a",
+      "documentation": "Return full Recipe detail. Returns 403 if the recipe is owned by someone else.",
+      "method": "get",
+      "endpoint": "recipe/:id",
+      "responses": [
+        {
+          "uuid": "8e3410a2-51a8-4a54-a33b-30cc056d46ed",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"PhotoUrl\": \"\",\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Steps\": [\n    {\n      \"EndGantt\": {{faker 'datatype.number'}},\n      \"StartGantt\": {{faker 'datatype.number'}},\n      \"Text\": \"\"\n    }\n  ],\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e4eff1ce-641b-4763-9533-e381bffeba5f",
+      "documentation": "Zaps the recipe.",
+      "method": "get",
+      "endpoint": "recipe/:id/zap",
+      "responses": [
+        {
+          "uuid": "9b23dd6b-69a5-463d-af71-639e3f2018e5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "31556019-6ff1-4084-a8aa-27499f06290f",
+      "documentation": "Feedback on a Recipe -- for internal BigOven editors",
+      "method": "post",
+      "endpoint": "recipe/:recipeId/feedback",
+      "responses": [
+        {
+          "uuid": "6ea8a93f-4dbc-4e41-b89a-4a682706c239",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c57a65dd-8050-4715-a9fa-ed4f3b7dfa18",
+      "documentation": "POST: /recipe/{recipeId}/image?lat=42&amp;lng=21&amp;caption=this%20is%20my%20caption\r\n             \r\n             Note that caption, lng and lat are all optional, but must go on the request URI as params because this endpoint\r\n             needs a multipart/mime content header and will not parse JSON in the body along with it.\r\n            \r\n             Testing with Postman (validated 11/20/2015):\r\n             1) Remove the Content-Type header; add authentication information\r\n             2) On the request, click Body and choose \"form-data\", then add a line item with \"key\" column set to \"file\" and on the right,\r\n             change the type of the input from Text to File.  Browse and choose a JPG.",
+      "method": "post",
+      "endpoint": "recipe/:recipeId/image",
+      "responses": [
+        {
+          "uuid": "fba8247d-6f07-4705-a726-c8cffd432d3c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9376ce45-a77d-476c-b926-3756420bcfd3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "if bad request (e.g., missing parameters)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e5454602-7aac-448a-a3f2-78441b5920cd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "if the user is unknown",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "62b9a017-d4a9-4532-af1b-ebd852d0e8df",
+          "body": "",
+          "latency": 0,
+          "statusCode": 415,
+          "label": "if unsupported media type (e.g., bad JPG)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9923d708-7d64-45c5-a66e-bda97d252d60",
+      "documentation": "Get all the images for a recipe. DEPRECATED. Please use /recipe/{recipeId}/photos.",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/images",
+      "responses": [
+        {
+          "uuid": "c3744df7-4394-402b-967b-dc1e0635d04e",
+          "body": "[\n  {\n    \"Caption\": \"\",\n    \"CreationDate\": \"\",\n    \"ImageID\": {{faker 'datatype.number'}},\n    \"ImageSquares\": [\n      {{faker 'datatype.number'}}\n    ],\n    \"ImageURL\": \"\",\n    \"ImageURL120\": \"\",\n    \"ImageURL128\": \"\",\n    \"ImageURL200\": \"\",\n    \"ImageURL256\": \"\",\n    \"ImageURL48\": \"\",\n    \"ImageURL64\": \"\",\n    \"IsPrimary\": {{faker 'datatype.boolean'}},\n    \"MaxImageSquare\": {{faker 'datatype.number'}},\n    \"Poster\": {\n      \"FirstName\": \"\",\n      \"ImageUrl48\": \"\",\n      \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n      \"IsPremium\": {{faker 'datatype.boolean'}},\n      \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n      \"LastName\": \"\",\n      \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n      \"PhotoUrl\": \"\",\n      \"PhotoUrl48\": \"\",\n      \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n      \"UserID\": {{faker 'datatype.number'}},\n      \"UserName\": \"\",\n      \"WebUrl\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f3e97da5-2b6a-44a9-9eec-b76b05c4a19b",
+      "documentation": "HTTP POST a new note into the system.",
+      "method": "post",
+      "endpoint": "recipe/:recipeId/note",
+      "responses": [
+        {
+          "uuid": "cb1b7d5f-e656-46d8-b0e0-6acc25fcf82e",
+          "body": "{\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Date\": \"\",\n  \"DateDT\": \"{{faker 'date.recent' 365}}\",\n  \"GUID\": \"\",\n  \"ID\": {{faker 'datatype.number'}},\n  \"Notes\": \"\",\n  \"People\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"UserID\": {{faker 'datatype.number'}},\n  \"Variations\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0a3c2578-5b55-47f9-b312-1eff74bb7e07",
+      "documentation": "Delete a review\r\n                do a DELETE Http request of /note/{ID}",
+      "method": "delete",
+      "endpoint": "recipe/:recipeId/note/:noteId",
+      "responses": [
+        {
+          "uuid": "072799af-2548-4916-a0cd-e70d4ec636d3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "10c7a75f-76ac-4979-9aae-f83a03a84757",
+      "documentation": "Get a given note. Make sure you're passing authentication information in the header for the user who owns the note.",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/note/:noteId",
+      "responses": [
+        {
+          "uuid": "425d687f-e306-4c6b-afde-cfe259c9a8d5",
+          "body": "{\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Date\": \"\",\n  \"DateDT\": \"{{faker 'date.recent' 365}}\",\n  \"GUID\": \"\",\n  \"ID\": {{faker 'datatype.number'}},\n  \"Notes\": \"\",\n  \"People\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"UserID\": {{faker 'datatype.number'}},\n  \"Variations\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3b37c15d-8a66-4eec-8f6a-335c313a02ca",
+      "documentation": "HTTP PUT (update) a Recipe note (RecipeNote).",
+      "method": "put",
+      "endpoint": "recipe/:recipeId/note/:noteId",
+      "responses": [
+        {
+          "uuid": "d7d5c0a5-fe09-4cf4-90f7-57be30e0ba2f",
+          "body": "{\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Date\": \"\",\n  \"DateDT\": \"{{faker 'date.recent' 365}}\",\n  \"GUID\": \"\",\n  \"ID\": {{faker 'datatype.number'}},\n  \"Notes\": \"\",\n  \"People\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"UserID\": {{faker 'datatype.number'}},\n  \"Variations\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "93df6205-2d59-4521-98e2-0a7575407139",
+      "documentation": "recipe/100/notes",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/notes",
+      "responses": [
+        {
+          "uuid": "183a6661-8de9-499e-9c6c-3ed51bf280f1",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Date\": \"\",\n      \"DateDT\": \"{{faker 'date.recent' 365}}\",\n      \"GUID\": \"\",\n      \"ID\": {{faker 'datatype.number'}},\n      \"Notes\": \"\",\n      \"People\": \"\",\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"UserID\": {{faker 'datatype.number'}},\n      \"Variations\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c03e0842-3b2a-4d79-acb1-5653dd005a8f",
+      "documentation": "Get all the photos for a recipe",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/photos",
+      "responses": [
+        {
+          "uuid": "ee5ed4f5-f978-40df-88bb-5141fa1c18f6",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Caption\": \"\",\n      \"CreationDate\": \"\",\n      \"ImageID\": {{faker 'datatype.number'}},\n      \"IsPrimary\": {{faker 'datatype.boolean'}},\n      \"MaxImageSquare\": {{faker 'datatype.number'}},\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7950a248-7218-461b-9386-ccf5a91da673",
+      "documentation": "Get recipes related to the given recipeId",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/related",
+      "responses": [
+        {
+          "uuid": "65f56adf-a2dd-402e-b6c7-cd2fa924378d",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"SpellSuggest\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "99e6c26c-66aa-4311-ac64-4ec88f0dfe84",
+      "documentation": "Get *my* review for the recipe {recipeId}, where \"me\" is determined by standard authentication headers",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/review",
+      "responses": [
+        {
+          "uuid": "580feec0-d0ef-4c0c-b39d-b12121ab40ab",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b1d8ead0-4627-460c-8d74-a7376563a7d7",
+      "documentation": "Add a new review. Only one review can be provided per {userId, recipeId} pair. Otherwise your review will be updated.",
+      "method": "post",
+      "endpoint": "recipe/:recipeId/review",
+      "responses": [
+        {
+          "uuid": "fbb51c66-ba4b-4097-85ed-5146ebee82b9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "610efa83-45fb-44f3-86d4-568901d7b99f",
+      "documentation": "DEPRECATED! - Deletes a review by recipeId and reviewId. Please use recipe/review/{reviewId} instead.",
+      "method": "delete",
+      "endpoint": "recipe/:recipeId/review/:reviewId",
+      "responses": [
+        {
+          "uuid": "aebfc535-52e9-4ce6-81aa-d8bdb4a3df32",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b08e2d65-a317-4e9b-90bf-5b9ecf3c1614",
+      "documentation": "Get a given review - DEPRECATED. See recipe/review/{reviewId} for the current usage.\r\n            Beginning in January 2017, BigOven moded from an integer-based ID system to a GUID-style string-based ID system for reviews and replies.\r\n            We are also supporting more of a \"Google Play\" style model for Reviews and Replies. That is, there are top-level Reviews and then\r\n            an unlimited list of replies (which do not carry star ratings) underneath existing reviews. Also, a given user can only have one review \r\n            per recipe. Existing legacy endpoints will continue to work, but we strongly recommend you migrate to using the newer endpoints listed\r\n            which do NOT carry the \"DEPRECATED\" flag.",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/review/:reviewId",
+      "responses": [
+        {
+          "uuid": "bad09634-d9cf-4d9d-bdf9-f425757c4109",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "80f1256b-e18f-40ee-a8a6-8117c327c121",
+      "documentation": "HTTP PUT (update) a recipe review. DEPRECATED. Please see recipe/review/{reviewId} PUT for the new endpoint.\r\n            We are moving to a string-based primary key system, no longer integers, for reviews and replies.",
+      "method": "put",
+      "endpoint": "recipe/:recipeId/review/:reviewId",
+      "responses": [
+        {
+          "uuid": "08e787ab-bfb7-47f0-91fa-d16d309fa83d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0a8d4aa1-f024-4009-b4fb-1a37ac32b2c5",
+      "documentation": "Get paged list of reviews for a recipe. Each review will have at most one FeaturedReply, as well as a ReplyCount.",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/reviews",
+      "responses": [
+        {
+          "uuid": "a5698d20-36e7-471a-81c3-03d287ba5351",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aaa1a88b-cc01-4e6b-822c-212cf8ff227e",
+      "documentation": "Gets a list of RecipeScan images for the recipe. There will be at most 3 per recipe.",
+      "method": "get",
+      "endpoint": "recipe/:recipeId/scans",
+      "responses": [
+        {
+          "uuid": "35975861-423a-4653-9fe9-9ea89b81a9a1",
+          "body": "[\n  {\n    \"Caption\": \"\",\n    \"CreationDate\": \"\",\n    \"ImageID\": {{faker 'datatype.number'}},\n    \"ImageSquares\": [\n      {{faker 'datatype.number'}}\n    ],\n    \"ImageURL\": \"\",\n    \"ImageURL120\": \"\",\n    \"ImageURL128\": \"\",\n    \"ImageURL200\": \"\",\n    \"ImageURL256\": \"\",\n    \"ImageURL48\": \"\",\n    \"ImageURL64\": \"\",\n    \"IsPrimary\": {{faker 'datatype.boolean'}},\n    \"MaxImageSquare\": {{faker 'datatype.number'}},\n    \"Poster\": {\n      \"FirstName\": \"\",\n      \"ImageUrl48\": \"\",\n      \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n      \"IsPremium\": {{faker 'datatype.boolean'}},\n      \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n      \"LastName\": \"\",\n      \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n      \"PhotoUrl\": \"\",\n      \"PhotoUrl48\": \"\",\n      \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n      \"UserID\": {{faker 'datatype.number'}},\n      \"UserName\": \"\",\n      \"WebUrl\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f9464de1-ae2b-4784-90b1-e8f4c0820172",
+      "documentation": "Search for recipes. There are many parameters that you can apply. Starting with the most common, use title_kw to search within a title.\r\n            Use any_kw to search across the entire recipe.\r\n            If you'd like to limit by course, set the parameter \"include_primarycat\" to one of (appetizers,bread,breakfast,dessert,drinks,maindish,salad,sidedish,soup,marinades,other).\r\n            If you'd like to exclude a category, set exclude_cat to one or more (comma-separated) list of those categories to exclude.\r\n            If you'd like to include a category, set include_cat to one or more (comma-separated) of those categories to include.\r\n            To explicitly include an ingredient in your search, set the parameter \"include_ing\" to a CSV of up to three ingredients, e.g.:include_ing=mustard,chicken,beef%20tips\r\n            To explicitly exclude an ingredient in your search, set the parameter \"exclude_ing\" to a CSV of up to three ingredients.\r\n            All searches must contain the paging parameters pg and rpp, which are integers, and represent the page number (1-based) and results per page (rpp).\r\n            So, to get the third page of a result set paged with 25 recipes per page, you'd pass pg=3&amp;rpp=25\r\n            If you'd like to target searches to just a single target user's recipes, set userId=the target userId (number).\r\n            Or, you can set username=theirusername\r\n            vtn;vgn;chs;glf;ntf;dyf;sff;slf;tnf;wmf;rmf;cps\r\n            cuisine\r\n            photos\r\n            filter=added,try,favorites,myrecipes\\r\\n\\r\\n\r\n            folder=FolderNameCaseSensitive\r\n            coll=ID of Collection",
+      "method": "get",
+      "endpoint": "recipes",
+      "responses": [
+        {
+          "uuid": "af881f98-ae68-49c7-8079-68b75a6179d2",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"SpellSuggest\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "92ce64b2-a170-4dff-b1d7-59bf4a81507d",
+      "documentation": "Get a random, home-page-quality Recipe.",
+      "method": "get",
+      "endpoint": "recipes/random",
+      "responses": [
+        {
+          "uuid": "4d1d4fa9-1e43-46ed-97ea-5c5027f71551",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"HeroPhotoUrl\": \"\",\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "336cd67a-d219-458f-9704-1876336ea68b",
+      "documentation": "Get the recipe/comment tuples for those recipes with 4 or 5 star ratings",
+      "method": "get",
+      "endpoint": "recipes/raves",
+      "responses": [
+        {
+          "uuid": "867afdae-4f3c-4584-b0e3-84cd3279f925",
+          "body": "[\n  \"\"\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "513eb96b-46d3-48de-a38f-ee0ccf66096b",
+      "documentation": "Get a list of recipes that the authenticated user has most recently viewed",
+      "method": "get",
+      "endpoint": "recipes/recentviews",
+      "responses": [
+        {
+          "uuid": "19a9ac90-4f72-4826-aaf0-854f9a85c15f",
+          "body": "[\n  {\n    \"date\": \"{{faker 'date.recent' 365}}\",\n    \"recipeInfo\": {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8aea74df-843b-46c2-a549-c5f05c078b4b",
+      "documentation": "Search for recipes. There are many parameters that you can apply. Starting with the most common, use title_kw to search within a title.\r\n            Use any_kw to search across the entire recipe.\r\n            If you'd like to limit by course, set the parameter \"include_primarycat\" to one of (appetizers,bread,breakfast,dessert,drinks,maindish,salad,sidedish,soup,marinades,other).\r\n            If you'd like to exclude a category, set exclude_cat to one or more (comma-separated) list of those categories to exclude.\r\n            If you'd like to include a category, set include_cat to one or more (comma-separated) of those categories to include.\r\n            To explicitly include an ingredient in your search, set the parameter \"include_ing\" to a CSV of up to three ingredients, e.g.:include_ing=mustard,chicken,beef%20tips\r\n            To explicitly exclude an ingredient in your search, set the parameter \"exclude_ing\" to a CSV of up to three ingredients.\r\n            All searches must contain the paging parameters pg and rpp, which are integers, and represent the page number (1-based) and results per page (rpp).\r\n            So, to get the third page of a result set paged with 25 recipes per page, you'd pass pg=3&amp;rpp=25\r\n            If you'd like to target searches to just a single target user's recipes, set userId=the target userId (number).\r\n            Or, you can set username=theirusername\r\n            vtn;vgn;chs;glf;ntf;dyf;sff;slf;tnf;wmf;rmf;cps\r\n            cuisine\r\n            photos\r\n            filter=added,try,favorites,myrecipes\\r\\n\\r\\n\r\n            folder=FolderNameCaseSensitive\r\n            coll=ID of Collection",
+      "method": "get",
+      "endpoint": "recipes/top25random",
+      "responses": [
+        {
+          "uuid": "1d49462b-bd87-4da5-85a6-29753c6121e8",
+          "body": "{\n  \"ResultCount\": {{faker 'datatype.number'}},\n  \"Results\": [\n    {\n      \"Category\": \"\",\n      \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n      \"Cuisine\": \"\",\n      \"HasVideos\": {{faker 'datatype.boolean'}},\n      \"IsBookmark\": {{faker 'datatype.boolean'}},\n      \"IsPrivate\": {{faker 'datatype.boolean'}},\n      \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n      \"Microcategory\": \"\",\n      \"PhotoUrl\": \"\",\n      \"Poster\": {\n        \"FirstName\": \"\",\n        \"LastName\": \"\",\n        \"PhotoUrl\": \"\",\n        \"UserID\": {{faker 'datatype.number'}},\n        \"UserName\": \"\"\n      },\n      \"RecipeID\": {{faker 'datatype.number'}},\n      \"ReviewCount\": {{faker 'datatype.number'}},\n      \"Servings\": {{faker 'datatype.float'}},\n      \"StarRating\": {{faker 'datatype.float'}},\n      \"Subcategory\": \"\",\n      \"Title\": \"\",\n      \"TotalTries\": {{faker 'datatype.number'}},\n      \"WebURL\": \"\"\n    }\n  ],\n  \"SpellSuggest\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58fb4267-6c97-4108-94ac-fed21a5bd7ff",
+      "documentation": "Same as GET recipe but also includes the recipe videos (if any)",
+      "method": "get",
+      "endpoint": "recipes/:id",
+      "responses": [
+        {
+          "uuid": "f832c5f6-80c7-4181-bee1-c3a369ab0776",
+          "body": "{\n  \"ActiveMinutes\": {{faker 'datatype.number'}},\n  \"AdTags\": \"\",\n  \"AdminBoost\": {{faker 'datatype.number'}},\n  \"AllCategoriesText\": \"\",\n  \"BookmarkImageURL\": \"\",\n  \"BookmarkSiteLogo\": \"\",\n  \"BookmarkURL\": \"\",\n  \"Category\": \"\",\n  \"Collection\": \"\",\n  \"CollectionID\": {{faker 'datatype.number'}},\n  \"CreationDate\": \"{{faker 'date.recent' 365}}\",\n  \"Cuisine\": \"\",\n  \"Description\": \"\",\n  \"FavoriteCount\": {{faker 'datatype.number'}},\n  \"ImageSquares\": [\n    {{faker 'datatype.number'}}\n  ],\n  \"ImageURL\": \"\",\n  \"Ingredients\": [\n    {\n      \"DisplayIndex\": {{faker 'datatype.number'}},\n      \"DisplayQuantity\": \"\",\n      \"HTMLName\": \"\",\n      \"IngredientID\": {{faker 'datatype.number'}},\n      \"IngredientInfo\": {\n        \"Department\": \"\",\n        \"MasterIngredientID\": {{faker 'datatype.number'}},\n        \"Name\": \"\",\n        \"UsuallyOnHand\": {{faker 'datatype.boolean'}}\n      },\n      \"IsHeading\": {{faker 'datatype.boolean'}},\n      \"IsLinked\": {{faker 'datatype.boolean'}},\n      \"MetricDisplayQuantity\": \"\",\n      \"MetricQuantity\": {{faker 'datatype.float'}},\n      \"MetricUnit\": \"\",\n      \"Name\": \"\",\n      \"PreparationNotes\": \"\",\n      \"Quantity\": {{faker 'datatype.float'}},\n      \"Unit\": \"\"\n    }\n  ],\n  \"IngredientsTextBlock\": \"\",\n  \"Instructions\": \"\",\n  \"IsBookmark\": {{faker 'datatype.boolean'}},\n  \"IsPrivate\": {{faker 'datatype.boolean'}},\n  \"IsRecipeScan\": {{faker 'datatype.boolean'}},\n  \"IsSponsored\": {{faker 'datatype.boolean'}},\n  \"LastModified\": \"{{faker 'date.recent' 365}}\",\n  \"MaxImageSquare\": {{faker 'datatype.number'}},\n  \"MedalCount\": {{faker 'datatype.number'}},\n  \"MenuCount\": {{faker 'datatype.number'}},\n  \"Microcategory\": \"\",\n  \"NotesCount\": {{faker 'datatype.number'}},\n  \"NutritionInfo\": {\n    \"CaloriesFromFat\": {{faker 'datatype.float'}},\n    \"Cholesterol\": {{faker 'datatype.float'}},\n    \"CholesterolPct\": {{faker 'datatype.float'}},\n    \"DietaryFiber\": {{faker 'datatype.float'}},\n    \"DietaryFiberPct\": {{faker 'datatype.float'}},\n    \"MonoFat\": {{faker 'datatype.float'}},\n    \"PolyFat\": {{faker 'datatype.float'}},\n    \"Potassium\": {{faker 'datatype.float'}},\n    \"PotassiumPct\": {{faker 'datatype.float'}},\n    \"Protein\": {{faker 'datatype.float'}},\n    \"ProteinPct\": {{faker 'datatype.float'}},\n    \"SatFat\": {{faker 'datatype.float'}},\n    \"SatFatPct\": {{faker 'datatype.float'}},\n    \"SingularYieldUnit\": \"\",\n    \"Sodium\": {{faker 'datatype.float'}},\n    \"SodiumPct\": {{faker 'datatype.float'}},\n    \"Sugar\": {{faker 'datatype.float'}},\n    \"TotalCalories\": {{faker 'datatype.float'}},\n    \"TotalCarbs\": {{faker 'datatype.float'}},\n    \"TotalCarbsPct\": {{faker 'datatype.float'}},\n    \"TotalFat\": {{faker 'datatype.float'}},\n    \"TotalFatPct\": {{faker 'datatype.float'}},\n    \"TransFat\": {{faker 'datatype.float'}}\n  },\n  \"PhotoUrl\": \"\",\n  \"Poster\": {\n    \"FirstName\": \"\",\n    \"ImageUrl48\": \"\",\n    \"IsKitchenHelper\": {{faker 'datatype.boolean'}},\n    \"IsPremium\": {{faker 'datatype.boolean'}},\n    \"IsUsingRecurly\": {{faker 'datatype.boolean'}},\n    \"LastName\": \"\",\n    \"MemberSince\": \"{{faker 'date.recent' 365}}\",\n    \"PhotoUrl\": \"\",\n    \"PhotoUrl48\": \"\",\n    \"PremiumExpiryDate\": \"{{faker 'date.recent' 365}}\",\n    \"UserID\": {{faker 'datatype.number'}},\n    \"UserName\": \"\",\n    \"WebUrl\": \"\"\n  },\n  \"PrimaryIngredient\": \"\",\n  \"RecipeID\": {{faker 'datatype.number'}},\n  \"ReviewCount\": {{faker 'datatype.number'}},\n  \"StarRating\": {{faker 'datatype.float'}},\n  \"Steps\": [\n    {\n      \"EndGantt\": {{faker 'datatype.number'}},\n      \"StartGantt\": {{faker 'datatype.number'}},\n      \"Text\": \"\"\n    }\n  ],\n  \"Subcategory\": \"\",\n  \"Title\": \"\",\n  \"TotalMinutes\": {{faker 'datatype.number'}},\n  \"VariantOfRecipeID\": {{faker 'datatype.number'}},\n  \"VerifiedByClass\": \"\",\n  \"VerifiedDateTime\": \"{{faker 'date.recent' 365}}\",\n  \"Videos\": [\n    {\n      \"InsertedOn\": \"{{faker 'date.recent' 365}}\",\n      \"IsPrimaryVideo\": {{faker 'datatype.boolean'}},\n      \"MediaId\": \"\",\n      \"VidId\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"WebURL\": \"\",\n  \"YieldNumber\": {{faker 'datatype.float'}},\n  \"YieldUnit\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

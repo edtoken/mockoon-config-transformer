@@ -1,0 +1,1702 @@
+{
+  "uuid": "e14ae1aa-a45a-474a-bc90-c982f2cce089",
+  "lastMigration": 24,
+  "name": "Tag Manager API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "adc7572e-d9b0-4b18-9735-4e346ba2ee75",
+      "documentation": "Lists all GTM Accounts that a user has access to.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/accounts",
+      "responses": [
+        {
+          "uuid": "4274d09d-6a9d-40f2-89ee-51d32754f609",
+          "body": "{\n  \"account\": [\n    {\n      \"accountId\": \"\",\n      \"features\": {\n        \"supportMultipleContainers\": {{faker 'datatype.boolean'}},\n        \"supportUserPermissions\": {{faker 'datatype.boolean'}}\n      },\n      \"fingerprint\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"shareData\": {{faker 'datatype.boolean'}},\n      \"tagManagerUrl\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a241639-4433-488c-82f0-355142c22a90",
+      "documentation": "Looks up a Container by destination ID.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/accounts/containers:lookup",
+      "responses": [
+        {
+          "uuid": "2b59a9c3-fb23-4c77-8158-76d2d5fbb5db",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"domainName\": [\n    \"\"\n  ],\n  \"features\": {\n    \"supportBuiltInVariables\": {{faker 'datatype.boolean'}},\n    \"supportClients\": {{faker 'datatype.boolean'}},\n    \"supportEnvironments\": {{faker 'datatype.boolean'}},\n    \"supportFolders\": {{faker 'datatype.boolean'}},\n    \"supportGtagConfigs\": {{faker 'datatype.boolean'}},\n    \"supportTags\": {{faker 'datatype.boolean'}},\n    \"supportTemplates\": {{faker 'datatype.boolean'}},\n    \"supportTriggers\": {{faker 'datatype.boolean'}},\n    \"supportUserPermissions\": {{faker 'datatype.boolean'}},\n    \"supportVariables\": {{faker 'datatype.boolean'}},\n    \"supportVersions\": {{faker 'datatype.boolean'}},\n    \"supportWorkspaces\": {{faker 'datatype.boolean'}},\n    \"supportZones\": {{faker 'datatype.boolean'}}\n  },\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"notes\": \"\",\n  \"path\": \"\",\n  \"publicId\": \"\",\n  \"tagIds\": [\n    \"\"\n  ],\n  \"tagManagerUrl\": \"\",\n  \"usageContext\": [\n    \"{{oneOf (array 'usageContextUnspecified' 'web' 'android' 'ios' 'androidSdk5' 'iosSdk5' 'amp' 'server')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b67cadd3-5cbc-4ea4-842f-088fde884db4",
+      "documentation": "Lists all the enabled Built-In Variables of a GTM Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/built_in_variables",
+      "responses": [
+        {
+          "uuid": "a27ca783-a499-4607-a854-e13de4411daa",
+          "body": "{\n  \"builtInVariable\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"type\": \"{{oneOf (array 'builtInVariableTypeUnspecified' 'pageUrl' 'pageHostname' 'pagePath' 'referrer' 'event' 'clickElement' 'clickClasses' 'clickId' 'clickTarget' 'clickUrl' 'clickText' 'firstPartyServingUrl' 'formElement' 'formClasses' 'formId' 'formTarget' 'formUrl' 'formText' 'errorMessage' 'errorUrl' 'errorLine' 'newHistoryUrl' 'oldHistoryUrl' 'newHistoryFragment' 'oldHistoryFragment' 'newHistoryState' 'oldHistoryState' 'historySource' 'containerVersion' 'debugMode' 'randomNumber' 'containerId' 'appId' 'appName' 'appVersionCode' 'appVersionName' 'language' 'osVersion' 'platform' 'sdkVersion' 'deviceName' 'resolution' 'advertiserId' 'advertisingTrackingEnabled' 'htmlId' 'environmentName' 'ampBrowserLanguage' 'ampCanonicalPath' 'ampCanonicalUrl' 'ampCanonicalHost' 'ampReferrer' 'ampTitle' 'ampClientId' 'ampClientTimezone' 'ampClientTimestamp' 'ampClientScreenWidth' 'ampClientScreenHeight' 'ampClientScrollX' 'ampClientScrollY' 'ampClientMaxScrollX' 'ampClientMaxScrollY' 'ampTotalEngagedTime' 'ampPageViewId' 'ampPageLoadTime' 'ampPageDownloadTime' 'ampGtmEvent' 'eventName' 'firebaseEventParameterCampaign' 'firebaseEventParameterCampaignAclid' 'firebaseEventParameterCampaignAnid' 'firebaseEventParameterCampaignClickTimestamp' 'firebaseEventParameterCampaignContent' 'firebaseEventParameterCampaignCp1' 'firebaseEventParameterCampaignGclid' 'firebaseEventParameterCampaignSource' 'firebaseEventParameterCampaignTerm' 'firebaseEventParameterCurrency' 'firebaseEventParameterDynamicLinkAcceptTime' 'firebaseEventParameterDynamicLinkLinkid' 'firebaseEventParameterNotificationMessageDeviceTime' 'firebaseEventParameterNotificationMessageId' 'firebaseEventParameterNotificationMessageName' 'firebaseEventParameterNotificationMessageTime' 'firebaseEventParameterNotificationTopic' 'firebaseEventParameterPreviousAppVersion' 'firebaseEventParameterPreviousOsVersion' 'firebaseEventParameterPrice' 'firebaseEventParameterProductId' 'firebaseEventParameterQuantity' 'firebaseEventParameterValue' 'videoProvider' 'videoUrl' 'videoTitle' 'videoDuration' 'videoPercent' 'videoVisible' 'videoStatus' 'videoCurrentTime' 'scrollDepthThreshold' 'scrollDepthUnits' 'scrollDepthDirection' 'elementVisibilityRatio' 'elementVisibilityTime' 'elementVisibilityFirstTime' 'elementVisibilityRecentTime' 'requestPath' 'requestMethod' 'clientName' 'queryString' 'serverPageLocationUrl' 'serverPageLocationPath' 'serverPageLocationHostname')}}\",\n      \"workspaceId\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cf338f51-a331-4d19-8f22-1715e2db2172",
+      "documentation": "Creates one or more GTM Built-In Variables.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/built_in_variables",
+      "responses": [
+        {
+          "uuid": "a7de4341-5caa-44fe-b58f-3910f01254cc",
+          "body": "{\n  \"builtInVariable\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"type\": \"{{oneOf (array 'builtInVariableTypeUnspecified' 'pageUrl' 'pageHostname' 'pagePath' 'referrer' 'event' 'clickElement' 'clickClasses' 'clickId' 'clickTarget' 'clickUrl' 'clickText' 'firstPartyServingUrl' 'formElement' 'formClasses' 'formId' 'formTarget' 'formUrl' 'formText' 'errorMessage' 'errorUrl' 'errorLine' 'newHistoryUrl' 'oldHistoryUrl' 'newHistoryFragment' 'oldHistoryFragment' 'newHistoryState' 'oldHistoryState' 'historySource' 'containerVersion' 'debugMode' 'randomNumber' 'containerId' 'appId' 'appName' 'appVersionCode' 'appVersionName' 'language' 'osVersion' 'platform' 'sdkVersion' 'deviceName' 'resolution' 'advertiserId' 'advertisingTrackingEnabled' 'htmlId' 'environmentName' 'ampBrowserLanguage' 'ampCanonicalPath' 'ampCanonicalUrl' 'ampCanonicalHost' 'ampReferrer' 'ampTitle' 'ampClientId' 'ampClientTimezone' 'ampClientTimestamp' 'ampClientScreenWidth' 'ampClientScreenHeight' 'ampClientScrollX' 'ampClientScrollY' 'ampClientMaxScrollX' 'ampClientMaxScrollY' 'ampTotalEngagedTime' 'ampPageViewId' 'ampPageLoadTime' 'ampPageDownloadTime' 'ampGtmEvent' 'eventName' 'firebaseEventParameterCampaign' 'firebaseEventParameterCampaignAclid' 'firebaseEventParameterCampaignAnid' 'firebaseEventParameterCampaignClickTimestamp' 'firebaseEventParameterCampaignContent' 'firebaseEventParameterCampaignCp1' 'firebaseEventParameterCampaignGclid' 'firebaseEventParameterCampaignSource' 'firebaseEventParameterCampaignTerm' 'firebaseEventParameterCurrency' 'firebaseEventParameterDynamicLinkAcceptTime' 'firebaseEventParameterDynamicLinkLinkid' 'firebaseEventParameterNotificationMessageDeviceTime' 'firebaseEventParameterNotificationMessageId' 'firebaseEventParameterNotificationMessageName' 'firebaseEventParameterNotificationMessageTime' 'firebaseEventParameterNotificationTopic' 'firebaseEventParameterPreviousAppVersion' 'firebaseEventParameterPreviousOsVersion' 'firebaseEventParameterPrice' 'firebaseEventParameterProductId' 'firebaseEventParameterQuantity' 'firebaseEventParameterValue' 'videoProvider' 'videoUrl' 'videoTitle' 'videoDuration' 'videoPercent' 'videoVisible' 'videoStatus' 'videoCurrentTime' 'scrollDepthThreshold' 'scrollDepthUnits' 'scrollDepthDirection' 'elementVisibilityRatio' 'elementVisibilityTime' 'elementVisibilityFirstTime' 'elementVisibilityRecentTime' 'requestPath' 'requestMethod' 'clientName' 'queryString' 'serverPageLocationUrl' 'serverPageLocationPath' 'serverPageLocationHostname')}}\",\n      \"workspaceId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d79a4732-e300-44e0-bb22-0204ae50a377",
+      "documentation": "Lists all GTM Clients of a GTM container workspace.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/clients",
+      "responses": [
+        {
+          "uuid": "57e23640-2152-4b71-8b5c-3585375b7ff3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fb63762e-9dc1-4b17-bdd5-623e70c49e2f",
+      "documentation": "Creates a GTM Client.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/clients",
+      "responses": [
+        {
+          "uuid": "3e157311-4424-45ab-9c1e-2d2fb2ad1bd4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41e04026-5eba-44d6-a4c6-a4fdbc2087c9",
+      "documentation": "Lists all Containers that belongs to a GTM Account.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/containers",
+      "responses": [
+        {
+          "uuid": "b9ebe52f-e81d-48b8-862a-75372a7a5647",
+          "body": "{\n  \"container\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"domainName\": [\n        \"\"\n      ],\n      \"features\": {\n        \"supportBuiltInVariables\": {{faker 'datatype.boolean'}},\n        \"supportClients\": {{faker 'datatype.boolean'}},\n        \"supportEnvironments\": {{faker 'datatype.boolean'}},\n        \"supportFolders\": {{faker 'datatype.boolean'}},\n        \"supportGtagConfigs\": {{faker 'datatype.boolean'}},\n        \"supportTags\": {{faker 'datatype.boolean'}},\n        \"supportTemplates\": {{faker 'datatype.boolean'}},\n        \"supportTriggers\": {{faker 'datatype.boolean'}},\n        \"supportUserPermissions\": {{faker 'datatype.boolean'}},\n        \"supportVariables\": {{faker 'datatype.boolean'}},\n        \"supportVersions\": {{faker 'datatype.boolean'}},\n        \"supportWorkspaces\": {{faker 'datatype.boolean'}},\n        \"supportZones\": {{faker 'datatype.boolean'}}\n      },\n      \"fingerprint\": \"\",\n      \"name\": \"\",\n      \"notes\": \"\",\n      \"path\": \"\",\n      \"publicId\": \"\",\n      \"tagIds\": [\n        \"\"\n      ],\n      \"tagManagerUrl\": \"\",\n      \"usageContext\": [\n        \"{{oneOf (array 'usageContextUnspecified' 'web' 'android' 'ios' 'androidSdk5' 'iosSdk5' 'amp' 'server')}}\"\n      ]\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bef7bf80-7c92-4984-ae98-ee849befc46d",
+      "documentation": "Creates a Container.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/containers",
+      "responses": [
+        {
+          "uuid": "fab8741b-9f9d-4df7-9f06-e993fc6e17a9",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"domainName\": [\n    \"\"\n  ],\n  \"features\": {\n    \"supportBuiltInVariables\": {{faker 'datatype.boolean'}},\n    \"supportClients\": {{faker 'datatype.boolean'}},\n    \"supportEnvironments\": {{faker 'datatype.boolean'}},\n    \"supportFolders\": {{faker 'datatype.boolean'}},\n    \"supportGtagConfigs\": {{faker 'datatype.boolean'}},\n    \"supportTags\": {{faker 'datatype.boolean'}},\n    \"supportTemplates\": {{faker 'datatype.boolean'}},\n    \"supportTriggers\": {{faker 'datatype.boolean'}},\n    \"supportUserPermissions\": {{faker 'datatype.boolean'}},\n    \"supportVariables\": {{faker 'datatype.boolean'}},\n    \"supportVersions\": {{faker 'datatype.boolean'}},\n    \"supportWorkspaces\": {{faker 'datatype.boolean'}},\n    \"supportZones\": {{faker 'datatype.boolean'}}\n  },\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"notes\": \"\",\n  \"path\": \"\",\n  \"publicId\": \"\",\n  \"tagIds\": [\n    \"\"\n  ],\n  \"tagManagerUrl\": \"\",\n  \"usageContext\": [\n    \"{{oneOf (array 'usageContextUnspecified' 'web' 'android' 'ios' 'androidSdk5' 'iosSdk5' 'amp' 'server')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b0f2803f-baee-48b9-b477-3cb0e6731cee",
+      "documentation": "Lists all Destinations linked to a GTM Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/destinations",
+      "responses": [
+        {
+          "uuid": "a9b6e082-83cc-44ec-87d5-752777063ee0",
+          "body": "{\n  \"destination\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"destinationId\": \"\",\n      \"destinationLinkId\": \"\",\n      \"fingerprint\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"tagManagerUrl\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "60b185c9-cda3-4cb7-a883-885f1545abbf",
+      "documentation": "Adds a Destination to this Container and removes it from the Container to which it is currently linked.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/destinations:link",
+      "responses": [
+        {
+          "uuid": "4365f5dc-ce16-42b2-b074-4580490c6c42",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"destinationId\": \"\",\n  \"destinationLinkId\": \"\",\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9fa537b-37c5-40a1-aaec-e282d3116058",
+      "documentation": "Lists all GTM Environments of a GTM Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/environments",
+      "responses": [
+        {
+          "uuid": "1bc7a994-e89b-4156-a1a6-efccaa1df514",
+          "body": "{\n  \"environment\": [\n    {\n      \"accountId\": \"\",\n      \"authorizationCode\": \"\",\n      \"authorizationTimestamp\": \"\",\n      \"containerId\": \"\",\n      \"containerVersionId\": \"\",\n      \"description\": \"\",\n      \"enableDebug\": {{faker 'datatype.boolean'}},\n      \"environmentId\": \"\",\n      \"fingerprint\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"tagManagerUrl\": \"\",\n      \"type\": \"{{oneOf (array 'user' 'live' 'latest' 'workspace')}}\",\n      \"url\": \"\",\n      \"workspaceId\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8ea893ee-97c5-4f50-baff-9bb2f2a5f1a0",
+      "documentation": "Creates a GTM Environment.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/environments",
+      "responses": [
+        {
+          "uuid": "3fc7a5ea-b059-4d3e-8047-12c75e770fe3",
+          "body": "{\n  \"accountId\": \"\",\n  \"authorizationCode\": \"\",\n  \"authorizationTimestamp\": \"\",\n  \"containerId\": \"\",\n  \"containerVersionId\": \"\",\n  \"description\": \"\",\n  \"enableDebug\": {{faker 'datatype.boolean'}},\n  \"environmentId\": \"\",\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\",\n  \"type\": \"{{oneOf (array 'user' 'live' 'latest' 'workspace')}}\",\n  \"url\": \"\",\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0dc9a115-6777-4949-a843-693e8005b6ed",
+      "documentation": "Lists all GTM Folders of a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/folders",
+      "responses": [
+        {
+          "uuid": "e5e027a1-dd8a-4b98-8089-4430da322903",
+          "body": "{\n  \"folder\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"fingerprint\": \"\",\n      \"folderId\": \"\",\n      \"name\": \"\",\n      \"notes\": \"\",\n      \"path\": \"\",\n      \"tagManagerUrl\": \"\",\n      \"workspaceId\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1c953178-75eb-4761-9900-50f5e0c21dda",
+      "documentation": "Creates a GTM Folder.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/folders",
+      "responses": [
+        {
+          "uuid": "631eb632-b3df-48b9-ac1f-36ed5f5c310f",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"fingerprint\": \"\",\n  \"folderId\": \"\",\n  \"name\": \"\",\n  \"notes\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\",\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d49254c4-a5d8-473d-a2a3-ee1d13297fea",
+      "documentation": "Lists all Google tag configs in a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/gtag_config",
+      "responses": [
+        {
+          "uuid": "b14bdf0f-9fad-4e6b-a489-4daace77ae82",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b21393b4-a849-4f35-8597-d7e6b6396e0e",
+      "documentation": "Creates a Google tag config.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/gtag_config",
+      "responses": [
+        {
+          "uuid": "fecac462-0349-4bfb-9cdc-625c584f449c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9e093594-3d80-46b1-98e0-9e3653e3c173",
+      "documentation": "Lists all GTM Tags of a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/tags",
+      "responses": [
+        {
+          "uuid": "f520365f-1a87-4bb7-a711-a75f82af483d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "28596bf2-3ce6-4b98-b780-d81313aec94f",
+      "documentation": "Creates a GTM Tag.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/tags",
+      "responses": [
+        {
+          "uuid": "1aea63c6-6fee-4bb3-9728-a0496651199a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "400e45a7-5b30-44b4-8d54-88882e52f427",
+      "documentation": "Lists all GTM Templates of a GTM container workspace.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/templates",
+      "responses": [
+        {
+          "uuid": "26ed625b-9c20-41e9-8ca2-5103ed92411d",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"template\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"fingerprint\": \"\",\n      \"galleryReference\": {\n        \"host\": \"\",\n        \"isModified\": {{faker 'datatype.boolean'}},\n        \"owner\": \"\",\n        \"repository\": \"\",\n        \"signature\": \"\",\n        \"version\": \"\"\n      },\n      \"name\": \"\",\n      \"path\": \"\",\n      \"tagManagerUrl\": \"\",\n      \"templateData\": \"\",\n      \"templateId\": \"\",\n      \"workspaceId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5c127524-1f74-4480-9173-9783005d2980",
+      "documentation": "Creates a GTM Custom Template.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/templates",
+      "responses": [
+        {
+          "uuid": "c9da10a8-526e-4aa7-8eeb-c96d096db143",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"fingerprint\": \"\",\n  \"galleryReference\": {\n    \"host\": \"\",\n    \"isModified\": {{faker 'datatype.boolean'}},\n    \"owner\": \"\",\n    \"repository\": \"\",\n    \"signature\": \"\",\n    \"version\": \"\"\n  },\n  \"name\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\",\n  \"templateData\": \"\",\n  \"templateId\": \"\",\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0b0c5d31-fd92-4c85-8aef-d63f921344e1",
+      "documentation": "Lists all GTM Triggers of a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/triggers",
+      "responses": [
+        {
+          "uuid": "a4066aa4-a1b0-4730-bd22-7184d0723363",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1b17f8f4-a405-49f5-9166-d423650aa47c",
+      "documentation": "Creates a GTM Trigger.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/triggers",
+      "responses": [
+        {
+          "uuid": "4dd20cef-05a2-44aa-b4ca-bbfde4c15db3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "40878a26-c79f-4f73-bd98-dad7ab6effb0",
+      "documentation": "List all users that have access to the account along with Account and Container user access granted to each of them.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/user_permissions",
+      "responses": [
+        {
+          "uuid": "db9290ab-5798-4553-9345-d6a5d1f34ffa",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"userPermission\": [\n    {\n      \"accountAccess\": {\n        \"permission\": \"{{oneOf (array 'accountPermissionUnspecified' 'noAccess' 'user' 'admin')}}\"\n      },\n      \"accountId\": \"\",\n      \"containerAccess\": [\n        {\n          \"containerId\": \"\",\n          \"permission\": \"{{oneOf (array 'containerPermissionUnspecified' 'noAccess' 'read' 'edit' 'approve' 'publish')}}\"\n        }\n      ],\n      \"emailAddress\": \"\",\n      \"path\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "66c64bff-fdb4-41d0-b9d0-bb4e6dd8701c",
+      "documentation": "Creates a user's Account & Container access.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/user_permissions",
+      "responses": [
+        {
+          "uuid": "65218793-1eeb-4b7b-9110-a565b1181830",
+          "body": "{\n  \"accountAccess\": {\n    \"permission\": \"{{oneOf (array 'accountPermissionUnspecified' 'noAccess' 'user' 'admin')}}\"\n  },\n  \"accountId\": \"\",\n  \"containerAccess\": [\n    {\n      \"containerId\": \"\",\n      \"permission\": \"{{oneOf (array 'containerPermissionUnspecified' 'noAccess' 'read' 'edit' 'approve' 'publish')}}\"\n    }\n  ],\n  \"emailAddress\": \"\",\n  \"path\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a5bc2a70-3667-4663-b09e-835bb5ead3eb",
+      "documentation": "Lists all GTM Variables of a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/variables",
+      "responses": [
+        {
+          "uuid": "df4c4cbb-f869-4d41-b48e-4bf3d9a237aa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0665f94-f5fc-44a6-8ad9-744a6f7a705f",
+      "documentation": "Creates a GTM Variable.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/variables",
+      "responses": [
+        {
+          "uuid": "9886fe53-1fb2-4e9c-bc6b-71a4ad2a6c04",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7fd31bb2-3723-4876-a903-71ac6156cd06",
+      "documentation": "Lists all Container Versions of a GTM Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/version_headers",
+      "responses": [
+        {
+          "uuid": "ecdcebd2-8a04-4d52-a997-27c3b60a2ddc",
+          "body": "{\n  \"containerVersionHeader\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"containerVersionId\": \"\",\n      \"deleted\": {{faker 'datatype.boolean'}},\n      \"name\": \"\",\n      \"numClients\": \"\",\n      \"numCustomTemplates\": \"\",\n      \"numGtagConfigs\": \"\",\n      \"numMacros\": \"\",\n      \"numRules\": \"\",\n      \"numTags\": \"\",\n      \"numTriggers\": \"\",\n      \"numVariables\": \"\",\n      \"numZones\": \"\",\n      \"path\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5c54563f-40aa-45d8-a655-03d026532005",
+      "documentation": "Gets the latest container version header",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/version_headers:latest",
+      "responses": [
+        {
+          "uuid": "2a2fa038-fac3-4ee3-9a3f-e661d67b7c9d",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"containerVersionId\": \"\",\n  \"deleted\": {{faker 'datatype.boolean'}},\n  \"name\": \"\",\n  \"numClients\": \"\",\n  \"numCustomTemplates\": \"\",\n  \"numGtagConfigs\": \"\",\n  \"numMacros\": \"\",\n  \"numRules\": \"\",\n  \"numTags\": \"\",\n  \"numTriggers\": \"\",\n  \"numVariables\": \"\",\n  \"numZones\": \"\",\n  \"path\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f88d9b0-7722-41f1-bf0b-34c76888b055",
+      "documentation": "Gets the live (i.e. published) container version",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/versions:live",
+      "responses": [
+        {
+          "uuid": "7fad60ba-d682-4caf-be5e-ff0242b9c3fd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7d082a2f-23b6-42a6-abfc-dd0d8b7e6f5a",
+      "documentation": "Lists all Workspaces that belong to a GTM Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/workspaces",
+      "responses": [
+        {
+          "uuid": "cc9be42c-93de-421b-a193-ef9da3456aa4",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"workspace\": [\n    {\n      \"accountId\": \"\",\n      \"containerId\": \"\",\n      \"description\": \"\",\n      \"fingerprint\": \"\",\n      \"name\": \"\",\n      \"path\": \"\",\n      \"tagManagerUrl\": \"\",\n      \"workspaceId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8d1d01fb-eee5-4494-8f0e-d2c55b679b21",
+      "documentation": "Creates a Workspace.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/workspaces",
+      "responses": [
+        {
+          "uuid": "fd17386c-4c8f-4c45-bdbf-77d801e9ad9a",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"description\": \"\",\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\",\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c8a52449-fb37-40f3-bb96-01fbf564783b",
+      "documentation": "Lists all GTM Zones of a GTM container workspace.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:parent/zones",
+      "responses": [
+        {
+          "uuid": "b1ce61c9-9883-4861-a249-956551dc6f25",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7edbaeb2-67c1-4859-8d53-86793eb3557d",
+      "documentation": "Creates a GTM Zone.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:parent/zones",
+      "responses": [
+        {
+          "uuid": "c87ec391-bddd-4e5a-ac18-cac54d5c14dc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d802d50-e39e-4bac-942e-f181b6380953",
+      "documentation": "Removes a user from the account, revoking access to it and all of its containers.",
+      "method": "delete",
+      "endpoint": "tagmanager/v2/:path",
+      "responses": [
+        {
+          "uuid": "a77b57ac-cbee-4da9-9bf2-0ad2ee8805d8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b5ed6d0b-f49d-4055-bdca-5866f442f290",
+      "documentation": "Gets a user's Account & Container access.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:path",
+      "responses": [
+        {
+          "uuid": "82429447-e1f5-4223-998a-8ed6f450e0e8",
+          "body": "{\n  \"accountAccess\": {\n    \"permission\": \"{{oneOf (array 'accountPermissionUnspecified' 'noAccess' 'user' 'admin')}}\"\n  },\n  \"accountId\": \"\",\n  \"containerAccess\": [\n    {\n      \"containerId\": \"\",\n      \"permission\": \"{{oneOf (array 'containerPermissionUnspecified' 'noAccess' 'read' 'edit' 'approve' 'publish')}}\"\n    }\n  ],\n  \"emailAddress\": \"\",\n  \"path\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6b6adfe-a22d-4094-82c2-87e99e588194",
+      "documentation": "Updates a user's Account & Container access.",
+      "method": "put",
+      "endpoint": "tagmanager/v2/:path",
+      "responses": [
+        {
+          "uuid": "98228a37-8485-41ac-a320-cad9bf7b5e7a",
+          "body": "{\n  \"accountAccess\": {\n    \"permission\": \"{{oneOf (array 'accountPermissionUnspecified' 'noAccess' 'user' 'admin')}}\"\n  },\n  \"accountId\": \"\",\n  \"containerAccess\": [\n    {\n      \"containerId\": \"\",\n      \"permission\": \"{{oneOf (array 'containerPermissionUnspecified' 'noAccess' 'read' 'edit' 'approve' 'publish')}}\"\n    }\n  ],\n  \"emailAddress\": \"\",\n  \"path\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8f3da1d-d178-46d4-8179-5a8c064a1d96",
+      "documentation": "Reverts changes to a GTM Built-In Variables in a GTM Workspace.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path/built_in_variables:revert",
+      "responses": [
+        {
+          "uuid": "e3169a4c-a9bc-401e-9647-ad5d84e403c0",
+          "body": "{\n  \"enabled\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d7fb07c8-28fb-4d3f-b65c-511294706423",
+      "documentation": "Finds conflicting and modified entities in the workspace.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:path/status",
+      "responses": [
+        {
+          "uuid": "6d2650a4-7138-41c6-a09d-015d1d1a4323",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8053c913-069f-4d92-b1e0-4a1255c01056",
+      "documentation": "Combines Containers.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:combine",
+      "responses": [
+        {
+          "uuid": "3cf7bed1-4e93-4170-a685-96c6e7360c6a",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"domainName\": [\n    \"\"\n  ],\n  \"features\": {\n    \"supportBuiltInVariables\": {{faker 'datatype.boolean'}},\n    \"supportClients\": {{faker 'datatype.boolean'}},\n    \"supportEnvironments\": {{faker 'datatype.boolean'}},\n    \"supportFolders\": {{faker 'datatype.boolean'}},\n    \"supportGtagConfigs\": {{faker 'datatype.boolean'}},\n    \"supportTags\": {{faker 'datatype.boolean'}},\n    \"supportTemplates\": {{faker 'datatype.boolean'}},\n    \"supportTriggers\": {{faker 'datatype.boolean'}},\n    \"supportUserPermissions\": {{faker 'datatype.boolean'}},\n    \"supportVariables\": {{faker 'datatype.boolean'}},\n    \"supportVersions\": {{faker 'datatype.boolean'}},\n    \"supportWorkspaces\": {{faker 'datatype.boolean'}},\n    \"supportZones\": {{faker 'datatype.boolean'}}\n  },\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"notes\": \"\",\n  \"path\": \"\",\n  \"publicId\": \"\",\n  \"tagIds\": [\n    \"\"\n  ],\n  \"tagManagerUrl\": \"\",\n  \"usageContext\": [\n    \"{{oneOf (array 'usageContextUnspecified' 'web' 'android' 'ios' 'androidSdk5' 'iosSdk5' 'amp' 'server')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2954fda-0001-4343-b70b-4bb7010833f3",
+      "documentation": "Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:create_version",
+      "responses": [
+        {
+          "uuid": "4b2bf188-9fc7-43d2-ae8f-a2ed6ee4e871",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ddf06407-a2a4-497f-a2a4-1daff6a8097a",
+      "documentation": "List all entities in a GTM Folder.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:entities",
+      "responses": [
+        {
+          "uuid": "3c571328-a215-4e01-9981-e47fb20e6c59",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "79a86db9-3d32-4428-ad66-a7f961523697",
+      "documentation": "Moves entities to a GTM Folder.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:move_entities_to_folder",
+      "responses": [
+        {
+          "uuid": "e7c59510-5375-4024-bdc6-157ed934e358",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "97698ec9-1a4e-4190-afd3-70c5f370afe0",
+      "documentation": "Move Tag ID out of a Container.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:move_tag_id",
+      "responses": [
+        {
+          "uuid": "830468a1-fd0a-4de6-a001-ca247a220493",
+          "body": "{\n  \"accountId\": \"\",\n  \"containerId\": \"\",\n  \"domainName\": [\n    \"\"\n  ],\n  \"features\": {\n    \"supportBuiltInVariables\": {{faker 'datatype.boolean'}},\n    \"supportClients\": {{faker 'datatype.boolean'}},\n    \"supportEnvironments\": {{faker 'datatype.boolean'}},\n    \"supportFolders\": {{faker 'datatype.boolean'}},\n    \"supportGtagConfigs\": {{faker 'datatype.boolean'}},\n    \"supportTags\": {{faker 'datatype.boolean'}},\n    \"supportTemplates\": {{faker 'datatype.boolean'}},\n    \"supportTriggers\": {{faker 'datatype.boolean'}},\n    \"supportUserPermissions\": {{faker 'datatype.boolean'}},\n    \"supportVariables\": {{faker 'datatype.boolean'}},\n    \"supportVersions\": {{faker 'datatype.boolean'}},\n    \"supportWorkspaces\": {{faker 'datatype.boolean'}},\n    \"supportZones\": {{faker 'datatype.boolean'}}\n  },\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"notes\": \"\",\n  \"path\": \"\",\n  \"publicId\": \"\",\n  \"tagIds\": [\n    \"\"\n  ],\n  \"tagManagerUrl\": \"\",\n  \"usageContext\": [\n    \"{{oneOf (array 'usageContextUnspecified' 'web' 'android' 'ios' 'androidSdk5' 'iosSdk5' 'amp' 'server')}}\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "63dbf22f-0214-4eb8-8edf-20584ad8585a",
+      "documentation": "Publishes a Container Version.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:publish",
+      "responses": [
+        {
+          "uuid": "3cb10dc2-2d65-4d1a-9e57-04b408705f31",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23c7a52f-3a10-4978-81ee-5f04c6be0160",
+      "documentation": "Quick previews a workspace by creating a fake container version from all entities in the provided workspace.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:quick_preview",
+      "responses": [
+        {
+          "uuid": "ab228d0c-d5a5-4335-8af4-b236391f2db2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e35ad5f-ab75-43be-8783-d5c90d1ca6cc",
+      "documentation": "Re-generates the authorization code for a GTM Environment.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:reauthorize",
+      "responses": [
+        {
+          "uuid": "d48333ae-94df-4642-b254-a70c1dc7efe2",
+          "body": "{\n  \"accountId\": \"\",\n  \"authorizationCode\": \"\",\n  \"authorizationTimestamp\": \"\",\n  \"containerId\": \"\",\n  \"containerVersionId\": \"\",\n  \"description\": \"\",\n  \"enableDebug\": {{faker 'datatype.boolean'}},\n  \"environmentId\": \"\",\n  \"fingerprint\": \"\",\n  \"name\": \"\",\n  \"path\": \"\",\n  \"tagManagerUrl\": \"\",\n  \"type\": \"{{oneOf (array 'user' 'live' 'latest' 'workspace')}}\",\n  \"url\": \"\",\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "412e9c71-4f55-4072-ac10-cae6e0908a26",
+      "documentation": "Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:resolve_conflict",
+      "responses": [
+        {
+          "uuid": "73f700e3-19c4-4c94-b6cc-d92c52f4b2e3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d0fe2b4b-efa2-4c01-9e1b-e5c5fa796731",
+      "documentation": "Reverts changes to a GTM Zone in a GTM Workspace.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:revert",
+      "responses": [
+        {
+          "uuid": "38f8e561-cd8b-441d-8c47-dc92eef4ccda",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d3202f31-fb73-464a-827b-43b3aa0a8339",
+      "documentation": "Sets the latest version used for synchronization of workspaces when detecting conflicts and errors.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:set_latest",
+      "responses": [
+        {
+          "uuid": "bf8210f1-8e84-4f6a-8621-936194849684",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "867450e4-c6b0-40f4-a1d4-cfdc477ef70d",
+      "documentation": "Gets the tagging snippet for a Container.",
+      "method": "get",
+      "endpoint": "tagmanager/v2/:path:snippet",
+      "responses": [
+        {
+          "uuid": "21d4e9ed-72b1-40a8-b4e4-dc265c9cce29",
+          "body": "{\n  \"snippet\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "072f38cc-a144-4157-9fa6-592b3258e017",
+      "documentation": "Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:sync",
+      "responses": [
+        {
+          "uuid": "95e50381-746f-4fae-a983-79ffa395a70d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23e1afdf-b5b5-4f74-9593-b0e749ab04d6",
+      "documentation": "Undeletes a Container Version.",
+      "method": "post",
+      "endpoint": "tagmanager/v2/:path:undelete",
+      "responses": [
+        {
+          "uuid": "4d2d97f8-c5aa-4e80-822e-bdeadf615a55",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

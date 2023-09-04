@@ -1,0 +1,1098 @@
+{
+  "uuid": "43c0f238-877d-4d01-b10b-8d0f04a0145a",
+  "lastMigration": 24,
+  "name": "iotDpsClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "2bc0ed21-b9c6-4e07-82d1-01e1b56677f4",
+      "documentation": "Lists all of the available Microsoft.Devices REST API operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Devices/operations",
+      "responses": [
+        {
+          "uuid": "f24d7326-e25f-49e7-86d7-f31410822394",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "efda917c-ac81-4971-95cb-8e185965303a",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aa6a3803-d4a5-49c6-8edd-22cf3f0a701b",
+      "documentation": "Check if a provisioning service name is available.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.Devices/checkProvisioningServiceNameAvailability",
+      "responses": [
+        {
+          "uuid": "7ab87574-c445-4cd4-8d33-4bffdf9d7780",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"{{oneOf (array 'Invalid' 'AlreadyExists')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized response that specifies whether the provisioning service name is available. If the name is not available, the body contains the reason.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "adca7ffc-4242-48e6-8250-a7f504045f0a",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ff12d9d-5886-4830-8f37-745616d98250",
+      "documentation": "Get all the provisioning services in a subscription.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.Devices/provisioningServices",
+      "responses": [
+        {
+          "uuid": "44bd68e9-b98f-48a3-9639-6a4232d34bf5",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized array of the metadata from all the provisioning services in the subscription.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b899c89b-3a31-442b-a3e3-a151621c670e",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "03d7aa2f-0b8c-4028-b8c2-726aa80f5833",
+      "documentation": "Get a list of all provisioning services in the given resource group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices",
+      "responses": [
+        {
+          "uuid": "16c45611-807f-4282-8369-0edd158f3e1a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of provisioning services in the resource group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b7bd0461-c727-4453-a38c-591eb971c614",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f76efe9d-0584-4cca-af7d-d79e714852c4",
+      "documentation": "Delete the Provisioning Service",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName",
+      "responses": [
+        {
+          "uuid": "79524904-3cc2-445f-a5ec-d41538d60e5b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is returned as a response to the status polling request for the delete operation. The body contains the resource representation that indicates a transitional provisioning state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "147a9cfe-8350-40f6-b20f-3b5b371174a7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "The provisioning service resource provider always returns a 202 Accepted status code with valid Location and Retry-After headers. The resource provider also sets the Azure-AsyncOperation header with a URL that points to the operation resource for this operation. Subsequent GET attempts on the resource after a DELETE operation return a resource representation that indicates a transitional provisioning state (such as Terminating). To retrieve the status of the operation, a client can either poll the URL returned in the Location header after the Retry-After interval, get the provisioning service status directly, or query the operation resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d73e020b-e814-4ac3-a622-32e4a7b258b9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Once the long running delete operation completes successfully, a 204 No Content status code is returned when the status polling request finds the provisioning service metadata in the service and the status of the delete operation is set to a completed state.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d108857-d7b8-42cc-95fa-91d61e4a7311",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "After the long running delete operation completes successfully, a 404 Not Found is returned when the status polling request no longer finds the provisioning service metadata in the service.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6d9cc8c6-ebb5-40b2-874e-06937af9dfad",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "164c6ed7-ad7d-4891-869b-7d13cd728210",
+      "documentation": "Get the non-security related metadata of the provisioning service.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName",
+      "responses": [
+        {
+          "uuid": "d735c3a6-0f2e-499d-8b1f-e8df0b9677eb",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Provisioning service description with no keys is included in the response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04839280-dbd7-43af-8d59-ea6db3d68735",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "27eddb7a-fc32-4d94-9dd5-8c3e3a7ed32a",
+      "documentation": "Update an existing provisioning service's tags.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName",
+      "responses": [
+        {
+          "uuid": "90b3a52a-a18b-40af-aae0-803686ab08d8",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Provisioning Service was successfully updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e31cbcfe-0fb0-4e77-9da9-027302611954",
+      "documentation": "Create or update the metadata of the provisioning service.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName",
+      "responses": [
+        {
+          "uuid": "e02de7c6-78ce-4e52-8e5d-2d3e8534f415",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The body contains all the non-security properties of the provisioning service. Security-related properties are set to null.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0299d98e-fcec-4b9c-83d6-036472c81412",
+          "body": "{\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "This is a long running operation. The operation returns a 201 if the validation is complete. The response includes an Azure-AsyncOperation header that contains a status URL. Clients are expected to poll the status URL for the status of the operation. If successful, the operation returns HTTP status code of 201 (OK).",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eaa02e4c-6f55-422a-862d-ee283105e42b",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a007d983-4430-464d-9cb9-fd3e3e0bfb66",
+      "documentation": "Get all the certificates tied to the provisioning service.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates",
+      "responses": [
+        {
+          "uuid": "62ec1e38-94a2-4513-9931-167f72477d14",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List of certificate descriptions in a JSON-serialized array.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d48c8d54-0210-4452-9d88-7f11663b3074",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77900f28-e455-4e51-9f48-296929516778",
+      "documentation": "Delete the Provisioning Service Certificate.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates/:certificateName",
+      "responses": [
+        {
+          "uuid": "0a887467-a568-4092-a3f9-313884694811",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a12ca56b-186a-4ca9-9d6a-301e6431f6db",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a8a37820-7b3e-43ea-93ca-110fe419ad7c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bb44b8a7-2500-4817-95c3-1a4be00b8a1c",
+      "documentation": "Get the certificate from the provisioning service.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates/:certificateName",
+      "responses": [
+        {
+          "uuid": "352f53a1-9242-4068-befd-ff9e9ec7054c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Metadata for the specified certificate.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "65369594-663b-4e0f-9abb-e7bb41797ac9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35886bb7-4d3c-42d6-80b6-3d56b6f8be6b",
+      "documentation": "Upload the certificate to the provisioning service.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates/:certificateName",
+      "responses": [
+        {
+          "uuid": "4e212b13-b0d7-48af-a182-c875711e0bdb",
+          "body": "{\n  \"etag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"created\": \"\",\n    \"expiry\": \"\",\n    \"isVerified\": {{faker 'datatype.boolean'}},\n    \"subject\": \"\",\n    \"thumbprint\": \"\",\n    \"updated\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "If certificate already exist and update was successful, the operation returns HTTP status code of 201 (OK).",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f85a880c-c791-4fdf-84f0-c8b6a8a68df1",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "48c0a7e0-1fbf-4937-9073-6e0bd9bc33c2",
+      "documentation": "Generate verification code for Proof of Possession.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates/:certificateName/generateVerificationCode",
+      "responses": [
+        {
+          "uuid": "33179676-7c9c-4b68-8138-6f36aae3d18d",
+          "body": "{\n  \"etag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"created\": \"\",\n    \"expiry\": \"\",\n    \"isVerified\": {{faker 'datatype.boolean'}},\n    \"subject\": \"\",\n    \"thumbprint\": \"\",\n    \"updated\": \"\",\n    \"verificationCode\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Generated verification code for that certificate is returned.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "26bde940-d67e-4837-a263-e0ce4463d58e",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bdcf5e81-fc3c-481f-9edd-cc925f5ad16e",
+      "documentation": "Verify certificate's private key possession.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/certificates/:certificateName/verify",
+      "responses": [
+        {
+          "uuid": "c74900a6-70fb-445c-ada5-59e43057eb44",
+          "body": "{\n  \"etag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"created\": \"\",\n    \"expiry\": \"\",\n    \"isVerified\": {{faker 'datatype.boolean'}},\n    \"subject\": \"\",\n    \"thumbprint\": \"\",\n    \"updated\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3d7ef19e-5ec5-4169-9ae0-217b77d18aa6",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c3157926-4e2f-48fe-9da5-28b138317052",
+      "documentation": "Get a shared access policy by name from a provisioning service.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/keys/:keyName/listkeys",
+      "responses": [
+        {
+          "uuid": "3a36522a-f87f-441f-8f21-87fbff0c0b12",
+          "body": "{\n  \"keyName\": \"\",\n  \"primaryKey\": \"\",\n  \"rights\": \"{{oneOf (array 'ServiceConfig' 'EnrollmentRead' 'EnrollmentWrite' 'DeviceConnect' 'RegistrationStatusRead' 'RegistrationStatusWrite')}}\",\n  \"secondaryKey\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized shared access policy, including keys, that you can use to access one or more provisioning service endpoints.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7c11d371-3492-48cd-aeda-dcd2f3227ae7",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fca3dab6-81ba-4fe0-b8a1-52beec45ecd6",
+      "documentation": "Get the security metadata for a provisioning service.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/listkeys",
+      "responses": [
+        {
+          "uuid": "f218de03-b044-48bc-925a-c5e3762428dc",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"keyName\": \"\",\n      \"primaryKey\": \"\",\n      \"rights\": \"{{oneOf (array 'ServiceConfig' 'EnrollmentRead' 'EnrollmentWrite' 'DeviceConnect' 'RegistrationStatusRead' 'RegistrationStatusWrite')}}\",\n      \"secondaryKey\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized array of shared access policies, including keys, that you can use to access the provisioning service endpoints.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5bffddf1-e598-4547-87c8-15ed84ac960f",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8e8cca35-1786-42a2-b656-ec0574a2f4d2",
+      "documentation": "Gets the status of a long running operation, such as create, update or delete a provisioning service.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/operationresults/:operationId",
+      "responses": [
+        {
+          "uuid": "2774ef2f-4eea-46f4-8e74-7e4385ad5d6c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "The status of the long running operation.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ead087bc-54d8-4ac4-8bf8-0eec0c43bf7e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5123438a-a259-40c1-93e5-a1ea5b89868a",
+      "documentation": "Get the list of valid SKUs for a provisioning service.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/provisioningServices/:provisioningServiceName/skus",
+      "responses": [
+        {
+          "uuid": "57924773-5c89-4844-8e48-f9eb3ec7b22a",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"name\": \"{{oneOf (array 'S1')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "This is a synchronous operation. The body contains a JSON-serialized array of the valid SKUs for this provisioning service.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1545281b-c8e2-4319-9248-576143d3bd41",
+          "body": "{\n  \"Code\": \"\",\n  \"Details\": \"\",\n  \"HttpStatusCode\": \"\",\n  \"Message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Default error response.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

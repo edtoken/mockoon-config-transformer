@@ -1,0 +1,3958 @@
+{
+  "uuid": "bbc660da-4d57-48f2-8bc6-36f5437758f8",
+  "lastMigration": 24,
+  "name": "AWS Network Firewall",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "53ad1bee-cfb3-442b-9e75-96835e76a917",
+      "documentation": "<p>Associates a <a>FirewallPolicy</a> to a <a>Firewall</a>. </p> <p>A firewall policy defines how to monitor and manage your VPC network traffic, using a collection of inspection rule groups and other settings. Each firewall requires one firewall policy association, and you can use the same firewall policy for multiple firewalls. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.AssociateFirewallPolicy",
+      "responses": [
+        {
+          "uuid": "3b558e78-af1d-40dd-ba9d-84df2cc9da58",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"FirewallPolicyArn\": \"\",\n  \"UpdateToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cc0d0da3-4fa3-4432-b847-4b61e5803473",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ad7e3169-ea12-4e93-bd3a-25eb5fb23192",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e2ecc806-ec3f-4c60-89cc-cef03dfd59f4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d622fbb4-5558-406d-ae27-21c273f2920a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a510e873-138f-42a2-a70f-94c1a4a4fbe8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "751ca3fc-dd2a-4ecf-b08b-18d8de97ce3a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a9c480b-bfbb-476f-9f75-2dd58bf54319",
+      "documentation": "<p>Associates the specified subnets in the Amazon VPC to the firewall. You can specify one subnet for each of the Availability Zones that the VPC spans. </p> <p>This request creates an AWS Network Firewall firewall endpoint in each of the subnets. To enable the firewall's protections, you must also modify the VPC's route tables for each subnet's Availability Zone, to redirect the traffic that's coming into and going out of the zone through the firewall endpoint. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.AssociateSubnets",
+      "responses": [
+        {
+          "uuid": "40d3348e-8ce6-4b26-ae84-b44e911795d6",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"SubnetMappings\": [\n    {\n      \"SubnetId\": \"\"\n    }\n  ],\n  \"UpdateToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "46edc3d3-8f94-43f8-a0d3-ab84338102d9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "666f8244-0c1b-4831-af65-00781a8c1e27",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4d85e344-107b-4ad0-befa-2cbb81433511",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9a0ca697-529a-407a-a5f1-82e47c5024db",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36b01e61-cc3a-4fd3-bdb1-7a48be9fb9b6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8f1ce539-0740-424a-93a4-7553cc84e0e4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27bb3742-980c-4da6-8ddc-7e8fbde0db8c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "InsufficientCapacityException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cbbff7fd-1d47-416c-98eb-21ec2af3eaa8",
+      "documentation": "<p>Creates an AWS Network Firewall <a>Firewall</a> and accompanying <a>FirewallStatus</a> for a VPC. </p> <p>The firewall defines the configuration settings for an AWS Network Firewall firewall. The settings that you can define at creation include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource. </p> <p>After you create a firewall, you can provide additional settings, like the logging configuration. </p> <p>To update the settings for a firewall, you use the operations that apply to the settings themselves, for example <a>UpdateLoggingConfiguration</a>, <a>AssociateSubnets</a>, and <a>UpdateFirewallDeleteProtection</a>. </p> <p>To manage a firewall's tags, use the standard AWS resource tagging operations, <a>ListTagsForResource</a>, <a>TagResource</a>, and <a>UntagResource</a>.</p> <p>To retrieve information about firewalls, use <a>ListFirewalls</a> and <a>DescribeFirewall</a>.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.CreateFirewall",
+      "responses": [
+        {
+          "uuid": "b1601dbe-8cd4-469c-a147-cde4a2bd6558",
+          "body": "{\n  \"Firewall\": {\n    \"FirewallName\": \"\",\n    \"FirewallArn\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"VpcId\": \"\",\n    \"SubnetMappings\": [\n      {\n        \"SubnetId\": \"\"\n      }\n    ],\n    \"DeleteProtection\": {{faker 'datatype.boolean'}},\n    \"SubnetChangeProtection\": {{faker 'datatype.boolean'}},\n    \"FirewallPolicyChangeProtection\": {{faker 'datatype.boolean'}},\n    \"Description\": \"\",\n    \"FirewallId\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  },\n  \"FirewallStatus\": {\n    \"Status\": \"\",\n    \"ConfigurationSyncStateSummary\": \"\",\n    \"SyncStates\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ec77d61e-7308-4067-8576-6533f3b781f1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "073c9d66-fc92-49f8-8fdd-f7575f109855",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "LimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b7d6bb1-b7b7-4bbf-97f6-412a567c7ed6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "10f9171a-b28d-4d6f-a388-624e8c1a6057",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0db3f4f2-f6e7-47b9-916c-b5ef1824c278",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InsufficientCapacityException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9cf2b8ae-ba5a-492b-9988-2270f337c587",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "25592b63-2074-478c-8919-82afb3adbb20",
+      "documentation": "<p>Creates the firewall policy for the firewall according to the specifications. </p> <p>An AWS Network Firewall firewall policy defines the behavior of a firewall, in a collection of stateless and stateful rule groups and other settings. You can use one firewall policy for multiple firewalls. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.CreateFirewallPolicy",
+      "responses": [
+        {
+          "uuid": "0ff7c38d-4d33-439e-908c-fb652c532a1c",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"FirewallPolicyResponse\": {\n    \"FirewallPolicyName\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"FirewallPolicyId\": \"\",\n    \"Description\": \"\",\n    \"FirewallPolicyStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f5a49928-c894-4a44-82d9-8e1441994739",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "LimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cb4aaab3-8f27-48f4-9789-8e4d6f9f9663",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b11d6e55-df3e-4c91-a97d-421b47408284",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "82e14d52-4299-4377-8f4f-ac0cf98566ce",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7de99bb9-fe55-4558-9f38-2c96428b1d19",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InsufficientCapacityException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "052df509-24ca-4ba7-a657-fd4002b37de1",
+      "documentation": "<p>Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags. </p> <p>You provide your rule group specification in your request using either <code>RuleGroup</code> or <code>Rules</code>.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.CreateRuleGroup",
+      "responses": [
+        {
+          "uuid": "25f06c70-99c9-485f-8102-604350a0c3d9",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"RuleGroupResponse\": {\n    \"RuleGroupArn\": \"\",\n    \"RuleGroupName\": \"\",\n    \"RuleGroupId\": \"\",\n    \"Description\": \"\",\n    \"Type\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"RuleGroupStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6f0d0c5b-5cf8-4443-8d28-6cbed31e2c6e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "LimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13a7c9ca-41ee-45b8-97c2-bd6c9713f252",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2ab95d16-50b5-4b1b-b8bd-37b54fb4f0fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "70e235f1-2b33-4d72-b731-1facd7e8a0ea",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "83d94a4d-5c65-449c-9903-b365100123e7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InsufficientCapacityException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09bff2d0-b0be-4161-9fcd-b4687b120fd8",
+      "documentation": "<p>Deletes the specified <a>Firewall</a> and its <a>FirewallStatus</a>. This operation requires the firewall's <code>DeleteProtection</code> flag to be <code>FALSE</code>. You can't revert this operation. </p> <p>You can check whether a firewall is in use by reviewing the route tables for the Availability Zones where you have firewall subnet mappings. Retrieve the subnet mappings by calling <a>DescribeFirewall</a>. You define and update the route tables through Amazon VPC. As needed, update the route tables for the zones to remove the firewall endpoints. When the route tables no longer use the firewall endpoints, you can remove the firewall safely.</p> <p>To delete a firewall, remove the delete protection if you need to using <a>UpdateFirewallDeleteProtection</a>, then delete the firewall by calling <a>DeleteFirewall</a>. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DeleteFirewall",
+      "responses": [
+        {
+          "uuid": "e3024c5e-9b30-46d8-a238-f778ec32afdb",
+          "body": "{\n  \"Firewall\": {\n    \"FirewallName\": \"\",\n    \"FirewallArn\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"VpcId\": \"\",\n    \"SubnetMappings\": [\n      {\n        \"SubnetId\": \"\"\n      }\n    ],\n    \"DeleteProtection\": {{faker 'datatype.boolean'}},\n    \"SubnetChangeProtection\": {{faker 'datatype.boolean'}},\n    \"FirewallPolicyChangeProtection\": {{faker 'datatype.boolean'}},\n    \"Description\": \"\",\n    \"FirewallId\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  },\n  \"FirewallStatus\": {\n    \"Status\": \"\",\n    \"ConfigurationSyncStateSummary\": \"\",\n    \"SyncStates\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "76402a74-daed-454c-98b0-ca01b659a6df",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ae54e147-d0c3-4a85-a631-94cc2bad3d72",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "197efa65-e58a-4923-a0f9-2c3e29db530c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f486336d-55e3-4263-97ed-bb8aae3c9677",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "de720627-745a-4abe-90a8-115488e9e5d3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "UnsupportedOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b82b0413-b618-4be5-acdc-ff12fcb56c62",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "55ea2346-28db-4802-909a-65fd6158a0bf",
+      "documentation": "Deletes the specified <a>FirewallPolicy</a>. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DeleteFirewallPolicy",
+      "responses": [
+        {
+          "uuid": "9cf257af-c331-4a7f-909a-8d694a1470ee",
+          "body": "{\n  \"FirewallPolicyResponse\": {\n    \"FirewallPolicyName\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"FirewallPolicyId\": \"\",\n    \"Description\": \"\",\n    \"FirewallPolicyStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b512b74-e101-418d-a1d6-b569bc65f717",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eb2b13d8-0ac3-4081-bd39-5e266dcfe939",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30c2fe6f-5082-479f-8b87-0638ffa6e9a6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77a86f09-03e2-41d1-8a74-c5cdeb5ac722",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a9e81a80-1b68-494d-b215-bc3c81997523",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "UnsupportedOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ae701fbc-e9c4-417e-a92e-9125a3351888",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "62d3514c-d2e6-48c2-88a6-eee22d035318",
+      "documentation": "Deletes a resource policy that you created in a <a>PutResourcePolicy</a> request. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DeleteResourcePolicy",
+      "responses": [
+        {
+          "uuid": "9e954414-01c9-45f6-a482-79c3325b9a5a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f748f7f-1723-4f50-b11e-406a85d3723b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b1714eeb-f277-4b41-a125-62fe65220375",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c9426f4-7eb7-42f3-93d1-44f0cb891119",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6ff5ef07-f03e-4df7-8a1f-048c275b6af7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9aeecb27-094c-47e5-afb8-b23fc73c7408",
+      "documentation": "Deletes the specified <a>RuleGroup</a>. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DeleteRuleGroup",
+      "responses": [
+        {
+          "uuid": "30426970-dfc7-4997-bd3b-2eb32fc18b73",
+          "body": "{\n  \"RuleGroupResponse\": {\n    \"RuleGroupArn\": \"\",\n    \"RuleGroupName\": \"\",\n    \"RuleGroupId\": \"\",\n    \"Description\": \"\",\n    \"Type\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"RuleGroupStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "439fd882-9014-4dd9-a6ae-a2476942b4ec",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c63a32ed-91a1-44ee-82cf-eb3acbfe9e65",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f65260c8-177a-4e7e-a2a3-90412bc5c98d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1bc9393a-4cd4-45b0-b609-385c13362dd7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5ff6f320-2be2-4cc5-8114-bf79d6321280",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "UnsupportedOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "798fbbcc-3a5a-41af-9d30-b9225df8f7e6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ba9f9eb3-60ab-4abf-9cad-8044061c05a0",
+      "documentation": "Returns the data objects for the specified firewall. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DescribeFirewall",
+      "responses": [
+        {
+          "uuid": "5c1da9fa-ef58-48b1-9eb5-53974e4f1659",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"Firewall\": {\n    \"FirewallName\": \"\",\n    \"FirewallArn\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"VpcId\": \"\",\n    \"SubnetMappings\": [\n      {\n        \"SubnetId\": \"\"\n      }\n    ],\n    \"DeleteProtection\": {{faker 'datatype.boolean'}},\n    \"SubnetChangeProtection\": {{faker 'datatype.boolean'}},\n    \"FirewallPolicyChangeProtection\": {{faker 'datatype.boolean'}},\n    \"Description\": \"\",\n    \"FirewallId\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  },\n  \"FirewallStatus\": {\n    \"Status\": \"\",\n    \"ConfigurationSyncStateSummary\": \"\",\n    \"SyncStates\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1087103e-be44-4c50-b9b2-bdb0f0fb43a5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "18ed7d3e-bbd6-4ffa-8468-6da5b205f364",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0460957b-0818-4471-a1a3-f529f53ec4ef",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5f5350c7-c506-4a08-85d5-dc4f8372ffdd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "71910a5e-2d94-4cc0-bf22-af145409ef52",
+      "documentation": "Returns the data objects for the specified firewall policy. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DescribeFirewallPolicy",
+      "responses": [
+        {
+          "uuid": "e724877a-3479-4406-9808-55d6da8f1093",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"FirewallPolicyResponse\": {\n    \"FirewallPolicyName\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"FirewallPolicyId\": \"\",\n    \"Description\": \"\",\n    \"FirewallPolicyStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  },\n  \"FirewallPolicy\": {\n    \"StatelessRuleGroupReferences\": [\n      {\n        \"ResourceArn\": \"\",\n        \"Priority\": {{faker 'datatype.number'}}\n      }\n    ],\n    \"StatelessDefaultActions\": [\n      \"\"\n    ],\n    \"StatelessFragmentDefaultActions\": [\n      \"\"\n    ],\n    \"StatelessCustomActions\": [\n      {\n        \"ActionName\": \"\",\n        \"ActionDefinition\": {\n          \"PublishMetricAction\": {\n            \"Dimensions\": [\n              {\n                \"Value\": \"\"\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"StatefulRuleGroupReferences\": [\n      {\n        \"ResourceArn\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f4bc334a-a9aa-4d41-9b49-3896f2b3c561",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "04d2c55b-1446-48ba-b579-764bf5209f54",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "274e78e9-8950-4c0f-8bf9-03f1df58f24a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d0770492-2294-454f-849a-43ea0ecefa1f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8c4e6441-a936-48ac-a215-4c8d4855c523",
+      "documentation": "Returns the logging configuration for the specified firewall. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DescribeLoggingConfiguration",
+      "responses": [
+        {
+          "uuid": "665618b1-1252-4695-890d-533212b68f37",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"LoggingConfiguration\": {\n    \"LogDestinationConfigs\": [\n      {\n        \"LogType\": \"\",\n        \"LogDestinationType\": \"\",\n        \"LogDestination\": {}\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1c07a08e-328d-4b7c-b679-e3b3226b287b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "be66c365-6b66-4139-af3c-b2f382545b4c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f424e070-7058-40a7-ac82-04a78bc4ea47",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5be1071d-9683-4616-950b-75c328dec852",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "39a3b1d0-9c51-453c-9d49-02453dc686ba",
+      "documentation": "Retrieves a resource policy that you created in a <a>PutResourcePolicy</a> request. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DescribeResourcePolicy",
+      "responses": [
+        {
+          "uuid": "6d11b985-d257-45b2-904c-fda3e5912499",
+          "body": "{\n  \"Policy\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0b2008ae-e64b-44c0-96cb-047c49fa31ba",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d4c15ae6-05f6-481e-87de-ac783e549cc6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c50946c-64af-4251-a393-f03d40180faa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6f89bf90-0b8f-4dd7-9589-e5e6f76ff6fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dbd5c471-43f2-4cfb-ba56-1d19243b15be",
+      "documentation": "Returns the data objects for the specified rule group. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DescribeRuleGroup",
+      "responses": [
+        {
+          "uuid": "a5289155-f9f1-45b4-a60a-0c632bfd32f4",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"RuleGroup\": {\n    \"RuleVariables\": {\n      \"IPSets\": {},\n      \"PortSets\": {}\n    },\n    \"RulesSource\": {\n      \"RulesString\": \"\",\n      \"RulesSourceList\": {\n        \"Targets\": [\n          \"\"\n        ],\n        \"TargetTypes\": [\n          \"{{oneOf (array 'TLS_SNI' 'HTTP_HOST')}}\"\n        ],\n        \"GeneratedRulesType\": \"\"\n      },\n      \"StatefulRules\": [\n        {\n          \"Action\": \"\",\n          \"Header\": {\n            \"Protocol\": \"\",\n            \"Source\": \"\",\n            \"SourcePort\": \"\",\n            \"Direction\": \"\",\n            \"Destination\": \"\",\n            \"DestinationPort\": \"\"\n          },\n          \"RuleOptions\": [\n            {\n              \"Keyword\": \"\",\n              \"Settings\": [\n                \"\"\n              ]\n            }\n          ]\n        }\n      ],\n      \"StatelessRulesAndCustomActions\": {\n        \"StatelessRules\": [\n          {\n            \"RuleDefinition\": {\n              \"MatchAttributes\": {\n                \"Sources\": [\n                  {\n                    \"AddressDefinition\": \"\"\n                  }\n                ],\n                \"Destinations\": [\n                  {\n                    \"AddressDefinition\": \"\"\n                  }\n                ],\n                \"SourcePorts\": [\n                  {\n                    \"FromPort\": {{faker 'datatype.number'}},\n                    \"ToPort\": {{faker 'datatype.number'}}\n                  }\n                ],\n                \"DestinationPorts\": [\n                  {\n                    \"FromPort\": {{faker 'datatype.number'}},\n                    \"ToPort\": {{faker 'datatype.number'}}\n                  }\n                ],\n                \"Protocols\": [\n                  {{faker 'datatype.number'}}\n                ],\n                \"TCPFlags\": [\n                  {\n                    \"Flags\": [\n                      \"{{oneOf (array 'FIN' 'SYN' 'RST' 'PSH' 'ACK' 'URG' 'ECE' 'CWR')}}\"\n                    ],\n                    \"Masks\": [\n                      \"{{oneOf (array 'FIN' 'SYN' 'RST' 'PSH' 'ACK' 'URG' 'ECE' 'CWR')}}\"\n                    ]\n                  }\n                ]\n              },\n              \"Actions\": [\n                \"\"\n              ]\n            },\n            \"Priority\": {{faker 'datatype.number'}}\n          }\n        ],\n        \"CustomActions\": [\n          {\n            \"ActionName\": \"\",\n            \"ActionDefinition\": {\n              \"PublishMetricAction\": {\n                \"Dimensions\": [\n                  {\n                    \"Value\": \"\"\n                  }\n                ]\n              }\n            }\n          }\n        ]\n      }\n    }\n  },\n  \"RuleGroupResponse\": {\n    \"RuleGroupArn\": \"\",\n    \"RuleGroupName\": \"\",\n    \"RuleGroupId\": \"\",\n    \"Description\": \"\",\n    \"Type\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"RuleGroupStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56e61ce4-6939-4fe4-af47-13846d380072",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6b700594-2cb0-4fe1-ad81-e81425ca339d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "33f10214-4841-4b56-8355-80d0059e3119",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c8418522-6a1b-494a-a5f6-9cab35f7157b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "de166982-3475-4105-84e0-4165bcfba5cc",
+      "documentation": "Removes the specified subnet associations from the firewall. This removes the firewall endpoints from the subnets and removes any network filtering protections that the endpoints were providing. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.DisassociateSubnets",
+      "responses": [
+        {
+          "uuid": "faa07fcf-951f-4011-afe4-49aa287988ba",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"SubnetMappings\": [\n    {\n      \"SubnetId\": \"\"\n    }\n  ],\n  \"UpdateToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "52d9c046-64d6-4308-a10b-a00104ece25c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6beec41a-82be-4202-abf8-29ec3e487543",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e80afcc-d8a5-4027-bafa-595626cf48fe",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "da656af7-ba4f-4f65-9b9b-25b8ea860f9f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38b83c3d-becf-41ae-9c7c-df7e9b0c2143",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "57d26dff-44ad-45b7-b052-eff5e7df7f00",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidOperationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "26acba58-3f18-47a2-b9fd-2f9ad527df8f",
+      "documentation": "Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.ListFirewallPolicies",
+      "responses": [
+        {
+          "uuid": "ec7d4184-7e71-4b9d-b992-2deaff1525a5",
+          "body": "{\n  \"NextToken\": \"\",\n  \"FirewallPolicies\": [\n    {\n      \"Name\": \"\",\n      \"Arn\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5ea82dbe-93be-4055-84fc-1327aca7e318",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "886bf1c9-ffda-4414-bd1e-82a16950c010",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c37fb82b-eb25-46d6-8d81-c2a6b4ec7bd3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "61f7e284-611f-4f78-b2f3-9660e6d79d52",
+      "documentation": "<p>Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs.</p> <p>Depending on your setting for max results and the number of firewalls, a single call might not return the full list. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.ListFirewalls",
+      "responses": [
+        {
+          "uuid": "e768d491-191a-4f9f-9c0b-90ac86b4fafa",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Firewalls\": [\n    {\n      \"FirewallName\": \"\",\n      \"FirewallArn\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5d58319d-12cb-43b3-8798-e6a9ec77603d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8b708e4d-56bc-456f-903d-3f488dbf0111",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ea4a7a97-fbd1-4e31-b3ab-4506f4abf0ec",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "705e5532-462f-4f36-93fd-36a48d3baf7a",
+      "documentation": "Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.ListRuleGroups",
+      "responses": [
+        {
+          "uuid": "e43d6569-6585-4ffc-8688-3364e2d293a2",
+          "body": "{\n  \"NextToken\": \"\",\n  \"RuleGroups\": [\n    {\n      \"Name\": \"\",\n      \"Arn\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4adc642b-8ca3-4776-9df1-c4507b4f3228",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6d83b943-d983-415b-be2b-c4c4d467c5ae",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4aeb9033-c306-4b50-abca-d6ee57187851",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d8d1e48e-7ffd-4d5e-9150-80d423bdf036",
+      "documentation": "<p>Retrieves the tags associated with the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to \"customer\" and the value to the customer name or ID. You can specify one or more tags to add to each AWS resource, up to 50 tags for a resource.</p> <p>You can tag the AWS resources that you manage through AWS Network Firewall: firewalls, firewall policies, and rule groups. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.ListTagsForResource",
+      "responses": [
+        {
+          "uuid": "4bf0b7b3-b4d5-45ec-89c4-3957d33b7c3c",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4336ed29-cf0e-455a-900f-a509e79510e2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "582463cd-8893-4537-93cd-71cece2cbcc2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3ff9ff34-0a71-4c83-84ba-29668c0d7cf2",
+      "documentation": "<p>Creates or updates an AWS Identity and Access Management policy for your rule group or firewall policy. Use this to share rule groups and firewall policies between accounts. This operation works in conjunction with the AWS Resource Access Manager (RAM) service to manage resource sharing for Network Firewall. </p> <p>Use this operation to create or update a resource policy for your rule group or firewall policy. In the policy, you specify the accounts that you want to share the resource with and the operations that you want the accounts to be able to perform. </p> <p>When you add an account in the resource policy, you then run the following Resource Access Manager (RAM) operations to access and accept the shared rule group or firewall policy. </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/ram/latest/APIReference/API_GetResourceShareInvitations.html\">GetResourceShareInvitations</a> - Returns the Amazon Resource Names (ARNs) of the resource share invitations. </p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/ram/latest/APIReference/API_AcceptResourceShareInvitation.html\">AcceptResourceShareInvitation</a> - Accepts the share invitation for a specified resource share. </p> </li> </ul> <p>For additional information about resource sharing using RAM, see <a href=\"https://docs.aws.amazon.com/ram/latest/userguide/what-is.html\">AWS Resource Access Manager User Guide</a>.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.PutResourcePolicy",
+      "responses": [
+        {
+          "uuid": "f858bc76-4649-4399-9871-0b15a85778af",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "569ada08-b5b7-4445-bf2e-b89bf276080f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8f483b47-682a-4cc8-bfd8-d056d088ce70",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "be8ba1ac-1b1e-461d-b5fa-e94cdeed1f0a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38d6465f-071e-4f01-8ffd-c72f41a06577",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a913c794-2420-45a7-80da-95f326aa5b4c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidResourcePolicyException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a32f959e-2ef8-40fa-9eb2-81f5e4ddd589",
+      "documentation": "<p>Adds the specified tags to the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to \"customer\" and the value to the customer name or ID. You can specify one or more tags to add to each AWS resource, up to 50 tags for a resource.</p> <p>You can tag the AWS resources that you manage through AWS Network Firewall: firewalls, firewall policies, and rule groups. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.TagResource",
+      "responses": [
+        {
+          "uuid": "544dd1eb-e600-4e38-a8f3-2aac3faef620",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a018ac64-622a-4578-84fc-950cbbda8a0e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c3eabe5d-73c8-4654-b450-6d6346189af9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b47e38e8-86ad-4b2e-87fb-42f132268d21",
+      "documentation": "<p>Removes the tags with the specified keys from the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to \"customer\" and the value to the customer name or ID. You can specify one or more tags to add to each AWS resource, up to 50 tags for a resource.</p> <p>You can manage tags for the AWS resources that you manage through AWS Network Firewall: firewalls, firewall policies, and rule groups. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UntagResource",
+      "responses": [
+        {
+          "uuid": "9480b4c8-d861-4def-8a34-2435a94aa711",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "93ca9719-1093-44d7-b638-9c06d58651c0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "03c2d1df-60e3-48f4-9b12-d86178e144e3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "90aa7865-6e11-4a98-8018-1a1169dacee6",
+      "documentation": "Modifies the flag, <code>DeleteProtection</code>, which indicates whether it is possible to delete the firewall. If the flag is set to <code>TRUE</code>, the firewall is protected against deletion. This setting helps protect against accidentally deleting a firewall that's in use. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateFirewallDeleteProtection",
+      "responses": [
+        {
+          "uuid": "b50b48ab-9856-49f4-910a-d9832cf7c46b",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"DeleteProtection\": {{faker 'datatype.boolean'}},\n  \"UpdateToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d57d4a02-fb1d-446b-af07-44ee22c853cb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8a987bf8-225a-450e-8c21-de8a24751a32",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "28ac318b-c059-41cd-9da3-4d160e7b192b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "62c4f6e1-8bca-46b0-985c-e7fc44baa608",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "24b21492-f64c-4d50-98ac-ec5d4d2db423",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36fe8264-f9aa-44e6-934f-62a835aacaec",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ResourceOwnerCheckException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2bbb443c-bb1b-4e09-ae1a-2dbd3cf371b4",
+      "documentation": "Modifies the description for the specified firewall. Use the description to help you identify the firewall when you're working with it. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateFirewallDescription",
+      "responses": [
+        {
+          "uuid": "204027e6-cadf-4289-aeb5-fc6b7e4ad27d",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"Description\": \"\",\n  \"UpdateToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "57b14213-8ada-417f-ba2e-c7680a0e4352",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "86dcdfb0-1634-421b-ab90-b890a388f8d3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "768bb037-7eb3-4a05-9cdc-8eb86cface06",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2d601421-a3ca-44fe-8f71-814f2a02c34f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "26471acb-2e81-4f08-83dd-4fc4aee3a1d6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "21d7b9fd-a5d6-4b7a-8875-df76e810c68f",
+      "documentation": "Updates the properties of the specified firewall policy.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateFirewallPolicy",
+      "responses": [
+        {
+          "uuid": "e7b5ced3-0fd5-4b5e-87d8-e10a4575a053",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"FirewallPolicyResponse\": {\n    \"FirewallPolicyName\": \"\",\n    \"FirewallPolicyArn\": \"\",\n    \"FirewallPolicyId\": \"\",\n    \"Description\": \"\",\n    \"FirewallPolicyStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "182a2fa2-281c-441b-a058-48c412eb85c7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ad1b9703-3d3e-49f4-a566-063c800bb7af",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1297bec2-d42b-4458-94fb-cf651bddd805",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "63d41327-2b21-4955-92ae-65efda5388f4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7587ff03-e2ab-44a1-bde9-b97b7c9475e4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3d5c58cd-1505-4b34-a0da-45c55f758230",
+      "documentation": "<p/>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateFirewallPolicyChangeProtection",
+      "responses": [
+        {
+          "uuid": "7ef5c546-92ef-4634-90fc-9cbbce383176",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"FirewallPolicyChangeProtection\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b770ffeb-c0ea-49f3-8f99-ee1d0df7c122",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a598e67b-77da-42e0-9516-699d2d866ead",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d00c41eb-fbf8-4456-85f0-b07ae5785f54",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8bf987f8-fe34-4460-b0a0-f09cd61ec438",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "06c4c7d3-9515-4638-ae66-7815cca89f45",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7e079357-4004-4411-a28d-78af28c7c27e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ResourceOwnerCheckException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f777138a-0b3a-4635-8f84-36f2ae951bbd",
+      "documentation": "<p>Sets the logging configuration for the specified firewall. </p> <p>To change the logging configuration, retrieve the <a>LoggingConfiguration</a> by calling <a>DescribeLoggingConfiguration</a>, then change it and provide the modified object to this update call. You must change the logging configuration one <a>LogDestinationConfig</a> at a time inside the retrieved <a>LoggingConfiguration</a> object. </p> <p>You can perform only one of the following actions in any call to <code>UpdateLoggingConfiguration</code>: </p> <ul> <li> <p>Create a new log destination object by adding a single <code>LogDestinationConfig</code> array element to <code>LogDestinationConfigs</code>.</p> </li> <li> <p>Delete a log destination object by removing a single <code>LogDestinationConfig</code> array element from <code>LogDestinationConfigs</code>.</p> </li> <li> <p>Change the <code>LogDestination</code> setting in a single <code>LogDestinationConfig</code> array element.</p> </li> </ul> <p>You can't change the <code>LogDestinationType</code> or <code>LogType</code> in a <code>LogDestinationConfig</code>. To change these settings, delete the existing <code>LogDestinationConfig</code> object and create a new one, using two separate calls to this update operation.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateLoggingConfiguration",
+      "responses": [
+        {
+          "uuid": "cb3da642-6607-4672-9c1b-8fffbe178d57",
+          "body": "{\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"LoggingConfiguration\": {\n    \"LogDestinationConfigs\": [\n      {\n        \"LogType\": \"\",\n        \"LogDestinationType\": \"\",\n        \"LogDestination\": {}\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0f4598a8-9e56-4ada-9b43-12b7944e5ef3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "51914ae9-a0b6-486f-9e72-fbd13119b04a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7112ba05-0d2d-45cc-9c5c-c8594b9e2003",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8e8b9ef4-97ef-40b9-ade3-ab7dd562a197",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cdb9ccb0-1f90-4513-8631-4c2ce1722229",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b54236f2-7c62-4e35-9728-0de3ca1b538b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "LogDestinationPermissionException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9151790d-1ac2-4073-bb97-2c92e1f49fbb",
+      "documentation": "<p>Updates the rule settings for the specified rule group. You use a rule group by reference in one or more firewall policies. When you modify a rule group, you modify all firewall policies that use the rule group. </p> <p>To update a rule group, first call <a>DescribeRuleGroup</a> to retrieve the current <a>RuleGroup</a> object, update the object as needed, and then provide the updated object to this call. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateRuleGroup",
+      "responses": [
+        {
+          "uuid": "e713900b-77c8-4a08-b1c7-44d1ba7cd410",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"RuleGroupResponse\": {\n    \"RuleGroupArn\": \"\",\n    \"RuleGroupName\": \"\",\n    \"RuleGroupId\": \"\",\n    \"Description\": \"\",\n    \"Type\": \"\",\n    \"Capacity\": {{faker 'datatype.number'}},\n    \"RuleGroupStatus\": \"\",\n    \"Tags\": [\n      {\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "70e2f22e-0456-4f74-8de1-d81b3cf4ca97",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7b55359-f773-4857-ac3b-3dd1c744f76d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b9e6c880-2b2f-4c16-9e67-bbafff0705da",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "32700865-8730-4ca2-affa-989e34f9e49e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b9469c76-aab5-4b78-b903-eb1e554cc360",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9630ec9a-4f57-42dc-95bc-73dea5d2a75d",
+      "documentation": "<p/>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=NetworkFirewall_20201112.UpdateSubnetChangeProtection",
+      "responses": [
+        {
+          "uuid": "330f2ae6-de55-4d89-8f4b-21b2939e76fb",
+          "body": "{\n  \"UpdateToken\": \"\",\n  \"FirewallArn\": \"\",\n  \"FirewallName\": \"\",\n  \"SubnetChangeProtection\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d967c44b-4dca-4912-b359-255f68415a21",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidRequestException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6b88f5be-82ff-487e-849a-72053d18c52b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InternalServerError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "48ba59da-2f67-4e23-ad95-c5c5c04a59b9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3a59301c-b5e9-4d9d-8c7d-88bca8d33080",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dafd6be9-7db1-46e2-8138-1865f15d7aa0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidTokenException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2426ca95-d586-4ced-b074-9ea8fced68df",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ResourceOwnerCheckException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

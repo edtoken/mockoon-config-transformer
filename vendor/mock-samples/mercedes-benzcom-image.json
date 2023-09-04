@@ -1,0 +1,1328 @@
+{
+  "uuid": "da34d6d2-35e2-45ac-b251-9135faa9b9fd",
+  "lastMigration": 24,
+  "name": "Vehicle Image",
+  "endpointPrefix": "image_tryout/v1/vehicles",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f7f516ea-a149-475c-845c-250e93e4b202",
+      "documentation": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px), \n  * rim (710x710 px), \n  * trim (800x600 px), \n  * paints (800x600 px), \n  * upholstery (800x600 px) and \n  * equipments (740x416 px).",
+      "method": "get",
+      "endpoint": ":finorvin/components",
+      "responses": [
+        {
+          "uuid": "019391c7-a274-4ee2-94ef-791a1d520039",
+          "body": "{\n  \"components\": {\n    \"engine\": {\n      \"url\": \"\"\n    },\n    \"equipments\": {},\n    \"paint\": {\n      \"lowerPaint\": {\n        \"code\": \"\",\n        \"url\": \"\"\n      },\n      \"upperPaint\": {\n        \"code\": \"\",\n        \"url\": \"\"\n      }\n    },\n    \"rim\": {\n      \"code\": \"\",\n      \"url\": \"\"\n    },\n    \"trim\": {\n      \"code\": \"\",\n      \"url\": \"\"\n    },\n    \"upholstery\": {\n      \"code\": \"\",\n      \"url\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bfdae999-964e-4a25-bb66-9ce6ed86de1d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0cf533f9-5039-49a5-a305-90c99f3fe3fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "782022e6-60c2-4acb-bca5-bb4a1b397cae",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8f7c3554-f434-4211-bae7-18c8c5196762",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "29e9e269-f329-43f4-9ad9-80613ea41aff",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7852cbd8-94a3-4250-ae68-cb457e3dd4a5",
+      "documentation": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.",
+      "method": "get",
+      "endpoint": ":finorvin/components/engine",
+      "responses": [
+        {
+          "uuid": "3b526c1d-767f-45ab-b8da-572bcf7966a2",
+          "body": "{\n  \"engine\": {\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c2fe71e9-9eb4-4858-b1e8-b600f6d9ffad",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16c0a99d-bdaa-4201-9dc6-36b64eff3708",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d51140bf-b6f2-44c5-87b6-2ae8cc341e9d",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27507d46-a763-461f-9af2-552eb6233c70",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d5b4a2aa-cc73-4e6b-9444-81d3f6b13aff",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "030fcd95-f735-49f3-aab1-9927358d2920",
+      "documentation": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+      "method": "get",
+      "endpoint": ":finorvin/components/equipments",
+      "responses": [
+        {
+          "uuid": "fd8d3572-9e9d-4734-b260-c66080f786d8",
+          "body": "{\n  \"equipments\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a3b08a20-8eef-42b6-840b-400439081d10",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6011620c-cf38-4ba0-9564-7a0131fc7174",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5316a7e6-58c1-4cd8-a15e-baeac6904031",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd3fb416-2fb9-48b3-b279-189ef977c627",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6495c66a-b1fc-41e6-9917-7cd117177978",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9acd5911-2adb-4927-8bf4-30aea155e7b2",
+      "documentation": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)",
+      "method": "get",
+      "endpoint": ":finorvin/components/paint",
+      "responses": [
+        {
+          "uuid": "23bc8b97-51dd-4bfe-b46c-5ef6bb15d794",
+          "body": "{\n  \"paint\": {\n    \"lowerPaint\": {\n      \"code\": \"\",\n      \"url\": \"\"\n    },\n    \"upperPaint\": {\n      \"code\": \"\",\n      \"url\": \"\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "72718927-a980-4270-8407-5c1bf9f63b88",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "63189284-81dc-46d1-9221-377ef0fcc27f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b7b9d7b5-b58f-46e8-b7de-7662ddfcf07b",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b18e91b7-897a-4bd2-a817-19492c462754",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "83d25214-7ee8-4aee-96e8-1e602b1894b0",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "29197b09-5d12-45a7-ae53-44e02a3c835e",
+      "documentation": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.",
+      "method": "get",
+      "endpoint": ":finorvin/components/rim",
+      "responses": [
+        {
+          "uuid": "bcaaa269-46e2-4845-b8b1-20de2d0f5d5e",
+          "body": "{\n  \"rim\": {\n    \"code\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a1624473-1519-4302-addb-c6a532a7cab5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b5738563-e8e4-4d8d-986a-eb2880de931d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a435c165-fce7-4685-a2e5-88d6fc1904b1",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e35bc3f3-a51c-4677-acd3-59ea02e06502",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1beebe75-271b-439d-8be5-186b614d5149",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c72e2e01-dcc9-43d3-aed5-6625e4a9526b",
+      "documentation": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.",
+      "method": "get",
+      "endpoint": ":finorvin/components/trim",
+      "responses": [
+        {
+          "uuid": "6585a7bf-b960-43a0-b088-b8039ff26034",
+          "body": "{\n  \"trim\": {\n    \"code\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bf86823c-2777-40fc-b059-9b0e6e523e2d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2cb36a4f-dd09-4096-8b4a-0f3efd3dcd69",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ce2f48ba-5d94-4a5d-85d2-f45bcc09a550",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7c3cf620-4232-4744-9f92-ad3612b12774",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "038ab440-c712-4c60-937f-a3d398904d73",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ba67b753-0df1-4dd4-88ce-c00c953b5d04",
+      "documentation": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).",
+      "method": "get",
+      "endpoint": ":finorvin/components/upholstery",
+      "responses": [
+        {
+          "uuid": "5dbcb6ba-8405-4eb9-8d3e-77180da8346f",
+          "body": "{\n  \"upholstery\": {\n    \"code\": \"\",\n    \"url\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2006a83c-63ef-4298-b4cf-ac737ab72281",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. The FIN/VIN belongs to a vehicle for which no images are available.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a95c9d7f-adf7-4ce4-beae-aa3b18895f2d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "66586b8c-f5b3-4166-b915-af779e468838",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9e9b3d5c-c139-41fd-8b02-e7822c6fceb1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38bd4b25-f894-4b52-8146-82a022fb2cab",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b4aa78d-e874-41aa-86bf-28c62dba06cd",
+      "documentation": "Returns URLs pointing to PNG images of a vehicle with a transparent background.",
+      "method": "get",
+      "endpoint": ":finorvin/vehicle",
+      "responses": [
+        {
+          "uuid": "362faedf-2be8-4dfd-bdf8-69089ea16ddc",
+          "body": "{\n  \"vehicle\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            },
+            {
+              "key": "cache-control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b9397ee4-5f1e-45f4-8409-ba45383809ec",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content could be found for your request. Try to use different parameters instead.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "acd99caa-439f-4f6e-8b17-422490953658",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "One of the provided parameters was invalid. Verify your query and inspect the global error object in the response for further information.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fcef0b10-d98f-4c82-967e-99c6d8b08a5a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized: \n  * Failed to resolve API Key query parameter \n  * Invalid API Key ",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "39aca5c4-bcd7-45b7-956c-235457f4122a",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The requested FIN/VIN could not be resolved. Please verify that your FIN/VIN is correct.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Request-Id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c9cd217-c742-420d-9d20-3a8c57ad7128",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Quota limit is exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fb0b9c86-9c58-486e-950f-481c0e36eee6",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "The requested FIN/VIN could not be resolved because external resources are not available or the server encountered an internal error.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

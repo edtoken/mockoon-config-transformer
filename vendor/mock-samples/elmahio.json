@@ -1,0 +1,2658 @@
+{
+  "uuid": "3c50a036-f86a-4040-bbfb-fdf1c8ae59fb",
+  "lastMigration": 24,
+  "name": "elmah.io API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "73d38561-93e4-4e61-84df-a1aa251b0aa5",
+      "documentation": "Fetch a list of deployments.",
+      "method": "get",
+      "endpoint": "v3/deployments",
+      "responses": [
+        {
+          "uuid": "ca13bda3-3793-4b2a-8489-def46b808d5c",
+          "body": "[\n  {\n    \"created\": \"{{faker 'date.recent' 365}}\",\n    \"createdBy\": \"\",\n    \"description\": \"\",\n    \"id\": \"\",\n    \"logId\": \"\",\n    \"userEmail\": \"\",\n    \"userName\": \"\",\n    \"version\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request for deployments successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "90ccd4ea-ffba-4203-90c6-3280394fac25",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f4b913f5-a7d3-4fe8-8d9c-21ac99be4c20",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the deployment API without deployment tracking enabled or trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d1af8b8b-f595-475a-bc1a-501476ca733b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7dcd1663-1582-4c44-b692-6eeb0973282d",
+      "documentation": "Create a new deployment.",
+      "method": "post",
+      "endpoint": "v3/deployments",
+      "responses": [
+        {
+          "uuid": "f619725f-915d-4bf9-b6db-26c3a6486316",
+          "body": "{\n  \"location\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Deployment was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "aec62ed8-224d-4831-b339-91249793b683",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Model not valid.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3cee840b-01bd-48a9-a8de-ea4d8293d817",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a41dc6c1-c77d-4bab-a676-bcf667a0757f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the deployment API without deployment tracking enabled or trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "663be717-969b-43d4-9055-87f1ebb6b32c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Specified log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "daddab5f-5189-4322-b8c1-17d7324ae99a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7ff996b0-833c-427d-8b3d-bb8971ba3500",
+      "documentation": "Delete a deployment by its ID.",
+      "method": "delete",
+      "endpoint": "v3/deployments/:id",
+      "responses": [
+        {
+          "uuid": "ca532bbf-4ca7-4019-b5cb-1ac8a4765e76",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Deployment was deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bb77a01d-f479-4339-9618-1fdaed9e969c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Id not specified.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2cef2e65-1c69-46f9-a628-a5a0d0b2e701",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "98f39990-a5cf-4899-a6d2-9996d14e4f86",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the deployment API without deployment tracking enabled or trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd65ba55-4c06-4832-8450-9a4d7533f40d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Deployment with specified id not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "22a14909-8a65-45dc-bdf4-c1253fc443c8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9dc0946a-4470-47a5-9870-a28f89cad2fb",
+      "documentation": "Fetch a deployment by its ID.",
+      "method": "get",
+      "endpoint": "v3/deployments/:id",
+      "responses": [
+        {
+          "uuid": "ee461718-9e67-4ccc-b36b-9f7253a44433",
+          "body": "{\n  \"created\": \"{{faker 'date.recent' 365}}\",\n  \"createdBy\": \"\",\n  \"description\": \"\",\n  \"id\": \"\",\n  \"logId\": \"\",\n  \"userEmail\": \"\",\n  \"userName\": \"\",\n  \"version\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request for deployment successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56a72104-b197-4d9a-881f-5cd8e14a0e23",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Id not specified.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d637a83-6b6f-43fa-8379-6c3c989e3fae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "78b0cdec-9e7a-4271-a70a-6f60388a0b9f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Deployment with specified id not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "743fd7b3-d0ed-4d51-9579-783766ce9d64",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "68878446-89c6-4a9a-a605-6c5ecd045ca5",
+      "documentation": "Create a new heartbeat.",
+      "method": "post",
+      "endpoint": "v3/heartbeats/:logId/:id",
+      "responses": [
+        {
+          "uuid": "28fa6dbd-4481-4f92-a38e-b5dec03d7742",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Heartbeat was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4f70fb6-575e-4f27-85f9-b7f0c27528fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Model not valid.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a810ca47-58cc-4ef9-a8f1-3bb3eb45ae87",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7071c499-385a-48ce-84eb-94d3a56facea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the heartbeats API without heartbeats enabled or trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "30c6e85e-9a2e-4acc-890b-ba6ddc3d69c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "The specified log or heartbeat was not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "243f1655-22dc-41a8-90fa-446b8a265dc7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "42d0d0f1-4e21-4c9e-a57e-ca782e85516b",
+      "documentation": "Fetch a list of logs.",
+      "method": "get",
+      "endpoint": "v3/logs",
+      "responses": [
+        {
+          "uuid": "89d3a9f2-1e0c-4654-aea7-4c18e5d76121",
+          "body": "[\n  {\n    \"color\": \"\",\n    \"disabled\": {{faker 'datatype.boolean'}},\n    \"environmentName\": \"\",\n    \"id\": \"\",\n    \"name\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request for logs successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4119dba1-4103-4ede-acbc-afb806f7f4ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0229b322-6187-44fe-80ef-5900a0ed42b1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cfb303a6-87a6-4294-bb59-80e6a59591dc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b7bd2ddb-39c8-4071-93ad-00faf6a117b9",
+      "documentation": "Create a new log.",
+      "method": "post",
+      "endpoint": "v3/logs",
+      "responses": [
+        {
+          "uuid": "c816d6a1-1d24-4c83-89ce-61252b3b0ee5",
+          "body": "{\n  \"location\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Log where successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a369ab15-09f9-48bc-b7d3-f30c3252e69b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aa49218d-d228-41ab-9679-eda4797f951b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "17ee4885-3c8a-4633-8d56-23d91da5b747",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "91c63eff-4fea-428d-9dc8-0e3be3d4a12b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "de7df0b5-186d-4aa8-b4ba-043129e173e6",
+      "documentation": "Fetch a log by its ID.",
+      "method": "get",
+      "endpoint": "v3/logs/:id",
+      "responses": [
+        {
+          "uuid": "6b5102e7-653f-4d0b-8894-e6563c387960",
+          "body": "{\n  \"color\": \"\",\n  \"disabled\": {{faker 'datatype.boolean'}},\n  \"environmentName\": \"\",\n  \"id\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request for log successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cef649f9-bc8c-4f10-b650-3741bc33d0bb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a5b4a876-da43-4999-ae89-2785f7517e5e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "89524352-24bd-4ab1-9e8e-c87c7f56dff1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a1cf12d2-bfbf-46d2-aab1-c9d63d6117c6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52af81d6-0713-4530-8de8-4ad0ab925438",
+      "documentation": "Disable a log by its ID.",
+      "method": "post",
+      "endpoint": "v3/logs/:id/_disable",
+      "responses": [
+        {
+          "uuid": "801058a1-6f55-4c44-ba30-3b0348bda45b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Log was disabled.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "eb08fd35-fef2-4bdf-9fbb-943465e7c497",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bebd97b4-92e4-4f3d-9861-fa6c5f692aa1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6a3bc8af-b54d-4d8d-bcf3-e4fa86cd09be",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6d9d53ff-adad-473c-a532-0b9281608b38",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "28739a3b-5a88-4e3a-83ab-3b93e18b5b41",
+      "documentation": "Enable a log by its ID.",
+      "method": "post",
+      "endpoint": "v3/logs/:id/_enable",
+      "responses": [
+        {
+          "uuid": "256f61f3-5854-42c9-942e-03402e65caad",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Log was enabled.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "71133c56-8f43-491b-ab08-bb9e2786d4e7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b38e691-46d9-4e17-ab4e-4552fc2cd974",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3d789a39-30cb-4190-b129-c960c2d0a829",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "97ba3101-a048-4c8d-adcb-c5a60e986728",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dfda1a94-11d0-4b53-8e2c-ce0b1eae5f65",
+      "documentation": "Deletes a list of messages by logid and query.",
+      "method": "delete",
+      "endpoint": "v3/messages/:logId",
+      "responses": [
+        {
+          "uuid": "2d6dfa03-d13e-48ad-ba30-c8d4d7a51c3c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Messages where deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ad57a6c9-b613-45ab-960a-465503c52990",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c789a28c-2ae5-4023-bcd3-6d8de6751375",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dfd84499-b3d6-4e54-b24c-05bdcd2045b7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "59bc66ca-ded4-4bc2-9ce3-09478fef7f46",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "766fac7f-03c8-45c2-84a6-85811f4e6ec7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2978355-2505-4b8e-a07e-93d65d28f275",
+      "documentation": "Fetch messages from a log.",
+      "method": "get",
+      "endpoint": "v3/messages/:logId",
+      "responses": [
+        {
+          "uuid": "b66ff12d-bc2f-4a19-99be-cac6d36d9fa2",
+          "body": "{\n  \"messages\": [\n    {\n      \"application\": \"\",\n      \"breadcrumbs\": [\n        {\n          \"action\": \"\",\n          \"dateTime\": \"{{faker 'date.recent' 365}}\",\n          \"message\": \"\",\n          \"severity\": \"\"\n        }\n      ],\n      \"code\": \"\",\n      \"cookies\": [\n        {\n          \"key\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"correlationId\": \"\",\n      \"data\": [\n        {\n          \"key\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"dateTime\": \"{{faker 'date.recent' 365}}\",\n      \"detail\": \"\",\n      \"form\": [\n        {\n          \"key\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"hostname\": \"\",\n      \"id\": \"\",\n      \"method\": \"\",\n      \"queryString\": [\n        {\n          \"key\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"serverVariables\": [\n        {\n          \"key\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"severity\": \"\",\n      \"source\": \"\",\n      \"statusCode\": {{faker 'datatype.number'}},\n      \"title\": \"\",\n      \"titleTemplate\": \"\",\n      \"type\": \"\",\n      \"url\": \"\",\n      \"user\": \"\",\n      \"version\": \"\"\n    }\n  ],\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Log found and may contain messages.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e00a263f-f727-4b6b-98ab-00033e2ab177",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "265df285-37ed-4ee1-a730-1d33c59a120b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7a929e5-dca9-4321-9e69-6186053c3cde",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "52f3599a-0d24-4b28-aaac-6b43b7ad7d74",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fe82efe3-4e17-4547-b5de-b323c3405ecb",
+      "documentation": "Create a new message.",
+      "method": "post",
+      "endpoint": "v3/messages/:logId",
+      "responses": [
+        {
+          "uuid": "2d091d86-1ff5-4826-8361-3c2926fe64a4",
+          "body": "{\n  \"location\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Message was not created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5580d05-9cd3-4974-9992-90803de0065b",
+          "body": "{\n  \"location\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Message was successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8dbdc4b1-3e82-4038-94b4-36bc6377c6e1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "37b51093-1cab-443f-b035-6ffc18d0ca16",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "83f59c6f-1209-403e-b841-7cdf78ea7874",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0fc81ede-b554-45ed-bb35-40ea770edd57",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8ffd307e-74dc-46d9-87b0-aa1be2bfd86a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 413,
+          "label": "Message too large. Messages must not exceed 256 kb.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f752e790-8570-4e6e-8d78-cf9273a1b66d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "829c2f4d-65e6-4f1a-972f-253c9acb2b4e",
+      "documentation": "Create one or more new messages.",
+      "method": "post",
+      "endpoint": "v3/messages/:logId/_bulk",
+      "responses": [
+        {
+          "uuid": "3044d1f5-0e0e-4135-92d5-23155d2843b9",
+          "body": "[\n  {\n    \"location\": \"\",\n    \"statusCode\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Zero or more messages where successfully created. Check the response body for details.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "53169c64-cea3-40a3-aaaa-c2231e7d8960",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "82cd05a4-3aaf-414b-bd4a-d9eeffc88997",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16eb5792-51be-4c57-918b-38ef992be4dd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "09d5bff7-497a-4115-94ac-1dea63ee35a9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5cc5bf30-4dbc-480d-b29d-32c54cf7a57a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f6cab8f8-a426-40e7-bb52-c0cfb777ece1",
+      "documentation": "Delete a message by its ID.",
+      "method": "delete",
+      "endpoint": "v3/messages/:logId/:id",
+      "responses": [
+        {
+          "uuid": "098fd259-1526-4ba3-9bf1-f30724a1293a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Message where deleted.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f295999d-b255-4c78-ba55-c505e082572d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b61aa531-c899-42a4-9fa7-45882c4b9531",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "103c9187-c80f-41d4-b31c-cc3af4eaca8d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e869f22e-041d-4627-b233-39609edd5095",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log or message not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e5352bc7-2ddd-44a0-9db4-67e1b344579c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0434bad7-0e18-4ec4-b354-1a1b70709e22",
+      "documentation": "Fetch a message by its ID.",
+      "method": "get",
+      "endpoint": "v3/messages/:logId/:id",
+      "responses": [
+        {
+          "uuid": "a9e2c814-16e2-47a8-86eb-91246db16231",
+          "body": "{\n  \"application\": \"\",\n  \"breadcrumbs\": [\n    {\n      \"action\": \"\",\n      \"dateTime\": \"{{faker 'date.recent' 365}}\",\n      \"message\": \"\",\n      \"severity\": \"\"\n    }\n  ],\n  \"code\": \"\",\n  \"cookies\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"correlationId\": \"\",\n  \"data\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"dateTime\": \"{{faker 'date.recent' 365}}\",\n  \"detail\": \"\",\n  \"form\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"hostname\": \"\",\n  \"id\": \"\",\n  \"method\": \"\",\n  \"queryString\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"serverVariables\": [\n    {\n      \"key\": \"\",\n      \"value\": \"\"\n    }\n  ],\n  \"severity\": \"\",\n  \"source\": \"\",\n  \"statusCode\": {{faker 'datatype.number'}},\n  \"title\": \"\",\n  \"titleTemplate\": \"\",\n  \"type\": \"\",\n  \"url\": \"\",\n  \"user\": \"\",\n  \"version\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Message found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b173440f-bc25-44ff-abb7-098350f7819b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ba69f4a9-29b8-40ee-a944-c63d7312b6b9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6ae22d7b-8414-4620-8929-cf705381a305",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c448ada0-18a7-46d5-a56f-404374924b20",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Message not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e3d718fb-0c01-4e4a-bcfc-a667bc681656",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f917abd7-ffa3-4f2b-8b4a-4dc36cfde332",
+      "documentation": "Fix a message by its ID.",
+      "method": "post",
+      "endpoint": "v3/messages/:logId/:id/_fix",
+      "responses": [
+        {
+          "uuid": "15b3d8d2-c368-47e0-bd57-872291cfbad0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Message was fixed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f61dba9-e798-4946-bd2d-5cc31a1bcb98",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9e811b90-e87d-439e-8aa9-7b7187127a8f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "130e2812-70ca-4fee-b91f-184d6f6bf5e2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3dec5af7-80c0-4e30-b713-69362ceb7c24",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Message not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "53ba4bb2-b43e-49a9-a9df-eaeedf92709f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eb8cc5f7-c0ed-4a7e-831e-850554bbdab9",
+      "documentation": "Hide a message by its ID.",
+      "method": "post",
+      "endpoint": "v3/messages/:logId/:id/_hide",
+      "responses": [
+        {
+          "uuid": "6e68be4b-6e52-4fd4-806b-49469a8209b2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Message was hidden.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "41f451d1-f1ee-4266-95e2-4346c7719761",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "479e157a-4f6d-4d17-8fd3-f31b72ba0c48",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c41bd069-ac7f-46d0-8137-347d825c0457",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "44a39a80-ac84-4865-95bd-79c9f25caafa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Message not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "28e3ce9d-6afb-4406-a1ba-9d92a3093fe2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5406aa8a-6bd3-49aa-84a8-4d2dda8ac581",
+      "documentation": "Create or update a translation between a minified JavaScript path to the minified JavaScript and source map files.",
+      "method": "post",
+      "endpoint": "v3/sourcemaps/:logId",
+      "responses": [
+        {
+          "uuid": "51c108e9-f199-4951-9283-ede704123b12",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Source map was successfully created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6bef935a-1513-4229-8125-cec5c3a72adc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Something wrong with the query parameters or form.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a69e3bf3-a65a-4164-893c-e1d6f9df383e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1bc76041-150a-4332-8682-c672f16cb378",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the logs API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9a31f2ff-ce78-4030-a2a5-5338aca8e8b5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Log not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9e996ca9-8bb2-48b0-87c5-9f50718e6725",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cdf69517-871d-499b-9fbb-39f302ee61c4",
+      "documentation": "Fetch a list of uptime checks. Currently in closed beta. Get in contact to get access to this endpoint.",
+      "method": "get",
+      "endpoint": "v3/uptimechecks",
+      "responses": [
+        {
+          "uuid": "d9b87529-63b0-40ff-84fc-938bd8f12657",
+          "body": "[\n  {\n    \"id\": \"\",\n    \"name\": \"\",\n    \"status\": \"\",\n    \"url\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request for uptime checks successful.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6532ccd5-b7b0-4d59-be49-facf2a0efd46",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "API key not valid or no access to resource.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8440d0be-13f8-4016-bcb8-bd80863fe634",
+          "body": "",
+          "latency": 0,
+          "statusCode": 402,
+          "label": "Tried to call the uptime checks API but the trial expired.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "27efa971-b936-4224-9562-4719e8900031",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "A maximum of 500 requests per minute and 3600 requests per hour are permitted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

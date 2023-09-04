@@ -1,0 +1,942 @@
+{
+  "uuid": "33bea6b4-145f-424c-9ddb-a799b26c9ab8",
+  "lastMigration": 24,
+  "name": "Europeana Search & Record API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "295b51ab-7829-4579-baf9-8185276e3850",
+      "documentation": "basic search function following the OpenSearch specification",
+      "method": "get",
+      "endpoint": "record/v2/opensearch.rss",
+      "responses": [
+        {
+          "uuid": "d0ee6364-f119-4d45-89d8-97f286d238d4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a43cbfa3-9163-4842-91fa-33fc4c918838",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "04c70643-f1e2-4def-a687-e4b2c3db9e1a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "703ec0b4-e444-4a44-bb20-c0268732a4b7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "11c5cea8-cd2f-4641-b5da-2b7096993433",
+      "documentation": "search for records",
+      "method": "get",
+      "endpoint": "record/v2/search.json",
+      "responses": [
+        {
+          "uuid": "ce482d6e-c923-4ab0-945b-cc03c3a23cf2",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b8c26a4c-0b92-43a4-afe9-265c84fc8382",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d9ef539e-2907-4eac-a68f-f9dec4f8ae89",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5c7c4d49-e58f-4f36-b430-3f7c7cf4b404",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1aedddb0-67b9-4696-a8ab-c7503f79aca1",
+      "documentation": "search for records post",
+      "method": "post",
+      "endpoint": "record/v2/search.json",
+      "responses": [
+        {
+          "uuid": "8524688f-7f98-4e0b-aca5-06a46dacc4fa",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ab7a394c-9be5-4562-b4b8-199d40718431",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "96bf0609-0a45-4f6f-83e3-eace37f9ebb7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e1086087-f3a6-454b-9e15-9faa21fcbd57",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "17723ebe-ae6d-4c5e-b884-5b4c33ddcd1e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "70555c02-5d0a-4ac8-a1c0-ed81e5e3051e",
+      "documentation": "translate a term to different languages",
+      "method": "get",
+      "endpoint": "record/v2/translateQuery.json",
+      "responses": [
+        {
+          "uuid": "de65eeab-72fc-4098-a8c6-4472444d7baa",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "48a25f85-52f4-471f-b4a4-f8d6be97674d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a59a8c8b-c469-463b-8eef-721c668ce740",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "094d26e2-fdac-46ab-a7f0-ab2354654686",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9b4fdbc-2351-475a-baa5-82325c4b51e3",
+      "documentation": "get a single record in JSON format",
+      "method": "get",
+      "endpoint": "record/v2/:collectionId/:recordId.json",
+      "responses": [
+        {
+          "uuid": "fb0d8929-d814-4c8a-ab49-537529402903",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dc88f855-5a40-4aee-b8df-bc5fd04e2f44",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "40afa607-f925-4397-97f8-3ebfef1beb56",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f676502-1c1e-4c5d-bb3b-35e7c68a3ece",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1155c10e-a4f1-4d70-9207-b7ea1d8ed9fa",
+      "documentation": "get single record in JSON LD format",
+      "method": "get",
+      "endpoint": "record/v2/:collectionId/:recordId.jsonld",
+      "responses": [
+        {
+          "uuid": "932e46a8-c4bd-41bb-91b2-34a83bf2b8bf",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "14200fef-fbb3-46e1-a12d-b54b925e2b50",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13d2ba51-adcf-4b54-8659-948681adf739",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aa5368c9-c387-498a-a2ba-6299fd63cb3b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2a8ac786-02bd-4ba7-bc95-eee7d43f0081",
+      "documentation": "get single record in RDF format)",
+      "method": "get",
+      "endpoint": "record/v2/:collectionId/:recordId.rdf",
+      "responses": [
+        {
+          "uuid": "f7339023-f516-466a-997a-a19420a5ade0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/rdf+xml;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4975da4c-ff54-44d6-bcf2-59e4696f0641",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/rdf+xml;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3e73b112-beae-45b2-9128-c0df2f2fdd5a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/rdf+xml;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1d840584-5876-44af-aff3-b381d76ad8ed",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/rdf+xml;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "130aef44-c546-4cef-8a74-8097382d2c25",
+      "documentation": "get single record in Schema.org JSON LD format",
+      "method": "get",
+      "endpoint": "record/v2/:collectionId/:recordId.schema.jsonld",
+      "responses": [
+        {
+          "uuid": "0875446c-c0c3-490d-b9ca-7a716de7f66f",
+          "body": "{\n  \"empty\": {{faker 'datatype.boolean'}},\n  \"model\": {},\n  \"modelMap\": {},\n  \"reference\": {{faker 'datatype.boolean'}},\n  \"status\": \"{{oneOf (array '100' '101' '102' '103' '200' '201' '202' '203' '204' '205' '206' '207' '208' '226' '300' '301' '302' '303' '304' '305' '307' '308' '400' '401' '402' '403' '404' '405' '406' '407' '408' '409' '410' '411' '412' '413' '414' '415' '416' '417' '418' '419' '420' '421' '422' '423' '424' '426' '428' '429' '431' '451' '500' '501' '502' '503' '504' '505' '506' '507' '508' '509' '510' '511')}}\",\n  \"view\": {\n    \"contentType\": \"\"\n  },\n  \"viewName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04f3c572-2dc6-42d2-ba6f-c9dc8ebae2bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fa94766d-83d8-475b-a835-c7bc1aa41ecc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "353e70ca-1b3b-4f99-8b72-4db476d76526",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f9c42e2f-a0a5-4a8d-b4c9-f3229a036e3e",
+      "documentation": "get single record in turtle format)",
+      "method": "get",
+      "endpoint": "record/v2/:collectionId/:recordId.ttl",
+      "responses": [
+        {
+          "uuid": "9d276e04-05cd-482c-9a2a-9341439cfda0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-turtle"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "21050b96-ba78-420d-be5f-f7f4f0305e4d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-turtle"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "db562693-219a-465c-8f16-431c5bff0c14",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Forbidden",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-turtle"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "38a75a92-bf01-44a9-83bf-0867c57d5665",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-turtle"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

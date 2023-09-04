@@ -1,0 +1,550 @@
+{
+  "uuid": "0ad1ecbd-edb1-42c4-9bce-257d8a1ae5f4",
+  "lastMigration": 24,
+  "name": "Cloud Talent Solution API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c3fb40ca-5434-4357-90f6-014c1510a032",
+      "documentation": "Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.",
+      "method": "delete",
+      "endpoint": "v4/:name",
+      "responses": [
+        {
+          "uuid": "ce70c43d-18dc-40c8-a0e0-bcd35c24bb3c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69e6349a-a7f1-4ae4-8fd6-6c0ad09cc521",
+      "documentation": "Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.",
+      "method": "get",
+      "endpoint": "v4/:name",
+      "responses": [
+        {
+          "uuid": "42947201-a5a5-4e1d-9196-377fc88f77b9",
+          "body": "{\n  \"addresses\": [\n    \"\"\n  ],\n  \"applicationInfo\": {\n    \"emails\": [\n      \"\"\n    ],\n    \"instruction\": \"\",\n    \"uris\": [\n      \"\"\n    ]\n  },\n  \"company\": \"\",\n  \"companyDisplayName\": \"\",\n  \"compensationInfo\": {\n    \"annualizedBaseCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"annualizedTotalCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"entries\": [\n      {\n        \"amount\": {\n          \"currencyCode\": \"\",\n          \"nanos\": {{faker 'datatype.number'}},\n          \"units\": \"\"\n        },\n        \"description\": \"\",\n        \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n        \"range\": {\n          \"maxCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          },\n          \"minCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          }\n        },\n        \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n        \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n      }\n    ]\n  },\n  \"customAttributes\": {},\n  \"degreeTypes\": [\n    \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n  ],\n  \"department\": \"\",\n  \"derivedInfo\": {\n    \"jobCategories\": [\n      \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n    ],\n    \"locations\": [\n      {\n        \"latLng\": {\n          \"latitude\": {{faker 'datatype.float'}},\n          \"longitude\": {{faker 'datatype.float'}}\n        },\n        \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n        \"postalAddress\": {\n          \"addressLines\": [\n            \"\"\n          ],\n          \"administrativeArea\": \"\",\n          \"languageCode\": \"\",\n          \"locality\": \"\",\n          \"organization\": \"\",\n          \"postalCode\": \"\",\n          \"recipients\": [\n            \"\"\n          ],\n          \"regionCode\": \"\",\n          \"revision\": {{faker 'datatype.number'}},\n          \"sortingCode\": \"\",\n          \"sublocality\": \"\"\n        },\n        \"radiusMiles\": {{faker 'datatype.float'}}\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"employmentTypes\": [\n    \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n  ],\n  \"incentives\": \"\",\n  \"jobBenefits\": [\n    \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n  ],\n  \"jobEndTime\": \"\",\n  \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n  \"jobStartTime\": \"\",\n  \"languageCode\": \"\",\n  \"name\": \"\",\n  \"postingCreateTime\": \"\",\n  \"postingExpireTime\": \"\",\n  \"postingPublishTime\": \"\",\n  \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n  \"postingUpdateTime\": \"\",\n  \"processingOptions\": {\n    \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n    \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n  },\n  \"promotionValue\": {{faker 'datatype.number'}},\n  \"qualifications\": \"\",\n  \"requisitionId\": \"\",\n  \"responsibilities\": \"\",\n  \"title\": \"\",\n  \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "65b1bee0-8c21-4803-9a82-af2daefef87f",
+      "documentation": "Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.",
+      "method": "patch",
+      "endpoint": "v4/:name",
+      "responses": [
+        {
+          "uuid": "a1516f35-3979-4363-9bf9-c0b6e4ad8c05",
+          "body": "{\n  \"addresses\": [\n    \"\"\n  ],\n  \"applicationInfo\": {\n    \"emails\": [\n      \"\"\n    ],\n    \"instruction\": \"\",\n    \"uris\": [\n      \"\"\n    ]\n  },\n  \"company\": \"\",\n  \"companyDisplayName\": \"\",\n  \"compensationInfo\": {\n    \"annualizedBaseCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"annualizedTotalCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"entries\": [\n      {\n        \"amount\": {\n          \"currencyCode\": \"\",\n          \"nanos\": {{faker 'datatype.number'}},\n          \"units\": \"\"\n        },\n        \"description\": \"\",\n        \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n        \"range\": {\n          \"maxCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          },\n          \"minCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          }\n        },\n        \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n        \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n      }\n    ]\n  },\n  \"customAttributes\": {},\n  \"degreeTypes\": [\n    \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n  ],\n  \"department\": \"\",\n  \"derivedInfo\": {\n    \"jobCategories\": [\n      \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n    ],\n    \"locations\": [\n      {\n        \"latLng\": {\n          \"latitude\": {{faker 'datatype.float'}},\n          \"longitude\": {{faker 'datatype.float'}}\n        },\n        \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n        \"postalAddress\": {\n          \"addressLines\": [\n            \"\"\n          ],\n          \"administrativeArea\": \"\",\n          \"languageCode\": \"\",\n          \"locality\": \"\",\n          \"organization\": \"\",\n          \"postalCode\": \"\",\n          \"recipients\": [\n            \"\"\n          ],\n          \"regionCode\": \"\",\n          \"revision\": {{faker 'datatype.number'}},\n          \"sortingCode\": \"\",\n          \"sublocality\": \"\"\n        },\n        \"radiusMiles\": {{faker 'datatype.float'}}\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"employmentTypes\": [\n    \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n  ],\n  \"incentives\": \"\",\n  \"jobBenefits\": [\n    \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n  ],\n  \"jobEndTime\": \"\",\n  \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n  \"jobStartTime\": \"\",\n  \"languageCode\": \"\",\n  \"name\": \"\",\n  \"postingCreateTime\": \"\",\n  \"postingExpireTime\": \"\",\n  \"postingPublishTime\": \"\",\n  \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n  \"postingUpdateTime\": \"\",\n  \"processingOptions\": {\n    \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n    \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n  },\n  \"promotionValue\": {{faker 'datatype.number'}},\n  \"qualifications\": \"\",\n  \"requisitionId\": \"\",\n  \"responsibilities\": \"\",\n  \"title\": \"\",\n  \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "569c676d-7d5a-4c0c-9dfb-2bf2f76d19a5",
+      "documentation": "Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.",
+      "method": "post",
+      "endpoint": "v4/:parent/clientEvents",
+      "responses": [
+        {
+          "uuid": "53944450-080e-4ff9-8d05-7e0124650156",
+          "body": "{\n  \"createTime\": \"\",\n  \"eventId\": \"\",\n  \"eventNotes\": \"\",\n  \"jobEvent\": {\n    \"jobs\": [\n      \"\"\n    ],\n    \"type\": \"{{oneOf (array 'JOB_EVENT_TYPE_UNSPECIFIED' 'IMPRESSION' 'VIEW' 'VIEW_REDIRECT' 'APPLICATION_START' 'APPLICATION_FINISH' 'APPLICATION_QUICK_SUBMISSION' 'APPLICATION_REDIRECT' 'APPLICATION_START_FROM_SEARCH' 'APPLICATION_REDIRECT_FROM_SEARCH' 'APPLICATION_COMPANY_SUBMIT' 'BOOKMARK' 'NOTIFICATION' 'HIRED' 'SENT_CV' 'INTERVIEW_GRANTED')}}\"\n  },\n  \"requestId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "94b2c188-206b-40fe-a6e2-b23aa565370c",
+      "documentation": "Lists all companies associated with the project.",
+      "method": "get",
+      "endpoint": "v4/:parent/companies",
+      "responses": [
+        {
+          "uuid": "ebf06d44-6113-428e-b5b1-37c7b33affb1",
+          "body": "{\n  \"companies\": [\n    {\n      \"careerSiteUri\": \"\",\n      \"derivedInfo\": {\n        \"headquartersLocation\": {\n          \"latLng\": {\n            \"latitude\": {{faker 'datatype.float'}},\n            \"longitude\": {{faker 'datatype.float'}}\n          },\n          \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n          \"postalAddress\": {\n            \"addressLines\": [\n              \"\"\n            ],\n            \"administrativeArea\": \"\",\n            \"languageCode\": \"\",\n            \"locality\": \"\",\n            \"organization\": \"\",\n            \"postalCode\": \"\",\n            \"recipients\": [\n              \"\"\n            ],\n            \"regionCode\": \"\",\n            \"revision\": {{faker 'datatype.number'}},\n            \"sortingCode\": \"\",\n            \"sublocality\": \"\"\n          },\n          \"radiusMiles\": {{faker 'datatype.float'}}\n        }\n      },\n      \"displayName\": \"\",\n      \"eeoText\": \"\",\n      \"externalId\": \"\",\n      \"headquartersAddress\": \"\",\n      \"hiringAgency\": {{faker 'datatype.boolean'}},\n      \"imageUri\": \"\",\n      \"keywordSearchableJobCustomAttributes\": [\n        \"\"\n      ],\n      \"name\": \"\",\n      \"size\": \"{{oneOf (array 'COMPANY_SIZE_UNSPECIFIED' 'MINI' 'SMALL' 'SMEDIUM' 'MEDIUM' 'BIG' 'BIGGER' 'GIANT')}}\",\n      \"suspended\": {{faker 'datatype.boolean'}},\n      \"websiteUri\": \"\"\n    }\n  ],\n  \"metadata\": {\n    \"requestId\": \"\"\n  },\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d51dc34-6848-48fc-ba9c-3879f7947f8c",
+      "documentation": "Creates a new company entity.",
+      "method": "post",
+      "endpoint": "v4/:parent/companies",
+      "responses": [
+        {
+          "uuid": "6b8b7f8a-fba5-434b-ab84-75aa70ec8554",
+          "body": "{\n  \"careerSiteUri\": \"\",\n  \"derivedInfo\": {\n    \"headquartersLocation\": {\n      \"latLng\": {\n        \"latitude\": {{faker 'datatype.float'}},\n        \"longitude\": {{faker 'datatype.float'}}\n      },\n      \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n      \"postalAddress\": {\n        \"addressLines\": [\n          \"\"\n        ],\n        \"administrativeArea\": \"\",\n        \"languageCode\": \"\",\n        \"locality\": \"\",\n        \"organization\": \"\",\n        \"postalCode\": \"\",\n        \"recipients\": [\n          \"\"\n        ],\n        \"regionCode\": \"\",\n        \"revision\": {{faker 'datatype.number'}},\n        \"sortingCode\": \"\",\n        \"sublocality\": \"\"\n      },\n      \"radiusMiles\": {{faker 'datatype.float'}}\n    }\n  },\n  \"displayName\": \"\",\n  \"eeoText\": \"\",\n  \"externalId\": \"\",\n  \"headquartersAddress\": \"\",\n  \"hiringAgency\": {{faker 'datatype.boolean'}},\n  \"imageUri\": \"\",\n  \"keywordSearchableJobCustomAttributes\": [\n    \"\"\n  ],\n  \"name\": \"\",\n  \"size\": \"{{oneOf (array 'COMPANY_SIZE_UNSPECIFIED' 'MINI' 'SMALL' 'SMEDIUM' 'MEDIUM' 'BIG' 'BIGGER' 'GIANT')}}\",\n  \"suspended\": {{faker 'datatype.boolean'}},\n  \"websiteUri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eaf88dc1-555b-453b-a34c-66554fcfc63e",
+      "documentation": "Lists jobs by filter.",
+      "method": "get",
+      "endpoint": "v4/:parent/jobs",
+      "responses": [
+        {
+          "uuid": "457281db-e491-4496-9859-1b1489c36686",
+          "body": "{\n  \"jobs\": [\n    {\n      \"addresses\": [\n        \"\"\n      ],\n      \"applicationInfo\": {\n        \"emails\": [\n          \"\"\n        ],\n        \"instruction\": \"\",\n        \"uris\": [\n          \"\"\n        ]\n      },\n      \"company\": \"\",\n      \"companyDisplayName\": \"\",\n      \"compensationInfo\": {\n        \"annualizedBaseCompensationRange\": {\n          \"maxCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          },\n          \"minCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          }\n        },\n        \"annualizedTotalCompensationRange\": {\n          \"maxCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          },\n          \"minCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          }\n        },\n        \"entries\": [\n          {\n            \"amount\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            },\n            \"description\": \"\",\n            \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n            \"range\": {\n              \"maxCompensation\": {\n                \"currencyCode\": \"\",\n                \"nanos\": {{faker 'datatype.number'}},\n                \"units\": \"\"\n              },\n              \"minCompensation\": {\n                \"currencyCode\": \"\",\n                \"nanos\": {{faker 'datatype.number'}},\n                \"units\": \"\"\n              }\n            },\n            \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n            \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n          }\n        ]\n      },\n      \"customAttributes\": {},\n      \"degreeTypes\": [\n        \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n      ],\n      \"department\": \"\",\n      \"derivedInfo\": {\n        \"jobCategories\": [\n          \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n        ],\n        \"locations\": [\n          {\n            \"latLng\": {\n              \"latitude\": {{faker 'datatype.float'}},\n              \"longitude\": {{faker 'datatype.float'}}\n            },\n            \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n            \"postalAddress\": {\n              \"addressLines\": [\n                \"\"\n              ],\n              \"administrativeArea\": \"\",\n              \"languageCode\": \"\",\n              \"locality\": \"\",\n              \"organization\": \"\",\n              \"postalCode\": \"\",\n              \"recipients\": [\n                \"\"\n              ],\n              \"regionCode\": \"\",\n              \"revision\": {{faker 'datatype.number'}},\n              \"sortingCode\": \"\",\n              \"sublocality\": \"\"\n            },\n            \"radiusMiles\": {{faker 'datatype.float'}}\n          }\n        ]\n      },\n      \"description\": \"\",\n      \"employmentTypes\": [\n        \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n      ],\n      \"incentives\": \"\",\n      \"jobBenefits\": [\n        \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n      ],\n      \"jobEndTime\": \"\",\n      \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n      \"jobStartTime\": \"\",\n      \"languageCode\": \"\",\n      \"name\": \"\",\n      \"postingCreateTime\": \"\",\n      \"postingExpireTime\": \"\",\n      \"postingPublishTime\": \"\",\n      \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n      \"postingUpdateTime\": \"\",\n      \"processingOptions\": {\n        \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n        \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n      },\n      \"promotionValue\": {{faker 'datatype.number'}},\n      \"qualifications\": \"\",\n      \"requisitionId\": \"\",\n      \"responsibilities\": \"\",\n      \"title\": \"\",\n      \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n    }\n  ],\n  \"metadata\": {\n    \"requestId\": \"\"\n  },\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bb9d214a-50bf-42e8-b0d9-c2f2c894d191",
+      "documentation": "Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs",
+      "responses": [
+        {
+          "uuid": "4b5c6703-293c-46c4-ab55-adda8df31437",
+          "body": "{\n  \"addresses\": [\n    \"\"\n  ],\n  \"applicationInfo\": {\n    \"emails\": [\n      \"\"\n    ],\n    \"instruction\": \"\",\n    \"uris\": [\n      \"\"\n    ]\n  },\n  \"company\": \"\",\n  \"companyDisplayName\": \"\",\n  \"compensationInfo\": {\n    \"annualizedBaseCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"annualizedTotalCompensationRange\": {\n      \"maxCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      },\n      \"minCompensation\": {\n        \"currencyCode\": \"\",\n        \"nanos\": {{faker 'datatype.number'}},\n        \"units\": \"\"\n      }\n    },\n    \"entries\": [\n      {\n        \"amount\": {\n          \"currencyCode\": \"\",\n          \"nanos\": {{faker 'datatype.number'}},\n          \"units\": \"\"\n        },\n        \"description\": \"\",\n        \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n        \"range\": {\n          \"maxCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          },\n          \"minCompensation\": {\n            \"currencyCode\": \"\",\n            \"nanos\": {{faker 'datatype.number'}},\n            \"units\": \"\"\n          }\n        },\n        \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n        \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n      }\n    ]\n  },\n  \"customAttributes\": {},\n  \"degreeTypes\": [\n    \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n  ],\n  \"department\": \"\",\n  \"derivedInfo\": {\n    \"jobCategories\": [\n      \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n    ],\n    \"locations\": [\n      {\n        \"latLng\": {\n          \"latitude\": {{faker 'datatype.float'}},\n          \"longitude\": {{faker 'datatype.float'}}\n        },\n        \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n        \"postalAddress\": {\n          \"addressLines\": [\n            \"\"\n          ],\n          \"administrativeArea\": \"\",\n          \"languageCode\": \"\",\n          \"locality\": \"\",\n          \"organization\": \"\",\n          \"postalCode\": \"\",\n          \"recipients\": [\n            \"\"\n          ],\n          \"regionCode\": \"\",\n          \"revision\": {{faker 'datatype.number'}},\n          \"sortingCode\": \"\",\n          \"sublocality\": \"\"\n        },\n        \"radiusMiles\": {{faker 'datatype.float'}}\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"employmentTypes\": [\n    \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n  ],\n  \"incentives\": \"\",\n  \"jobBenefits\": [\n    \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n  ],\n  \"jobEndTime\": \"\",\n  \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n  \"jobStartTime\": \"\",\n  \"languageCode\": \"\",\n  \"name\": \"\",\n  \"postingCreateTime\": \"\",\n  \"postingExpireTime\": \"\",\n  \"postingPublishTime\": \"\",\n  \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n  \"postingUpdateTime\": \"\",\n  \"processingOptions\": {\n    \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n    \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n  },\n  \"promotionValue\": {{faker 'datatype.number'}},\n  \"qualifications\": \"\",\n  \"requisitionId\": \"\",\n  \"responsibilities\": \"\",\n  \"title\": \"\",\n  \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e5a256bb-a746-4a72-bac1-909af2d96fec",
+      "documentation": "Begins executing a batch create jobs operation.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs:batchCreate",
+      "responses": [
+        {
+          "uuid": "e30c7582-d280-4d6f-a65a-ce0904b559ed",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9582d7b7-7f29-4ec3-aa0b-3211cca2a358",
+      "documentation": "Begins executing a batch delete jobs operation.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs:batchDelete",
+      "responses": [
+        {
+          "uuid": "b07d4f33-cc9a-4491-858c-bcc0381a4ded",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c1cfb98d-b20d-447e-b397-1c91d5bfa239",
+      "documentation": "Begins executing a batch update jobs operation.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs:batchUpdate",
+      "responses": [
+        {
+          "uuid": "7c4a1820-2286-48c8-a958-a9877b8402ff",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16bd64ac-ed45-4dc9-a9da-879e71e2197c",
+      "documentation": "Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs:search",
+      "responses": [
+        {
+          "uuid": "20c56d49-25b9-444a-859b-aca4c290f265",
+          "body": "{\n  \"broadenedQueryJobsCount\": {{faker 'datatype.number'}},\n  \"histogramQueryResults\": [\n    {\n      \"histogram\": {},\n      \"histogramQuery\": \"\"\n    }\n  ],\n  \"locationFilters\": [\n    {\n      \"latLng\": {\n        \"latitude\": {{faker 'datatype.float'}},\n        \"longitude\": {{faker 'datatype.float'}}\n      },\n      \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n      \"postalAddress\": {\n        \"addressLines\": [\n          \"\"\n        ],\n        \"administrativeArea\": \"\",\n        \"languageCode\": \"\",\n        \"locality\": \"\",\n        \"organization\": \"\",\n        \"postalCode\": \"\",\n        \"recipients\": [\n          \"\"\n        ],\n        \"regionCode\": \"\",\n        \"revision\": {{faker 'datatype.number'}},\n        \"sortingCode\": \"\",\n        \"sublocality\": \"\"\n      },\n      \"radiusMiles\": {{faker 'datatype.float'}}\n    }\n  ],\n  \"matchingJobs\": [\n    {\n      \"commuteInfo\": {\n        \"jobLocation\": {\n          \"latLng\": {\n            \"latitude\": {{faker 'datatype.float'}},\n            \"longitude\": {{faker 'datatype.float'}}\n          },\n          \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n          \"postalAddress\": {\n            \"addressLines\": [\n              \"\"\n            ],\n            \"administrativeArea\": \"\",\n            \"languageCode\": \"\",\n            \"locality\": \"\",\n            \"organization\": \"\",\n            \"postalCode\": \"\",\n            \"recipients\": [\n              \"\"\n            ],\n            \"regionCode\": \"\",\n            \"revision\": {{faker 'datatype.number'}},\n            \"sortingCode\": \"\",\n            \"sublocality\": \"\"\n          },\n          \"radiusMiles\": {{faker 'datatype.float'}}\n        },\n        \"travelDuration\": \"\"\n      },\n      \"job\": {\n        \"addresses\": [\n          \"\"\n        ],\n        \"applicationInfo\": {\n          \"emails\": [\n            \"\"\n          ],\n          \"instruction\": \"\",\n          \"uris\": [\n            \"\"\n          ]\n        },\n        \"company\": \"\",\n        \"companyDisplayName\": \"\",\n        \"compensationInfo\": {\n          \"annualizedBaseCompensationRange\": {\n            \"maxCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            },\n            \"minCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            }\n          },\n          \"annualizedTotalCompensationRange\": {\n            \"maxCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            },\n            \"minCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            }\n          },\n          \"entries\": [\n            {\n              \"amount\": {\n                \"currencyCode\": \"\",\n                \"nanos\": {{faker 'datatype.number'}},\n                \"units\": \"\"\n              },\n              \"description\": \"\",\n              \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n              \"range\": {\n                \"maxCompensation\": {\n                  \"currencyCode\": \"\",\n                  \"nanos\": {{faker 'datatype.number'}},\n                  \"units\": \"\"\n                },\n                \"minCompensation\": {\n                  \"currencyCode\": \"\",\n                  \"nanos\": {{faker 'datatype.number'}},\n                  \"units\": \"\"\n                }\n              },\n              \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n              \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n            }\n          ]\n        },\n        \"customAttributes\": {},\n        \"degreeTypes\": [\n          \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n        ],\n        \"department\": \"\",\n        \"derivedInfo\": {\n          \"jobCategories\": [\n            \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n          ],\n          \"locations\": [\n            {\n              \"latLng\": {\n                \"latitude\": {{faker 'datatype.float'}},\n                \"longitude\": {{faker 'datatype.float'}}\n              },\n              \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n              \"postalAddress\": {\n                \"addressLines\": [\n                  \"\"\n                ],\n                \"administrativeArea\": \"\",\n                \"languageCode\": \"\",\n                \"locality\": \"\",\n                \"organization\": \"\",\n                \"postalCode\": \"\",\n                \"recipients\": [\n                  \"\"\n                ],\n                \"regionCode\": \"\",\n                \"revision\": {{faker 'datatype.number'}},\n                \"sortingCode\": \"\",\n                \"sublocality\": \"\"\n              },\n              \"radiusMiles\": {{faker 'datatype.float'}}\n            }\n          ]\n        },\n        \"description\": \"\",\n        \"employmentTypes\": [\n          \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n        ],\n        \"incentives\": \"\",\n        \"jobBenefits\": [\n          \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n        ],\n        \"jobEndTime\": \"\",\n        \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n        \"jobStartTime\": \"\",\n        \"languageCode\": \"\",\n        \"name\": \"\",\n        \"postingCreateTime\": \"\",\n        \"postingExpireTime\": \"\",\n        \"postingPublishTime\": \"\",\n        \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n        \"postingUpdateTime\": \"\",\n        \"processingOptions\": {\n          \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n          \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n        },\n        \"promotionValue\": {{faker 'datatype.number'}},\n        \"qualifications\": \"\",\n        \"requisitionId\": \"\",\n        \"responsibilities\": \"\",\n        \"title\": \"\",\n        \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n      },\n      \"jobSummary\": \"\",\n      \"jobTitleSnippet\": \"\",\n      \"searchTextSnippet\": \"\"\n    }\n  ],\n  \"metadata\": {\n    \"requestId\": \"\"\n  },\n  \"nextPageToken\": \"\",\n  \"spellCorrection\": {\n    \"corrected\": {{faker 'datatype.boolean'}},\n    \"correctedHtml\": \"\",\n    \"correctedText\": \"\"\n  },\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d731197-ff0c-476d-86e4-400074b624a0",
+      "documentation": "Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), it has different algorithmic adjustments that are designed to specifically target passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.",
+      "method": "post",
+      "endpoint": "v4/:parent/jobs:searchForAlert",
+      "responses": [
+        {
+          "uuid": "bde0af03-1aad-42aa-98cc-8d57034bad0e",
+          "body": "{\n  \"broadenedQueryJobsCount\": {{faker 'datatype.number'}},\n  \"histogramQueryResults\": [\n    {\n      \"histogram\": {},\n      \"histogramQuery\": \"\"\n    }\n  ],\n  \"locationFilters\": [\n    {\n      \"latLng\": {\n        \"latitude\": {{faker 'datatype.float'}},\n        \"longitude\": {{faker 'datatype.float'}}\n      },\n      \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n      \"postalAddress\": {\n        \"addressLines\": [\n          \"\"\n        ],\n        \"administrativeArea\": \"\",\n        \"languageCode\": \"\",\n        \"locality\": \"\",\n        \"organization\": \"\",\n        \"postalCode\": \"\",\n        \"recipients\": [\n          \"\"\n        ],\n        \"regionCode\": \"\",\n        \"revision\": {{faker 'datatype.number'}},\n        \"sortingCode\": \"\",\n        \"sublocality\": \"\"\n      },\n      \"radiusMiles\": {{faker 'datatype.float'}}\n    }\n  ],\n  \"matchingJobs\": [\n    {\n      \"commuteInfo\": {\n        \"jobLocation\": {\n          \"latLng\": {\n            \"latitude\": {{faker 'datatype.float'}},\n            \"longitude\": {{faker 'datatype.float'}}\n          },\n          \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n          \"postalAddress\": {\n            \"addressLines\": [\n              \"\"\n            ],\n            \"administrativeArea\": \"\",\n            \"languageCode\": \"\",\n            \"locality\": \"\",\n            \"organization\": \"\",\n            \"postalCode\": \"\",\n            \"recipients\": [\n              \"\"\n            ],\n            \"regionCode\": \"\",\n            \"revision\": {{faker 'datatype.number'}},\n            \"sortingCode\": \"\",\n            \"sublocality\": \"\"\n          },\n          \"radiusMiles\": {{faker 'datatype.float'}}\n        },\n        \"travelDuration\": \"\"\n      },\n      \"job\": {\n        \"addresses\": [\n          \"\"\n        ],\n        \"applicationInfo\": {\n          \"emails\": [\n            \"\"\n          ],\n          \"instruction\": \"\",\n          \"uris\": [\n            \"\"\n          ]\n        },\n        \"company\": \"\",\n        \"companyDisplayName\": \"\",\n        \"compensationInfo\": {\n          \"annualizedBaseCompensationRange\": {\n            \"maxCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            },\n            \"minCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            }\n          },\n          \"annualizedTotalCompensationRange\": {\n            \"maxCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            },\n            \"minCompensation\": {\n              \"currencyCode\": \"\",\n              \"nanos\": {{faker 'datatype.number'}},\n              \"units\": \"\"\n            }\n          },\n          \"entries\": [\n            {\n              \"amount\": {\n                \"currencyCode\": \"\",\n                \"nanos\": {{faker 'datatype.number'}},\n                \"units\": \"\"\n              },\n              \"description\": \"\",\n              \"expectedUnitsPerYear\": {{faker 'datatype.float'}},\n              \"range\": {\n                \"maxCompensation\": {\n                  \"currencyCode\": \"\",\n                  \"nanos\": {{faker 'datatype.number'}},\n                  \"units\": \"\"\n                },\n                \"minCompensation\": {\n                  \"currencyCode\": \"\",\n                  \"nanos\": {{faker 'datatype.number'}},\n                  \"units\": \"\"\n                }\n              },\n              \"type\": \"{{oneOf (array 'COMPENSATION_TYPE_UNSPECIFIED' 'BASE' 'BONUS' 'SIGNING_BONUS' 'EQUITY' 'PROFIT_SHARING' 'COMMISSIONS' 'TIPS' 'OTHER_COMPENSATION_TYPE')}}\",\n              \"unit\": \"{{oneOf (array 'COMPENSATION_UNIT_UNSPECIFIED' 'HOURLY' 'DAILY' 'WEEKLY' 'MONTHLY' 'YEARLY' 'ONE_TIME' 'OTHER_COMPENSATION_UNIT')}}\"\n            }\n          ]\n        },\n        \"customAttributes\": {},\n        \"degreeTypes\": [\n          \"{{oneOf (array 'DEGREE_TYPE_UNSPECIFIED' 'PRIMARY_EDUCATION' 'LOWER_SECONDARY_EDUCATION' 'UPPER_SECONDARY_EDUCATION' 'ADULT_REMEDIAL_EDUCATION' 'ASSOCIATES_OR_EQUIVALENT' 'BACHELORS_OR_EQUIVALENT' 'MASTERS_OR_EQUIVALENT' 'DOCTORAL_OR_EQUIVALENT')}}\"\n        ],\n        \"department\": \"\",\n        \"derivedInfo\": {\n          \"jobCategories\": [\n            \"{{oneOf (array 'JOB_CATEGORY_UNSPECIFIED' 'ACCOUNTING_AND_FINANCE' 'ADMINISTRATIVE_AND_OFFICE' 'ADVERTISING_AND_MARKETING' 'ANIMAL_CARE' 'ART_FASHION_AND_DESIGN' 'BUSINESS_OPERATIONS' 'CLEANING_AND_FACILITIES' 'COMPUTER_AND_IT' 'CONSTRUCTION' 'CUSTOMER_SERVICE' 'EDUCATION' 'ENTERTAINMENT_AND_TRAVEL' 'FARMING_AND_OUTDOORS' 'HEALTHCARE' 'HUMAN_RESOURCES' 'INSTALLATION_MAINTENANCE_AND_REPAIR' 'LEGAL' 'MANAGEMENT' 'MANUFACTURING_AND_WAREHOUSE' 'MEDIA_COMMUNICATIONS_AND_WRITING' 'OIL_GAS_AND_MINING' 'PERSONAL_CARE_AND_SERVICES' 'PROTECTIVE_SERVICES' 'REAL_ESTATE' 'RESTAURANT_AND_HOSPITALITY' 'SALES_AND_RETAIL' 'SCIENCE_AND_ENGINEERING' 'SOCIAL_SERVICES_AND_NON_PROFIT' 'SPORTS_FITNESS_AND_RECREATION' 'TRANSPORTATION_AND_LOGISTICS')}}\"\n          ],\n          \"locations\": [\n            {\n              \"latLng\": {\n                \"latitude\": {{faker 'datatype.float'}},\n                \"longitude\": {{faker 'datatype.float'}}\n              },\n              \"locationType\": \"{{oneOf (array 'LOCATION_TYPE_UNSPECIFIED' 'COUNTRY' 'ADMINISTRATIVE_AREA' 'SUB_ADMINISTRATIVE_AREA' 'LOCALITY' 'POSTAL_CODE' 'SUB_LOCALITY' 'SUB_LOCALITY_1' 'SUB_LOCALITY_2' 'NEIGHBORHOOD' 'STREET_ADDRESS')}}\",\n              \"postalAddress\": {\n                \"addressLines\": [\n                  \"\"\n                ],\n                \"administrativeArea\": \"\",\n                \"languageCode\": \"\",\n                \"locality\": \"\",\n                \"organization\": \"\",\n                \"postalCode\": \"\",\n                \"recipients\": [\n                  \"\"\n                ],\n                \"regionCode\": \"\",\n                \"revision\": {{faker 'datatype.number'}},\n                \"sortingCode\": \"\",\n                \"sublocality\": \"\"\n              },\n              \"radiusMiles\": {{faker 'datatype.float'}}\n            }\n          ]\n        },\n        \"description\": \"\",\n        \"employmentTypes\": [\n          \"{{oneOf (array 'EMPLOYMENT_TYPE_UNSPECIFIED' 'FULL_TIME' 'PART_TIME' 'CONTRACTOR' 'CONTRACT_TO_HIRE' 'TEMPORARY' 'INTERN' 'VOLUNTEER' 'PER_DIEM' 'FLY_IN_FLY_OUT' 'OTHER_EMPLOYMENT_TYPE')}}\"\n        ],\n        \"incentives\": \"\",\n        \"jobBenefits\": [\n          \"{{oneOf (array 'JOB_BENEFIT_UNSPECIFIED' 'CHILD_CARE' 'DENTAL' 'DOMESTIC_PARTNER' 'FLEXIBLE_HOURS' 'MEDICAL' 'LIFE_INSURANCE' 'PARENTAL_LEAVE' 'RETIREMENT_PLAN' 'SICK_DAYS' 'VACATION' 'VISION')}}\"\n        ],\n        \"jobEndTime\": \"\",\n        \"jobLevel\": \"{{oneOf (array 'JOB_LEVEL_UNSPECIFIED' 'ENTRY_LEVEL' 'EXPERIENCED' 'MANAGER' 'DIRECTOR' 'EXECUTIVE')}}\",\n        \"jobStartTime\": \"\",\n        \"languageCode\": \"\",\n        \"name\": \"\",\n        \"postingCreateTime\": \"\",\n        \"postingExpireTime\": \"\",\n        \"postingPublishTime\": \"\",\n        \"postingRegion\": \"{{oneOf (array 'POSTING_REGION_UNSPECIFIED' 'ADMINISTRATIVE_AREA' 'NATION' 'TELECOMMUTE')}}\",\n        \"postingUpdateTime\": \"\",\n        \"processingOptions\": {\n          \"disableStreetAddressResolution\": {{faker 'datatype.boolean'}},\n          \"htmlSanitization\": \"{{oneOf (array 'HTML_SANITIZATION_UNSPECIFIED' 'HTML_SANITIZATION_DISABLED' 'SIMPLE_FORMATTING_ONLY')}}\"\n        },\n        \"promotionValue\": {{faker 'datatype.number'}},\n        \"qualifications\": \"\",\n        \"requisitionId\": \"\",\n        \"responsibilities\": \"\",\n        \"title\": \"\",\n        \"visibility\": \"{{oneOf (array 'VISIBILITY_UNSPECIFIED' 'ACCOUNT_ONLY' 'SHARED_WITH_GOOGLE' 'SHARED_WITH_PUBLIC')}}\"\n      },\n      \"jobSummary\": \"\",\n      \"jobTitleSnippet\": \"\",\n      \"searchTextSnippet\": \"\"\n    }\n  ],\n  \"metadata\": {\n    \"requestId\": \"\"\n  },\n  \"nextPageToken\": \"\",\n  \"spellCorrection\": {\n    \"corrected\": {{faker 'datatype.boolean'}},\n    \"correctedHtml\": \"\",\n    \"correctedText\": \"\"\n  },\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a7f48b51-e226-456f-bcaa-37109853b49e",
+      "documentation": "Lists all tenants associated with the project.",
+      "method": "get",
+      "endpoint": "v4/:parent/tenants",
+      "responses": [
+        {
+          "uuid": "6049de87-be7b-4715-b711-657833a74fa1",
+          "body": "{\n  \"metadata\": {\n    \"requestId\": \"\"\n  },\n  \"nextPageToken\": \"\",\n  \"tenants\": [\n    {\n      \"externalId\": \"\",\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2e1ce9bf-2312-4be6-a67d-8625a5faa93c",
+      "documentation": "Creates a new tenant entity.",
+      "method": "post",
+      "endpoint": "v4/:parent/tenants",
+      "responses": [
+        {
+          "uuid": "47903f57-5724-4905-a51a-a6a6079f8d2f",
+          "body": "{\n  \"externalId\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "effbcb99-bbb0-494d-ae06-ada9bddb556b",
+      "documentation": "Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.",
+      "method": "get",
+      "endpoint": "v4/:tenant:completeQuery",
+      "responses": [
+        {
+          "uuid": "2ae06c53-f519-4213-b611-6d7a319116ec",
+          "body": "{\n  \"completionResults\": [\n    {\n      \"imageUri\": \"\",\n      \"suggestion\": \"\",\n      \"type\": \"{{oneOf (array 'COMPLETION_TYPE_UNSPECIFIED' 'JOB_TITLE' 'COMPANY_NAME' 'COMBINED')}}\"\n    }\n  ],\n  \"metadata\": {\n    \"requestId\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

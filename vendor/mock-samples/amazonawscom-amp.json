@@ -1,0 +1,1218 @@
+{
+  "uuid": "68e7b523-fe5c-4228-95e0-9d8f016ae70e",
+  "lastMigration": 24,
+  "name": "Amazon Prometheus Service",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "7799b50e-f1ce-4330-b090-0f2a7cff4efd",
+      "documentation": "Creates a new AMP workspace.",
+      "method": "post",
+      "endpoint": "workspaces",
+      "responses": [
+        {
+          "uuid": "b5a52320-d944-4b84-bbf8-da4a37e4d578",
+          "body": "{\n  \"arn\": \"\",\n  \"status\": {\n    \"statusCode\": \"\"\n  },\n  \"tags\": {},\n  \"workspaceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "853a5534-02fe-4adb-9c46-9bed48f500c7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "66036867-949c-48b8-89b4-32fd2a4d9a56",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "00395d74-f087-44f3-b76d-3ad20f0224ed",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7a44a8bb-f178-431d-8870-89f28d3b5ae6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dabb1e05-3764-4379-a531-5d76fba5406e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0cd941b1-7e1f-4200-9fb7-2e180009926e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f1cdd9e3-52e3-4484-b03d-11aa671eab2e",
+      "documentation": "Lists all AMP workspaces, including workspaces being created or deleted.",
+      "method": "get",
+      "endpoint": "workspaces",
+      "responses": [
+        {
+          "uuid": "ffecd00c-ae08-455e-bac3-933a2a252f72",
+          "body": "{\n  \"nextToken\": \"\",\n  \"workspaces\": [\n    {\n      \"alias\": \"\",\n      \"arn\": \"\",\n      \"createdAt\": \"{{faker 'date.recent' 365}}\",\n      \"status\": {\n        \"statusCode\": \"\"\n      },\n      \"tags\": {},\n      \"workspaceId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "226307e7-6f15-4acd-8ace-93bb9e8afe7d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b48b9e31-ae67-43e2-8818-c2407c64767a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "02f51b3f-af04-4f23-bcf7-35863fc64a0a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12b0eae5-0248-437b-8e12-c2175781881d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d6846bdc-5381-466a-b54d-c2b6dcd203bf",
+      "documentation": "Deletes an AMP workspace.",
+      "method": "delete",
+      "endpoint": "workspaces/:workspaceId",
+      "responses": [
+        {
+          "uuid": "833142ee-cf14-4069-aa07-71fb5e5f436e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bca0f1cb-0848-449e-9253-dd1c8d2db800",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ac8d1b5e-2efd-4788-90ad-8e8cf1cb068e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5585b974-7109-4c0d-a0d3-fd43c0b2113b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "13d3b2d1-87ee-4af7-a5e4-69bc436e427e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1afc5311-b1d6-411a-8aa4-5d501e5f7ade",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f82369ef-940f-44e5-a23b-12efdb8fb6ab",
+      "documentation": "Describes an existing AMP workspace.",
+      "method": "get",
+      "endpoint": "workspaces/:workspaceId",
+      "responses": [
+        {
+          "uuid": "c3a71b34-73cf-475d-812c-5e83d32d337a",
+          "body": "{\n  \"workspace\": {\n    \"alias\": \"\",\n    \"arn\": \"\",\n    \"createdAt\": \"{{faker 'date.recent' 365}}\",\n    \"prometheusEndpoint\": \"\",\n    \"status\": {\n      \"statusCode\": \"\"\n    },\n    \"tags\": {},\n    \"workspaceId\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c16b4d70-c2b6-4808-baa0-6718a0711ca5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2207b458-7459-4736-a536-229b530f4d1c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bf40c922-0ab5-48af-9536-9a8532d8df3f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "295d0994-c53f-4c46-be56-7fbc14444dac",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "70bbfdb4-dddb-4525-bb4b-80c2be493e5a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "05c71ab6-c2c8-4cdb-a1af-ff2130be13c3",
+      "documentation": "Lists the tags you have assigned to the resource.",
+      "method": "get",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "62b44651-8143-4643-bfde-3f6573943301",
+          "body": "{\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b6984081-d413-41a8-92da-f259995c19a2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b29ac62c-6318-402b-a5fc-821d14610e80",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eb276aeb-b208-44e4-a998-39585f91f3aa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fb3e0960-8d82-4bf5-8a2c-83e4cdde31b0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "14b27951-d0f7-46d6-b3d6-5a2a1d429688",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9eb56cbf-fc0f-4dbd-a715-4fcd9c9a7533",
+      "documentation": "Creates tags for the specified resource.",
+      "method": "post",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "870e4511-68a2-41d9-8678-2d769b5d08e6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cfd9cf23-3084-423a-83e3-18f0aab60216",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "14d898f2-ddbc-4ee2-a16f-c2591eff4fa3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f24a0576-3283-427f-9fb6-b87d93ba0fce",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9b86cd6c-d663-40f1-8751-80214f474b75",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "39940ce8-60d8-483d-981c-8aa1a2f6d56b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "323aa260-a61f-46be-b36c-1935ca4d1d43",
+      "documentation": "Deletes tags from the specified resource.",
+      "method": "delete",
+      "endpoint": "tags/:resourceArn#tagKeys",
+      "responses": [
+        {
+          "uuid": "6ca0634c-f32d-4b22-b3d8-c6a461eba096",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "245a5601-b4be-40a7-a6a3-161c3f657a23",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3e021d4d-1eef-4b61-b737-f393ceaee6ab",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bc1c5814-f03e-4093-8cd7-3de026c4cf60",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "959a243f-729a-41e2-b479-304186a6c951",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1e3e86c3-eb55-430f-98cb-deb5efb69b16",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "75efee30-8a6e-413d-afd9-e629b71c9fd9",
+      "documentation": "Updates an AMP workspace alias.",
+      "method": "post",
+      "endpoint": "workspaces/:workspaceId/alias",
+      "responses": [
+        {
+          "uuid": "9c77c567-7662-4749-ac39-ed971c09c926",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8dd4e8df-c8af-44bd-80ea-f6b274919df4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ThrottlingException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6bec8cef-ae65-454c-adbd-baabc21bdd76",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36129c52-41af-4645-a595-c6efa18b8b15",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cda21d35-254d-42be-a2d8-bfe96958a343",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d4d5046d-6759-4c84-990b-25a4aa5982a1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "be3da125-1de6-4b10-8307-40df06431a5f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "14f4ef8f-0193-4abb-9679-554c1a439504",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,63 @@
+{
+  "name": "mockoon-config-transformer",
+  "description": "Tool for converting the Mockoon configuration files into a git-friendly structure",
+  "version": "0.0.1",
+  "files": [
+    "./dist"
+  ],
+  "author": {
+    "name": "Eduard Titov",
+    "email": "editied@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/edtoken/mockoon-config-compiler",
+  "homepage": "https://github.com/edtoken/mockoon-config-compiler",
+  "bugs": {
+    "url": "https://github.com/edtoken/mockoon-config-compiler/issues"
+  },
+  "main": "./dist/src/cli/index.js",
+  "bin": {
+    "mockoon-config-transformer": "./dist/src/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch",
+    "fix": "prettier ./src ./test --write",
+    "lint": "run-s lint:*",
+    "lint:tsc": "tsc --noEmit",
+    "test": "run-s test:*",
+    "test:jest": "jest ./test --verbose --silent false",
+    "watch:test:jest": "jest ./test --verbose --silent false --watch",
+    "pretest": "run-s fetch-configs build-configs",
+    "fetch-configs": "node ./test/fetch-configs.js",
+    "build-configs": "node ./test/build-configs.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "trailingComma": "none",
+    "plugins": [
+      "prettier-plugin-organize-imports"
+    ]
+  },
+  "dependencies": {
+    "@mockoon/commons": "4.1.0",
+    "commander": "11.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.4",
+    "@types/node": "20.5.7",
+    "@types/uuid": "9.0.3",
+    "jest": "29.6.4",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.0.0",
+    "prettier-plugin-organize-imports": "3.2.3",
+    "ts-jest": "29.1.1",
+    "typescript": "5.2.2",
+    "uuid": "9.0.0"
+  },
+  "engines": {
+    "node": ">=16.10.0"
+  }
+}

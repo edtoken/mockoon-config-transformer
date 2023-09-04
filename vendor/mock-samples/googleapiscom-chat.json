@@ -1,0 +1,294 @@
+{
+  "uuid": "c7bc2f99-26d6-4ca0-af95-027e4ba5dacb",
+  "lastMigration": 24,
+  "name": "Google Chat API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "eced9684-9f7e-4518-b1a9-fd7af982b492",
+      "documentation": "Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
+      "method": "get",
+      "endpoint": "v1/media/:resourceName",
+      "responses": [
+        {
+          "uuid": "669cc012-7ce7-4550-b5dc-b578cb51347b",
+          "body": "{\n  \"resourceName\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64333062-a086-4fbe-9d6b-9bd818548bf9",
+      "documentation": "Lists spaces the caller is a member of. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). ",
+      "method": "get",
+      "endpoint": "v1/spaces",
+      "responses": [
+        {
+          "uuid": "14e76a45-f96b-4d11-8664-ad069fa24e75",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"spaces\": [\n    {\n      \"displayName\": \"\",\n      \"name\": \"\",\n      \"singleUserBotDm\": {{faker 'datatype.boolean'}},\n      \"spaceDetails\": {\n        \"description\": \"\",\n        \"guidelines\": \"\"\n      },\n      \"spaceThreadingState\": \"{{oneOf (array 'SPACE_THREADING_STATE_UNSPECIFIED' 'THREADED_MESSAGES' 'GROUPED_MESSAGES' 'UNTHREADED_MESSAGES')}}\",\n      \"threaded\": {{faker 'datatype.boolean'}},\n      \"type\": \"{{oneOf (array 'TYPE_UNSPECIFIED' 'ROOM' 'DM')}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5fcb5290-88ea-4077-8aae-7366e0367a40",
+      "documentation": "Deletes a message. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). [Developer Preview](https://developers.google.com/workspace/preview): Deletes a message. Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages` authorization scope.",
+      "method": "delete",
+      "endpoint": "v1/:name",
+      "responses": [
+        {
+          "uuid": "a31b87fb-019c-494e-8d51-862c43b0b805",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1468040e-8260-47bc-afa3-0360d7e924b8",
+      "documentation": "Gets the metadata of a message attachment. The attachment data is fetched using the media API. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
+      "method": "get",
+      "endpoint": "v1/:name",
+      "responses": [
+        {
+          "uuid": "f752c0f3-a73c-43b7-b9fe-5f0fdb57fc8d",
+          "body": "{\n  \"attachmentDataRef\": {\n    \"resourceName\": \"\"\n  },\n  \"contentName\": \"\",\n  \"contentType\": \"\",\n  \"downloadUri\": \"\",\n  \"driveDataRef\": {\n    \"driveFileId\": \"\"\n  },\n  \"name\": \"\",\n  \"source\": \"{{oneOf (array 'SOURCE_UNSPECIFIED' 'DRIVE_FILE' 'UPLOADED_CONTENT')}}\",\n  \"thumbnailUri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a09a830d-faec-41d5-9c0d-3a804f5477ee",
+      "documentation": "Updates a message. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
+      "method": "put",
+      "endpoint": "v1/:name",
+      "responses": [
+        {
+          "uuid": "cec5502f-cc22-43b0-9d49-bd40516f953a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eef32dfc-ff42-4824-83d9-160c5558cfc8",
+      "documentation": "Lists human memberships in a space for joined members. Requires [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).",
+      "method": "get",
+      "endpoint": "v1/:parent/members",
+      "responses": [
+        {
+          "uuid": "8aaec1b7-8e8e-4086-96fd-d00a7b7803b5",
+          "body": "{\n  \"memberships\": [\n    {\n      \"createTime\": \"\",\n      \"member\": {\n        \"displayName\": \"\",\n        \"domainId\": \"\",\n        \"isAnonymous\": {{faker 'datatype.boolean'}},\n        \"name\": \"\",\n        \"type\": \"{{oneOf (array 'TYPE_UNSPECIFIED' 'HUMAN' 'BOT')}}\"\n      },\n      \"name\": \"\",\n      \"role\": \"{{oneOf (array 'MEMBERSHIP_ROLE_UNSPECIFIED' 'ROLE_MEMBER' 'ROLE_MANAGER')}}\",\n      \"state\": \"{{oneOf (array 'MEMBERSHIP_STATE_UNSPECIFIED' 'JOINED' 'INVITED' 'NOT_A_MEMBER')}}\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b30d43e-2f45-4cfa-b061-b89c584e2b58",
+      "documentation": "[Developer Preview](https://developers.google.com/workspace/preview): Creates a message. Requires [authentication](https://developers.google.com/chat/api/guides/auth).",
+      "method": "post",
+      "endpoint": "v1/:parent/messages",
+      "responses": [
+        {
+          "uuid": "0deb88bd-3176-4ff2-b9a9-c90c22e6225a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "758ce6f5-33b9-4058-a213-5e5de6c4ec3e",
+      "documentation": "Legacy path for creating message. Calling these will result in a BadRequest response.",
+      "method": "post",
+      "endpoint": "v1/:parent/webhooks",
+      "responses": [
+        {
+          "uuid": "fab01767-9070-4b97-ba8c-92ec5a5b2691",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

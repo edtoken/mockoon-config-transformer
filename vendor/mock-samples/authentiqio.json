@@ -1,0 +1,554 @@
+{
+  "uuid": "2a3f3203-7bba-4939-ac1c-1b0f6c050840",
+  "lastMigration": 24,
+  "name": "Authentiq Connect API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "ffbfa505-ac8a-4e4f-9d29-8935331d15a0",
+      "documentation": "Authenticate a user",
+      "method": "get",
+      "endpoint": "authorize",
+      "responses": [
+        {
+          "uuid": "15b6665b-ca8e-4f52-9b58-6a692d46be41",
+          "body": "",
+          "latency": 0,
+          "statusCode": 302,
+          "label": "A successful or erroneous authentication response.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8210766b-bcfa-4426-91e8-52e4002c0492",
+          "body": "",
+          "latency": 0,
+          "statusCode": 303,
+          "label": "*Sign in with Authentiq* page, popup or modal.\n",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "40a838bb-5368-4fef-beba-5f3c9ffecbfa",
+      "documentation": "List clients",
+      "method": "get",
+      "endpoint": "client",
+      "responses": [
+        {
+          "uuid": "857782d0-68c3-4dc7-8a84-09b1a2715ac3",
+          "body": "[\n  {\n    \"application_type\": \"\",\n    \"client_id\": \"\",\n    \"client_name\": \"\",\n    \"client_uri\": \"\",\n    \"contacts\": [\n      \"\"\n    ],\n    \"default_max_age\": {{faker 'datatype.number'}},\n    \"default_scopes\": [\n      \"\"\n    ],\n    \"grant_types\": [\n      \"\"\n    ],\n    \"logo_uri\": \"\",\n    \"policy_uri\": \"\",\n    \"redirect_uris\": [\n      \"\"\n    ],\n    \"response_types\": [\n      \"\"\n    ],\n    \"tos_uri\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "A list of Client Objects.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "06e95f68-5a90-456e-b45c-3d41103d8137",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "06a9e507-6488-44c6-b65d-64ca263a5a56",
+      "documentation": "Register a client",
+      "method": "post",
+      "endpoint": "client",
+      "responses": [
+        {
+          "uuid": "a71f01b3-7afd-427d-91a7-afc862b51934",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Client created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d92ef529-0ba6-4184-be4f-ec2adf1001e0",
+          "body": "{\n  \"detail\": \"\",\n  \"status\": {{faker 'datatype.number'}},\n  \"title\": \"\",\n  \"type\": \"about:blank\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Problem Detail error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f3b2a8c-a144-47f0-9d14-aa37ce37449a",
+      "documentation": "Delete a client",
+      "method": "delete",
+      "endpoint": "client/:client_id",
+      "responses": [
+        {
+          "uuid": "760c51a1-3326-40c5-b00d-b2e03409590e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Client deleted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f5d20510-afd2-47a3-8dff-d2da89c67e80",
+          "body": "{\n  \"detail\": \"\",\n  \"status\": {{faker 'datatype.number'}},\n  \"title\": \"\",\n  \"type\": \"about:blank\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Problem Detail error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e768164a-4f47-402e-9d60-79505f019198",
+      "documentation": "View a client",
+      "method": "get",
+      "endpoint": "client/:client_id",
+      "responses": [
+        {
+          "uuid": "9bdbb678-ad25-40dc-b865-e2346c69e8b0",
+          "body": "{\n  \"application_type\": \"\",\n  \"client_id\": \"\",\n  \"client_name\": \"\",\n  \"client_uri\": \"\",\n  \"contacts\": [\n    \"\"\n  ],\n  \"default_max_age\": {{faker 'datatype.number'}},\n  \"default_scopes\": [\n    \"\"\n  ],\n  \"grant_types\": [\n    \"\"\n  ],\n  \"logo_uri\": \"\",\n  \"policy_uri\": \"\",\n  \"redirect_uris\": [\n    \"\"\n  ],\n  \"response_types\": [\n    \"\"\n  ],\n  \"tos_uri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Client found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b6dcf6d3-2d38-48a0-ade3-60418471f9ec",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0a08cf62-c6dd-472e-8ea8-38d2b9014a4d",
+      "documentation": "Update a client",
+      "method": "put",
+      "endpoint": "client/:client_id",
+      "responses": [
+        {
+          "uuid": "65ca6c52-86b6-4bb8-9bb3-821b4e8d6dc7",
+          "body": "{\n  \"application_type\": \"\",\n  \"client_id\": \"\",\n  \"client_name\": \"\",\n  \"client_uri\": \"\",\n  \"contacts\": [\n    \"\"\n  ],\n  \"default_max_age\": {{faker 'datatype.number'}},\n  \"default_scopes\": [\n    \"\"\n  ],\n  \"grant_types\": [\n    \"\"\n  ],\n  \"logo_uri\": \"\",\n  \"policy_uri\": \"\",\n  \"redirect_uris\": [\n    \"\"\n  ],\n  \"response_types\": [\n    \"\"\n  ],\n  \"tos_uri\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Client updated",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5457f658-3078-431d-9d15-5b93624bf2ba",
+          "body": "{\n  \"detail\": \"\",\n  \"status\": {{faker 'datatype.number'}},\n  \"title\": \"\",\n  \"type\": \"about:blank\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Problem Detail error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "241d3109-86b4-4842-b2f6-9ba08da68432",
+      "documentation": "Obtain an ID Token",
+      "method": "post",
+      "endpoint": "token",
+      "responses": [
+        {
+          "uuid": "cd76d8d7-1d21-4489-9f98-2bb206a0609f",
+          "body": "{\n  \"access_token\": \"\",\n  \"expires_at\": {{faker 'datatype.number'}},\n  \"expires_in\": {{faker 'datatype.number'}},\n  \"id_token\": \"\",\n  \"refresh_token\": \"\",\n  \"scope\": \"\",\n  \"token_type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Token response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "629f8e62-d135-493a-9e12-caaff9f54bab",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9fb7f3e7-ce00-46e4-a643-23dc86a17640",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ee18d98-62ab-4910-8996-95b2f0539a00",
+      "documentation": "Retrieve a user profile",
+      "method": "get",
+      "endpoint": "userinfo",
+      "responses": [
+        {
+          "uuid": "c7fbffa8-64dd-414a-bbae-5f1c5f9eb197",
+          "body": "{\n  \"address\": {\n    \"country\": \"\",\n    \"locality\": \"\",\n    \"postal_code\": \"\",\n    \"region\": \"\",\n    \"street_address\": \"\"\n  },\n  \"aq:location\": {\n    \"address\": {\n      \"country\": \"\",\n      \"locality\": \"\",\n      \"postal_code\": \"\",\n      \"region\": \"\",\n      \"street_address\": \"\"\n    },\n    \"latitude\": {{faker 'datatype.float'}},\n    \"longitude\": {{faker 'datatype.float'}}\n  },\n  \"email\": \"\",\n  \"email_verified\": {{faker 'datatype.boolean'}},\n  \"family_name\": \"\",\n  \"given_name\": \"\",\n  \"name\": \"\",\n  \"phone_number\": \"\",\n  \"phone_number_verified\": {{faker 'datatype.boolean'}},\n  \"sub\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "UserInfo response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "34e8cf75-f49b-40c8-8e23-836711f1aa27",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77b40e64-dd8c-4fad-ad76-314f3da88356",
+          "body": "{\n  \"error\": \"\",\n  \"error_description\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OAuth 2.0 error response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7ca4bc57-f38c-487e-a1f1-e4cae6b7564f",
+      "documentation": "Include a session iframe",
+      "method": "get",
+      "endpoint": ":client_id/iframe",
+      "responses": [
+        {
+          "uuid": "cb5a4fc7-0667-40c1-ba5f-3bd2e8f79420",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "test/html"
+            },
+            {
+              "key": "Cache-Control",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

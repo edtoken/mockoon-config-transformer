@@ -1,0 +1,146 @@
+{
+  "uuid": "e5ed9a63-1b29-428b-9bfe-4513892a8967",
+  "lastMigration": 24,
+  "name": "Where to Credit API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "bd119847-e140-4031-851f-e506356c66c2",
+      "documentation": "Calculates the number of miles earned for every frequent flyer program.",
+      "method": "post",
+      "endpoint": "api/1.0/calculate",
+      "responses": [
+        {
+          "uuid": "2aaca8ba-9f40-497c-a057-8c2d5ec51ab7",
+          "body": "[\n  {\n    \"errorMessage\": \"\",\n    \"success\": {{faker 'datatype.boolean'}},\n    \"value\": {\n      \"id\": \"\",\n      \"totals\": [\n        {\n          \"airlines\": [\n            \"\"\n          ],\n          \"id\": \"\",\n          \"name\": \"\",\n          \"revenueBased\": {{faker 'datatype.boolean'}},\n          \"unpublished\": {{faker 'datatype.boolean'}},\n          \"value\": {{faker 'datatype.number'}}\n        }\n      ]\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success.  However individual <code>CalculateResults</code> in the response could have failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2b0f367c-cb56-4c1a-870c-ad9f5d9992ab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Usage limits exceeded. (Free users only)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e63c8b4e-2b07-4908-8cb6-b6b4e6387ee8",
+      "documentation": "Lists all supported frequent flyer programs.",
+      "method": "get",
+      "endpoint": "api/1.0/programs",
+      "responses": [
+        {
+          "uuid": "1b26798e-ccba-4aef-8232-225237b3d5ba",
+          "body": "[\n  {\n    \"airlines\": [\n      \"\"\n    ],\n    \"denomination\": \"\",\n    \"fullName\": \"\",\n    \"id\": \"\",\n    \"programName\": \"\",\n    \"tierNames\": [\n      \"\"\n    ]\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f17456ac-aa71-46bd-bff1-f90fcd8bb73c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 429,
+          "label": "Usage limits exceeded. (Free users only)",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

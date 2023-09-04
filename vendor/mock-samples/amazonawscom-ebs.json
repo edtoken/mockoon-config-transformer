@@ -1,0 +1,1066 @@
+{
+  "uuid": "d654fe0c-fc7e-4aa0-857c-d66a45b38615",
+  "lastMigration": 24,
+  "name": "Amazon Elastic Block Store",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c8cc4e3f-11a0-4114-aeca-55ab5a434072",
+      "documentation": "Seals and completes the snapshot after all of the required blocks of data have been written to it. Completing the snapshot changes the status to <code>completed</code>. You cannot write new blocks to a snapshot after it has been completed.",
+      "method": "post",
+      "endpoint": "snapshots/completion/:snapshotId#x-amz-ChangedBlocksCount",
+      "responses": [
+        {
+          "uuid": "752d10a6-bf31-435f-9b46-e6453b8ad81d",
+          "body": "{\n  \"Status\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c93848b9-db6d-427a-884e-b4cf49bd4b08",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5516b2fc-28f8-463f-ae2a-0de8bb9ed645",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16a4eb92-e16a-4397-ab0c-ab96eee2795b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0262a609-ef46-4fe1-b221-aaf0c72eaa69",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e06ea768-ee32-47d5-ac31-af7b02404a62",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a259ad49-c281-4865-a4ec-904f202b28a1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4deafd0a-adeb-4f40-a74d-7c6628fef42d",
+      "documentation": "Returns the data in a block in an Amazon Elastic Block Store snapshot.",
+      "method": "get",
+      "endpoint": "snapshots/:snapshotId/blocks/:blockIndex#blockToken",
+      "responses": [
+        {
+          "uuid": "84b02581-5d30-44bf-91ff-091bca9292c6",
+          "body": "{\n  \"BlockData\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cb5750e0-be69-417a-ba47-ea09f6228103",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "57fec0c6-2959-4f38-acfe-ed64c2a202d5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d13bfa29-f8b3-445b-81a7-b2ae48aff1b3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "53743bc4-7172-4cb6-b542-027c9318d37a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41ac76d1-6d48-469e-9823-a4701178e491",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "068f1e90-56de-4b50-b06b-326d833a96fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "440c7ff1-4900-40c4-a046-5a7542651e93",
+      "documentation": "Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.",
+      "method": "get",
+      "endpoint": "snapshots/:secondSnapshotId/changedblocks",
+      "responses": [
+        {
+          "uuid": "b7306d33-b9b4-4c18-91bb-47135490bcb9",
+          "body": "{\n  \"ChangedBlocks\": [\n    {\n      \"BlockIndex\": {{faker 'datatype.number'}},\n      \"FirstBlockToken\": \"\",\n      \"SecondBlockToken\": \"\"\n    }\n  ],\n  \"ExpiryTime\": \"{{faker 'date.recent' 365}}\",\n  \"VolumeSize\": {{faker 'datatype.number'}},\n  \"BlockSize\": {{faker 'datatype.number'}},\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3a029da1-2a40-4158-8152-688fc6e9c26d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bde21ea5-dd0b-42f8-b873-7f61884a9648",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "52896402-aa14-41e4-bb5c-6b919bc7caf9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ac23586b-3856-4418-978a-f8c542f929a4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2efc20bc-42b4-4ff1-973f-b2a1e5dd1358",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "daa1ff2a-662b-48d8-a4a1-fd3c2df4d1c8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ae38bfe5-dc76-40bd-ae66-5fd98c9ce837",
+      "documentation": "Returns information about the blocks in an Amazon Elastic Block Store snapshot.",
+      "method": "get",
+      "endpoint": "snapshots/:snapshotId/blocks",
+      "responses": [
+        {
+          "uuid": "4131c1e1-d680-45a2-a219-fcd3aef1ca53",
+          "body": "{\n  \"Blocks\": [\n    {\n      \"BlockIndex\": {{faker 'datatype.number'}},\n      \"BlockToken\": \"\"\n    }\n  ],\n  \"ExpiryTime\": \"{{faker 'date.recent' 365}}\",\n  \"VolumeSize\": {{faker 'datatype.number'}},\n  \"BlockSize\": {{faker 'datatype.number'}},\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "854d3bd9-4457-4835-ac3c-4919a8747b18",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0e02accd-c790-4fe3-b943-5296fac2e068",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d441457b-8acf-486b-a51f-ea7ab30751fd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "34aef78a-926c-408a-a9ed-e21b69b7d222",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7577ae05-a682-4248-96d3-2809a47e7f60",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f47270f8-3a94-4f2b-bdbf-3f4ef739571b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cedda201-fd43-474f-851b-93f6b3aa0b20",
+      "documentation": "<p>Writes a block of data to a snapshot. If the specified block contains data, the existing data is overwritten. The target snapshot must be in the <code>pending</code> state.</p> <p>Data written to a snapshot must be aligned with 512-KiB sectors.</p>",
+      "method": "put",
+      "endpoint": "snapshots/:snapshotId/blocks/:blockIndex#x-amz-Data-Length&x-amz-Checksum&x-amz-Checksum-Algorithm",
+      "responses": [
+        {
+          "uuid": "528f8592-214e-491b-874c-fefc5bd6eb8a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e3a02c8c-50dd-49fb-abbc-51556a8eaa10",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "82178baf-acf8-442d-9f10-9d1a62963b86",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "19e5916c-46c5-4f0b-be68-b9756cb76ece",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "10584929-b02c-48cc-97d0-aeeb63cd322f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bba4d8cc-1075-478a-a17e-2ee2077e035e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9a5e245c-38ff-4f14-a200-4e460b9d2188",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a2d92a1c-b47a-4ee6-8cf3-529b77474246",
+      "documentation": "<p>Creates a new Amazon EBS snapshot. The new snapshot enters the <code>pending</code> state after the request completes. </p> <p>After creating the snapshot, use <a href=\"https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html\"> PutSnapshotBlock</a> to write blocks of data to the snapshot.</p>",
+      "method": "post",
+      "endpoint": "snapshots",
+      "responses": [
+        {
+          "uuid": "92dd4ef4-06c0-4ba0-8f8c-7d11217174e5",
+          "body": "{\n  \"Description\": \"\",\n  \"SnapshotId\": \"\",\n  \"OwnerId\": \"\",\n  \"Status\": \"\",\n  \"StartTime\": \"{{faker 'date.recent' 365}}\",\n  \"VolumeSize\": {{faker 'datatype.number'}},\n  \"BlockSize\": {{faker 'datatype.number'}},\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ],\n  \"ParentSnapshotId\": \"\",\n  \"KmsKeyArn\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "eb205808-a016-4091-a162-c19e0a2ce92e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "AccessDeniedException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cbe065ce-4a96-493c-9b75-e2909094fbc8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36ca17c2-0b4c-45fa-942f-8f66d916261a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "RequestThrottledException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ccc75dda-093a-46d9-8568-b8e15c32c904",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d758bfe-f1c1-4286-8839-dc8f1869fdf8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e6f9f41-c21c-4bd7-847a-e9dcb1e18eb0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InternalServerException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "170092a9-fa3a-438f-aa01-a6682ff625b7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "ConcurrentLimitExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41969260-f0cd-4435-8d1c-1e324dd9237f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 487,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

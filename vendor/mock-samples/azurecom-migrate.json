@@ -1,0 +1,2108 @@
+{
+  "uuid": "bf93eab8-5179-4a32-adea-57c4f1ded342",
+  "lastMigration": 24,
+  "name": "Azure Migrate V2",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "e5188edf-c92a-4ce6-8c18-91729eaaa3a4",
+      "documentation": "Get list of operations supported in the API.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Migrate/operations",
+      "responses": [
+        {
+          "uuid": "0d81a036-9f57-4765-92aa-4fb3d4e9a062",
+          "body": "{\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\",\n      \"origin\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of operations.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ec84715-6c95-4172-8d8c-5b281ae0914a",
+      "documentation": "Get all projects.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.Migrate/assessmentProjects",
+      "responses": [
+        {
+          "uuid": "8055070c-e258-4045-a24a-e54b89306c08",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"assessmentSolutionId\": \"\",\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"customerWorkspaceId\": \"\",\n        \"customerWorkspaceLocation\": \"\",\n        \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"numberOfAssessments\": {{faker 'datatype.number'}},\n        \"numberOfGroups\": {{faker 'datatype.number'}},\n        \"numberOfMachines\": {{faker 'datatype.number'}},\n        \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n        \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n        \"serviceEndpoint\": \"\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9dfe1a08-3ffa-4ec4-85f1-11e189358704",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2cdaa160-427d-43e3-a393-e8966e17596d",
+      "documentation": "Get all assessments created in the project.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/assessments",
+      "responses": [
+        {
+          "uuid": "c47c8f39-2d7e-4438-b482-55e67bfb13fb",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"azureDiskType\": \"{{oneOf (array 'Unknown' 'Standard' 'Premium' 'StandardSSD' 'StandardOrPremium')}}\",\n        \"azureHybridUseBenefit\": \"{{oneOf (array 'Unknown' 'Yes' 'No')}}\",\n        \"azureLocation\": \"{{oneOf (array 'Unknown' 'EastAsia' 'SoutheastAsia' 'AustraliaEast' 'AustraliaSoutheast' 'BrazilSouth' 'CanadaCentral' 'CanadaEast' 'WestEurope' 'NorthEurope' 'CentralIndia' 'SouthIndia' 'WestIndia' 'JapanEast' 'JapanWest' 'KoreaCentral' 'KoreaSouth' 'UkWest' 'UkSouth' 'NorthCentralUs' 'EastUs' 'WestUs2' 'SouthCentralUs' 'CentralUs' 'EastUs2' 'WestUs' 'WestCentralUs' 'GermanyCentral' 'GermanyNortheast' 'ChinaNorth' 'ChinaEast' 'USGovArizona' 'USGovTexas' 'USGovIowa' 'USGovVirginia' 'USDoDCentral' 'USDoDEast')}}\",\n        \"azureOfferCode\": \"{{oneOf (array 'Unknown' 'MSAZR0003P' 'MSAZR0044P' 'MSAZR0059P' 'MSAZR0060P' 'MSAZR0062P' 'MSAZR0063P' 'MSAZR0064P' 'MSAZR0029P' 'MSAZR0022P' 'MSAZR0023P' 'MSAZR0148P' 'MSAZR0025P' 'MSAZR0036P' 'MSAZR0120P' 'MSAZR0121P' 'MSAZR0122P' 'MSAZR0123P' 'MSAZR0124P' 'MSAZR0125P' 'MSAZR0126P' 'MSAZR0127P' 'MSAZR0128P' 'MSAZR0129P' 'MSAZR0130P' 'MSAZR0111P' 'MSAZR0144P' 'MSAZR0149P' 'MSMCAZR0044P' 'MSMCAZR0059P' 'MSMCAZR0060P' 'MSMCAZR0063P' 'MSMCAZR0120P' 'MSMCAZR0121P' 'MSMCAZR0125P' 'MSMCAZR0128P' 'MSAZRDE0003P' 'MSAZRDE0044P' 'MSAZRUSGOV0003P' 'EA')}}\",\n        \"azurePricingTier\": \"{{oneOf (array 'Standard' 'Basic')}}\",\n        \"azureStorageRedundancy\": \"{{oneOf (array 'Unknown' 'LocallyRedundant' 'ZoneRedundant' 'GeoRedundant' 'ReadAccessGeoRedundant')}}\",\n        \"azureVmFamilies\": [\n          \"{{oneOf (array 'Unknown' 'Basic_A0_A4' 'Standard_A0_A7' 'Standard_A8_A11' 'Av2_series' 'D_series' 'Dv2_series' 'DS_series' 'DSv2_series' 'F_series' 'Fs_series' 'G_series' 'GS_series' 'H_series' 'Ls_series' 'Dsv3_series' 'Dv3_series' 'Fsv2_series' 'Ev3_series' 'Esv3_series' 'M_series' 'DC_Series')}}\"\n        ],\n        \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"currency\": \"{{oneOf (array 'Unknown' 'USD' 'DKK' 'CAD' 'IDR' 'JPY' 'KRW' 'NZD' 'NOK' 'RUB' 'SAR' 'ZAR' 'SEK' 'TRY' 'GBP' 'MXN' 'MYR' 'INR' 'HKD' 'BRL' 'TWD' 'EUR' 'CHF' 'ARS' 'AUD' 'CNY')}}\",\n        \"discountPercentage\": {{faker 'datatype.float'}},\n        \"eaSubscriptionId\": \"\",\n        \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n        \"monthlyComputeCost\": {{faker 'datatype.float'}},\n        \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStorageCost\": {{faker 'datatype.float'}},\n        \"numberOfMachines\": {{faker 'datatype.number'}},\n        \"percentile\": \"{{oneOf (array 'Percentile50' 'Percentile90' 'Percentile95' 'Percentile99')}}\",\n        \"perfDataEndTime\": \"{{faker 'date.recent' 365}}\",\n        \"perfDataStartTime\": \"{{faker 'date.recent' 365}}\",\n        \"pricesTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"reservedInstance\": \"{{oneOf (array 'None' 'RI1Year' 'RI3Year')}}\",\n        \"scalingFactor\": {{faker 'datatype.float'}},\n        \"sizingCriterion\": \"{{oneOf (array 'PerformanceBased' 'AsOnPremises')}}\",\n        \"stage\": \"{{oneOf (array 'InProgress' 'UnderReview' 'Approved')}}\",\n        \"status\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid' 'OutOfSync' 'OutDated')}}\",\n        \"timeRange\": \"{{oneOf (array 'Day' 'Week' 'Month' 'Custom')}}\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"vmUptime\": {\n          \"daysPerMonth\": {{faker 'datatype.number'}},\n          \"hoursPerDay\": {{faker 'datatype.number'}}\n        }\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of Assessment objects.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c3f984e4-9e2f-4bec-9e06-cf22de6e12bc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "da05c082-13d1-4ea5-bf37-692674bfe82e",
+      "documentation": "Get all groups",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups",
+      "responses": [
+        {
+          "uuid": "9e0a161e-d5b8-47bf-97cc-86385a246782",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"areAssessmentsRunning\": {{faker 'datatype.boolean'}},\n        \"assessments\": [\n          \"\"\n        ],\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"groupStatus\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid')}}\",\n        \"machineCount\": {{faker 'datatype.number'}},\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of groups.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "94b6aa90-900a-41a8-b21a-e9dba7e87186",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "323338e7-fc5b-41e9-831a-8b19e7ee5918",
+      "documentation": "Delete the group",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName",
+      "responses": [
+        {
+          "uuid": "1bed81a2-d3e0-44cb-9d61-340df2ae876b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Deleted the group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b5dd5eb5-cbbc-4b48-b093-2aa1a9d97dc9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. No group with specified name was found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "02529db7-b422-48b0-8537-f47c065e8ee6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "22b4959e-92e6-4e45-b168-e0f64f14f70d",
+      "documentation": "Get a specific group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName",
+      "responses": [
+        {
+          "uuid": "6734f6b5-4797-4664-ad31-09940df853b0",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"areAssessmentsRunning\": {{faker 'datatype.boolean'}},\n    \"assessments\": [\n      \"\"\n    ],\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"groupStatus\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid')}}\",\n    \"machineCount\": {{faker 'datatype.number'}},\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns the group with the specified name.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e82454ce-f3cd-4f58-84f6-6cdbbe85ed64",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c96c2438-469a-4d7a-95c6-7cf00bb47c61",
+      "documentation": "Create a new group with specified settings.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName",
+      "responses": [
+        {
+          "uuid": "4a1abe73-2065-4a24-8eba-14d9cab2d9ce",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"areAssessmentsRunning\": {{faker 'datatype.boolean'}},\n    \"assessments\": [\n      \"\"\n    ],\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"groupStatus\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid')}}\",\n    \"machineCount\": {{faker 'datatype.number'}},\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing group updated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c7b54115-17d8-4fa6-bd52-8929cc4ca97c",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"areAssessmentsRunning\": {{faker 'datatype.boolean'}},\n    \"assessments\": [\n      \"\"\n    ],\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"groupStatus\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid')}}\",\n    \"machineCount\": {{faker 'datatype.number'}},\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. New group was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "69044cba-a237-4d13-b4b7-5458d36dc5f4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f2499f5-ffaf-47cc-9546-04f370ecb414",
+      "documentation": "Get all assessments created for the specified group.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments",
+      "responses": [
+        {
+          "uuid": "51b0dffb-d253-4e10-8233-51b49797ddee",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"azureDiskType\": \"{{oneOf (array 'Unknown' 'Standard' 'Premium' 'StandardSSD' 'StandardOrPremium')}}\",\n        \"azureHybridUseBenefit\": \"{{oneOf (array 'Unknown' 'Yes' 'No')}}\",\n        \"azureLocation\": \"{{oneOf (array 'Unknown' 'EastAsia' 'SoutheastAsia' 'AustraliaEast' 'AustraliaSoutheast' 'BrazilSouth' 'CanadaCentral' 'CanadaEast' 'WestEurope' 'NorthEurope' 'CentralIndia' 'SouthIndia' 'WestIndia' 'JapanEast' 'JapanWest' 'KoreaCentral' 'KoreaSouth' 'UkWest' 'UkSouth' 'NorthCentralUs' 'EastUs' 'WestUs2' 'SouthCentralUs' 'CentralUs' 'EastUs2' 'WestUs' 'WestCentralUs' 'GermanyCentral' 'GermanyNortheast' 'ChinaNorth' 'ChinaEast' 'USGovArizona' 'USGovTexas' 'USGovIowa' 'USGovVirginia' 'USDoDCentral' 'USDoDEast')}}\",\n        \"azureOfferCode\": \"{{oneOf (array 'Unknown' 'MSAZR0003P' 'MSAZR0044P' 'MSAZR0059P' 'MSAZR0060P' 'MSAZR0062P' 'MSAZR0063P' 'MSAZR0064P' 'MSAZR0029P' 'MSAZR0022P' 'MSAZR0023P' 'MSAZR0148P' 'MSAZR0025P' 'MSAZR0036P' 'MSAZR0120P' 'MSAZR0121P' 'MSAZR0122P' 'MSAZR0123P' 'MSAZR0124P' 'MSAZR0125P' 'MSAZR0126P' 'MSAZR0127P' 'MSAZR0128P' 'MSAZR0129P' 'MSAZR0130P' 'MSAZR0111P' 'MSAZR0144P' 'MSAZR0149P' 'MSMCAZR0044P' 'MSMCAZR0059P' 'MSMCAZR0060P' 'MSMCAZR0063P' 'MSMCAZR0120P' 'MSMCAZR0121P' 'MSMCAZR0125P' 'MSMCAZR0128P' 'MSAZRDE0003P' 'MSAZRDE0044P' 'MSAZRUSGOV0003P' 'EA')}}\",\n        \"azurePricingTier\": \"{{oneOf (array 'Standard' 'Basic')}}\",\n        \"azureStorageRedundancy\": \"{{oneOf (array 'Unknown' 'LocallyRedundant' 'ZoneRedundant' 'GeoRedundant' 'ReadAccessGeoRedundant')}}\",\n        \"azureVmFamilies\": [\n          \"{{oneOf (array 'Unknown' 'Basic_A0_A4' 'Standard_A0_A7' 'Standard_A8_A11' 'Av2_series' 'D_series' 'Dv2_series' 'DS_series' 'DSv2_series' 'F_series' 'Fs_series' 'G_series' 'GS_series' 'H_series' 'Ls_series' 'Dsv3_series' 'Dv3_series' 'Fsv2_series' 'Ev3_series' 'Esv3_series' 'M_series' 'DC_Series')}}\"\n        ],\n        \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"currency\": \"{{oneOf (array 'Unknown' 'USD' 'DKK' 'CAD' 'IDR' 'JPY' 'KRW' 'NZD' 'NOK' 'RUB' 'SAR' 'ZAR' 'SEK' 'TRY' 'GBP' 'MXN' 'MYR' 'INR' 'HKD' 'BRL' 'TWD' 'EUR' 'CHF' 'ARS' 'AUD' 'CNY')}}\",\n        \"discountPercentage\": {{faker 'datatype.float'}},\n        \"eaSubscriptionId\": \"\",\n        \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n        \"monthlyComputeCost\": {{faker 'datatype.float'}},\n        \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStorageCost\": {{faker 'datatype.float'}},\n        \"numberOfMachines\": {{faker 'datatype.number'}},\n        \"percentile\": \"{{oneOf (array 'Percentile50' 'Percentile90' 'Percentile95' 'Percentile99')}}\",\n        \"perfDataEndTime\": \"{{faker 'date.recent' 365}}\",\n        \"perfDataStartTime\": \"{{faker 'date.recent' 365}}\",\n        \"pricesTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"reservedInstance\": \"{{oneOf (array 'None' 'RI1Year' 'RI3Year')}}\",\n        \"scalingFactor\": {{faker 'datatype.float'}},\n        \"sizingCriterion\": \"{{oneOf (array 'PerformanceBased' 'AsOnPremises')}}\",\n        \"stage\": \"{{oneOf (array 'InProgress' 'UnderReview' 'Approved')}}\",\n        \"status\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid' 'OutOfSync' 'OutDated')}}\",\n        \"timeRange\": \"{{oneOf (array 'Day' 'Week' 'Month' 'Custom')}}\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"vmUptime\": {\n          \"daysPerMonth\": {{faker 'datatype.number'}},\n          \"hoursPerDay\": {{faker 'datatype.number'}}\n        }\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of Assessment objects.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4580a991-6f75-4f90-97f2-5f5dde766ce2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d3c29faa-2271-484c-9180-a371e41c47d5",
+      "documentation": "Deletes an assessment from the project.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName",
+      "responses": [
+        {
+          "uuid": "f0f18f2c-1375-4acd-a026-814d3b9582dc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Deleted the assessment.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cf29e7ae-b413-4812-ad59-fa37580d2215",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. No assessment with specified name was found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f4224097-765f-4964-aa77-b19aed188435",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5fa91ad6-313b-47d5-b4f4-3a087aa4955e",
+      "documentation": "Get an assessment.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName",
+      "responses": [
+        {
+          "uuid": "2518582c-6e0c-4554-89c7-8fdefb51cc80",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"azureDiskType\": \"{{oneOf (array 'Unknown' 'Standard' 'Premium' 'StandardSSD' 'StandardOrPremium')}}\",\n    \"azureHybridUseBenefit\": \"{{oneOf (array 'Unknown' 'Yes' 'No')}}\",\n    \"azureLocation\": \"{{oneOf (array 'Unknown' 'EastAsia' 'SoutheastAsia' 'AustraliaEast' 'AustraliaSoutheast' 'BrazilSouth' 'CanadaCentral' 'CanadaEast' 'WestEurope' 'NorthEurope' 'CentralIndia' 'SouthIndia' 'WestIndia' 'JapanEast' 'JapanWest' 'KoreaCentral' 'KoreaSouth' 'UkWest' 'UkSouth' 'NorthCentralUs' 'EastUs' 'WestUs2' 'SouthCentralUs' 'CentralUs' 'EastUs2' 'WestUs' 'WestCentralUs' 'GermanyCentral' 'GermanyNortheast' 'ChinaNorth' 'ChinaEast' 'USGovArizona' 'USGovTexas' 'USGovIowa' 'USGovVirginia' 'USDoDCentral' 'USDoDEast')}}\",\n    \"azureOfferCode\": \"{{oneOf (array 'Unknown' 'MSAZR0003P' 'MSAZR0044P' 'MSAZR0059P' 'MSAZR0060P' 'MSAZR0062P' 'MSAZR0063P' 'MSAZR0064P' 'MSAZR0029P' 'MSAZR0022P' 'MSAZR0023P' 'MSAZR0148P' 'MSAZR0025P' 'MSAZR0036P' 'MSAZR0120P' 'MSAZR0121P' 'MSAZR0122P' 'MSAZR0123P' 'MSAZR0124P' 'MSAZR0125P' 'MSAZR0126P' 'MSAZR0127P' 'MSAZR0128P' 'MSAZR0129P' 'MSAZR0130P' 'MSAZR0111P' 'MSAZR0144P' 'MSAZR0149P' 'MSMCAZR0044P' 'MSMCAZR0059P' 'MSMCAZR0060P' 'MSMCAZR0063P' 'MSMCAZR0120P' 'MSMCAZR0121P' 'MSMCAZR0125P' 'MSMCAZR0128P' 'MSAZRDE0003P' 'MSAZRDE0044P' 'MSAZRUSGOV0003P' 'EA')}}\",\n    \"azurePricingTier\": \"{{oneOf (array 'Standard' 'Basic')}}\",\n    \"azureStorageRedundancy\": \"{{oneOf (array 'Unknown' 'LocallyRedundant' 'ZoneRedundant' 'GeoRedundant' 'ReadAccessGeoRedundant')}}\",\n    \"azureVmFamilies\": [\n      \"{{oneOf (array 'Unknown' 'Basic_A0_A4' 'Standard_A0_A7' 'Standard_A8_A11' 'Av2_series' 'D_series' 'Dv2_series' 'DS_series' 'DSv2_series' 'F_series' 'Fs_series' 'G_series' 'GS_series' 'H_series' 'Ls_series' 'Dsv3_series' 'Dv3_series' 'Fsv2_series' 'Ev3_series' 'Esv3_series' 'M_series' 'DC_Series')}}\"\n    ],\n    \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"currency\": \"{{oneOf (array 'Unknown' 'USD' 'DKK' 'CAD' 'IDR' 'JPY' 'KRW' 'NZD' 'NOK' 'RUB' 'SAR' 'ZAR' 'SEK' 'TRY' 'GBP' 'MXN' 'MYR' 'INR' 'HKD' 'BRL' 'TWD' 'EUR' 'CHF' 'ARS' 'AUD' 'CNY')}}\",\n    \"discountPercentage\": {{faker 'datatype.float'}},\n    \"eaSubscriptionId\": \"\",\n    \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n    \"monthlyComputeCost\": {{faker 'datatype.float'}},\n    \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStorageCost\": {{faker 'datatype.float'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"percentile\": \"{{oneOf (array 'Percentile50' 'Percentile90' 'Percentile95' 'Percentile99')}}\",\n    \"perfDataEndTime\": \"{{faker 'date.recent' 365}}\",\n    \"perfDataStartTime\": \"{{faker 'date.recent' 365}}\",\n    \"pricesTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"reservedInstance\": \"{{oneOf (array 'None' 'RI1Year' 'RI3Year')}}\",\n    \"scalingFactor\": {{faker 'datatype.float'}},\n    \"sizingCriterion\": \"{{oneOf (array 'PerformanceBased' 'AsOnPremises')}}\",\n    \"stage\": \"{{oneOf (array 'InProgress' 'UnderReview' 'Approved')}}\",\n    \"status\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid' 'OutOfSync' 'OutDated')}}\",\n    \"timeRange\": \"{{oneOf (array 'Day' 'Week' 'Month' 'Custom')}}\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"vmUptime\": {\n      \"daysPerMonth\": {{faker 'datatype.number'}},\n      \"hoursPerDay\": {{faker 'datatype.number'}}\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns Assessment object.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "87f0d4b0-67ae-4f5e-a3a4-211e7fa9cc22",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d2e524a-edd7-4915-88da-bfe8018a8e10",
+      "documentation": "Create or Update assessment.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName",
+      "responses": [
+        {
+          "uuid": "52452520-4121-48a9-9769-e12ef50ad755",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"azureDiskType\": \"{{oneOf (array 'Unknown' 'Standard' 'Premium' 'StandardSSD' 'StandardOrPremium')}}\",\n    \"azureHybridUseBenefit\": \"{{oneOf (array 'Unknown' 'Yes' 'No')}}\",\n    \"azureLocation\": \"{{oneOf (array 'Unknown' 'EastAsia' 'SoutheastAsia' 'AustraliaEast' 'AustraliaSoutheast' 'BrazilSouth' 'CanadaCentral' 'CanadaEast' 'WestEurope' 'NorthEurope' 'CentralIndia' 'SouthIndia' 'WestIndia' 'JapanEast' 'JapanWest' 'KoreaCentral' 'KoreaSouth' 'UkWest' 'UkSouth' 'NorthCentralUs' 'EastUs' 'WestUs2' 'SouthCentralUs' 'CentralUs' 'EastUs2' 'WestUs' 'WestCentralUs' 'GermanyCentral' 'GermanyNortheast' 'ChinaNorth' 'ChinaEast' 'USGovArizona' 'USGovTexas' 'USGovIowa' 'USGovVirginia' 'USDoDCentral' 'USDoDEast')}}\",\n    \"azureOfferCode\": \"{{oneOf (array 'Unknown' 'MSAZR0003P' 'MSAZR0044P' 'MSAZR0059P' 'MSAZR0060P' 'MSAZR0062P' 'MSAZR0063P' 'MSAZR0064P' 'MSAZR0029P' 'MSAZR0022P' 'MSAZR0023P' 'MSAZR0148P' 'MSAZR0025P' 'MSAZR0036P' 'MSAZR0120P' 'MSAZR0121P' 'MSAZR0122P' 'MSAZR0123P' 'MSAZR0124P' 'MSAZR0125P' 'MSAZR0126P' 'MSAZR0127P' 'MSAZR0128P' 'MSAZR0129P' 'MSAZR0130P' 'MSAZR0111P' 'MSAZR0144P' 'MSAZR0149P' 'MSMCAZR0044P' 'MSMCAZR0059P' 'MSMCAZR0060P' 'MSMCAZR0063P' 'MSMCAZR0120P' 'MSMCAZR0121P' 'MSMCAZR0125P' 'MSMCAZR0128P' 'MSAZRDE0003P' 'MSAZRDE0044P' 'MSAZRUSGOV0003P' 'EA')}}\",\n    \"azurePricingTier\": \"{{oneOf (array 'Standard' 'Basic')}}\",\n    \"azureStorageRedundancy\": \"{{oneOf (array 'Unknown' 'LocallyRedundant' 'ZoneRedundant' 'GeoRedundant' 'ReadAccessGeoRedundant')}}\",\n    \"azureVmFamilies\": [\n      \"{{oneOf (array 'Unknown' 'Basic_A0_A4' 'Standard_A0_A7' 'Standard_A8_A11' 'Av2_series' 'D_series' 'Dv2_series' 'DS_series' 'DSv2_series' 'F_series' 'Fs_series' 'G_series' 'GS_series' 'H_series' 'Ls_series' 'Dsv3_series' 'Dv3_series' 'Fsv2_series' 'Ev3_series' 'Esv3_series' 'M_series' 'DC_Series')}}\"\n    ],\n    \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"currency\": \"{{oneOf (array 'Unknown' 'USD' 'DKK' 'CAD' 'IDR' 'JPY' 'KRW' 'NZD' 'NOK' 'RUB' 'SAR' 'ZAR' 'SEK' 'TRY' 'GBP' 'MXN' 'MYR' 'INR' 'HKD' 'BRL' 'TWD' 'EUR' 'CHF' 'ARS' 'AUD' 'CNY')}}\",\n    \"discountPercentage\": {{faker 'datatype.float'}},\n    \"eaSubscriptionId\": \"\",\n    \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n    \"monthlyComputeCost\": {{faker 'datatype.float'}},\n    \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStorageCost\": {{faker 'datatype.float'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"percentile\": \"{{oneOf (array 'Percentile50' 'Percentile90' 'Percentile95' 'Percentile99')}}\",\n    \"perfDataEndTime\": \"{{faker 'date.recent' 365}}\",\n    \"perfDataStartTime\": \"{{faker 'date.recent' 365}}\",\n    \"pricesTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"reservedInstance\": \"{{oneOf (array 'None' 'RI1Year' 'RI3Year')}}\",\n    \"scalingFactor\": {{faker 'datatype.float'}},\n    \"sizingCriterion\": \"{{oneOf (array 'PerformanceBased' 'AsOnPremises')}}\",\n    \"stage\": \"{{oneOf (array 'InProgress' 'UnderReview' 'Approved')}}\",\n    \"status\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid' 'OutOfSync' 'OutDated')}}\",\n    \"timeRange\": \"{{oneOf (array 'Day' 'Week' 'Month' 'Custom')}}\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"vmUptime\": {\n      \"daysPerMonth\": {{faker 'datatype.number'}},\n      \"hoursPerDay\": {{faker 'datatype.number'}}\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing assessment updated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3053e34a-52cf-42a7-8652-15d19545fc0d",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"azureDiskType\": \"{{oneOf (array 'Unknown' 'Standard' 'Premium' 'StandardSSD' 'StandardOrPremium')}}\",\n    \"azureHybridUseBenefit\": \"{{oneOf (array 'Unknown' 'Yes' 'No')}}\",\n    \"azureLocation\": \"{{oneOf (array 'Unknown' 'EastAsia' 'SoutheastAsia' 'AustraliaEast' 'AustraliaSoutheast' 'BrazilSouth' 'CanadaCentral' 'CanadaEast' 'WestEurope' 'NorthEurope' 'CentralIndia' 'SouthIndia' 'WestIndia' 'JapanEast' 'JapanWest' 'KoreaCentral' 'KoreaSouth' 'UkWest' 'UkSouth' 'NorthCentralUs' 'EastUs' 'WestUs2' 'SouthCentralUs' 'CentralUs' 'EastUs2' 'WestUs' 'WestCentralUs' 'GermanyCentral' 'GermanyNortheast' 'ChinaNorth' 'ChinaEast' 'USGovArizona' 'USGovTexas' 'USGovIowa' 'USGovVirginia' 'USDoDCentral' 'USDoDEast')}}\",\n    \"azureOfferCode\": \"{{oneOf (array 'Unknown' 'MSAZR0003P' 'MSAZR0044P' 'MSAZR0059P' 'MSAZR0060P' 'MSAZR0062P' 'MSAZR0063P' 'MSAZR0064P' 'MSAZR0029P' 'MSAZR0022P' 'MSAZR0023P' 'MSAZR0148P' 'MSAZR0025P' 'MSAZR0036P' 'MSAZR0120P' 'MSAZR0121P' 'MSAZR0122P' 'MSAZR0123P' 'MSAZR0124P' 'MSAZR0125P' 'MSAZR0126P' 'MSAZR0127P' 'MSAZR0128P' 'MSAZR0129P' 'MSAZR0130P' 'MSAZR0111P' 'MSAZR0144P' 'MSAZR0149P' 'MSMCAZR0044P' 'MSMCAZR0059P' 'MSMCAZR0060P' 'MSMCAZR0063P' 'MSMCAZR0120P' 'MSMCAZR0121P' 'MSMCAZR0125P' 'MSMCAZR0128P' 'MSAZRDE0003P' 'MSAZRDE0044P' 'MSAZRUSGOV0003P' 'EA')}}\",\n    \"azurePricingTier\": \"{{oneOf (array 'Standard' 'Basic')}}\",\n    \"azureStorageRedundancy\": \"{{oneOf (array 'Unknown' 'LocallyRedundant' 'ZoneRedundant' 'GeoRedundant' 'ReadAccessGeoRedundant')}}\",\n    \"azureVmFamilies\": [\n      \"{{oneOf (array 'Unknown' 'Basic_A0_A4' 'Standard_A0_A7' 'Standard_A8_A11' 'Av2_series' 'D_series' 'Dv2_series' 'DS_series' 'DSv2_series' 'F_series' 'Fs_series' 'G_series' 'GS_series' 'H_series' 'Ls_series' 'Dsv3_series' 'Dv3_series' 'Fsv2_series' 'Ev3_series' 'Esv3_series' 'M_series' 'DC_Series')}}\"\n    ],\n    \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"currency\": \"{{oneOf (array 'Unknown' 'USD' 'DKK' 'CAD' 'IDR' 'JPY' 'KRW' 'NZD' 'NOK' 'RUB' 'SAR' 'ZAR' 'SEK' 'TRY' 'GBP' 'MXN' 'MYR' 'INR' 'HKD' 'BRL' 'TWD' 'EUR' 'CHF' 'ARS' 'AUD' 'CNY')}}\",\n    \"discountPercentage\": {{faker 'datatype.float'}},\n    \"eaSubscriptionId\": \"\",\n    \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n    \"monthlyComputeCost\": {{faker 'datatype.float'}},\n    \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStorageCost\": {{faker 'datatype.float'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"percentile\": \"{{oneOf (array 'Percentile50' 'Percentile90' 'Percentile95' 'Percentile99')}}\",\n    \"perfDataEndTime\": \"{{faker 'date.recent' 365}}\",\n    \"perfDataStartTime\": \"{{faker 'date.recent' 365}}\",\n    \"pricesTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"reservedInstance\": \"{{oneOf (array 'None' 'RI1Year' 'RI3Year')}}\",\n    \"scalingFactor\": {{faker 'datatype.float'}},\n    \"sizingCriterion\": \"{{oneOf (array 'PerformanceBased' 'AsOnPremises')}}\",\n    \"stage\": \"{{oneOf (array 'InProgress' 'UnderReview' 'Approved')}}\",\n    \"status\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid' 'OutOfSync' 'OutDated')}}\",\n    \"timeRange\": \"{{oneOf (array 'Day' 'Week' 'Month' 'Custom')}}\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"vmUptime\": {\n      \"daysPerMonth\": {{faker 'datatype.number'}},\n      \"hoursPerDay\": {{faker 'datatype.number'}}\n    }\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. New assessment was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fc00b414-972c-4202-bb9d-bf4dd3cce06f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a2a68cd0-a471-4524-a57c-84e800675c73",
+      "documentation": "Get assessed machines for assessment.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName/assessedMachines",
+      "responses": [
+        {
+          "uuid": "439af8e3-085b-4867-8064-27d3389d131d",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"bootType\": \"{{oneOf (array 'Unknown' 'EFI' 'BIOS')}}\",\n        \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"datacenterMachineArmId\": \"\",\n        \"datacenterManagementServerArmId\": \"\",\n        \"datacenterManagementServerName\": \"\",\n        \"description\": \"\",\n        \"disks\": {},\n        \"displayName\": \"\",\n        \"megabytesOfMemory\": {{faker 'datatype.float'}},\n        \"megabytesOfMemoryForRecommendedSize\": {{faker 'datatype.float'}},\n        \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n        \"monthlyComputeCostForRecommendedSize\": {{faker 'datatype.float'}},\n        \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n        \"monthlyStorageCost\": {{faker 'datatype.float'}},\n        \"networkAdapters\": {},\n        \"numberOfCores\": {{faker 'datatype.number'}},\n        \"numberOfCoresForRecommendedSize\": {{faker 'datatype.number'}},\n        \"operatingSystemName\": \"\",\n        \"operatingSystemType\": \"\",\n        \"operatingSystemVersion\": \"\",\n        \"percentageCoresUtilization\": {{faker 'datatype.float'}},\n        \"percentageMemoryUtilization\": {{faker 'datatype.float'}},\n        \"recommendedSize\": \"{{oneOf (array 'Unknown' 'Basic_A0' 'Basic_A1' 'Basic_A2' 'Basic_A3' 'Basic_A4' 'Standard_A0' 'Standard_A1' 'Standard_A2' 'Standard_A3' 'Standard_A4' 'Standard_A5' 'Standard_A6' 'Standard_A7' 'Standard_A8' 'Standard_A9' 'Standard_A10' 'Standard_A11' 'Standard_A1_v2' 'Standard_A2_v2' 'Standard_A4_v2' 'Standard_A8_v2' 'Standard_A2m_v2' 'Standard_A4m_v2' 'Standard_A8m_v2' 'Standard_D1' 'Standard_D2' 'Standard_D3' 'Standard_D4' 'Standard_D11' 'Standard_D12' 'Standard_D13' 'Standard_D14' 'Standard_D1_v2' 'Standard_D2_v2' 'Standard_D3_v2' 'Standard_D4_v2' 'Standard_D5_v2' 'Standard_D11_v2' 'Standard_D12_v2' 'Standard_D13_v2' 'Standard_D14_v2' 'Standard_D15_v2' 'Standard_DS1' 'Standard_DS2' 'Standard_DS3' 'Standard_DS4' 'Standard_DS11' 'Standard_DS12' 'Standard_DS13' 'Standard_DS14' 'Standard_DS1_v2' 'Standard_DS2_v2' 'Standard_DS3_v2' 'Standard_DS4_v2' 'Standard_DS5_v2' 'Standard_DS11_v2' 'Standard_DS12_v2' 'Standard_DS13_v2' 'Standard_DS14_v2' 'Standard_DS15_v2' 'Standard_F1' 'Standard_F2' 'Standard_F4' 'Standard_F8' 'Standard_F16' 'Standard_F1s' 'Standard_F2s' 'Standard_F4s' 'Standard_F8s' 'Standard_F16s' 'Standard_G1' 'Standard_G2' 'Standard_G3' 'Standard_G4' 'Standard_G5' 'Standard_GS1' 'Standard_GS2' 'Standard_GS3' 'Standard_GS4' 'Standard_GS5' 'Standard_H8' 'Standard_H16' 'Standard_H8m' 'Standard_H16m' 'Standard_H16r' 'Standard_H16mr' 'Standard_L4s' 'Standard_L8s' 'Standard_L16s' 'Standard_L32s' 'Standard_D2s_v3' 'Standard_D4s_v3' 'Standard_D8s_v3' 'Standard_D16s_v3' 'Standard_D32s_v3' 'Standard_D64s_v3' 'Standard_D2_v3' 'Standard_D4_v3' 'Standard_D8_v3' 'Standard_D16_v3' 'Standard_D32_v3' 'Standard_D64_v3' 'Standard_F2s_v2' 'Standard_F4s_v2' 'Standard_F8s_v2' 'Standard_F16s_v2' 'Standard_F32s_v2' 'Standard_F64s_v2' 'Standard_F72s_v2' 'Standard_E2_v3' 'Standard_E4_v3' 'Standard_E8_v3' 'Standard_E16_v3' 'Standard_E32_v3' 'Standard_E64_v3' 'Standard_E2s_v3' 'Standard_E4s_v3' 'Standard_E8s_v3' 'Standard_E16s_v3' 'Standard_E32s_v3' 'Standard_E64s_v3' 'Standard_M64s' 'Standard_M64ms' 'Standard_M128s' 'Standard_M128ms')}}\",\n        \"suitability\": \"{{oneOf (array 'Unknown' 'NotSuitable' 'Suitable' 'ConditionallySuitable' 'ReadinessUnknown')}}\",\n        \"suitabilityDetail\": \"{{oneOf (array 'None' 'RecommendedSizeHasLessNetworkAdapters' 'CannotReportComputeCost' 'CannotReportStorageCost' 'CannotReportBandwidthCosts' 'PercentageOfCoresUtilizedMissing' 'PercentageOfMemoryUtilizedMissing' 'PercentageOfCoresUtilizedOutOfRange' 'PercentageOfMemoryUtilizedOutOfRange')}}\",\n        \"suitabilityExplanation\": \"{{oneOf (array 'Unknown' 'NotApplicable' 'GuestOperatingSystemArchitectureNotSupported' 'GuestOperatingSystemNotSupported' 'BootTypeNotSupported' 'MoreDisksThanSupported' 'NoSuitableVmSizeFound' 'OneOrMoreDisksNotSuitable' 'OneOrMoreAdaptersNotSuitable' 'InternalErrorOccurredDuringComputeEvaluation' 'InternalErrorOccurredDuringStorageEvaluation' 'InternalErrorOccurredDuringNetworkEvaluation' 'NoVmSizeSupportsStoragePerformance' 'NoVmSizeSupportsNetworkPerformance' 'NoVmSizeForSelectedPricingTier' 'NoVmSizeForSelectedAzureLocation' 'CheckRedHatLinuxVersion' 'CheckOpenSuseLinuxVersion' 'CheckWindowsServer2008R2Version' 'CheckCentOsVersion' 'CheckDebianLinuxVersion' 'CheckSuseLinuxVersion' 'CheckOracleLinuxVersion' 'CheckUbuntuLinuxVersion' 'CheckCoreOsLinuxVersion' 'WindowsServerVersionConditionallySupported' 'NoGuestOperatingSystemConditionallySupported' 'WindowsClientVersionsConditionallySupported' 'BootTypeUnknown' 'GuestOperatingSystemUnknown' 'WindowsServerVersionsSupportedWithCaveat' 'WindowsOSNoLongerUnderMSSupport' 'EndorsedWithConditionsLinuxDistributions' 'UnendorsedLinuxDistributions' 'NoVmSizeForStandardPricingTier' 'NoVmSizeForBasicPricingTier')}}\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of machines with their assessment data in the assessment.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4a56889c-2ed7-436b-a4ac-fa956016f272",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f6b053f-8b90-4a90-8f7b-b3003a850b23",
+      "documentation": "Get an assessed machine.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName/assessedMachines/:assessedMachineName",
+      "responses": [
+        {
+          "uuid": "617a9acb-d044-4e4e-9680-8a879dcfc9aa",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"bootType\": \"{{oneOf (array 'Unknown' 'EFI' 'BIOS')}}\",\n    \"confidenceRatingInPercentage\": {{faker 'datatype.float'}},\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"datacenterMachineArmId\": \"\",\n    \"datacenterManagementServerArmId\": \"\",\n    \"datacenterManagementServerName\": \"\",\n    \"description\": \"\",\n    \"disks\": {},\n    \"displayName\": \"\",\n    \"megabytesOfMemory\": {{faker 'datatype.float'}},\n    \"megabytesOfMemoryForRecommendedSize\": {{faker 'datatype.float'}},\n    \"monthlyBandwidthCost\": {{faker 'datatype.float'}},\n    \"monthlyComputeCostForRecommendedSize\": {{faker 'datatype.float'}},\n    \"monthlyPremiumStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStandardSSDStorageCost\": {{faker 'datatype.float'}},\n    \"monthlyStorageCost\": {{faker 'datatype.float'}},\n    \"networkAdapters\": {},\n    \"numberOfCores\": {{faker 'datatype.number'}},\n    \"numberOfCoresForRecommendedSize\": {{faker 'datatype.number'}},\n    \"operatingSystemName\": \"\",\n    \"operatingSystemType\": \"\",\n    \"operatingSystemVersion\": \"\",\n    \"percentageCoresUtilization\": {{faker 'datatype.float'}},\n    \"percentageMemoryUtilization\": {{faker 'datatype.float'}},\n    \"recommendedSize\": \"{{oneOf (array 'Unknown' 'Basic_A0' 'Basic_A1' 'Basic_A2' 'Basic_A3' 'Basic_A4' 'Standard_A0' 'Standard_A1' 'Standard_A2' 'Standard_A3' 'Standard_A4' 'Standard_A5' 'Standard_A6' 'Standard_A7' 'Standard_A8' 'Standard_A9' 'Standard_A10' 'Standard_A11' 'Standard_A1_v2' 'Standard_A2_v2' 'Standard_A4_v2' 'Standard_A8_v2' 'Standard_A2m_v2' 'Standard_A4m_v2' 'Standard_A8m_v2' 'Standard_D1' 'Standard_D2' 'Standard_D3' 'Standard_D4' 'Standard_D11' 'Standard_D12' 'Standard_D13' 'Standard_D14' 'Standard_D1_v2' 'Standard_D2_v2' 'Standard_D3_v2' 'Standard_D4_v2' 'Standard_D5_v2' 'Standard_D11_v2' 'Standard_D12_v2' 'Standard_D13_v2' 'Standard_D14_v2' 'Standard_D15_v2' 'Standard_DS1' 'Standard_DS2' 'Standard_DS3' 'Standard_DS4' 'Standard_DS11' 'Standard_DS12' 'Standard_DS13' 'Standard_DS14' 'Standard_DS1_v2' 'Standard_DS2_v2' 'Standard_DS3_v2' 'Standard_DS4_v2' 'Standard_DS5_v2' 'Standard_DS11_v2' 'Standard_DS12_v2' 'Standard_DS13_v2' 'Standard_DS14_v2' 'Standard_DS15_v2' 'Standard_F1' 'Standard_F2' 'Standard_F4' 'Standard_F8' 'Standard_F16' 'Standard_F1s' 'Standard_F2s' 'Standard_F4s' 'Standard_F8s' 'Standard_F16s' 'Standard_G1' 'Standard_G2' 'Standard_G3' 'Standard_G4' 'Standard_G5' 'Standard_GS1' 'Standard_GS2' 'Standard_GS3' 'Standard_GS4' 'Standard_GS5' 'Standard_H8' 'Standard_H16' 'Standard_H8m' 'Standard_H16m' 'Standard_H16r' 'Standard_H16mr' 'Standard_L4s' 'Standard_L8s' 'Standard_L16s' 'Standard_L32s' 'Standard_D2s_v3' 'Standard_D4s_v3' 'Standard_D8s_v3' 'Standard_D16s_v3' 'Standard_D32s_v3' 'Standard_D64s_v3' 'Standard_D2_v3' 'Standard_D4_v3' 'Standard_D8_v3' 'Standard_D16_v3' 'Standard_D32_v3' 'Standard_D64_v3' 'Standard_F2s_v2' 'Standard_F4s_v2' 'Standard_F8s_v2' 'Standard_F16s_v2' 'Standard_F32s_v2' 'Standard_F64s_v2' 'Standard_F72s_v2' 'Standard_E2_v3' 'Standard_E4_v3' 'Standard_E8_v3' 'Standard_E16_v3' 'Standard_E32_v3' 'Standard_E64_v3' 'Standard_E2s_v3' 'Standard_E4s_v3' 'Standard_E8s_v3' 'Standard_E16s_v3' 'Standard_E32s_v3' 'Standard_E64s_v3' 'Standard_M64s' 'Standard_M64ms' 'Standard_M128s' 'Standard_M128ms')}}\",\n    \"suitability\": \"{{oneOf (array 'Unknown' 'NotSuitable' 'Suitable' 'ConditionallySuitable' 'ReadinessUnknown')}}\",\n    \"suitabilityDetail\": \"{{oneOf (array 'None' 'RecommendedSizeHasLessNetworkAdapters' 'CannotReportComputeCost' 'CannotReportStorageCost' 'CannotReportBandwidthCosts' 'PercentageOfCoresUtilizedMissing' 'PercentageOfMemoryUtilizedMissing' 'PercentageOfCoresUtilizedOutOfRange' 'PercentageOfMemoryUtilizedOutOfRange')}}\",\n    \"suitabilityExplanation\": \"{{oneOf (array 'Unknown' 'NotApplicable' 'GuestOperatingSystemArchitectureNotSupported' 'GuestOperatingSystemNotSupported' 'BootTypeNotSupported' 'MoreDisksThanSupported' 'NoSuitableVmSizeFound' 'OneOrMoreDisksNotSuitable' 'OneOrMoreAdaptersNotSuitable' 'InternalErrorOccurredDuringComputeEvaluation' 'InternalErrorOccurredDuringStorageEvaluation' 'InternalErrorOccurredDuringNetworkEvaluation' 'NoVmSizeSupportsStoragePerformance' 'NoVmSizeSupportsNetworkPerformance' 'NoVmSizeForSelectedPricingTier' 'NoVmSizeForSelectedAzureLocation' 'CheckRedHatLinuxVersion' 'CheckOpenSuseLinuxVersion' 'CheckWindowsServer2008R2Version' 'CheckCentOsVersion' 'CheckDebianLinuxVersion' 'CheckSuseLinuxVersion' 'CheckOracleLinuxVersion' 'CheckUbuntuLinuxVersion' 'CheckCoreOsLinuxVersion' 'WindowsServerVersionConditionallySupported' 'NoGuestOperatingSystemConditionallySupported' 'WindowsClientVersionsConditionallySupported' 'BootTypeUnknown' 'GuestOperatingSystemUnknown' 'WindowsServerVersionsSupportedWithCaveat' 'WindowsOSNoLongerUnderMSSupport' 'EndorsedWithConditionsLinuxDistributions' 'UnendorsedLinuxDistributions' 'NoVmSizeForStandardPricingTier' 'NoVmSizeForBasicPricingTier')}}\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns a specific assessed machine.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c1583ada-369c-42b9-b152-ac3641456949",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ded23d86-9360-4fbd-9b8c-fcf0589e74b8",
+      "documentation": "Get download URL for the assessment report.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/assessments/:assessmentName/downloadUrl",
+      "responses": [
+        {
+          "uuid": "cc8374a8-8276-48d0-b2d1-02ce3e9d50b7",
+          "body": "{\n  \"assessmentReportUrl\": \"\",\n  \"expirationTime\": \"{{faker 'date.recent' 365}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "410b7472-b35c-4ee9-a2af-927ff7dc0f20",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ad76c75d-3f46-4203-960a-e80605ef178f",
+      "documentation": "Update machines in group.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/groups/:groupName/updateMachines",
+      "responses": [
+        {
+          "uuid": "c4e91baa-c371-4829-bdf7-2a9619e6340b",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"areAssessmentsRunning\": {{faker 'datatype.boolean'}},\n    \"assessments\": [\n      \"\"\n    ],\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"groupStatus\": \"{{oneOf (array 'Created' 'Updated' 'Running' 'Completed' 'Invalid')}}\",\n    \"machineCount\": {{faker 'datatype.number'}},\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing group updated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a1565e36-50aa-481f-8679-57c3874962de",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2b3b35f1-ff4b-4310-b84f-1c636478de8e",
+      "documentation": "Get a list of Hyper-V collector.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/hypervcollectors",
+      "responses": [
+        {
+          "uuid": "08f4115b-719c-4e14-9911-0cfc73cf5166",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"agentProperties\": {\n          \"id\": \"\",\n          \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n          \"spnDetails\": {\n            \"applicationId\": \"\",\n            \"audience\": \"\",\n            \"authority\": \"\",\n            \"objectId\": \"\",\n            \"tenantId\": \"\"\n          },\n          \"version\": \"\"\n        },\n        \"createdTimestamp\": \"\",\n        \"discoverySiteId\": \"\",\n        \"updatedTimestamp\": \"\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of Hyper-V collectors.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4a42d6d1-7b17-4e4b-b9f4-c7570bab1922",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ee379da-e215-4810-9be0-1a662919dbab",
+      "documentation": "Deletes Hyper-V collector from the project.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/hypervcollectors/:hyperVCollectorName",
+      "responses": [
+        {
+          "uuid": "b1300018-159f-43af-952f-368f0c53551a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Deleted the Hyper-V collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85876890-b062-4c02-bb84-662c5ceb3138",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. No Hyper-V collector with specified name was found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4f3e5a57-1ae4-4e2a-aa8e-79d20f294180",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1b541578-fbe4-4309-b384-8dfe0e104cd5",
+      "documentation": "Get a Hyper-V collector.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/hypervcollectors/:hyperVCollectorName",
+      "responses": [
+        {
+          "uuid": "32b4abee-73d6-4358-ba73-037b7e2fb859",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns the specific Hyper-V collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "130ba850-4735-497c-ba4b-b5334f4aa6a6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f3d1129-0279-4ee8-b3c6-934b80a7dee3",
+      "documentation": "Create or Update Hyper-V collector.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/hypervcollectors/:hyperVCollectorName",
+      "responses": [
+        {
+          "uuid": "acbe1104-5a4a-4e6f-aa3d-39a76315a7c3",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing Hyper-V collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "17d8e400-a002-4079-9adc-2cdf27e0145b",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. New Hyper-V collector was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12bd0827-7acb-48b1-9be8-aca9fd3e0e47",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "69c4e30a-7a82-423d-9aaf-13d2ed21234b",
+      "documentation": "Get all machines in the project",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/machines",
+      "responses": [
+        {
+          "uuid": "32dde1ba-b655-46c2-9b6d-561496c0434c",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"bootType\": \"{{oneOf (array 'Unknown' 'EFI' 'BIOS')}}\",\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"datacenterManagementServerArmId\": \"\",\n        \"datacenterManagementServerName\": \"\",\n        \"description\": \"\",\n        \"discoveryMachineArmId\": \"\",\n        \"disks\": {},\n        \"displayName\": \"\",\n        \"groups\": [\n          \"\"\n        ],\n        \"megabytesOfMemory\": {{faker 'datatype.number'}},\n        \"networkAdapters\": {},\n        \"numberOfCores\": {{faker 'datatype.number'}},\n        \"operatingSystemName\": \"\",\n        \"operatingSystemType\": \"\",\n        \"operatingSystemVersion\": \"\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of all machine objects.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b81f21cd-fc04-4523-912c-06aa2486cb6d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9b9b406d-6d66-4ebb-9c96-03b9c7d2ddd7",
+      "documentation": "Get a specific machine.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/machines/:machineName",
+      "responses": [
+        {
+          "uuid": "44e5f8b5-8abe-456e-a3b1-21ed615062b6",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"bootType\": \"{{oneOf (array 'Unknown' 'EFI' 'BIOS')}}\",\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"datacenterManagementServerArmId\": \"\",\n    \"datacenterManagementServerName\": \"\",\n    \"description\": \"\",\n    \"discoveryMachineArmId\": \"\",\n    \"disks\": {},\n    \"displayName\": \"\",\n    \"groups\": [\n      \"\"\n    ],\n    \"megabytesOfMemory\": {{faker 'datatype.number'}},\n    \"networkAdapters\": {},\n    \"numberOfCores\": {{faker 'datatype.number'}},\n    \"operatingSystemName\": \"\",\n    \"operatingSystemType\": \"\",\n    \"operatingSystemVersion\": \"\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns the machine with the specified name.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3f21a60f-771c-4612-b2ea-3076819aad57",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "439711e1-7617-42d8-8716-dd12d8fd9c49",
+      "documentation": "Get a list of VMware collector.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/vmwarecollectors",
+      "responses": [
+        {
+          "uuid": "959e72d2-4263-4643-a566-7a09dfed5fbb",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"agentProperties\": {\n          \"id\": \"\",\n          \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n          \"spnDetails\": {\n            \"applicationId\": \"\",\n            \"audience\": \"\",\n            \"authority\": \"\",\n            \"objectId\": \"\",\n            \"tenantId\": \"\"\n          },\n          \"version\": \"\"\n        },\n        \"createdTimestamp\": \"\",\n        \"discoverySiteId\": \"\",\n        \"updatedTimestamp\": \"\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns list of VMware collectors.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0eb7dfaa-3499-4d48-97e0-9ffc771666e6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d41dfbe2-76f3-4dbf-9878-970729e887c3",
+      "documentation": "Deletes VMware collector from the project.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/vmwarecollectors/:vmWareCollectorName",
+      "responses": [
+        {
+          "uuid": "708e6717-f6c8-46a4-a30c-8cda5a2c1164",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Deleted the VMware collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4fb9fb1-c26e-49b8-b2e7-988f7ef1c9cb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. No VMware collector with specified name was found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2d4c37e8-4696-4570-91d6-89e04fea7c25",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3be409ae-1c65-48f9-b626-c623c970bab2",
+      "documentation": "Get a VMware collector.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/vmwarecollectors/:vmWareCollectorName",
+      "responses": [
+        {
+          "uuid": "5a96ca7e-dd0f-4480-9dfc-5e61f92f763f",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Returns the specific VMware collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "45d84709-bc29-47a2-bf33-303efd0da00f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bc0de110-94e7-4568-b455-88099709405c",
+      "documentation": "Create or Update VMware collector.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/vmwarecollectors/:vmWareCollectorName",
+      "responses": [
+        {
+          "uuid": "2edbde50-6cec-410d-8b48-edb4a55b3174",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing VMware collector.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f2386349-50c0-442f-b979-3dd439a6197a",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"agentProperties\": {\n      \"id\": \"\",\n      \"lastHeartbeatUtc\": \"{{faker 'date.recent' 365}}\",\n      \"spnDetails\": {\n        \"applicationId\": \"\",\n        \"audience\": \"\",\n        \"authority\": \"\",\n        \"objectId\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"version\": \"\"\n    },\n    \"createdTimestamp\": \"\",\n    \"discoverySiteId\": \"\",\n    \"updatedTimestamp\": \"\"\n  },\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. New VMware collector was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c2902c1-6a38-4c54-af4e-b8f87bd33254",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d04daa95-a67a-4819-90ee-43e47d4ef2f3",
+      "documentation": "Get all projects.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects",
+      "responses": [
+        {
+          "uuid": "b7b15059-03ad-48e2-a161-172971888bb2",
+          "body": "{\n  \"value\": [\n    {\n      \"eTag\": \"\",\n      \"id\": \"\",\n      \"location\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"assessmentSolutionId\": \"\",\n        \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"customerWorkspaceId\": \"\",\n        \"customerWorkspaceLocation\": \"\",\n        \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n        \"numberOfAssessments\": {{faker 'datatype.number'}},\n        \"numberOfGroups\": {{faker 'datatype.number'}},\n        \"numberOfMachines\": {{faker 'datatype.number'}},\n        \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n        \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n        \"serviceEndpoint\": \"\",\n        \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n      },\n      \"tags\": {},\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e483232b-307c-4107-99ab-a3a5477abe81",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ba7fed9b-eead-412e-bec4-7cf86e9daaa9",
+      "documentation": "Delete the project",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName",
+      "responses": [
+        {
+          "uuid": "138f1922-dc01-4207-8ef6-39cafb52f43c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Deleted the group.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7397f760-7239-4e8e-909c-163b34f94f0c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content. No project with specified name was found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d816a0f-4385-4000-b50f-88669d43aef2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6eac6648-be4a-485a-aadb-3df0ec7fc7c8",
+      "documentation": "Get the specified project.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName",
+      "responses": [
+        {
+          "uuid": "21cafa20-9af8-4c2d-8603-25b5bb5619a9",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"assessmentSolutionId\": \"\",\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"customerWorkspaceId\": \"\",\n    \"customerWorkspaceLocation\": \"\",\n    \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"numberOfAssessments\": {{faker 'datatype.number'}},\n    \"numberOfGroups\": {{faker 'datatype.number'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n    \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n    \"serviceEndpoint\": \"\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "68762f5e-df7d-4e57-b866-f01dc1e02695",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a348180f-1fb7-4d77-8560-f21ca6d2d838",
+      "documentation": "Update project.",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName",
+      "responses": [
+        {
+          "uuid": "5b7198f1-3be2-4365-84ab-5e7f488fa1e9",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"assessmentSolutionId\": \"\",\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"customerWorkspaceId\": \"\",\n    \"customerWorkspaceLocation\": \"\",\n    \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"numberOfAssessments\": {{faker 'datatype.number'}},\n    \"numberOfGroups\": {{faker 'datatype.number'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n    \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n    \"serviceEndpoint\": \"\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing project updated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a14f4b17-4632-4d2c-9079-3cabb5821140",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c3215b7f-23a3-4f79-9398-53c0d4844ca3",
+      "documentation": "Create or update project.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName",
+      "responses": [
+        {
+          "uuid": "6e8476df-2e7d-41f6-a0f5-1e1cd8c0ea1c",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"assessmentSolutionId\": \"\",\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"customerWorkspaceId\": \"\",\n    \"customerWorkspaceLocation\": \"\",\n    \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"numberOfAssessments\": {{faker 'datatype.number'}},\n    \"numberOfGroups\": {{faker 'datatype.number'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n    \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n    \"serviceEndpoint\": \"\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. Existing project updated.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "62cee08a-30b0-459c-b13f-af3c970e5fdf",
+          "body": "{\n  \"eTag\": \"\",\n  \"id\": \"\",\n  \"location\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"assessmentSolutionId\": \"\",\n    \"createdTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"customerWorkspaceId\": \"\",\n    \"customerWorkspaceLocation\": \"\",\n    \"lastAssessmentTimestamp\": \"{{faker 'date.recent' 365}}\",\n    \"numberOfAssessments\": {{faker 'datatype.number'}},\n    \"numberOfGroups\": {{faker 'datatype.number'}},\n    \"numberOfMachines\": {{faker 'datatype.number'}},\n    \"projectStatus\": \"{{oneOf (array 'Active' 'Inactive')}}\",\n    \"provisioningState\": \"{{oneOf (array 'Accepted' 'Creating' 'Deleting' 'Failed' 'Moving' 'Succeeded')}}\",\n    \"serviceEndpoint\": \"\",\n    \"updatedTimestamp\": \"{{faker 'date.recent' 365}}\"\n  },\n  \"tags\": {},\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created. New project was created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "df698ed6-4904-4a4b-87dd-f7f02c87e684",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ac737e1-fe56-47c7-a7f8-a640f2c741d8",
+      "documentation": "Gets list of all available options for the properties of an assessment on a project.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/assessmentOptions",
+      "responses": [
+        {
+          "uuid": "7cbd128e-a563-480f-a9df-c040563aeec6",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"reservedInstanceSupportedCurrencies\": [\n          \"\"\n        ],\n        \"reservedInstanceSupportedLocations\": [\n          \"\"\n        ],\n        \"reservedInstanceSupportedOffers\": [\n          \"\"\n        ],\n        \"reservedInstanceVmFamilies\": [\n          \"\"\n        ],\n        \"vmFamilies\": [\n          {\n            \"category\": [\n              \"\"\n            ],\n            \"familyName\": \"\",\n            \"targetLocations\": [\n              \"\"\n            ]\n          }\n        ]\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e8816d8a-2c02-485a-a7d6-af1b32282081",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8c99a64d-f371-48b6-967e-c80053e9451e",
+      "documentation": "Get all available options for the properties of an assessment on a project.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Migrate/assessmentProjects/:projectName/assessmentOptions/:assessmentOptionsName",
+      "responses": [
+        {
+          "uuid": "393263c4-46cf-43a1-9240-49afdbdeb11f",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"properties\": {\n    \"reservedInstanceSupportedCurrencies\": [\n      \"\"\n    ],\n    \"reservedInstanceSupportedLocations\": [\n      \"\"\n    ],\n    \"reservedInstanceSupportedOffers\": [\n      \"\"\n    ],\n    \"reservedInstanceVmFamilies\": [\n      \"\"\n    ],\n    \"vmFamilies\": [\n      {\n        \"category\": [\n          \"\"\n        ],\n        \"familyName\": \"\",\n        \"targetLocations\": [\n          \"\"\n        ]\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-ms-request-id",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6975b7c6-65e9-4209-8f98-250a9c481f63",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

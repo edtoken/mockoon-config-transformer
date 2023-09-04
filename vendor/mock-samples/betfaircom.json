@@ -1,0 +1,70 @@
+{
+  "uuid": "af6b7bbd-51c1-44d6-9f88-b0d3d91760c1",
+  "lastMigration": 24,
+  "name": "Betfair: Exchange Streaming API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "8a83a5b5-d74d-4ca1-b4c6-38613efc2fd2",
+      "documentation": "This is a socket protocol delimited by CRLF (not http)",
+      "method": "post",
+      "endpoint": "request",
+      "responses": [
+        {
+          "uuid": "24061227-1779-42fb-a328-3b42059d475f",
+          "body": "{\n  \"connection\": {\n    \"id\": {{faker 'datatype.number'}},\n    \"op\": \"\"\n  },\n  \"marketChangeMessage\": {\n    \"id\": {{faker 'datatype.number'}},\n    \"op\": \"\"\n  },\n  \"opTypes\": \"{{oneOf (array 'connection' 'status' 'mcm' 'ocm')}}\",\n  \"orderChangeMessage\": {\n    \"id\": {{faker 'datatype.number'}},\n    \"op\": \"\"\n  },\n  \"status\": {\n    \"id\": {{faker 'datatype.number'}},\n    \"op\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Responses are received from socket",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

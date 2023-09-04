@@ -1,0 +1,70 @@
+{
+  "uuid": "5f59d2ca-74eb-40bd-9db9-b6e744abd9d9",
+  "lastMigration": 24,
+  "name": "Azure SQL Database",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c6b66e1c-a96e-494c-880d-fb44f1af2078",
+      "documentation": "Determines whether a resource can be created with the specified name.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/providers/Microsoft.Sql/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "5586ee9e-ba7e-41a4-91fc-323858babca5",
+          "body": "{\n  \"available\": {{faker 'datatype.boolean'}},\n  \"message\": \"\",\n  \"name\": \"\",\n  \"reason\": \"{{oneOf (array 'Invalid' 'AlreadyExists')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,3002 @@
+{
+  "uuid": "3009217e-3362-4306-8f29-bdc42429553c",
+  "lastMigration": 24,
+  "name": "Amazon Mechanical Turk",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b5141f98-ee56-4650-a0f5-bc8ae672fd25",
+      "documentation": "<p> The <code>AcceptQualificationRequest</code> operation approves a Worker's request for a Qualification. </p> <p> Only the owner of the Qualification type can grant a Qualification request for that type. </p> <p> A successful request for the <code>AcceptQualificationRequest</code> operation returns with no errors and an empty body. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.AcceptQualificationRequest",
+      "responses": [
+        {
+          "uuid": "f3ee9676-598f-445c-8d61-9426cbc8f3fd",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "62dd29a9-bb14-4972-a236-edc005f2ba1d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6acaf057-bbb1-42b8-a83d-adbe4e9bf5e0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9575222c-bc1d-49aa-9f72-7f5a001a03f8",
+      "documentation": "<p> The <code>ApproveAssignment</code> operation approves the results of a completed assignment. </p> <p> Approving an assignment initiates two payments from the Requester's Amazon.com account </p> <ul> <li> <p> The Worker who submitted the results is paid the reward specified in the HIT. </p> </li> <li> <p> Amazon Mechanical Turk fees are debited. </p> </li> </ul> <p> If the Requester's account does not have adequate funds for these payments, the call to ApproveAssignment returns an exception, and the approval is not processed. You can include an optional feedback message with the approval, which the Worker can see in the Status section of the web site. </p> <p> You can also call this operation for assignments that were previous rejected and approve them by explicitly overriding the previous rejection. This only works on rejected assignments that were submitted within the previous 30 days and only if the assignment's related HIT has not been deleted. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ApproveAssignment",
+      "responses": [
+        {
+          "uuid": "746ba0e5-4ff5-4b26-912a-213f2971f0d3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2d5962a7-0c5d-4411-a159-66f1bdcf11c9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a020c9bf-73b3-481f-96e6-5568c38200e0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4ae0129e-a8ec-47f4-a5d9-6ea0b4f0012c",
+      "documentation": "<p> The <code>AssociateQualificationWithWorker</code> operation gives a Worker a Qualification. <code>AssociateQualificationWithWorker</code> does not require that the Worker submit a Qualification request. It gives the Qualification directly to the Worker. </p> <p> You can only assign a Qualification of a Qualification type that you created (using the <code>CreateQualificationType</code> operation). </p> <note> <p> Note: <code>AssociateQualificationWithWorker</code> does not affect any pending Qualification requests for the Qualification by the Worker. If you assign a Qualification to a Worker, then later grant a Qualification request made by the Worker, the granting of the request may modify the Qualification score. To resolve a pending Qualification request without affecting the Qualification the Worker already has, reject the request with the <code>RejectQualificationRequest</code> operation. </p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.AssociateQualificationWithWorker",
+      "responses": [
+        {
+          "uuid": "24ad32db-ca69-4000-bec6-6606aab01953",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "032883b7-a110-4a0c-bb1e-ded84a34aeb7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "682d029e-a86d-41d2-b4e6-44fb505e7eca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b8e4e6da-766d-482e-8e6b-08c52d5fcd75",
+      "documentation": "<p> The <code>CreateAdditionalAssignmentsForHIT</code> operation increases the maximum number of assignments of an existing HIT. </p> <p> To extend the maximum number of assignments, specify the number of additional assignments.</p> <note> <ul> <li> <p>HITs created with fewer than 10 assignments cannot be extended to have 10 or more assignments. Attempting to add assignments in a way that brings the total number of assignments for a HIT from fewer than 10 assignments to 10 or more assignments will result in an <code>AWS.MechanicalTurk.InvalidMaximumAssignmentsIncrease</code> exception.</p> </li> <li> <p>HITs that were created before July 22, 2015 cannot be extended. Attempting to extend HITs that were created before July 22, 2015 will result in an <code>AWS.MechanicalTurk.HITTooOldForExtension</code> exception. </p> </li> </ul> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateAdditionalAssignmentsForHIT",
+      "responses": [
+        {
+          "uuid": "1fc073ec-877b-4b01-9411-fe1c240a60bc",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "357bfa27-bf04-43f6-9243-4d606ae0cfb5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2c6bc5cc-5677-4856-9329-82a63e8de883",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4758a7da-0896-4398-b426-eb761cb3e570",
+      "documentation": "<p>The <code>CreateHIT</code> operation creates a new Human Intelligence Task (HIT). The new HIT is made available for Workers to find and accept on the Amazon Mechanical Turk website. </p> <p> This operation allows you to specify a new HIT by passing in values for the properties of the HIT, such as its title, reward amount and number of assignments. When you pass these values to <code>CreateHIT</code>, a new HIT is created for you, with a new <code>HITTypeID</code>. The HITTypeID can be used to create additional HITs in the future without needing to specify common parameters such as the title, description and reward amount each time.</p> <p> An alternative way to create HITs is to first generate a HITTypeID using the <code>CreateHITType</code> operation and then call the <code>CreateHITWithHITType</code> operation. This is the recommended best practice for Requesters who are creating large numbers of HITs. </p> <p>CreateHIT also supports several ways to provide question data: by providing a value for the <code>Question</code> parameter that fully specifies the contents of the HIT, or by providing a <code>HitLayoutId</code> and associated <code>HitLayoutParameters</code>. </p> <note> <p> If a HIT is created with 10 or more maximum assignments, there is an additional fee. For more information, see <a href=\"https://requester.mturk.com/pricing\">Amazon Mechanical Turk Pricing</a>.</p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateHIT",
+      "responses": [
+        {
+          "uuid": "ec1a1fa8-b102-4a43-b7fb-2fc03d206c9f",
+          "body": "{\n  \"HIT\": {\n    \"HITId\": \"\",\n    \"HITTypeId\": \"\",\n    \"HITGroupId\": \"\",\n    \"HITLayoutId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Title\": \"\",\n    \"Description\": \"\",\n    \"Question\": \"\",\n    \"Keywords\": \"\",\n    \"HITStatus\": \"\",\n    \"MaxAssignments\": {{faker 'datatype.number'}},\n    \"Reward\": \"\",\n    \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n    \"Expiration\": \"{{faker 'date.recent' 365}}\",\n    \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n    \"RequesterAnnotation\": \"\",\n    \"QualificationRequirements\": [\n      {\n        \"QualificationTypeId\": \"\",\n        \"Comparator\": \"\",\n        \"IntegerValues\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"LocaleValues\": [\n          {\n            \"Country\": \"\",\n            \"Subdivision\": \"\"\n          }\n        ],\n        \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n        \"ActionsGuarded\": \"\"\n      }\n    ],\n    \"HITReviewStatus\": \"\",\n    \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c688213f-434a-4b91-9845-6600f2a1714f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ad2ebdaf-2f05-420d-aac4-a965f06ef1df",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c6b9050-006d-4122-b19f-527400ffbb1d",
+      "documentation": " The <code>CreateHITType</code> operation creates a new HIT type. This operation allows you to define a standard set of HIT properties to use when creating HITs. If you register a HIT type with values that match an existing HIT type, the HIT type ID of the existing type will be returned. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateHITType",
+      "responses": [
+        {
+          "uuid": "f534bb4b-2f9c-48dc-8dc2-e4fa016cfa37",
+          "body": "{\n  \"HITTypeId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c97b9261-a199-4967-b933-cf83d3fcf43e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e2bfcb1a-a706-42cc-b1ea-0a91236fd3d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53072fb4-9261-462c-ad9d-9714e2fb72f7",
+      "documentation": "<p> The <code>CreateHITWithHITType</code> operation creates a new Human Intelligence Task (HIT) using an existing HITTypeID generated by the <code>CreateHITType</code> operation. </p> <p> This is an alternative way to create HITs from the <code>CreateHIT</code> operation. This is the recommended best practice for Requesters who are creating large numbers of HITs. </p> <p>CreateHITWithHITType also supports several ways to provide question data: by providing a value for the <code>Question</code> parameter that fully specifies the contents of the HIT, or by providing a <code>HitLayoutId</code> and associated <code>HitLayoutParameters</code>. </p> <note> <p> If a HIT is created with 10 or more maximum assignments, there is an additional fee. For more information, see <a href=\"https://requester.mturk.com/pricing\">Amazon Mechanical Turk Pricing</a>. </p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateHITWithHITType",
+      "responses": [
+        {
+          "uuid": "fb6eb39b-47a6-4916-a16f-4598034e57b1",
+          "body": "{\n  \"HIT\": {\n    \"HITId\": \"\",\n    \"HITTypeId\": \"\",\n    \"HITGroupId\": \"\",\n    \"HITLayoutId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Title\": \"\",\n    \"Description\": \"\",\n    \"Question\": \"\",\n    \"Keywords\": \"\",\n    \"HITStatus\": \"\",\n    \"MaxAssignments\": {{faker 'datatype.number'}},\n    \"Reward\": \"\",\n    \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n    \"Expiration\": \"{{faker 'date.recent' 365}}\",\n    \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n    \"RequesterAnnotation\": \"\",\n    \"QualificationRequirements\": [\n      {\n        \"QualificationTypeId\": \"\",\n        \"Comparator\": \"\",\n        \"IntegerValues\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"LocaleValues\": [\n          {\n            \"Country\": \"\",\n            \"Subdivision\": \"\"\n          }\n        ],\n        \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n        \"ActionsGuarded\": \"\"\n      }\n    ],\n    \"HITReviewStatus\": \"\",\n    \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d44caea0-2a1c-4e4c-b0ff-673a7f3bf6a5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ca087c93-4f34-4b18-9155-6b555b085a5a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f8597b12-aa76-4af4-9650-30b8b8000f1e",
+      "documentation": " The <code>CreateQualificationType</code> operation creates a new Qualification type, which is represented by a <code>QualificationType</code> data structure. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateQualificationType",
+      "responses": [
+        {
+          "uuid": "bf201949-455c-4a1d-a459-76bf77c6b420",
+          "body": "{\n  \"QualificationType\": {\n    \"QualificationTypeId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Name\": \"\",\n    \"Description\": \"\",\n    \"Keywords\": \"\",\n    \"QualificationTypeStatus\": \"\",\n    \"Test\": \"\",\n    \"TestDurationInSeconds\": {{faker 'datatype.number'}},\n    \"AnswerKey\": \"\",\n    \"RetryDelayInSeconds\": {{faker 'datatype.number'}},\n    \"IsRequestable\": {{faker 'datatype.boolean'}},\n    \"AutoGranted\": {{faker 'datatype.boolean'}},\n    \"AutoGrantedValue\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d64414ca-4c6a-4b2b-9a53-7c2fb98e386c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c3a5879e-9f32-43b2-bdd0-105b1a28ca95",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f171835-b76c-4142-bba8-4b666698ccbc",
+      "documentation": "The <code>CreateWorkerBlock</code> operation allows you to prevent a Worker from working on your HITs. For example, you can block a Worker who is producing poor quality work. You can block up to 100,000 Workers.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.CreateWorkerBlock",
+      "responses": [
+        {
+          "uuid": "b836ee4c-4fd8-4ef9-86a0-41fe56e54a0c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "129203e9-27fa-4da6-bdf1-800a31133e74",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0a51b5ac-a88f-4b6d-9f9e-ae40ade34a2a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cff7aed9-8f61-4e5e-999d-8a1e492b32d6",
+      "documentation": "<p> The <code>DeleteHIT</code> operation is used to delete HIT that is no longer needed. Only the Requester who created the HIT can delete it. </p> <p> You can only dispose of HITs that are in the <code>Reviewable</code> state, with all of their submitted assignments already either approved or rejected. If you call the DeleteHIT operation on a HIT that is not in the <code>Reviewable</code> state (for example, that has not expired, or still has active assignments), or on a HIT that is Reviewable but without all of its submitted assignments already approved or rejected, the service will return an error. </p> <note> <ul> <li> <p> HITs are automatically disposed of after 120 days. </p> </li> <li> <p> After you dispose of a HIT, you can no longer approve the HIT's rejected assignments. </p> </li> <li> <p> Disposed HITs are not returned in results for the ListHITs operation. </p> </li> <li> <p> Disposing HITs can improve the performance of operations such as ListReviewableHITs and ListHITs. </p> </li> </ul> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.DeleteHIT",
+      "responses": [
+        {
+          "uuid": "a6efbf3f-a844-47b3-9f08-ec3997309390",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b5eca79c-095e-4ced-80af-f59bd1a16826",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cdf97941-c41d-4708-a5ea-22f09f97412a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ea9d2a5c-450c-40d7-ace2-487024eda18e",
+      "documentation": "<p> The <code>DeleteQualificationType</code> deletes a Qualification type and deletes any HIT types that are associated with the Qualification type. </p> <p>This operation does not revoke Qualifications already assigned to Workers because the Qualifications might be needed for active HITs. If there are any pending requests for the Qualification type, Amazon Mechanical Turk rejects those requests. After you delete a Qualification type, you can no longer use it to create HITs or HIT types.</p> <note> <p>DeleteQualificationType must wait for all the HITs that use the deleted Qualification type to be deleted before completing. It may take up to 48 hours before DeleteQualificationType completes and the unique name of the Qualification type is available for reuse with CreateQualificationType.</p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.DeleteQualificationType",
+      "responses": [
+        {
+          "uuid": "bc6e5e3f-2f1e-41ff-8266-97f7e0343e64",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cbba6b66-02a1-4f52-b10a-d574f1e88193",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "288ac265-a853-4cb5-bee4-2ab14a87ff83",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bce9fe8d-ff92-4ff1-8b20-ba18a6cb7df3",
+      "documentation": "The <code>DeleteWorkerBlock</code> operation allows you to reinstate a blocked Worker to work on your HITs. This operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use this operation. If the Worker ID is missing or invalid, this operation fails and returns the message “WorkerId is invalid.” If the specified Worker is not blocked, this operation returns successfully.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.DeleteWorkerBlock",
+      "responses": [
+        {
+          "uuid": "17debcc7-1f3e-4e9e-bdaa-c3f5ace4a3b4",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c4b2ae84-cab5-4818-88cb-a5136dff5531",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "90599477-5ce6-4d16-88cc-bfe5394808a6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "858c4b02-69f2-4acb-93ac-04821a6f042f",
+      "documentation": "<p> The <code>DisassociateQualificationFromWorker</code> revokes a previously granted Qualification from a user. </p> <p> You can provide a text message explaining why the Qualification was revoked. The user who had the Qualification can see this message. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.DisassociateQualificationFromWorker",
+      "responses": [
+        {
+          "uuid": "417b6b1f-40d8-43e1-baa8-6e493dbd2bc7",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d984467c-dfe6-4898-9e70-78171028ed58",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e129cd9-7745-4985-aa39-02af9ee260ed",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7a7579ff-839c-4a58-99e1-ad580d29f425",
+      "documentation": "The <code>GetAccountBalance</code> operation retrieves the Prepaid HITs balance in your Amazon Mechanical Turk account if you are a Prepaid Requester. Alternatively, this operation will retrieve the remaining available AWS Billing usage if you have enabled AWS Billing. Note: If you have enabled AWS Billing and still have a remaining Prepaid HITs balance, this balance can be viewed on the My Account page in the Requester console.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetAccountBalance",
+      "responses": [
+        {
+          "uuid": "996fffa6-c853-4dcf-b31c-3fb3a214981e",
+          "body": "{\n  \"AvailableBalance\": \"\",\n  \"OnHoldBalance\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "521df486-6bc2-4665-a62a-bc7ff9cf0dec",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7cae24c2-e199-4d04-a8f8-889b148fda8b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "41affd34-1b2d-4922-a98d-5abe64bc4ede",
+      "documentation": " The <code>GetAssignment</code> operation retrieves the details of the specified Assignment. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetAssignment",
+      "responses": [
+        {
+          "uuid": "495da2db-4353-450d-b6a8-334292e2bf19",
+          "body": "{\n  \"Assignment\": {\n    \"AssignmentId\": \"\",\n    \"WorkerId\": \"\",\n    \"HITId\": \"\",\n    \"AssignmentStatus\": \"\",\n    \"AutoApprovalTime\": \"{{faker 'date.recent' 365}}\",\n    \"AcceptTime\": \"{{faker 'date.recent' 365}}\",\n    \"SubmitTime\": \"{{faker 'date.recent' 365}}\",\n    \"ApprovalTime\": \"{{faker 'date.recent' 365}}\",\n    \"RejectionTime\": \"{{faker 'date.recent' 365}}\",\n    \"Deadline\": \"{{faker 'date.recent' 365}}\",\n    \"Answer\": \"\",\n    \"RequesterFeedback\": \"\"\n  },\n  \"HIT\": {\n    \"HITId\": \"\",\n    \"HITTypeId\": \"\",\n    \"HITGroupId\": \"\",\n    \"HITLayoutId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Title\": \"\",\n    \"Description\": \"\",\n    \"Question\": \"\",\n    \"Keywords\": \"\",\n    \"HITStatus\": \"\",\n    \"MaxAssignments\": {{faker 'datatype.number'}},\n    \"Reward\": \"\",\n    \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n    \"Expiration\": \"{{faker 'date.recent' 365}}\",\n    \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n    \"RequesterAnnotation\": \"\",\n    \"QualificationRequirements\": [\n      {\n        \"QualificationTypeId\": \"\",\n        \"Comparator\": \"\",\n        \"IntegerValues\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"LocaleValues\": [\n          {\n            \"Country\": \"\",\n            \"Subdivision\": \"\"\n          }\n        ],\n        \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n        \"ActionsGuarded\": \"\"\n      }\n    ],\n    \"HITReviewStatus\": \"\",\n    \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "517e1019-ce39-4765-ac2e-c0a91f54a1a3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "678e8a70-5d93-4b30-a622-912a83b2b5ed",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a3f8779-577f-434d-a04a-33147818a456",
+      "documentation": " The <code>GetFileUploadURL</code> operation generates and returns a temporary URL. You use the temporary URL to retrieve a file uploaded by a Worker as an answer to a FileUploadAnswer question for a HIT. The temporary URL is generated the instant the GetFileUploadURL operation is called, and is valid for 60 seconds. You can get a temporary file upload URL any time until the HIT is disposed. After the HIT is disposed, any uploaded files are deleted, and cannot be retrieved. Pending Deprecation on December 12, 2017. The Answer Specification structure will no longer support the <code>FileUploadAnswer</code> element to be used for the QuestionForm data structure. Instead, we recommend that Requesters who want to create HITs asking Workers to upload files to use Amazon S3. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetFileUploadURL",
+      "responses": [
+        {
+          "uuid": "cd9b12ec-be64-4dea-8dac-2e926a7c98f2",
+          "body": "{\n  \"FileUploadURL\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e933b356-82d8-4069-ad6a-2418594edd1c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ff418224-e2a8-41f0-a128-2af8c3b986d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b243d3d6-483e-4c17-a999-e28ab41dcf30",
+      "documentation": " The <code>GetHIT</code> operation retrieves the details of the specified HIT. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetHIT",
+      "responses": [
+        {
+          "uuid": "720429f5-76b0-4100-a804-29a5f5551cbb",
+          "body": "{\n  \"HIT\": {\n    \"HITId\": \"\",\n    \"HITTypeId\": \"\",\n    \"HITGroupId\": \"\",\n    \"HITLayoutId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Title\": \"\",\n    \"Description\": \"\",\n    \"Question\": \"\",\n    \"Keywords\": \"\",\n    \"HITStatus\": \"\",\n    \"MaxAssignments\": {{faker 'datatype.number'}},\n    \"Reward\": \"\",\n    \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n    \"Expiration\": \"{{faker 'date.recent' 365}}\",\n    \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n    \"RequesterAnnotation\": \"\",\n    \"QualificationRequirements\": [\n      {\n        \"QualificationTypeId\": \"\",\n        \"Comparator\": \"\",\n        \"IntegerValues\": [\n          {{faker 'datatype.number'}}\n        ],\n        \"LocaleValues\": [\n          {\n            \"Country\": \"\",\n            \"Subdivision\": \"\"\n          }\n        ],\n        \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n        \"ActionsGuarded\": \"\"\n      }\n    ],\n    \"HITReviewStatus\": \"\",\n    \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n    \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e871c845-43bc-4bbe-affa-d3c3a4a7ab82",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9429f4c4-5d2f-41a2-bda2-306e6814f965",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "357c5b18-6440-409b-8e9c-48ed144663c2",
+      "documentation": "<p> The <code>GetQualificationScore</code> operation returns the value of a Worker's Qualification for a given Qualification type. </p> <p> To get a Worker's Qualification, you must know the Worker's ID. The Worker's ID is included in the assignment data returned by the <code>ListAssignmentsForHIT</code> operation. </p> <p>Only the owner of a Qualification type can query the value of a Worker's Qualification of that type.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetQualificationScore",
+      "responses": [
+        {
+          "uuid": "cafe9055-a9e5-4835-8288-9c1d0111348f",
+          "body": "{\n  \"Qualification\": {\n    \"QualificationTypeId\": \"\",\n    \"WorkerId\": \"\",\n    \"GrantTime\": \"{{faker 'date.recent' 365}}\",\n    \"IntegerValue\": {{faker 'datatype.number'}},\n    \"LocaleValue\": {\n      \"Country\": \"\",\n      \"Subdivision\": \"\"\n    },\n    \"Status\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "42a4d30f-4b8d-42df-9417-3e636b75bcbc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "23977fb7-65e3-4045-84b3-60ebf6cddb99",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cb99a44b-5b85-427b-80f4-a52ed5c7f68d",
+      "documentation": " The <code>GetQualificationType</code>operation retrieves information about a Qualification type using its ID. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.GetQualificationType",
+      "responses": [
+        {
+          "uuid": "c52feb3d-8481-4eb6-b8da-3b716e1e3bcc",
+          "body": "{\n  \"QualificationType\": {\n    \"QualificationTypeId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Name\": \"\",\n    \"Description\": \"\",\n    \"Keywords\": \"\",\n    \"QualificationTypeStatus\": \"\",\n    \"Test\": \"\",\n    \"TestDurationInSeconds\": {{faker 'datatype.number'}},\n    \"AnswerKey\": \"\",\n    \"RetryDelayInSeconds\": {{faker 'datatype.number'}},\n    \"IsRequestable\": {{faker 'datatype.boolean'}},\n    \"AutoGranted\": {{faker 'datatype.boolean'}},\n    \"AutoGrantedValue\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3ac94862-ebb1-40bf-95b0-e73ba7530e50",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "75447406-ddff-430c-b55c-4e01423bcd95",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fdd9d4b2-066e-4ee9-91a9-23ab868ff6cb",
+      "documentation": "<p> The <code>ListAssignmentsForHIT</code> operation retrieves completed assignments for a HIT. You can use this operation to retrieve the results for a HIT. </p> <p> You can get assignments for a HIT at any time, even if the HIT is not yet Reviewable. If a HIT requested multiple assignments, and has received some results but has not yet become Reviewable, you can still retrieve the partial results with this operation. </p> <p> Use the AssignmentStatus parameter to control which set of assignments for a HIT are returned. The ListAssignmentsForHIT operation can return submitted assignments awaiting approval, or it can return assignments that have already been approved or rejected. You can set AssignmentStatus=Approved,Rejected to get assignments that have already been approved and rejected together in one result set. </p> <p> Only the Requester who created the HIT can retrieve the assignments for that HIT. </p> <p> Results are sorted and divided into numbered pages and the operation returns a single page of results. You can use the parameters of the operation to control sorting and pagination. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListAssignmentsForHIT",
+      "responses": [
+        {
+          "uuid": "7c728b34-2ab4-437e-8522-9eac97738b75",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"Assignments\": [\n    {\n      \"AssignmentId\": \"\",\n      \"WorkerId\": \"\",\n      \"HITId\": \"\",\n      \"AssignmentStatus\": \"\",\n      \"AutoApprovalTime\": \"{{faker 'date.recent' 365}}\",\n      \"AcceptTime\": \"{{faker 'date.recent' 365}}\",\n      \"SubmitTime\": \"{{faker 'date.recent' 365}}\",\n      \"ApprovalTime\": \"{{faker 'date.recent' 365}}\",\n      \"RejectionTime\": \"{{faker 'date.recent' 365}}\",\n      \"Deadline\": \"{{faker 'date.recent' 365}}\",\n      \"Answer\": \"\",\n      \"RequesterFeedback\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "573420f9-2034-422b-b953-a057b9f70eac",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36a69588-b07a-494b-9a3f-646ef922ff90",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "57d54f68-1cf3-4cd7-aec5-2b488af8c678",
+      "documentation": " The <code>ListBonusPayments</code> operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListBonusPayments",
+      "responses": [
+        {
+          "uuid": "c92280cf-bd75-4189-808e-633b6f88f0d2",
+          "body": "{\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"NextToken\": \"\",\n  \"BonusPayments\": [\n    {\n      \"WorkerId\": \"\",\n      \"BonusAmount\": \"\",\n      \"AssignmentId\": \"\",\n      \"Reason\": \"\",\n      \"GrantTime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4ddad12b-0e3f-46fd-a60f-9f9e7d63d722",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0034146f-efa0-456b-9302-961552dde976",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74c542ad-a318-49de-8944-7c43f30ba164",
+      "documentation": " The <code>ListHITs</code> operation returns all of a Requester's HITs. The operation returns HITs of any status, except for HITs that have been deleted of with the DeleteHIT operation or that have been auto-deleted. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListHITs",
+      "responses": [
+        {
+          "uuid": "8632816c-5ebe-4b79-af04-798f6c8b337c",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"HITs\": [\n    {\n      \"HITId\": \"\",\n      \"HITTypeId\": \"\",\n      \"HITGroupId\": \"\",\n      \"HITLayoutId\": \"\",\n      \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n      \"Title\": \"\",\n      \"Description\": \"\",\n      \"Question\": \"\",\n      \"Keywords\": \"\",\n      \"HITStatus\": \"\",\n      \"MaxAssignments\": {{faker 'datatype.number'}},\n      \"Reward\": \"\",\n      \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n      \"Expiration\": \"{{faker 'date.recent' 365}}\",\n      \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n      \"RequesterAnnotation\": \"\",\n      \"QualificationRequirements\": [\n        {\n          \"QualificationTypeId\": \"\",\n          \"Comparator\": \"\",\n          \"IntegerValues\": [\n            {{faker 'datatype.number'}}\n          ],\n          \"LocaleValues\": [\n            {\n              \"Country\": \"\",\n              \"Subdivision\": \"\"\n            }\n          ],\n          \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n          \"ActionsGuarded\": \"\"\n        }\n      ],\n      \"HITReviewStatus\": \"\",\n      \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a5748d3d-df96-48f6-a37e-a71988661d6f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5e3aa85d-4082-4eea-9f09-2321fa25e834",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "57473a05-0c0d-4a06-a825-dbd1c962824f",
+      "documentation": " The <code>ListHITsForQualificationType</code> operation returns the HITs that use the given Qualification type for a Qualification requirement. The operation returns HITs of any status, except for HITs that have been deleted with the <code>DeleteHIT</code> operation or that have been auto-deleted. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListHITsForQualificationType",
+      "responses": [
+        {
+          "uuid": "dc95cd69-abd7-414c-b77d-9446e760cea7",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"HITs\": [\n    {\n      \"HITId\": \"\",\n      \"HITTypeId\": \"\",\n      \"HITGroupId\": \"\",\n      \"HITLayoutId\": \"\",\n      \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n      \"Title\": \"\",\n      \"Description\": \"\",\n      \"Question\": \"\",\n      \"Keywords\": \"\",\n      \"HITStatus\": \"\",\n      \"MaxAssignments\": {{faker 'datatype.number'}},\n      \"Reward\": \"\",\n      \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n      \"Expiration\": \"{{faker 'date.recent' 365}}\",\n      \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n      \"RequesterAnnotation\": \"\",\n      \"QualificationRequirements\": [\n        {\n          \"QualificationTypeId\": \"\",\n          \"Comparator\": \"\",\n          \"IntegerValues\": [\n            {{faker 'datatype.number'}}\n          ],\n          \"LocaleValues\": [\n            {\n              \"Country\": \"\",\n              \"Subdivision\": \"\"\n            }\n          ],\n          \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n          \"ActionsGuarded\": \"\"\n        }\n      ],\n      \"HITReviewStatus\": \"\",\n      \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "398803e8-3b6c-4b15-9217-5bea00d10b39",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6a623d37-1e8d-4c0b-bd29-766c614f2f84",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7c2f10a5-513f-48c3-acde-52365d1fd2b0",
+      "documentation": " The <code>ListQualificationRequests</code> operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListQualificationRequests",
+      "responses": [
+        {
+          "uuid": "6136bde2-fea4-42ce-9c0c-5573e2014396",
+          "body": "{\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"NextToken\": \"\",\n  \"QualificationRequests\": [\n    {\n      \"QualificationRequestId\": \"\",\n      \"QualificationTypeId\": \"\",\n      \"WorkerId\": \"\",\n      \"Test\": \"\",\n      \"Answer\": \"\",\n      \"SubmitTime\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5ed3a9f0-9810-4f6a-b463-38898a867b3f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "42393405-f745-4c1a-bccf-b4a0bdc3c9d2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3bbd18b4-71d4-4431-a714-f3584f7c3b02",
+      "documentation": " The <code>ListQualificationTypes</code> operation returns a list of Qualification types, filtered by an optional search term. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListQualificationTypes",
+      "responses": [
+        {
+          "uuid": "47c95133-bc3c-45db-9a82-8320ec00df52",
+          "body": "{\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"NextToken\": \"\",\n  \"QualificationTypes\": [\n    {\n      \"QualificationTypeId\": \"\",\n      \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n      \"Name\": \"\",\n      \"Description\": \"\",\n      \"Keywords\": \"\",\n      \"QualificationTypeStatus\": \"\",\n      \"Test\": \"\",\n      \"TestDurationInSeconds\": {{faker 'datatype.number'}},\n      \"AnswerKey\": \"\",\n      \"RetryDelayInSeconds\": {{faker 'datatype.number'}},\n      \"IsRequestable\": {{faker 'datatype.boolean'}},\n      \"AutoGranted\": {{faker 'datatype.boolean'}},\n      \"AutoGrantedValue\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "302dd61d-9eef-4ed4-969b-5c8c46d45894",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "07cdf5c5-55d4-4ade-9ab5-917522bca68c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09d7bef4-434d-4985-b0c0-95e5e5a6f23a",
+      "documentation": " The <code>ListReviewPolicyResultsForHIT</code> operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT. For information about how to specify Review Policies when you call CreateHIT, see Review Policies. The ListReviewPolicyResultsForHIT operation can return results for both Assignment-level and HIT-level review results. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListReviewPolicyResultsForHIT",
+      "responses": [
+        {
+          "uuid": "a8e29043-c3bb-44d4-b924-6064dece8c53",
+          "body": "{\n  \"HITId\": \"\",\n  \"AssignmentReviewPolicy\": {\n    \"PolicyName\": \"\",\n    \"Parameters\": [\n      {\n        \"Key\": \"\",\n        \"Values\": [\n          \"\"\n        ],\n        \"MapEntries\": [\n          {\n            \"Key\": \"\",\n            \"Values\": [\n              \"\"\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"HITReviewPolicy\": {\n    \"PolicyName\": \"\",\n    \"Parameters\": [\n      {\n        \"Key\": \"\",\n        \"Values\": [\n          \"\"\n        ],\n        \"MapEntries\": [\n          {\n            \"Key\": \"\",\n            \"Values\": [\n              \"\"\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"AssignmentReviewReport\": {\n    \"ReviewResults\": [\n      {\n        \"ActionId\": \"\",\n        \"SubjectId\": \"\",\n        \"SubjectType\": \"\",\n        \"QuestionId\": \"\",\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ],\n    \"ReviewActions\": [\n      {\n        \"ActionId\": \"\",\n        \"ActionName\": \"\",\n        \"TargetId\": \"\",\n        \"TargetType\": \"\",\n        \"Status\": \"\",\n        \"CompleteTime\": \"{{faker 'date.recent' 365}}\",\n        \"Result\": \"\",\n        \"ErrorCode\": \"\"\n      }\n    ]\n  },\n  \"HITReviewReport\": {\n    \"ReviewResults\": [\n      {\n        \"ActionId\": \"\",\n        \"SubjectId\": \"\",\n        \"SubjectType\": \"\",\n        \"QuestionId\": \"\",\n        \"Key\": \"\",\n        \"Value\": \"\"\n      }\n    ],\n    \"ReviewActions\": [\n      {\n        \"ActionId\": \"\",\n        \"ActionName\": \"\",\n        \"TargetId\": \"\",\n        \"TargetType\": \"\",\n        \"Status\": \"\",\n        \"CompleteTime\": \"{{faker 'date.recent' 365}}\",\n        \"Result\": \"\",\n        \"ErrorCode\": \"\"\n      }\n    ]\n  },\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "46a5de41-fac5-4413-840f-d996a1f7199a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eb79dc5d-597b-476f-9b3e-735061fa3ebd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58f0f163-3681-4bd8-b593-240bde5a6d68",
+      "documentation": " The <code>ListReviewableHITs</code> operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListReviewableHITs",
+      "responses": [
+        {
+          "uuid": "867860d1-9c93-42c4-87fb-fbb1710bc14d",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"HITs\": [\n    {\n      \"HITId\": \"\",\n      \"HITTypeId\": \"\",\n      \"HITGroupId\": \"\",\n      \"HITLayoutId\": \"\",\n      \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n      \"Title\": \"\",\n      \"Description\": \"\",\n      \"Question\": \"\",\n      \"Keywords\": \"\",\n      \"HITStatus\": \"\",\n      \"MaxAssignments\": {{faker 'datatype.number'}},\n      \"Reward\": \"\",\n      \"AutoApprovalDelayInSeconds\": {{faker 'datatype.number'}},\n      \"Expiration\": \"{{faker 'date.recent' 365}}\",\n      \"AssignmentDurationInSeconds\": {{faker 'datatype.number'}},\n      \"RequesterAnnotation\": \"\",\n      \"QualificationRequirements\": [\n        {\n          \"QualificationTypeId\": \"\",\n          \"Comparator\": \"\",\n          \"IntegerValues\": [\n            {{faker 'datatype.number'}}\n          ],\n          \"LocaleValues\": [\n            {\n              \"Country\": \"\",\n              \"Subdivision\": \"\"\n            }\n          ],\n          \"RequiredToPreview\": {{faker 'datatype.boolean'}},\n          \"ActionsGuarded\": \"\"\n        }\n      ],\n      \"HITReviewStatus\": \"\",\n      \"NumberOfAssignmentsPending\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsAvailable\": {{faker 'datatype.number'}},\n      \"NumberOfAssignmentsCompleted\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "195b162b-367e-47d0-8445-ad669c4ec199",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0de8e392-88c4-4130-9e3d-1ca4aad7f930",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cd2099c0-1658-4b4c-9d14-1310e0b28fed",
+      "documentation": "The <code>ListWorkersBlocks</code> operation retrieves a list of Workers who are blocked from working on your HITs.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListWorkerBlocks",
+      "responses": [
+        {
+          "uuid": "44c30816-276d-40c3-8a2a-909497c4b80c",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"WorkerBlocks\": [\n    {\n      \"WorkerId\": \"\",\n      \"Reason\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "84f73902-b044-4e65-81e5-2cf1f66613ab",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bd004108-cf50-4650-bd1e-7c4c15f5e4fc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f60c60cb-9978-4ca6-af48-a275cbab40d2",
+      "documentation": " The <code>ListWorkersWithQualificationType</code> operation returns all of the Workers that have been associated with a given Qualification type. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.ListWorkersWithQualificationType",
+      "responses": [
+        {
+          "uuid": "e749cff1-22a3-4c9c-8ff7-7953439011e7",
+          "body": "{\n  \"NextToken\": \"\",\n  \"NumResults\": {{faker 'datatype.number'}},\n  \"Qualifications\": [\n    {\n      \"QualificationTypeId\": \"\",\n      \"WorkerId\": \"\",\n      \"GrantTime\": \"{{faker 'date.recent' 365}}\",\n      \"IntegerValue\": {{faker 'datatype.number'}},\n      \"LocaleValue\": {\n        \"Country\": \"\",\n        \"Subdivision\": \"\"\n      },\n      \"Status\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c87a09e4-991b-4917-b517-53a9a6744f88",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b03e6f89-56bf-4d88-bcff-b27cdde66fe1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ea595f24-53a0-4c06-a0f0-abb741bae4e9",
+      "documentation": " The <code>NotifyWorkers</code> operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.NotifyWorkers",
+      "responses": [
+        {
+          "uuid": "4b5bc5d8-f565-418c-94cc-318f8789c889",
+          "body": "{\n  \"NotifyWorkersFailureStatuses\": [\n    {\n      \"NotifyWorkersFailureCode\": \"\",\n      \"NotifyWorkersFailureMessage\": \"\",\n      \"WorkerId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a794c4a9-d7cf-49b2-808a-85200184a3dc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "62070690-9154-4a76-bbe1-a30c110b50e5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3d30da0f-f776-47d7-a178-0c667199e1a3",
+      "documentation": "<p> The <code>RejectAssignment</code> operation rejects the results of a completed assignment. </p> <p> You can include an optional feedback message with the rejection, which the Worker can see in the Status section of the web site. When you include a feedback message with the rejection, it helps the Worker understand why the assignment was rejected, and can improve the quality of the results the Worker submits in the future. </p> <p> Only the Requester who created the HIT can reject an assignment for the HIT. </p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.RejectAssignment",
+      "responses": [
+        {
+          "uuid": "5b5b51c1-d670-47a1-959e-8aa07932ad11",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "40f6b519-e80e-4ef9-8637-cbecadfbadc2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0f099894-3557-43fe-ac96-9903418fb4e9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e5927acf-6930-45f3-86e5-519a9f31f9ea",
+      "documentation": "<p> The <code>RejectQualificationRequest</code> operation rejects a user's request for a Qualification. </p> <p> You can provide a text message explaining why the request was rejected. The Worker who made the request can see this message.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.RejectQualificationRequest",
+      "responses": [
+        {
+          "uuid": "42109e4f-155f-43c7-9271-b38448ef21e2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9a33005a-a5e7-44c8-b4dc-d373162f5477",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3aa031d-c53e-4637-9cb7-169841d700df",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cc9311ce-7c44-43ae-8bca-26d1cb9ca171",
+      "documentation": " The <code>SendBonus</code> operation issues a payment of money from your account to a Worker. This payment happens separately from the reward you pay to the Worker when you approve the Worker's assignment. The SendBonus operation requires the Worker's ID and the assignment ID as parameters to initiate payment of the bonus. You must include a message that explains the reason for the bonus payment, as the Worker may not be expecting the payment. Amazon Mechanical Turk collects a fee for bonus payments, similar to the HIT listing fee. This operation fails if your account does not have enough funds to pay for both the bonus and the fees. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.SendBonus",
+      "responses": [
+        {
+          "uuid": "35413425-8479-4604-a5a9-7112015644e9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "79f06bad-952f-4a11-a165-6099a141f093",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d0fa0db3-7204-40c0-b1bd-b5d1b4be389c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52a682e3-8258-4a16-9316-0321b93cade6",
+      "documentation": " The <code>SendTestEventNotification</code> operation causes Amazon Mechanical Turk to send a notification message as if a HIT event occurred, according to the provided notification specification. This allows you to test notifications without setting up notifications for a real HIT type and trying to trigger them using the website. When you call this operation, the service attempts to send the test notification immediately. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.SendTestEventNotification",
+      "responses": [
+        {
+          "uuid": "a2e11397-576d-4c84-95b5-359625adad6a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "33804eda-5203-4d2f-b2e6-ca045caebd2d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4e4a3f8b-5166-4443-819f-2536bbaf59a7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b48394a-3d0c-42f3-ad17-a5894422a4d9",
+      "documentation": " The <code>UpdateExpirationForHIT</code> operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.UpdateExpirationForHIT",
+      "responses": [
+        {
+          "uuid": "ea0544a7-b44f-4a0b-855e-e4a08aa53779",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2069f4ac-9399-4d12-bca5-d056051534e2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f0b81470-a7e0-4292-b2ab-f5fbc7783319",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9bf4fe0d-2691-4832-8aba-977247d63aaa",
+      "documentation": " The <code>UpdateHITReviewStatus</code> operation updates the status of a HIT. If the status is Reviewable, this operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the Reviewable status. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.UpdateHITReviewStatus",
+      "responses": [
+        {
+          "uuid": "27ee09e5-ff67-4446-9924-4e6f443a1aeb",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ac121695-4e09-47d3-95e1-304a3208edb4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "efdbaceb-78d3-438e-b7d2-4feb35d6a335",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f48a3746-6a7c-4e7e-bf45-756396dbcd5d",
+      "documentation": " The <code>UpdateHITTypeOfHIT</code> operation allows you to change the HITType properties of a HIT. This operation disassociates the HIT from its old HITType properties and associates it with the new HITType properties. The HIT takes on the properties of the new HITType in place of the old ones. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.UpdateHITTypeOfHIT",
+      "responses": [
+        {
+          "uuid": "82a88ba4-f47f-462d-a056-9161a0dd46e0",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1a61fbc2-227d-4f97-8d02-a88ce31f52cd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0655ff3a-a2ef-4a30-ad95-5378e8383b1b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e4c6f079-1c3e-438a-9f2e-0c3972870616",
+      "documentation": " The <code>UpdateNotificationSettings</code> operation creates, updates, disables or re-enables notifications for a HIT type. If you call the UpdateNotificationSettings operation for a HIT type that already has a notification specification, the operation replaces the old specification with a new one. You can call the UpdateNotificationSettings operation to enable or disable notifications for the HIT type, without having to modify the notification specification itself by providing updates to the Active status without specifying a new notification specification. To change the Active status of a HIT type's notifications, the HIT type must already have a notification specification, or one must be provided in the same call to <code>UpdateNotificationSettings</code>. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.UpdateNotificationSettings",
+      "responses": [
+        {
+          "uuid": "cf23b848-58ba-4769-b664-b72395acd035",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "39b4ac06-4f32-4a7d-984c-03205739dc1d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c8b28516-ed95-4e0a-b979-75328e542051",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c9287c8b-1840-4398-9d1c-e4f66e6131ae",
+      "documentation": "<p> The <code>UpdateQualificationType</code> operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure. Only the owner of a Qualification type can modify its attributes. </p> <p> Most attributes of a Qualification type can be changed after the type has been created. However, the Name and Keywords fields cannot be modified. The RetryDelayInSeconds parameter can be modified or added to change the delay or to enable retries, but RetryDelayInSeconds cannot be used to disable retries. </p> <p> You can use this operation to update the test for a Qualification type. The test is updated based on the values specified for the Test, TestDurationInSeconds and AnswerKey parameters. All three parameters specify the updated test. If you are updating the test for a type, you must specify the Test and TestDurationInSeconds parameters. The AnswerKey parameter is optional; omitting it specifies that the updated test does not have an answer key. </p> <p> If you omit the Test parameter, the test for the Qualification type is unchanged. There is no way to remove a test from a Qualification type that has one. If the type already has a test, you cannot update it to be AutoGranted. If the Qualification type does not have a test and one is provided by an update, the type will henceforth have a test. </p> <p> If you want to update the test duration or answer key for an existing test without changing the questions, you must specify a Test parameter with the original questions, along with the updated values. </p> <p> If you provide an updated Test but no AnswerKey, the new test will not have an answer key. Requests for such Qualifications must be granted manually. </p> <p> You can also update the AutoGranted and AutoGrantedValue attributes of the Qualification type.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=MTurkRequesterServiceV20170117.UpdateQualificationType",
+      "responses": [
+        {
+          "uuid": "3778a07e-13e3-487b-b300-c138ce5b2e72",
+          "body": "{\n  \"QualificationType\": {\n    \"QualificationTypeId\": \"\",\n    \"CreationTime\": \"{{faker 'date.recent' 365}}\",\n    \"Name\": \"\",\n    \"Description\": \"\",\n    \"Keywords\": \"\",\n    \"QualificationTypeStatus\": \"\",\n    \"Test\": \"\",\n    \"TestDurationInSeconds\": {{faker 'datatype.number'}},\n    \"AnswerKey\": \"\",\n    \"RetryDelayInSeconds\": {{faker 'datatype.number'}},\n    \"IsRequestable\": {{faker 'datatype.boolean'}},\n    \"AutoGranted\": {{faker 'datatype.boolean'}},\n    \"AutoGrantedValue\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d1c0167e-5830-4d90-8afd-5c6d00c04913",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "061aefaf-c2ab-4862-8b2a-84a62fc0191d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "RequestError",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

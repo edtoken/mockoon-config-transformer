@@ -1,0 +1,2814 @@
+{
+  "uuid": "34da4384-0bfe-4953-a857-9186e4daad51",
+  "lastMigration": 24,
+  "name": "Account API",
+  "endpointPrefix": "sell/account/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "a8bf2b3a-8ec8-47eb-8903-c34216bec5f7",
+      "documentation": "This method retrieves all the fulfillment policies configured for the marketplace you specify using the marketplace_id query parameter. Marketplaces and locales Get the correct policies for a marketplace that supports multiple locales using the Content-Language request header. For example, get the policies for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "fulfillment_policy",
+      "responses": [
+        {
+          "uuid": "c0fedf88-9bf5-46f1-8678-c248f23db4c2",
+          "body": "{\n  \"fulfillmentPolicies\": [\n    {\n      \"categoryTypes\": [\n        {\n          \"default\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        }\n      ],\n      \"description\": \"\",\n      \"freightShipping\": {{faker 'datatype.boolean'}},\n      \"fulfillmentPolicyId\": \"\",\n      \"globalShipping\": {{faker 'datatype.boolean'}},\n      \"handlingTime\": {\n        \"unit\": \"\",\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"localPickup\": {{faker 'datatype.boolean'}},\n      \"marketplaceId\": \"\",\n      \"name\": \"\",\n      \"pickupDropOff\": {{faker 'datatype.boolean'}},\n      \"shipToLocations\": {\n        \"regionExcluded\": [\n          {\n            \"regionName\": \"\",\n            \"regionType\": \"\"\n          }\n        ],\n        \"regionIncluded\": [\n          {\n            \"regionName\": \"\",\n            \"regionType\": \"\"\n          }\n        ]\n      },\n      \"shippingOptions\": [\n        {\n          \"costType\": \"\",\n          \"insuranceFee\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"insuranceOffered\": {{faker 'datatype.boolean'}},\n          \"optionType\": \"\",\n          \"packageHandlingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"rateTableId\": \"\",\n          \"shippingServices\": [\n            {\n              \"additionalShippingCost\": {\n                \"currency\": \"\",\n                \"value\": \"\"\n              },\n              \"buyerResponsibleForPickup\": {{faker 'datatype.boolean'}},\n              \"buyerResponsibleForShipping\": {{faker 'datatype.boolean'}},\n              \"cashOnDeliveryFee\": {\n                \"currency\": \"\",\n                \"value\": \"\"\n              },\n              \"freeShipping\": {{faker 'datatype.boolean'}},\n              \"shipToLocations\": {\n                \"regionExcluded\": [\n                  {\n                    \"regionName\": \"\",\n                    \"regionType\": \"\"\n                  }\n                ],\n                \"regionIncluded\": [\n                  {\n                    \"regionName\": \"\",\n                    \"regionType\": \"\"\n                  }\n                ]\n              },\n              \"shippingCarrierCode\": \"\",\n              \"shippingCost\": {\n                \"currency\": \"\",\n                \"value\": \"\"\n              },\n              \"shippingServiceCode\": \"\",\n              \"sortOrder\": {{faker 'datatype.number'}},\n              \"surcharge\": {\n                \"currency\": \"\",\n                \"value\": \"\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"href\": \"\",\n  \"limit\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"prev\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c3d3c817-4e06-43b6-b653-7d58c9ea21f9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4c6eadd3-105c-4d3f-96d0-3402713c2d40",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d133e112-d49a-4634-8cd7-b5b38b460615",
+      "documentation": "This method creates a new fulfillment policy where the policy encapsulates seller's terms for fulfilling item purchases. Fulfillment policies include the shipment options that the seller offers to buyers. Each policy targets a marketplaceId and categoryTypes.name combination and you can create multiple policies for each combination. Be aware that some marketplaces require a specific fulfillment policy for vehicle listings. A successful request returns the URI to the new policy in the Location response header and the ID for the new policy is returned in the response payload. Tip: For details on creating and using the business policies supported by the Account API, see eBay business policies. Marketplaces and locales Policy instructions can be localized by providing a locale in the Accept-Language HTTP request header. For example, the following setting displays field values from the request body in German: Accept-Language: de-DE. Target the specific locale of a marketplace that supports multiple locales using the Content-Language request header. For example, target the French locale of the Canadian marketplace by specifying the fr-CA locale for Content-Language. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. Tip: For details on headers, see HTTP request headers.",
+      "method": "post",
+      "endpoint": "fulfillment_policy",
+      "responses": [
+        {
+          "uuid": "fdb9f0cc-b17a-44ba-899a-ec9fb395123e",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"freightShipping\": {{faker 'datatype.boolean'}},\n  \"fulfillmentPolicyId\": \"\",\n  \"globalShipping\": {{faker 'datatype.boolean'}},\n  \"handlingTime\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"localPickup\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"pickupDropOff\": {{faker 'datatype.boolean'}},\n  \"shipToLocations\": {\n    \"regionExcluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ],\n    \"regionIncluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ]\n  },\n  \"shippingOptions\": [\n    {\n      \"costType\": \"\",\n      \"insuranceFee\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"insuranceOffered\": {{faker 'datatype.boolean'}},\n      \"optionType\": \"\",\n      \"packageHandlingCost\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"rateTableId\": \"\",\n      \"shippingServices\": [\n        {\n          \"additionalShippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"buyerResponsibleForPickup\": {{faker 'datatype.boolean'}},\n          \"buyerResponsibleForShipping\": {{faker 'datatype.boolean'}},\n          \"cashOnDeliveryFee\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"freeShipping\": {{faker 'datatype.boolean'}},\n          \"shipToLocations\": {\n            \"regionExcluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ],\n            \"regionIncluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ]\n          },\n          \"shippingCarrierCode\": \"\",\n          \"shippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"shippingServiceCode\": \"\",\n          \"sortOrder\": {{faker 'datatype.number'}},\n          \"surcharge\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          }\n        }\n      ]\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "18fb31f5-7fe1-44a6-a4c6-57797986e3a8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3830b89a-4a91-4df6-b482-91300fcff1aa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77144f44-c94f-4ecd-8a16-995c077504cc",
+      "documentation": "This method retrieves the complete details for a single fulfillment policy. In the request, supply both the policy name and its associated marketplace_id as query parameters. Marketplaces and locales Get the correct policy for a marketplace that supports multiple locales using the Content-Language request header. For example, get a policy for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "fulfillment_policy/get_by_policy_name",
+      "responses": [
+        {
+          "uuid": "d9ae98d8-5886-498f-85ca-b822e72040ce",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"freightShipping\": {{faker 'datatype.boolean'}},\n  \"fulfillmentPolicyId\": \"\",\n  \"globalShipping\": {{faker 'datatype.boolean'}},\n  \"handlingTime\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"localPickup\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"pickupDropOff\": {{faker 'datatype.boolean'}},\n  \"shipToLocations\": {\n    \"regionExcluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ],\n    \"regionIncluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ]\n  },\n  \"shippingOptions\": [\n    {\n      \"costType\": \"\",\n      \"insuranceFee\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"insuranceOffered\": {{faker 'datatype.boolean'}},\n      \"optionType\": \"\",\n      \"packageHandlingCost\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"rateTableId\": \"\",\n      \"shippingServices\": [\n        {\n          \"additionalShippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"buyerResponsibleForPickup\": {{faker 'datatype.boolean'}},\n          \"buyerResponsibleForShipping\": {{faker 'datatype.boolean'}},\n          \"cashOnDeliveryFee\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"freeShipping\": {{faker 'datatype.boolean'}},\n          \"shipToLocations\": {\n            \"regionExcluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ],\n            \"regionIncluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ]\n          },\n          \"shippingCarrierCode\": \"\",\n          \"shippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"shippingServiceCode\": \"\",\n          \"sortOrder\": {{faker 'datatype.number'}},\n          \"surcharge\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7e63c21b-8341-49c5-8884-927ac4a248ac",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2ab0c4b2-be4c-4a3a-a254-5c13feb0ee6e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "37397873-3177-4ac2-a7bd-1d14ae17e522",
+      "documentation": "This method deletes a fulfillment policy. Supply the ID of the policy you want to delete in the fulfillmentPolicyId path parameter. Note that you cannot delete the default fulfillment policy.",
+      "method": "delete",
+      "endpoint": "fulfillment_policy/:fulfillmentPolicyId",
+      "responses": [
+        {
+          "uuid": "749931ec-18c0-4e2b-b793-1a99dd355000",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "26ac1577-939b-4edc-af1c-c9c3a7355d59",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f68bec1d-a83e-404b-b415-7890bda58dce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7754fd86-434a-4965-a5ec-3715f61f5b9a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "572feaa8-ca08-4740-b59e-cf06f1f79781",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "88005db8-0c37-4caa-b59e-d9f078934b05",
+      "documentation": "This method retrieves the complete details of a fulfillment policy. Supply the ID of the policy you want to retrieve using the fulfillmentPolicyId path parameter.",
+      "method": "get",
+      "endpoint": "fulfillment_policy/:fulfillmentPolicyId",
+      "responses": [
+        {
+          "uuid": "f35c54b0-d6a4-4f8e-9cb9-70fabdd87b53",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"freightShipping\": {{faker 'datatype.boolean'}},\n  \"fulfillmentPolicyId\": \"\",\n  \"globalShipping\": {{faker 'datatype.boolean'}},\n  \"handlingTime\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"localPickup\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"pickupDropOff\": {{faker 'datatype.boolean'}},\n  \"shipToLocations\": {\n    \"regionExcluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ],\n    \"regionIncluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ]\n  },\n  \"shippingOptions\": [\n    {\n      \"costType\": \"\",\n      \"insuranceFee\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"insuranceOffered\": {{faker 'datatype.boolean'}},\n      \"optionType\": \"\",\n      \"packageHandlingCost\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"rateTableId\": \"\",\n      \"shippingServices\": [\n        {\n          \"additionalShippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"buyerResponsibleForPickup\": {{faker 'datatype.boolean'}},\n          \"buyerResponsibleForShipping\": {{faker 'datatype.boolean'}},\n          \"cashOnDeliveryFee\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"freeShipping\": {{faker 'datatype.boolean'}},\n          \"shipToLocations\": {\n            \"regionExcluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ],\n            \"regionIncluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ]\n          },\n          \"shippingCarrierCode\": \"\",\n          \"shippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"shippingServiceCode\": \"\",\n          \"sortOrder\": {{faker 'datatype.number'}},\n          \"surcharge\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ada0cc7e-36ab-4ac3-82e5-22e01a788e01",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d3bb556-10ea-4462-99a3-3ce660ab054e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "54e39779-cfeb-4ce9-9034-8205f1a6fdeb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1976cd6d-3191-4c09-907f-f3c0e0b2faeb",
+      "documentation": "This method updates an existing fulfillment policy. Specify the policy you want to update using the fulfillment_policy_id path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "method": "put",
+      "endpoint": "fulfillment_policy/:fulfillmentPolicyId",
+      "responses": [
+        {
+          "uuid": "c31cc2da-7e22-4b9e-a2b3-e0e842981a27",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"freightShipping\": {{faker 'datatype.boolean'}},\n  \"fulfillmentPolicyId\": \"\",\n  \"globalShipping\": {{faker 'datatype.boolean'}},\n  \"handlingTime\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"localPickup\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"pickupDropOff\": {{faker 'datatype.boolean'}},\n  \"shipToLocations\": {\n    \"regionExcluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ],\n    \"regionIncluded\": [\n      {\n        \"regionName\": \"\",\n        \"regionType\": \"\"\n      }\n    ]\n  },\n  \"shippingOptions\": [\n    {\n      \"costType\": \"\",\n      \"insuranceFee\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"insuranceOffered\": {{faker 'datatype.boolean'}},\n      \"optionType\": \"\",\n      \"packageHandlingCost\": {\n        \"currency\": \"\",\n        \"value\": \"\"\n      },\n      \"rateTableId\": \"\",\n      \"shippingServices\": [\n        {\n          \"additionalShippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"buyerResponsibleForPickup\": {{faker 'datatype.boolean'}},\n          \"buyerResponsibleForShipping\": {{faker 'datatype.boolean'}},\n          \"cashOnDeliveryFee\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"freeShipping\": {{faker 'datatype.boolean'}},\n          \"shipToLocations\": {\n            \"regionExcluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ],\n            \"regionIncluded\": [\n              {\n                \"regionName\": \"\",\n                \"regionType\": \"\"\n              }\n            ]\n          },\n          \"shippingCarrierCode\": \"\",\n          \"shippingCost\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          },\n          \"shippingServiceCode\": \"\",\n          \"sortOrder\": {{faker 'datatype.number'}},\n          \"surcharge\": {\n            \"currency\": \"\",\n            \"value\": \"\"\n          }\n        }\n      ]\n    }\n  ],\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b3e7acaf-e8e3-4dd4-a61c-969eb89ca692",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fb92cb1f-1994-470d-804c-d35d924a34ed",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0948d7c8-3914-41c3-89c6-1d4dfa995b72",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "63a2ab33-0a5a-40ef-8167-2f3b9507dc8c",
+      "documentation": "This method is used by sellers onboarded for eBay managed payments, or sellers who are currently going through, or who are eligible for onboarding for eBay managed payments. With this method, a seller can discover if there are any action items in regards to providing more documentation and/or information about themselves, their company, or the bank account they are or will be using for seller payouts. These 'action items' are also know as 'Know Your Customer' (or KYC) checks. This method does not require any parameters other than the OAuth user token associated with the seller's account. If the managed payments seller does not currently have any pending 'KYC' action items, only a 204 No Content HTTP status code is returned, and no response payload. Note: This method is not applicable for sellers who are not eligible for eBay managed payments. For sellers who sell on one or more eBay marketplaces that currently support managed payments, they can check on their managed payments onboarding status by using the getPaymentsProgramOnboarding method.",
+      "method": "get",
+      "endpoint": "kyc",
+      "responses": [
+        {
+          "uuid": "87406573-7717-4aff-be10-69e31f88d0dd",
+          "body": "{\n  \"kycChecks\": [\n    {\n      \"alert\": \"\",\n      \"dataRequired\": \"\",\n      \"detailMessage\": \"\",\n      \"dueDate\": \"\",\n      \"remedyUrl\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "74c5f428-2700-48f3-b088-020121dc3bfa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f4123ead-5431-4fc3-a8d6-6c0d07462a44",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4ebecdf9-784c-490a-aac8-235d7249263b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e3cd1de6-e22b-445d-9cb5-d2795ba4d050",
+      "documentation": "This method retrieves all the payment policies configured for the marketplace you specify using the marketplace_id query parameter. Marketplaces and locales Get the correct policies for a marketplace that supports multiple locales using the Content-Language request header. For example, get the policies for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "payment_policy",
+      "responses": [
+        {
+          "uuid": "e8277e07-49ce-4478-9a41-be8439a0f400",
+          "body": "{\n  \"href\": \"\",\n  \"limit\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"paymentPolicies\": [\n    {\n      \"categoryTypes\": [\n        {\n          \"default\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        }\n      ],\n      \"deposit\": {\n        \"amount\": {\n          \"currency\": \"\",\n          \"value\": \"\"\n        },\n        \"dueIn\": {\n          \"unit\": \"\",\n          \"value\": {{faker 'datatype.number'}}\n        },\n        \"paymentMethods\": [\n          {\n            \"brands\": [\n              \"\"\n            ],\n            \"paymentMethodType\": \"\",\n            \"recipientAccountReference\": {\n              \"referenceId\": \"\",\n              \"referenceType\": \"\"\n            }\n          }\n        ]\n      },\n      \"description\": \"\",\n      \"fullPaymentDueIn\": {\n        \"unit\": \"\",\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"immediatePay\": {{faker 'datatype.boolean'}},\n      \"marketplaceId\": \"\",\n      \"name\": \"\",\n      \"paymentInstructions\": \"\",\n      \"paymentMethods\": [\n        {\n          \"brands\": [\n            \"\"\n          ],\n          \"paymentMethodType\": \"\",\n          \"recipientAccountReference\": {\n            \"referenceId\": \"\",\n            \"referenceType\": \"\"\n          }\n        }\n      ],\n      \"paymentPolicyId\": \"\"\n    }\n  ],\n  \"prev\": \"\",\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56d74a87-1a28-47ce-9129-100926b66854",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9941432a-af75-4881-bf49-07dca7f87329",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c17f3d5f-6144-4295-b670-f7427f0bb6a5",
+      "documentation": "This method creates a new payment policy where the policy encapsulates seller's terms for purchase payments. Each policy targets a marketplaceId and categoryTypes.name combination and you can create multiple policies for each combination. Be aware that some marketplaces require a specific payment policy for vehicle listings. A successful request returns the URI to the new policy in the Location response header and the ID for the new policy is returned in the response payload. Tip: For details on creating and using the business policies supported by the Account API, see eBay business policies. Marketplaces and locales Policy instructions can be localized by providing a locale in the Accept-Language HTTP request header. For example, the following setting displays field values from the request body in German: Accept-Language: de-DE. Target the specific locale of a marketplace that supports multiple locales using the Content-Language request header. For example, target the French locale of the Canadian marketplace by specifying the fr-CA locale for Content-Language. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. Tip: For details on headers, see HTTP request headers.",
+      "method": "post",
+      "endpoint": "payment_policy",
+      "responses": [
+        {
+          "uuid": "96f25821-f369-40b8-9197-1e3e78e7db88",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"deposit\": {\n    \"amount\": {\n      \"currency\": \"\",\n      \"value\": \"\"\n    },\n    \"dueIn\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"paymentMethods\": [\n      {\n        \"brands\": [\n          \"\"\n        ],\n        \"paymentMethodType\": \"\",\n        \"recipientAccountReference\": {\n          \"referenceId\": \"\",\n          \"referenceType\": \"\"\n        }\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"fullPaymentDueIn\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"immediatePay\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"paymentInstructions\": \"\",\n  \"paymentMethods\": [\n    {\n      \"brands\": [\n        \"\"\n      ],\n      \"paymentMethodType\": \"\",\n      \"recipientAccountReference\": {\n        \"referenceId\": \"\",\n        \"referenceType\": \"\"\n      }\n    }\n  ],\n  \"paymentPolicyId\": \"\",\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8c875160-a9e5-43b9-b8bd-f3386ebc76c0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d5b50c6e-d879-4895-a56e-3c94632cf6f4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "be4028d3-4742-40c9-800e-842f257240e8",
+      "documentation": "This method retrieves the complete details of a single payment policy. Supply both the policy name and its associated marketplace_id in the request query parameters. Marketplaces and locales Get the correct policy for a marketplace that supports multiple locales using the Content-Language request header. For example, get a policy for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "payment_policy/get_by_policy_name",
+      "responses": [
+        {
+          "uuid": "22b50861-56af-4363-b016-6ca6ffbddbe4",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"deposit\": {\n    \"amount\": {\n      \"currency\": \"\",\n      \"value\": \"\"\n    },\n    \"dueIn\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"paymentMethods\": [\n      {\n        \"brands\": [\n          \"\"\n        ],\n        \"paymentMethodType\": \"\",\n        \"recipientAccountReference\": {\n          \"referenceId\": \"\",\n          \"referenceType\": \"\"\n        }\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"fullPaymentDueIn\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"immediatePay\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"paymentInstructions\": \"\",\n  \"paymentMethods\": [\n    {\n      \"brands\": [\n        \"\"\n      ],\n      \"paymentMethodType\": \"\",\n      \"recipientAccountReference\": {\n        \"referenceId\": \"\",\n        \"referenceType\": \"\"\n      }\n    }\n  ],\n  \"paymentPolicyId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f13ee58e-7d4e-4d28-b878-df0ac4085360",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9f55b152-1169-4f4e-90dd-e2b3d9e4f78b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35423bca-11f1-4dc2-849c-50d7767a05cf",
+      "documentation": "This method deletes a payment policy. Supply the ID of the policy you want to delete in the paymentPolicyId path parameter. Note that you cannot delete the default payment policy.",
+      "method": "delete",
+      "endpoint": "payment_policy/:payment_policy_id",
+      "responses": [
+        {
+          "uuid": "773f6b80-592b-46ea-9e1c-474ce1383b4b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c14d31ec-f10e-492d-9f02-ff5cb8933bc7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a71937e4-7902-4841-8321-d920ca3d0a3e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1ace86ee-0dc6-47bf-b61b-14817986c6a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e54940f0-b1e4-4df7-bfd4-94fda207501b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "62f7d215-0ecf-47e1-9fe8-18bc854fa681",
+      "documentation": "This method retrieves the complete details of a payment policy. Supply the ID of the policy you want to retrieve using the paymentPolicyId path parameter.",
+      "method": "get",
+      "endpoint": "payment_policy/:payment_policy_id",
+      "responses": [
+        {
+          "uuid": "4c765f12-a98d-4062-8893-6f42415b5470",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"deposit\": {\n    \"amount\": {\n      \"currency\": \"\",\n      \"value\": \"\"\n    },\n    \"dueIn\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"paymentMethods\": [\n      {\n        \"brands\": [\n          \"\"\n        ],\n        \"paymentMethodType\": \"\",\n        \"recipientAccountReference\": {\n          \"referenceId\": \"\",\n          \"referenceType\": \"\"\n        }\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"fullPaymentDueIn\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"immediatePay\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"paymentInstructions\": \"\",\n  \"paymentMethods\": [\n    {\n      \"brands\": [\n        \"\"\n      ],\n      \"paymentMethodType\": \"\",\n      \"recipientAccountReference\": {\n        \"referenceId\": \"\",\n        \"referenceType\": \"\"\n      }\n    }\n  ],\n  \"paymentPolicyId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "beb618a2-6b86-4a1a-a6c9-78464cee8f69",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bb7fe78b-dfce-4e60-b646-d43dcb4a8cdf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "faa1575b-a0fb-47cd-aef2-26e1f9636068",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1ae32c64-f943-493d-9daf-3ba7e4eb7b98",
+      "documentation": "This method updates an existing payment policy. Specify the policy you want to update using the payment_policy_id path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "method": "put",
+      "endpoint": "payment_policy/:payment_policy_id",
+      "responses": [
+        {
+          "uuid": "96af0511-3004-4064-9d91-abc762e523b1",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"deposit\": {\n    \"amount\": {\n      \"currency\": \"\",\n      \"value\": \"\"\n    },\n    \"dueIn\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"paymentMethods\": [\n      {\n        \"brands\": [\n          \"\"\n        ],\n        \"paymentMethodType\": \"\",\n        \"recipientAccountReference\": {\n          \"referenceId\": \"\",\n          \"referenceType\": \"\"\n        }\n      }\n    ]\n  },\n  \"description\": \"\",\n  \"fullPaymentDueIn\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"immediatePay\": {{faker 'datatype.boolean'}},\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"paymentInstructions\": \"\",\n  \"paymentMethods\": [\n    {\n      \"brands\": [\n        \"\"\n      ],\n      \"paymentMethodType\": \"\",\n      \"recipientAccountReference\": {\n        \"referenceId\": \"\",\n        \"referenceType\": \"\"\n      }\n    }\n  ],\n  \"paymentPolicyId\": \"\",\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "04cfb6bf-4413-41cc-a4fa-3c296d4ba76c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8218157d-4be4-4251-9556-8086e51adb77",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fd57ab34-374e-4080-922b-8497a643577d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c5fbab0e-1678-4c5d-9efa-5f755911f98e",
+      "documentation": "This method returns whether or not the user is opted-in to the specified payments program. Sellers opt-in to payments programs by marketplace and you use the marketplace_id path parameter to specify the marketplace of the status flag you want returned. Note: Currently, the only supported payments program is eBay Payments. For details, see: Managed Payments on eBay Payments Terms of Use",
+      "method": "get",
+      "endpoint": "payments_program/:marketplace_id/:payments_program_type",
+      "responses": [
+        {
+          "uuid": "3d7aeb48-fc92-490e-81d9-c3c5da5528a0",
+          "body": "{\n  \"marketplaceId\": \"\",\n  \"paymentsProgramType\": \"\",\n  \"status\": \"\",\n  \"wasPreviouslyOptedIn\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d09ba11e-38e6-480c-9499-3cbc9d463654",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "da9df368-af7d-4b56-8dda-00d9638d03c0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a47d817e-e25c-43ad-ada8-1b690ad6d3cc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9ebb584b-b2bf-4cc4-8017-365f9037a213",
+      "documentation": "This method retrieves a seller's onboarding status of eBay managed payments for a specified marketplace. The overall onboarding status of the seller and the status of each onboarding step is returned. Presently, the only supported payments program type is EBAY_PAYMENTS. See Managed Payments on eBay and Payments Terms of Use. Note: Managed payments availability: eBay managed payments is presently available in the US and Germany, and will roll out to Canada, UK, and Australia in July 2020.",
+      "method": "get",
+      "endpoint": "payments_program/:marketplace_id/:payments_program_type/onboarding",
+      "responses": [
+        {
+          "uuid": "2af5dbde-cc89-46dd-8ca8-122a68bd51d1",
+          "body": "{\n  \"onboardingStatus\": \"\",\n  \"steps\": [\n    {\n      \"name\": \"\",\n      \"status\": \"\",\n      \"webUrl\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c35d108a-cb9e-44dd-b92e-f6b9b661d642",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dff92c44-9e4c-4d23-a031-270935db048b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0dc4ef6d-fe40-4912-b421-20128aba916b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "23992922-5d9d-43ef-ab07-25787e60f9ce",
+      "documentation": "This method retrieves the seller's current set of privileges. The call returns whether or not the seller's eBay registration has been completed, as well as the details of their site-wide sellingLimt (the amount and quantity they can sell on a given day).",
+      "method": "get",
+      "endpoint": "privilege",
+      "responses": [
+        {
+          "uuid": "193329d1-ae9a-4838-84e1-287d346c0367",
+          "body": "{\n  \"sellerRegistrationCompleted\": {{faker 'datatype.boolean'}},\n  \"sellingLimit\": {\n    \"amount\": {\n      \"currency\": \"\",\n      \"value\": \"\"\n    },\n    \"quantity\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "44610835-83b4-4026-a73f-7f866eac0a86",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "feb11b82-4162-4edb-ba93-2050664e974d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81642976-f3ce-4061-96c5-30486d243902",
+      "documentation": "This method gets a list of the seller programs that the seller has opted-in to.",
+      "method": "get",
+      "endpoint": "program/get_opted_in_programs",
+      "responses": [
+        {
+          "uuid": "6b2adc8f-4520-4492-8ba3-39df7f54388f",
+          "body": "{\n  \"programs\": [\n    {\n      \"programType\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e24767b8-6cdd-4c55-87e6-1741e234b314",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "147a2cb5-27c0-4799-8c57-e24e83a21f83",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2cf42799-eb3c-4374-9e1f-ef8135461cba",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ec358837-9fb5-44f3-a5dd-d992b1f692d0",
+      "documentation": "This method opts the seller in to an eBay seller program. Refer to the Account API overview for information about available eBay seller programs. Note: It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the getOptedInPrograms call to check the status of your request after the processing period has passed.",
+      "method": "post",
+      "endpoint": "program/opt_in",
+      "responses": [
+        {
+          "uuid": "91cd10d4-ac59-43fc-88af-40bb657f5569",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b829860c-8247-444b-9462-ace0ad4e0d44",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5e67f117-a47b-41ca-8071-77d4b4ceed62",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "239ea6cf-7da1-4512-882c-3a14ca511205",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1b5f0b3a-15ec-402e-bf7c-a3c35919a107",
+      "documentation": "This method opts the seller out of a seller program to which you have previously opted-in to. Get a list of the seller programs you have opted-in to using the getOptedInPrograms call.",
+      "method": "post",
+      "endpoint": "program/opt_out",
+      "responses": [
+        {
+          "uuid": "ec28f1e0-8128-43c0-888a-57394664ebc6",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "98211e91-a8b1-479d-9c28-2272761947ce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ca2f06e2-515c-493b-a592-a6779f23a55a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eebcee79-c883-4147-a2ef-c6e1cb7781d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "adfe1f93-23d2-4c0d-8c45-f22f56670ecc",
+      "documentation": "This method retrieves a seller's shipping rate tables for the country specified in the country_code query parameter. If you call this method without specifying a country code, the call returns all the seller's shipping rate tables. The method's response includes a rateTableId for each table defined by the seller. Use a table's ID value in a fulfillment policy to specify the shipping rate table to use for that policy's DOMESTIC or INTERNATIONAL shipping option (make sure the locality of the rate table matches the optionType of the shipping option). This call currently supports getting rate tables related to the following marketplaces: EBAY_AU EBAY_CA EBAY_DE EBAY_ES EBAY_FR EBAY_GB EBAY_IT EBAY_US Note: Rate tables created with the Trading API might not have been assigned a rateTableId at the time of their creation. This method can assign and return rateTableId values for rate tables with missing IDs if you make a request using the country_code where the seller has defined rate tables. Sellers can define up to 40 shipping rate tables for their account, which lets them set up different rate tables for each of the marketplaces they sell into. Go to My eBay &gt; Account &gt; Site Preferences to create and maintain the rate tables. For more, see Using shipping rate tables. If you're using the Trading API, use the rate table ID values in the RateTableDetails container of the Add/Revise/Relist calls. If the locality for a rate table is set to DOMESTIC, pass the ID value in the RateTableDetails.DomesticRateTableId field. Otherwise, if locality is INTERNATIONAL, pass the ID value in RateTableDetails.InternationalRateTableId.",
+      "method": "get",
+      "endpoint": "rate_table",
+      "responses": [
+        {
+          "uuid": "6638827a-56ba-41a1-abf1-645e835ebb96",
+          "body": "{\n  \"rateTables\": [\n    {\n      \"countryCode\": \"\",\n      \"locality\": \"\",\n      \"name\": \"\",\n      \"rateTableId\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "56f203ca-5a71-487b-b0e7-bd0fab56d844",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e0af0492-769b-4a61-9dc1-d5a1fd330a56",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "097e00cf-921e-4ae1-addb-9fc5baece71c",
+      "documentation": "This method retrieves all the return policies configured for the marketplace you specify using the marketplace_id query parameter. Marketplaces and locales Get the correct policies for a marketplace that supports multiple locales using the Content-Language request header. For example, get the policies for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "return_policy",
+      "responses": [
+        {
+          "uuid": "9340df85-e79a-44b8-a5b2-b9e33ea88498",
+          "body": "{\n  \"href\": \"\",\n  \"limit\": {{faker 'datatype.number'}},\n  \"next\": \"\",\n  \"offset\": {{faker 'datatype.number'}},\n  \"prev\": \"\",\n  \"returnPolicies\": [\n    {\n      \"categoryTypes\": [\n        {\n          \"default\": {{faker 'datatype.boolean'}},\n          \"name\": \"\"\n        }\n      ],\n      \"description\": \"\",\n      \"extendedHolidayReturnsOffered\": {{faker 'datatype.boolean'}},\n      \"internationalOverride\": {\n        \"returnMethod\": \"\",\n        \"returnPeriod\": {\n          \"unit\": \"\",\n          \"value\": {{faker 'datatype.number'}}\n        },\n        \"returnShippingCostPayer\": \"\",\n        \"returnsAccepted\": {{faker 'datatype.boolean'}}\n      },\n      \"marketplaceId\": \"\",\n      \"name\": \"\",\n      \"refundMethod\": \"\",\n      \"restockingFeePercentage\": \"\",\n      \"returnInstructions\": \"\",\n      \"returnMethod\": \"\",\n      \"returnPeriod\": {\n        \"unit\": \"\",\n        \"value\": {{faker 'datatype.number'}}\n      },\n      \"returnPolicyId\": \"\",\n      \"returnShippingCostPayer\": \"\",\n      \"returnsAccepted\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"total\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6f0757a6-f2b6-4943-814b-675157d60cb7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f69a905b-28ff-4f97-baf9-7e6000e11f57",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "25e91ca0-28a3-440b-aab1-14cb8f5d3b86",
+      "documentation": "This method creates a new return policy where the policy encapsulates seller's terms for returning items. Use the Metadata API method getReturnPolicies to determine which categories require you to supply a return policy for the marketplace(s) into which you list. Each policy targets a marketplaceId and categoryTypes.name combination and you can create multiple policies for each combination. A successful request returns the URI to the new policy in the Location response header and the ID for the new policy is returned in the response payload. Tip: For details on creating and using the business policies supported by the Account API, see eBay business policies. Marketplaces and locales Policy instructions can be localized by providing a locale in the Accept-Language HTTP request header. For example, the following setting displays field values from the request body in German: Accept-Language: de-DE. Target the specific locale of a marketplace that supports multiple locales using the Content-Language request header. For example, target the French locale of the Canadian marketplace by specifying the fr-CA locale for Content-Language. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. Tip: For details on headers, see HTTP request headers.",
+      "method": "post",
+      "endpoint": "return_policy",
+      "responses": [
+        {
+          "uuid": "13825387-4fea-466f-b582-ea1f2a98f55b",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"extendedHolidayReturnsOffered\": {{faker 'datatype.boolean'}},\n  \"internationalOverride\": {\n    \"returnMethod\": \"\",\n    \"returnPeriod\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"returnShippingCostPayer\": \"\",\n    \"returnsAccepted\": {{faker 'datatype.boolean'}}\n  },\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"refundMethod\": \"\",\n  \"restockingFeePercentage\": \"\",\n  \"returnInstructions\": \"\",\n  \"returnMethod\": \"\",\n  \"returnPeriod\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"returnPolicyId\": \"\",\n  \"returnShippingCostPayer\": \"\",\n  \"returnsAccepted\": {{faker 'datatype.boolean'}},\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a7a52ab2-fb70-4714-9b91-919fa448e6ab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e9c6d254-6396-4c35-b3be-ff43e651fbe7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2fef98c1-02b1-485f-9490-6accbfe5a58e",
+      "documentation": "This method retrieves the complete details of a single return policy. Supply both the policy name and its associated marketplace_id in the request query parameters. Marketplaces and locales Get the correct policy for a marketplace that supports multiple locales using the Content-Language request header. For example, get a policy for the French locale of the Canadian marketplace by specifying fr-CA for the Content-Language header. Likewise, target the Dutch locale of the Belgium marketplace by setting Content-Language: nl-BE. For details on header values, see HTTP request headers.",
+      "method": "get",
+      "endpoint": "return_policy/get_by_policy_name",
+      "responses": [
+        {
+          "uuid": "ad5ed067-a433-434e-aaa6-091855936cdf",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"extendedHolidayReturnsOffered\": {{faker 'datatype.boolean'}},\n  \"internationalOverride\": {\n    \"returnMethod\": \"\",\n    \"returnPeriod\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"returnShippingCostPayer\": \"\",\n    \"returnsAccepted\": {{faker 'datatype.boolean'}}\n  },\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"refundMethod\": \"\",\n  \"restockingFeePercentage\": \"\",\n  \"returnInstructions\": \"\",\n  \"returnMethod\": \"\",\n  \"returnPeriod\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"returnPolicyId\": \"\",\n  \"returnShippingCostPayer\": \"\",\n  \"returnsAccepted\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c0cc6d67-eca3-4451-b1d7-4e25a95f9fae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7dbe2c3b-3138-49c6-8e9d-50ab62d3728c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "52ffa4d2-6c42-4aef-bb8a-caad16f50aed",
+      "documentation": "This method deletes a return policy. Supply the ID of the policy you want to delete in the returnPolicyId path parameter. Note that you cannot delete the default return policy.",
+      "method": "delete",
+      "endpoint": "return_policy/:return_policy_id",
+      "responses": [
+        {
+          "uuid": "c76e173b-dc0d-4ce1-ac97-b602141b4e33",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "28d3beba-61a9-497c-bab8-60a9e0eea233",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "abf44c02-7094-4080-aeb1-c11991864265",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4790dee9-089b-442f-8405-a2b0512ea5e3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "Conflict",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6aff2376-dbac-45fc-ba7e-ccf7541ce195",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7c28afaf-4d4b-4149-a517-818eb10a316b",
+      "documentation": "This method retrieves the complete details of the return policy specified by the returnPolicyId path parameter.",
+      "method": "get",
+      "endpoint": "return_policy/:return_policy_id",
+      "responses": [
+        {
+          "uuid": "2c09260e-43c5-48d3-a11e-90558eb93979",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"extendedHolidayReturnsOffered\": {{faker 'datatype.boolean'}},\n  \"internationalOverride\": {\n    \"returnMethod\": \"\",\n    \"returnPeriod\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"returnShippingCostPayer\": \"\",\n    \"returnsAccepted\": {{faker 'datatype.boolean'}}\n  },\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"refundMethod\": \"\",\n  \"restockingFeePercentage\": \"\",\n  \"returnInstructions\": \"\",\n  \"returnMethod\": \"\",\n  \"returnPeriod\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"returnPolicyId\": \"\",\n  \"returnShippingCostPayer\": \"\",\n  \"returnsAccepted\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c84851a5-f05c-4514-9782-24b050b34228",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "60ddfb45-03b0-4747-a095-d6e99f580fb8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8e551aaf-7bde-460c-9ad6-eed650c4b682",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "016fa144-15bb-4fed-8793-a68900fde39c",
+      "documentation": "This method updates an existing return policy. Specify the policy you want to update using the return_policy_id path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "method": "put",
+      "endpoint": "return_policy/:return_policy_id",
+      "responses": [
+        {
+          "uuid": "f8f22b96-8f10-468b-b191-8af63041562f",
+          "body": "{\n  \"categoryTypes\": [\n    {\n      \"default\": {{faker 'datatype.boolean'}},\n      \"name\": \"\"\n    }\n  ],\n  \"description\": \"\",\n  \"extendedHolidayReturnsOffered\": {{faker 'datatype.boolean'}},\n  \"internationalOverride\": {\n    \"returnMethod\": \"\",\n    \"returnPeriod\": {\n      \"unit\": \"\",\n      \"value\": {{faker 'datatype.number'}}\n    },\n    \"returnShippingCostPayer\": \"\",\n    \"returnsAccepted\": {{faker 'datatype.boolean'}}\n  },\n  \"marketplaceId\": \"\",\n  \"name\": \"\",\n  \"refundMethod\": \"\",\n  \"restockingFeePercentage\": \"\",\n  \"returnInstructions\": \"\",\n  \"returnMethod\": \"\",\n  \"returnPeriod\": {\n    \"unit\": \"\",\n    \"value\": {{faker 'datatype.number'}}\n  },\n  \"returnPolicyId\": \"\",\n  \"returnShippingCostPayer\": \"\",\n  \"returnsAccepted\": {{faker 'datatype.boolean'}},\n  \"warnings\": [\n    {\n      \"category\": \"\",\n      \"domain\": \"\",\n      \"errorId\": {{faker 'datatype.number'}},\n      \"inputRefIds\": [\n        \"\"\n      ],\n      \"longMessage\": \"\",\n      \"message\": \"\",\n      \"outputRefIds\": [\n        \"\"\n      ],\n      \"parameters\": [\n        {\n          \"name\": \"\",\n          \"value\": \"\"\n        }\n      ],\n      \"subdomain\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "85018bdf-da31-42e9-b565-b25fd7e9a177",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8eb22762-6aa0-4001-9a35-679a05dae0ce",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "731059ba-b3a1-41e6-8f08-06d3e447cca9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ea797bce-cf0b-462f-8a05-e9a0e60fa3da",
+      "documentation": "Use this call to retrieve a sales tax table that the seller established for a specific country. Specify the tax table to retrieve using the country_code query parameter.",
+      "method": "get",
+      "endpoint": "sales_tax",
+      "responses": [
+        {
+          "uuid": "e04d1b15-13ec-46da-8542-25164cbfe707",
+          "body": "{\n  \"salesTaxes\": [\n    {\n      \"countryCode\": \"\",\n      \"salesTaxJurisdictionId\": \"\",\n      \"salesTaxPercentage\": \"\",\n      \"shippingAndHandlingTaxed\": {{faker 'datatype.boolean'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "508a0a65-07a1-4c90-82c1-1a6af4919e2b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "84f66473-cd21-44b5-a686-9bc2b8f2dddd",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cae10a1a-5966-4f27-83e9-a17a0e93c6a6",
+      "documentation": "This call deletes a tax table entry for a jurisdiction. Specify the jurisdiction to delete using the countryCode and jurisdictionId path parameters.",
+      "method": "delete",
+      "endpoint": "sales_tax/:countryCode/:jurisdictionId",
+      "responses": [
+        {
+          "uuid": "7e0ca205-530f-461d-8fea-e620bd35f0c5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f1ee5c37-0bc9-4dc1-826d-2236fe154e51",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a738eab1-1f6d-4676-a90a-7d6dc1c30c91",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dbcca83a-763e-4d4e-bb85-5a7860a1184f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3b6d644a-de81-48e0-8bd6-3b1ea27a4dac",
+      "documentation": "This call gets the current tax table entry for a specific tax jurisdiction. Specify the jurisdiction to retrieve using the countryCode and jurisdictionId path parameters.",
+      "method": "get",
+      "endpoint": "sales_tax/:countryCode/:jurisdictionId",
+      "responses": [
+        {
+          "uuid": "b0266022-bc8c-4f52-8d38-595f6a4be7f6",
+          "body": "{\n  \"countryCode\": \"\",\n  \"salesTaxJurisdictionId\": \"\",\n  \"salesTaxPercentage\": \"\",\n  \"shippingAndHandlingTaxed\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ef74a9cc-9e1a-44da-86cb-4908010eeff4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d58c6244-edf9-48fe-81ff-579a703fdffa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6740b2e2-6f6f-4ecb-afff-7dcb55c759ec",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2d008c96-ebbc-4933-b195-1cb7fba86cbe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b51c12cf-d02b-4ad3-960d-cfe88cb81583",
+      "documentation": "This method creates or updates a sales tax table entry for a jurisdiction. Specify the tax table entry you want to configure using the two path parameters: countryCode and jurisdictionId. A tax table entry for a jurisdiction is comprised of two fields: one for the jurisdiction's sales-tax rate and another that's a boolean value indicating whether or not shipping and handling are taxed in the jurisdiction. You can set up tax tables for countries that support different tax jurisdictions. Currently, only Canada, India, and the US support separate tax jurisdictions. If you sell into any of these countries, you can set up tax tables for any of the country's jurisdictions. Retrieve valid jurisdiction IDs using getSalesTaxJurisdictions in the Metadata API. For details on using this call, see Establishing sales-tax tables. Important! Starting in January 2019, eBay will begin to calculate, collect, and remit sales tax on behalf of sellers for items shipped to customers. This feature is rolling out on specific dates to specific US states as defined on the following page: eBay sales tax collection. Once eBay starts to collect sales tax for a state, no action is required on the seller's part and there will be no charges or fees for eBay automatically calculating, collecting and remitting sales tax. The sales-tax collection process will apply to all the sales in the states that support this feature, whether the seller is located in or outside of the United States. When a buyer purchases an item on eBay, and the ship-to address is one of the states where eBay collects the sales tax, eBay will calculate and add the applicable sales tax at checkout. The buyer will pay both the cost of the item along with the sales tax. eBay will collect and remit the tax.",
+      "method": "put",
+      "endpoint": "sales_tax/:countryCode/:jurisdictionId",
+      "responses": [
+        {
+          "uuid": "83316bcd-780d-4e26-b501-e8432a69efc9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1abfe0a0-350e-4243-94d8-011fc0e89b68",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2f51b8d0-25b0-4e87-a232-2cc2e165977b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5f9b4446-d8c6-426c-af39-fed7b7c43df9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

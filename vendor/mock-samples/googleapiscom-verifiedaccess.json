@@ -1,0 +1,102 @@
+{
+  "uuid": "73f9c6aa-6f10-46b8-bf4e-ea06eb1dfb4a",
+  "lastMigration": 24,
+  "name": "Chrome Verified Access API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "79708e91-b33b-4380-9216-ac50f661e938",
+      "documentation": "Generates a new challenge.",
+      "method": "post",
+      "endpoint": "v2/challenge:generate",
+      "responses": [
+        {
+          "uuid": "80fda93e-26a7-4d40-bb9a-07d330eeffca",
+          "body": "{\n  \"alternativeChallenge\": \"\",\n  \"challenge\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1a185cc5-68df-4db5-a958-acc1765167b3",
+      "documentation": "Verifies the challenge response.",
+      "method": "post",
+      "endpoint": "v2/challenge:verify",
+      "responses": [
+        {
+          "uuid": "d04695a6-0206-415e-a417-7d5d3d2d676e",
+          "body": "{\n  \"customerId\": \"\",\n  \"devicePermanentId\": \"\",\n  \"deviceSignal\": \"\",\n  \"keyTrustLevel\": \"{{oneOf (array 'KEY_TRUST_LEVEL_UNSPECIFIED' 'CHROME_OS_VERIFIED_MODE' 'CHROME_OS_DEVELOPER_MODE' 'CHROME_BROWSER_HW_KEY' 'CHROME_BROWSER_OS_KEY')}}\",\n  \"signedPublicKeyAndChallenge\": \"\",\n  \"virtualDeviceId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,3284 @@
+{
+  "uuid": "c0b10615-3e16-4165-a51b-401ad598c31b",
+  "lastMigration": 24,
+  "name": "Amazon DynamoDB Accelerator (DAX)",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "c8d168d8-34ee-4bea-a48f-f1e72dc36330",
+      "documentation": "Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.CreateCluster",
+      "responses": [
+        {
+          "uuid": "2d99f1a3-32b9-4358-91f3-ceebc2a231dc",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a7942b26-9bdf-4041-b12d-424ad366f9e9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterAlreadyExistsFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f1f11b30-5cf6-463d-ae4a-fb2e11b4adb2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d2be969c-a055-4bfa-bef1-4dfc8f8ded4d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InsufficientClusterCapacityFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "60a9fce7-cd63-4e30-b808-74185100b163",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "SubnetGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "82dfc873-b16e-46ea-a72b-9e317428cfc3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterGroupStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "501ef717-49cf-4d06-a32a-591b533b8926",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "31895563-3a02-4cea-acb8-ce4c98df4c6c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "ClusterQuotaForCustomerExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cb32f405-3c33-48ef-a141-bdba1bcd52dc",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 487,
+          "label": "NodeQuotaForClusterExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f2133131-d0bf-4ac4-97b0-f3f3e9310759",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 488,
+          "label": "NodeQuotaForCustomerExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d2cfbe8c-d552-4417-9e4c-c248ebaf66a5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 489,
+          "label": "InvalidVPCNetworkStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3bd6db87-c089-4ad2-aa1e-bacee7ea8923",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 490,
+          "label": "TagQuotaPerResourceExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a7c8887b-182c-463d-879f-4b67ce0c7b90",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 491,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8ba4eae4-5b2e-4930-b6b3-311474b0f86a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 492,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6db22743-e286-4dca-a9c8-2c52bfc89648",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 493,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c245d8e-d081-49d3-8ef3-9a613cbe746a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 494,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2df22965-913e-409d-8c1d-d5f3e0f5539a",
+      "documentation": "Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.CreateParameterGroup",
+      "responses": [
+        {
+          "uuid": "909c9c3f-4271-4edb-bfb8-303be9d89559",
+          "body": "{\n  \"ParameterGroup\": {\n    \"ParameterGroupName\": \"\",\n    \"Description\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9c07c0a9-e961-42a8-ab7b-7ae131d0eabd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ParameterGroupQuotaExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "387d9b62-5232-4874-95f1-de9c246d1f7f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ParameterGroupAlreadyExistsFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a8ea8976-563a-47d9-879f-371415bfabd9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterGroupStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "90505efb-8a27-4b93-ad9d-e45895ae3e5a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "11d6e387-be14-4e64-839e-79dad3e5bafa",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "565f2d74-c995-4d67-a145-32369ccc1119",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fa6ede71-8c52-4afd-9d2f-79caf79b4cfa",
+      "documentation": "Creates a new subnet group.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.CreateSubnetGroup",
+      "responses": [
+        {
+          "uuid": "49bac82b-ce65-4ab7-9cfb-184a65a63074",
+          "body": "{\n  \"SubnetGroup\": {\n    \"SubnetGroupName\": \"\",\n    \"Description\": \"\",\n    \"VpcId\": \"\",\n    \"Subnets\": [\n      {\n        \"SubnetIdentifier\": \"\",\n        \"SubnetAvailabilityZone\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "96ef231b-c219-4d3c-bef9-f0091c2ba235",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "SubnetGroupAlreadyExistsFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1790aa2f-fc3a-4b67-a0b5-ff4a45ebc884",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "SubnetGroupQuotaExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1f1057ea-01b0-48be-bf27-2f889c32f936",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "SubnetQuotaExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "909a3f88-a637-4834-8490-943db2e68dc1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidSubnet",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "29091431-82cb-4c08-a3a3-759111a19b8d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "da5fc0c6-c926-4b49-8bae-65c0bbe2e808",
+      "documentation": "<p>Removes one or more nodes from a DAX cluster.</p> <note> <p>You cannot use <code>DecreaseReplicationFactor</code> to remove the last node in a DAX cluster. If you need to do this, use <code>DeleteCluster</code> instead.</p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DecreaseReplicationFactor",
+      "responses": [
+        {
+          "uuid": "1b1a1695-ec78-4a10-8463-a17b1b809629",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ed0fd1c9-9607-41ad-9318-f5eaa9f59c56",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "63a0b688-7554-4973-b37b-8c2bc349362b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "NodeNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2a5c2719-f1d2-46cf-9c39-770c09728baf",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9e3d60a2-7d99-4d74-8859-ee919135d13e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6a9a4481-d4b0-4f49-b290-db7069c36990",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0b8bf257-5732-4fb9-b2cb-6395f7feadd6",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b25ca05-4107-4be0-95be-5769b0a288c1",
+      "documentation": "Deletes a previously provisioned DAX cluster. <i>DeleteCluster</i> deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DeleteCluster",
+      "responses": [
+        {
+          "uuid": "12cff41d-2581-4ab2-b2d5-9cf07eacbfd1",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c9c2d280-c2f3-4273-9937-0d826f7d2415",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "01704ade-b10d-4496-8332-8d2bdcd00c62",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7279bec4-abcd-4e4c-beaa-b5556da925e8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ecb18de3-9492-47e1-952d-9de1c65c046e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "77115c45-edd0-4b0d-9392-aaf0fb67940c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5468718d-4dff-4464-9726-d5bc55c92360",
+      "documentation": "Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DeleteParameterGroup",
+      "responses": [
+        {
+          "uuid": "c589f3dc-05fd-41f0-a50c-4fb5572a86cc",
+          "body": "{\n  \"DeletionMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d87fea7d-9cde-48da-b695-c8868287d44b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidParameterGroupStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16f44586-8af5-404a-8753-33aef47b04c4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d610bc61-f8d0-42e3-bfd5-9e7b33a4e4db",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2584a3a5-1fb5-42aa-9f47-89ce38023c4b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bfe0e073-dbc1-4552-b33c-4663d2f4fc46",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f0ca3125-8276-4983-b798-4b58e159107f",
+      "documentation": "<p>Deletes a subnet group.</p> <note> <p>You cannot delete a subnet group if it is associated with any DAX clusters.</p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DeleteSubnetGroup",
+      "responses": [
+        {
+          "uuid": "b8615e62-0cde-4b4b-8272-33235b7f76f4",
+          "body": "{\n  \"DeletionMessage\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3a8c3742-7d0f-4b5f-a8ff-09773c96f7c9",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "SubnetGroupInUseFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0aae5395-1615-4a1a-b142-78bae47c93fd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "SubnetGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cd9fc0c8-5a7d-4129-a417-a0355182a84f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6d91348a-0a70-48f2-bd2d-351d640eb842",
+      "documentation": "<p>Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.</p> <p>If the cluster is in the CREATING state, only cluster level information will be displayed until all of the nodes are successfully provisioned.</p> <p>If the cluster is in the DELETING state, only cluster level information will be displayed.</p> <p>If nodes are currently being added to the DAX cluster, node endpoint information and creation time for the additional nodes will not be displayed until they are completely provisioned. When the DAX cluster state is <i>available</i>, the cluster is ready for use.</p> <p>If nodes are currently being removed from the DAX cluster, no endpoint information for the removed nodes is displayed.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeClusters",
+      "responses": [
+        {
+          "uuid": "e76f628e-177f-48b3-89e9-9b0bd508e9da",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Clusters\": [\n    {\n      \"ClusterName\": \"\",\n      \"Description\": \"\",\n      \"ClusterArn\": \"\",\n      \"TotalNodes\": {{faker 'datatype.number'}},\n      \"ActiveNodes\": {{faker 'datatype.number'}},\n      \"NodeType\": \"\",\n      \"Status\": \"\",\n      \"ClusterDiscoveryEndpoint\": {\n        \"Address\": \"\",\n        \"Port\": {{faker 'datatype.number'}},\n        \"URL\": \"\"\n      },\n      \"NodeIdsToRemove\": [\n        \"\"\n      ],\n      \"Nodes\": [\n        {\n          \"NodeId\": \"\",\n          \"Endpoint\": {\n            \"Address\": \"\",\n            \"Port\": {{faker 'datatype.number'}},\n            \"URL\": \"\"\n          },\n          \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n          \"AvailabilityZone\": \"\",\n          \"NodeStatus\": \"\",\n          \"ParameterGroupStatus\": \"\"\n        }\n      ],\n      \"PreferredMaintenanceWindow\": \"\",\n      \"NotificationConfiguration\": {\n        \"TopicArn\": \"\",\n        \"TopicStatus\": \"\"\n      },\n      \"SubnetGroup\": \"\",\n      \"SecurityGroups\": [\n        {\n          \"SecurityGroupIdentifier\": \"\",\n          \"Status\": \"\"\n        }\n      ],\n      \"IamRoleArn\": \"\",\n      \"ParameterGroup\": {\n        \"ParameterGroupName\": \"\",\n        \"ParameterApplyStatus\": \"\",\n        \"NodeIdsToReboot\": [\n          \"\"\n        ]\n      },\n      \"SSEDescription\": {\n        \"Status\": \"\"\n      },\n      \"ClusterEndpointEncryptionType\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "12113a52-f419-4115-bdcb-0ca6a56f23c5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7d2f9607-64bd-484f-97ab-d371ebaa3601",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2fb7f8f9-de27-4dc5-b7f1-34a712dd9779",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ec35a1b3-29c6-4d25-a438-eb42d728dec5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "79f679e9-666c-4089-a7c0-c8f3824d1e5f",
+      "documentation": "Returns the default system parameter information for the DAX caching software.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeDefaultParameters",
+      "responses": [
+        {
+          "uuid": "56ff84ee-d251-4565-b118-3a81268cc3fc",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Parameters\": [\n    {\n      \"ParameterName\": \"\",\n      \"ParameterType\": \"\",\n      \"ParameterValue\": \"\",\n      \"NodeTypeSpecificValues\": [\n        {\n          \"NodeType\": \"\",\n          \"Value\": \"\"\n        }\n      ],\n      \"Description\": \"\",\n      \"Source\": \"\",\n      \"DataType\": \"\",\n      \"AllowedValues\": \"\",\n      \"IsModifiable\": \"\",\n      \"ChangeType\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "667126ae-1010-4fa1-a54e-bcf369d1c906",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "95a04609-7cf8-4ba6-80a8-c2d1a5253929",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "50a54fd3-e041-4eb3-ace4-dca195fcbf2c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "444a2e5b-bcb5-44ad-bbdb-1be84c083d6c",
+      "documentation": "<p>Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.</p> <p>By default, only the events occurring within the last 24 hours are returned; however, you can retrieve up to 14 days' worth of events if necessary.</p>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeEvents",
+      "responses": [
+        {
+          "uuid": "aad8c994-0c5f-4ed5-bf33-f001cd96069e",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Events\": [\n    {\n      \"SourceName\": \"\",\n      \"SourceType\": \"\",\n      \"Message\": \"\",\n      \"Date\": \"{{faker 'date.recent' 365}}\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8e31ef0b-04c5-4c1a-a811-3bb2d066ba6d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "28a071ed-9752-46f5-a302-c9984a85151b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e90c3bc8-4604-49e0-8570-c074f2281d37",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b029e4bc-13ad-4c35-b9f6-108b25aa7b54",
+      "documentation": "Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeParameterGroups",
+      "responses": [
+        {
+          "uuid": "f9bfa4b6-31d9-452e-95e9-58e0df74f2ba",
+          "body": "{\n  \"NextToken\": \"\",\n  \"ParameterGroups\": [\n    {\n      \"ParameterGroupName\": \"\",\n      \"Description\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c8dd0fec-70a3-42b5-aeef-186ec51b37ff",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e4e3df67-8bc2-4350-ae4d-a08e257b5b60",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7b51afa8-d85e-4a31-acb1-eefa596f9e38",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "db342aca-79f4-4a7a-8d08-8201d461fdc7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "63cace4c-0ab1-408e-8dca-781c7481fc1f",
+      "documentation": "Returns the detailed parameter list for a particular parameter group.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeParameters",
+      "responses": [
+        {
+          "uuid": "062b366a-c3ab-4f1e-9968-0fe92235afe1",
+          "body": "{\n  \"NextToken\": \"\",\n  \"Parameters\": [\n    {\n      \"ParameterName\": \"\",\n      \"ParameterType\": \"\",\n      \"ParameterValue\": \"\",\n      \"NodeTypeSpecificValues\": [\n        {\n          \"NodeType\": \"\",\n          \"Value\": \"\"\n        }\n      ],\n      \"Description\": \"\",\n      \"Source\": \"\",\n      \"DataType\": \"\",\n      \"AllowedValues\": \"\",\n      \"IsModifiable\": \"\",\n      \"ChangeType\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5f4947d2-00de-4b89-9ce9-733dcfa8bdf7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "41f80da6-efb6-4f89-86c6-defa7b5b0637",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ab7ade43-0b6f-40b7-b2f6-d16922697b39",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b30e4179-a0af-4d64-9926-e76ac6a5cd3e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "96fd4719-c68d-4463-ba69-3a3bd3e3c4bf",
+      "documentation": "Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.DescribeSubnetGroups",
+      "responses": [
+        {
+          "uuid": "aa72625e-19ce-444c-9dfa-05b4fe634503",
+          "body": "{\n  \"NextToken\": \"\",\n  \"SubnetGroups\": [\n    {\n      \"SubnetGroupName\": \"\",\n      \"Description\": \"\",\n      \"VpcId\": \"\",\n      \"Subnets\": [\n        {\n          \"SubnetIdentifier\": \"\",\n          \"SubnetAvailabilityZone\": \"\"\n        }\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "737beebd-6bd5-4c96-9502-79531c4726d3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "SubnetGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "de659565-9461-452c-863a-f8c50145ef37",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2de3a1cf-c192-46d3-91aa-79b007e5d637",
+      "documentation": "Adds one or more nodes to a DAX cluster.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.IncreaseReplicationFactor",
+      "responses": [
+        {
+          "uuid": "464e0021-7297-425f-ac58-95d61c9006aa",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "cf7a9627-7383-454e-92c1-c392ca5af05d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d320e7d0-74f5-49f4-8373-0b1ec4ce6823",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "42561de1-b0be-4187-b810-ecf03f4188cb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InsufficientClusterCapacityFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "65b887d7-abca-44aa-a7fe-3cd34e77183c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidVPCNetworkStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b4a273b0-c064-4701-861d-0207c537433a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "NodeQuotaForClusterExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e35b794b-7ea6-47ec-8209-032e6e73a4ca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "NodeQuotaForCustomerExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3a7aa6bd-4594-45d5-99b4-ac50cce8f712",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bbac2386-6c4a-433e-a20a-fdcdca2665c2",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 487,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8da5b314-feaf-41a1-b841-8117bae7c51c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 488,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13f34fba-8fcf-4e4f-a624-703513307425",
+      "documentation": "List all of the tags for a DAX cluster. You can call <code>ListTags</code> up to 10 times per second, per account.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.ListTags",
+      "responses": [
+        {
+          "uuid": "cacc2b68-9b1f-419a-8e13-cd8d8bec3c75",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ],\n  \"NextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bdf4c6e8-9e7c-449b-a66a-7d5898c08cb4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b932dee9-cd5a-4f48-a2fb-0601f2b2e5ba",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidARNFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "465efa7d-42d1-40be-8547-1796577a7208",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e5237582-b444-4a6e-bda9-5e35878b65db",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f4b514ce-41dc-4d1e-b20d-b2a052040f6f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "24ed0ad3-7c60-44b7-8854-32ec070dd5dd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f101e3fb-39ca-4b7f-ad61-5bbaaad5fd64",
+      "documentation": "<p>Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.</p> <note> <p> <code>RebootNode</code> restarts the DAX engine process and does not remove the contents of the cache. </p> </note>",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.RebootNode",
+      "responses": [
+        {
+          "uuid": "7bce1fe0-8cf4-4467-9bf6-eea3e14cbc4b",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "61f13fbb-6e66-497e-8269-fe779d6ed0ea",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c10330c9-e9ab-4ea1-ade8-3ce66e2ab61c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "NodeNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6cfb7cea-c188-4681-911d-cb5bef0ed0ca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ea76bacd-ca00-400d-8bf0-6b782502d0a4",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "485f38d6-6161-47c8-abc8-7303a7820040",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ed7a57b1-f835-44a4-a9cf-92b09d67de34",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fb03570f-f2c5-4bd8-9ab8-c074fbdb287c",
+      "documentation": "Associates a set of tags with a DAX resource. You can call <code>TagResource</code> up to 5 times per second, per account. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.TagResource",
+      "responses": [
+        {
+          "uuid": "b5ba92da-b0e3-493f-9b65-88c7ec4b79a1",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1a63b1dd-9d8e-4ac2-9c23-5705bdc6f52d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5cf1eaa0-ebac-4603-bdaf-7a7b7d09ead5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "TagQuotaPerResourceExceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bee9b6b6-46a1-49db-a8e2-b22132fe79ca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidARNFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ad30fc95-3115-4eb0-a014-f928c423ddee",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b527f911-0bf4-4e57-a3b6-b12a16050b40",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3d8490fb-f32e-46bf-85ff-448ec7ba9589",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fe31b0f3-6d9d-476a-846d-a4c198f7f97e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "59ac892f-dbac-4a53-835d-0c960d64d9a9",
+      "documentation": "Removes the association of tags from a DAX resource. You can call <code>UntagResource</code> up to 5 times per second, per account. ",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.UntagResource",
+      "responses": [
+        {
+          "uuid": "d57324d4-eff2-4733-8896-e37d0def15c8",
+          "body": "{\n  \"Tags\": [\n    {\n      \"Key\": \"\",\n      \"Value\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3e54908e-0741-4382-ba5e-eac891bd3c55",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d7beaf48-7e4d-4e4d-a965-a21c4fa064d8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "InvalidARNFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c34843a0-487a-44da-93bf-b4fad493a6f0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "TagNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "edc6b966-302e-458e-868b-4b8088b4f397",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8eb91786-e349-4f27-939d-ee5bd6301868",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5c1291c4-7666-49e0-beb8-ff76ad29c021",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c38f6462-76b3-49ba-b086-b41170cac7fb",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "61ebb357-80e9-4e4c-a9cd-aebd230e2306",
+      "documentation": "Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.UpdateCluster",
+      "responses": [
+        {
+          "uuid": "20df24ef-f06b-43ca-a9cf-0ea4ebad5877",
+          "body": "{\n  \"Cluster\": {\n    \"ClusterName\": \"\",\n    \"Description\": \"\",\n    \"ClusterArn\": \"\",\n    \"TotalNodes\": {{faker 'datatype.number'}},\n    \"ActiveNodes\": {{faker 'datatype.number'}},\n    \"NodeType\": \"\",\n    \"Status\": \"\",\n    \"ClusterDiscoveryEndpoint\": {\n      \"Address\": \"\",\n      \"Port\": {{faker 'datatype.number'}},\n      \"URL\": \"\"\n    },\n    \"NodeIdsToRemove\": [\n      \"\"\n    ],\n    \"Nodes\": [\n      {\n        \"NodeId\": \"\",\n        \"Endpoint\": {\n          \"Address\": \"\",\n          \"Port\": {{faker 'datatype.number'}},\n          \"URL\": \"\"\n        },\n        \"NodeCreateTime\": \"{{faker 'date.recent' 365}}\",\n        \"AvailabilityZone\": \"\",\n        \"NodeStatus\": \"\",\n        \"ParameterGroupStatus\": \"\"\n      }\n    ],\n    \"PreferredMaintenanceWindow\": \"\",\n    \"NotificationConfiguration\": {\n      \"TopicArn\": \"\",\n      \"TopicStatus\": \"\"\n    },\n    \"SubnetGroup\": \"\",\n    \"SecurityGroups\": [\n      {\n        \"SecurityGroupIdentifier\": \"\",\n        \"Status\": \"\"\n      }\n    ],\n    \"IamRoleArn\": \"\",\n    \"ParameterGroup\": {\n      \"ParameterGroupName\": \"\",\n      \"ParameterApplyStatus\": \"\",\n      \"NodeIdsToReboot\": [\n        \"\"\n      ]\n    },\n    \"SSEDescription\": {\n      \"Status\": \"\"\n    },\n    \"ClusterEndpointEncryptionType\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b3575342-77f4-42b2-84e7-cefc2db798c5",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidClusterStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5020dac8-db8d-41e8-920f-0140169357af",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ClusterNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1e2bd576-7538-4629-9da5-d02d9039729c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "InvalidParameterGroupStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "59a22dc1-3dc3-4a14-af49-8e7f0a4f5646",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5f9c570e-8c74-42ac-89f0-4f5506955013",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7429943a-a7e9-47e9-bc42-8d24659a782f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 485,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "625ce04a-4c3d-4cd1-855e-2075af73d361",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 486,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f81f9416-87ad-4862-89fd-f4348cfb309f",
+      "documentation": "Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.UpdateParameterGroup",
+      "responses": [
+        {
+          "uuid": "0dc26d76-24c4-4151-a75b-9938b45f6567",
+          "body": "{\n  \"ParameterGroup\": {\n    \"ParameterGroupName\": \"\",\n    \"Description\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4b7785ee-acc0-4818-9e7b-b6026d015c85",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "InvalidParameterGroupStateFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5725cd2e-f952-4280-a288-ca377fdf80bd",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ParameterGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1f16fe80-f376-403b-b72e-7b943bcb12be",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2d805286-ccf8-40c1-9396-344a68ac873e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidParameterValueException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7e333eee-6e25-4ab7-9635-9984c6b17f84",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "InvalidParameterCombinationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "62721833-81d6-43f3-8ee1-2ed77753318e",
+      "documentation": "Modifies an existing subnet group.",
+      "method": "post",
+      "endpoint": "#X-Amz-Target=AmazonDAXV3.UpdateSubnetGroup",
+      "responses": [
+        {
+          "uuid": "6d0f7daa-8cb7-4f21-82b7-45255aca168f",
+          "body": "{\n  \"SubnetGroup\": {\n    \"SubnetGroupName\": \"\",\n    \"Description\": \"\",\n    \"VpcId\": \"\",\n    \"Subnets\": [\n      {\n        \"SubnetIdentifier\": \"\",\n        \"SubnetAvailabilityZone\": \"\"\n      }\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "813e146e-b44d-4b44-88a0-5fc2a64e6768",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "SubnetGroupNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5c032c79-1b58-49f5-9f32-f386a094d445",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "SubnetQuotaExceededFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "32abc7b3-cc4b-40eb-b485-cb3452ad5889",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "SubnetInUse",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "303cc48e-9cd0-485b-abb7-94b4c770929f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "InvalidSubnet",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "36f19e26-1e3e-4e69-a980-e304a7fecf2d",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 484,
+          "label": "ServiceLinkedRoleNotFoundFault",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

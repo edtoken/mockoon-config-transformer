@@ -1,0 +1,614 @@
+{
+  "uuid": "c1faaac7-c99a-4600-80dd-09d7f8bb695e",
+  "lastMigration": 24,
+  "name": "StorageManagementClient",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "2d13d7ae-3478-4b48-8b17-f35fbc0fa05c",
+      "documentation": "List blob services of storage account. It returns a collection of one object named default.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices",
+      "responses": [
+        {
+          "uuid": "8651ac21-cd49-48d6-afa7-cca7a5e61474",
+          "body": "{\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- List blob services operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9dd6d1e-e1a3-45ed-9589-5f5778659168",
+      "documentation": "Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers",
+      "responses": [
+        {
+          "uuid": "8ff83282-cf06-4a50-8a7e-ad172260c013",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"etag\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- List Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e090f158-2d5d-4cfa-8dcc-7b0fa0c283d7",
+      "documentation": "Deletes specified container under its account.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "2262711a-4f1f-43b8-b9d9-1e8656f1c835",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Delete Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7e1c9847-f758-4e21-b35e-38b096c61832",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "No Content -- The Container not exist.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9bd45aa1-dda5-4969-aee4-ed6d499814fc",
+      "documentation": "Gets properties of a specified container. ",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "8ed9da08-e200-4cd0-9f3a-a8acbd303267",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Get Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "17c124f8-2268-4cd1-b5d8-c1b7095fa13b",
+      "documentation": "Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn't already exist. ",
+      "method": "patch",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "eacf00b0-510c-4637-860b-09fb89204a2e",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Update Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "35410e48-ed8e-4751-97cb-89e55643ca7d",
+      "documentation": "Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. ",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName",
+      "responses": [
+        {
+          "uuid": "21edce39-27df-46cc-9352-0a74d3c6364d",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- The Container is already created.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "976754ca-05a0-45e9-8989-e6faa326f39c",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Created -- Create Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "13b9e542-108f-4eff-9655-933dec373ab8",
+      "documentation": "Clears legal hold tags. Clearing the same or non-existent tag results in an idempotent operation. ClearLegalHold clears out only the specified tags in the request.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/clearLegalHold",
+      "responses": [
+        {
+          "uuid": "0b86c14e-e012-4fb1-ba8c-cf2e192187f2",
+          "body": "{\n  \"hasLegalHold\": {{faker 'datatype.boolean'}},\n  \"tags\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Clear legal hold tags for Container completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cf74dfdd-6261-4fa4-b99e-9aff1f4268ba",
+      "documentation": "Extends the immutabilityPeriodSinceCreationInDays of a locked immutabilityPolicy. The only action allowed on a Locked policy will be this action. ETag in If-Match is required for this operation.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/immutabilityPolicies/default/extend",
+      "responses": [
+        {
+          "uuid": "aced9da6-556e-4ee6-860e-db549badfed1",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Extends container ImmutabilityPolicy operation completed successfully..",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "54300730-cb00-4f0a-ab7f-2cf2a48871c1",
+      "documentation": "Sets the ImmutabilityPolicy to Locked state. The only action allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is required for this operation.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/immutabilityPolicies/default/lock",
+      "responses": [
+        {
+          "uuid": "6c5f0313-4ba4-4533-8427-be45cac6c1fa",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Locks container ImmutabilityPolicy operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6543ea64-c7f1-44c6-b734-5b7563ad4dc3",
+      "documentation": "Aborts an unlocked immutability policy. The response of delete has immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is required for this operation. Deleting a locked immutability policy is not allowed, only way is to delete the container after deleting all blobs inside the container.",
+      "method": "delete",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/immutabilityPolicies/:immutabilityPolicyName",
+      "responses": [
+        {
+          "uuid": "38a06bb4-737e-4642-afae-e963799558ce",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Deletes container ImmutabilityPolicy operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "64b475d5-f81a-4445-a5f2-bb1288ce63f8",
+      "documentation": "Gets the existing immutability policy along with the corresponding ETag in response headers and body.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/immutabilityPolicies/:immutabilityPolicyName",
+      "responses": [
+        {
+          "uuid": "c6c4b76c-9aab-470a-9c36-916eb3eaa2ae",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Gets container ImmutabilityPolicy operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a63948ea-cbdc-4af2-bc03-014119c1af50",
+      "documentation": "Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/immutabilityPolicies/:immutabilityPolicyName",
+      "responses": [
+        {
+          "uuid": "73a6a2c1-065f-4b71-a7fb-7fbefa7c49e0",
+          "body": "{\n  \"etag\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Creates or updates container ImmutabilityPolicy operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "ETag",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3461bce8-e455-4080-92ad-4ffbdaedb393",
+      "documentation": "The Lease Container operation establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/lease",
+      "responses": [
+        {
+          "uuid": "e1972ca5-9063-4a24-9ef3-53a8fc62ed67",
+          "body": "{\n  \"leaseId\": \"\",\n  \"leaseTimeSeconds\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Lease Container operation completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "776e28f2-73ab-4c14-901f-c6ba26c2f152",
+      "documentation": "Sets legal hold tags. Setting the same tag results in an idempotent operation. SetLegalHold follows an append pattern and does not clear out the existing tags that are not specified in the request.",
+      "method": "post",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/default/containers/:containerName/setLegalHold",
+      "responses": [
+        {
+          "uuid": "b5f03650-090f-43f2-aa4e-6d55d0257459",
+          "body": "{\n  \"hasLegalHold\": {{faker 'datatype.boolean'}},\n  \"tags\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Set legal hold tags for Container completed successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "86de89d8-b6e3-4e97-974b-50c2c1dc3f48",
+      "documentation": "Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.",
+      "method": "get",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName",
+      "responses": [
+        {
+          "uuid": "0c5b4c29-5586-4a30-963c-fec75ef7166a",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- returned the properties of a storage account’s Blob service.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4895b642-b2e8-4e1f-9c9b-c609c2ba534b",
+      "documentation": "Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. ",
+      "method": "put",
+      "endpoint": "subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName",
+      "responses": [
+        {
+          "uuid": "46616c7d-aa30-4310-92a2-dc6f10287d94",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK -- Sets The properties of a storage account’s Blob service successfully.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

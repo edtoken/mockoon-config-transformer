@@ -1,0 +1,710 @@
+{
+  "uuid": "726a174f-56ba-4188-98f5-bb8b19ff3489",
+  "lastMigration": 24,
+  "name": "Patchman-engine API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "88ec8bd2-d921-432d-8fde-7dd96d95a02e",
+      "documentation": "Show me all applicable advisories for all my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/advisories",
+      "responses": [
+        {
+          "uuid": "f8145cfe-3b39-495d-a095-6a170cfeec3b",
+          "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"advisory_type\": {{faker 'datatype.number'}},\n        \"applicable_systems\": {{faker 'datatype.number'}},\n        \"cve_count\": {{faker 'datatype.number'}},\n        \"description\": \"\",\n        \"public_date\": \"\",\n        \"severity\": {{faker 'datatype.number'}},\n        \"synopsis\": \"\"\n      },\n      \"id\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0164ff73-a4fa-4a4d-8504-234c779e15dc",
+      "documentation": "Show me details an advisory by given advisory name",
+      "method": "get",
+      "endpoint": "api/patch/v1/advisories/:advisory_id",
+      "responses": [
+        {
+          "uuid": "6d1de482-a627-4e15-987c-7378369263cf",
+          "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"cves\": [\n        \"\"\n      ],\n      \"description\": \"\",\n      \"fixes\": \"\",\n      \"modified_date\": \"\",\n      \"packages\": {},\n      \"public_date\": \"\",\n      \"references\": [\n        \"\"\n      ],\n      \"severity\": {{faker 'datatype.number'}},\n      \"solution\": \"\",\n      \"synopsis\": \"\",\n      \"topic\": \"\"\n    },\n    \"id\": \"\",\n    \"type\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "511d7318-d282-4e57-9cbd-1f6c16f53a39",
+      "documentation": "Show me systems on which the given advisory is applicable",
+      "method": "get",
+      "endpoint": "api/patch/v1/advisories/:advisory_id/systems",
+      "responses": [
+        {
+          "uuid": "60e4f892-471c-43c7-b6d0-119a5acbcb01",
+          "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"created\": \"\",\n        \"culled_timestamp\": \"\",\n        \"display_name\": \"\",\n        \"insights_id\": \"\",\n        \"last_evaluation\": \"\",\n        \"last_upload\": \"\",\n        \"os_major\": \"\",\n        \"os_minor\": \"\",\n        \"os_name\": \"\",\n        \"other_count\": {{faker 'datatype.number'}},\n        \"packages_installed\": {{faker 'datatype.number'}},\n        \"packages_updatable\": {{faker 'datatype.number'}},\n        \"rhba_count\": {{faker 'datatype.number'}},\n        \"rhea_count\": {{faker 'datatype.number'}},\n        \"rhsa_count\": {{faker 'datatype.number'}},\n        \"rhsm\": \"\",\n        \"stale\": {{faker 'datatype.boolean'}},\n        \"stale_timestamp\": \"\",\n        \"stale_warning_timestamp\": \"\",\n        \"third_party\": {{faker 'datatype.boolean'}}\n      },\n      \"id\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c1869ef5-c16b-48b5-aedc-5827552fb561",
+      "documentation": "Export applicable advisories for all my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/advisories",
+      "responses": [
+        {
+          "uuid": "d0791848-8fe0-4787-8aee-e0cbb9c33d76",
+          "body": "[\n  {\n    \"advisory_type\": {{faker 'datatype.number'}},\n    \"applicable_systems\": {{faker 'datatype.number'}},\n    \"cve_count\": {{faker 'datatype.number'}},\n    \"description\": \"\",\n    \"id\": \"\",\n    \"public_date\": \"\",\n    \"severity\": {{faker 'datatype.number'}},\n    \"synopsis\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74797c20-d201-4180-b7d1-0793767a597d",
+      "documentation": "Export systems for my account",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/advisories/:advisory_id/systems",
+      "responses": [
+        {
+          "uuid": "e53a73a7-58e0-4aeb-9299-06f275e791e4",
+          "body": "[\n  {\n    \"created\": \"\",\n    \"culled_timestamp\": \"\",\n    \"display_name\": \"\",\n    \"id\": \"\",\n    \"insights_id\": \"\",\n    \"last_evaluation\": \"\",\n    \"last_upload\": \"\",\n    \"os_major\": \"\",\n    \"os_minor\": \"\",\n    \"os_name\": \"\",\n    \"other_count\": {{faker 'datatype.number'}},\n    \"packages_installed\": {{faker 'datatype.number'}},\n    \"packages_updatable\": {{faker 'datatype.number'}},\n    \"rhba_count\": {{faker 'datatype.number'}},\n    \"rhea_count\": {{faker 'datatype.number'}},\n    \"rhsa_count\": {{faker 'datatype.number'}},\n    \"rhsm\": \"\",\n    \"stale\": {{faker 'datatype.boolean'}},\n    \"stale_timestamp\": \"\",\n    \"stale_warning_timestamp\": \"\",\n    \"third_party\": {{faker 'datatype.boolean'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1013067d-4b7e-4b1c-83eb-a8eb6f08e25b",
+      "documentation": "Show me all installed packages across my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/packages",
+      "responses": [
+        {
+          "uuid": "fe063714-6322-44ed-a12a-aa9659fadcc8",
+          "body": "[\n  {\n    \"name\": \"\",\n    \"summary\": \"\",\n    \"systems_installed\": {{faker 'datatype.number'}},\n    \"systems_updatable\": {{faker 'datatype.number'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4d02bbaa-e8ae-444c-b046-9369d82a2654",
+      "documentation": "Show me all my systems which have a package installed",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/packages/:package_name/systems",
+      "responses": [
+        {
+          "uuid": "d24e9da0-c7ce-42b1-b27e-d17660d0ad75",
+          "body": "[\n  {\n    \"available_evra\": \"\",\n    \"display_name\": \"\",\n    \"id\": \"\",\n    \"installed_evra\": \"\",\n    \"updatable\": {{faker 'datatype.boolean'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e38be86-cbd8-4606-935c-201e6c10339e",
+      "documentation": "Export systems for my account",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/systems",
+      "responses": [
+        {
+          "uuid": "e169a470-e817-4fea-bd9e-72cd289e3a93",
+          "body": "[\n  {\n    \"created\": \"\",\n    \"culled_timestamp\": \"\",\n    \"display_name\": \"\",\n    \"id\": \"\",\n    \"insights_id\": \"\",\n    \"last_evaluation\": \"\",\n    \"last_upload\": \"\",\n    \"os_major\": \"\",\n    \"os_minor\": \"\",\n    \"os_name\": \"\",\n    \"other_count\": {{faker 'datatype.number'}},\n    \"packages_installed\": {{faker 'datatype.number'}},\n    \"packages_updatable\": {{faker 'datatype.number'}},\n    \"rhba_count\": {{faker 'datatype.number'}},\n    \"rhea_count\": {{faker 'datatype.number'}},\n    \"rhsa_count\": {{faker 'datatype.number'}},\n    \"rhsm\": \"\",\n    \"stale\": {{faker 'datatype.boolean'}},\n    \"stale_timestamp\": \"\",\n    \"stale_warning_timestamp\": \"\",\n    \"third_party\": {{faker 'datatype.boolean'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c61f8365-d56e-415b-a9af-feaad01df433",
+      "documentation": "Export applicable advisories for all my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/systems/:inventory_id/advisories",
+      "responses": [
+        {
+          "uuid": "c8eed547-975b-48f1-abe2-155901156252",
+          "body": "[\n  {\n    \"advisory_type\": {{faker 'datatype.number'}},\n    \"cve_count\": {{faker 'datatype.number'}},\n    \"description\": \"\",\n    \"id\": \"\",\n    \"public_date\": \"\",\n    \"severity\": {{faker 'datatype.number'}},\n    \"synopsis\": \"\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4b42592d-996f-4abe-9c98-58a0e329b6f8",
+      "documentation": "Show me details about a system packages by given inventory id",
+      "method": "get",
+      "endpoint": "api/patch/v1/export/systems/:inventory_id/packages",
+      "responses": [
+        {
+          "uuid": "acc00253-4fe0-4393-8fd1-b7c43c5a1c10",
+          "body": "[\n  {\n    \"description\": \"\",\n    \"evra\": \"\",\n    \"latest_evra\": \"\",\n    \"name\": \"\",\n    \"summary\": \"\",\n    \"updatable\": {{faker 'datatype.boolean'}}\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ced97233-3324-4a92-8fbf-35953e11c1e5",
+      "documentation": "Show me all installed packages across my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/packages/",
+      "responses": [
+        {
+          "uuid": "ef267879-a90b-4b2b-b099-f4a42c1caf11",
+          "body": "{\n  \"data\": [\n    {\n      \"name\": \"\",\n      \"summary\": \"\",\n      \"systems_installed\": {{faker 'datatype.number'}},\n      \"systems_updatable\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2c010872-f610-4f0e-9b21-8a3406562804",
+      "documentation": "Show me metadata of selected package",
+      "method": "get",
+      "endpoint": "api/patch/v1/packages/:package_name",
+      "responses": [
+        {
+          "uuid": "55353246-ddc4-47a6-b29e-b82225539fa3",
+          "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"advisory_id\": \"\",\n      \"description\": \"\",\n      \"name\": \"\",\n      \"summary\": \"\",\n      \"version\": \"\"\n    },\n    \"id\": \"\",\n    \"type\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "92f162ec-b873-4428-ba6a-addd11a3d932",
+      "documentation": "Show me all my systems which have a package installed",
+      "method": "get",
+      "endpoint": "api/patch/v1/packages/:package_name/systems",
+      "responses": [
+        {
+          "uuid": "d0606b7d-2ff4-4cbb-a8a7-aabcbe7c9afd",
+          "body": "{\n  \"data\": [\n    {\n      \"available_evra\": \"\",\n      \"display_name\": \"\",\n      \"id\": \"\",\n      \"installed_evra\": \"\",\n      \"updatable\": {{faker 'datatype.boolean'}}\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "aaf2ca38-7759-443d-bceb-29bb177ac88f",
+      "documentation": "Show me all package versions installed on some system",
+      "method": "get",
+      "endpoint": "api/patch/v1/packages/:package_name/versions",
+      "responses": [
+        {
+          "uuid": "374f1b78-a014-4575-8379-af348fb402e1",
+          "body": "{\n  \"data\": [\n    {\n      \"evra\": \"\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44f5c73d-81a2-41e6-9fd3-d5d28fc84695",
+      "documentation": "Show me all my systems",
+      "method": "get",
+      "endpoint": "api/patch/v1/systems",
+      "responses": [
+        {
+          "uuid": "1b44e97a-4726-44a3-b7af-8e3a51602d65",
+          "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"created\": \"\",\n        \"culled_timestamp\": \"\",\n        \"display_name\": \"\",\n        \"insights_id\": \"\",\n        \"last_evaluation\": \"\",\n        \"last_upload\": \"\",\n        \"os_major\": \"\",\n        \"os_minor\": \"\",\n        \"os_name\": \"\",\n        \"other_count\": {{faker 'datatype.number'}},\n        \"packages_installed\": {{faker 'datatype.number'}},\n        \"packages_updatable\": {{faker 'datatype.number'}},\n        \"rhba_count\": {{faker 'datatype.number'}},\n        \"rhea_count\": {{faker 'datatype.number'}},\n        \"rhsa_count\": {{faker 'datatype.number'}},\n        \"rhsm\": \"\",\n        \"stale\": {{faker 'datatype.boolean'}},\n        \"stale_timestamp\": \"\",\n        \"stale_warning_timestamp\": \"\",\n        \"third_party\": {{faker 'datatype.boolean'}}\n      },\n      \"id\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cbe00021-e44d-4e2e-8a16-2be98fd84bf1",
+      "documentation": "Delete system by inventory id",
+      "method": "delete",
+      "endpoint": "api/patch/v1/systems/:inventory_id",
+      "responses": [
+        {
+          "uuid": "6ff11bfa-400d-42a5-a23e-e2bb10286204",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Ok",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d7432e3b-4d8c-44e7-852d-fa7b1c6b263a",
+      "documentation": "Show me details about a system by given inventory id",
+      "method": "get",
+      "endpoint": "api/patch/v1/systems/:inventory_id",
+      "responses": [
+        {
+          "uuid": "bd460873-612d-42eb-a16b-871a85f01999",
+          "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"created\": \"\",\n      \"culled_timestamp\": \"\",\n      \"display_name\": \"\",\n      \"insights_id\": \"\",\n      \"last_evaluation\": \"\",\n      \"last_upload\": \"\",\n      \"os_major\": \"\",\n      \"os_minor\": \"\",\n      \"os_name\": \"\",\n      \"other_count\": {{faker 'datatype.number'}},\n      \"packages_installed\": {{faker 'datatype.number'}},\n      \"packages_updatable\": {{faker 'datatype.number'}},\n      \"rhba_count\": {{faker 'datatype.number'}},\n      \"rhea_count\": {{faker 'datatype.number'}},\n      \"rhsa_count\": {{faker 'datatype.number'}},\n      \"rhsm\": \"\",\n      \"stale\": {{faker 'datatype.boolean'}},\n      \"stale_timestamp\": \"\",\n      \"stale_warning_timestamp\": \"\",\n      \"third_party\": {{faker 'datatype.boolean'}}\n    },\n    \"id\": \"\",\n    \"type\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e16dbcd2-be3e-44f9-8ac6-8ac0ef10004d",
+      "documentation": "Show me advisories for a system by given inventory id",
+      "method": "get",
+      "endpoint": "api/patch/v1/systems/:inventory_id/advisories",
+      "responses": [
+        {
+          "uuid": "9597ec53-1716-4c92-88d1-5ddc77072983",
+          "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"advisory_type\": {{faker 'datatype.number'}},\n        \"cve_count\": {{faker 'datatype.number'}},\n        \"description\": \"\",\n        \"public_date\": \"\",\n        \"severity\": {{faker 'datatype.number'}},\n        \"synopsis\": \"\"\n      },\n      \"id\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1e26c1e0-ea9c-4f12-89b5-e036e6afe746",
+      "documentation": "Show me details about a system packages by given inventory id",
+      "method": "get",
+      "endpoint": "api/patch/v1/systems/:inventory_id/packages",
+      "responses": [
+        {
+          "uuid": "faf1f204-655f-4e16-8bfa-8667440a4ec4",
+          "body": "{\n  \"data\": [\n    {\n      \"description\": \"\",\n      \"evra\": \"\",\n      \"name\": \"\",\n      \"summary\": \"\",\n      \"updatable\": {{faker 'datatype.boolean'}},\n      \"updates\": [\n        {\n          \"advisory\": \"\",\n          \"evra\": \"\"\n        }\n      ]\n    }\n  ],\n  \"links\": {\n    \"first\": \"\",\n    \"last\": \"\",\n    \"next\": \"\",\n    \"previous\": \"\"\n  },\n  \"meta\": {\n    \"filter\": {},\n    \"limit\": {{faker 'datatype.number'}},\n    \"offset\": {{faker 'datatype.number'}},\n    \"search\": \"\",\n    \"sort\": [\n      \"\"\n    ],\n    \"subtotals\": {},\n    \"total_items\": {{faker 'datatype.number'}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d0371291-c5a9-48cf-87b5-df3d25379cc3",
+      "documentation": "View advisory-system pairs for selected systems and advisories",
+      "method": "post",
+      "endpoint": "api/patch/v1/views/advisories/systems",
+      "responses": [
+        {
+          "uuid": "6179c521-9cd5-4404-9024-14bfa04d0c55",
+          "body": "{\n  \"data\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c5305d6a-1a9d-48a1-85e0-2e80696bd2ba",
+      "documentation": "View system-advisory pairs for selected systems and advisories",
+      "method": "post",
+      "endpoint": "api/patch/v1/views/systems/advisories",
+      "responses": [
+        {
+          "uuid": "0938797c-173a-4115-af84-1dae739a1d29",
+          "body": "{\n  \"data\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

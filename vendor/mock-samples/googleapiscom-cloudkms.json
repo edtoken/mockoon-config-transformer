@@ -1,0 +1,934 @@
+{
+  "uuid": "12cbf34f-fa49-4be3-8d6d-59abf393e077",
+  "lastMigration": 24,
+  "name": "Cloud Key Management Service (KMS) API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "b35f9493-cd1d-4ce7-9100-3e2a16fc96bf",
+      "documentation": "Generate random bytes using the Cloud KMS randomness source in the provided location.",
+      "method": "post",
+      "endpoint": "v1/:location:generateRandomBytes",
+      "responses": [
+        {
+          "uuid": "450472fc-c76f-4010-9749-feb585864563",
+          "body": "{\n  \"data\": \"\",\n  \"dataCrc32c\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e6d9cdba-1ba0-4c75-8d0b-a5506b75d65c",
+      "documentation": "Returns metadata for a given ImportJob.",
+      "method": "get",
+      "endpoint": "v1/:name",
+      "responses": [
+        {
+          "uuid": "ea963ec3-1c80-43de-b5b2-8dc385c9e002",
+          "body": "{\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"expireEventTime\": \"\",\n  \"expireTime\": \"\",\n  \"generateTime\": \"\",\n  \"importMethod\": \"{{oneOf (array 'IMPORT_METHOD_UNSPECIFIED' 'RSA_OAEP_3072_SHA1_AES_256' 'RSA_OAEP_4096_SHA1_AES_256' 'RSA_OAEP_3072_SHA256_AES_256' 'RSA_OAEP_4096_SHA256_AES_256' 'RSA_OAEP_3072_SHA256' 'RSA_OAEP_4096_SHA256')}}\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"publicKey\": {\n    \"pem\": \"\"\n  },\n  \"state\": \"{{oneOf (array 'IMPORT_JOB_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ACTIVE' 'EXPIRED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "196279b0-f60f-4d8e-9033-4fabe8e50383",
+      "documentation": "Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states.",
+      "method": "patch",
+      "endpoint": "v1/:name",
+      "responses": [
+        {
+          "uuid": "7df16cdf-49d2-421b-abbc-ddcb74b1b1ff",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"destroyEventTime\": \"\",\n  \"destroyTime\": \"\",\n  \"externalProtectionLevelOptions\": {\n    \"ekmConnectionKeyPath\": \"\",\n    \"externalKeyUri\": \"\"\n  },\n  \"generateTime\": \"\",\n  \"importFailureReason\": \"\",\n  \"importJob\": \"\",\n  \"importTime\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"reimportEligible\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7ee43251-1507-4f09-a3c2-286f561cc699",
+      "documentation": "Lists information about the supported locations for this service.",
+      "method": "get",
+      "endpoint": "v1/:name/locations",
+      "responses": [
+        {
+          "uuid": "15fe75bc-9d2e-4612-8d08-df5aeb901d8b",
+          "body": "{\n  \"locations\": [\n    {\n      \"displayName\": \"\",\n      \"labels\": {},\n      \"locationId\": \"\",\n      \"metadata\": {},\n      \"name\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "390285bc-5a9e-417d-a22b-ac680b10a45d",
+      "documentation": "Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.",
+      "method": "get",
+      "endpoint": "v1/:name/publicKey",
+      "responses": [
+        {
+          "uuid": "97677a59-1151-4326-a606-dd57340f712e",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"name\": \"\",\n  \"pem\": \"\",\n  \"pemCrc32c\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "cac137ba-c7a9-44ac-88c9-a811697b5967",
+      "documentation": "Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT.",
+      "method": "post",
+      "endpoint": "v1/:name:asymmetricDecrypt",
+      "responses": [
+        {
+          "uuid": "d6c6df4c-0614-47b8-991d-42f81a8a3b3b",
+          "body": "{\n  \"plaintext\": \"\",\n  \"plaintextCrc32c\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"verifiedCiphertextCrc32c\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e26c9771-47df-4ef9-9603-75aff5df065f",
+      "documentation": "Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey.",
+      "method": "post",
+      "endpoint": "v1/:name:asymmetricSign",
+      "responses": [
+        {
+          "uuid": "a0c7bb6a-d035-4790-937f-9b4daf587a64",
+          "body": "{\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"signature\": \"\",\n  \"signatureCrc32c\": \"\",\n  \"verifiedDataCrc32c\": {{faker 'datatype.boolean'}},\n  \"verifiedDigestCrc32c\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "84275fe9-a771-41e0-8067-b27cb013c2f0",
+      "documentation": "Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT.",
+      "method": "post",
+      "endpoint": "v1/:name:decrypt",
+      "responses": [
+        {
+          "uuid": "5508455c-7fe6-4f41-9e5a-4c69a3702628",
+          "body": "{\n  \"plaintext\": \"\",\n  \"plaintextCrc32c\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"usedPrimary\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1f8534c5-03fb-46b4-9a3b-dc8a83a1b7e2",
+      "documentation": "Schedule a CryptoKeyVersion for destruction. Upon calling this method, CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the time destroy_scheduled_duration in the future. At that time, the state will automatically change to DESTROYED, and the key material will be irrevocably destroyed. Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the process.",
+      "method": "post",
+      "endpoint": "v1/:name:destroy",
+      "responses": [
+        {
+          "uuid": "b5486ffa-7bb6-4a4d-bb9e-2160cb064cd4",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"destroyEventTime\": \"\",\n  \"destroyTime\": \"\",\n  \"externalProtectionLevelOptions\": {\n    \"ekmConnectionKeyPath\": \"\",\n    \"externalKeyUri\": \"\"\n  },\n  \"generateTime\": \"\",\n  \"importFailureReason\": \"\",\n  \"importJob\": \"\",\n  \"importTime\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"reimportEligible\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ac38374c-2540-4bd9-8f7d-22ffdc4a1039",
+      "documentation": "Encrypts data, so that it can only be recovered by a call to Decrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT.",
+      "method": "post",
+      "endpoint": "v1/:name:encrypt",
+      "responses": [
+        {
+          "uuid": "6a1e2e96-dd23-4a66-90bb-4812eaf3f9a2",
+          "body": "{\n  \"ciphertext\": \"\",\n  \"ciphertextCrc32c\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"verifiedAdditionalAuthenticatedDataCrc32c\": {{faker 'datatype.boolean'}},\n  \"verifiedPlaintextCrc32c\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9235d522-bc7b-4522-add7-c0cbaef37ee0",
+      "documentation": "Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be verified by another source with the same key.",
+      "method": "post",
+      "endpoint": "v1/:name:macSign",
+      "responses": [
+        {
+          "uuid": "721b8598-a654-40c3-9e26-a031d4b8307a",
+          "body": "{\n  \"mac\": \"\",\n  \"macCrc32c\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"verifiedDataCrc32c\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "81ef3907-fa9d-4e27-b38b-e877cfd782c6",
+      "documentation": "Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful.",
+      "method": "post",
+      "endpoint": "v1/:name:macVerify",
+      "responses": [
+        {
+          "uuid": "b62a88fe-7421-4c24-9d24-898ed68914cf",
+          "body": "{\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"success\": {{faker 'datatype.boolean'}},\n  \"verifiedDataCrc32c\": {{faker 'datatype.boolean'}},\n  \"verifiedMacCrc32c\": {{faker 'datatype.boolean'}},\n  \"verifiedSuccessIntegrity\": {{faker 'datatype.boolean'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bbbc254f-806b-43eb-8332-ea7a3d70b565",
+      "documentation": "Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared.",
+      "method": "post",
+      "endpoint": "v1/:name:restore",
+      "responses": [
+        {
+          "uuid": "9378c7b4-526f-49ac-b6e5-3b8ea4a79a0e",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"destroyEventTime\": \"\",\n  \"destroyTime\": \"\",\n  \"externalProtectionLevelOptions\": {\n    \"ekmConnectionKeyPath\": \"\",\n    \"externalKeyUri\": \"\"\n  },\n  \"generateTime\": \"\",\n  \"importFailureReason\": \"\",\n  \"importJob\": \"\",\n  \"importTime\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"reimportEligible\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5b173b5f-f26a-4b13-8b63-643a95dc7111",
+      "documentation": "Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on a key whose purpose is not ENCRYPT_DECRYPT.",
+      "method": "post",
+      "endpoint": "v1/:name:updatePrimaryVersion",
+      "responses": [
+        {
+          "uuid": "1a8de63e-614a-41d1-b5ec-793d046d11bc",
+          "body": "{\n  \"createTime\": \"\",\n  \"cryptoKeyBackend\": \"\",\n  \"destroyScheduledDuration\": \"\",\n  \"importOnly\": {{faker 'datatype.boolean'}},\n  \"labels\": {},\n  \"name\": \"\",\n  \"nextRotationTime\": \"\",\n  \"primary\": {\n    \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n    \"attestation\": {\n      \"certChains\": {\n        \"caviumCerts\": [\n          \"\"\n        ],\n        \"googleCardCerts\": [\n          \"\"\n        ],\n        \"googlePartitionCerts\": [\n          \"\"\n        ]\n      },\n      \"content\": \"\",\n      \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n    },\n    \"createTime\": \"\",\n    \"destroyEventTime\": \"\",\n    \"destroyTime\": \"\",\n    \"externalProtectionLevelOptions\": {\n      \"ekmConnectionKeyPath\": \"\",\n      \"externalKeyUri\": \"\"\n    },\n    \"generateTime\": \"\",\n    \"importFailureReason\": \"\",\n    \"importJob\": \"\",\n    \"importTime\": \"\",\n    \"name\": \"\",\n    \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n    \"reimportEligible\": {{faker 'datatype.boolean'}},\n    \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n  },\n  \"purpose\": \"{{oneOf (array 'CRYPTO_KEY_PURPOSE_UNSPECIFIED' 'ENCRYPT_DECRYPT' 'ASYMMETRIC_SIGN' 'ASYMMETRIC_DECRYPT' 'MAC')}}\",\n  \"rotationPeriod\": \"\",\n  \"versionTemplate\": {\n    \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n    \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ab74cc57-8424-403b-96c6-7e36340d53bf",
+      "documentation": "Lists CryptoKeyVersions.",
+      "method": "get",
+      "endpoint": "v1/:parent/cryptoKeyVersions",
+      "responses": [
+        {
+          "uuid": "159af2b3-414a-4f3f-819e-32a7db331935",
+          "body": "{\n  \"cryptoKeyVersions\": [\n    {\n      \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n      \"attestation\": {\n        \"certChains\": {\n          \"caviumCerts\": [\n            \"\"\n          ],\n          \"googleCardCerts\": [\n            \"\"\n          ],\n          \"googlePartitionCerts\": [\n            \"\"\n          ]\n        },\n        \"content\": \"\",\n        \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n      },\n      \"createTime\": \"\",\n      \"destroyEventTime\": \"\",\n      \"destroyTime\": \"\",\n      \"externalProtectionLevelOptions\": {\n        \"ekmConnectionKeyPath\": \"\",\n        \"externalKeyUri\": \"\"\n      },\n      \"generateTime\": \"\",\n      \"importFailureReason\": \"\",\n      \"importJob\": \"\",\n      \"importTime\": \"\",\n      \"name\": \"\",\n      \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n      \"reimportEligible\": {{faker 'datatype.boolean'}},\n      \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n    }\n  ],\n  \"nextPageToken\": \"\",\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c1719de-abcc-4ced-9943-5c9715229b73",
+      "documentation": "Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.",
+      "method": "post",
+      "endpoint": "v1/:parent/cryptoKeyVersions",
+      "responses": [
+        {
+          "uuid": "60995e90-7afb-4bb0-b834-c1b699a97acd",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"destroyEventTime\": \"\",\n  \"destroyTime\": \"\",\n  \"externalProtectionLevelOptions\": {\n    \"ekmConnectionKeyPath\": \"\",\n    \"externalKeyUri\": \"\"\n  },\n  \"generateTime\": \"\",\n  \"importFailureReason\": \"\",\n  \"importJob\": \"\",\n  \"importTime\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"reimportEligible\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bbb5afb9-c1fa-49c0-adcf-058902b2c653",
+      "documentation": "Import wrapped key material into a CryptoKeyVersion. All requests must specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the request, key material will be reimported into that version. Otherwise, a new version will be created, and will be assigned the next sequential id within the CryptoKey.",
+      "method": "post",
+      "endpoint": "v1/:parent/cryptoKeyVersions:import",
+      "responses": [
+        {
+          "uuid": "a9c60fec-2261-4801-8bdc-becc2a0fb2a0",
+          "body": "{\n  \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"destroyEventTime\": \"\",\n  \"destroyTime\": \"\",\n  \"externalProtectionLevelOptions\": {\n    \"ekmConnectionKeyPath\": \"\",\n    \"externalKeyUri\": \"\"\n  },\n  \"generateTime\": \"\",\n  \"importFailureReason\": \"\",\n  \"importJob\": \"\",\n  \"importTime\": \"\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"reimportEligible\": {{faker 'datatype.boolean'}},\n  \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "842c91af-a1df-4579-8d7a-aa99ea1e3dad",
+      "documentation": "Lists CryptoKeys.",
+      "method": "get",
+      "endpoint": "v1/:parent/cryptoKeys",
+      "responses": [
+        {
+          "uuid": "f5c49320-3755-4140-b203-193f8592aecc",
+          "body": "{\n  \"cryptoKeys\": [\n    {\n      \"createTime\": \"\",\n      \"cryptoKeyBackend\": \"\",\n      \"destroyScheduledDuration\": \"\",\n      \"importOnly\": {{faker 'datatype.boolean'}},\n      \"labels\": {},\n      \"name\": \"\",\n      \"nextRotationTime\": \"\",\n      \"primary\": {\n        \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n        \"attestation\": {\n          \"certChains\": {\n            \"caviumCerts\": [\n              \"\"\n            ],\n            \"googleCardCerts\": [\n              \"\"\n            ],\n            \"googlePartitionCerts\": [\n              \"\"\n            ]\n          },\n          \"content\": \"\",\n          \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n        },\n        \"createTime\": \"\",\n        \"destroyEventTime\": \"\",\n        \"destroyTime\": \"\",\n        \"externalProtectionLevelOptions\": {\n          \"ekmConnectionKeyPath\": \"\",\n          \"externalKeyUri\": \"\"\n        },\n        \"generateTime\": \"\",\n        \"importFailureReason\": \"\",\n        \"importJob\": \"\",\n        \"importTime\": \"\",\n        \"name\": \"\",\n        \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n        \"reimportEligible\": {{faker 'datatype.boolean'}},\n        \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n      },\n      \"purpose\": \"{{oneOf (array 'CRYPTO_KEY_PURPOSE_UNSPECIFIED' 'ENCRYPT_DECRYPT' 'ASYMMETRIC_SIGN' 'ASYMMETRIC_DECRYPT' 'MAC')}}\",\n      \"rotationPeriod\": \"\",\n      \"versionTemplate\": {\n        \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n        \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\"\n      }\n    }\n  ],\n  \"nextPageToken\": \"\",\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "44a1e8f5-b3d5-4f1c-b0f3-f8c279002868",
+      "documentation": "Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.",
+      "method": "post",
+      "endpoint": "v1/:parent/cryptoKeys",
+      "responses": [
+        {
+          "uuid": "19e7a1b3-0a7f-497b-bb98-e1154de95d13",
+          "body": "{\n  \"createTime\": \"\",\n  \"cryptoKeyBackend\": \"\",\n  \"destroyScheduledDuration\": \"\",\n  \"importOnly\": {{faker 'datatype.boolean'}},\n  \"labels\": {},\n  \"name\": \"\",\n  \"nextRotationTime\": \"\",\n  \"primary\": {\n    \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n    \"attestation\": {\n      \"certChains\": {\n        \"caviumCerts\": [\n          \"\"\n        ],\n        \"googleCardCerts\": [\n          \"\"\n        ],\n        \"googlePartitionCerts\": [\n          \"\"\n        ]\n      },\n      \"content\": \"\",\n      \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n    },\n    \"createTime\": \"\",\n    \"destroyEventTime\": \"\",\n    \"destroyTime\": \"\",\n    \"externalProtectionLevelOptions\": {\n      \"ekmConnectionKeyPath\": \"\",\n      \"externalKeyUri\": \"\"\n    },\n    \"generateTime\": \"\",\n    \"importFailureReason\": \"\",\n    \"importJob\": \"\",\n    \"importTime\": \"\",\n    \"name\": \"\",\n    \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n    \"reimportEligible\": {{faker 'datatype.boolean'}},\n    \"state\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ENABLED' 'DISABLED' 'DESTROYED' 'DESTROY_SCHEDULED' 'PENDING_IMPORT' 'IMPORT_FAILED')}}\"\n  },\n  \"purpose\": \"{{oneOf (array 'CRYPTO_KEY_PURPOSE_UNSPECIFIED' 'ENCRYPT_DECRYPT' 'ASYMMETRIC_SIGN' 'ASYMMETRIC_DECRYPT' 'MAC')}}\",\n  \"rotationPeriod\": \"\",\n  \"versionTemplate\": {\n    \"algorithm\": \"{{oneOf (array 'CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED' 'GOOGLE_SYMMETRIC_ENCRYPTION' 'RSA_SIGN_PSS_2048_SHA256' 'RSA_SIGN_PSS_3072_SHA256' 'RSA_SIGN_PSS_4096_SHA256' 'RSA_SIGN_PSS_4096_SHA512' 'RSA_SIGN_PKCS1_2048_SHA256' 'RSA_SIGN_PKCS1_3072_SHA256' 'RSA_SIGN_PKCS1_4096_SHA256' 'RSA_SIGN_PKCS1_4096_SHA512' 'RSA_SIGN_RAW_PKCS1_2048' 'RSA_SIGN_RAW_PKCS1_3072' 'RSA_SIGN_RAW_PKCS1_4096' 'RSA_DECRYPT_OAEP_2048_SHA256' 'RSA_DECRYPT_OAEP_3072_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA256' 'RSA_DECRYPT_OAEP_4096_SHA512' 'RSA_DECRYPT_OAEP_2048_SHA1' 'RSA_DECRYPT_OAEP_3072_SHA1' 'RSA_DECRYPT_OAEP_4096_SHA1' 'EC_SIGN_P256_SHA256' 'EC_SIGN_P384_SHA384' 'EC_SIGN_SECP256K1_SHA256' 'HMAC_SHA256' 'EXTERNAL_SYMMETRIC_ENCRYPTION')}}\",\n    \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6316f9bf-a0c6-415b-83de-0d546566a010",
+      "documentation": "Lists EkmConnections.",
+      "method": "get",
+      "endpoint": "v1/:parent/ekmConnections",
+      "responses": [
+        {
+          "uuid": "873b3406-2765-4776-8bd2-dd0b20d7e03e",
+          "body": "{\n  \"ekmConnections\": [\n    {\n      \"createTime\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"serviceResolvers\": [\n        {\n          \"endpointFilter\": \"\",\n          \"hostname\": \"\",\n          \"serverCertificates\": [\n            {\n              \"issuer\": \"\",\n              \"notAfterTime\": \"\",\n              \"notBeforeTime\": \"\",\n              \"parsed\": {{faker 'datatype.boolean'}},\n              \"rawDer\": \"\",\n              \"serialNumber\": \"\",\n              \"sha256Fingerprint\": \"\",\n              \"subject\": \"\",\n              \"subjectAlternativeDnsNames\": [\n                \"\"\n              ]\n            }\n          ],\n          \"serviceDirectoryService\": \"\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"\",\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2474ad5e-1fc9-42ef-bb45-5271466d8dea",
+      "documentation": "Creates a new EkmConnection in a given Project and Location.",
+      "method": "post",
+      "endpoint": "v1/:parent/ekmConnections",
+      "responses": [
+        {
+          "uuid": "43683e9e-c666-4f7c-b2c5-469ae18bad58",
+          "body": "{\n  \"createTime\": \"\",\n  \"etag\": \"\",\n  \"name\": \"\",\n  \"serviceResolvers\": [\n    {\n      \"endpointFilter\": \"\",\n      \"hostname\": \"\",\n      \"serverCertificates\": [\n        {\n          \"issuer\": \"\",\n          \"notAfterTime\": \"\",\n          \"notBeforeTime\": \"\",\n          \"parsed\": {{faker 'datatype.boolean'}},\n          \"rawDer\": \"\",\n          \"serialNumber\": \"\",\n          \"sha256Fingerprint\": \"\",\n          \"subject\": \"\",\n          \"subjectAlternativeDnsNames\": [\n            \"\"\n          ]\n        }\n      ],\n      \"serviceDirectoryService\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a9be82a6-fc3d-45a8-b57c-f684fe80a318",
+      "documentation": "Lists ImportJobs.",
+      "method": "get",
+      "endpoint": "v1/:parent/importJobs",
+      "responses": [
+        {
+          "uuid": "7dbc84b2-ff94-41d1-8f94-a860d69a4793",
+          "body": "{\n  \"importJobs\": [\n    {\n      \"attestation\": {\n        \"certChains\": {\n          \"caviumCerts\": [\n            \"\"\n          ],\n          \"googleCardCerts\": [\n            \"\"\n          ],\n          \"googlePartitionCerts\": [\n            \"\"\n          ]\n        },\n        \"content\": \"\",\n        \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n      },\n      \"createTime\": \"\",\n      \"expireEventTime\": \"\",\n      \"expireTime\": \"\",\n      \"generateTime\": \"\",\n      \"importMethod\": \"{{oneOf (array 'IMPORT_METHOD_UNSPECIFIED' 'RSA_OAEP_3072_SHA1_AES_256' 'RSA_OAEP_4096_SHA1_AES_256' 'RSA_OAEP_3072_SHA256_AES_256' 'RSA_OAEP_4096_SHA256_AES_256' 'RSA_OAEP_3072_SHA256' 'RSA_OAEP_4096_SHA256')}}\",\n      \"name\": \"\",\n      \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n      \"publicKey\": {\n        \"pem\": \"\"\n      },\n      \"state\": \"{{oneOf (array 'IMPORT_JOB_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ACTIVE' 'EXPIRED')}}\"\n    }\n  ],\n  \"nextPageToken\": \"\",\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f08ca0b2-b753-48fe-948a-62138a7432f4",
+      "documentation": "Create a new ImportJob within a KeyRing. ImportJob.import_method is required.",
+      "method": "post",
+      "endpoint": "v1/:parent/importJobs",
+      "responses": [
+        {
+          "uuid": "0eefbc28-fc8c-4a7f-83cf-7d69dd7104d7",
+          "body": "{\n  \"attestation\": {\n    \"certChains\": {\n      \"caviumCerts\": [\n        \"\"\n      ],\n      \"googleCardCerts\": [\n        \"\"\n      ],\n      \"googlePartitionCerts\": [\n        \"\"\n      ]\n    },\n    \"content\": \"\",\n    \"format\": \"{{oneOf (array 'ATTESTATION_FORMAT_UNSPECIFIED' 'CAVIUM_V1_COMPRESSED' 'CAVIUM_V2_COMPRESSED')}}\"\n  },\n  \"createTime\": \"\",\n  \"expireEventTime\": \"\",\n  \"expireTime\": \"\",\n  \"generateTime\": \"\",\n  \"importMethod\": \"{{oneOf (array 'IMPORT_METHOD_UNSPECIFIED' 'RSA_OAEP_3072_SHA1_AES_256' 'RSA_OAEP_4096_SHA1_AES_256' 'RSA_OAEP_3072_SHA256_AES_256' 'RSA_OAEP_4096_SHA256_AES_256' 'RSA_OAEP_3072_SHA256' 'RSA_OAEP_4096_SHA256')}}\",\n  \"name\": \"\",\n  \"protectionLevel\": \"{{oneOf (array 'PROTECTION_LEVEL_UNSPECIFIED' 'SOFTWARE' 'HSM' 'EXTERNAL' 'EXTERNAL_VPC')}}\",\n  \"publicKey\": {\n    \"pem\": \"\"\n  },\n  \"state\": \"{{oneOf (array 'IMPORT_JOB_STATE_UNSPECIFIED' 'PENDING_GENERATION' 'ACTIVE' 'EXPIRED')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d9c35ea5-7c2c-44cf-8c15-1af52e4a68b8",
+      "documentation": "Lists KeyRings.",
+      "method": "get",
+      "endpoint": "v1/:parent/keyRings",
+      "responses": [
+        {
+          "uuid": "cea323e5-d4e3-4409-a71f-4a3a3b732a28",
+          "body": "{\n  \"keyRings\": [\n    {\n      \"createTime\": \"\",\n      \"name\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\",\n  \"totalSize\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "04b22f50-f2e7-4874-9b6e-9065be33b33c",
+      "documentation": "Create a new KeyRing in a given Project and Location.",
+      "method": "post",
+      "endpoint": "v1/:parent/keyRings",
+      "responses": [
+        {
+          "uuid": "4548810e-573f-4d05-a816-23524f16f7f3",
+          "body": "{\n  \"createTime\": \"\",\n  \"name\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0e6a8f8e-03c6-4647-af4d-e0ae3d58a972",
+      "documentation": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+      "method": "get",
+      "endpoint": "v1/:resource:getIamPolicy",
+      "responses": [
+        {
+          "uuid": "9f056813-ecea-417a-bdbb-d7ab04aa74f7",
+          "body": "{\n  \"auditConfigs\": [\n    {\n      \"auditLogConfigs\": [\n        {\n          \"exemptedMembers\": [\n            \"\"\n          ],\n          \"logType\": \"{{oneOf (array 'LOG_TYPE_UNSPECIFIED' 'ADMIN_READ' 'DATA_WRITE' 'DATA_READ')}}\"\n        }\n      ],\n      \"service\": \"\"\n    }\n  ],\n  \"bindings\": [\n    {\n      \"condition\": {\n        \"description\": \"\",\n        \"expression\": \"\",\n        \"location\": \"\",\n        \"title\": \"\"\n      },\n      \"members\": [\n        \"\"\n      ],\n      \"role\": \"\"\n    }\n  ],\n  \"etag\": \"\",\n  \"version\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c083d254-8edc-4515-9604-84536a5c7724",
+      "documentation": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+      "method": "post",
+      "endpoint": "v1/:resource:setIamPolicy",
+      "responses": [
+        {
+          "uuid": "bd84403c-fc27-4d52-85d3-e0f89718feb8",
+          "body": "{\n  \"auditConfigs\": [\n    {\n      \"auditLogConfigs\": [\n        {\n          \"exemptedMembers\": [\n            \"\"\n          ],\n          \"logType\": \"{{oneOf (array 'LOG_TYPE_UNSPECIFIED' 'ADMIN_READ' 'DATA_WRITE' 'DATA_READ')}}\"\n        }\n      ],\n      \"service\": \"\"\n    }\n  ],\n  \"bindings\": [\n    {\n      \"condition\": {\n        \"description\": \"\",\n        \"expression\": \"\",\n        \"location\": \"\",\n        \"title\": \"\"\n      },\n      \"members\": [\n        \"\"\n      ],\n      \"role\": \"\"\n    }\n  ],\n  \"etag\": \"\",\n  \"version\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "280bec43-3646-436c-93e5-461d3bb14a92",
+      "documentation": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+      "method": "post",
+      "endpoint": "v1/:resource:testIamPermissions",
+      "responses": [
+        {
+          "uuid": "cfcb8aee-d6fb-413b-bf35-7f6716af2c64",
+          "body": "{\n  \"permissions\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

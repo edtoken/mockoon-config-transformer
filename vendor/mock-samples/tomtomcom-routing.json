@@ -1,0 +1,1134 @@
+{
+  "uuid": "3f381bc8-7fdd-4963-9045-f7cef1a98c7c",
+  "lastMigration": 24,
+  "name": "Routing",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "afacabf8-79c2-4178-a62a-b901c8bdb88c",
+      "documentation": "Reachable Range",
+      "method": "get",
+      "endpoint": "routing/:versionNumber/calculateReachableRange/:origin/:contentType",
+      "responses": [
+        {
+          "uuid": "162b7593-98ce-46ec-bf9f-7137c581bb42",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK: a range was calculated and the body of the response contains the polygon description and further data.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b00d8526-aca4-45db-917c-5b3a1f4fc63a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request: one or more parameters were incorrectly specified or are mutually exclusive, or the origin point specified in the request is not near enough to a road.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e41ac06a-f5ea-40f1-ba8a-a2269da468cb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Permission, capacity, or authentication issues:\n  - Forbidden\n  - Not authorized\n  - Account inactive\n  - Account over queries per second limit\n  - Account over rate limit\n  - Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "29c6c2ef-4f66-4b5b-b58e-572997556528",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found: the requested resource could not be found, but it may be available again in the future.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9cf5d3e4-7175-404e-81a3-9d227cea951f",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed: the client used a HTTP method other than GET or POST.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1031b95f-a929-4fe8-8b1e-3b9e111f7209",
+          "body": "",
+          "latency": 0,
+          "statusCode": 408,
+          "label": "Request timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e9935e4d-01c0-4cb4-9f51-52d82e32f814",
+          "body": "",
+          "latency": 0,
+          "statusCode": 414,
+          "label": "Requested uri is too long.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bbadb40c-7faf-4b92-bc4c-e4914720a3d7",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "An error occurred while processing the request. Please try again later.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cc663bf4-3b96-46b5-bdf9-6aeb13e4a1a0",
+          "body": "",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Internal network connectivity issue.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "31a5eebc-4a7a-49a6-b846-e7c2579c89ea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service currently unavailable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2d54f3a9-2567-4728-954b-e60715891da8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Internal network connectivity issue or a request that has taken too long to complete.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "216777df-3bd7-4915-8973-4269bae585d4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 596,
+          "label": "Service not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b0e6a30a-4154-492f-bcbf-71b4e7916862",
+      "documentation": "Reachable Range",
+      "method": "post",
+      "endpoint": "routing/:versionNumber/calculateReachableRange/:origin/:contentType",
+      "responses": [
+        {
+          "uuid": "3756289f-7fd1-4fb8-a437-7acc3cd5802a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK: a range was calculated and the body of the response contains the polygon description and further data.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3e5c9f26-617c-43a4-8307-dcf1d4e352f2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request: one or more parameters were incorrectly specified or are mutually exclusive, or the origin point specified in the request is not near enough to a road.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ad16b652-32e0-41d6-987b-22473db05f9d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Permission, capacity, or authentication issues:\n  - Forbidden\n  - Not authorized\n  - Account inactive\n  - Account over queries per second limit\n  - Account over rate limit\n  - Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "926d6183-0e6b-4d78-855e-525681cc61fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found: the requested resource could not be found, but it may be available again in the future.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4646208b-0ca0-4c02-83d0-4beb30686be3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed: the client used a HTTP method other than GET or POST.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c170ab04-acd7-4fbb-bae1-7f7bd2febc5b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 408,
+          "label": "Request timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3a08faff-a5ca-45a2-a0b9-7aa42eaf6857",
+          "body": "",
+          "latency": 0,
+          "statusCode": 414,
+          "label": "Requested uri is too long.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8005674c-cba4-440a-9217-e5ff7b446a33",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "An error occurred while processing the request. Please try again later.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "da385565-2d42-432a-9c23-41718ac4c1ad",
+          "body": "",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Internal network connectivity issue.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "31b29acc-4278-4a41-a8e7-1bcff10c37e6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service currently unavailable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "579a976b-3a58-4cb2-9b62-613adf2701d5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Internal network connectivity issue or a request that has taken too long to complete.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7648102e-0269-4df2-a0ca-b316d89c3363",
+          "body": "",
+          "latency": 0,
+          "statusCode": 596,
+          "label": "Service not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3a60f9cc-32df-490d-a4a3-3a2e3b434a70",
+      "documentation": "Calculate Route",
+      "method": "get",
+      "endpoint": "routing/:versionNumber/calculateRoute/:locations/:contentType",
+      "responses": [
+        {
+          "uuid": "745d3a5b-daab-400b-8b68-f76a16ba1f1e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK: a route was calculated and the body of the response contains the route description and any other requested data.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8c2557bd-f3a1-4f60-9148-61ee8fe8e4f1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request: one or more parameters were incorrectly specified, are mutually exclusive, the points in the request are not connected by the road network or the points in the request are not near enough to a road.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f290991f-de19-4050-8211-2eeb7af092e1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Permission, capacity, or authentication issues:\n  - Forbidden\n  - Not authorized\n  - Account inactive\n  - Account over queries per second limit\n  - Account over rate limit\n  - Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "477a72ca-3abe-4dd5-88ff-e2d5778247fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found: the requested resource could not be found, but it may be available again in the future.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "69e6bfae-5c00-4368-a094-893b386e00f5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed: the client used a HTTP method other than GET or POST.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f3288d32-a66b-40e4-bf9d-54feb7e7c912",
+          "body": "",
+          "latency": 0,
+          "statusCode": 408,
+          "label": "Request timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "16e6447a-7f9c-4b31-84da-63809aaeccec",
+          "body": "",
+          "latency": 0,
+          "statusCode": 414,
+          "label": "Requested uri is too long.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a887ddf1-0ca2-46ec-83e6-7bde4c03dc35",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "An error occurred while processing the request. Please try again later.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "42249b9c-2d95-468e-8734-4bf16b3325f5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Internal network connectivity issue.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a13e24af-cae9-48df-b0e7-a2036f67b592",
+          "body": "",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service currently unavailable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a55ec6ad-f0a2-43c9-ba57-6c7dad07cb7b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Internal network connectivity issue or a request that has taken too long to complete.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e7e3537e-635a-4b45-a1c6-b06ac027c081",
+          "body": "",
+          "latency": 0,
+          "statusCode": 596,
+          "label": "Service not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d2df883-44ee-47dd-b0c9-c7f4b4568090",
+      "documentation": "Calculate Route",
+      "method": "post",
+      "endpoint": "routing/:versionNumber/calculateRoute/:locations/:contentType",
+      "responses": [
+        {
+          "uuid": "83b9b294-ed03-4d40-aa82-d9440a04392c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK: a route was calculated and the body of the response contains the route description and any other requested data.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2c813cb1-589c-47f7-8da2-11c5367f7ec1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request: one or more parameters were incorrectly specified, are mutually exclusive, the points in the request are not connected by the road network or the points in the request are not near enough to a road.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "985f14e8-735f-4dc3-bcc0-5f5ae5a790be",
+          "body": "",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Permission, capacity, or authentication issues:\n  - Forbidden\n  - Not authorized\n  - Account inactive\n  - Account over queries per second limit\n  - Account over rate limit\n  - Rate limit exceeded",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "481a4755-2ff7-48b6-9c1f-83c68b7b671c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Not Found: the requested resource could not be found, but it may be available again in the future.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "618a4c87-c4ec-4fe0-a472-b176c7c72164",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method Not Allowed: the client used a HTTP method other than GET or POST.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a4566a8d-adeb-45c0-9cf2-43a89ca3d84e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 408,
+          "label": "Request timeout.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "22bc0c14-5a42-42c8-9fa1-387636b27fea",
+          "body": "",
+          "latency": 0,
+          "statusCode": 414,
+          "label": "Requested uri is too long.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "353d8262-387d-489f-a4ff-077770de69bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "An error occurred while processing the request. Please try again later.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a046b01f-970f-44a3-9dfd-05eb4ce05788",
+          "body": "",
+          "latency": 0,
+          "statusCode": 502,
+          "label": "Internal network connectivity issue.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d432ee5b-b317-439f-b246-b7d10379abcc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 503,
+          "label": "Service currently unavailable.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "223a3f39-eb6d-4494-a73b-880ed72d1154",
+          "body": "",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "Internal network connectivity issue or a request that has taken too long to complete.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a058f779-b0ec-49ae-8a2f-596d97c9fba4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 596,
+          "label": "Service not found.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

@@ -1,0 +1,800 @@
+{
+  "uuid": "b11ef725-2cdb-46c8-a0a4-89c31bffc0e6",
+  "lastMigration": 24,
+  "name": "Management Groups",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "fd742b5f-c6e9-4f88-a6c6-e99d9fed990c",
+      "documentation": "Checks if the specified management group name is valid and unique",
+      "method": "post",
+      "endpoint": "providers/Microsoft.Management/checkNameAvailability",
+      "responses": [
+        {
+          "uuid": "4d157ca2-2b3e-4513-8223-460d13b06a6a",
+          "body": "{\n  \"message\": \"\",\n  \"nameAvailable\": {{faker 'datatype.boolean'}},\n  \"reason\": \"{{oneOf (array 'Invalid' 'AlreadyExists')}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c5ecc596-40ab-41be-9df7-4c775429b5d1",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5467000d-d731-4409-b6bd-81fb3456ba5e",
+      "documentation": "List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.",
+      "method": "post",
+      "endpoint": "providers/Microsoft.Management/getEntities",
+      "responses": [
+        {
+          "uuid": "76a5c868-6f00-414a-b84b-7d739a793927",
+          "body": "{\n  \"count\": {{faker 'datatype.number'}},\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"displayName\": \"\",\n        \"inheritedPermissions\": \"{{oneOf (array 'noaccess' 'view' 'edit' 'delete')}}\",\n        \"numberOfChildGroups\": {{faker 'datatype.number'}},\n        \"numberOfChildren\": {{faker 'datatype.number'}},\n        \"numberOfDescendants\": {{faker 'datatype.number'}},\n        \"parent\": {\n          \"id\": \"\"\n        },\n        \"parentDisplayNameChain\": [\n          \"\"\n        ],\n        \"parentNameChain\": [\n          \"\"\n        ],\n        \"permissions\": \"{{oneOf (array 'noaccess' 'view' 'edit' 'delete')}}\",\n        \"tenantId\": \"\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e72e3923-6f4d-4153-8d32-e431c272eabd",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c6d1f0d7-bdb1-4f00-a5fe-68d7c2bea654",
+      "documentation": "List management groups for the authenticated user.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Management/managementGroups",
+      "responses": [
+        {
+          "uuid": "6862a0c2-4cdc-4d57-b41a-f7b12319be86",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"displayName\": \"\",\n        \"tenantId\": \"\"\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dfd8d0a2-d2ce-4b03-9cbc-598f3b347957",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d2d6edd1-a126-4ea2-9d1b-539ed7f4d25d",
+      "documentation": "Delete management group. If a management group contains child resources, the request will fail.",
+      "method": "delete",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId",
+      "responses": [
+        {
+          "uuid": "508fdce3-c6df-4cb6-860f-9fedaff5d61b",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"status\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Azure-AsyncOperation",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "87a005ea-0de5-4b4d-a20c-75ae2e7a5c1e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "NoContent",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fd1418a6-accb-47f9-a7bc-9e704b399066",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "68ef92f5-1172-4138-b079-9edc3e97d5a2",
+      "documentation": "Get the details of the management group.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId",
+      "responses": [
+        {
+          "uuid": "98501355-f784-4cc3-b042-9357c8596b4f",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "205d2769-96af-4e0f-90be-aa640a1f7545",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e50077fd-21ad-4c1c-9d0d-50c55a6f2c9f",
+      "documentation": "Update a management group.",
+      "method": "patch",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId",
+      "responses": [
+        {
+          "uuid": "d9497d11-3f62-4332-bf50-9c36e6fa2ab7",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4c057b5c-6e74-48bc-955e-ca70724ca0a9",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ae57d94-f0b0-40ba-8211-5c3b2f72ff21",
+      "documentation": "Create or update a management group. If a management group is already created and a subsequent create request is issued with different properties, the management group properties will be updated.",
+      "method": "put",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId",
+      "responses": [
+        {
+          "uuid": "2d45ab34-5d0a-4cfa-83e6-afad1b25d3ca",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ae30f70d-3c78-4796-b1ba-421036db8d22",
+          "body": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"status\": \"\",\n  \"type\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "Accepted",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Azure-AsyncOperation",
+              "value": ""
+            },
+            {
+              "key": "Location",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ed2473a8-3640-4765-9f7f-b5867a9f9e06",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "56c83a67-25b2-48d7-b69d-5cf2320c3779",
+      "documentation": "List all entities that descend from a management group.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId/descendants",
+      "responses": [
+        {
+          "uuid": "e1c2191f-e8cf-49d2-947e-f0bcaaed294b",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"id\": \"\",\n      \"name\": \"\",\n      \"properties\": {\n        \"displayName\": \"\",\n        \"parent\": {\n          \"id\": \"\"\n        }\n      },\n      \"type\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "befd84f0-4b3d-4766-ad02-52e07a3c5349",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "74716a51-f60d-4cc9-b985-0d82ed5e53f3",
+      "documentation": "De-associates subscription from the management group.",
+      "method": "delete",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId/subscriptions/:subscriptionId",
+      "responses": [
+        {
+          "uuid": "85eed1fc-d37b-4d5d-b8d4-0c38d357548e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "NoContent",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3bcf724b-956f-42f0-9b1f-5dd97eaba02c",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "586a4907-3027-48fa-b777-4ede5cc635d8",
+      "documentation": "Associates existing subscription with the management group.",
+      "method": "put",
+      "endpoint": "providers/Microsoft.Management/managementGroups/:groupId/subscriptions/:subscriptionId",
+      "responses": [
+        {
+          "uuid": "a776e100-138d-4ad7-8a98-1f5e3ee55124",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "NoContent",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ada97d16-0686-47c2-8018-fbb45b9c4f84",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e6fe987c-ef98-443e-a613-b7208db97c57",
+      "documentation": "Lists all of the available Management REST API operations.",
+      "method": "get",
+      "endpoint": "providers/Microsoft.Management/operations",
+      "responses": [
+        {
+          "uuid": "53517777-f351-4798-a972-14479384718a",
+          "body": "{\n  \"nextLink\": \"\",\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"\",\n        \"operation\": \"\",\n        \"provider\": \"\",\n        \"resource\": \"\"\n      },\n      \"name\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f991918d-7e21-4941-ab15-d3518a2932e4",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "beee95c6-5698-4cb4-8ec6-eb9436ef7584",
+      "documentation": "Starts backfilling subscriptions for the Tenant.",
+      "method": "post",
+      "endpoint": "providers/Microsoft.Management/startTenantBackfill",
+      "responses": [
+        {
+          "uuid": "d67dfe34-2cbe-4ffd-8155-30f7c3ba8d56",
+          "body": "{\n  \"status\": \"{{oneOf (array 'NotStarted' 'NotStartedButGroupsExist' 'Started' 'Failed' 'Cancelled' 'Completed')}}\",\n  \"tenantId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f440e18-2f45-473a-8122-0aa04017e334",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0ac81659-8780-4402-ae34-6c148d2685e8",
+      "documentation": "Gets tenant backfill status",
+      "method": "post",
+      "endpoint": "providers/Microsoft.Management/tenantBackfillStatus",
+      "responses": [
+        {
+          "uuid": "240912e5-3180-4ec3-ba45-eb3831c5728e",
+          "body": "{\n  \"status\": \"{{oneOf (array 'NotStarted' 'NotStartedButGroupsExist' 'Started' 'Failed' 'Cancelled' 'Completed')}}\",\n  \"tenantId\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "OK. The request has succeeded.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "47b133e6-c295-4ecf-86b2-f050e5c79188",
+          "body": "{\n  \"error\": {\n    \"code\": \"\",\n    \"details\": \"\",\n    \"message\": \"\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Error response describing why the operation failed.",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

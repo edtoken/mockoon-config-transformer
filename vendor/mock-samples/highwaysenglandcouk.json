@@ -1,0 +1,820 @@
+{
+  "uuid": "db4b27d2-0605-42e6-82ed-8937d67d3d40",
+  "lastMigration": 24,
+  "name": "Highways England API",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "708dcc89-73c1-4a88-acf9-47b9eb658646",
+      "documentation": "Returns list of areas",
+      "method": "get",
+      "endpoint": "v:version/areas",
+      "responses": [
+        {
+          "uuid": "2ae39e39-b698-4fa2-806e-db935e7d6872",
+          "body": "{\n  \"areas\": [\n    {\n      \"Description\": \"\",\n      \"Id\": \"\",\n      \"Name\": \"\",\n      \"XLatitude\": \"\",\n      \"XLongitude\": \"\",\n      \"YLatitude\": \"\",\n      \"YLongitude\": \"\"\n    }\n  ],\n  \"row_count\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "567ab1ff-50cf-4623-81c5-094f556df705",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7a447059-0e7a-40fb-b7f1-032d0192bd6c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "78873f8c-8379-4f14-b01a-e2673d91cbc0",
+      "documentation": "Returns details of selected area",
+      "method": "get",
+      "endpoint": "v:version/areas/:area_Ids",
+      "responses": [
+        {
+          "uuid": "1c0c87da-1c53-4a01-9eac-128defcc5977",
+          "body": "{\n  \"areas\": [\n    {\n      \"Description\": \"\",\n      \"Id\": \"\",\n      \"Name\": \"\",\n      \"XLatitude\": \"\",\n      \"XLongitude\": \"\",\n      \"YLatitude\": \"\",\n      \"YLongitude\": \"\"\n    }\n  ],\n  \"row_count\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1e6f52df-4b8f-4de2-ab95-c48d8a3cf3f9",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8f96f89a-09f8-49f6-95f0-3951158e600a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fcb0cfe4-df1b-49dd-a8e9-b8e048396fcb",
+      "documentation": "Get Site DailyQuality",
+      "method": "get",
+      "endpoint": "v:version/quality/daily",
+      "responses": [
+        {
+          "uuid": "cba0cfd8-d7f7-486e-af1b-a0f6b6adf659",
+          "body": "{\n  \"Qualities\": [\n    {\n      \"Date\": \"{{faker 'date.recent' 365}}\",\n      \"Quality\": {{faker 'datatype.number'}}\n    }\n  ],\n  \"row_count\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5ccf0161-9d54-4ccb-b259-d099da441452",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "eec69691-dc3a-4a2f-a2cc-06c0cc432277",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7088e138-5efb-40e9-8353-df6722233eb7",
+      "documentation": "Get Site OverallQuality",
+      "method": "get",
+      "endpoint": "v:version/quality/overall",
+      "responses": [
+        {
+          "uuid": "9bde7886-5abc-4dbd-b88c-2b795aa42a15",
+          "body": "{\n  \"data_quality\": {{faker 'datatype.number'}},\n  \"end_date\": \"\",\n  \"row_count\": {{faker 'datatype.number'}},\n  \"sites\": \"\",\n  \"start_date\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2bca5457-1717-4d21-91f0-5605459963fb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2e6aae24-2c52-432b-b4a1-d36128b46933",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1426559d-ac52-4f4e-94c7-7fce20f52ef8",
+      "documentation": "Gets the daily report.",
+      "method": "get",
+      "endpoint": "v:version/reports/:report_type",
+      "responses": [
+        {
+          "uuid": "7e0befc0-ed89-4d7b-9cfa-485e8d61ae95",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e4750db1-c63f-45b8-bcc4-f2aa001f3107",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4a35fbd3-9ea9-43a2-9556-61f08471543c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f798c6de-ed65-4aba-ad28-7c1acc2e2533",
+      "documentation": "Gets the daily report.",
+      "method": "get",
+      "endpoint": "v:version/reports/:start_date/to/:end_date/:report_type",
+      "responses": [
+        {
+          "uuid": "79fa6495-12dc-4ba4-a974-967fad62b3d3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "59154640-c9da-4300-846f-477c7a39246d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e32344ee-f40a-4d23-aead-9075df400ce3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b9abd6a2-2820-4ab1-9a00-bba20237c065",
+      "documentation": "Get a list of sites",
+      "method": "get",
+      "endpoint": "v:version/sites",
+      "responses": [
+        {
+          "uuid": "fb74c20b-9a66-4920-87a9-d5c2a17df6f7",
+          "body": "{\n  \"row_count\": {{faker 'datatype.number'}},\n  \"sites\": [\n    {\n      \"Description\": \"\",\n      \"Id\": \"\",\n      \"Latitude\": {{faker 'datatype.float'}},\n      \"Longitude\": {{faker 'datatype.float'}},\n      \"Name\": \"\",\n      \"Status\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7c9bbcb1-8e78-4ba5-88df-c085cc14d767",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1400be66-c2a4-42d1-84ce-7032fa3c4643",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "95097d85-26a1-44f3-acb0-acb98c320928",
+      "documentation": "Get selected sites",
+      "method": "get",
+      "endpoint": "v:version/sites/:site_Ids",
+      "responses": [
+        {
+          "uuid": "2bbde6de-bd22-42e1-8957-fd7c8ad56eeb",
+          "body": "{\n  \"row_count\": {{faker 'datatype.number'}},\n  \"sites\": [\n    {\n      \"Description\": \"\",\n      \"Id\": \"\",\n      \"Latitude\": {{faker 'datatype.float'}},\n      \"Longitude\": {{faker 'datatype.float'}},\n      \"Name\": \"\",\n      \"Status\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0fd8b6a2-1930-4e51-85c1-24263a9ab3a1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6e5a777a-62c5-4c94-9de7-3ec6e22aa13d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d998c231-12c2-4d94-8738-7dea66a26072",
+      "documentation": "Return list of site types",
+      "method": "get",
+      "endpoint": "v:version/sitetypes",
+      "responses": [
+        {
+          "uuid": "f7655d8a-ef24-4d14-afe4-3d074511f589",
+          "body": "{\n  \"row_count\": {{faker 'datatype.number'}},\n  \"sitetypes\": [\n    {\n      \"Description\": \"\",\n      \"Id\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "bcc49269-215b-41aa-9cda-77db5f133419",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a0e9430d-5db7-4211-9102-b71f76a78473",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e1382393-dcb3-4153-8168-2763f7cef455",
+      "documentation": "Returns the layer metadata for the LayerId specified.",
+      "method": "get",
+      "endpoint": "v:version/sitetypes/:siteType_Id/sites",
+      "responses": [
+        {
+          "uuid": "121024bb-ebd0-45a8-a130-86f72a4b4c0b",
+          "body": "{\n  \"Sites\": [\n    {\n      \"Active\": [\n        {{faker 'datatype.boolean'}}\n      ],\n      \"Description\": [\n        \"\"\n      ],\n      \"Id\": [\n        \"\"\n      ],\n      \"Lattitude\": [\n        {{faker 'datatype.float'}}\n      ],\n      \"Longitude\": [\n        {{faker 'datatype.float'}}\n      ],\n      \"SiteId\": [\n        \"\"\n      ]\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "05193239-a005-4907-ad8d-976a356ac02c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad request",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "18cae126-e4d6-4774-af39-35edfb6e3263",
+          "body": "",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Layer not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "70d3b333-6a41-4033-ab98-c0e19c423739",
+          "body": "",
+          "latency": 0,
+          "statusCode": 500,
+          "label": "Internal Server Error",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

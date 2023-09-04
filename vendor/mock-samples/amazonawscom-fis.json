@@ -1,0 +1,1014 @@
+{
+  "uuid": "cd16ce5a-8b5e-447c-a0ae-9d4647c4972d",
+  "lastMigration": 24,
+  "name": "AWS Fault Injection Simulator",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "d8f7e5ef-2765-491d-b0b2-0fb586287608",
+      "documentation": "<p>Creates an experiment template. </p> <p>To create a template, specify the following information: </p> <ul> <li> <p> <b>Targets</b>: A target can be a specific resource in your AWS environment, or one or more resources that match criteria that you specify, for example, resources that have specific tags.</p> </li> <li> <p> <b>Actions</b>: The actions to carry out on the target. You can specify multiple actions, the duration of each action, and when to start each action during an experiment.</p> </li> <li> <p> <b>Stop conditions</b>: If a stop condition is triggered while an experiment is running, the experiment is automatically stopped. You can define a stop condition as a CloudWatch alarm.</p> </li> </ul> <p>For more information, see the <a href=\"https://docs.aws.amazon.com/fis/latest/userguide/\">AWS Fault Injection Simulator User Guide</a>.</p>",
+      "method": "post",
+      "endpoint": "experimentTemplates",
+      "responses": [
+        {
+          "uuid": "59da1314-3c95-46e4-8708-81674cb32489",
+          "body": "{\n  \"experimentTemplate\": {\n    \"id\": \"\",\n    \"description\": \"\",\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n    \"roleArn\": \"\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "f42e2aac-bb9f-439a-8885-f1a99f705264",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b45585bc-535d-427a-a047-fde94cf55706",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8b238575-60e6-4c83-a5ac-489832355be0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b3eca2be-9eb1-4f76-817f-ee8abf0b9fb1",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "383b8cbf-17c6-4595-a48f-38918bf63ac4",
+      "documentation": "Lists your experiment templates.",
+      "method": "get",
+      "endpoint": "experimentTemplates",
+      "responses": [
+        {
+          "uuid": "41c5988b-a0d1-4fa6-92bc-a016cde069e0",
+          "body": "{\n  \"experimentTemplates\": [\n    {\n      \"id\": \"\",\n      \"description\": \"\",\n      \"creationTime\": \"{{faker 'date.recent' 365}}\",\n      \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n      \"tags\": {}\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5e76856e-2527-4ab3-9510-43f8e31d1f94",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c7386800-45dd-4293-a056-6099ea8bc790",
+      "documentation": "Deletes the specified experiment template.",
+      "method": "delete",
+      "endpoint": "experimentTemplates/:id",
+      "responses": [
+        {
+          "uuid": "016a1bc3-ccf6-4e06-ac23-2ac7863b01dc",
+          "body": "{\n  \"experimentTemplate\": {\n    \"id\": \"\",\n    \"description\": \"\",\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n    \"roleArn\": \"\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "58457d1d-86a8-43fd-837c-f328eb16c44b",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "014d8223-6025-456e-8bcb-4da4666b9b02",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8b562083-c14f-470d-9f42-d124c127206b",
+      "documentation": "Gets information about the specified experiment template.",
+      "method": "get",
+      "endpoint": "experimentTemplates/:id",
+      "responses": [
+        {
+          "uuid": "524460c8-1ba3-49f4-bb98-560abd46f5d4",
+          "body": "{\n  \"experimentTemplate\": {\n    \"id\": \"\",\n    \"description\": \"\",\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n    \"roleArn\": \"\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b92675ad-2770-417d-b67f-7bbe7d187f43",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "12e57ebb-ac2f-4cc4-9aa7-c8f22b84ae89",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a11d077d-dd0d-4743-9b5f-8241cedc90cb",
+      "documentation": "Updates the specified experiment template.",
+      "method": "patch",
+      "endpoint": "experimentTemplates/:id",
+      "responses": [
+        {
+          "uuid": "2677eef6-050d-4fcd-aed5-643c21a302b6",
+          "body": "{\n  \"experimentTemplate\": {\n    \"id\": \"\",\n    \"description\": \"\",\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"lastUpdateTime\": \"{{faker 'date.recent' 365}}\",\n    \"roleArn\": \"\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3f647aa0-407e-41e6-833a-453fc7713274",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "74dfae98-7f22-441d-a72a-08177d7b747a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "1accafe6-fefe-4140-be7c-8b8b58cc0a60",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b30ce3d9-f0af-4126-8f81-4145afa947f7",
+      "documentation": "Gets information about the specified AWS FIS action.",
+      "method": "get",
+      "endpoint": "actions/:id",
+      "responses": [
+        {
+          "uuid": "ccfd0d48-cc6d-412c-9e05-f61034ddb99b",
+          "body": "{\n  \"action\": {\n    \"id\": \"\",\n    \"description\": \"\",\n    \"parameters\": {},\n    \"targets\": {},\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "14e25fd4-7bef-4a77-be73-094f3f48ab38",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a9b49fc4-4d8e-4e93-9dac-9aa345f7413a",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00ec9d63-d79e-4ce4-a0c3-da82fa3d63f0",
+      "documentation": "Gets information about the specified experiment.",
+      "method": "get",
+      "endpoint": "experiments/:id",
+      "responses": [
+        {
+          "uuid": "43dbbf1a-7c56-4784-a54f-d58a3e527039",
+          "body": "{\n  \"experiment\": {\n    \"id\": \"\",\n    \"experimentTemplateId\": \"\",\n    \"roleArn\": \"\",\n    \"state\": {\n      \"status\": \"\",\n      \"reason\": \"\"\n    },\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"startTime\": \"{{faker 'date.recent' 365}}\",\n    \"endTime\": \"{{faker 'date.recent' 365}}\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "9f522cf2-9597-4bb9-aa2c-69dae6a6edd3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "65b228c7-1ea1-431b-9667-f499b71d72e0",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "45797d43-72dd-4b20-bc36-7c3d4b6d9b02",
+      "documentation": "Stops the specified experiment.",
+      "method": "delete",
+      "endpoint": "experiments/:id",
+      "responses": [
+        {
+          "uuid": "419b6aae-415a-4fbf-a611-814e14faba14",
+          "body": "{\n  \"experiment\": {\n    \"id\": \"\",\n    \"experimentTemplateId\": \"\",\n    \"roleArn\": \"\",\n    \"state\": {\n      \"status\": \"\",\n      \"reason\": \"\"\n    },\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"startTime\": \"{{faker 'date.recent' 365}}\",\n    \"endTime\": \"{{faker 'date.recent' 365}}\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1132169e-c5f2-437a-ae6c-263784df27ba",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "35ad8b6d-4a73-4086-9991-de3d20f2b5e8",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2a7b7e7e-1c6e-493a-9607-6e08c0cc976c",
+      "documentation": "Lists the available AWS FIS actions.",
+      "method": "get",
+      "endpoint": "actions",
+      "responses": [
+        {
+          "uuid": "1c058654-a884-4be2-bb92-b6ee90cd5432",
+          "body": "{\n  \"actions\": [\n    {\n      \"id\": \"\",\n      \"description\": \"\",\n      \"targets\": {},\n      \"tags\": {}\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8db6aeb8-d5ea-4e19-bf3c-2deccf1bad3c",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "71b4a9d9-5f4c-441b-a5e2-894cddb7ccfb",
+      "documentation": "Lists your experiments.",
+      "method": "get",
+      "endpoint": "experiments",
+      "responses": [
+        {
+          "uuid": "f5d12d3d-d78c-44e1-a3b5-ad1bc56e7f01",
+          "body": "{\n  \"experiments\": [\n    {\n      \"id\": \"\",\n      \"experimentTemplateId\": \"\",\n      \"state\": {\n        \"status\": \"\",\n        \"reason\": \"\"\n      },\n      \"creationTime\": \"{{faker 'date.recent' 365}}\",\n      \"tags\": {}\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "38199ab0-1521-45fe-a3d7-02bc4a2bd09e",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b5280995-f690-4e3b-8e58-1afc06f7a5b3",
+      "documentation": "Starts running an experiment from the specified experiment template.",
+      "method": "post",
+      "endpoint": "experiments",
+      "responses": [
+        {
+          "uuid": "2ce21ff4-45e8-46c1-8d3c-e6ded497825b",
+          "body": "{\n  \"experiment\": {\n    \"id\": \"\",\n    \"experimentTemplateId\": \"\",\n    \"roleArn\": \"\",\n    \"state\": {\n      \"status\": \"\",\n      \"reason\": \"\"\n    },\n    \"targets\": {},\n    \"actions\": {},\n    \"stopConditions\": [\n      {\n        \"source\": \"\",\n        \"value\": \"\"\n      }\n    ],\n    \"creationTime\": \"{{faker 'date.recent' 365}}\",\n    \"startTime\": \"{{faker 'date.recent' 365}}\",\n    \"endTime\": \"{{faker 'date.recent' 365}}\",\n    \"tags\": {}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d1bac4c1-86c8-41b9-835e-37128d30f4be",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 480,
+          "label": "ValidationException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a3d70e49-cb26-4acc-9bb4-c2d5e41e94f3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 481,
+          "label": "ConflictException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0781c863-a07f-44f9-ac45-1932bf302379",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 482,
+          "label": "ResourceNotFoundException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "52e849e7-76e3-46b5-82b6-d4bc92e7d9f3",
+          "body": "\"\"",
+          "latency": 0,
+          "statusCode": 483,
+          "label": "ServiceQuotaExceededException",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0f3640ef-3308-4079-9bc7-79ec7dc422fe",
+      "documentation": "Lists the tags for the specified resource.",
+      "method": "get",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "9c89654a-ab0f-4380-b9c4-ea2c958422a3",
+          "body": "{\n  \"tags\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a3f264b5-00f5-4f08-8e27-cb40d80ba221",
+      "documentation": "Applies the specified tags to the specified resource.",
+      "method": "post",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "6f0ef6cb-fc45-4c84-a9e8-dd0ed4a2b375",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1506cc21-1fcf-40f6-b4e6-1ee6e1b10b55",
+      "documentation": "Removes the specified tags from the specified resource.",
+      "method": "delete",
+      "endpoint": "tags/:resourceArn",
+      "responses": [
+        {
+          "uuid": "3367c87b-6d42-4391-bbe7-d72342182fde",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

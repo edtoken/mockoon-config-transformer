@@ -1,0 +1,870 @@
+{
+  "uuid": "f317df34-e111-4c73-8c0f-8df45198b48d",
+  "lastMigration": 24,
+  "name": "Cloud Resource Manager API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "fb12cf97-8621-4c31-8335-d91280cbf2ea",
+      "documentation": "Return a list of effective tags for the given Google Cloud resource, as specified in `parent`.",
+      "method": "get",
+      "endpoint": "v3/effectiveTags",
+      "responses": [
+        {
+          "uuid": "b2938c7d-a306-4ec5-9a01-05e0699751ef",
+          "body": "{\n  \"effectiveTags\": [\n    {\n      \"inherited\": {{faker 'datatype.boolean'}},\n      \"namespacedTagKey\": \"\",\n      \"namespacedTagValue\": \"\",\n      \"tagKey\": \"\",\n      \"tagValue\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a0b8959f-855e-4017-88d1-93e4ed2acf87",
+      "documentation": "Lists the folders that are direct descendants of supplied parent resource. `list()` provides a strongly consistent view of the folders underneath the specified parent resource. `list()` returns folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent.",
+      "method": "get",
+      "endpoint": "v3/folders",
+      "responses": [
+        {
+          "uuid": "778404a6-d887-4b43-ab0e-b19fe28653e6",
+          "body": "{\n  \"folders\": [\n    {\n      \"createTime\": \"\",\n      \"deleteTime\": \"\",\n      \"displayName\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"parent\": \"\",\n      \"state\": \"{{oneOf (array 'STATE_UNSPECIFIED' 'ACTIVE' 'DELETE_REQUESTED')}}\",\n      \"updateTime\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "505e8b3d-5a19-435c-966f-cc0cadf48ae0",
+      "documentation": "Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the created Folder. In order to succeed, the addition of this new folder must not violate the folder naming, height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the folder must not cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the `CreateFolder` request, with status code `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in the `Operation`, with the specific `PreconditionFailure` returned in the details list in the `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified parent.",
+      "method": "post",
+      "endpoint": "v3/folders",
+      "responses": [
+        {
+          "uuid": "3c5af176-005d-4459-8b70-c8dbd1ff6534",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "809de151-a515-47d4-8870-04c3067857df",
+      "documentation": "Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`.",
+      "method": "get",
+      "endpoint": "v3/folders:search",
+      "responses": [
+        {
+          "uuid": "921c40e8-edd8-4745-91a0-af9a77122a93",
+          "body": "{\n  \"folders\": [\n    {\n      \"createTime\": \"\",\n      \"deleteTime\": \"\",\n      \"displayName\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"parent\": \"\",\n      \"state\": \"{{oneOf (array 'STATE_UNSPECIFIED' 'ACTIVE' 'DELETE_REQUESTED')}}\",\n      \"updateTime\": \"\"\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1ba53d19-830e-4ec2-b3a7-b87ef459dc85",
+      "documentation": "List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`.",
+      "method": "get",
+      "endpoint": "v3/liens",
+      "responses": [
+        {
+          "uuid": "2890c3c2-be00-4829-9e36-7b2c11cb1cab",
+          "body": "{\n  \"liens\": [\n    {\n      \"createTime\": \"\",\n      \"name\": \"\",\n      \"origin\": \"\",\n      \"parent\": \"\",\n      \"reason\": \"\",\n      \"restrictions\": [\n        \"\"\n      ]\n    }\n  ],\n  \"nextPageToken\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00f3506e-85ac-4843-832f-7f2c2058052d",
+      "documentation": "Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.",
+      "method": "post",
+      "endpoint": "v3/liens",
+      "responses": [
+        {
+          "uuid": "7c6efbfa-acf5-4a86-bcd1-9c10f1f9af76",
+          "body": "{\n  \"createTime\": \"\",\n  \"name\": \"\",\n  \"origin\": \"\",\n  \"parent\": \"\",\n  \"reason\": \"\",\n  \"restrictions\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e82efae9-2fed-4f19-a068-adae6aa47afb",
+      "documentation": "Searches organization resources that are visible to the user and satisfy the specified filter. This method returns organizations in an unspecified order. New organizations do not necessarily appear at the end of the results, and may take a small amount of time to appear. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get`",
+      "method": "get",
+      "endpoint": "v3/organizations:search",
+      "responses": [
+        {
+          "uuid": "1943a016-10be-42d9-a9dd-646091b2e67e",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"organizations\": [\n    {\n      \"createTime\": \"\",\n      \"deleteTime\": \"\",\n      \"directoryCustomerId\": \"\",\n      \"displayName\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"state\": \"{{oneOf (array 'STATE_UNSPECIFIED' 'ACTIVE' 'DELETE_REQUESTED')}}\",\n      \"updateTime\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30ddc5e4-76aa-4bff-a580-0f25dad0dd2b",
+      "documentation": "Lists projects that are direct children of the specified folder or organization resource. `list()` provides a strongly consistent view of the projects underneath the specified parent resource. `list()` returns projects sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have `resourcemanager.projects.list` permission on the identified parent.",
+      "method": "get",
+      "endpoint": "v3/projects",
+      "responses": [
+        {
+          "uuid": "41d88538-395b-4589-8c52-11add1025165",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"projects\": [\n    {\n      \"createTime\": \"\",\n      \"deleteTime\": \"\",\n      \"displayName\": \"\",\n      \"etag\": \"\",\n      \"labels\": {},\n      \"name\": \"\",\n      \"parent\": \"\",\n      \"projectId\": \"\",\n      \"state\": \"{{oneOf (array 'STATE_UNSPECIFIED' 'ACTIVE' 'DELETE_REQUESTED')}}\",\n      \"updateTime\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e494f718-8a27-4ff3-981d-ed3195de69d8",
+      "documentation": "Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.",
+      "method": "post",
+      "endpoint": "v3/projects",
+      "responses": [
+        {
+          "uuid": "a542ae5c-902d-4d95-8375-6176ddd5428c",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0aadae65-2f78-48af-bd83-d59ef71ab6b6",
+      "documentation": "Search for projects that the caller has both `resourcemanager.projects.get` permission on, and also satisfy the specified query. This method returns projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method.",
+      "method": "get",
+      "endpoint": "v3/projects:search",
+      "responses": [
+        {
+          "uuid": "abd13e42-9bd1-41c0-834f-47fee371057f",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"projects\": [\n    {\n      \"createTime\": \"\",\n      \"deleteTime\": \"\",\n      \"displayName\": \"\",\n      \"etag\": \"\",\n      \"labels\": {},\n      \"name\": \"\",\n      \"parent\": \"\",\n      \"projectId\": \"\",\n      \"state\": \"{{oneOf (array 'STATE_UNSPECIFIED' 'ACTIVE' 'DELETE_REQUESTED')}}\",\n      \"updateTime\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bf427af1-8073-4b52-9596-e9034c872e65",
+      "documentation": "Lists the TagBindings for the given Google Cloud resource, as specified with `parent`. NOTE: The `parent` field is expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name",
+      "method": "get",
+      "endpoint": "v3/tagBindings",
+      "responses": [
+        {
+          "uuid": "be866760-219a-4ecf-8bb9-812f5ae4e830",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"tagBindings\": [\n    {\n      \"name\": \"\",\n      \"parent\": \"\",\n      \"tagValue\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4f68fc6b-4046-4a70-a7c8-85e99639a715",
+      "documentation": "Creates a TagBinding between a TagValue and a Google Cloud resource.",
+      "method": "post",
+      "endpoint": "v3/tagBindings",
+      "responses": [
+        {
+          "uuid": "95f3c987-2582-4583-8822-8e0cd9334012",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5dbb0064-adaa-4797-b502-da0e71a2d267",
+      "documentation": "Lists all TagKeys for a parent resource.",
+      "method": "get",
+      "endpoint": "v3/tagKeys",
+      "responses": [
+        {
+          "uuid": "0cda28e4-8a61-43e1-bae5-a1873524ab60",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"tagKeys\": [\n    {\n      \"createTime\": \"\",\n      \"description\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"namespacedName\": \"\",\n      \"parent\": \"\",\n      \"purpose\": \"{{oneOf (array 'PURPOSE_UNSPECIFIED' 'GCE_FIREWALL')}}\",\n      \"purposeData\": {},\n      \"shortName\": \"\",\n      \"updateTime\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd1703f6-0104-4aa2-a769-85cd892aab8e",
+      "documentation": "Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any given time.",
+      "method": "post",
+      "endpoint": "v3/tagKeys",
+      "responses": [
+        {
+          "uuid": "3d364e21-db58-48ca-a0f7-2fc7c22c322e",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6ca28c3c-90b3-4825-8103-2d7115baae77",
+      "documentation": "Lists all TagValues for a specific TagKey.",
+      "method": "get",
+      "endpoint": "v3/tagValues",
+      "responses": [
+        {
+          "uuid": "dd75dc06-f55f-490b-8b1d-5abe84e3f92f",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"tagValues\": [\n    {\n      \"createTime\": \"\",\n      \"description\": \"\",\n      \"etag\": \"\",\n      \"name\": \"\",\n      \"namespacedName\": \"\",\n      \"parent\": \"\",\n      \"shortName\": \"\",\n      \"updateTime\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "58a8dab7-1bbb-4976-8282-098c5ff78e24",
+      "documentation": "Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.",
+      "method": "post",
+      "endpoint": "v3/tagValues",
+      "responses": [
+        {
+          "uuid": "e7b9233e-2cdf-4414-8069-16ef92814926",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2c15c7e6-0638-4c38-94a0-a67a5fa275c4",
+      "documentation": "Deletes a TagHold.",
+      "method": "delete",
+      "endpoint": "v3/:name",
+      "responses": [
+        {
+          "uuid": "05de607a-ec57-4606-bd3d-90d98b033c52",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f06c8526-63d4-43b2-8c4d-dde568be007b",
+      "documentation": "Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.",
+      "method": "get",
+      "endpoint": "v3/:name",
+      "responses": [
+        {
+          "uuid": "58ba300b-25df-4c34-bf96-f2bf511270ca",
+          "body": "{\n  \"createTime\": \"\",\n  \"description\": \"\",\n  \"etag\": \"\",\n  \"name\": \"\",\n  \"namespacedName\": \"\",\n  \"parent\": \"\",\n  \"shortName\": \"\",\n  \"updateTime\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d860b6e0-55a4-4fab-ae38-70b9915536a9",
+      "documentation": "Updates the attributes of the TagValue resource.",
+      "method": "patch",
+      "endpoint": "v3/:name",
+      "responses": [
+        {
+          "uuid": "917e2edd-8df0-48f3-b409-bfe56ebff37a",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ec4177e-fe9f-48e6-b4fc-ee00dc05b818",
+      "documentation": "Move a project to another place in your resource hierarchy, under a new resource parent. Returns an operation which can be used to track the process of the project move workflow. Upon success, the `Operation.response` field will be populated with the moved project. The caller must have `resourcemanager.projects.move` permission on the project, on the project's current and proposed new parent. If project has no current parent, or it currently does not have an associated organization resource, you will also need the `resourcemanager.projects.setIamPolicy` permission in the project. ",
+      "method": "post",
+      "endpoint": "v3/:name:move",
+      "responses": [
+        {
+          "uuid": "b1932d3d-5eca-4107-91ba-6b57f9256d92",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1738c293-c560-4f26-ac30-a2b0d024a116",
+      "documentation": "Restores the project identified by the specified `name` (for example, `projects/415104041262`). You can only use this method for a project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the project cannot be restored. The caller must have `resourcemanager.projects.undelete` permission for this project.",
+      "method": "post",
+      "endpoint": "v3/:name:undelete",
+      "responses": [
+        {
+          "uuid": "371710ec-af8e-4865-b1cf-fb6b0731db6c",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "495f63a0-2398-4571-9ab4-0013734d0286",
+      "documentation": "Lists TagHolds under a TagValue.",
+      "method": "get",
+      "endpoint": "v3/:parent/tagHolds",
+      "responses": [
+        {
+          "uuid": "b4f5f528-142f-4fc9-8de5-c56650f0eed6",
+          "body": "{\n  \"nextPageToken\": \"\",\n  \"tagHolds\": [\n    {\n      \"createTime\": \"\",\n      \"helpLink\": \"\",\n      \"holder\": \"\",\n      \"name\": \"\",\n      \"origin\": \"\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a467ad7f-c920-4a52-8f4d-56a80815c76f",
+      "documentation": "Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource and origin exists under the same TagValue.",
+      "method": "post",
+      "endpoint": "v3/:parent/tagHolds",
+      "responses": [
+        {
+          "uuid": "750e0017-ce86-4a55-801e-7375c6e5c93d",
+          "body": "{\n  \"done\": {{faker 'datatype.boolean'}},\n  \"error\": {\n    \"code\": {{faker 'datatype.number'}},\n    \"details\": [\n      {}\n    ],\n    \"message\": \"\"\n  },\n  \"metadata\": {},\n  \"name\": \"\",\n  \"response\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1616a75c-4760-48fb-b57d-9b6c3b8b7267",
+      "documentation": "Gets the access control policy for a TagValue. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have the `cloudresourcemanager.googleapis.com/tagValues.getIamPolicy` permission on the identified TagValue to get the access control policy.",
+      "method": "post",
+      "endpoint": "v3/:resource:getIamPolicy",
+      "responses": [
+        {
+          "uuid": "c65fb861-c461-4cb9-84e8-dbbd8761c3c4",
+          "body": "{\n  \"auditConfigs\": [\n    {\n      \"auditLogConfigs\": [\n        {\n          \"exemptedMembers\": [\n            \"\"\n          ],\n          \"logType\": \"{{oneOf (array 'LOG_TYPE_UNSPECIFIED' 'ADMIN_READ' 'DATA_WRITE' 'DATA_READ')}}\"\n        }\n      ],\n      \"service\": \"\"\n    }\n  ],\n  \"bindings\": [\n    {\n      \"condition\": {\n        \"description\": \"\",\n        \"expression\": \"\",\n        \"location\": \"\",\n        \"title\": \"\"\n      },\n      \"members\": [\n        \"\"\n      ],\n      \"role\": \"\"\n    }\n  ],\n  \"etag\": \"\",\n  \"version\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "239c03fd-7249-449a-82c1-08d701edeba7",
+      "documentation": "Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue.",
+      "method": "post",
+      "endpoint": "v3/:resource:setIamPolicy",
+      "responses": [
+        {
+          "uuid": "e21af51a-5854-44f5-a95d-8a171fab3d25",
+          "body": "{\n  \"auditConfigs\": [\n    {\n      \"auditLogConfigs\": [\n        {\n          \"exemptedMembers\": [\n            \"\"\n          ],\n          \"logType\": \"{{oneOf (array 'LOG_TYPE_UNSPECIFIED' 'ADMIN_READ' 'DATA_WRITE' 'DATA_READ')}}\"\n        }\n      ],\n      \"service\": \"\"\n    }\n  ],\n  \"bindings\": [\n    {\n      \"condition\": {\n        \"description\": \"\",\n        \"expression\": \"\",\n        \"location\": \"\",\n        \"title\": \"\"\n      },\n      \"members\": [\n        \"\"\n      ],\n      \"role\": \"\"\n    }\n  ],\n  \"etag\": \"\",\n  \"version\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "84003f23-2fc9-4dc3-819d-e3bf913bed7b",
+      "documentation": "Returns permissions that a caller has on the specified TagValue. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. There are no permissions required for making this API call.",
+      "method": "post",
+      "endpoint": "v3/:resource:testIamPermissions",
+      "responses": [
+        {
+          "uuid": "63f0ca20-154f-473b-b844-fb7ea9c9b9c6",
+          "body": "{\n  \"permissions\": [\n    \"\"\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

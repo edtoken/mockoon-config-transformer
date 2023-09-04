@@ -1,0 +1,134 @@
+{
+  "uuid": "cefaa560-18de-4d48-934f-0d91f6992595",
+  "lastMigration": 24,
+  "name": "City Context",
+  "endpointPrefix": "v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "04f06e8d-737f-491e-a026-9956645e69a1",
+      "documentation": "Query by coordinates (SRID 4326 - decimal degrees)",
+      "method": "get",
+      "endpoint": "@:lat,:lon",
+      "responses": [
+        {
+          "uuid": "da802530-029d-40e0-96eb-fc778d556e0a",
+          "body": "{\n  \"location\": {\n    \"lat\": {{faker 'datatype.float'}},\n    \"lon\": {{faker 'datatype.float'}},\n    \"withinLondonCCZ\": {{faker 'datatype.boolean'}}\n  },\n  \"lsoa\": {\n    \"crimes\": {},\n    \"name\": \"\",\n    \"population\": {\n      \"allUsualResidents\": {{faker 'datatype.number'}},\n      \"communalEstablishmentResidents\": {{faker 'datatype.number'}},\n      \"householdResidents\": {{faker 'datatype.number'}},\n      \"households\": {{faker 'datatype.number'}},\n      \"personsPerHectare\": {{faker 'datatype.number'}},\n      \"personsPerHousehold\": {{faker 'datatype.number'}}\n    }\n  },\n  \"parks\": [\n    {\n      \"areaSqm\": {{faker 'datatype.number'}},\n      \"centroid\": \"\",\n      \"distanceMeters\": {{faker 'datatype.number'}},\n      \"name\": \"\"\n    }\n  ],\n  \"schools\": [\n    {\n      \"distanceMeters\": {{faker 'datatype.number'}},\n      \"lastInpectionUrl\": \"\",\n      \"lastInspectionDate\": \"{{faker 'date.recent' 365}}\",\n      \"leadershipAndManagement\": {{faker 'datatype.number'}},\n      \"location\": \"\",\n      \"overallEffectiveness\": {{faker 'datatype.number'}},\n      \"phase\": \"\",\n      \"qualityOfTeaching\": {{faker 'datatype.number'}},\n      \"schoolName\": \"\",\n      \"typeOfEstablishment\": \"\",\n      \"urn\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "No response was specified",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "47c8ea0e-28e7-46b7-ada9-b02421bcc2ad",
+      "documentation": "Query by postcode",
+      "method": "get",
+      "endpoint": "postcodes/:postcode",
+      "responses": [
+        {
+          "uuid": "370508f8-8a6c-463d-a251-7fe879198de8",
+          "body": "{\n  \"location\": {\n    \"lat\": {{faker 'datatype.float'}},\n    \"lon\": {{faker 'datatype.float'}},\n    \"withinLondonCCZ\": {{faker 'datatype.boolean'}}\n  },\n  \"lsoa\": {\n    \"crimes\": {},\n    \"name\": \"\",\n    \"population\": {\n      \"allUsualResidents\": {{faker 'datatype.number'}},\n      \"communalEstablishmentResidents\": {{faker 'datatype.number'}},\n      \"householdResidents\": {{faker 'datatype.number'}},\n      \"households\": {{faker 'datatype.number'}},\n      \"personsPerHectare\": {{faker 'datatype.number'}},\n      \"personsPerHousehold\": {{faker 'datatype.number'}}\n    }\n  },\n  \"parks\": [\n    {\n      \"areaSqm\": {{faker 'datatype.number'}},\n      \"centroid\": \"\",\n      \"distanceMeters\": {{faker 'datatype.number'}},\n      \"name\": \"\"\n    }\n  ],\n  \"schools\": [\n    {\n      \"distanceMeters\": {{faker 'datatype.number'}},\n      \"lastInpectionUrl\": \"\",\n      \"lastInspectionDate\": \"{{faker 'date.recent' 365}}\",\n      \"leadershipAndManagement\": {{faker 'datatype.number'}},\n      \"location\": \"\",\n      \"overallEffectiveness\": {{faker 'datatype.number'}},\n      \"phase\": \"\",\n      \"qualityOfTeaching\": {{faker 'datatype.number'}},\n      \"schoolName\": \"\",\n      \"typeOfEstablishment\": \"\",\n      \"urn\": {{faker 'datatype.number'}}\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "No response was specified",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5195ac66-16a0-4bc8-98de-0ad1d6c055c0",
+      "documentation": "Get usage in current month",
+      "method": "get",
+      "endpoint": "usage",
+      "responses": [
+        {
+          "uuid": "babde980-0c87-463a-b46b-6c5721a22b5a",
+          "body": "{\n  \"allowance\": {{faker 'datatype.number'}},\n  \"period\": \"\",\n  \"periodEnd\": \"{{faker 'date.recent' 365}}\",\n  \"periodStart\": \"{{faker 'date.recent' 365}}\",\n  \"plan\": \"\",\n  \"usage\": {{faker 'datatype.number'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "No response was specified",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
