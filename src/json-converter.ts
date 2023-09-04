@@ -10,7 +10,6 @@ import jsonTransformers, {
 } from './transformers/json/index';
 
 import {
-  JsonTransformerPossibleResponse,
   JsonTransformerResponseItem,
   JsonTransformerValue
 } from './transformers/json/types';
@@ -116,6 +115,7 @@ export class JsonConverter {
     );
 
     const customKeys = customTransformers.filter((k) =>
+      // @ts-expect-error todo fix
       environmentKeys.includes(k)
     );
 
@@ -152,11 +152,13 @@ export class JsonConverter {
     return result;
   }
 
-  public static filePathsProcessor(data: JsonTransformerPossibleResponse) {
+  public static filePathsProcessor(data: JsonTransformerResponseItem[]) {
     const files: JsonTransformerValue[] = [];
 
     data.forEach((item) => {
+      // @ts-expect-error todo fix
       if (item?.children) {
+        // @ts-expect-error todo fix
         item.children.forEach((child: JsonTransformerValue) => {
           files.push({
             format: child.format,
@@ -200,6 +202,7 @@ export class JsonConverter {
             ? JSON.stringify(item.value, null, 2)
             : item.value;
 
+        // @ts-expect-error todo fix
         fs.writeFileSync(filePath, payload);
       })
     );

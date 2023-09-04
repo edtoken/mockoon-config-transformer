@@ -1,18 +1,31 @@
-name: Unit Tests
+name: Tests
+
+env:
+  RUN_ALL_SAMPLES_TEST: true
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
-  Jest:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Run Tests
         run: |
           yarn --frozen-lockfile
+          yarn build
+          yarn lint
+  jest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Tests
+        run: |
+          yarn --frozen-lockfile
+          yarn build
           yarn test

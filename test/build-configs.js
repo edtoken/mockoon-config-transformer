@@ -20,7 +20,8 @@ const ciResultsBaseData = fs.existsSync(tmpSamplesCIResultsFile)
 
 const ciResultsData = [];
 
-const maxTestItems = 100;
+const maxTestItems = process.env.RUN_ALL_SAMPLES_TEST ? samplesList.length : 10;
+
 const override = false;
 const verbose = false;
 
@@ -49,7 +50,7 @@ const total = samples.length;
 let counter = samples.length;
 
 promiseQ(
-  10,
+  20,
   samples.map(
     ({
       sampleName,
@@ -126,13 +127,10 @@ promiseQ(
             console.log('bundleJSON', bundleJSON);
           }
 
-          console.log(`Completed ${total - counter} of ${total}`, sampleName);
+          console.log(`Completed`, sampleName);
         } catch (err) {
           counter -= 1;
-          console.log(
-            `Processed [FAIL] ${total - counter} of ${total}`,
-            sampleName
-          );
+          console.log(`Processed [FAIL]`, sampleName);
         }
       };
     }
