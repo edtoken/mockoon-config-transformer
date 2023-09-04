@@ -1,0 +1,70 @@
+{
+  "name": "mockoon-config-transformer",
+  "description": "Tool for converting the Mockoon configuration files into a git-friendly structure",
+  "version": "0.0.1-beta.40",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Eduard Titov",
+    "email": "editied@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/edtoken/mockoon-config-transformer",
+  "homepage": "https://github.com/edtoken/mockoon-config-transformer",
+  "bugs": {
+    "url": "https://github.com/edtoken/mockoon-config-transformer/issues"
+  },
+  "exports": "./src/cli/index.js",
+  "bin": {
+    "mockoon-config-transformer": "./dist/src/bin.js"
+  },
+  "scripts": {
+    "cli:help": "node dist/src/cli/index.js --help",
+    "build": "tsc",
+    "build:examples": "node scripts/build-examples.js",
+    "build:test-environments": "node scripts/build-test-environments.js",
+    "start": "tsc --watch",
+    "fix": "prettier ./src ./test ./scripts ./*.js ./*.json ./**/*.ts ./**/*.js --write",
+    "lint": "tsc --noEmit",
+    "test": "run-s test:*",
+    "test:all": "NODE_OPTIONS=--experimental-vm-modules jest ./test --verbose --silent false",
+    "test:examples": "NODE_OPTIONS=--experimental-vm-modules jest ./test/specs/examples.spec.ts --verbose --silent false",
+    "pretest": "run-s build fetch:api-list fetch:examples fetch:test-environments build:examples build:test-environments",
+    "fetch:api-list": "node scripts/fetch-api-list.js",
+    "fetch:test-environments": "node scripts/fetch-test-environments.js",
+    "fetch:examples": "node scripts/fetch-examples.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "trailingComma": "none",
+    "plugins": [
+      "prettier-plugin-organize-imports"
+    ]
+  },
+  "dependencies": {
+    "@mockoon/commons": "4.1.0",
+    "commander": "11.0.0",
+    "mdast-util-to-markdown": "2.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.4",
+    "@types/node": "20.5.7",
+    "@types/uuid": "9.0.3",
+    "dotenv": "16.3.1",
+    "jest": "29.6.4",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.0.0",
+    "prettier-plugin-organize-imports": "3.2.3",
+    "ts-jest": "29.1.1",
+    "tslib": "2.6.2",
+    "typescript": "5.2.2",
+    "uuid": "9.0.0"
+  },
+  "engines": {
+    "node": ">=16.10.0"
+  }
+}

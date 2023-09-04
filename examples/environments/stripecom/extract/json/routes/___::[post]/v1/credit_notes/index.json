@@ -1,0 +1,9 @@
+{
+  "documentation": "<p>Issue a credit note to adjust the amount of a finalized invoice. For a <code>status=open</code> invoice, a credit note reduces\nits <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note does not affect its <code>amount_due</code>. Instead, it can result\nin any combination of the following:</p>\n\n<ul>\n<li>Refund: create a new refund (using <code>refund_amount</code>) or link an existing refund (using <code>refund</code>).</li>\n<li>Customer balance credit: credit the customer’s balance (using <code>credit_amount</code>) which will be automatically applied to their next invoice when it’s finalized.</li>\n<li>Outside of Stripe credit: record the amount that is or will be credited outside of Stripe (using <code>out_of_band_amount</code>).</li>\n</ul>\n\n<p>For post-payment credit notes the sum of the refund, credit and outside of Stripe amounts must equal the credit note total.</p>\n\n<p>You may issue multiple credit notes for an invoice. Each credit note will increment the invoice’s <code>pre_payment_credit_notes_amount</code>\nor <code>post_payment_credit_notes_amount</code> depending on its <code>status</code> at the time of credit note creation.</p>",
+  "method": "post",
+  "endpoint": "v1/credit_notes",
+  "uuid": "451cf404-df8e-467f-94d9-e83a276e8083",
+  "enabled": true,
+  "randomResponse": false,
+  "sequentialResponse": false
+}

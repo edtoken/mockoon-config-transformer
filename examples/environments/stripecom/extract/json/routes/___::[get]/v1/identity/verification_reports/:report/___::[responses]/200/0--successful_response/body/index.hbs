@@ -1,0 +1,82 @@
+{
+  "created": {{faker 'datatype.number'}},
+  "document": {
+    "address": {
+      "city": "",
+      "country": "",
+      "line1": "",
+      "line2": "",
+      "postal_code": "",
+      "state": ""
+    },
+    "dob": {
+      "day": {{faker 'datatype.number'}},
+      "month": {{faker 'datatype.number'}},
+      "year": {{faker 'datatype.number'}}
+    },
+    "error": {
+      "code": "{{oneOf (array 'document_expired' 'document_type_not_supported' 'document_unverified_other')}}",
+      "reason": ""
+    },
+    "expiration_date": {
+      "day": {{faker 'datatype.number'}},
+      "month": {{faker 'datatype.number'}},
+      "year": {{faker 'datatype.number'}}
+    },
+    "files": [
+      ""
+    ],
+    "first_name": "",
+    "issued_date": {
+      "day": {{faker 'datatype.number'}},
+      "month": {{faker 'datatype.number'}},
+      "year": {{faker 'datatype.number'}}
+    },
+    "issuing_country": "",
+    "last_name": "",
+    "number": "",
+    "status": "{{oneOf (array 'unverified' 'verified')}}",
+    "type": "{{oneOf (array 'driving_license' 'id_card' 'passport')}}"
+  },
+  "id": "",
+  "id_number": {
+    "dob": {
+      "day": {{faker 'datatype.number'}},
+      "month": {{faker 'datatype.number'}},
+      "year": {{faker 'datatype.number'}}
+    },
+    "error": {
+      "code": "{{oneOf (array 'id_number_insufficient_document_data' 'id_number_mismatch' 'id_number_unverified_other')}}",
+      "reason": ""
+    },
+    "first_name": "",
+    "id_number": "",
+    "id_number_type": "{{oneOf (array 'br_cpf' 'sg_nric' 'us_ssn')}}",
+    "last_name": "",
+    "status": "{{oneOf (array 'unverified' 'verified')}}"
+  },
+  "livemode": {{faker 'datatype.boolean'}},
+  "object": "{{oneOf (array 'identity.verification_report')}}",
+  "options": {
+    "document": {
+      "allowed_types": [
+        "{{oneOf (array 'driving_license' 'id_card' 'passport')}}"
+      ],
+      "require_id_number": {{faker 'datatype.boolean'}},
+      "require_live_capture": {{faker 'datatype.boolean'}},
+      "require_matching_selfie": {{faker 'datatype.boolean'}}
+    },
+    "id_number": {}
+  },
+  "selfie": {
+    "document": "",
+    "error": {
+      "code": "{{oneOf (array 'selfie_document_missing_photo' 'selfie_face_mismatch' 'selfie_manipulated' 'selfie_unverified_other')}}",
+      "reason": ""
+    },
+    "selfie": "",
+    "status": "{{oneOf (array 'unverified' 'verified')}}"
+  },
+  "type": "{{oneOf (array 'document' 'id_number')}}",
+  "verification_session": ""
+}
