@@ -1,12 +1,14 @@
 # mockoon-config-transformer
 
-[![npm version](https://badge.fury.io/js/mockoon-config-transformer.svg)](https://badge.fury.io/js/mockoon-config-transformer) ![NPM Downloads](https://img.shields.io/npm/dw/mockoon-config-transformer) ![NPM License](https://img.shields.io/npm/l/mockoon-config-transformer)  
+[![npm version](https://badge.fury.io/js/mockoon-config-transformer.svg)](https://www.npmjs.com/package/mockoon-config-transformer)
+[![NPM Downloads](https://img.shields.io/npm/dw/mockoon-config-transformer)](https://www.npmjs.com/package/mockoon-config-transformer)
+[![NPM License](https://img.shields.io/npm/l/mockoon-config-transformer)](https://github.com/edtoken/mockoon-config-transformer/blob/main/LICENSE.md)
 
 A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files in a git-friendly files tree with 100% backward compatibility.
 
-## Features
 ![lifecycle](./public/assets/lifecycle.jpg)
 
+## Features
 - Extracts the original big Mockoon environment file into a user-friendly (git-friendly) file tree.
 - Generates the markdown documentation files based on documentation fields of the Mockoon environment file.
 - Bundle extracted files tree to the environment file that equals the original file.
@@ -16,6 +18,20 @@ See [examples](./examples):
 - Extracted Mockoon stripe config [json tree](./examples/environments/stripecom/extract/json)
 - Extracted automatically generated [documentation.md](./examples/environments/stripecom/extract/json/documentation.md)
 - Bundled json tree [from-json.json](./examples/environments/stripecom/bundle/from-json.json)
+
+### Extract features
+- Correctly processed any URI with any special chars
+- Correctly processed any duplicated routes/responses/data edge cases of the Mockoon configuration
+- Compatibility with Mockoon configuration structure updates (unexpected properties will be processed)
+- Correctly processed edge cases with OS file issues (file/directory name length)
+- Extracted routes directory tree related to the route-endpoint path
+- Response body extracted to the multiline file
+- Data bucket value extracted to the multiline file
+
+### Bundle features
+- The bundled environment is not based on escaped directory names.
+- Correctly restores array ordering (routes, responses, etc)
+- Correctly restores unknown properties
 
 ## Motivation
 Actually, Mockoon stores each environment file in one JSON file.

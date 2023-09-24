@@ -6,7 +6,7 @@ import {
   createDoc,
   createSections,
   docSectionItem,
-  head,
+  heading,
   lineBreak
 } from '../../documentation.js';
 import { JsonTransformerValue } from '../types.js';
@@ -72,7 +72,7 @@ const processRoutes = (routesSource: Route[]) => {
   });
 
   const routesDoc = createDoc([
-    ...head('Routes'),
+    ...heading('Routes'),
     ...lineBreak(1),
     ...createSections(routesDocSections)
   ]);

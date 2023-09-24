@@ -11,11 +11,12 @@ import {
   mainTransformer
 } from './transformers/extract/json/index.js';
 
+import { Nodes } from 'mdast';
 import { escapePath } from './common/utils.js';
 import commonJSONBundler from './transformers/bundle/json/index.js';
 import {
   createDoc,
-  head,
+  heading,
   lineBreak,
   relatedItems
 } from './transformers/extract/documentation.js';
@@ -85,7 +86,7 @@ export class JsonConverter {
       ...mainTransformer(mainEnv),
       mainIncludes,
       createDoc([
-        ...head(environment.name),
+        ...heading(environment.name),
         ...lineBreak(3),
         ...relatedItems(relatedDocs)
       ]),
@@ -149,8 +150,7 @@ export class JsonConverter {
             return JSON.stringify(value, null, 2);
           }
           if (format === 'md') {
-            // @ts-expect-error todo fix
-            return toMarkdown(value);
+            return toMarkdown(value as Nodes);
           }
           return String(value);
         };

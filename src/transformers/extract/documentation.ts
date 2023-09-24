@@ -1,6 +1,10 @@
-import { JsonTransformerValue } from './json/types.js';
+import { Blockquote, Heading, Link, Node, Nodes } from 'mdast';
 
-export const createDoc = (children: any[]): JsonTransformerValue => {
+type supportedHeadingDepth = 1 | 2 | 3 | 4 | 5 | 6;
+
+export const createDoc = (
+  children: any[]
+): { key: string; format: 'md'; value: Nodes } => {
   return {
     key: 'documentation',
     format: 'md',
@@ -11,7 +15,10 @@ export const createDoc = (children: any[]): JsonTransformerValue => {
   };
 };
 
-export const head = (title: string, depth?: number) => [
+export const heading = (
+  title: string,
+  depth?: supportedHeadingDepth
+): Heading[] => [
   {
     type: 'heading',
     depth: depth || 1,
@@ -19,7 +26,7 @@ export const head = (title: string, depth?: number) => [
   }
 ];
 
-export const lineBreak = (count?: number) =>
+export const lineBreak = (count?: number): Text[] =>
   new Array(count || 1).fill({ type: 'text', value: '\r\n' });
 
 export type docSectionItem = {
@@ -30,7 +37,7 @@ export type docSectionItem = {
   sections?: docSectionItem[];
 };
 
-const sectionDetails = (section: docSectionItem) => {
+const sectionDetails = (section: docSectionItem): Array<Text | Blockquote> => {
   if (!section.details) {
     return [];
   }
@@ -48,13 +55,16 @@ const sectionDetails = (section: docSectionItem) => {
   ];
 };
 
-const sectionCode = (section: docSectionItem, headDepth: number) => {
+const sectionCode = (
+  section: docSectionItem,
+  headDepth: supportedHeadingDepth
+) => {
   if (!section.code) {
     return [];
   }
   return [
     ...lineBreak(2),
-    ...head('Rules', headDepth + 1),
+    ...heading('Rules', (headDepth + 1) as supportedHeadingDepth),
     ...lineBreak(1),
     {
       type: 'code',
@@ -63,22 +73,26 @@ const sectionCode = (section: docSectionItem, headDepth: number) => {
   ];
 };
 
-const sectionLinks = (section: docSectionItem) => {
+const sectionLinks = (section: docSectionItem): Array<Text | Link> => {
   if (!section.links || !section.links.length) {
     return [];
   }
   return [
+    // @ts-expect-error todo fix
     ...section?.links.reduce(
-      (memo, params) => [
-        ...memo,
-        ...lineBreak(1),
-        {
-          type: 'link',
-          url: params.path,
-          title: params?.label ?? 'See',
-          children: [{ type: 'text', value: params?.label ?? 'See' }]
-        }
-      ],
+      // @ts-expect-error todo fix
+      (memo, params) => {
+        return [
+          ...memo,
+          ...lineBreak(1),
+          {
+            type: 'link',
+            url: params.path,
+            title: params?.label ?? 'See',
+            children: [{ type: 'text', value: params?.label ?? 'See' }]
+          }
+        ];
+      },
       [...lineBreak(1)]
     )
   ];
@@ -86,32 +100,31 @@ const sectionLinks = (section: docSectionItem) => {
 
 export const createSections = (
   sections: docSectionItem[],
-  headDepth?: number
-): [] => {
-  const resolvedHeadDepth = headDepth || 2;
+  headDepth?: supportedHeadingDepth
+): Array<Node> => {
+  const resolvedHeadDepth: supportedHeadingDepth = headDepth || 2;
   const lineBreaks = resolvedHeadDepth === 2 ? 3 : 2;
 
-  // @ts-expect-error todo
+  // @ts-expect-error todo fix
   return sections.reduce(
-    // @ts-expect-error todo
-    (memo, section) => [
-      ...memo,
-      ...lineBreak(lineBreaks),
-      {
-        type: 'heading',
-        depth: resolvedHeadDepth,
-        children: [{ type: 'text', value: `${section.title}` }]
-      },
-      ...sectionDetails(section),
-      ...sectionCode(section, resolvedHeadDepth),
-      ...sectionLinks(section),
-      ...(section.sections
-        ? [
-            ...createSections(section.sections, resolvedHeadDepth + 1),
-            ...lineBreak(1)
-          ]
-        : [])
-    ],
+    // @ts-expect-error todo fix
+    (memo, section) => {
+      return [
+        ...memo,
+        ...lineBreak(lineBreaks),
+        ...heading(section.title, resolvedHeadDepth),
+        ...sectionDetails(section),
+        ...sectionCode(section, resolvedHeadDepth),
+        ...sectionLinks(section),
+        ...(section.sections
+          ? [
+              // @ts-expect-error todo fix
+              ...createSections(section.sections, resolvedHeadDepth + 1),
+              ...lineBreak(1)
+            ]
+          : [])
+      ];
+    },
     []
   );
 };

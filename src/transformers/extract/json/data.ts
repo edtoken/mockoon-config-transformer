@@ -6,7 +6,7 @@ import {
   createDoc,
   createSections,
   docSectionItem,
-  head,
+  heading,
   lineBreak
 } from '../documentation.js';
 import { JsonTransformerValue } from './types.js';
@@ -78,7 +78,7 @@ const data = (dataSource: EnvironmentDataKey): JsonTransformerValue[] => {
     },
     ...children,
     createDoc([
-      ...head('Data'),
+      ...heading('Data'),
       ...lineBreak(1),
       ...createSections(sectionsDoc)
     ])

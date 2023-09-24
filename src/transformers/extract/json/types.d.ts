@@ -1,3 +1,5 @@
+import { Nodes } from 'mdast';
+
 export type SupportedOutputFormat = 'hbs' | 'json' | 'md';
 export type SupportedOutputValue =
   | string
@@ -6,7 +8,8 @@ export type SupportedOutputValue =
   | object
   | null
   | Array<string>
-  | undefined;
+  | undefined
+  | Nodes;
 
 export type JsonTransformerValue = {
   format?: SupportedOutputFormat;
