@@ -6,6 +6,7 @@
 
 A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files in a git-friendly files tree with 100% backward compatibility.
 
+
 ![lifecycle](./public/assets/lifecycle.jpg)
 
 ## Features
