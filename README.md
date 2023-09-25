@@ -11,8 +11,8 @@ A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files i
 
 ## Features
 - Extracts the original big Mockoon environment file into a user-friendly (git-friendly) file tree.
-- Generates the markdown documentation files based on documentation fields of the Mockoon environment file.
-- Bundle extracted files tree to the environment file that equals the original file.
+- Generates markdown documentation files based on the documentation fields within the Mockoon environment file.
+- Bundle the extracted file tree into an environment file that matches the original file.
 
 See [examples](./examples):
 - Original Mockoon stripe config [environment.json](./examples/environments/stripecom/environment.json)
@@ -21,13 +21,13 @@ See [examples](./examples):
 - Bundled json tree [from-json.json](./examples/environments/stripecom/bundle/from-json.json)
 
 ### Extract features
-- Correctly processed any URI with any special chars
-- Correctly processed any duplicated routes/responses/data edge cases of the Mockoon configuration
-- Compatibility with Mockoon configuration structure updates (unexpected properties will be processed)
-- Correctly processed edge cases with OS file issues (file/directory name length)
-- Extracted routes directory tree related to the route-endpoint path
-- Response body extracted to the multiline file
-- Data bucket value extracted to the multiline file
+- Successfully processed any URI with special characters.
+- Handled duplicated routes, responses, and data cases within the Mockoon configuration.
+- Ensured compatibility with updates to the Mockoon configuration structure, processing unexpected properties when encountered.
+- Handled edge cases related to file issues on the operating system, including file and directory name length.
+- Extracted the directory tree related to route-endpoint paths.
+- Extracted the response body into a multiline file.
+- Extracted the data bucket values into a multiline file.
 
 ### Bundle features
 - The bundled environment is not based on escaped directory names.
@@ -35,16 +35,13 @@ See [examples](./examples):
 - Correctly restores unknown properties
 
 ## Motivation
-Actually, Mockoon stores each environment file in one JSON file.
-This file has a big and complex structure, and finally,
-this makes it impossible to resolve control-version conflicts when a few developers work in the same environment same time.
+Mockoon currently stores each environment in a single JSON file. This file has a complex and extensive structure, making it challenging to resolve version control conflicts when multiple developers are working in the same environment simultaneously.
 
-Developers need something right now, to be able to store environment files in control version systems and have clean review processes of the environment updates.
+Developers urgently need a solution to store environment files in version control systems and facilitate clean review processes for environment updates.
 
-At some time Mockoon will have git friendly environment file structure, and because of that the main principle is:
+At some point, Mockoon will adopt a more Git-friendly environment file structure. Therefore, our main principle is as follows:
 
-This tool works with the Mockoon environment file does not add any extra values, and fully restores the original Mockoon config to allow you to stop using this tool at any time.
-
+This tool interacts with the Mockoon environment file without adding any additional values, ensuring a full restoration of the original Mockoon configuration. This allows you to discontinue using this tool at any time."
 
 ## How is the CLI tool tested?
 Mockoon has 2000+  [samples](https://Mockoon.com/mock-samples/category/all/) of the APIs, which is hosted in the [mock-samples](https://github.com/Mockoon/mock-samples) repo.
