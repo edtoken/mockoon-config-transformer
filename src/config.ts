@@ -1,5 +1,5 @@
 export const name = 'mockoon-config-transformer';
-export const version = '0.0.6';
+export const version = '1.0.0';
 
 export const SUPPORTED_MIGRATION = 28;
 export const SUPPORTED_COMMANDS = {
