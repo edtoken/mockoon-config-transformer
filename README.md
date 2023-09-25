@@ -1,6 +1,6 @@
 # mockoon-config-transformer
 
-[![npm version](https://badge.fury.io/js/mockoon-config-transformer.svg)](https://www.npmjs.com/package/mockoon-config-transformer)
+[![npm](https://img.shields.io/npm/v/mockoon-config-transformer)](https://www.npmjs.com/package/mockoon-config-transformer)
 [![NPM Downloads](https://img.shields.io/npm/dw/mockoon-config-transformer)](https://www.npmjs.com/package/mockoon-config-transformer)
 [![NPM License](https://img.shields.io/npm/l/mockoon-config-transformer)](https://github.com/edtoken/mockoon-config-transformer/blob/main/LICENSE.md)
 
