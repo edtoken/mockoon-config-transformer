@@ -1,7 +1,7 @@
 {
   "name": "mockoon-config-transformer",
   "description": "A CLI tool to bundle/extract Mockoon environment files in a git-friendly files tree with 100% backward compatibility",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.0",
   "type": "module",
   "files": [
     "dist"
@@ -32,6 +32,9 @@
   "scripts": {
     "cli:version": "node dist/src/cli/index.js --version",
     "cli:help": "node dist/src/cli/index.js --help",
+    "cli:help:extract": "node dist/src/cli/index.js extract --help",
+    "cli:edge-cases:extract": "node dist/src/cli/index.js extract -i examples/edge-cases/1/environment.json -o examples/edge-cases/1/extract/json -f --verbose",
+    "cli:edge-cases:bundle": "node dist/src/cli/index.js bundle -i examples/edge-cases/1/extract/json/index.json -o examples/edge-cases/1/bundle/from-json.json -f --verbose",
     "build": "tsc",
     "build:examples": "node scripts/build-examples.js",
     "build:test-environments": "node scripts/build-test-environments.js",
@@ -40,11 +43,10 @@
     "lint": "tsc --noEmit",
     "test": "run-s test:*",
     "test:all": "NODE_OPTIONS=--experimental-vm-modules jest ./test --verbose --silent false",
-    "test:examples": "NODE_OPTIONS=--experimental-vm-modules jest ./test/specs/examples.spec.ts --verbose --silent false",
     "pretest": "run-s build fetch:api-list fetch:examples fetch:test-environments build:examples build:test-environments",
     "fetch:api-list": "node scripts/fetch-api-list.js",
     "fetch:test-environments": "node scripts/fetch-test-environments.js",
-    "fetch:examples": "node scripts/fetch-examples.js"
+    "fetch:examples": "node scripts/fetch-mockoon-mock-samples.js"
   },
   "prettier": {
     "singleQuote": true,

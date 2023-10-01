@@ -1,7 +1,7 @@
 import { Environment } from '@mockoon/commons';
 import { DataBucket } from '@mockoon/commons/dist/cjs/models/environment.model.js';
-import { escapePath } from '../../../common/utils.js';
-import { prepareBaseKeys } from '../../utils.js';
+import { escapePath, prepareBaseKeys } from '../../../common/utils.js';
+import { TransformerSettings } from '../../../typse.js';
 import {
   createDoc,
   createSections,
@@ -13,7 +13,10 @@ import { JsonTransformerValue } from './types.js';
 
 type EnvironmentDataKey = Pick<Environment, 'data'>['data'];
 
-const data = (dataSource: EnvironmentDataKey): JsonTransformerValue[] => {
+const data = (
+  dataSource: EnvironmentDataKey,
+  settings: TransformerSettings
+): JsonTransformerValue[] => {
   const children: Array<JsonTransformerValue> = [];
   const includes: string[] = [];
   const sectionsDoc: docSectionItem[] = [];
@@ -77,11 +80,15 @@ const data = (dataSource: EnvironmentDataKey): JsonTransformerValue[] => {
       value: includes
     },
     ...children,
-    createDoc([
-      ...heading('Data'),
-      ...lineBreak(1),
-      ...createSections(sectionsDoc)
-    ])
+    ...(settings.generateDocs
+      ? [
+          createDoc([
+            ...heading('Data'),
+            ...lineBreak(1),
+            ...createSections(sectionsDoc)
+          ])
+        ]
+      : [])
   ];
 };
 

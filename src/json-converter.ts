@@ -1,8 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
-
 import { Environment } from '@mockoon/commons';
+import * as fs from 'fs';
 import { toMarkdown } from 'mdast-util-to-markdown';
+import * as path from 'path';
 import { SUPPORTED_OUTPUT_TYPES } from './config.js';
 
 import {
@@ -26,7 +25,7 @@ import {
   SupportedOutputFormat,
   SupportedOutputValue
 } from './transformers/extract/json/types.js';
-import { EnvironmentKeysList } from './typse.js';
+import { EnvironmentKeysList, TransformerSettings } from './typse.js';
 
 export class JsonConverter {
   constructor() {}
@@ -38,7 +37,8 @@ export class JsonConverter {
   }
 
   public static convertTo(
-    environment: Environment
+    environment: Environment,
+    settings: TransformerSettings
   ): Array<JsonTransformerValue | JsonTransformerNode> {
     const envKeys = Object.keys(environment) as EnvironmentKeysList;
 
@@ -70,36 +70,47 @@ export class JsonConverter {
       )
     };
 
-    const docSections = ['data', 'routes'];
-    const relatedDocs = Object.keys(mainIncludes.value)
-      .filter((name) => docSections.includes(name))
-      .map((label) => ({
-        label,
-        // @ts-expect-error todo
-        link: mainIncludes.value[label].replace(
-          '/index.json',
-          '/documentation.md'
-        )
-      }));
+    const genDocs = () => {
+      if (!settings.generateDocs) {
+        return [];
+      }
+      const docSections = ['data', 'routes'];
+
+      const relatedDocs = Object.keys(mainIncludes.value)
+        .filter((name) => docSections.includes(name))
+        .map((label) => ({
+          label,
+          // @ts-expect-error todo
+          link: mainIncludes.value[label].replace(
+            '/index.json',
+            '/documentation.md'
+          )
+        }));
+
+      return [
+        createDoc([
+          ...heading(environment.name),
+          ...lineBreak(3),
+          ...relatedItems(relatedDocs)
+        ])
+      ];
+    };
 
     return [
-      ...mainTransformer(mainEnv),
+      ...mainTransformer(mainEnv, settings),
       mainIncludes,
-      createDoc([
-        ...heading(environment.name),
-        ...lineBreak(3),
-        ...relatedItems(relatedDocs)
-      ]),
+      ...genDocs(),
       ...customKeys.map((key) => ({
         key,
         // @ts-expect-error false positive
-        children: customTransformers[key](environment[key])
+        children: customTransformers[key](environment[key], settings)
       }))
     ];
   }
 
   public static filePathsProcessor(
-    data: Array<JsonTransformerValue | JsonTransformerNode>
+    data: Array<JsonTransformerValue | JsonTransformerNode>,
+    settings: { verbose: boolean }
   ): JsonTransformerValue[] {
     const files: JsonTransformerValue[] = [];
 
@@ -120,8 +131,12 @@ export class JsonConverter {
   }
 
   public static async filesCreateProcessor(
-    { isForce, outputPath }: { isForce: boolean; outputPath: string },
-    data: JsonTransformerValue[]
+    data: JsonTransformerValue[],
+    {
+      verbose,
+      isForce,
+      outputPath
+    }: { verbose: boolean; isForce: boolean; outputPath: string }
   ) {
     await Promise.all(
       data.map(async (item) => {

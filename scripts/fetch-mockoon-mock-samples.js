@@ -10,7 +10,7 @@ const ignore = fs.existsSync(ignoreFilePath)
   : [];
 
 const exampleEnvironments = JSON.parse(
-  await fsP.readFile('./examples/environments.json', 'utf8')
+  await fsP.readFile('./examples/mockoon-mock-samples.json', 'utf8')
 );
 
 // fetch examples
@@ -21,10 +21,10 @@ processList(3, exampleEnvironments, ignore).then((resp) => {
   );
   resp.filter(Boolean).forEach((item) => {
     const exampleDirPath = path.normalize(
-      `./examples/environments/${item.slug}`
+      `./examples/mockoon-mock-samples/${item.slug}`
     );
     const exampleFilePath = path.normalize(
-      `./examples/environments/${item.slug}/environment.json`
+      `./examples/mockoon-mock-samples/${item.slug}/environment.json`
     );
     fs.rmSync(exampleDirPath, { recursive: true, force: true });
     fs.mkdirSync(exampleDirPath, { recursive: true, force: true });

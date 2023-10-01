@@ -1,15 +1,13 @@
 import * as fs from 'fs';
-
 import { name, SUPPORTED_MIGRATION } from '../config.js';
-import CONVERTERS from '../converters.js';
+import { JsonConverter } from '../json-converter.js';
 import { cliArgOptions, cliResolver } from './utils.js';
 
 const bundle = async (options: cliArgOptions) => {
   const rootPath = process.cwd();
   const params = cliResolver(rootPath, false, options);
 
-  const converter = CONVERTERS[params.type];
-  const bundled = await converter.convertFrom(params.inputPath);
+  const bundled = await JsonConverter.convertFrom(params.inputPath);
 
   if (!bundled) {
     throw new Error(`Failed to bundle ${params.inputPath}`);

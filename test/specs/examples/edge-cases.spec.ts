@@ -1,24 +1,24 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
+import { pathJoin } from '../../test-utils';
 
-const examplesBasePath = './examples/environments';
 const edgeCasesBasePath = './examples/edge-cases';
 const tmpBasePath = './examples/.tmp';
 
 const allExamples = [
   ...fs
-    .readdirSync(examplesBasePath)
-    .filter((exampleName) => !exampleName.includes('.json'))
-    .map((name) => ({ name, dir: examplesBasePath })),
-  ...fs
     .readdirSync(edgeCasesBasePath)
-    .filter((exampleName) => !exampleName.includes('.json'))
+    .filter((name) =>
+      fs.statSync(pathJoin(edgeCasesBasePath, name)).isDirectory()
+    )
     .map((name) => ({ name, dir: edgeCasesBasePath })),
   ...(!fs.existsSync(tmpBasePath)
     ? []
     : fs
         .readdirSync(tmpBasePath)
-        .filter((exampleName) => !exampleName.includes('.json'))
+        .filter((name) =>
+          fs.statSync(pathJoin(tmpBasePath, name)).isDirectory()
+        )
         .map((name) => ({ name, dir: tmpBasePath })))
 ];
 

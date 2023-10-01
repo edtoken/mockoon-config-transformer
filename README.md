@@ -68,6 +68,8 @@ Options:
   -f, --force                          Force override directories and files if exists
   -i, --input  <relative-path or url>  Input path or URL
   -o, --output  <relative-path>        Output file or dir path
+      --verbose                        Show progress logs
+  -d, --doc                            Generate Markdown documentation (extract only, default=false)
   -h, --help                           display help for command
 
 Commands:
@@ -77,6 +79,13 @@ Commands:
 ```
 
 ## Usage
+
+### Help
+``` 
+yarn mockoon-config-transformer --help
+yarn mockoon-config-transformer bundle --help
+yarn mockoon-config-transformer extract --help
+```
 
 ### Extract
 > Extracts the original Mockoon environment file into user-friendly file tree. 
@@ -122,3 +131,8 @@ When the `index.json` data is object then `includes` is key:value  extend object
 
 When the `index.json` data is an array, then `includes` is a ordered file paths of where the array items stored is.
 
+
+## Use cases
+
+### Use with CI
+![usage](./public/assets/usage.png)

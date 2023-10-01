@@ -1,12 +1,16 @@
 import { Environment } from '@mockoon/commons';
+import { TransformerSettings } from '../../../../typse.js';
 import { JsonTransformerValue } from '../types.js';
 import processRoutes from './routes.js';
 
 type EnvironmentRoutesKey = Pick<Environment, 'routes'>['routes'];
 
-const routes = (routesSource: EnvironmentRoutesKey): JsonTransformerValue[] => {
+const routes = (
+  routesSource: EnvironmentRoutesKey,
+  settings: TransformerSettings
+): JsonTransformerValue[] => {
   const includes: string[] = [];
-  const { routes, common } = processRoutes(routesSource);
+  const { routes, common } = processRoutes(routesSource, settings);
 
   includes.push(...routes.map((route) => route.key + '.json'));
 
