@@ -11,7 +11,13 @@ See [CHANGELOG.md](./CHANGELOG.md)
 
 ---
 
+## Lifecycle
+
 ![lifecycle](./public/assets/lifecycle.png)
+
+## Use with CI
+
+![usage](./public/assets/usage.jpg)
 
 ## Features
 - Extracts the original big Mockoon environment file into a user-friendly (git-friendly) file tree.
@@ -142,9 +148,3 @@ Each directory could have optional `documentation.md` file.
 When the `index.json` data is object then `includes` is key:value  extend object, where is the key is extra property of the index object and the value is a file path where the value stored is.
 
 When the `index.json` data is an array, then `includes` is a ordered file paths of where the array items stored is.
-
-
-## Use cases
-
-### Use with CI
-![usage](./public/assets/usage.jpg)
