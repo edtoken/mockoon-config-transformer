@@ -7,7 +7,7 @@
 A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files in a git-friendly files tree with 100% backward compatibility.
 
 
-![lifecycle](./public/assets/lifecycle.jpg)
+![lifecycle](./public/assets/lifecycle.png)
 
 ## Features
 - Extracts the original big Mockoon environment file into a user-friendly (git-friendly) file tree.
@@ -135,4 +135,4 @@ When the `index.json` data is an array, then `includes` is a ordered file paths 
 ## Use cases
 
 ### Use with CI
-![usage](./public/assets/usage.png)
+![usage](./public/assets/usage.jpg)
