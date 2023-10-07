@@ -2,20 +2,26 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import '../env.js';
-import { promiseQ, runCli } from './script-utils.js';
+import { pathJoin, promiseQ, runCli } from './script-utils.js';
 
-const exampleEnvironmentsDir = path.normalize('./examples/environments');
+const exampleEnvironmentsDir = path.normalize(
+  './examples/mockoon-mock-samples'
+);
 const edgeCasesEnvironmentsDir = path.normalize('./examples/edge-cases');
 const tmpEnvironmentsDir = path.normalize('./examples/.tmp');
 
 const allExamples = [
   ...fs
     .readdirSync(exampleEnvironmentsDir)
-    .filter((exampleName) => !exampleName.includes('.json'))
+    .filter((name) =>
+      fs.statSync(pathJoin(exampleEnvironmentsDir, name)).isDirectory()
+    )
     .map((name) => ({ name, dir: exampleEnvironmentsDir })),
   ...fs
     .readdirSync(edgeCasesEnvironmentsDir)
-    .filter((exampleName) => !exampleName.includes('.json'))
+    .filter((name) =>
+      fs.statSync(pathJoin(edgeCasesEnvironmentsDir, name)).isDirectory()
+    )
     .map((name) => ({ name, dir: edgeCasesEnvironmentsDir })),
   ...(!fs.existsSync(tmpEnvironmentsDir)
     ? []

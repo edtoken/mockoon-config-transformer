@@ -1,7 +1,10 @@
 import { Route } from '@mockoon/commons/dist/cjs/models/route.model.js';
-import { escapePath } from '../../../../common/utils.js';
-import { METHOD_DIR_TEMPLATE } from '../../../../config.js';
-import { prepareBaseKeys } from '../../../utils.js';
+import {
+  escapePath,
+  logger,
+  prepareBaseKeys
+} from '../../../../common/utils.js';
+import { TransformerSettings } from '../../../../typse.js';
 import {
   createDoc,
   createSections,
@@ -12,7 +15,10 @@ import {
 import { JsonTransformerValue } from '../types.js';
 import processResponses from './responses.js';
 
-const processRoutes = (routesSource: Route[]) => {
+const processRoutes = (
+  routesSource: Route[],
+  settings: TransformerSettings
+) => {
   const routes: JsonTransformerValue[] = [];
   const common: JsonTransformerValue[] = [];
   const routesDocSections: docSectionItem[] = [];
@@ -21,7 +27,7 @@ const processRoutes = (routesSource: Route[]) => {
     routesSource,
     (route) =>
       [
-        METHOD_DIR_TEMPLATE.replace('method', route.method),
+        settings.methodDirectoryTemplate.replace('method', route.method),
         route.endpoint || ''
       ].join('/'),
     (route) => route.documentation || '',
@@ -43,12 +49,18 @@ const processRoutes = (routesSource: Route[]) => {
       }
     };
 
+    logger(settings.verbose, `routes prepare route`, {
+      method,
+      endpoint,
+      file: routeIndex.key
+    });
+
     // process responses
     const {
       responsesDocs,
       index: indexResponsesData,
       common: commonResponsesData
-    } = processResponses(baseKey, responses);
+    } = processResponses(baseKey, responses, settings);
 
     const routeIncludes = {
       key: `${escapePath(baseKey, 'includes')}`,
@@ -64,24 +76,28 @@ const processRoutes = (routesSource: Route[]) => {
     common.push(indexResponsesData);
     common.push(...commonResponsesData);
 
-    routesDocSections.push({
-      title: `${method.toUpperCase()} /${endpoint}`.trim(),
-      details: route.documentation,
-      sections: responsesDocs
+    if (settings.generateDocs) {
+      routesDocSections.push({
+        title: `${method.toUpperCase()} /${endpoint}`.trim(),
+        details: route.documentation,
+        sections: responsesDocs
+      });
+    }
+  });
+
+  if (settings.generateDocs) {
+    const routesDoc = createDoc([
+      ...heading('Routes'),
+      ...lineBreak(1),
+      ...createSections(routesDocSections)
+    ]);
+
+    common.push({
+      ...routesDoc,
+      key: routesDoc.key,
+      value: routesDoc.value
     });
-  });
-
-  const routesDoc = createDoc([
-    ...heading('Routes'),
-    ...lineBreak(1),
-    ...createSections(routesDocSections)
-  ]);
-
-  common.push({
-    ...routesDoc,
-    key: routesDoc.key,
-    value: routesDoc.value
-  });
+  }
 
   return {
     routes,

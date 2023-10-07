@@ -1,19 +1,20 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
+import { logger } from '../common/utils.js';
 import { SUPPORTED_OUTPUT_TYPES } from '../config.js';
 
 export type cliArgOptions = {
   readonly input: string;
   readonly output: string;
   readonly force?: boolean;
+  readonly doc?: boolean;
   readonly verbose?: boolean;
 };
 
 export type resolvedOutput = {
   readonly cwd: string;
   readonly type: SUPPORTED_OUTPUT_TYPES.json;
-  readonly debug: string | boolean;
+  readonly verbose: boolean;
   readonly isInputUrl: boolean;
   readonly isForce: boolean;
   readonly inputPath: string;
@@ -43,7 +44,7 @@ export const cliResolver = (
     : path.normalize(path.join(rootPath, options.output));
 
   const isForce = !!options.force;
-  const debug = options.verbose ? '*' : false;
+  const verbose = !!options.verbose;
 
   if (
     !isExtract &&
@@ -54,6 +55,7 @@ export const cliResolver = (
     // bundle flow when directory passed
     inputPath = path.normalize(path.join(inputPath, './index.json'));
   }
+
   if (!isInputUrl && !fs.existsSync(inputPath)) {
     throw new Error(`Failed to resolve input path ${inputPath}`);
   }
@@ -89,10 +91,21 @@ export const cliResolver = (
     fs.rmSync(outputDirOrPath, { recursive: true, force: true });
   }
 
+  logger(
+    verbose,
+    `Resolve cli arguments`,
+    [`input is url: ${isInputUrl}`, `is force override files: ${isForce}`],
+    {
+      cwd: rootPath,
+      input: inputPath,
+      output: outputDirOrPath
+    }
+  );
+
   return {
     cwd: rootPath,
     type,
-    debug,
+    verbose,
     isInputUrl,
     isForce,
     inputPath,

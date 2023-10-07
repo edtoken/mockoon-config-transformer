@@ -7,7 +7,7 @@
 A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files in a git-friendly files tree with 100% backward compatibility.
 
 
-![lifecycle](./public/assets/lifecycle.jpg)
+![lifecycle](./public/assets/lifecycle.png)
 
 ## Features
 - Extracts the original big Mockoon environment file into a user-friendly (git-friendly) file tree.
@@ -68,6 +68,8 @@ Options:
   -f, --force                          Force override directories and files if exists
   -i, --input  <relative-path or url>  Input path or URL
   -o, --output  <relative-path>        Output file or dir path
+      --verbose                        Show progress logs
+  -d, --doc                            Generate Markdown documentation (extract only, default=false)
   -h, --help                           display help for command
 
 Commands:
@@ -77,6 +79,13 @@ Commands:
 ```
 
 ## Usage
+
+### Help
+``` 
+yarn mockoon-config-transformer --help
+yarn mockoon-config-transformer bundle --help
+yarn mockoon-config-transformer extract --help
+```
 
 ### Extract
 > Extracts the original Mockoon environment file into user-friendly file tree. 
@@ -95,12 +104,20 @@ yarn mockoon-config-transformer extract \
   -o ./output-dir
 ```
 
+```
+# Extract environment.json into output-dir + docs generation
+
+yarn mockoon-config-transformer extract -i ./environment.json -o ./output-dir --doc
+```
+
+
 ### Bundle
 > Bundle extracted directory to the environment file that equals the original file.
 
 ```
 yarn mockoon-config-transformer bundle -i ./output-dir/index.json -o ./environment.json
 ```
+
 
 ## Extracted files tree structure details
 To make the extracted structure safe for duplicates special chars, future Mockoon releases, etc. the "bundle" functionality is based not on the directories tree, but on the file's content.
@@ -122,3 +139,8 @@ When the `index.json` data is object then `includes` is key:value  extend object
 
 When the `index.json` data is an array, then `includes` is a ordered file paths of where the array items stored is.
 
+
+## Use cases
+
+### Use with CI
+![usage](./public/assets/usage.jpg)

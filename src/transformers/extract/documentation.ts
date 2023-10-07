@@ -1,4 +1,5 @@
 import { Blockquote, Heading, Link, Node, Nodes } from 'mdast';
+import { DOCUMENTATION_FILE_NAME } from '../../config.js';
 
 type supportedHeadingDepth = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -6,7 +7,7 @@ export const createDoc = (
   children: any[]
 ): { key: string; format: 'md'; value: Nodes } => {
   return {
-    key: 'documentation',
+    key: DOCUMENTATION_FILE_NAME,
     format: 'md',
     value: {
       type: 'root',
