@@ -31,13 +31,17 @@ const commonJSONBundler = async (filePath: string) => {
   ];
 
   if (files.every((p) => p.isExists === false)) {
-    throw new Error(`File doesn't exists: ${files}`);
+    throw new Error(
+      `File doesn't exists: ${files.map((item) => item.filePath)}`
+    );
   }
 
   let contentFileData = files.find((p) => p.isExists);
 
   if (!contentFileData) {
-    throw new Error(`File doesn't exists: ${files}`);
+    throw new Error(
+      `File doesn't exists: ${files.map((item) => item.filePath)}`
+    );
   }
 
   const [content, commons, includes] = await Promise.all([

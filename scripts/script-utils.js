@@ -62,6 +62,8 @@ const verbose = process.argv.some(
   (s) => s.includes('verbose') || s.includes('worker')
 );
 
+export const pathJoin = (a, b) => path.normalize(path.join(a, b));
+
 export const runCli = (args) => {
   return new Promise((resolve) => {
     const command = `node ${cliFile} ${(args || [])

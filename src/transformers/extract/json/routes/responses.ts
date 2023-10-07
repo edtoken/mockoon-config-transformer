@@ -1,18 +1,18 @@
 import { RouteResponse } from '@mockoon/commons';
-import { escapePath } from '../../../../common/utils.js';
-import { RESPONSES_DIR_TEMPLATE } from '../../../../config.js';
-import { prepareBaseKeys } from '../../../utils.js';
+import { escapePath, prepareBaseKeys } from '../../../../common/utils.js';
+import { TransformerSettings } from '../../../../typse.js';
 import { docSectionItem } from '../../documentation.js';
 import { JsonTransformerValue } from '../types.js';
 
 const processResponses = (
   baseKey: string,
-  responsesSource: RouteResponse[]
+  responsesSource: RouteResponse[],
+  settings: TransformerSettings
 ) => {
   const responsesDocSections: docSectionItem[] = [];
   const common: JsonTransformerValue[] = [];
 
-  const responsesBaseKey = escapePath(baseKey, RESPONSES_DIR_TEMPLATE);
+  const responsesBaseKey = escapePath(baseKey, settings.responsesDirectoryName);
 
   const index: JsonTransformerValue = {
     key: `${escapePath(responsesBaseKey, `index`)}`,
@@ -60,7 +60,7 @@ const processResponses = (
 
     // @ts-expect-error false positive
     includes.value.push(
-      escapePath(responseIndex.key.replace(responsesBaseKey, ''))
+      escapePath(responseIndex.key.replace(responsesBaseKey + '/', './'))
     );
 
     common.push(responseIndex);
