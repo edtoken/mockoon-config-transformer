@@ -82,7 +82,8 @@ promiseQ(
           'extract',
           `-i ${inputEnvironmentFilePath}`,
           `-o ${outputExtractJSONDirPath}`,
-          '-f'
+          '-f',
+          '--doc'
         ];
         const extractJSON = await runCli(extractJSONArgs);
         if (extractJSON?.error) {

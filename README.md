@@ -6,6 +6,10 @@
 
 A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files in a git-friendly files tree with 100% backward compatibility.
 
+## Changelog
+See [CHANGELOG.md](./CHANGELOG.md)  
+
+---
 
 ![lifecycle](./public/assets/lifecycle.png)
 
@@ -15,10 +19,10 @@ A CLI tool to bundle/extract [Mockoon](https://mockoon.com/) environment files i
 - Bundle the extracted file tree into an environment file that matches the original file.
 
 See [examples](./examples):
-- Original Mockoon stripe config [environment.json](./examples/environments/stripecom/environment.json)
-- Extracted Mockoon stripe config [json tree](./examples/environments/stripecom/extract/json)
-- Extracted automatically generated [documentation.md](./examples/environments/stripecom/extract/json/documentation.md)
-- Bundled json tree [from-json.json](./examples/environments/stripecom/bundle/from-json.json)
+- Original Mockoon stripe config [environment.json](./examples/mockoon-mock-samples/stripecom/environment.json)
+- Extracted Mockoon stripe config [json tree](./examples/mockoon-mock-samples/stripecom/extract/json)
+- Extracted automatically generated [documentation.md](./examples/mockoon-mock-samples/stripecom/extract/json/documentation.md)
+- Bundled json tree [from-json.json](./examples/mockoon-mock-samples/stripecom/bundle/from-json.json)
 
 ### Extract features
 - Successfully processed any URI with special characters.
