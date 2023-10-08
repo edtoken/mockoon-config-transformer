@@ -3,11 +3,11 @@
 ## [Unreleased]
 
 
-## [2.0.0-beta.0] - 2023-10-01
+## [2.0.0-beta.1] - 2023-10-08
 
-### Migrate to version 2.0.0-beta.0
+### Migrate to version 2.0.0-beta.1
 1. Bundle environments with `1.0.0` version
-2. Extract environments with `2.0.0-beta.0` version
+2. Extract environments with `2.0.0-beta.1` version
 
 ### Breaking changes
 - The `method` directory template was changed `__:[method]` -> `___method` to make it compatible with windows machine. 
