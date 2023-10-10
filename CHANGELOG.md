@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.0.0] - 2023-10-10
+
+> Included whole changes from the 2.0.0-beta.1 
+
+### Fixed
+- Fixed issue with FL/CRLF line breaks in the documentation file
 
 ## [2.0.0-beta.1] - 2023-10-08
 
