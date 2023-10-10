@@ -28,7 +28,7 @@ export const heading = (
 ];
 
 export const lineBreak = (count?: number): Text[] =>
-  new Array(count || 1).fill({ type: 'text', value: '\r\n' });
+  new Array(count || 1).fill({ type: 'text', value: '\n' });
 
 export type docSectionItem = {
   title: string;
